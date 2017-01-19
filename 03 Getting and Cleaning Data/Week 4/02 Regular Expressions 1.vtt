@@ -1,0 +1,413 @@
+WEBVTT
+
+1
+00:00:00.480 --> 00:00:02.765
+This lecture is about regular expressions.
+
+2
+00:00:02.765 --> 00:00:06.630
+We've already seen how the text
+functions sub, gsub and grab can be
+
+3
+00:00:06.630 --> 00:00:10.200
+used to manipulate strings and identify
+patterns that might be of interest.
+
+4
+00:00:10.200 --> 00:00:14.270
+In this lecture we'll talk about regular
+expressions which extends the idea
+
+5
+00:00:14.270 --> 00:00:17.300
+of searching for a specific bit of text,
+to searching for
+
+6
+00:00:17.300 --> 00:00:20.160
+a bit of text that might
+fit a more broad pattern.
+
+7
+00:00:21.770 --> 00:00:24.800
+Regular expressions can be thought
+of as a combination of literals and
+
+8
+00:00:24.800 --> 00:00:26.460
+metacharacters.
+
+9
+00:00:26.460 --> 00:00:30.530
+So to draw an analogy to natural language,
+think of literal text
+
+10
+00:00:30.530 --> 00:00:33.670
+forming the words of the language and
+the metacharacters defining its grammar.
+
+11
+00:00:34.800 --> 00:00:37.740
+Regular expressions have a rich
+set of metacharacters that allow
+
+12
+00:00:37.740 --> 00:00:41.380
+us to search through strings to identify
+specific patterns of interest that
+
+13
+00:00:41.380 --> 00:00:43.180
+might be very hard to
+identify with literals.
+
+14
+00:00:44.910 --> 00:00:47.710
+So here's an example of
+what I mean by literals.
+
+15
+00:00:47.710 --> 00:00:52.480
+So literals consist of
+words that match exactly.
+
+16
+00:00:52.480 --> 00:00:57.280
+So for example, the literal nuclear
+would match all of these lines because
+
+17
+00:00:57.280 --> 00:00:59.960
+nuclear appears here in this line.
+
+18
+00:00:59.960 --> 00:01:04.931
+Nuclear appears here in this line,
+here in this line, here in this line,
+
+19
+00:01:04.931 --> 00:01:06.470
+and here in this line.
+
+20
+00:01:06.470 --> 00:01:12.042
+So that's the exact letters match
+in all of those different lines.
+
+21
+00:01:12.042 --> 00:01:17.160
+The literal Obama would match all of
+these lines because it appears here,
+
+22
+00:01:17.160 --> 00:01:22.380
+it appears here, it appears here,
+it appears here, and it appears here.
+
+23
+00:01:22.380 --> 00:01:24.530
+So you can find it each one
+of these different lines and
+
+24
+00:01:24.530 --> 00:01:26.900
+you can actually match
+exactly what you observed.
+
+25
+00:01:28.180 --> 00:01:32.860
+Regular expressions consists in
+the simplest form of only literals.
+
+26
+00:01:32.860 --> 00:01:37.176
+A match occurs only if the exact
+sequence of literals occurs
+
+27
+00:01:37.176 --> 00:01:39.774
+anywhere in the text being tested.
+
+28
+00:01:39.774 --> 00:01:44.349
+But what if we only want the word Obama,
+or sentences that end in the word
+
+29
+00:01:44.349 --> 00:01:48.944
+Clinton or clinton, or some other
+much smaller phrase, like clinto?
+
+30
+00:01:48.944 --> 00:01:53.601
+We need a way to express whitespace and
+word boundaries, sets of literals,
+
+31
+00:01:53.601 --> 00:01:58.716
+the beginning and end of a line, or maybe
+alternatives, things like war or peace.
+
+32
+00:01:58.716 --> 00:02:02.587
+And so, what we're gonnq use here are
+metacharacters in order to specify these
+
+33
+00:02:02.587 --> 00:02:05.790
+more general search terms that
+we'd like to be able to identify.
+
+34
+00:02:05.790 --> 00:02:09.337
+So some metacharacters
+represent the start of a line.
+
+35
+00:02:09.337 --> 00:02:13.318
+So for example,
+if you have a ^ followed by i think,
+
+36
+00:02:13.318 --> 00:02:17.458
+it will match the start of
+a line followed by i think.
+
+37
+00:02:17.458 --> 00:02:21.300
+So that will match all of these lines,
+i think we all rule for participating,
+
+38
+00:02:21.300 --> 00:02:22.600
+and so forth.
+
+39
+00:02:22.600 --> 00:02:26.328
+But it wouldn't match necessarily if the i
+think came somewhere in the middle of
+
+40
+00:02:26.328 --> 00:02:26.839
+the line.
+
+41
+00:02:29.806 --> 00:02:32.972
+$ represents the end of the line,
+so for example,
+
+42
+00:02:32.972 --> 00:02:37.755
+if you have the phrase morning$, then
+that will match all of the lines here,
+
+43
+00:02:37.755 --> 00:02:40.570
+because morning is
+the last word in the line.
+
+44
+00:02:41.860 --> 00:02:44.490
+However, if morning was a word that
+appeared only in the middle of the text,
+
+45
+00:02:44.490 --> 00:02:45.340
+it wouldn't match.
+
+46
+00:02:48.100 --> 00:02:50.730
+We can also consider lists or
+
+47
+00:02:50.730 --> 00:02:54.050
+sets of characters that will be accepted
+at any given point in the match.
+
+48
+00:02:54.050 --> 00:02:59.275
+So for example, you might have
+either a lower case or a capital B,
+
+49
+00:02:59.275 --> 00:03:03.740
+either a lower case or a capital U,
+either a lower case or
+
+50
+00:03:03.740 --> 00:03:07.853
+upper case S, and
+either a lower case or capital H.
+
+51
+00:03:07.853 --> 00:03:10.900
+So that will match all
+versions of the word Bush
+
+52
+00:03:10.900 --> 00:03:13.000
+regardless of which
+letters are capitalized.
+
+53
+00:03:13.000 --> 00:03:18.890
+So for example, this version has a capital
+B, this version has all lower case values.
+
+54
+00:03:18.890 --> 00:03:22.170
+This version also has
+all lower case values.
+
+55
+00:03:22.170 --> 00:03:26.380
+Here we have another upper case value,
+and another upper case value.
+
+56
+00:03:26.380 --> 00:03:30.030
+So, it will match any of those because
+it will match both lower case and
+
+57
+00:03:30.030 --> 00:03:31.560
+upper case at every possible letter.
+
+58
+00:03:33.480 --> 00:03:36.280
+The next things that you can do is you
+can start combining these together.
+
+59
+00:03:36.280 --> 00:03:40.270
+So for example, you can say,
+I wanna look at the beginning of the line
+
+60
+00:03:40.270 --> 00:03:42.600
+to see either a capital I or
+a lowercase i.
+
+61
+00:03:42.600 --> 00:03:47.250
+So that will either match lines like
+this where is the lowercase i or
+
+62
+00:03:47.250 --> 00:03:50.254
+capital I to begin
+the line followed by am.
+
+63
+00:03:50.254 --> 00:03:54.707
+So what it does it will allows the
+beginning, the start of the line either
+
+64
+00:03:54.707 --> 00:03:58.442
+one of the lower case or
+the capital I and then the literal am.
+
+65
+00:04:01.571 --> 00:04:05.237
+The other thing that you can do is you can
+specify actually range of characters, or
+
+66
+00:04:05.237 --> 00:04:06.960
+range of letters.
+
+67
+00:04:06.960 --> 00:04:10.090
+So if you put in square brackets a-z,
+
+68
+00:04:10.090 --> 00:04:13.102
+that will match any letter
+from a to z that's lower case.
+
+69
+00:04:13.102 --> 00:04:19.057
+If you do a-z lowercase or
+A-Z uppercase, it
+
+70
+00:04:19.057 --> 00:04:25.440
+will actually look for any of the letters
+whether they're uppercase or lowercase.
+
+71
+00:04:25.440 --> 00:04:28.430
+So for example,
+if you make this search right here,
+
+72
+00:04:28.430 --> 00:04:31.460
+it's gonna start at the beginning of
+the line, and it's gonna look for
+
+73
+00:04:31.460 --> 00:04:35.580
+a number between 0 and
+9 followed by any letter.
+
+74
+00:04:35.580 --> 00:04:38.560
+So it will match any
+of these lines because
+
+75
+00:04:38.560 --> 00:04:41.345
+each of the lines starts with a number
+at the beginning of the line and
+
+76
+00:04:41.345 --> 00:04:44.130
+is followed by a letter as
+the next letter in the line.
+
+77
+00:04:46.490 --> 00:04:50.290
+Used in the beginning of a character
+class the ^ is also a metacharacter and
+
+78
+00:04:50.290 --> 00:04:55.280
+indicates that it should match any of
+the characters not in the indicated class.
+
+79
+00:04:55.280 --> 00:04:58.105
+So for example here we're looking
+at the end of the line with the $.
+
+80
+00:04:59.285 --> 00:05:03.609
+And we're looking for any line that
+ends in anything other than a period or
+
+81
+00:05:03.609 --> 00:05:04.664
+a question mark.
+
+82
+00:05:04.664 --> 00:05:07.082
+Cuz this means either a period or
+a question mark, and
+
+83
+00:05:07.082 --> 00:05:10.093
+this caret means that it's not
+either of those two characters, so
+
+84
+00:05:10.093 --> 00:05:13.911
+it'll match all of these lines, because
+most of them don't have any punctuation,
+
+85
+00:05:13.911 --> 00:05:15.995
+and some have exclamation
+points at the end.

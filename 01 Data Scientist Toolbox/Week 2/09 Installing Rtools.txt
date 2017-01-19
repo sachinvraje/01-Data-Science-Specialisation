@@ -1,0 +1,39 @@
+This lecture is on installing Rtools. This lecture is primarily useful for
+people using Windows computers. People that are using Mac or Linux don't
+necessarily need this lecture. So Rtools is a collection of tools that are necessary for building R packages in
+Windows. We won't be doing that right away, but later in developing data trials you will
+be doing that, so you need to be able to install Rtools if you're going to complete
+that class. And so, Rtools is available for, download
+at this website up here, as I've listed it. And so, what you can do is you can find a
+version of Rtools that is available that is the
+latest version, and so you want to select the .exe download link, and
+it corresponds to your version of R, so you need to figure out what version
+of R you have. And then, download that version, if you
+are not sure what version of R you have, open and restart R and you
+will see in the very beginning there will be some text
+listed out and one of the things they list out in that text is
+the version of R. If you, have the most recent version of R,
+you should select the most recent Rtools download, it's at
+the top of the chart. And so, if you just installed R for this
+course, then you will also need the latest version
+of Rtools. Once the download completes, you'll just
+open the executable file to begin the
+installation. So basically unless you know what you're
+doing, you should just go with the default selection at each
+steps of the installation. There only two steps worth noting, so if you already have Cygwin installed on your
+machine, you should just follow the instructions
+given during installation, and those instructions are
+also at this URL. And you should make sure that box is checked to have the installer edit your
+path. And so you can see it very, very, if
+you're very eagle eyed, in this below. But basically make you sure check the box
+to allow the installer to edit your path. Once the Rtools installation completes,
+you can open our studio, and you install the dev tools package if you
+don't already have it. So, if you type find.packages("devtools")
+in the console, you'll figure out whether you have it or
+not. And then to install it, you can just, as
+in previous lectures, just use
+install.packages("devtools") like that, and you'll have the devtools package. After devtools is done installing you can
+load it using library(devtools) and then type find_rtools(), like this as shown
+below, and this should return a TRUE. So you should see TRUE printed out on the
+screen if Rtools installation has worked properly
+and you'll be ready to go.

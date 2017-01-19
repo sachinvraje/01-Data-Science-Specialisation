@@ -1,0 +1,20 @@
+[BLANK_AUDIO] In this video, I'm going to talk about how
+to install RStudio for the Mac. It's a very simple process and only
+involves just a few steps. The one thing I'll say though is that you must have R already installed before you
+can install RStudio. So, once you've installed R already. You can go to the RStudio website, which
+is Rstudio.com. [SOUND]. And you can see down here on the lower
+left, there's a green button that that directs you to
+kind of download RStudio. So, here there's two versions of RStudio,
+studio that you can download. One is for the desktop and one is for the
+server down here. Now you, we're not going to be talking
+about the server version at all here so, you just want to download the desktop
+version, so that's this button right here. So the website should detect automatically
+what type of operating system your running, so here I'm running a Mac, and so it
+recommends this Mac OS X version. So, I'm just going to download that right
+now. And, you'll see the download meter go. [BLANK_AUDIO] Once that's finished downloading you go to
+the Downloads folder, and it should be the most left thing here so we're just
+going to click on it to install it. And then just like any other Mac
+application, all you have to do to install is drag it into the
+Applications folder. So, I'm going to do that right now. And it's already done. So, I can just go into the Applications
+folder here and find RStudio. Double-click on it [SOUND]. I'll say yes, I want to open this
+application. And there you go. You're running RStudio.

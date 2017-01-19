@@ -1,0 +1,1010 @@
+WEBVTT
+
+1
+00:00:03.327 --> 00:00:06.480
+So first thing, of course,
+is you need to load the dplyr package.
+
+2
+00:00:06.480 --> 00:00:11.140
+And you'll get some warning messages as
+you load the dplyr package but but you,
+
+3
+00:00:11.140 --> 00:00:13.850
+because there are other functions
+that have the same name.
+
+4
+00:00:13.850 --> 00:00:15.359
+But you don't have to worry about that for
+the moment.
+
+5
+00:00:18.330 --> 00:00:20.920
+So, the first function we'll talk
+about is the select function.
+
+6
+00:00:20.920 --> 00:00:23.510
+And so, I'm going to use a sample
+data set here that you can
+
+7
+00:00:23.510 --> 00:00:24.720
+download from the web site.
+
+8
+00:00:25.770 --> 00:00:27.430
+And so I'm going to load it here.
+
+9
+00:00:27.430 --> 00:00:33.718
+And it's, it's a data set on air,
+kind of air pollution and temperature.
+
+10
+00:00:33.718 --> 00:00:38.415
+And sorry, air pollution and weather
+variables in the city of Chicago for
+
+11
+00:00:38.415 --> 00:00:42.258
+the years 1987 to 2005, and
+it's kind of daily data.
+
+12
+00:00:42.258 --> 00:00:45.946
+So if you take a look at the dimensions
+of the data set you'll see
+
+13
+00:00:45.946 --> 00:00:50.545
+that there are 60,940 rows and eight
+columns, and here are the first couple of
+
+14
+00:00:50.545 --> 00:00:54.815
+rows of the data of the data set and
+the first five columns.
+
+15
+00:00:54.815 --> 00:00:57.950
+Now one of the things you can do for
+any data frame is to look at the names,
+
+16
+00:00:57.950 --> 00:00:59.790
+of the variable names
+using the names function.
+
+17
+00:00:59.790 --> 00:01:04.300
+So, here I'm going to print out
+the first few var, variable names.
+
+18
+00:01:04.300 --> 00:01:07.740
+And one of the nice things you can do
+with the select function in dplyr is to
+
+19
+00:01:07.740 --> 00:01:11.360
+actually access the columns or
+set of columns.
+
+20
+00:01:11.360 --> 00:01:15.880
+In the data frame using the names rather
+than the, the indices into the column.
+
+21
+00:01:15.880 --> 00:01:19.170
+So here I, let's say if I want to look
+at the columns starting with city and
+
+22
+00:01:19.170 --> 00:01:22.760
+ending with D DPTP,
+which is the dew point column.
+
+23
+00:01:22.760 --> 00:01:24.570
+I, and I want to include
+all the columns in between.
+
+24
+00:01:24.570 --> 00:01:29.380
+I can just say, I can use this notation,
+which is city colon DBTP.
+
+25
+00:01:29.380 --> 00:01:33.180
+Which is not a notation that you can that
+you would normally be able to use in
+
+26
+00:01:33.180 --> 00:01:37.041
+other functions but you can use here in
+the select function and you can see it
+
+27
+00:01:37.041 --> 00:01:40.634
+selects all the columns between the city
+column and the dew point column.
+
+28
+00:01:40.634 --> 00:01:44.583
+So it's a nice and
+handy way to look at subsets of columns or
+
+29
+00:01:44.583 --> 00:01:48.099
+data frame by just you referring
+to them by their names.
+
+30
+00:01:50.060 --> 00:01:52.720
+Similarly you can use the minus
+sign to say, I want to look at
+
+31
+00:01:52.720 --> 00:01:57.530
+all the columns except for these, the,
+the columns indicated by this range.
+
+32
+00:01:57.530 --> 00:02:02.330
+And you can use the select function to
+just say minus on that city colon dew
+
+33
+00:02:02.330 --> 00:02:03.470
+point sequence.
+
+34
+00:02:03.470 --> 00:02:07.420
+And you'll get all of the columns,
+except those few columns.
+
+35
+00:02:07.420 --> 00:02:13.010
+So, the equivalent code to do this
+in kind of regular R, without
+
+36
+00:02:13.010 --> 00:02:16.030
+using the deplyr package is a little bit
+tricky because you have to find, you know,
+
+37
+00:02:16.030 --> 00:02:19.560
+the index for where the city column is and
+you have to find the index for where
+
+38
+00:02:19.560 --> 00:02:23.800
+the dew point column is and then you need
+to take the negative of those indices.
+
+39
+00:02:23.800 --> 00:02:26.260
+So, it's not particularly complicated but
+
+40
+00:02:26.260 --> 00:02:29.540
+it's an extra two lines of code and
+perhaps not as readable.
+
+41
+00:02:31.060 --> 00:02:33.850
+The filter function is the next function
+in deplyr that we'll talk about and
+
+42
+00:02:33.850 --> 00:02:36.910
+it's basically used subset
+rows based on conditions.
+
+43
+00:02:36.910 --> 00:02:40.576
+So, for example, you might want to take
+all the rows in the Chicago data set
+
+44
+00:02:40.576 --> 00:02:44.930
+where pm 2.5 is greater than 30, so
+I've got that condition here as the second
+
+45
+00:02:44.930 --> 00:02:49.130
+argument, and so that just creates a
+logical sequence and it subsets the rows.
+
+46
+00:02:49.130 --> 00:02:51.630
+In the Chicago data frame based
+on that sequence and you can see,
+
+47
+00:02:51.630 --> 00:02:54.320
+we can see the first few rows
+here that I printed out.
+
+48
+00:02:54.320 --> 00:02:58.110
+All of the values of pm2.5
+are greater than 30.
+
+49
+00:02:58.110 --> 00:03:02.395
+But you don't have, you don't have to just
+subset rows based on values in one column.
+
+50
+00:03:02.395 --> 00:03:06.730
+You could take multiple columns and create
+a more complicated logical sequence.
+
+51
+00:03:06.730 --> 00:03:09.670
+So here I'm looking at
+pm2.5 greater than 30.
+
+52
+00:03:09.670 --> 00:03:12.130
+As well as temperature greater than 80.
+
+53
+00:03:12.130 --> 00:03:14.990
+I can see that now in this,
+when I list, when I print out
+
+54
+00:03:14.990 --> 00:03:18.890
+the few first couple rows here, all of the
+temperature values are greater than 80 and
+
+55
+00:03:18.890 --> 00:03:21.150
+all the pm2.5 values are greater than 30.
+
+56
+00:03:21.150 --> 00:03:25.810
+So you can have an arbitrarily complex
+logical sequence there, and it will set,
+
+57
+00:03:25.810 --> 00:03:28.330
+and filter function will subset the rows.
+
+58
+00:03:28.330 --> 00:03:29.338
+Based on that sequence.
+
+59
+00:03:29.338 --> 00:03:32.904
+And again, the nice thing about this
+function, just like with select,
+
+60
+00:03:32.904 --> 00:03:36.936
+is that you can refer to the variable
+names directly using their names and
+
+61
+00:03:36.936 --> 00:03:39.100
+you don't have to kind of subset each,
+
+62
+00:03:39.100 --> 00:03:42.569
+out each variable using these,
+using the various subset operators.
+
+63
+00:03:45.980 --> 00:03:48.280
+The next function of range
+has a simple purpose.
+
+64
+00:03:48.280 --> 00:03:51.840
+It's basically used to reorder
+the rows of a data frame based on
+
+65
+00:03:51.840 --> 00:03:53.440
+the values of a column.
+
+66
+00:03:53.440 --> 00:03:57.320
+And this is something that can be kind
+of a pain in the neck to do in R and
+
+67
+00:03:57.320 --> 00:04:00.540
+the range function makes it quite
+a bit simpler and easier to read.
+
+68
+00:04:00.540 --> 00:04:02.310
+So here, this example is very simple.
+
+69
+00:04:02.310 --> 00:04:03.820
+I just want to arrange.
+
+70
+00:04:03.820 --> 00:04:07.730
+When I order the, rows by data frame
+according to the date variables.
+
+71
+00:04:07.730 --> 00:04:11.050
+I want the date variables above,
+kind of the lowest date to be on top, and
+
+72
+00:04:11.050 --> 00:04:14.630
+the highest date to be, or
+the latest date to be on the bottom.
+
+73
+00:04:14.630 --> 00:04:18.157
+So I arrange the Chicago data set to,
+by the date variable.
+
+74
+00:04:18.157 --> 00:04:22.270
+And you can see that the first
+couple of rows, start in 1987.
+
+75
+00:04:22.270 --> 00:04:25.410
+And then when I use the tail function
+to look at the last couple rows,
+
+76
+00:04:25.410 --> 00:04:27.210
+you see that they all end in 2005.
+
+77
+00:04:27.210 --> 00:04:30.328
+So the const, the data set is
+ordered now according to the date.
+
+78
+00:04:30.328 --> 00:04:34.931
+Now of course, we might want to also,
+for example, arrange the rows in
+
+79
+00:04:34.931 --> 00:04:40.449
+descending order, so the desc, function,
+or the d-e-s-c indicator, it can be used.
+
+80
+00:04:41.850 --> 00:04:46.650
+In the arrange functions to say you want
+to sort the rows in descending order of
+
+81
+00:04:46.650 --> 00:04:47.420
+date in this case.
+
+82
+00:04:47.420 --> 00:04:50.740
+You can see now when I print
+out the first few rows a,
+
+83
+00:04:50.740 --> 00:04:54.460
+they start with all the values of 2005 and
+go, and go backwards.
+
+84
+00:04:54.460 --> 00:04:56.520
+And the last few rows end in 1987.
+
+85
+00:04:56.520 --> 00:05:01.240
+So I've just reversed the order of all
+the rows in the data frame according,
+
+86
+00:05:01.240 --> 00:05:02.029
+according to the date.
+
+87
+00:05:03.370 --> 00:05:05.150
+The rename function is very simple.
+
+88
+00:05:05.150 --> 00:05:07.950
+It just,
+it can be used to rename a variable in R,
+
+89
+00:05:07.950 --> 00:05:10.220
+but actually this is
+a surprisingly hard and
+
+90
+00:05:10.220 --> 00:05:13.560
+annoying thing to do in R if you
+don't have a function like this.
+
+91
+00:05:13.560 --> 00:05:15.780
+And so here you can see that I,
+I've got the, the,
+
+92
+00:05:15.780 --> 00:05:20.025
+the names of the variables here and
+the pm2.5 variable is called pm25tmean2.
+
+93
+00:05:21.280 --> 00:05:22.550
+Which is a bit of a mouthful, and
+
+94
+00:05:22.550 --> 00:05:26.490
+I may want to simplify that,
+maybe I just want to call it pm2.5.
+
+95
+00:05:26.490 --> 00:05:29.240
+similarly, the dew point
+variable is called dptp,
+
+96
+00:05:29.240 --> 00:05:33.200
+which is not particularly, intuitive, so
+I might want to rename that variable too.
+
+97
+00:05:33.200 --> 00:05:36.680
+So here, I just call the rename function,
+again, I pass it a data frame.
+
+98
+00:05:38.140 --> 00:05:39.480
+And then I say, I want it,
+
+99
+00:05:39.480 --> 00:05:42.710
+I give it the new name, and I say
+equals and then I give it the old name.
+
+100
+00:05:42.710 --> 00:05:45.310
+So now I want it to say
+dew-point equals dptp.
+
+101
+00:05:45.310 --> 00:05:49.040
+And I give it pm2.5 equals pm25tmean2.
+
+102
+00:05:49.040 --> 00:05:53.030
+And that renames those two columns
+in the data frame, and it,
+
+103
+00:05:53.030 --> 00:05:55.970
+and it leaves all the other
+columns untouched.
+
+104
+00:05:55.970 --> 00:05:58.910
+So now when I print out the first
+couple rows of this data frame you can
+
+105
+00:05:58.910 --> 00:06:02.240
+see that the dewpoint variable
+is there properly named and
+
+106
+00:06:02.240 --> 00:06:04.560
+the pm25 variable there is properly named.
+
+107
+00:06:04.560 --> 00:06:10.689
+The mutate function is used to simply
+transform existing variables or
+
+108
+00:06:10.689 --> 00:06:12.707
+to create new variables.
+
+109
+00:06:12.707 --> 00:06:18.390
+So here in this example I want to create
+a new variable called pm25detrend.
+
+110
+00:06:18.390 --> 00:06:24.490
+And this is basically this, the pm2,
+2.5 variable with the mean subtracted off.
+
+111
+00:06:24.490 --> 00:06:26.330
+So I want to kind of center the variable.
+
+112
+00:06:26.330 --> 00:06:30.362
+And so here I've just created this
+new variable called pm25detrend and
+
+113
+00:06:30.362 --> 00:06:34.277
+I said equals pm2.5, sorry pm25
+minus the mean of that variable.
+
+114
+00:06:34.277 --> 00:06:34.993
+And when I,
+
+115
+00:06:34.993 --> 00:06:40.099
+when I looked at the first couple rows of
+the pm25 and the pm25detrend variable.
+
+116
+00:06:41.270 --> 00:06:43.655
+You can see that the pm25
+variable's unchanged,
+
+117
+00:06:43.655 --> 00:06:46.650
+it's it's in micrograms per meter cubed.
+
+118
+00:06:46.650 --> 00:06:51.340
+But the pm25detrend variable is in, is, is
+kind of a deviation from the mean and so
+
+119
+00:06:51.340 --> 00:06:53.690
+it will have kind of negative and
+positive values.
+
+120
+00:06:55.370 --> 00:06:59.980
+So finally the group by
+function allows you to kind of
+
+121
+00:06:59.980 --> 00:07:03.120
+essentially behind the scenes
+split a data frame according to.
+
+122
+00:07:04.700 --> 00:07:07.990
+Certain categorical variables.
+
+123
+00:07:07.990 --> 00:07:11.490
+So in this example, what I'm going to
+do is I'm going to create a temperature
+
+124
+00:07:11.490 --> 00:07:15.410
+category variable which will indicate
+whether a given day was hot or
+
+125
+00:07:15.410 --> 00:07:20.590
+cold, depending on whether the temperature
+was over 80 degrees or not.
+
+126
+00:07:20.590 --> 00:07:23.480
+So I create this factor
+variable called tempcat, and
+
+127
+00:07:23.480 --> 00:07:27.890
+then I use the group by function to
+create a new kind of data structure.
+
+128
+00:07:27.890 --> 00:07:31.140
+Based on the original data frame and
+this tempcat variable.
+
+129
+00:07:31.140 --> 00:07:33.710
+And so I call that new data
+structure hotcold, and
+
+130
+00:07:33.710 --> 00:07:35.750
+and you can see it look,
+you can print it out here.
+
+131
+00:07:36.880 --> 00:07:39.710
+And it has a slightly different format.
+
+132
+00:07:39.710 --> 00:07:44.250
+So now I can use the summarize function,
+and and being from the U.S., I
+
+133
+00:07:44.250 --> 00:07:48.860
+use the z spelling for summarize, but you
+can also use the s spelling for summarize.
+
+134
+00:07:48.860 --> 00:07:52.820
+So I summarize the group,
+this hot, cold object now.
+
+135
+00:07:52.820 --> 00:07:56.120
+Which has been split based on
+the temperature category variable.
+
+136
+00:07:56.120 --> 00:08:00.760
+And I just want to, what I want to know
+is what's the mean pm2.5 for both hot and
+
+137
+00:08:00.760 --> 00:08:01.720
+cold days.
+
+138
+00:08:01.720 --> 00:08:04.600
+What's the maximum ozone for
+hot and cold days, and
+
+139
+00:08:04.600 --> 00:08:09.460
+what's the median nitrogen dioxide or
+no2 for both hot and cold days.
+
+140
+00:08:09.460 --> 00:08:14.660
+And you can see here that if I just print
+it, it prints out a little data frame.
+
+141
+00:08:14.660 --> 00:08:18.970
+That has the value, the levels of the 10th
+cat variable which are cold, hot, and
+
+142
+00:08:18.970 --> 00:08:20.840
+NA so there are some missing values.
+
+143
+00:08:20.840 --> 00:08:24.000
+And it gives you the summary
+statistics for pn2.5 and ozone and
+
+144
+00:08:24.000 --> 00:08:27.190
+no2 in each of those categories.
+
+145
+00:08:27.190 --> 00:08:30.470
+Now actually so there, there is
+missing date in the pn2.5 variable so
+
+146
+00:08:30.470 --> 00:08:31.735
+I need to specify.
+
+147
+00:08:31.735 --> 00:08:37.660
+The na.rm equals true in order to get
+some the means of those values but
+
+148
+00:08:37.660 --> 00:08:40.590
+the ignoring the missing values.
+
+149
+00:08:40.590 --> 00:08:44.860
+So now you can see that that pm2.5 is
+tends to be lower when it's cold and
+
+150
+00:08:44.860 --> 00:08:46.160
+hi and higher when it's hot.
+
+151
+00:08:47.350 --> 00:08:51.670
+And so and
+these are the summary statistics for
+
+152
+00:08:51.670 --> 00:08:54.290
+each of the pollutants in
+these temperature categories.
+
+153
+00:08:54.290 --> 00:09:00.110
+I could also categorize the data set on,
+on other variables so
+
+154
+00:09:00.110 --> 00:09:03.670
+for example I might want to do a summary
+for each year in the data set.
+
+155
+00:09:03.670 --> 00:09:08.530
+And so I can create I can use the mutate
+function to create a year variable.
+
+156
+00:09:09.590 --> 00:09:12.290
+Which is based on the date I can
+extract the year information from
+
+157
+00:09:12.290 --> 00:09:15.920
+the date variable by using
+the as.POSIXLt function.
+
+158
+00:09:15.920 --> 00:09:19.580
+And then I group by the Chicago
+data set by year now instead of
+
+159
+00:09:19.580 --> 00:09:21.740
+previously we had this
+temperature category.
+
+160
+00:09:21.740 --> 00:09:24.300
+And I can use the summarize
+function in the same way.
+
+161
+00:09:24.300 --> 00:09:28.960
+And I get, now I get a summary for
+each of the three different
+
+162
+00:09:28.960 --> 00:09:32.410
+pollutant variables for
+each of the years in the data set.
+
+163
+00:09:32.410 --> 00:09:36.590
+And you can see that in, in general for
+particularly, particularly for pm2.5,
+
+164
+00:09:36.590 --> 00:09:38.780
+there's a kind of a downward
+trend over time, which is nice.
+
+165
+00:09:40.770 --> 00:09:44.280
+So, the dplyr package
+implements a special operator.
+
+166
+00:09:44.280 --> 00:09:48.230
+That allows you to kind of chain
+different operations together so
+
+167
+00:09:48.230 --> 00:09:51.435
+much like the way we did in the previous
+kind of operations that I showed you.
+
+168
+00:09:51.435 --> 00:09:55.050
+[COUGH] And does it in a way that kind of
+allows you to see what operations
+
+169
+00:09:55.050 --> 00:09:56.530
+are happening in a kind of readable way.
+
+170
+00:09:56.530 --> 00:10:00.150
+And so it's indicated by a percent symbol
+and then the greater than symbol and
+
+171
+00:10:00.150 --> 00:10:01.660
+then the percent symbol.
+
+172
+00:10:01.660 --> 00:10:04.570
+And so I'll just call it
+the pipeline operator for now.
+
+173
+00:10:04.570 --> 00:10:06.320
+And so the idea it that you
+kind of take a data set and
+
+174
+00:10:06.320 --> 00:10:09.150
+you feed through a pipeline of
+operations to create a new data set.
+
+175
+00:10:09.150 --> 00:10:12.870
+And so
+here I've got the Chicago data set and
+
+176
+00:10:12.870 --> 00:10:15.570
+I want to mutate to create
+a month variable because I
+
+177
+00:10:15.570 --> 00:10:19.310
+want to create a summary of each of
+the pollutant variables by month.
+
+178
+00:10:19.310 --> 00:10:22.420
+And so I I create the month
+variable with mutate and
+
+179
+00:10:22.420 --> 00:10:24.480
+then I want to take the output of mutate.
+
+180
+00:10:24.480 --> 00:10:25.580
+And then group by it.
+
+181
+00:10:25.580 --> 00:10:27.510
+Use according to this month variable.
+
+182
+00:10:27.510 --> 00:10:29.270
+And then I want to take
+the output of group by and
+
+183
+00:10:29.270 --> 00:10:31.050
+then run it through summarize.
+
+184
+00:10:31.050 --> 00:10:33.290
+And so notice that when I call mutate,
+group by and
+
+185
+00:10:33.290 --> 00:10:36.240
+summarize, you,
+when I use the pipeline operator.
+
+186
+00:10:36.240 --> 00:10:39.670
+I don't have the specify the data
+frame as the first argument.
+
+187
+00:10:39.670 --> 00:10:43.110
+Because that's kind of implied by
+the use of the pipeline operator.
+
+188
+00:10:43.110 --> 00:10:45.500
+So you can skip that argument and
+go directly to.
+
+189
+00:10:45.500 --> 00:10:49.060
+The operation that you are trying to
+do with either the mutate, group by or
+
+190
+00:10:49.060 --> 00:10:50.200
+summarize functions.
+
+191
+00:10:50.200 --> 00:10:56.060
+So you can see that the output of this
+long pipeline of, of operations is a,
+
+192
+00:10:56.060 --> 00:11:00.780
+is a data frame that shows you
+the summary statistics of each of
+
+193
+00:11:00.780 --> 00:11:03.830
+the three pollutant variables by
+each of the 12 months of the year.
+
+194
+00:11:03.830 --> 00:11:07.653
+So the pipeline operator is
+a really handy tool because it
+
+195
+00:11:07.653 --> 00:11:12.054
+prevents you from having to kind of assign
+a number of temporary variables that you
+
+196
+00:11:12.054 --> 00:11:16.199
+subsequently feed into another function,
+and it allows you to kind of change
+
+197
+00:11:16.199 --> 00:11:21.209
+a bunch of operations in one sequence
+that's both readable and and powerful.
+
+198
+00:11:26.258 --> 00:11:29.433
+So a couple other benefits just to,
+to do dplyr,
+
+199
+00:11:29.433 --> 00:11:34.090
+use dplyr, is that that you can work
+with other data frame backends so
+
+200
+00:11:34.090 --> 00:11:37.490
+this is just using
+the default R implementation.
+
+201
+00:11:37.490 --> 00:11:40.060
+But for example, you can use
+the data.table package which is for
+
+202
+00:11:40.060 --> 00:11:42.790
+designed for very large and fast tables.
+
+203
+00:11:42.790 --> 00:11:48.780
+Similarly the SQL interface or relational
+databases via the DBI package can be used.
+
+204
+00:11:48.780 --> 00:11:51.930
+So if you had data stored in
+a relational database you can
+
+205
+00:11:51.930 --> 00:11:55.570
+use all the same functions
+in the dplyr package and
+
+206
+00:11:55.570 --> 00:12:00.920
+manipulate the data in either the
+data.table object or a an SQL database.
+
+207
+00:12:00.920 --> 00:12:03.000
+And without having to relearn
+a whole new set of tools.
+
+208
+00:12:03.000 --> 00:12:05.190
+So that's really handy
+once you figured out,
+
+209
+00:12:05.190 --> 00:12:08.000
+once you've kind of gotten
+fluent in dplyr package you can
+
+210
+00:12:08.000 --> 00:12:11.390
+translate those skills to other
+database backends almost immediately.

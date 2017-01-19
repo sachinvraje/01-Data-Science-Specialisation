@@ -1,0 +1,37 @@
+This is the first in a series of overview
+lectures that tell'll you about the other courses in the
+Data Science course track. I'm going to start off with R programming,
+which is another one of the most fundamental classes in our
+Data Science track. R is the language that we're going to be
+using for most of the data analysis and data science that we're going
+to be doing on the computer science end. And so R will tell you, the R programming
+class will tell you a little bit about data types, about
+sub-setting data, reading and writing it from files. How to write functions, to do things to
+that data, how to debug them and then a little bit about
+simulation and optimization. So now I'm just going to show you a couple
+of examples of the sorts of things that you'll learn
+in that class. So for example you'll learn about the readLines function for reading text from a
+file. So in this case what we're going to be
+doing is we're going to be reading lines actually from the website of the Johns Hopkins Bloomberg School of
+Public Health. So this is the website right there. And so what we do is we go to that website
+and then we use the readLine func, readLines
+function to read the text from that site. And then we look at that text and you can
+actually see the HTML code, and it's actually been sucked into R that
+you can then use to analyze the website. Another thing that you'll be learning
+about is how to figure out when there's something wrong
+with your function. So, you'll be writing lots of functions in
+this class. And so, one thing that you want to know is when they aren't working, why aren't
+they working? And so this is a slide that comes from one
+of those about how do you figure out, what were you
+expecting, and what did you get? And how do you reproduce the problems so that you can figure out how that function
+works? Well you'll be leaning things like more
+detailed functions. So, for example, this is the lapply
+function. And so the lapply function takes a
+particular kind of argument. And a list in this case, and applies a
+function to all the elements of that list and returns
+something back to you. And so, this is interesting because it's
+one of the many examples where the actual, sort of, analysis is actually
+being done internally in C code. But you don't actually have to access to
+that. You can actually just use the R function. So this will cover everything from sort of the basics, to more complicated functions
+like lapply. And set you up very nicely for the rest of
+the course sequence.

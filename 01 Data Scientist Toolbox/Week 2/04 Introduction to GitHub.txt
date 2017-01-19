@@ -1,0 +1,66 @@
+This is a really brief introduction to
+GitHub. Git is a version control software that
+allows you to control and manage the revisions of projects that you're working on locally on your
+computer. And as such, it's a very useful piece of
+software on its own. But GitHub is a more recent website that's
+been developed. It allows for you to collaborate on
+projects together at a bigger scale. And it's really where the power of Git
+comes into play. So GitHub is a web -based hosting service
+for software development that uses Git revis, revision control as
+sort of a driving force. And so what it allows you to do is
+contribute to projects online And to have your projects posted online so that other
+people can see them and contribute to them as
+well. [SOUND] So, basically what it does is it
+allows users to push and pull their local repository, so things
+that you got under bit, or bit, version control in Git on your local
+computer, it allows you to put Push them and pull them to remote
+repositories that are on the web. It also provides users with a home page
+that displays all of their repositories. And the repositories that you have on
+GitHub are backed up on the server in case something happens to
+your local ca, copies. But the real key aspect of GitHub is the
+social aspect and so the social aspect allows users to follow one another and to
+share projects and to contribute to each other's projects
+and so that's really the power of GitHub. One of the things that we noticed bout
+GitHub is that often when you see somebody else's work You can
+sort of learn what they're working on, how their code works,
+and it's a great way to sort of identify people who would be
+good to work with. And we've also found that when we put projects on the web, other people will
+often contribute, you know, for free, just
+because they're interested in how they can make the
+software better. So the first thing that you need to do is
+go set up a GitHub account now that you have
+Git installed. And so, you'll need to enter a username, email, a password, and click sign up for
+GitHub. [SOUND] An important note here is that you
+should use the same email address that you used when
+you signed up for Git in the previous lecture so that
+it, you'll be able to have the two pieces of software
+work together. On the next screen you're going to click
+the free plan and then click finish sign up. And then you'll be signed up for a GitHub
+account. [SOUND] This is a required component of
+the class is having a GitHub account. It's free, so it's not, it shouldn't be a
+problem. After signing up, you will find yourself
+on this page, which has several helpful resources for
+learning about Git and GitHub. I suggest that you read those tutorials,
+as they're more in depth than what we'll be able to cover in this class,
+and they're incredibly useful. If you click up here on your username in
+the upper right hand corner up there, you can see
+your GitHub profile. So, see all the projects that you
+currently have, which when you start your account, wont be
+many. Your profile will show all of your
+activity from GitHub. It'll also show other people who you are
+and what you're working on. So, you can fill out information about what kind of projects you're
+interested in. [INAUDIBLE] our plan is for this course is
+to use this GitHub Profile as the place that you can sort of
+build a profile. Which is a portfolio of the work that
+you've developed that shows off your skills as a
+data scientist. [SOUND] If you click edit your profile,
+the right hand portion of the screen you can add basic
+information about yourself. It's totally optional, so you don't have
+to do that at all. But if you're doing good work, so for example, if in the course of this class
+you create interesting data science products
+and ideas, you want to be able to take credit for that. In the next lecture, we'll talk you
+through how you actually create a repository, a repo, and put it up
+on GitHub. In the meantime, definitely explore the
+documentation on the GitHub site because it gives you lots of
+different information. That will help you when you're doing virtual control ad when you're working
+with GitHub.

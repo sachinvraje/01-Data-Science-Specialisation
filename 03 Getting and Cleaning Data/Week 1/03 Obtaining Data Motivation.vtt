@@ -1,0 +1,494 @@
+WEBVTT
+
+1
+00:00:00.074 --> 00:00:01.235
+Welcome to Getting Data.
+
+2
+00:00:01.235 --> 00:00:04.048
+This is one of the more unique courses
+in our to Data Science track and so
+
+3
+00:00:04.048 --> 00:00:06.766
+I wanted to give you a little bit
+of motivation and prerequisites for
+
+4
+00:00:06.766 --> 00:00:09.696
+the course, so you get an idea about
+what we're gonna be talking about.
+
+5
+00:00:09.696 --> 00:00:13.150
+This course covers the basic
+ideas behind getting your data
+
+6
+00:00:13.150 --> 00:00:15.992
+ready to actually perform
+a data analysis on it.
+
+7
+00:00:15.992 --> 00:00:19.900
+So this is a step that's often skipped
+when you're taking a class in machine
+
+8
+00:00:19.900 --> 00:00:21.251
+learning or statistics.
+
+9
+00:00:21.251 --> 00:00:23.654
+They sort of assume that the data
+are already ready to use.
+
+10
+00:00:23.654 --> 00:00:24.815
+They're in a nice, neat format.
+
+11
+00:00:24.815 --> 00:00:28.187
+So this class deals with the nitty-gritty
+of finding the raw data in
+
+12
+00:00:28.187 --> 00:00:31.087
+whatever form they are,
+whether they're in a database or
+
+13
+00:00:31.087 --> 00:00:33.927
+whether they're in a row image file or
+something else and
+
+14
+00:00:33.927 --> 00:00:38.091
+extracting that data out and then it's
+also concerned with tidy data principles.
+
+15
+00:00:38.091 --> 00:00:41.758
+Taking those raw data that are really
+complicated and may be formatted not so
+
+16
+00:00:41.758 --> 00:00:45.594
+nicely and putting them into a nice tidy
+format that makes it easy to use them when
+
+17
+00:00:45.594 --> 00:00:47.560
+you're actually doing data analysis.
+
+18
+00:00:48.610 --> 00:00:52.123
+It also covers practical implementation
+through a range of R packages and
+
+19
+00:00:52.123 --> 00:00:55.138
+we'll be talking about a big range
+of R packages in this class.
+
+20
+00:00:55.138 --> 00:00:59.332
+This course assumes that you've taken
+the Data Scientist's Toolbox and
+
+21
+00:00:59.332 --> 00:01:01.370
+installed all the relevant tools.
+
+22
+00:01:01.370 --> 00:01:05.007
+And also that you've taken the R
+Programming class or some similar class so
+
+23
+00:01:05.007 --> 00:01:08.427
+that you have enough R Programming
+background not to be intimidated.
+
+24
+00:01:08.427 --> 00:01:13.501
+It would also be useful if you've taken
+some exploratory data analysis and
+
+25
+00:01:13.501 --> 00:01:18.183
+also maybe the Reporting and Data and
+Reproducible Research class.
+
+26
+00:01:18.183 --> 00:01:19.394
+Exploratory data analysis is relevant,
+
+27
+00:01:19.394 --> 00:01:22.400
+because you might want to plot some of
+the data while you're doing data cleaning.
+
+28
+00:01:22.400 --> 00:01:26.455
+And Reporting Data and Reproducible
+Research cover creating scripts that will
+
+29
+00:01:26.455 --> 00:01:30.510
+reproduce your analysis, which is
+an important component cleaning data, but
+
+30
+00:01:30.510 --> 00:01:33.734
+these aren't required for
+you to be able to follow the course.
+
+31
+00:01:33.734 --> 00:01:36.082
+So what you wish data would look
+like is something like this.
+
+32
+00:01:36.082 --> 00:01:40.839
+So you can see here, this is an Excel file
+where you actually have in every single
+
+33
+00:01:40.839 --> 00:01:43.150
+raw you have one observation.
+
+34
+00:01:43.150 --> 00:01:46.140
+And in every single column,
+you have exactly one variable.
+
+35
+00:01:46.140 --> 00:01:49.539
+And so it's neatly organized into
+something that looks like a matrix,
+
+36
+00:01:49.539 --> 00:01:53.393
+which makes it very easy to import this
+into R or another programming language and
+
+37
+00:01:53.393 --> 00:01:56.242
+start to perform more complicated
+statistical analysis.
+
+38
+00:01:56.242 --> 00:01:59.122
+But as we saw in
+the Data Scientist's Toolbox,
+
+39
+00:01:59.122 --> 00:02:01.717
+real data looks much different than that.
+
+40
+00:02:01.717 --> 00:02:04.259
+For example, this is a fast cue file.
+
+41
+00:02:04.259 --> 00:02:05.323
+And in the fast cue file,
+
+42
+00:02:05.323 --> 00:02:08.217
+you might be interested in actually
+extracting sort of the sequence
+
+43
+00:02:08.217 --> 00:02:11.537
+information from one line of this file or
+from each separate line of the file.
+
+44
+00:02:11.537 --> 00:02:15.235
+And so to get at that sequence
+information, you actually have to parse
+
+45
+00:02:15.235 --> 00:02:19.067
+this raw text file and extract out
+the bits that you actually care about.
+
+46
+00:02:19.067 --> 00:02:22.944
+And so one of the steps in sort of getting
+data is actually getting into these raw
+
+47
+00:02:22.944 --> 00:02:27.074
+files, figuring out their structure and
+being able to extract the relevant bits.
+
+48
+00:02:27.074 --> 00:02:31.154
+Another thing that might happen is that
+you might get data that's actually quite
+
+49
+00:02:31.154 --> 00:02:32.244
+neatly structured.
+
+50
+00:02:32.244 --> 00:02:35.735
+So for example,
+this is the data from the API of Twitter.
+
+51
+00:02:35.735 --> 00:02:40.267
+And so what it is, it's actually data
+that's formatted in JSON format.
+
+52
+00:02:40.267 --> 00:02:43.661
+And so JSON formatted data is
+actually quite neat and organized and
+
+53
+00:02:43.661 --> 00:02:47.600
+very easy to distribute, but it's very
+hard to actually use to do downstream
+
+54
+00:02:47.600 --> 00:02:49.800
+analyses in many programming languages.
+
+55
+00:02:49.800 --> 00:02:53.750
+So you might wanna reorganize that data in
+such a way that it's easy to analyze and
+
+56
+00:02:53.750 --> 00:02:54.575
+do things with.
+
+57
+00:02:54.575 --> 00:02:57.512
+And so that's another component
+of getting and cleaning data.
+
+58
+00:02:57.512 --> 00:03:02.491
+Finally, you might have situations like
+this where you have instructions like
+
+59
+00:03:02.491 --> 00:03:07.184
+take one tablet by mouth and take
+one-half tablet with grapefruit juice.
+
+60
+00:03:07.184 --> 00:03:11.263
+These are actually free-text instructions
+that you might wanna be able to get into
+
+61
+00:03:11.263 --> 00:03:12.965
+that free-text and extract out.
+
+62
+00:03:12.965 --> 00:03:17.360
+A little piece of that information say,
+how many tablets have they been
+
+63
+00:03:17.360 --> 00:03:21.985
+instructed to take and categorize that
+by each record that you collected?
+
+64
+00:03:21.985 --> 00:03:26.838
+So the data might also be somewhere
+that you have to extract it out.
+
+65
+00:03:26.838 --> 00:03:28.918
+So even if the data is in
+a structure environment or
+
+66
+00:03:28.918 --> 00:03:30.960
+environment where you
+might want to analyze it.
+
+67
+00:03:30.960 --> 00:03:33.723
+So here are a couple of examples,
+these are both databases.
+
+68
+00:03:33.723 --> 00:03:38.469
+So MySQL and MongoDB are two very popular
+free databases where data might be stored
+
+69
+00:03:38.469 --> 00:03:41.582
+say, for example,
+if you're working at a company.
+
+70
+00:03:41.582 --> 00:03:45.918
+And you might wanna be able to go into
+that database, collect some of that data
+
+71
+00:03:45.918 --> 00:03:50.119
+in its raw form and then process it in
+such a way that you can do analysis maybe
+
+72
+00:03:50.119 --> 00:03:54.321
+on some subset of the data or create
+an algorithm that will allow you to apply
+
+73
+00:03:54.321 --> 00:03:58.289
+predictive analytics to data that
+you collect from these databases.
+
+74
+00:03:58.289 --> 00:04:00.935
+So again,
+the data may be in all sorts of places.
+
+75
+00:04:00.935 --> 00:04:04.868
+It doesn't necessarily have to be data
+that's sitting on a file in your computer.
+
+76
+00:04:04.868 --> 00:04:09.532
+For example, this is a get request,
+we'll talk about it in this class.
+
+77
+00:04:09.532 --> 00:04:12.234
+It's a request to try and
+get some information off of a website.
+
+78
+00:04:12.234 --> 00:04:13.520
+And so in this case,
+
+79
+00:04:13.520 --> 00:04:19.060
+it's getting information from Twitter API
+about specific tweets or specific users.
+
+80
+00:04:19.060 --> 00:04:21.870
+Data might also be available
+from other websites.
+
+81
+00:04:21.870 --> 00:04:26.167
+So this is a website that we'll see
+relatively frequently in this class,
+
+82
+00:04:26.167 --> 00:04:28.954
+which is the Open Data
+website from Baltimore.
+
+83
+00:04:28.954 --> 00:04:32.774
+And so this contains a bunch of datasets
+that are very interesting and useful for
+
+84
+00:04:32.774 --> 00:04:36.023
+you to be able to analyze and
+they're all free, which is great, but
+
+85
+00:04:36.023 --> 00:04:38.034
+you have to be able to
+get them off the web.
+
+86
+00:04:38.034 --> 00:04:42.026
+Get them from the API or
+from one of the downloadable files and
+
+87
+00:04:42.026 --> 00:04:46.184
+clean them up, so that you can
+do downstream analysis on them.
+
+88
+00:04:46.184 --> 00:04:50.301
+So if you think about the whole
+pipeline of going from a raw dataset,
+
+89
+00:04:50.301 --> 00:04:54.998
+you might have a database all the way to
+the end to sort of the data that you might
+
+90
+00:04:54.998 --> 00:04:59.213
+communicate to a colleague or
+a collaborator or a business partner.
+
+91
+00:04:59.213 --> 00:05:00.908
+There's actually a large number of steps.
+
+92
+00:05:00.908 --> 00:05:03.672
+And so what ends up happening
+in most statistics and
+
+93
+00:05:03.672 --> 00:05:07.338
+machine learning classes,
+they focus on this data analysis step,
+
+94
+00:05:07.338 --> 00:05:11.646
+which is an important component of the
+data processing pipeline, but they tend
+
+95
+00:05:11.646 --> 00:05:15.856
+to skip over this early stage where you
+actually go from raw data to tidy data.
+
+96
+00:05:15.856 --> 00:05:19.394
+And that turns out to be one of the more
+important components in any kind of
+
+97
+00:05:19.394 --> 00:05:23.172
+environment where the data aren't
+necessarily already pre-tidy for you.
+
+98
+00:05:23.172 --> 00:05:27.021
+So, any kind of start up company or
+most large corporations or
+
+99
+00:05:27.021 --> 00:05:29.395
+almost every academic environment.
+
+100
+00:05:29.395 --> 00:05:32.259
+You'll wanna know how to actually
+get at the raw data itself, so
+
+101
+00:05:32.259 --> 00:05:35.974
+that you can do the cleaning yourself, so
+you understand the principles of what's
+
+102
+00:05:35.974 --> 00:05:38.220
+going on and
+that's what this class is all about.

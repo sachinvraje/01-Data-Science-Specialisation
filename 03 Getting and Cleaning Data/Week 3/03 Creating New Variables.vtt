@@ -1,0 +1,832 @@
+WEBVTT
+
+1
+00:00:00.280 --> 00:00:02.165
+This lecture is about
+creating new variables.
+
+2
+00:00:02.165 --> 00:00:03.729
+Once you loaded the data set into R,
+
+3
+00:00:03.729 --> 00:00:07.019
+sometimes you'll find that some of
+the variables that you're looking for
+
+4
+00:00:07.019 --> 00:00:09.281
+are not actually in the raw
+data that you loaded in.
+
+5
+00:00:09.281 --> 00:00:12.780
+So, you may need to transform the data
+a little bit to get the value you'd like.
+
+6
+00:00:13.790 --> 00:00:15.888
+Usually, you'll add those values
+back into the data frame.
+
+7
+00:00:15.888 --> 00:00:19.245
+This is particularly important when
+you're doing something like prediction,
+
+8
+00:00:19.245 --> 00:00:23.060
+where you wanna create new variables but
+you might use as predictors.
+
+9
+00:00:23.060 --> 00:00:25.668
+Common variables that people
+create are missingness indicators.
+
+10
+00:00:25.668 --> 00:00:28.368
+So, pointing out where you
+might have missing data,
+
+11
+00:00:28.368 --> 00:00:31.230
+that's one really common
+variable to create.
+
+12
+00:00:31.230 --> 00:00:33.450
+Also cutting up quantitative variables,
+
+13
+00:00:33.450 --> 00:00:38.180
+creating variables that are factor
+versions of a quantitative variable
+
+14
+00:00:38.180 --> 00:00:41.050
+corresponding to particular
+values that may be of interest.
+
+15
+00:00:41.050 --> 00:00:44.926
+Or applying transformations to deal with
+data that have a strange distributions.
+
+16
+00:00:44.926 --> 00:00:49.848
+So, we're gonna be using this Baltimore
+restaurant data set as an example.
+
+17
+00:00:49.848 --> 00:00:54.166
+So again, you could go to their URL and
+then click over here on this export button
+
+18
+00:00:54.166 --> 00:00:57.139
+to get the URL for
+a particular version of the data set.
+
+19
+00:00:57.139 --> 00:00:59.738
+In this case, I'm using the CSV version.
+
+20
+00:00:59.738 --> 00:01:02.466
+Again, I see if the data directory exists.
+
+21
+00:01:02.466 --> 00:01:06.020
+Then I download the file
+from the internet,
+
+22
+00:01:06.020 --> 00:01:09.003
+and I load it into R using read.csv.
+
+23
+00:01:09.003 --> 00:01:13.789
+Now, I've got a data set rest data which
+is the restaurant data that was created
+
+24
+00:01:13.789 --> 00:01:15.025
+from this data set.
+
+25
+00:01:15.025 --> 00:01:18.015
+And so, one thing that I'm gonna
+talk about first before I get into
+
+26
+00:01:18.015 --> 00:01:20.825
+analyzing a data set
+is creating sequences.
+
+27
+00:01:20.825 --> 00:01:24.504
+Sequences are often used to index
+different operations that you're going to
+
+28
+00:01:24.504 --> 00:01:27.909
+be doing on data, and so it's good to
+be able to know how to create them.
+
+29
+00:01:27.909 --> 00:01:30.186
+The command that you use in R is seq.
+
+30
+00:01:30.186 --> 00:01:34.249
+And so, usually what you do is you
+tell seq the minimum value and
+
+31
+00:01:34.249 --> 00:01:35.560
+the maximum value.
+
+32
+00:01:35.560 --> 00:01:39.484
+And then there's two ways in which you
+usually specify how many values to
+
+33
+00:01:39.484 --> 00:01:40.135
+generate.
+
+34
+00:01:40.135 --> 00:01:45.444
+One is to use the by command, so
+by=2 means it starts at 1 and
+
+35
+00:01:45.444 --> 00:01:50.571
+then creates new values,
+increasing each new value by 2.
+
+36
+00:01:50.571 --> 00:01:54.216
+Another way to do it is to
+specify the length of the vector.
+
+37
+00:01:54.216 --> 00:01:57.417
+And so what that means is,
+it'll start at 1 and
+
+38
+00:01:57.417 --> 00:02:01.113
+end at 10, and
+it will create exactly three values.
+
+39
+00:02:01.113 --> 00:02:06.720
+A third way is to say, suppose you have
+a vector x and it has five values in it.
+
+40
+00:02:06.720 --> 00:02:10.543
+And suppose you wanna create an index, so
+that you can loop over those five values.
+
+41
+00:02:10.543 --> 00:02:15.945
+You might use this seq(along = x),
+which will basically create a vector
+
+42
+00:02:15.945 --> 00:02:21.174
+of the same length as x, but with
+consecutive indices that you can use for
+
+43
+00:02:21.174 --> 00:02:24.370
+looping or accessing subsets of data sets.
+
+44
+00:02:24.370 --> 00:02:28.159
+So, one kind of variable that you might
+wanna create is a variable that indicates
+
+45
+00:02:28.159 --> 00:02:30.233
+which subset another variable comes from.
+
+46
+00:02:30.233 --> 00:02:33.706
+So for example,
+here we have these restaurant data.
+
+47
+00:02:33.706 --> 00:02:37.328
+We actually have the neighborhoods
+that the restaurants are in.
+
+48
+00:02:37.328 --> 00:02:40.759
+And so, I might wanna find all the
+restaurants that are in two neighborhoods
+
+49
+00:02:40.759 --> 00:02:43.050
+near me, Roland Park and Homeland.
+
+50
+00:02:43.050 --> 00:02:47.937
+And so, if I use this percent in percent
+command, it will allow me to find
+
+51
+00:02:47.937 --> 00:02:51.958
+only the restaurants that
+are in those two neighborhoods.
+
+52
+00:02:51.958 --> 00:02:55.530
+It will return true if you're in that
+neighborhood and false if you're not.
+
+53
+00:02:55.530 --> 00:02:56.782
+And then what I'm doing is,
+
+54
+00:02:56.782 --> 00:02:59.815
+I'm appending these nearMe variable
+onto the restaurant data set.
+
+55
+00:02:59.815 --> 00:03:03.868
+So, this allows me to now subset that data
+set only by the restaurants that are near
+
+56
+00:03:03.868 --> 00:03:07.155
+me, which is kind of a nice,
+clean way of subsetting the data set,
+
+57
+00:03:07.155 --> 00:03:11.010
+as opposed to always having to use this
+longer percent, ampersand command.
+
+58
+00:03:12.550 --> 00:03:14.908
+Another thing you might wanna
+do is create binary variables.
+
+59
+00:03:14.908 --> 00:03:19.420
+So for example, we might wanna find the
+cases where we know the zip code is wrong.
+
+60
+00:03:19.420 --> 00:03:23.250
+So again, I'm assigning to the data
+frame the variable zipWrong.
+
+61
+00:03:23.250 --> 00:03:25.908
+And here I'm using the ifelse command.
+
+62
+00:03:25.908 --> 00:03:28.609
+So for the ifelse command,
+I first send it a condition.
+
+63
+00:03:28.609 --> 00:03:32.917
+In this case, I'm gonna send it the
+condition is the zip code less than zero?
+
+64
+00:03:32.917 --> 00:03:38.095
+So if the zip code is less than zero, we
+think that that is zip code must be wrong.
+
+65
+00:03:38.095 --> 00:03:44.269
+And so, the first thing that I return
+is true if the condition holds true.
+
+66
+00:03:44.269 --> 00:03:47.616
+So in other words, all the cases
+where the zip code is less than zero,
+
+67
+00:03:47.616 --> 00:03:49.070
+I'll get a true.
+
+68
+00:03:49.070 --> 00:03:53.609
+And then, this is what the function
+returns if the condition is false.
+
+69
+00:03:53.609 --> 00:03:57.793
+So if the condition is false, in other
+words if the zip code is positive,
+
+70
+00:03:57.793 --> 00:03:58.899
+then I get a false.
+
+71
+00:03:58.899 --> 00:04:03.816
+So at the end of the day, what I can do is
+then make a table of whether the zip code
+
+72
+00:04:03.816 --> 00:04:07.011
+is wrong and
+what if the zip code is less than zero.
+
+73
+00:04:07.011 --> 00:04:11.876
+And you can see that in all the cases
+where the zip code are greater than zero,
+
+74
+00:04:11.876 --> 00:04:12.724
+I get false.
+
+75
+00:04:12.724 --> 00:04:18.041
+And in the one case where the zip
+code is less than zero, I get true.
+
+76
+00:04:18.041 --> 00:04:21.639
+And so that might be a value that
+I wanna filter out of my data set.
+
+77
+00:04:21.639 --> 00:04:23.844
+This makes an easy way to
+filter those values out.
+
+78
+00:04:23.844 --> 00:04:28.829
+You also might wanna make categorical
+variables out of quantitative variables.
+
+79
+00:04:28.829 --> 00:04:33.112
+So for example, we might wanna break
+the zip codes up into consecutive numbers.
+
+80
+00:04:33.112 --> 00:04:37.036
+So here, I'm gonna create a variable
+that I'm calling zipGroups.
+
+81
+00:04:37.036 --> 00:04:39.823
+And so,
+what I'm gonna use is this cut command.
+
+82
+00:04:39.823 --> 00:04:43.304
+Gonna apply it to quantitative
+variable to zipCode.
+
+83
+00:04:43.304 --> 00:04:47.462
+And I'm gonna tell the cut command that I
+want to break that up according to some
+
+84
+00:04:47.462 --> 00:04:49.630
+values, a list of value that I give it.
+
+85
+00:04:49.630 --> 00:04:50.344
+In this case,
+
+86
+00:04:50.344 --> 00:04:53.685
+I'm gonna break it up according to
+the quintiles to that zip code.
+
+87
+00:04:53.685 --> 00:04:56.320
+So, what that will then
+return as a factor variables.
+
+88
+00:04:56.320 --> 00:05:01.423
+So zip groups, is a factor variable
+where we'll break the variable
+
+89
+00:05:01.423 --> 00:05:05.988
+zip code up into the zero
+quantums of the 25th percentile,
+
+90
+00:05:05.988 --> 00:05:09.231
+the 25th, so the fiftieth percentile.
+
+91
+00:05:09.231 --> 00:05:12.992
+The 50th, the 75th, and
+the 75th to the 100th percentile.
+
+92
+00:05:12.992 --> 00:05:17.689
+And so for example,
+there are about 375 of the values that
+
+93
+00:05:17.689 --> 00:05:22.674
+land between the 25th percentile and
+the 50th percentile.
+
+94
+00:05:22.674 --> 00:05:26.811
+So, then what i can do is i can make
+a table that shows you which of the zip
+
+95
+00:05:26.811 --> 00:05:29.918
+codes fall into which of
+these different clusters.
+
+96
+00:05:29.918 --> 00:05:33.704
+And so you can say, the low values
+fall into the first cluster and
+
+97
+00:05:33.704 --> 00:05:37.580
+then the medium values fall into
+the next cluster, and so forth.
+
+98
+00:05:37.580 --> 00:05:40.971
+So, what this does is it breaks the
+quantity of variable up into a categorical
+
+99
+00:05:40.971 --> 00:05:41.500
+variable.
+
+100
+00:05:42.910 --> 00:05:46.020
+An easier way to that,
+I had to specify all the breaks
+
+101
+00:05:46.020 --> 00:05:49.370
+with the quantile function in
+the previous version of cut.
+
+102
+00:05:49.370 --> 00:05:54.210
+If you go into the Hmisc package and
+you use the cut2 function, you can
+
+103
+00:05:54.210 --> 00:05:58.960
+actually specify I want to break the zip
+code up into four different groups and
+
+104
+00:05:58.960 --> 00:06:01.800
+I want to break them up
+according to the quantiles.
+
+105
+00:06:01.800 --> 00:06:05.426
+And so when I do that, it will actually
+find out the quantiles for me and
+
+106
+00:06:05.426 --> 00:06:09.484
+break it up into four groups according to
+the quantiles, which is kind of a nice
+
+107
+00:06:09.484 --> 00:06:12.826
+way to do it if you don't wanna
+have to set the breaks in advance.
+
+108
+00:06:12.826 --> 00:06:16.541
+So, the cut2 function
+in the Hmisc package.
+
+109
+00:06:16.541 --> 00:06:20.756
+Another thing you might wanna do is you
+might wanna create factor variables.
+
+110
+00:06:20.756 --> 00:06:24.172
+So for example, the zip code
+variable is an Attinger variable
+
+111
+00:06:24.172 --> 00:06:28.570
+when you load it into r, but you might
+wanna turn it into a factor variable.
+
+112
+00:06:28.570 --> 00:06:31.230
+In other words, it's not clear
+
+113
+00:06:31.230 --> 00:06:36.090
+that incrementing the zip code by one
+changes quantitatively, the variable.
+
+114
+00:06:36.090 --> 00:06:38.365
+So, you might wanna turn that
+into a factor variable and
+
+115
+00:06:38.365 --> 00:06:40.940
+the way you do that is
+with the factor command.
+
+116
+00:06:40.940 --> 00:06:44.810
+So, it takes an input of
+this integer variable, and
+
+117
+00:06:44.810 --> 00:06:48.260
+it turns it into a factor
+variable which I'm calling ZCF.
+
+118
+00:06:48.260 --> 00:06:51.769
+So, if I look at the first ten values
+of ZCF, it shows me these values and
+
+119
+00:06:51.769 --> 00:06:53.597
+they look just like they did before.
+
+120
+00:06:53.597 --> 00:06:56.768
+They look like the values that are the but
+
+121
+00:06:56.768 --> 00:07:00.623
+then it tells me how many different
+zip code levels there are.
+
+122
+00:07:00.623 --> 00:07:03.249
+There are 32 different zip code levels,
+and
+
+123
+00:07:03.249 --> 00:07:06.694
+if I look at a class of this
+variable it's a factor variable.
+
+124
+00:07:06.694 --> 00:07:11.070
+So, a couple of other things that you
+might wanna know about factor variables.
+
+125
+00:07:11.070 --> 00:07:15.635
+So here, what I'm gonna do is I'm going
+to create just a dummy vector, so
+
+126
+00:07:15.635 --> 00:07:19.450
+that we can see some other
+properties of factor Variables.
+
+127
+00:07:19.450 --> 00:07:23.960
+I'm gonna create a vector of yeses and
+nos, and so I'm gonna do that randomly.
+
+128
+00:07:23.960 --> 00:07:27.470
+I'm gonna generate a size
+ten vector of yeses and nos.
+
+129
+00:07:29.030 --> 00:07:31.980
+And I'm gonna turn that
+into a factor variable.
+
+130
+00:07:31.980 --> 00:07:37.780
+And I'm gonna, by default, what it's gonna
+do is it's gonna treat the lowest value
+
+131
+00:07:37.780 --> 00:07:40.980
+alphabetically as the first value,
+the factor variable.
+
+132
+00:07:40.980 --> 00:07:44.731
+But supposed I wanna treat the second,
+the yes values as the lowest value.
+
+133
+00:07:44.731 --> 00:07:49.747
+Then I can tell it to take the levels and
+create them in this order.
+
+134
+00:07:49.747 --> 00:07:54.951
+And so for example, what I can do
+is I can re-level that variable and
+
+135
+00:07:54.951 --> 00:07:58.802
+make the reference plus be
+equal to the yes value.
+
+136
+00:07:58.802 --> 00:08:03.457
+Another thing that you can do is
+you can use the as.numeric command
+
+137
+00:08:03.457 --> 00:08:07.963
+to to change that factor variable
+back into a numeric variable.
+
+138
+00:08:07.963 --> 00:08:13.440
+If you wanna use it in certain kinds of
+models, this can be a useful thing to do.
+
+139
+00:08:13.440 --> 00:08:17.684
+And one thing that it'll do is, it'll
+start with sort of the lowest value and
+
+140
+00:08:17.684 --> 00:08:21.751
+call that one and then the next lowest
+value and call that two and so forth.
+
+141
+00:08:25.095 --> 00:08:27.359
+So, cutting produces factor variables.
+
+142
+00:08:27.359 --> 00:08:31.207
+We saw before that I wanted to
+create this zipGroups variable,
+
+143
+00:08:31.207 --> 00:08:35.717
+where I cut the zipCodes up into four
+separate groups by their quantiles.
+
+144
+00:08:35.717 --> 00:08:39.803
+And so, if you make a table of them,
+you'll get to see this table and
+
+145
+00:08:39.803 --> 00:08:43.485
+the class of this object zip
+groups is now a factor variable.
+
+146
+00:08:43.485 --> 00:08:47.152
+You can actually use the mutate
+function to create a new
+
+147
+00:08:47.152 --> 00:08:51.471
+version of the variable and
+simultaneously added to a data set.
+
+148
+00:08:51.471 --> 00:08:53.490
+This is part of the flyer package.
+
+149
+00:08:53.490 --> 00:08:57.680
+So, what I'm gonna do here is I'm
+gonna create a new data frame.
+
+150
+00:08:57.680 --> 00:09:03.201
+This new data frame is, I'm gonna apply
+the mutate function to the old data frame.
+
+151
+00:09:03.201 --> 00:09:08.105
+And I'm going to add a new variable
+zipGroups, which is equal to a function of
+
+152
+00:09:08.105 --> 00:09:11.815
+one of the variables in
+the original rest data data frame.
+
+153
+00:09:11.815 --> 00:09:16.422
+And so, what happens now is
+the new data frame will be
+
+154
+00:09:16.422 --> 00:09:21.578
+the old data frame rest data
+with the new variables added.
+
+155
+00:09:21.578 --> 00:09:24.102
+So now,
+I can make a table of the zipGroups and
+
+156
+00:09:24.102 --> 00:09:27.370
+I can see that it appears in
+this new data frame rest suite.
+
+157
+00:09:29.140 --> 00:09:33.462
+Another thing that you're probably gonna
+do with quantitive data is explore to
+
+158
+00:09:33.462 --> 00:09:36.697
+analysis, maybe apply some
+different transformations.
+
+159
+00:09:36.697 --> 00:09:40.672
+So, here is the list of the most common
+transformations taking absolute values at
+
+160
+00:09:40.672 --> 00:09:41.980
+square roots.
+
+161
+00:09:41.980 --> 00:09:45.539
+You might take the ceiling on the floor,
+if you wanna run values up or
+
+162
+00:09:45.539 --> 00:09:47.113
+down to the nearest integer.
+
+163
+00:09:47.113 --> 00:09:51.733
+You can also use the round function to
+round to as many digits as you'd like, or
+
+164
+00:09:51.733 --> 00:09:56.920
+the signif function, to round to as
+many significant digits as you'd like.
+
+165
+00:09:56.920 --> 00:10:01.130
+All the standards for calculator
+functions, like cosine and sine, and in r.
+
+166
+00:10:01.130 --> 00:10:05.037
+As well as logs, which are commonly
+used when you have skewed data, or
+
+167
+00:10:05.037 --> 00:10:06.638
+data with a lot of outliers.
+
+168
+00:10:06.638 --> 00:10:09.670
+And then you can also exponentiate data,
+as well.
+
+169
+00:10:09.670 --> 00:10:12.960
+There's a lot more about this, at these
+two links that I'd provided you here at
+
+170
+00:10:12.960 --> 00:10:17.400
+the bottom, and you can have these lecture
+notes, as well as this stat methods page.
+
+171
+00:10:19.250 --> 00:10:24.115
+Even more further notes are available
+from the plyr tutorial,
+
+172
+00:10:24.115 --> 00:10:30.471
+as well as the lecture notes that focus on
+transformation from Andy Jaffe as well.

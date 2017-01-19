@@ -1,0 +1,687 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:03.600
+This cover, lecture covers getting data
+from the APIs.
+
+2
+00:00:03.600 --> 00:00:06.450
+APIs are application programming
+interfaces.
+
+3
+00:00:06.450 --> 00:00:10.370
+So for example, most internet companies
+like Twitter or Facebook will have
+
+4
+00:00:10.370 --> 00:00:13.000
+an application inter, programming
+interface, or
+
+5
+00:00:13.000 --> 00:00:15.270
+an API, where you can download data.
+
+6
+00:00:15.270 --> 00:00:17.710
+For example, you can get data about, you
+know,
+
+7
+00:00:17.710 --> 00:00:20.330
+which users are tweeting, or what they're
+tweeting about.
+
+8
+00:00:20.330 --> 00:00:22.930
+Where you can get information about what
+people are posting on Facebook.
+
+9
+00:00:22.930 --> 00:00:24.530
+You can usually get these with GET
+
+10
+00:00:24.530 --> 00:00:26.930
+requests with specific URLs as the
+arguments.
+
+11
+00:00:28.060 --> 00:00:30.930
+And so what we're going to be able to do
+is to use
+
+12
+00:00:30.930 --> 00:00:34.480
+the HTTR package to be able to get data
+from these web sites.
+
+13
+00:00:34.480 --> 00:00:37.630
+Usually the first thing that you'll need
+to do is create an account.
+
+14
+00:00:37.630 --> 00:00:41.230
+And, in this case, I don't mean an account
+like a user account You actually have
+
+15
+00:00:41.230 --> 00:00:43.670
+to create an account with the api or
+
+16
+00:00:43.670 --> 00:00:46.750
+with the development team out of each
+particular organization.
+
+17
+00:00:46.750 --> 00:00:48.910
+So, for example, here we're going to go
+
+18
+00:00:48.910 --> 00:00:53.600
+to dev.twitter.com/apps and we're going to
+create an application.
+
+19
+00:00:53.600 --> 00:00:54.950
+And in this case, we're going to make an
+
+20
+00:00:54.950 --> 00:00:58.950
+application using the Twitter handle from
+my blog, simplystats.
+
+21
+00:00:59.970 --> 00:01:02.850
+And so, what we've done now is, we've
+logged on using our Twitter details.
+
+22
+00:01:02.850 --> 00:01:06.540
+And so, you can see I'm logged on as
+simply statistics.
+
+23
+00:01:06.540 --> 00:01:11.310
+And, what I can do is, I can click on this
+button to create a new application.
+
+24
+00:01:11.310 --> 00:01:13.350
+And what that'll do is, that will give me
+some numbers that I'm
+
+25
+00:01:13.350 --> 00:01:17.350
+going to later use to be able to
+authenticate the application through R.
+
+26
+00:01:17.350 --> 00:01:18.400
+And access data.
+
+27
+00:01:18.400 --> 00:01:20.410
+So you can see here, I've actually already
+
+28
+00:01:20.410 --> 00:01:23.660
+created an application, which I call
+Simply Statistics blog.
+
+29
+00:01:23.660 --> 00:01:26.520
+And so if I click on that application,
+then what
+
+30
+00:01:26.520 --> 00:01:28.970
+I'm taken to is a page that looks
+something like this.
+
+31
+00:01:28.970 --> 00:01:31.070
+So you can see, this is the application,
+and
+
+32
+00:01:31.070 --> 00:01:33.750
+this is the URL of the application up
+there.
+
+33
+00:01:33.750 --> 00:01:35.350
+And there's some information that I
+haven't filled
+
+34
+00:01:35.350 --> 00:01:38.020
+in about my organization and my
+organization's website.
+
+35
+00:01:39.150 --> 00:01:43.360
+Down here under the Oduff settings, I've
+actually see that I have read
+
+36
+00:01:43.360 --> 00:01:47.130
+and write access to the API and then there
+are a bunch of numbers.
+
+37
+00:01:47.130 --> 00:01:49.424
+I black them out here cause these numbers
+are
+
+38
+00:01:49.424 --> 00:01:52.420
+private to you in the application that you
+build.
+
+39
+00:01:52.420 --> 00:01:56.770
+But you'll have a number a number for your
+consumer key Consumer secret.
+
+40
+00:01:56.770 --> 00:02:00.900
+A request hoping URL, and a authorization
+URL.
+
+41
+00:02:00.900 --> 00:02:02.340
+You are going to want to copy that down
+all
+
+42
+00:02:02.340 --> 00:02:04.530
+of those numbers, once you've created an
+application,
+
+43
+00:02:04.530 --> 00:02:08.010
+because we're going to use them later in
+the R code to be able to access the A-P-I.
+
+44
+00:02:08.010 --> 00:02:10.760
+[SOUND] So, here's what we're going to do.
+
+45
+00:02:10.760 --> 00:02:13.335
+We're going to use the HTTR package.
+
+46
+00:02:13.335 --> 00:02:18.940
+So,we're going to load that package and
+then we're going to use this command here.
+
+47
+00:02:18.940 --> 00:02:21.500
+Oauth app so what this is going to
+
+48
+00:02:21.500 --> 00:02:25.970
+do is start the authorization process for
+your application.
+
+49
+00:02:25.970 --> 00:02:29.490
+And so what you need to do is to you name
+the application, this isn't
+
+50
+00:02:29.490 --> 00:02:32.650
+actually going to get sent to the a p i,
+this is just for your convenience.
+
+51
+00:02:32.650 --> 00:02:35.310
+So I've named it twitter here, because
+it's going to be the twitter APP.
+
+52
+00:02:36.590 --> 00:02:41.680
+From me and then I'm going to input here
+in quotes my consumer key that I got from
+
+53
+00:02:41.680 --> 00:02:44.680
+the application website and I'm going to
+put my consumer
+
+54
+00:02:44.680 --> 00:02:48.280
+secrete here that I got from the
+application website.
+
+55
+00:02:48.280 --> 00:02:50.300
+Then what I'm going to do is take that
+application and
+
+56
+00:02:50.300 --> 00:02:52.700
+I'm going to sign in and I'm going to sign
+in using the
+
+57
+00:02:52.700 --> 00:02:57.720
+token Here that I col, collected from the
+website as
+
+58
+00:02:57.720 --> 00:03:00.540
+well as my TokenSecret that I collected
+from the website here.
+
+59
+00:03:01.590 --> 00:03:03.420
+So once I've done this, I've actually sort
+
+60
+00:03:03.420 --> 00:03:06.530
+of created the credentials that will allow
+me
+
+61
+00:03:06.530 --> 00:03:09.590
+to access data that is privately held by
+
+62
+00:03:09.590 --> 00:03:13.820
+Twitter that's only available to people
+with an application.
+
+63
+00:03:13.820 --> 00:03:16.310
+So now what I do is I'm using the GET
+command,
+
+64
+00:03:16.310 --> 00:03:18.620
+this is very similar to what I did when I
+was
+
+65
+00:03:18.620 --> 00:03:22.270
+reading data off the Internet, now I'm
+going to use a very
+
+66
+00:03:22.270 --> 00:03:26.770
+specific URL, this is the URL that
+corresponds to the twitter API.
+
+67
+00:03:26.770 --> 00:03:28.720
+So that's this part of the URL right here.
+
+68
+00:03:28.720 --> 00:03:31.955
+This is the version of the API that I'm
+using,
+
+69
+00:03:31.955 --> 00:03:35.700
+1.1, which is the current version of the
+twitter API.
+
+70
+00:03:35.700 --> 00:03:37.960
+Then I'm going to look, then I pass it
+some more
+
+71
+00:03:37.960 --> 00:03:41.440
+components which correspond to which data
+I'd like to get out.
+
+72
+00:03:41.440 --> 00:03:42.610
+So in this case, I'd like to get the
+
+73
+00:03:42.610 --> 00:03:46.500
+statuses on my home timeline, and I'm
+going to
+
+74
+00:03:46.500 --> 00:03:48.270
+get it out as a JSON file, which is
+
+75
+00:03:48.270 --> 00:03:51.190
+currently the only kind of data supported
+by Twitter.
+
+76
+00:03:51.190 --> 00:03:54.240
+And then I'm going to pass it, instead of
+authenticating with the username or a
+
+77
+00:03:54.240 --> 00:03:56.410
+password, I'm going to pass it the
+authentication
+
+78
+00:03:56.410 --> 00:04:00.280
+I used with this O Auth sign in.
+
+79
+00:04:00.280 --> 00:04:05.070
+And so what I'll get back is actually the
+page that corresponds
+
+80
+00:04:05.070 --> 00:04:09.000
+to this url which actually is going to be
+just some JSON data.
+
+81
+00:04:10.740 --> 00:04:15.390
+So what I can do is actually use the
+content function to extract
+
+82
+00:04:15.390 --> 00:04:18.420
+the JSON data, so this content function
+
+83
+00:04:18.420 --> 00:04:20.490
+will actually recognize that it's JSON
+data.
+
+84
+00:04:20.490 --> 00:04:25.560
+And create it's going to use the from
+JSOBN function from the R JSON
+
+85
+00:04:25.560 --> 00:04:31.270
+IO package, so that will return sort of a
+structured R object.
+
+86
+00:04:31.270 --> 00:04:34.400
+Which is a little bit hard to read I font
+so what
+
+87
+00:04:34.400 --> 00:04:37.710
+I'm going to do is I'm going to use the
+JSON lite package to reformat
+
+88
+00:04:37.710 --> 00:04:40.740
+it as a I data frame, so what I do is I
+take
+
+89
+00:04:40.740 --> 00:04:45.440
+the JSON structure that I got out from the
+original command to content.
+
+90
+00:04:45.440 --> 00:04:50.520
+And I convert that struc, structured R
+objects back into JSON.
+
+91
+00:04:50.520 --> 00:04:53.570
+And then I use the JSON lite version of
+
+92
+00:04:53.570 --> 00:04:57.230
+the from JSON argument to create a data
+frame.
+
+93
+00:04:57.230 --> 00:04:59.660
+And so, what this data frame is now is a
+data
+
+94
+00:04:59.660 --> 00:05:04.060
+frame where each row corresponds to a
+tweet in my home timeline.
+
+95
+00:05:04.060 --> 00:05:09.060
+And so here you can see I'm going to look
+at the first row of this data frame.
+
+96
+00:05:09.060 --> 00:05:11.660
+Which is at the time that I extracted the
+data.
+
+97
+00:05:11.660 --> 00:05:13.680
+The most recent tweet in my home timeline.
+
+98
+00:05:13.680 --> 00:05:16.680
+I'm going to look at the first four
+columns.
+
+99
+00:05:16.680 --> 00:05:21.830
+The first four columns tell me the time
+that the tweet was created, the ID number
+
+100
+00:05:21.830 --> 00:05:27.180
+for the tweet, the ID string here and then
+it's actually the text of the tweet.
+
+101
+00:05:27.180 --> 00:05:28.940
+So this is the tweet that was the most
+
+102
+00:05:28.940 --> 00:05:31.200
+recent tweet when I collected the data off
+the internet.
+
+103
+00:05:31.200 --> 00:05:35.420
+So you can do this to actually extract
+information from Twitter.
+
+104
+00:05:35.420 --> 00:05:37.360
+This is actually just the request for how
+do you
+
+105
+00:05:37.360 --> 00:05:40.780
+actually collect information about what's
+happening on my home timeline.
+
+106
+00:05:40.780 --> 00:05:42.760
+But, there's a whole bunch of other
+requests that you can do.
+
+107
+00:05:42.760 --> 00:05:46.230
+There's a bunch of different data that you
+can get access to through Twitter.
+
+108
+00:05:46.230 --> 00:05:49.490
+And so, how did I know what URL to use?
+
+109
+00:05:49.490 --> 00:05:53.500
+You actually go into the do, the
+documentation for the Twitter API, so this
+
+110
+00:05:53.500 --> 00:06:01.730
+is the same website as before only I'm
+going to look at the Twitter documentation
+
+111
+00:06:01.730 --> 00:06:06.450
+and what I'll get to see is what URL, see
+it says resource URL
+
+112
+00:06:06.450 --> 00:06:11.070
+down here, and that's the URL I'm going to
+be passing to my Get command.
+
+113
+00:06:11.070 --> 00:06:13.100
+It also has a bunch of parameters down
+here.
+
+114
+00:06:13.100 --> 00:06:16.730
+And so, if you look up how to format which
+parameters to
+
+115
+00:06:16.730 --> 00:06:20.440
+send to an API You can actually send a
+bunch of different parameters
+
+116
+00:06:20.440 --> 00:06:23.070
+say you can it how many tweets to collect
+from what time
+
+117
+00:06:23.070 --> 00:06:26.360
+to collect it and so forth depending on
+what URL you are accessing.
+
+118
+00:06:27.640 --> 00:06:30.350
+If you want to get other information, not
+just the information about your
+
+119
+00:06:30.350 --> 00:06:35.010
+home timeline, you can actually go the
+main Twitter documentation so this is
+
+120
+00:06:35.010 --> 00:06:39.660
+the documentation for the latest version
+of the API version 1.1 and
+
+121
+00:06:39.660 --> 00:06:43.520
+it'll give you information about Getting a
+bunch of different kinds of information.
+
+122
+00:06:43.520 --> 00:06:48.580
+So, you can get all sorts of information
+about, just, mentions.
+
+123
+00:06:48.580 --> 00:06:50.820
+You can get information about the user
+timeline.
+
+124
+00:06:50.820 --> 00:06:53.520
+You can get information about the home
+timeline.
+
+125
+00:06:53.520 --> 00:06:55.100
+You can get information about retweets.
+
+126
+00:06:55.100 --> 00:06:56.780
+You can download all that information, and
+you
+
+127
+00:06:56.780 --> 00:07:00.010
+can also search through, Twitter, the
+Twitter feeds,
+
+128
+00:07:00.010 --> 00:07:04.000
+and get, specific, tags that you're
+interested in
+
+129
+00:07:04.000 --> 00:07:07.840
+or hashtags that you might be interested
+in following.
+
+130
+00:07:07.840 --> 00:07:09.070
+So in general, you have to look at
+
+131
+00:07:09.070 --> 00:07:14.690
+the documentation, HTTR allows get, post,
+put, delete
+
+132
+00:07:14.690 --> 00:07:19.880
+requests if you are authorized as you can
+see, I was authorized to read and write.
+
+133
+00:07:19.880 --> 00:07:22.860
+Particular to the time line of simply
+stats,
+
+134
+00:07:22.860 --> 00:07:25.880
+because that's who I created the
+application through.
+
+135
+00:07:25.880 --> 00:07:30.890
+You can also authenticate with a user name
+or a password, in some cases.
+
+136
+00:07:30.890 --> 00:07:32.920
+Most modern API's though use something
+like
+
+137
+00:07:32.920 --> 00:07:35.545
+oauth, like we saw just now with twitter.
+
+138
+00:07:35.545 --> 00:07:40.978
+HTTR works well with Facebook, Google,
+Twitter, Gethb and so forth.
+
+139
+00:07:40.978 --> 00:07:45.270
+If you go to the HTTR demo component on
+Gethub you
+
+140
+00:07:45.270 --> 00:07:48.230
+can actually see a bunch of examples of
+how you access
+
+141
+00:07:48.230 --> 00:07:52.370
+the different APIs for the different
+websites and that's actually where
+
+142
+00:07:52.370 --> 00:07:56.770
+I modeled this lecture on was the demo for
+the Twitter API.

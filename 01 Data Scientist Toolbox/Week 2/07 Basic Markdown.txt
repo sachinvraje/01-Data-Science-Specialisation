@@ -1,0 +1,38 @@
+This is the lecture on the basics of
+markdown. So markdown is just a text file that's
+formatted in a very specific and simple way that
+sites like GitHub and also R and R Studio can
+recognize and can be used to do a lot of different
+things. You'll learn a lot more about markdown in later courses, for example, the
+reproducible research course. But for the purposes of being able to deal
+with GitHub, this is also, I'm just going to give you really
+the basics right now on markdown. So the first thing that you want to be
+able to do and so it's just a text file that
+you're editing. And the extension for the text file is
+.md. So you're going to create a file that's for example readme.mda that's a
+markdown file. The first thing that you're going to do is
+create headings. So, for example, if you do the double
+pound like this, followed by some text it will create
+a heading for a secondary heading. So what will, what will happen is if you
+upload a .md file, say for example to GitHub, if you use two pound
+signs and then followed by some text. You'll end up seeing that the get
+interpreted by GitHub as a heading. So slightly larger, more bold text. You can also create smaller headings by
+using a triple ha, or triple pound sign then. And then typing this is a tertiary
+heading. And you'll see that GitHub interprets that
+as a slightly smaller heading size. The other thing that you can do with,
+Markdown in addition to typing just plain paragraphs is that you
+can create lists very easily. So, for example, if you type, is, this
+star, and they you type first item in the list, asterisk, second
+item in the list, so forth. You'll get an unordered list, in other
+words a list with dots, starting at the beginning,
+nicely formatted by GitHub. And so, those are the two basic things
+that you need to know right now. You can use headings, and you can use
+lists to sort of organize your file. And then you can just type plain
+paragraphs as well. If you want to [UNKNOWN], know a lot more
+about markdown, you can try out this link right here or if once you've
+installed Rstudio, you can actually click the button, there's an MD button
+right in the middle of the screen, that if you click on that, you'll
+get a quick guide to markdown. And so you will don't need R Markdown or any of the more technical details, until
+you get to reproducible research, but this will be
+useful, in terms of putting sum into your first few
+directories on GitHub.

@@ -1,0 +1,367 @@
+WEBVTT
+
+1
+00:00:00.950 --> 00:00:02.190
+So, a question that often comes up when
+you
+
+2
+00:00:02.190 --> 00:00:05.120
+talk about data science is, what about big
+data?
+
+3
+00:00:05.120 --> 00:00:08.260
+So big data is obviously different to
+different people.
+
+4
+00:00:08.260 --> 00:00:10.360
+So, big data for somebody without a
+
+5
+00:00:10.360 --> 00:00:13.580
+computer might be 1,000 numbers, but data
+for,
+
+6
+00:00:13.580 --> 00:00:16.100
+big data for somebody with access to
+Amazon
+
+7
+00:00:16.100 --> 00:00:20.060
+EC2 might be enormous, much, much, much
+larger.
+
+8
+00:00:20.060 --> 00:00:21.100
+So, how much data is there?
+
+9
+00:00:21.100 --> 00:00:24.250
+So, this is an info graphic that says that
+there in 2001 there
+
+10
+00:00:24.250 --> 00:00:29.430
+will be 1.8 zetabytes that were created,
+which is a gigantic amount of data.
+
+11
+00:00:29.430 --> 00:00:32.410
+But realistically, only a tiny fraction of
+that data can be used
+
+12
+00:00:32.410 --> 00:00:35.199
+to answer any specific question that you
+might have in your mind.
+
+13
+00:00:36.290 --> 00:00:39.560
+So the question that keeps coming up is
+what about big data?
+
+14
+00:00:39.560 --> 00:00:42.140
+So, you often think, see things like, you
+know, big
+
+15
+00:00:42.140 --> 00:00:46.460
+data and cloud management and cloud and
+big data tend to
+
+16
+00:00:46.460 --> 00:00:49.590
+go together and that's because for some
+data sets they're so
+
+17
+00:00:49.590 --> 00:00:52.530
+big that you can't analyze them on your
+local laptop computer.
+
+18
+00:00:53.830 --> 00:00:55.290
+So, it really depends on your perspective.
+
+19
+00:00:55.290 --> 00:00:57.460
+So, this is one of the very first hard
+drives.
+
+20
+00:00:58.650 --> 00:01:03.480
+so, created by IBM and so it's it was able
+to contain much less data
+
+21
+00:01:03.480 --> 00:01:08.810
+than you could even store right now on
+your computer or even on your cell phone.
+
+22
+00:01:08.810 --> 00:01:11.930
+And so what this suggests is that over
+
+23
+00:01:11.930 --> 00:01:16.290
+time as technology increases, big data
+will change.
+
+24
+00:01:16.290 --> 00:01:19.300
+So, one way to solve the big data problem
+is to just sort
+
+25
+00:01:19.300 --> 00:01:22.410
+of wait until the hardware catches up with
+the size of the data.
+
+26
+00:01:22.410 --> 00:01:27.800
+But most questions that you're trying to
+answer don't necessarily have the big data
+
+27
+00:01:27.800 --> 00:01:30.630
+component that necessitates the need of
+huge
+
+28
+00:01:30.630 --> 00:01:33.610
+numbers of computers, although sometimes
+it does.
+
+29
+00:01:33.610 --> 00:01:35.460
+So why is big data such a big deal now?
+
+30
+00:01:35.460 --> 00:01:37.230
+Well this is only one example of that.
+
+31
+00:01:37.230 --> 00:01:39.960
+So, there was an experiment run by Stanley
+Milgram where he
+
+32
+00:01:39.960 --> 00:01:46.060
+took 296 individuals and he, what he tried
+to do was basically
+
+33
+00:01:46.060 --> 00:01:49.400
+send them a letter and ask them to send a
+letter from
+
+34
+00:01:49.400 --> 00:01:53.430
+someone they knew and so forth until they
+went a specific address.
+
+35
+00:01:53.430 --> 00:01:58.060
+And so, 64 of these such chains came back,
+so 64 out of 296.
+
+36
+00:01:58.060 --> 00:02:05.390
+And from that they found out that there
+were about 5.2 people in between
+
+37
+00:02:05.390 --> 00:02:07.140
+the person that originally got the letter
+
+38
+00:02:07.140 --> 00:02:09.700
+and the person that finally received the
+letter.
+
+39
+00:02:09.700 --> 00:02:14.710
+And this is where this sort of six degrees
+of separation sort of came about.
+
+40
+00:02:16.520 --> 00:02:21.700
+And so what ended up happening is, is that
+people nowadays can
+
+41
+00:02:21.700 --> 00:02:26.010
+collect much more data than they could
+before and much more cheaply.
+
+42
+00:02:26.010 --> 00:02:30.550
+So the, these investigators took an
+instant messaging network and
+
+43
+00:02:30.550 --> 00:02:36.010
+they looked at 30 billion conversations
+between 240 million people.
+
+44
+00:02:36.010 --> 00:02:38.160
+And then they performed a similar sort of
+experiment to
+
+45
+00:02:38.160 --> 00:02:41.980
+try to identify how far apart people were,
+and they
+
+46
+00:02:41.980 --> 00:02:45.280
+looked at the sort of to analyze the same
+question
+
+47
+00:02:45.280 --> 00:02:48.400
+that was looked at with just 64 email
+chains before.
+
+48
+00:02:48.400 --> 00:02:52.820
+And they found that the average path
+length was actually 6.6, so they sort
+
+49
+00:02:52.820 --> 00:02:54.710
+of upgraded the six points, the six
+
+50
+00:02:54.710 --> 00:02:56.940
+degrees of separation to seven degrees of
+separation.
+
+51
+00:02:58.010 --> 00:02:59.250
+So, what's the take home message here?
+
+52
+00:02:59.250 --> 00:03:03.080
+The take home message is that it's now
+possible to collect much
+
+53
+00:03:03.080 --> 00:03:07.310
+more data much more cheaply than it was
+before and to analyze it.
+
+54
+00:03:07.310 --> 00:03:09.820
+But the question is, is how much of that
+data is useful
+
+55
+00:03:09.820 --> 00:03:13.580
+for answering the question that you're
+sort of involved, you're involved in.
+
+56
+00:03:13.580 --> 00:03:15.420
+This is sort of a tongue in cheek, suppose
+
+57
+00:03:15.420 --> 00:03:18.920
+it says, don't use Hadoop, your data isn't
+that big.
+
+58
+00:03:18.920 --> 00:03:23.070
+So Hadoop is another of these buzzwords
+you frequently hear around big data, and
+
+59
+00:03:23.070 --> 00:03:24.950
+it is an incredibly powerful and useful
+
+60
+00:03:24.950 --> 00:03:27.720
+technique, if your data is very, very
+large.
+
+61
+00:03:27.720 --> 00:03:31.010
+But if you have enough memory on your
+computer, or you have a powerful enough
+
+62
+00:03:31.010 --> 00:03:33.880
+computer, you can analyze a large number
+of,
+
+63
+00:03:33.880 --> 00:03:35.915
+data sets, that you, that are important
+and
+
+64
+00:03:35.915 --> 00:03:37.910
+relevant to you without having to get
+
+65
+00:03:37.910 --> 00:03:41.120
+into the more complicated techniques that
+are induced
+
+66
+00:03:41.120 --> 00:03:44.280
+by going, scaling up to massive sized data
+
+67
+00:03:44.280 --> 00:03:45.870
+sets like those analyzed by Google and
+Facebook.
+
+68
+00:03:48.310 --> 00:03:51.080
+Big or small data that you need,
+regardless of
+
+69
+00:03:51.080 --> 00:03:52.950
+the size of the data, you need the right
+data.
+
+70
+00:03:52.950 --> 00:03:55.370
+So, the data might not contain the answer.
+
+71
+00:03:55.370 --> 00:03:59.130
+The combination of some data and an aching
+desire for an answer does not
+
+72
+00:03:59.130 --> 00:04:03.130
+ensure that a reasonable answer can be
+extracted from a given body of data.
+
+73
+00:04:03.130 --> 00:04:05.870
+This was a quote by John Toupee, one of
+the first data scientists.
+
+74
+00:04:05.870 --> 00:04:09.720
+And I would add to it, no matter how big
+the data are.
+
+75
+00:04:09.720 --> 00:04:12.830
+So, even if you have gigantic data, it
+might not be big enough
+
+76
+00:04:12.830 --> 00:04:15.350
+to be able to answer your question if it's
+not the right data.

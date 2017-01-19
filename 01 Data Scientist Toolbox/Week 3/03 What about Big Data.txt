@@ -1,0 +1,63 @@
+So, a question that often comes up when
+you talk about data science is, what about big
+data? So big data is obviously different to
+different people. So, big data for somebody without a computer might be 1,000 numbers, but data
+for, big data for somebody with access to
+Amazon EC2 might be enormous, much, much, much
+larger. So, how much data is there? So, this is an info graphic that says that
+there in 2001 there will be 1.8 zetabytes that were created,
+which is a gigantic amount of data. But realistically, only a tiny fraction of
+that data can be used to answer any specific question that you
+might have in your mind. So the question that keeps coming up is
+what about big data? So, you often think, see things like, you
+know, big data and cloud management and cloud and
+big data tend to go together and that's because for some
+data sets they're so big that you can't analyze them on your
+local laptop computer. So, it really depends on your perspective. So, this is one of the very first hard
+drives. so, created by IBM and so it's it was able
+to contain much less data than you could even store right now on
+your computer or even on your cell phone. And so what this suggests is that over time as technology increases, big data
+will change. So, one way to solve the big data problem
+is to just sort of wait until the hardware catches up with
+the size of the data. But most questions that you're trying to
+answer don't necessarily have the big data component that necessitates the need of
+huge numbers of computers, although sometimes
+it does. So why is big data such a big deal now? Well this is only one example of that. So, there was an experiment run by Stanley
+Milgram where he took 296 individuals and he, what he tried
+to do was basically send them a letter and ask them to send a
+letter from someone they knew and so forth until they
+went a specific address. And so, 64 of these such chains came back,
+so 64 out of 296. And from that they found out that there
+were about 5.2 people in between the person that originally got the letter and the person that finally received the
+letter. And this is where this sort of six degrees
+of separation sort of came about. And so what ended up happening is, is that
+people nowadays can collect much more data than they could
+before and much more cheaply. So the, these investigators took an
+instant messaging network and they looked at 30 billion conversations
+between 240 million people. And then they performed a similar sort of
+experiment to try to identify how far apart people were,
+and they looked at the sort of to analyze the same
+question that was looked at with just 64 email
+chains before. And they found that the average path
+length was actually 6.6, so they sort of upgraded the six points, the six degrees of separation to seven degrees of
+separation. So, what's the take home message here? The take home message is that it's now
+possible to collect much more data much more cheaply than it was
+before and to analyze it. But the question is, is how much of that
+data is useful for answering the question that you're
+sort of involved, you're involved in. This is sort of a tongue in cheek, suppose it says, don't use Hadoop, your data isn't
+that big. So Hadoop is another of these buzzwords
+you frequently hear around big data, and it is an incredibly powerful and useful technique, if your data is very, very
+large. But if you have enough memory on your
+computer, or you have a powerful enough computer, you can analyze a large number
+of, data sets, that you, that are important
+and relevant to you without having to get into the more complicated techniques that
+are induced by going, scaling up to massive sized data sets like those analyzed by Google and
+Facebook. Big or small data that you need,
+regardless of the size of the data, you need the right
+data. So, the data might not contain the answer. The combination of some data and an aching
+desire for an answer does not ensure that a reasonable answer can be
+extracted from a given body of data. This was a quote by John Toupee, one of
+the first data scientists. And I would add to it, no matter how big
+the data are. So, even if you have gigantic data, it
+might not be big enough to be able to answer your question if it's
+not the right data.

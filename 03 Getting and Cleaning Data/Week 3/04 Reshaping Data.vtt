@@ -1,0 +1,683 @@
+WEBVTT
+
+1
+00:00:00.450 --> 00:00:03.820
+Often the data that you load into R,
+will not necessarily be tidy.
+
+2
+00:00:03.820 --> 00:00:07.390
+It will shaped in some strange way, or
+there will be a variable in a row, or
+
+3
+00:00:07.390 --> 00:00:09.000
+there will be something else going on.
+
+4
+00:00:09.000 --> 00:00:12.070
+And so, the first thing that
+you might need to do is reshape
+
+5
+00:00:12.070 --> 00:00:14.260
+the data into the format that
+you'd like to have it in.
+
+6
+00:00:14.260 --> 00:00:16.850
+So the goal remember, is tidy data.
+
+7
+00:00:16.850 --> 00:00:19.520
+So, tidy data has several principles,
+for example,
+
+8
+00:00:19.520 --> 00:00:22.690
+we would like every variable
+to form its own column.
+
+9
+00:00:22.690 --> 00:00:25.090
+Every observation to form its own row.
+
+10
+00:00:25.090 --> 00:00:28.330
+And each table or file to store data
+about only one kind of observation.
+
+11
+00:00:28.330 --> 00:00:32.250
+We're gonna focus on the first two
+components of this when we're doing
+
+12
+00:00:32.250 --> 00:00:32.870
+data reshaping.
+
+13
+00:00:32.870 --> 00:00:36.255
+So, we're gonna start off by
+looking at this mtcars data set.
+
+14
+00:00:36.255 --> 00:00:39.795
+So this is a data set that's one
+of the standard data sets in R.
+
+15
+00:00:39.795 --> 00:00:43.065
+And so, we have a bunch of different
+cars over here in the rows.
+
+16
+00:00:43.065 --> 00:00:45.995
+And then there's a bunch of different
+variables that we've observed about them.
+
+17
+00:00:45.995 --> 00:00:50.560
+Their MPG, the number of cylinders,
+the horsepower, and so forth.
+
+18
+00:00:50.560 --> 00:00:54.590
+And so what we're gonna do is deal
+with reshaping this data a little bit.
+
+19
+00:00:54.590 --> 00:00:58.060
+So the first thing that we can do
+is we can melt the data set, and so
+
+20
+00:00:58.060 --> 00:01:02.350
+when we're melting a data set, what we're
+gonna do is we're gonna pass the data
+
+21
+00:01:02.350 --> 00:01:08.730
+frame that we have mtcars, we're gonna
+actually pass it to this melt function.
+
+22
+00:01:08.730 --> 00:01:12.500
+And we're gonna tell it which of
+the variables are ID variables, and
+
+23
+00:01:12.500 --> 00:01:15.090
+which of the variables
+are measure variables.
+
+24
+00:01:15.090 --> 00:01:20.450
+And so what that can do then is it's
+going to create a bunch of ID values.
+
+25
+00:01:20.450 --> 00:01:25.280
+And so for example it's going to
+create an id value for car name, for
+
+26
+00:01:25.280 --> 00:01:29.990
+gear and for cylinders, because we've
+said those are id variables here.
+
+27
+00:01:29.990 --> 00:01:33.380
+And then it's going to basically
+melt all the rest of the values.
+
+28
+00:01:33.380 --> 00:01:36.250
+So this is a very tall,
+skinny data frame so
+
+29
+00:01:36.250 --> 00:01:41.830
+that in this variable column,
+you will see both mpg and hp.
+
+30
+00:01:41.830 --> 00:01:46.680
+So it's basically reshaped the data set so
+that it's tall and
+
+31
+00:01:46.680 --> 00:01:51.170
+skinny and so there's one row for
+every mpg and one row for every hp.
+
+32
+00:01:52.290 --> 00:01:56.720
+So for example, at the top of this data
+set, we see it's only the mpg values, and
+
+33
+00:01:56.720 --> 00:01:59.330
+at the bottom of the data set
+we see it's only the hp values.
+
+34
+00:01:59.330 --> 00:02:01.020
+This is now a tall, skinny data set.
+
+35
+00:02:02.340 --> 00:02:05.830
+So once we've melted the data set we can
+recast it in a bunch of different ways.
+
+36
+00:02:05.830 --> 00:02:10.020
+We can basically reformat the data
+set into different sort of shapes.
+
+37
+00:02:10.020 --> 00:02:13.100
+So to do that we're gonna
+use the dcast function.
+
+38
+00:02:13.100 --> 00:02:18.710
+The dcast function will recast
+the data set into a particular shape,
+
+39
+00:02:18.710 --> 00:02:21.160
+into a particular data frame.
+
+40
+00:02:21.160 --> 00:02:24.190
+So here, what we're going to do is,
+we're gonna pass it the melted data set,
+
+41
+00:02:24.190 --> 00:02:26.020
+the car melted data set.
+
+42
+00:02:26.020 --> 00:02:31.380
+And suppose, for example,
+that we wanted to see the cylinders,
+
+43
+00:02:31.380 --> 00:02:35.770
+and we wanted to see that broken
+down by the different variables.
+
+44
+00:02:35.770 --> 00:02:37.420
+What this will do is, it's going to
+
+45
+00:02:38.670 --> 00:02:43.620
+put the different values on the left
+hand side, in the rows, and
+
+46
+00:02:43.620 --> 00:02:46.970
+its going to put the values in
+the right hand side in the columns.
+
+47
+00:02:46.970 --> 00:02:49.370
+So on the right hand side it's variable,
+remember for
+
+48
+00:02:49.370 --> 00:02:54.490
+variable we said it was mpg and hp so
+you get that in the two columns here.
+
+49
+00:02:54.490 --> 00:02:58.210
+And then in the rows we get
+the different cylinders going down here.
+
+50
+00:02:58.210 --> 00:03:01.320
+And the thing that it does is
+it summarizes the data set so
+
+51
+00:03:01.320 --> 00:03:05.060
+you can see this data set is much
+smaller than the original data set, and,
+
+52
+00:03:05.060 --> 00:03:07.500
+by default, it does it by link.
+
+53
+00:03:07.500 --> 00:03:10.990
+So it says is that, for 4 cylinders,
+
+54
+00:03:10.990 --> 00:03:16.920
+we have 11 measures of mpg and
+11 measures of horsepower, for
+
+55
+00:03:16.920 --> 00:03:21.400
+6 cylinders, we have 7 measures of mpg and
+7 measures of horsepower, and so forth.
+
+56
+00:03:21.400 --> 00:03:24.490
+We can also pass it a different function,
+a different way to summarize the data.
+
+57
+00:03:24.490 --> 00:03:29.100
+So again, if we tell it to recast
+the data in this way it'll put
+
+58
+00:03:29.100 --> 00:03:32.810
+cylinders in the rows and
+the variable in the columns, and
+
+59
+00:03:32.810 --> 00:03:35.670
+then what we can tell it to do
+is take the mean for each value.
+
+60
+00:03:35.670 --> 00:03:39.540
+So for example, now we can say,
+for the four cylinder car,
+
+61
+00:03:39.540 --> 00:03:45.030
+the mean miles per gallon is 26.66 and
+the mean horsepower is 82.64.
+
+62
+00:03:45.030 --> 00:03:47.850
+Meanwhile, for an eight cylinder car,
+
+63
+00:03:47.850 --> 00:03:53.030
+there's a much lower mean miles per
+gallon and a much higher horsepower.
+
+64
+00:03:53.030 --> 00:03:55.920
+And so, what this is basically doing is,
+it's taking the data set and
+
+65
+00:03:55.920 --> 00:03:59.540
+resummarizing it in different ways,
+and reorganizing it in different ways.
+
+66
+00:04:01.400 --> 00:04:05.220
+Another thing that you might wanna do is
+average values within a particular factor.
+
+67
+00:04:05.220 --> 00:04:06.850
+So, this is a very common thing to do.
+
+68
+00:04:06.850 --> 00:04:10.230
+So, this is now looking at
+a insect sprays data set.
+
+69
+00:04:10.230 --> 00:04:13.920
+So, what we have now is
+different kinds of sprays.
+
+70
+00:04:13.920 --> 00:04:18.765
+So, in this case, the spray is A, or
+B, or C, or D, or E or F and then it's
+
+71
+00:04:18.765 --> 00:04:23.621
+the count of the number of insects that
+you see with that different spray,
+
+72
+00:04:23.621 --> 00:04:28.082
+and so one thing that you might want
+to do is take the sum of the count of
+
+73
+00:04:28.082 --> 00:04:32.530
+insects that you see for
+each of the different sprays.
+
+74
+00:04:32.530 --> 00:04:38.050
+So to do that what you could do is you
+could take the insect count variable and
+
+75
+00:04:38.050 --> 00:04:39.470
+pass it to tapply.
+
+76
+00:04:39.470 --> 00:04:43.130
+And you could say, I would like to tapply,
+
+77
+00:04:43.130 --> 00:04:47.230
+that means apply along an index,
+a particular function.
+
+78
+00:04:47.230 --> 00:04:53.390
+So I'm going to apply to count along
+the index spray, the function sum.
+
+79
+00:04:53.390 --> 00:04:57.300
+What that's gonna do is, within each value
+of spray, it will sum up the counts,
+
+80
+00:04:57.300 --> 00:05:01.820
+so you get the sum for A and
+the sum for B and the sum for C.
+
+81
+00:05:01.820 --> 00:05:07.390
+That's one very brief,
+shorthand way of calculating those sums.
+
+82
+00:05:07.390 --> 00:05:10.600
+Another way is what's called split,
+apply, combine.
+
+83
+00:05:10.600 --> 00:05:15.710
+So, you can imagine that what you
+wanna do is, you wanna take the insect
+
+84
+00:05:15.710 --> 00:05:19.940
+spray counts and you want to split them
+up by each of the different sprays.
+
+85
+00:05:19.940 --> 00:05:22.990
+So you can do that with
+the split function and R and
+
+86
+00:05:22.990 --> 00:05:27.500
+what you end up now is with a list,
+where you get the list of the values for
+
+87
+00:05:27.500 --> 00:05:32.200
+A, the list of the values for B,
+the list of the values for C and so forth.
+
+88
+00:05:32.200 --> 00:05:35.080
+So that's the split part of
+the split apply component.
+
+89
+00:05:35.080 --> 00:05:39.250
+Then what you can do is you can
+apply to that list a function.
+
+90
+00:05:39.250 --> 00:05:42.420
+So here we have the list
+of different values for
+
+91
+00:05:42.420 --> 00:05:47.460
+each of the different sprays, and we can
+use lapply to apply across that list.
+
+92
+00:05:47.460 --> 00:05:51.010
+So each element of your list,
+we're going to apply the sum.
+
+93
+00:05:51.010 --> 00:05:54.510
+So again, we get the same values out,
+we've summed up the counts for A,
+
+94
+00:05:54.510 --> 00:05:58.430
+summed up the counts for B,
+summed up the counts C and so forth.
+
+95
+00:05:58.430 --> 00:06:01.900
+And now we actually have a list but
+we may wanna go back to a vector so
+
+96
+00:06:01.900 --> 00:06:03.570
+that it's easier to manipulate on our.
+
+97
+00:06:03.570 --> 00:06:05.640
+And so then, we do combining.
+
+98
+00:06:05.640 --> 00:06:11.975
+We basically unlist the list that we got
+when we did the apply after the split.
+
+99
+00:06:13.065 --> 00:06:15.675
+One thing that will combine
+a couple of those steps together,
+
+100
+00:06:15.675 --> 00:06:20.755
+so after you've taken the data and
+you've split it up,
+
+101
+00:06:20.755 --> 00:06:26.625
+you can actually just use the s apply
+command which will do both the apply and
+
+102
+00:06:26.625 --> 00:06:28.745
+the combine components of this split,
+apply, combine.
+
+103
+00:06:30.630 --> 00:06:36.150
+The plyr package provides a nice interface
+for doing this sort of action in one step.
+
+104
+00:06:36.150 --> 00:06:42.020
+So, we take the Insect Sprays data set and
+we path it to the function ddply.
+
+105
+00:06:42.020 --> 00:06:43.640
+And then what we do is we say, okay,
+
+106
+00:06:43.640 --> 00:06:47.420
+these are the variables that we'd like to
+summarize, and you have to use dot and
+
+107
+00:06:47.420 --> 00:06:51.080
+then parentheses, so that you don't have
+to use quote quotation marks around spray.
+
+108
+00:06:51.080 --> 00:06:55.830
+Then you're going to say we want
+to summarize this variable.
+
+109
+00:06:55.830 --> 00:06:59.910
+And how do we want to summarize it,
+we want to provide a sum.
+
+110
+00:06:59.910 --> 00:07:04.370
+So basically we sum up the count
+of within that spray variable.
+
+111
+00:07:04.370 --> 00:07:06.260
+And you get C here.
+
+112
+00:07:06.260 --> 00:07:10.630
+The same sort of process has been applied,
+a split applied the buying process.
+
+113
+00:07:12.180 --> 00:07:16.830
+This is kind of nice because you can
+also use it to calculate the values and
+
+114
+00:07:16.830 --> 00:07:18.760
+apply them to each variable.
+
+115
+00:07:18.760 --> 00:07:22.580
+So for example, suppose you wanna
+be able to subtract off the mean,
+
+116
+00:07:22.580 --> 00:07:26.240
+or the total count from the actual
+count for every variable,
+
+117
+00:07:26.240 --> 00:07:28.750
+what you could do is you
+could actually calculate
+
+118
+00:07:28.750 --> 00:07:32.290
+A spraySums variable that's the same
+length as the original data set.
+
+119
+00:07:32.290 --> 00:07:36.580
+So again I ask ddply,
+the InsectSprays data frame,
+
+120
+00:07:36.580 --> 00:07:40.350
+and I say I wanna summarize
+the spray variable and
+
+121
+00:07:40.350 --> 00:07:45.540
+I wanna summarize the counts and
+I wanna sum them up.
+
+122
+00:07:45.540 --> 00:07:49.170
+But now I've passed it ave function, so
+
+123
+00:07:49.170 --> 00:07:53.920
+when I say sum here,
+I'm actually calculating the sum as
+
+124
+00:07:55.070 --> 00:08:00.485
+the ave function applied to count
+where the subfunction is sum.
+
+125
+00:08:00.485 --> 00:08:04.615
+And so what ends up happening is spraySuns
+ends up being the same dimension
+
+126
+00:08:04.615 --> 00:08:07.365
+as the original InsectSprays data set.
+
+127
+00:08:07.365 --> 00:08:13.775
+So for every time I see an A in the spray,
+I get the sum for all of the A values.
+
+128
+00:08:13.775 --> 00:08:16.885
+So in other words, instead of having
+a data set where you just see the sum for
+
+129
+00:08:16.885 --> 00:08:21.700
+A once, you see the sum for A for every
+value of A in the data set and so that now
+
+130
+00:08:21.700 --> 00:08:26.025
+this variable can be added to the data
+set and used to do different analysis.
+
+131
+00:08:27.590 --> 00:08:32.370
+For more information on how to reshape
+data, you can see the plyr tutorial.
+
+132
+00:08:32.370 --> 00:08:36.960
+There's also a really nice reshaped
+tutorial here on slideshare.
+
+133
+00:08:36.960 --> 00:08:41.240
+And a good plyr primer
+is on our bloggers here.
+
+134
+00:08:41.240 --> 00:08:45.360
+So other functions that you might wanna
+be aware of are acast, which just like we
+
+135
+00:08:45.360 --> 00:08:50.220
+were using dcast a minute ago to take
+a melted data set and turn it into
+
+136
+00:08:50.220 --> 00:08:55.210
+a data frame, acast turns it into
+an array possibly multiple dimensional.
+
+137
+00:08:55.210 --> 00:08:57.400
+And then a range you can for
+
+138
+00:08:57.400 --> 00:09:02.140
+reordering data sets without using
+the order commands like we saw in previous
+
+139
+00:09:02.140 --> 00:09:05.800
+lectures, just like you can use
+mutate to add new variables.
+
+140
+00:09:05.800 --> 00:09:08.520
+So you can use a combination of ddply and
+
+141
+00:09:08.520 --> 00:09:13.050
+mutate in order to add new variables that
+are summaries of their previous variables.

@@ -1,0 +1,856 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.920
+This lecture's about the Types of Data
+Science Questions.
+
+2
+00:00:02.920 --> 00:00:04.700
+So last week we covered a lot
+
+3
+00:00:04.700 --> 00:00:06.910
+of installation and building up software
+and this
+
+4
+00:00:06.910 --> 00:00:07.940
+week we're going to cover a little bit
+
+5
+00:00:07.940 --> 00:00:10.340
+more about the conceptual ideas behind
+data science.
+
+6
+00:00:11.360 --> 00:00:14.850
+So there are, a few different kinds of
+data science questions that I've listed up
+
+7
+00:00:14.850 --> 00:00:16.820
+here in their approximate order of
+difficulty
+
+8
+00:00:16.820 --> 00:00:19.120
+of actually achieving the goal of that
+analysis.
+
+9
+00:00:19.120 --> 00:00:20.990
+So it starts with descriptive, and then it
+
+10
+00:00:20.990 --> 00:00:25.690
+goes to exploratory, inferential,
+predictive, causal, and mechanistic.
+
+11
+00:00:25.690 --> 00:00:26.760
+And I'm going to talk about each of these
+
+12
+00:00:26.760 --> 00:00:29.000
+types of analysis over the next couple of
+slides.
+
+13
+00:00:29.000 --> 00:00:31.510
+So the first is the descriptive analysis.
+
+14
+00:00:31.510 --> 00:00:33.820
+So the goal here is just to describe a set
+of data.
+
+15
+00:00:33.820 --> 00:00:35.040
+You're not trying to make any sort of
+
+16
+00:00:35.040 --> 00:00:37.550
+decisions based on it or anything like
+that.
+
+17
+00:00:37.550 --> 00:00:40.010
+It's the first kind of data analysis that
+was ever performed.
+
+18
+00:00:40.010 --> 00:00:43.110
+And it's most commonly applied when you're
+talking about census data.
+
+19
+00:00:44.360 --> 00:00:48.140
+The description and interpretation of this
+data are sort of different steps,
+
+20
+00:00:48.140 --> 00:00:52.100
+so you gotta describe the data and then
+interpret what you've seen.
+
+21
+00:00:53.370 --> 00:00:54.900
+Descriptions can usually not be
+
+22
+00:00:54.900 --> 00:00:57.150
+generalized without additional statistical
+modeling.
+
+23
+00:00:57.150 --> 00:00:59.910
+So in other words, you are describing what
+you are seeing in this data but
+
+24
+00:00:59.910 --> 00:01:02.880
+you are not saying what that might be for
+the next person that might come along.
+
+25
+00:01:04.250 --> 00:01:06.990
+So an example of a descriptive analysis is
+this US census.
+
+26
+00:01:06.990 --> 00:01:09.740
+So this is a picture of the census twenty
+
+27
+00:01:09.740 --> 00:01:11.450
+ten, a website that has collected a bunch
+of
+
+28
+00:01:11.450 --> 00:01:14.330
+information about people in the United
+States and they
+
+29
+00:01:14.330 --> 00:01:17.350
+are not necessarily analyzing it to
+predict something about, [INAUDIBLE].
+
+30
+00:01:17.350 --> 00:01:19.275
+Now other people or other countries
+
+31
+00:01:19.275 --> 00:01:21.167
+they're just trying to describe the
+population.
+
+32
+00:01:21.167 --> 00:01:25.730
+Another descriptive ex, analysis is the
+Google Ngram Viewer.
+
+33
+00:01:25.730 --> 00:01:27.840
+So what this is is it's a collection
+
+34
+00:01:27.840 --> 00:01:32.520
+of information about pairs or triplets of
+words.
+
+35
+00:01:32.520 --> 00:01:36.850
+And so for example this is a plot over
+time of the observation of those, of
+
+36
+00:01:36.850 --> 00:01:40.850
+the words Albert Einstein, Sherlock
+Holmes, and Frankenstein
+
+37
+00:01:40.850 --> 00:01:43.370
+in books that have been scraped by Google.
+
+38
+00:01:43.370 --> 00:01:47.160
+And so, again, this isn't trying to infer
+anything when making decisions.
+
+39
+00:01:47.160 --> 00:01:50.820
+You could do that, but this is just purely
+a description of what's going on.
+
+40
+00:01:52.520 --> 00:01:54.260
+The next is exploratory analysis.
+
+41
+00:01:54.260 --> 00:01:56.630
+So here you're trying to look at some data
+and find
+
+42
+00:01:56.630 --> 00:01:58.910
+relationships that you didn't know about
+
+43
+00:01:58.910 --> 00:02:01.820
+previously, but not necessarily confirm
+them.
+
+44
+00:02:01.820 --> 00:02:04.220
+So they're good for discovering new
+connections,
+
+45
+00:02:04.220 --> 00:02:06.400
+and they're also useful to find, for
+defining
+
+46
+00:02:06.400 --> 00:02:09.010
+future data science projects, where you're
+actually
+
+47
+00:02:09.010 --> 00:02:12.110
+trying to confirm the exploration that
+you've performed.
+
+48
+00:02:12.110 --> 00:02:15.140
+They're usually not the final say on any
+particular problem,
+
+49
+00:02:15.140 --> 00:02:17.820
+and they usually shouldn't be used for
+generalizing or predicting.
+
+50
+00:02:18.830 --> 00:02:21.020
+The important point is that you've
+probably
+
+51
+00:02:21.020 --> 00:02:24.520
+heard before that correlation does not
+imply causation.
+
+52
+00:02:24.520 --> 00:02:29.220
+So, you don't want to necessarily save it.
+
+53
+00:02:29.220 --> 00:02:32.270
+You've discovered a relationship that is
+the critical
+
+54
+00:02:32.270 --> 00:02:35.870
+relationship between two variables based
+on exploratory analysis alone.
+
+55
+00:02:36.930 --> 00:02:38.470
+So here's an example of an exploratory
+
+56
+00:02:38.470 --> 00:02:40.940
+analysis, where we're looking at brain
+images and
+
+57
+00:02:40.940 --> 00:02:43.020
+trying to identify regions of the brain
+that
+
+58
+00:02:43.020 --> 00:02:45.630
+lit up in response to a particular
+stimulus.
+
+59
+00:02:45.630 --> 00:02:48.010
+So they explored this data, and they
+observed, you know,
+
+60
+00:02:48.010 --> 00:02:51.410
+here's a region that lights up in response
+to that stimulus.
+
+61
+00:02:51.410 --> 00:02:54.810
+And here's another re, region that lights
+up in response to the stimulus.
+
+62
+00:02:54.810 --> 00:02:57.626
+And they haven't necessarily confirmed
+that
+
+63
+00:02:57.626 --> 00:02:59.240
+that, what that means, but they've just
+
+64
+00:02:59.240 --> 00:03:02.450
+discovered a new connection that they
+hadn't seen before they had this data.
+
+65
+00:03:03.970 --> 00:03:06.450
+Another example that's actually hosted
+here at
+
+66
+00:03:06.450 --> 00:03:09.580
+Johns Hopkin's is the Sloan Digital Sky
+Survey.
+
+67
+00:03:09.580 --> 00:03:13.910
+So this is just terabytes or even more of
+
+68
+00:03:13.910 --> 00:03:16.570
+data that has been collected looking at
+the night sky.
+
+69
+00:03:16.570 --> 00:03:20.380
+So it's actually pictures of the night sky
+at
+
+70
+00:03:20.380 --> 00:03:22.710
+different times and at different places
+that you can
+
+71
+00:03:22.710 --> 00:03:25.150
+explore to try to discover new stars or
+try
+
+72
+00:03:25.150 --> 00:03:30.080
+to discover how different things in the
+universe work together.
+
+73
+00:03:30.080 --> 00:03:32.550
+And so, that data is actually used for
+exploration,
+
+74
+00:03:32.550 --> 00:03:36.820
+but not necessarily for confirming
+anything that you discover.
+
+75
+00:03:38.130 --> 00:03:41.410
+Then inferential analysis is a goal where
+you're actually
+
+76
+00:03:41.410 --> 00:03:44.170
+trying to take a small amount of data, on
+
+77
+00:03:44.170 --> 00:03:46.830
+a small number of observations, and sort
+of extrapolate
+
+78
+00:03:46.830 --> 00:03:50.372
+that information, or generalize that
+information to a larger population.
+
+79
+00:03:50.372 --> 00:03:54.350
+Inference is definitely the most common
+goal of most
+
+80
+00:03:54.350 --> 00:03:58.326
+statistical models, and most statistics
+you may have heard about.
+
+81
+00:03:58.326 --> 00:04:00.270
+It involves both estimating
+
+82
+00:04:00.270 --> 00:04:02.560
+some quantity that you're interested in
+and
+
+83
+00:04:02.560 --> 00:04:04.890
+also, more importantly maybe, the
+uncertainty
+
+84
+00:04:04.890 --> 00:04:07.840
+of that quantity that you're interested
+in.
+
+85
+00:04:07.840 --> 00:04:09.060
+And it depends heavily both on the
+
+86
+00:04:09.060 --> 00:04:11.490
+population that you're looking at, the
+group of
+
+87
+00:04:11.490 --> 00:04:13.000
+people or the group of objects that
+
+88
+00:04:13.000 --> 00:04:16.380
+you care about, and a sampling you've
+discovered.
+
+89
+00:04:16.380 --> 00:04:19.100
+So this is an example of, inferential
+analysis.
+
+90
+00:04:19.100 --> 00:04:22.270
+So the idea is, here, you're trying to
+look at the,
+
+91
+00:04:22.270 --> 00:04:26.510
+effect of air pollution control on life
+expectancy in the United States.
+
+92
+00:04:26.510 --> 00:04:30.430
+So, what they've done is, they haven't
+analysed all of the counties in the United
+
+93
+00:04:30.430 --> 00:04:32.910
+States, but they've analysed, so, sort of
+a
+
+94
+00:04:32.910 --> 00:04:35.310
+subset of the counties in the United
+States.
+
+95
+00:04:35.310 --> 00:04:37.870
+And they're using that to try to infer
+something about what's
+
+96
+00:04:37.870 --> 00:04:41.770
+generally happening in the relationship
+between air pollution and life expectancy.
+
+97
+00:04:43.470 --> 00:04:45.550
+Prediction analysis is a little bit
+different.
+
+98
+00:04:45.550 --> 00:04:49.100
+The inferential analysis is that usually a
+little bit more challenging.
+
+99
+00:04:49.100 --> 00:04:53.140
+So the idea is to use the data on some
+objects you collect the data on,
+
+100
+00:04:53.140 --> 00:04:54.930
+to predict the values for another object
+for
+
+101
+00:04:54.930 --> 00:04:56.790
+the next observation that comes to the
+door.
+
+102
+00:04:57.850 --> 00:04:59.970
+An important thing to keep in mind is that
+even if
+
+103
+00:04:59.970 --> 00:05:02.960
+x predicts y, it does not mean that x
+causes y.
+
+104
+00:05:02.960 --> 00:05:04.620
+That's one of the main fallacies that you
+
+105
+00:05:04.620 --> 00:05:06.610
+can run into when dealing with predictive
+analysis.
+
+106
+00:05:07.620 --> 00:05:10.580
+Accurate prediction depends heavily on
+measuring the right variables.
+
+107
+00:05:11.700 --> 00:05:14.170
+And although there are better and worse
+prediction models, it's pretty
+
+108
+00:05:14.170 --> 00:05:18.550
+clear that more data and simple model
+tends to work really well.
+
+109
+00:05:18.550 --> 00:05:22.330
+Prediction is very hard, especially about
+the future, and so I've, I, this
+
+110
+00:05:22.330 --> 00:05:25.890
+is a, a funny quote that it's very
+accurate actually and I've listed
+
+111
+00:05:25.890 --> 00:05:29.190
+some references here where you, or link to
+some references here where you
+
+112
+00:05:29.190 --> 00:05:32.540
+can see other people who have said that
+same pre, thing over and over.
+
+113
+00:05:33.890 --> 00:05:35.950
+So here's an example of a predictive
+analysis.
+
+114
+00:05:35.950 --> 00:05:39.290
+So Nate Silver is one of the data
+scientists I mentioned earlier and
+
+115
+00:05:39.290 --> 00:05:43.900
+FiveThrityEight is his blog where he tries
+to predict the outcome of U.S. elections.
+
+116
+00:05:43.900 --> 00:05:46.660
+So what he does is he takes data from
+polling and
+
+117
+00:05:46.660 --> 00:05:49.630
+he tries to predict what's going to happen
+in the next Presidential vote.
+
+118
+00:05:49.630 --> 00:05:51.557
+And he was very accurate in doing that in
+both
+
+119
+00:05:51.557 --> 00:05:55.230
+the two thousand and eight and two
+thousand and twelve elections.
+
+120
+00:05:55.230 --> 00:05:58.410
+Here's another example, so it's another
+sort of
+
+121
+00:05:58.410 --> 00:06:01.770
+bad example, if you were the teen in
+question.
+
+122
+00:06:01.770 --> 00:06:03.610
+So, target figured out a teen girl
+
+123
+00:06:03.610 --> 00:06:05.750
+was pregnant, before her father did, by
+looking
+
+124
+00:06:05.750 --> 00:06:10.100
+at the purchases she made, and it sent her
+a flyer saying she was pregnant.
+
+125
+00:06:10.100 --> 00:06:11.900
+Of course, the father and girl was a
+little
+
+126
+00:06:11.900 --> 00:06:13.900
+upset, because he didn't know that she was
+pregnant.
+
+127
+00:06:15.032 --> 00:06:16.728
+But it was example of how you could
+
+128
+00:06:16.728 --> 00:06:20.070
+use data to predict characteristics of
+people including metadata.
+
+129
+00:06:21.530 --> 00:06:23.870
+Causal analysis is a next level up.
+
+130
+00:06:23.870 --> 00:06:27.890
+It's substantially harder to identify
+causal relationships from data.
+
+131
+00:06:27.890 --> 00:06:32.910
+So the idea is, what happens if you change
+the values of one variable?
+
+132
+00:06:32.910 --> 00:06:36.720
+What will, how will that change the value
+of another variable?
+
+133
+00:06:36.720 --> 00:06:38.670
+The gold standard for doing this in
+general is
+
+134
+00:06:38.670 --> 00:06:44.215
+using randomized studies or randomized
+controlled trials to identify causation.
+
+135
+00:06:44.215 --> 00:06:47.110
+And you can try to do it from just
+observed data that
+
+136
+00:06:47.110 --> 00:06:50.400
+you have saved in the database but it's a
+much harder sell.
+
+137
+00:06:50.400 --> 00:06:52.350
+You have to make much stronger assumptions
+about
+
+138
+00:06:52.350 --> 00:06:55.100
+the way that your model is work, [SOUND]
+working.
+
+139
+00:06:56.490 --> 00:06:59.440
+Causal relationships are usually
+identified as average effects, in other
+
+140
+00:06:59.440 --> 00:07:02.770
+words, on average, if we give this
+population a particular
+
+141
+00:07:02.770 --> 00:07:06.220
+drug, then on average they will only have
+a little
+
+142
+00:07:06.220 --> 00:07:09.330
+bit longer then if you didn't give them
+that drug.
+
+143
+00:07:09.330 --> 00:07:13.200
+So these are usually the gold standard for
+data analysis in a particular for
+
+144
+00:07:13.200 --> 00:07:15.230
+most scientific applications the goal is
+to
+
+145
+00:07:15.230 --> 00:07:17.710
+end up with a causal relationship between
+variables.
+
+146
+00:07:17.710 --> 00:07:21.470
+So here's an example of a causal analysis.
+
+147
+00:07:21.470 --> 00:07:25.940
+So basically what they did was, they
+actually did Fecal transplants.
+
+148
+00:07:25.940 --> 00:07:30.980
+It's quite a disgusting procedure of
+giving people transplanting fecal matter
+
+149
+00:07:30.980 --> 00:07:35.640
+into different people so that the bacteria
+populate their colon and they recover
+
+150
+00:07:35.640 --> 00:07:41.140
+better for recurrent infection of a
+particular type here.
+
+151
+00:07:41.140 --> 00:07:44.220
+And so they were able to randomize people
+to get the fecal treatments
+
+152
+00:07:44.220 --> 00:07:46.260
+and then they determined that his
+
+153
+00:07:46.260 --> 00:07:48.980
+treatment was constantly associated with
+better outcomes.
+
+154
+00:07:51.040 --> 00:07:55.050
+Mechanistic analysis is very rarely
+covered in data science, and
+
+155
+00:07:55.050 --> 00:07:57.500
+so it's important to keep in mind just to
+keep
+
+156
+00:07:57.500 --> 00:08:00.150
+a full handle on all types of analyses
+that could
+
+157
+00:08:00.150 --> 00:08:03.330
+be done, but it's very rarely the goal of
+most analyses.
+
+158
+00:08:03.330 --> 00:08:05.810
+The idea is to understand the exact
+changes and
+
+159
+00:08:05.810 --> 00:08:09.140
+variables that lead to exact changes in
+other variables.
+
+160
+00:08:09.140 --> 00:08:13.550
+So this is incredibly hard to infer if the
+NOIDs, data is noisy at all except in
+
+161
+00:08:13.550 --> 00:08:16.390
+very simple situations or in situations
+that are
+
+162
+00:08:16.390 --> 00:08:20.080
+very nicely modeled by a deterministic set
+of equations.
+
+163
+00:08:20.080 --> 00:08:21.720
+The most common applications where this is
+
+164
+00:08:21.720 --> 00:08:24.460
+possible is in the physical or engineering
+sciences
+
+165
+00:08:24.460 --> 00:08:28.000
+where some more simplified models can
+describe
+
+166
+00:08:28.000 --> 00:08:29.680
+a lot of the action that is happening.
+
+167
+00:08:30.880 --> 00:08:32.780
+And generally the only random component
+when
+
+168
+00:08:32.780 --> 00:08:35.180
+you're doing a mechanistic analysis is
+measurement error
+
+169
+00:08:35.180 --> 00:08:38.335
+as opposed to any of the other types of
+variation you might see in data.
+
+170
+00:08:38.335 --> 00:08:43.210
+[SOUND] So here's an example of a
+mechanistic analysis where the
+
+171
+00:08:43.210 --> 00:08:48.100
+idea was to try to actually discover, what
+was the differences
+
+172
+00:08:48.100 --> 00:08:51.040
+and changes that you would make in par,
+pavement design, that
+
+173
+00:08:51.040 --> 00:08:57.980
+would directly lead to changes in, the
+functioning of that pavement.
+
+174
+00:08:57.980 --> 00:08:59.790
+And so those with mechanistic analysis
+like I said, tend
+
+175
+00:08:59.790 --> 00:09:05.070
+to end up in, engineering applications or
+in physics applications.
+
+176
+00:09:05.070 --> 00:09:08.312
+That is a quick tour of the types of
+questions we will cover in data science.
+
+177
+00:09:08.312 --> 00:09:08.438
+[SOUND]

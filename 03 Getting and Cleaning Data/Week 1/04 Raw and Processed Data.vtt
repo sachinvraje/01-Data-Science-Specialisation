@@ -1,0 +1,600 @@
+WEBVTT
+
+1
+00:00:00.440 --> 00:00:01.980
+This lecture is about raw and
+processed data.
+
+2
+00:00:01.980 --> 00:00:05.260
+So I'm gonna be talking a little
+bit about how raw data may
+
+3
+00:00:05.260 --> 00:00:07.520
+be different depending on
+who you're talking to.
+
+4
+00:00:07.520 --> 00:00:10.320
+So some people might consider
+one version of the data raw, and
+
+5
+00:00:10.320 --> 00:00:12.450
+some people might consider
+another version of the data raw.
+
+6
+00:00:14.780 --> 00:00:17.220
+So first I was gonna talk
+about the definition of data.
+
+7
+00:00:17.220 --> 00:00:22.000
+So as we saw in the data scientist
+toolbox, data are values of qualitative or
+
+8
+00:00:22.000 --> 00:00:24.260
+quantitative variables,
+belonging to a set of items.
+
+9
+00:00:24.260 --> 00:00:27.100
+So the set of items might
+be the population or
+
+10
+00:00:27.100 --> 00:00:29.310
+the set of objects that you
+might be interested in.
+
+11
+00:00:30.350 --> 00:00:33.200
+And the values of course
+quantitative variables and
+
+12
+00:00:33.200 --> 00:00:35.040
+the variables are the things
+that your measuring.
+
+13
+00:00:36.080 --> 00:00:39.310
+And you might measure them in qualitative
+terms or in quantitative terms.
+
+14
+00:00:39.310 --> 00:00:42.680
+So usually when we think about variables
+we think about things like this.
+
+15
+00:00:42.680 --> 00:00:43.770
+If you look down here at the bottom.
+
+16
+00:00:43.770 --> 00:00:47.430
+We think about country of origin,
+sex, treatment, and
+
+17
+00:00:47.430 --> 00:00:49.890
+quantitative variables like height,
+weight, blood pressure.
+
+18
+00:00:49.890 --> 00:00:52.620
+A lot of these measurements
+are actually derived
+
+19
+00:00:52.620 --> 00:00:54.310
+from much lower level measurements.
+
+20
+00:00:54.310 --> 00:00:57.450
+So for example,
+if you think about blood pressure,
+
+21
+00:00:57.450 --> 00:01:01.490
+blood pressure's actually measured by
+calculating a pressure measurement.
+
+22
+00:01:01.490 --> 00:01:04.570
+And so there's actually a lot
+of low level things that go
+
+23
+00:01:04.570 --> 00:01:07.180
+into calculating that
+pressure measurement.
+
+24
+00:01:07.180 --> 00:01:10.280
+And so those low level things
+are the kinds of things
+
+25
+00:01:10.280 --> 00:01:13.850
+that we're going to be talking
+about in raw versus processed data.
+
+26
+00:01:13.850 --> 00:01:16.730
+So the raw data are the original
+source of data,
+
+27
+00:01:16.730 --> 00:01:20.990
+they're often very hard to use for data
+analyses because they're complicated or
+
+28
+00:01:20.990 --> 00:01:25.670
+they're hard to parse or
+they're very hard to analyze.
+
+29
+00:01:25.670 --> 00:01:30.600
+Data analysis actually includes the
+processing or the cleaning of the data.
+
+30
+00:01:30.600 --> 00:01:34.410
+If you go and obtain a dataset that's
+actually a raw image file and you process
+
+31
+00:01:34.410 --> 00:01:39.450
+it, and turn it into a nice data frame
+that then you use to analyze an ARM.
+
+32
+00:01:39.450 --> 00:01:42.230
+That data processing actually
+is part of the data analysis,
+
+33
+00:01:42.230 --> 00:01:43.980
+your data science pipeline.
+
+34
+00:01:43.980 --> 00:01:47.280
+In fact a huge component of a data
+scientist's job is performing those sorts
+
+35
+00:01:47.280 --> 00:01:48.090
+of processing operations.
+
+36
+00:01:48.090 --> 00:01:52.640
+The raw data may only need to be processed
+once, but regardless of how often you
+
+37
+00:01:52.640 --> 00:01:55.930
+process it, you need to keep a record
+of all the different things you did.
+
+38
+00:01:55.930 --> 00:01:58.960
+Because it can have a major impact
+on the data stream analysis.
+
+39
+00:01:58.960 --> 00:02:02.770
+The processed data is data
+that is ready for analysis.
+
+40
+00:02:02.770 --> 00:02:07.640
+So the processing of the data might
+include merging, subsetting, transforming,
+
+41
+00:02:07.640 --> 00:02:10.260
+or you might go into a file and
+extract out a part of an image.
+
+42
+00:02:10.260 --> 00:02:11.980
+You might go into a file and
+
+43
+00:02:11.980 --> 00:02:15.240
+extract out a little bit of text
+from a preformed text field.
+
+44
+00:02:15.240 --> 00:02:18.240
+Or you may do a number of other things.
+
+45
+00:02:18.240 --> 00:02:21.820
+Depending on the field that you work in,
+there may be standards for processing.
+
+46
+00:02:21.820 --> 00:02:23.430
+For example,
+in the area where I work, genomics,
+
+47
+00:02:23.430 --> 00:02:27.890
+there are a lot of really standard
+preprocessing techniques that need to be
+
+48
+00:02:27.890 --> 00:02:29.930
+applied before you can analyze data.
+
+49
+00:02:29.930 --> 00:02:33.020
+A critical, critical component is
+that all steps should be recorded.
+
+50
+00:02:33.020 --> 00:02:35.450
+I can't state this strongly enough.
+
+51
+00:02:35.450 --> 00:02:39.238
+Preprocessing often ends up being the most
+important component of a data analysis in
+
+52
+00:02:39.238 --> 00:02:41.064
+terms of affect on the downstream data.
+
+53
+00:02:41.064 --> 00:02:45.894
+So paying attention to all the steps that
+you did is critically important if you're
+
+54
+00:02:45.894 --> 00:02:50.518
+going to be a data scientist who's
+careful about understanding what's really
+
+55
+00:02:50.518 --> 00:02:53.571
+happening in the entire
+data processing pipeline.
+
+56
+00:02:53.571 --> 00:02:57.651
+So, I'm gonna give you one really quick
+example of a processing pipeline just to
+
+57
+00:02:57.651 --> 00:03:01.080
+illustrate what I mean by there
+being different levels of raw data.
+
+58
+00:03:01.080 --> 00:03:03.183
+So, this an Illumina HiSeq machine,
+
+59
+00:03:03.183 --> 00:03:07.680
+so what this machine can be
+used to do is to sequence DNA.
+
+60
+00:03:07.680 --> 00:03:12.770
+And so that sequencing is much, much
+faster now than it used to be in the past.
+
+61
+00:03:12.770 --> 00:03:16.938
+When the original Human Genome Project
+got started, it took almost a decade and
+
+62
+00:03:16.938 --> 00:03:20.170
+over a $1 billion to
+sequence one human genome.
+
+63
+00:03:20.170 --> 00:03:23.780
+And that same process can now
+be performed in about a week for
+
+64
+00:03:23.780 --> 00:03:24.950
+about $10,000 using a machine like this.
+
+65
+00:03:26.040 --> 00:03:29.990
+So it's an example of how data
+are becoming more and more cheap and
+
+66
+00:03:29.990 --> 00:03:31.066
+easier to collect.
+
+67
+00:03:31.066 --> 00:03:38.690
+And so the way that this machine works
+in a very, very rough overview is,
+
+68
+00:03:38.690 --> 00:03:42.510
+you end up with, you can imagine how
+you could start with fragments of DNA.
+
+69
+00:03:42.510 --> 00:03:46.410
+So it starts with little fragments
+of DNA which are bound to a slide.
+
+70
+00:03:47.520 --> 00:03:50.290
+So each fragment might
+be 500 letters long,
+
+71
+00:03:50.290 --> 00:03:54.278
+so you can think of your DNA as
+a string of 3 billion letters.
+
+72
+00:03:54.278 --> 00:03:59.020
+And so you take a small chunk of that,
+500 letters, and bind it to this slide.
+
+73
+00:03:59.020 --> 00:04:01.550
+And then there's a chemical
+process by which multiple
+
+74
+00:04:01.550 --> 00:04:03.570
+copies of that same sequence are made.
+
+75
+00:04:04.580 --> 00:04:05.950
+And so what ends up happening is
+
+76
+00:04:07.230 --> 00:04:10.840
+this process is performed
+through sequencing by synthesis.
+
+77
+00:04:10.840 --> 00:04:15.410
+And so what happens is the complementary
+base or the complementary letter to each
+
+78
+00:04:15.410 --> 00:04:19.470
+letter in the sequence that's attached
+to the slide is attached one at a time.
+
+79
+00:04:20.590 --> 00:04:24.810
+And each different letter A, C,
+T, and G get a different color.
+
+80
+00:04:24.810 --> 00:04:27.200
+So what happens is, for
+each little cluster,
+
+81
+00:04:27.200 --> 00:04:32.960
+you get a color at every single
+new nucleotide that's synthesized.
+
+82
+00:04:32.960 --> 00:04:36.920
+And so
+those colors create a series of images.
+
+83
+00:04:36.920 --> 00:04:37.810
+And so, for example,
+
+84
+00:04:37.810 --> 00:04:41.470
+when you're synthesizing the first
+nucleotide you might get this image.
+
+85
+00:04:41.470 --> 00:04:44.570
+Then this image at the second one and
+this image at the third one and so forth.
+
+86
+00:04:45.790 --> 00:04:51.000
+If you zoom in on one specific little dot,
+that corresponds to the sequence of
+
+87
+00:04:51.000 --> 00:04:56.350
+exactly one of these little clusters
+of sequences that are exactly the same.
+
+88
+00:04:57.850 --> 00:05:01.128
+And so what you can do is you can
+follow along from image to image,
+
+89
+00:05:01.128 --> 00:05:04.466
+you can see what the color is in
+that image, and in that image, and
+
+90
+00:05:04.466 --> 00:05:06.254
+in that image, and in that image.
+
+91
+00:05:06.254 --> 00:05:11.022
+And what you end up with is, for each
+image, the color corresponding to each
+
+92
+00:05:11.022 --> 00:05:16.331
+letter, whichever one is the brightest is
+the one that you assign to that sequence.
+
+93
+00:05:16.331 --> 00:05:21.014
+So for example, in the very first
+letter for this particular fragment is
+
+94
+00:05:21.014 --> 00:05:25.770
+going to be a C, because you can see
+that of these four letters right here,
+
+95
+00:05:25.770 --> 00:05:27.800
+the C is actually the highest.
+
+96
+00:05:28.840 --> 00:05:33.130
+And then in the second nucleotide,
+you can actually see
+
+97
+00:05:33.130 --> 00:05:37.640
+that the highest letter out of these four,
+or the most bright letter, is the G.
+
+98
+00:05:37.640 --> 00:05:40.808
+And so the next letter that we'd
+assign would be a G and so forth.
+
+99
+00:05:40.808 --> 00:05:45.560
+So, the final thing that you end up
+with is something like this FASTQ
+
+100
+00:05:45.560 --> 00:05:47.930
+file that I've shown
+a few times in the class.
+
+101
+00:05:47.930 --> 00:05:51.010
+So the FASTQ file is a text file where,
+for
+
+102
+00:05:51.010 --> 00:05:54.560
+each of these little fragments
+that you've got on the plate,
+
+103
+00:05:54.560 --> 00:05:58.240
+you actually see a specific set
+of letters, As, Cs, Ts and Gs.
+
+104
+00:05:58.240 --> 00:06:02.580
+So you can think about the raw data
+being in several different steps.
+
+105
+00:06:02.580 --> 00:06:06.310
+So the raw data might be these image files
+down here, so you have to process those
+
+106
+00:06:06.310 --> 00:06:11.280
+image files in order to get these profiles
+here for each different fragment.
+
+107
+00:06:11.280 --> 00:06:14.490
+And then after you have the profiles
+you have to process those in order
+
+108
+00:06:14.490 --> 00:06:17.270
+to make predictions about which
+letters should go into the sequences
+
+109
+00:06:17.270 --> 00:06:19.170
+that actually end up right here.
+
+110
+00:06:19.170 --> 00:06:21.630
+So any of these stages
+could be considered raw and
+
+111
+00:06:21.630 --> 00:06:25.050
+in each of these stages there are a number
+of computational steps that could have
+
+112
+00:06:25.050 --> 00:06:27.430
+major impact that must be applied.
+
+113
+00:06:27.430 --> 00:06:31.260
+And so one thing to keep in mind when
+you're doing data analysis is, frequently,
+
+114
+00:06:31.260 --> 00:06:36.830
+you might end up analyzing these so called
+reads, that come off of this machine.
+
+115
+00:06:36.830 --> 00:06:38.960
+Or you might even analyze
+something that's downstream,
+
+116
+00:06:38.960 --> 00:06:41.940
+say some counts based on
+adding up some of those reads.
+
+117
+00:06:42.980 --> 00:06:43.840
+When you do that,
+
+118
+00:06:43.840 --> 00:06:48.320
+you're glossing over the fact that all of
+these processing steps happen beforehand.
+
+119
+00:06:48.320 --> 00:06:51.390
+And so those processing steps
+can have a major impact.
+
+120
+00:06:51.390 --> 00:06:54.080
+And part of this course is sort of
+understanding what those processing
+
+121
+00:06:54.080 --> 00:06:58.390
+steps are so you can make sure that
+your analysis isn't being driven by
+
+122
+00:06:58.390 --> 00:07:01.910
+artifacts caused by the way that you
+went from the raw data to the tidy data.
+
+123
+00:07:01.910 --> 00:07:05.180
+So that's what getting data is all about,
+is taking raw data and
+
+124
+00:07:05.180 --> 00:07:06.510
+turning it into processed data.

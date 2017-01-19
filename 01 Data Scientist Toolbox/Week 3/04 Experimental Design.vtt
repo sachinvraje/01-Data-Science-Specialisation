@@ -1,0 +1,1456 @@
+WEBVTT
+
+1
+00:00:00.420 --> 00:00:03.060
+This lecture is about the basics of
+Experimental design.
+
+2
+00:00:03.060 --> 00:00:04.340
+You'll see a lot more about this
+
+3
+00:00:04.340 --> 00:00:07.630
+topic in other courses like Inference and
+Prediction.
+
+4
+00:00:07.630 --> 00:00:10.300
+But I thought I'd just give you a little
+bit of the basics, so you can get started.
+
+5
+00:00:11.780 --> 00:00:13.610
+So why should you care about experimental
+design?
+
+6
+00:00:13.610 --> 00:00:16.370
+I'm going to use an example to illustrate
+why you should.
+
+7
+00:00:16.370 --> 00:00:18.760
+This is an example that actually comes
+from my area of research.
+
+8
+00:00:18.760 --> 00:00:22.470
+This is an area where they have used ge-,
+genomic information, so information
+
+9
+00:00:22.470 --> 00:00:27.280
+about your genomes to predict what kind of
+chemotherapy you might respond to best.
+
+10
+00:00:27.280 --> 00:00:30.060
+This was an incredibly exciting result,
+because it would open
+
+11
+00:00:30.060 --> 00:00:33.390
+the door for all sorts of personalized
+medicine within cancer therapeutics.
+
+12
+00:00:34.820 --> 00:00:38.740
+Unfortunately, they actually performed a
+very flawed study design, and a
+
+13
+00:00:38.740 --> 00:00:42.800
+very flawed statistical analysis, which
+was pointed out later in this paper.
+
+14
+00:00:44.580 --> 00:00:47.980
+Even more unfortunately, the studied had
+already been on going
+
+15
+00:00:47.980 --> 00:00:50.680
+for a long time, and they'd actually
+started clinical trials.
+
+16
+00:00:50.680 --> 00:00:53.440
+But they were using those predictions that
+they'd developed in
+
+17
+00:00:53.440 --> 00:00:57.140
+the earlier study to decide what
+chemo-therapies people should get.
+
+18
+00:00:57.140 --> 00:00:58.730
+This was causing all sorts of problems for
+
+19
+00:00:58.730 --> 00:01:01.440
+people because they had performed a poor
+analysis.
+
+20
+00:01:01.440 --> 00:01:05.520
+So this ultimately led to a lawsuit from
+the people that were
+
+21
+00:01:05.520 --> 00:01:09.070
+enrolled in the clinical trial against the
+original investigators who developed the
+
+22
+00:01:09.070 --> 00:01:13.240
+predictive model, this illustrates how a
+very exciting result can lead you
+
+23
+00:01:13.240 --> 00:01:16.670
+astray if you are not very careful about
+experimental design and analysis.
+
+24
+00:01:18.580 --> 00:01:21.920
+The first thing to be aware of when
+performing any sort of an
+
+25
+00:01:21.920 --> 00:01:23.870
+experimental design or data science
+project
+
+26
+00:01:23.870 --> 00:01:26.290
+is to care about the analysis plan.
+
+27
+00:01:26.290 --> 00:01:28.770
+This is actually a publishes paper where,
+believe it
+
+28
+00:01:28.770 --> 00:01:31.430
+or not, in the abstract of the published
+paper, it
+
+29
+00:01:31.430 --> 00:01:34.580
+says insert statistical method here
+because the person who was
+
+30
+00:01:34.580 --> 00:01:37.900
+writing the paper didn't know what the
+statistical method was.
+
+31
+00:01:37.900 --> 00:01:39.710
+It's critically important that you pay
+attention to
+
+32
+00:01:39.710 --> 00:01:42.100
+all aspects of the design and analysis of
+the
+
+33
+00:01:42.100 --> 00:01:44.690
+study so that everything from the data
+cleaning
+
+34
+00:01:44.690 --> 00:01:46.970
+to the data analysis to the reporting so
+that
+
+35
+00:01:46.970 --> 00:01:48.620
+you don't end up, first of all in
+
+36
+00:01:48.620 --> 00:01:51.720
+silly, embarrassing situations like this,
+but more importantly so
+
+37
+00:01:51.720 --> 00:01:53.860
+that you're aware of what are the key
+issues
+
+38
+00:01:53.860 --> 00:01:55.550
+in the study design that can trip you up.
+
+39
+00:01:57.370 --> 00:02:00.760
+Regardless of what study you are doing,
+you need to plan
+
+40
+00:02:00.760 --> 00:02:04.990
+for data and code sharing, you all now
+have GitHub accounts
+
+41
+00:02:04.990 --> 00:02:07.640
+that you have developed either through
+this course or previously to
+
+42
+00:02:07.640 --> 00:02:10.800
+the course, so that is a good place to
+share your code.
+
+43
+00:02:10.800 --> 00:02:12.420
+If you want to share your data with very
+
+44
+00:02:12.420 --> 00:02:14.760
+small amounts, you can share it on the
+GitHub.
+
+45
+00:02:14.760 --> 00:02:17.540
+Larger amounts might go on a site like
+FigShare, where you can
+
+46
+00:02:17.540 --> 00:02:21.710
+share your scientific data, and also other
+kinds of data with other people.
+
+47
+00:02:21.710 --> 00:02:25.720
+But you might also need a larger data
+sharing plan, if your data
+
+48
+00:02:25.720 --> 00:02:30.410
+are much more unwieldy, or large and can't
+be shared on the websites.
+
+49
+00:02:30.410 --> 00:02:33.540
+If you don't have a data sharing plan, can
+I recommend mine?
+
+50
+00:02:33.540 --> 00:02:36.140
+The leek group has developed a guide to
+data
+
+51
+00:02:36.140 --> 00:02:39.930
+sharing that you can find at this website
+here, that
+
+52
+00:02:39.930 --> 00:02:42.160
+outlines all the steps that are involved
+in taking a
+
+53
+00:02:42.160 --> 00:02:44.690
+broad data set and making it available to
+other people.
+
+54
+00:02:44.690 --> 00:02:45.190
+So
+
+55
+00:02:46.870 --> 00:02:48.120
+the first thing that you need to do when
+you're
+
+56
+00:02:48.120 --> 00:02:51.750
+actually performing an experiment is
+formulate your question in advance.
+
+57
+00:02:51.750 --> 00:02:54.750
+So the key component of data science, if
+we were going to define it
+
+58
+00:02:54.750 --> 00:02:56.670
+for the purposes of this course track,
+
+59
+00:02:56.670 --> 00:02:58.950
+is that it's actually a scientific
+discipline.
+
+60
+00:02:58.950 --> 00:03:02.620
+And a scientific discipline requires that
+you're answering a specific
+
+61
+00:03:02.620 --> 00:03:06.710
+question when you're using data, so here's
+one example of that.
+
+62
+00:03:06.710 --> 00:03:09.630
+This is actually a study that was
+performed by Barack
+
+63
+00:03:09.630 --> 00:03:13.590
+Obama when he was running for re-election
+for United States Presidency.
+
+64
+00:03:14.910 --> 00:03:18.600
+What they did was they compared two
+versions of a website, whether they were
+
+65
+00:03:18.600 --> 00:03:22.490
+going to change the text on the website
+and see if it would improve donations.
+
+66
+00:03:23.620 --> 00:03:27.290
+So the experiment was to randomly show
+visitors one version or the other
+
+67
+00:03:27.290 --> 00:03:29.180
+of the website, measure how much they
+
+68
+00:03:29.180 --> 00:03:31.060
+donate, and then determine which is
+better.
+
+69
+00:03:32.280 --> 00:03:35.030
+This brings us to the key idea of a
+
+70
+00:03:35.030 --> 00:03:38.170
+large component of data science, which is
+statistical inference.
+
+71
+00:03:39.190 --> 00:03:41.110
+They wouldn't want to show the website to
+every single
+
+72
+00:03:41.110 --> 00:03:43.780
+person, because it would be expensive to
+run that experiment.
+
+73
+00:03:43.780 --> 00:03:47.790
+So the population of people is all
+possible donors in the United States.
+
+74
+00:03:47.790 --> 00:03:52.100
+All possible people that might go to
+Barack Obama's website to donate.
+
+75
+00:03:52.100 --> 00:03:57.980
+They might select some small subset of
+those with a probability argument
+
+76
+00:03:57.980 --> 00:04:02.590
+to decide to show them one version or the
+other of the website.
+
+77
+00:04:02.590 --> 00:04:05.730
+This would result in a sample, a much
+smaller number of people that had
+
+78
+00:04:05.730 --> 00:04:07.700
+observed the data, or had observed the
+
+79
+00:04:07.700 --> 00:04:10.910
+websites and decided whether to donate or
+not.
+
+80
+00:04:10.910 --> 00:04:14.640
+They would then calculate descriptive
+statistics, say the total number of
+
+81
+00:04:14.640 --> 00:04:18.120
+donations that they got over a certain
+number of visits, or
+
+82
+00:04:18.120 --> 00:04:21.300
+the average number of donations, amount of
+donations, they got over
+
+83
+00:04:21.300 --> 00:04:26.060
+a certain number of visits, and then they
+would use inferential statistics.
+
+84
+00:04:26.060 --> 00:04:28.900
+To try to decide if the statistics that
+they
+
+85
+00:04:28.900 --> 00:04:32.520
+calculated on this small sample would play
+out in the
+
+86
+00:04:32.520 --> 00:04:34.420
+same way if they applied it to the large
+
+87
+00:04:34.420 --> 00:04:36.720
+population of all people that might come
+to the website.
+
+88
+00:04:38.900 --> 00:04:41.540
+So in here is one scenario, suppose that
+the
+
+89
+00:04:41.540 --> 00:04:44.220
+data work that they collected
+hypothetically turned out this
+
+90
+00:04:44.220 --> 00:04:46.760
+way, there were two versions of the
+website, there
+
+91
+00:04:46.760 --> 00:04:49.871
+was the donate version and there was the
+sign-up version.
+
+92
+00:04:49.871 --> 00:04:52.510
+And so what they could do is they could
+say for every
+
+93
+00:04:52.510 --> 00:04:56.650
+1000 visitors, what was the total number
+of dollars that were donated?
+
+94
+00:04:56.650 --> 00:05:00.760
+So if they did that over a, or the average
+number of dollars donated.
+
+95
+00:05:01.830 --> 00:05:09.860
+So for a 1000 visits you might get about
+$6,000 on average over a course of a week.
+
+96
+00:05:09.860 --> 00:05:13.260
+And so, suppose you ran that experiment
+three different times.
+
+97
+00:05:13.260 --> 00:05:15.200
+You might get observations of very
+
+98
+00:05:15.200 --> 00:05:16.550
+different amounts of dollars that you
+would
+
+99
+00:05:16.550 --> 00:05:20.210
+observe for the donate case, and for the
+sign-up version of the website.
+
+100
+00:05:21.320 --> 00:05:24.090
+So what you see here is that the average
+number of donations may
+
+101
+00:05:24.090 --> 00:05:26.900
+be more or less the same, or it may be
+slightly different, but
+
+102
+00:05:26.900 --> 00:05:30.440
+it's very hard to tell, because at each of
+the different experiments, you
+
+103
+00:05:30.440 --> 00:05:33.990
+get a highly variable answer, under both
+of the different versions of the website.
+
+104
+00:05:35.430 --> 00:05:37.540
+Here's another hypothetical case.
+
+105
+00:05:37.540 --> 00:05:43.930
+Suppose in this case, you got a very
+slightly smaller number of dollars donated
+
+106
+00:05:43.930 --> 00:05:47.660
+under when you showed the sign up version
+than you did the donate version.
+
+107
+00:05:47.660 --> 00:05:50.220
+Here, the variability is much smaller, so
+you can tell
+
+108
+00:05:50.220 --> 00:05:53.330
+for sure that the donate version gives you
+more money.
+
+109
+00:05:53.330 --> 00:05:55.450
+You might implement the donate version,
+but it's not
+
+110
+00:05:55.450 --> 00:05:57.200
+sort of the that would be a huge benefit.
+
+111
+00:05:58.600 --> 00:06:00.810
+The much bigger benefit comes when you run
+
+112
+00:06:00.810 --> 00:06:03.900
+the same experiment, and a domain version
+has
+
+113
+00:06:03.900 --> 00:06:06.890
+small variability, and the sign up version
+has
+
+114
+00:06:06.890 --> 00:06:09.830
+small variability in the total number of
+dollars donated.
+
+115
+00:06:09.830 --> 00:06:14.170
+But there's a large difference between the
+amount people donated when they saw
+
+116
+00:06:14.170 --> 00:06:18.880
+the donate sign, and the amount they
+donated when they saw the sign outside.
+
+117
+00:06:18.880 --> 00:06:21.120
+So this overwhelms the variability that
+they saw in
+
+118
+00:06:21.120 --> 00:06:23.730
+the experiment and so it is very
+interesting for them,
+
+119
+00:06:23.730 --> 00:06:26.060
+and would suggest they should only show
+the donate
+
+120
+00:06:26.060 --> 00:06:29.830
+version of the website to people that came
+to visit.
+
+121
+00:06:29.830 --> 00:06:32.850
+Another important issue is the issue of
+confounding.
+
+122
+00:06:32.850 --> 00:06:37.770
+So suppose in a particular study that you
+measured both shoe size and
+
+123
+00:06:37.770 --> 00:06:40.170
+literacy and suppose that you were looking
+
+124
+00:06:40.170 --> 00:06:42.440
+for correlations between shoe size and
+literacy.
+
+125
+00:06:43.520 --> 00:06:46.450
+You might actually observe quite a few of
+these correlations,
+
+126
+00:06:46.450 --> 00:06:49.770
+because people with small shoes tend to
+have less literacy.
+
+127
+00:06:49.770 --> 00:06:52.950
+But what you might be missing is that
+
+128
+00:06:52.950 --> 00:06:56.520
+age is actually the variable that's
+causing this relationship.
+
+129
+00:06:56.520 --> 00:06:58.820
+When you're very young, say a baby, you
+have a
+
+130
+00:06:58.820 --> 00:07:01.840
+very small shoe size, you also have a very
+small literacy.
+
+131
+00:07:02.890 --> 00:07:06.040
+As you get older, you get a larger shoe
+size
+
+132
+00:07:06.040 --> 00:07:10.660
+and a larger literacy so that the variable
+age is actually
+
+133
+00:07:10.660 --> 00:07:13.910
+a confounder for the relationship between
+shoe size and literacy,
+
+134
+00:07:13.910 --> 00:07:17.890
+which might be very, very small once you
+account for age.
+
+135
+00:07:17.890 --> 00:07:21.560
+So if you only measure shoe size and
+literacy, you might
+
+136
+00:07:21.560 --> 00:07:23.860
+be led astray if you observe the
+correlation between these two
+
+137
+00:07:23.860 --> 00:07:28.000
+variables this is what is called
+confounding, so it's paying attention
+
+138
+00:07:28.000 --> 00:07:31.440
+to what are the other variables that might
+be causing a relationship.
+
+139
+00:07:31.440 --> 00:07:35.770
+This plays out all the time in lots of
+different studies, so here's one example.
+
+140
+00:07:35.770 --> 00:07:38.860
+This is actually from a possibly serious
+paper in
+
+141
+00:07:38.860 --> 00:07:41.590
+The New England Journal of Medicine, where
+they plotted
+
+142
+00:07:41.590 --> 00:07:45.650
+chocolate consumption in kilograms per
+year per capita versus
+
+143
+00:07:45.650 --> 00:07:49.020
+the Nobel laureates per ten million in the
+population.
+
+144
+00:07:49.020 --> 00:07:51.820
+And they observed that there's a
+relationship between these two variables.
+
+145
+00:07:53.610 --> 00:07:55.220
+So what could be going on here?
+
+146
+00:07:55.220 --> 00:07:57.170
+There's lots of reasons why you might
+consume
+
+147
+00:07:57.170 --> 00:07:59.690
+more chocolate and have more Nobel Prize
+winners.
+
+148
+00:07:59.690 --> 00:08:03.950
+For example, your country might have
+better education system if they
+
+149
+00:08:03.950 --> 00:08:07.330
+have more money and so they would have
+more Nobel Laureates.
+
+150
+00:08:07.330 --> 00:08:08.950
+And if they have more money per capita,
+they
+
+151
+00:08:08.950 --> 00:08:12.900
+would also probably consume more choclat,
+chocolate per capita.
+
+152
+00:08:12.900 --> 00:08:15.940
+And so there's one reason, not many
+reasons why
+
+153
+00:08:15.940 --> 00:08:20.150
+though, this observed correlation may not
+be an actual relationship.
+
+154
+00:08:20.150 --> 00:08:22.540
+That is due to a scientific relationship
+
+155
+00:08:22.540 --> 00:08:26.030
+between chocolate consumption and Nobel
+Laureates per capita.
+
+156
+00:08:26.030 --> 00:08:29.566
+This is sometimes called Spurious
+correlation and it's also
+
+157
+00:08:29.566 --> 00:08:33.034
+why you often here the phrase correlation
+is not causation.
+
+158
+00:08:33.034 --> 00:08:36.691
+Even if you observe that two variables are
+correlated with each other, you have to
+
+159
+00:08:36.691 --> 00:08:38.811
+prove to yourself that they're not
+correlated
+
+160
+00:08:38.811 --> 00:08:41.305
+because of some other variables we didn't
+measure.
+
+161
+00:08:41.305 --> 00:08:44.470
+So there are some ways that you can deal
+with potential confounders.
+
+162
+00:08:44.470 --> 00:08:49.140
+So one way is you can fix var, fix a bunch
+of variables for example, in the
+
+163
+00:08:49.140 --> 00:08:53.330
+case where you're considering websites for
+Obama, 20 2012,
+
+164
+00:08:53.330 --> 00:08:56.870
+you can fix Obama 2012 on all the
+websites.
+
+165
+00:08:56.870 --> 00:09:01.360
+That should be a two there and then, that
+way, that
+
+166
+00:09:01.360 --> 00:09:04.170
+variable doesn't change no matter what the
+text is that you're showing.
+
+167
+00:09:04.170 --> 00:09:08.050
+People see you fix that variable so it
+can't be a con factor.
+
+168
+00:09:08.050 --> 00:09:09.700
+Another way is, that you can stratify.
+
+169
+00:09:09.700 --> 00:09:12.840
+So suppose you have two website colors,
+and you want to try out both of
+
+170
+00:09:12.840 --> 00:09:15.120
+those website colors with both phrases,
+and
+
+171
+00:09:15.120 --> 00:09:17.440
+you want to know which phrase works
+better.
+
+172
+00:09:17.440 --> 00:09:21.870
+Then what you can do is use both phrases
+equally on both colors.
+
+173
+00:09:21.870 --> 00:09:24.150
+That way, you've stratified your sample so
+you
+
+174
+00:09:24.150 --> 00:09:27.360
+have both website colors used equally with
+both phrases.
+
+175
+00:09:28.820 --> 00:09:31.230
+If you can't do any of the, either of the
+other two things, if you
+
+176
+00:09:31.230 --> 00:09:36.120
+can't fix a variable or stratify it, then
+what you can do is randomize it.
+
+177
+00:09:36.120 --> 00:09:39.970
+And so what we mean by randomization is
+that you need to be able to
+
+178
+00:09:39.970 --> 00:09:45.360
+use a computer program, or flip a coin in
+order randomly assign people to groups.
+
+179
+00:09:45.360 --> 00:09:46.690
+Why does this help?
+
+180
+00:09:46.690 --> 00:09:49.960
+So, suppose that there's a particular
+study that we're preforming, and
+
+181
+00:09:49.960 --> 00:09:54.390
+suppose that there are ten experimental
+units that look like this.
+
+182
+00:09:54.390 --> 00:09:58.260
+So suppose there's a confounding variable,
+and lighter values of that confounding
+
+183
+00:09:58.260 --> 00:10:00.790
+variable correspond, lower values of that
+
+184
+00:10:00.790 --> 00:10:03.380
+confounding variable correspond to lighter
+colors.
+
+185
+00:10:03.380 --> 00:10:07.310
+And higher value of course, compounding
+variable correspond to the
+
+186
+00:10:07.310 --> 00:10:10.550
+darker colors, so you have these
+experimental units, and suppose
+
+187
+00:10:10.550 --> 00:10:13.240
+they are ordered by values in the
+compounding variable, and
+
+188
+00:10:13.240 --> 00:10:17.320
+suppose we are silly enough to apply one
+treatment applied it.
+
+189
+00:10:17.320 --> 00:10:20.220
+All of the var, all of the people that
+have a high value of the confounding
+
+190
+00:10:20.220 --> 00:10:22.700
+variable, and another treatment to all the
+people
+
+191
+00:10:22.700 --> 00:10:25.640
+that have a low value of the confounding
+variable.
+
+192
+00:10:25.640 --> 00:10:27.890
+Then it would be impossible to distinguish
+whether
+
+193
+00:10:27.890 --> 00:10:29.750
+any difference we saw was due to
+differences
+
+194
+00:10:29.750 --> 00:10:31.300
+in treatment, or due to differences in the
+
+195
+00:10:31.300 --> 00:10:35.780
+confounding variable, but if we randomly
+assign the treatment.
+
+196
+00:10:35.780 --> 00:10:38.570
+Then some of the people that get the green
+treatment will have
+
+197
+00:10:38.570 --> 00:10:42.430
+low value of the confounding variable and
+some will have high values.
+
+198
+00:10:42.430 --> 00:10:44.600
+And so since that'll be balanced, we'll
+
+199
+00:10:44.600 --> 00:10:47.040
+be able to determine whether the
+difference will
+
+200
+00:10:47.040 --> 00:10:49.570
+be to determine that the difference in
+treatment
+
+201
+00:10:49.570 --> 00:10:51.469
+is what we're actually observing in the
+outcome.
+
+202
+00:10:52.530 --> 00:10:54.780
+So for a prediction study, you actually
+have slightly
+
+203
+00:10:54.780 --> 00:10:57.540
+different issues that come up from the
+inferential case.
+
+204
+00:10:57.540 --> 00:11:01.420
+So again, you might have a population of
+individuals, and you might not be able
+
+205
+00:11:01.420 --> 00:11:02.770
+to collect the data on all those
+
+206
+00:11:02.770 --> 00:11:05.660
+individuals but you want to predict
+something about them.
+
+207
+00:11:05.660 --> 00:11:07.650
+So for example, we might get individuals
+that
+
+208
+00:11:07.650 --> 00:11:09.680
+come in and we measure something about
+their genome,
+
+209
+00:11:09.680 --> 00:11:12.070
+and we want to predict whether they should
+get
+
+210
+00:11:12.070 --> 00:11:14.030
+whether they're going to respond to
+chemotherapy or not.
+
+211
+00:11:15.130 --> 00:11:18.410
+So what we do is, we collect these
+individuals and we might collect
+
+212
+00:11:18.410 --> 00:11:20.720
+observations from people that did respond
+to
+
+213
+00:11:20.720 --> 00:11:24.110
+chemotherapy, and did not respond to
+chemoptherapy.
+
+214
+00:11:24.110 --> 00:11:25.970
+And then what we want to do is build a
+predictive
+
+215
+00:11:25.970 --> 00:11:28.740
+function so that if we get a new
+individual, we can
+
+216
+00:11:28.740 --> 00:11:33.950
+predict whether they're going to respond
+to chemotherapy up here, as
+
+217
+00:11:33.950 --> 00:11:37.360
+an orange person, or not respond down here
+as a green person.
+
+218
+00:11:37.360 --> 00:11:41.420
+So the idea here is that we'll still need
+to deal with probability and sampling and
+
+219
+00:11:41.420 --> 00:11:45.020
+potential compounding variables, because,
+when we're building this
+
+220
+00:11:45.020 --> 00:11:47.630
+prediction function, we want it to be
+highly accurate.
+
+221
+00:11:48.740 --> 00:11:51.000
+Another issue that comes up is that,
+
+222
+00:11:51.000 --> 00:11:53.570
+prediction is slightly more challenging
+than inference.
+
+223
+00:11:53.570 --> 00:11:55.310
+So for example, if you look at these two
+
+224
+00:11:55.310 --> 00:11:58.670
+populations, the, the population for the
+light grey curve has
+
+225
+00:11:58.670 --> 00:12:02.310
+a mean, value about here, and the
+population for
+
+226
+00:12:02.310 --> 00:12:05.180
+the dark grey curve has a mean value about
+here.
+
+227
+00:12:05.180 --> 00:12:06.420
+If you look at the distribution of
+
+228
+00:12:06.420 --> 00:12:09.440
+observations from these two populations,
+and so what
+
+229
+00:12:09.440 --> 00:12:13.910
+you can see is, there's a difference in
+the P value of these two populations.
+
+230
+00:12:13.910 --> 00:12:16.030
+But if I tell you, for example, that
+
+231
+00:12:16.030 --> 00:12:18.750
+I've observed the value that comes, say,
+right here.
+
+232
+00:12:18.750 --> 00:12:22.930
+It's very difficult to know which of these
+two populations it came
+
+233
+00:12:22.930 --> 00:12:28.250
+from, because it's relatively likely that
+it came from the light gray population.
+
+234
+00:12:28.250 --> 00:12:30.440
+But it's also relatively likely that it
+came from the
+
+235
+00:12:30.440 --> 00:12:33.870
+dark gray population, so it's very
+difficult to tell the difference.
+
+236
+00:12:33.870 --> 00:12:36.420
+For prediction, you actually need the
+distributions to
+
+237
+00:12:36.420 --> 00:12:39.570
+be a little bit more separated, so these
+also,
+
+238
+00:12:39.570 --> 00:12:42.220
+these two distributions also have a
+different mean, but
+
+239
+00:12:42.220 --> 00:12:45.990
+now, they're far enough apart based on
+their variability.
+
+240
+00:12:45.990 --> 00:12:48.150
+That if I give you an observation that
+lands right about
+
+241
+00:12:48.150 --> 00:12:51.450
+here, you know it probably came from the
+dark grid population.
+
+242
+00:12:51.450 --> 00:12:53.260
+Where if I give you an observation here,
+
+243
+00:12:53.260 --> 00:12:55.180
+it probably came from a light grid
+population.
+
+244
+00:12:55.180 --> 00:12:57.530
+So it's important to pay attention to the
+
+245
+00:12:57.530 --> 00:13:00.880
+relative size of effects when considering
+prediction versus inference.
+
+246
+00:13:02.190 --> 00:13:06.880
+For prediction there's several key qual,
+quantities that we need to be aware of.
+
+247
+00:13:06.880 --> 00:13:12.050
+So the first set of key quantities is,
+positive and negative statuses
+
+248
+00:13:12.050 --> 00:13:17.120
+so, for example, this is comes from a test
+a medical testing scenario.
+
+249
+00:13:17.120 --> 00:13:21.740
+So you can have, suppose you can either
+have a disease or not have a disease.
+
+250
+00:13:21.740 --> 00:13:24.760
+So plus means you have the disease, and
+minus means you don't have the
+
+251
+00:13:24.760 --> 00:13:28.830
+disease, and you have a test to determine
+whether you have that disease or not.
+
+252
+00:13:28.830 --> 00:13:30.740
+And the plus means you do, the test was
+
+253
+00:13:30.740 --> 00:13:33.060
+positive, and a negative means the test
+was negative.
+
+254
+00:13:34.400 --> 00:13:38.080
+So, if you have the disease, and you test
+positive, then you're a true positive.
+
+255
+00:13:39.270 --> 00:13:43.940
+If you do not have the disease, and you
+test positive, that's a false positive.
+
+256
+00:13:43.940 --> 00:13:48.340
+If you do not if you have the disease, but
+don't test positive, that's a false
+
+257
+00:13:48.340 --> 00:13:50.700
+negative, and if you don't have the
+disease,
+
+258
+00:13:50.700 --> 00:13:52.499
+and you test negative, that's a true
+negative.
+
+259
+00:13:53.610 --> 00:13:55.670
+Some quantities that you need to pay
+attention to are the
+
+260
+00:13:55.670 --> 00:14:01.390
+probability you have a positive test,
+given you have disease that sensitivity.
+
+261
+00:14:01.390 --> 00:14:03.170
+The probability you have a negative test,
+
+262
+00:14:03.170 --> 00:14:06.290
+given you have no disease that
+specificity.
+
+263
+00:14:06.290 --> 00:14:09.180
+The probability you have disease, given
+you have a positive test.
+
+264
+00:14:09.180 --> 00:14:11.400
+This is probably what you care about if
+you come in to
+
+265
+00:14:11.400 --> 00:14:14.770
+the clinics, so I tell you that you have a
+positive test.
+
+266
+00:14:14.770 --> 00:14:18.360
+Then you want to know, what's the
+probability you have disease.
+
+267
+00:14:18.360 --> 00:14:20.690
+Similarly, I tell you if you have a
+negative test, you might
+
+268
+00:14:20.690 --> 00:14:24.800
+know, you might want to know what's the
+probability that you have disease.
+
+269
+00:14:24.800 --> 00:14:27.290
+Accuracy is just the probability that you
+are correct in
+
+270
+00:14:27.290 --> 00:14:30.900
+the outcome, regardless of whether you are
+positive or negative.
+
+271
+00:14:32.960 --> 00:14:36.050
+Another key component of paying attention
+to big data
+
+272
+00:14:36.050 --> 00:14:39.850
+and data science is data being aware of
+data dredging.
+
+273
+00:14:39.850 --> 00:14:43.230
+So suppose you want to consider something
+silly, like jelly beans cause acne.
+
+274
+00:14:43.230 --> 00:14:46.140
+This comes from an XKCD cartoon.
+
+275
+00:14:46.140 --> 00:14:49.680
+So, scientists could investigate, and they
+find out that jelly
+
+276
+00:14:49.680 --> 00:14:55.420
+beans aren't related to causing accuracy
+or sorry, causing acne.
+
+277
+00:14:55.420 --> 00:14:56.800
+So then what they say well that settles
+
+278
+00:14:56.800 --> 00:14:59.120
+that, but you could try to change your
+hypothesis.
+
+279
+00:14:59.120 --> 00:15:02.860
+You could say oh, well, actually it's just
+purple jelly beans that cause acne.
+
+280
+00:15:02.860 --> 00:15:04.720
+No, it's brown jelly beans that cause
+acne.
+
+281
+00:15:04.720 --> 00:15:06.090
+No, it's pink jelly beans, and you keep
+
+282
+00:15:06.090 --> 00:15:08.550
+going and going and going until you found
+a
+
+283
+00:15:08.550 --> 00:15:11.290
+result that you liked and you'd come up
+with
+
+284
+00:15:11.290 --> 00:15:14.510
+good news, green jelly beans are linked to
+acne.
+
+285
+00:15:14.510 --> 00:15:17.110
+But this of course ignores the fact that
+you
+
+286
+00:15:17.110 --> 00:15:19.190
+can try a whole bunch of different things
+first.
+
+287
+00:15:19.190 --> 00:15:22.590
+So one thing you have to pay attention to
+when dealing with big data,
+
+288
+00:15:22.590 --> 00:15:25.810
+or any data science problem, is being
+aware of the problem of data dredging.
+
+289
+00:15:27.330 --> 00:15:29.440
+So in summary, good experiments have
+
+290
+00:15:29.440 --> 00:15:32.060
+replication so that you can measure
+variability.
+
+291
+00:15:32.060 --> 00:15:35.270
+They'd measure that variability, and
+compare it to the signal that they
+
+292
+00:15:35.270 --> 00:15:39.050
+were looking for, and they'd generalize to
+the problem that you care about.
+
+293
+00:15:39.050 --> 00:15:42.020
+Also important, good experiments are
+transparent
+
+294
+00:15:42.020 --> 00:15:43.470
+in both their code and their data.
+
+295
+00:15:44.540 --> 00:15:46.690
+Prediction is not inference, and both can
+be
+
+296
+00:15:46.690 --> 00:15:49.220
+important but it depends on what your
+application is.
+
+297
+00:15:50.260 --> 00:15:55.240
+Also, in any data science pro, problem,
+you need to be aware of data dredging.
+
+298
+00:15:55.240 --> 00:15:56.940
+The other important issues with
+experimental
+
+299
+00:15:56.940 --> 00:15:58.470
+design, will be covered in later classes.

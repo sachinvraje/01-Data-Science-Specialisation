@@ -1,0 +1,24 @@
+This is an overview of Building Data
+Products, which is a sort of unique class that talks about,
+what do you do with the data analysis or the R functions
+that you've created; once you've built them, and you want to
+share them with somebody else. So, we'll be talking about things like R
+packages, how you build them, develop them and share
+them. This is one of the best ways to get your
+name out there as a data scientist. One of the main ways that people decide
+about people to hire or who to go after is whether they built something that those people use
+themselves. And so, R package is the best way to get
+your name out in that way. We'll also talk about how to make
+interactive graphics with things like rCharts and how to make interactive apps
+with things like Slidify and Shiny. So, R packages you can think of it as sort for the engineers; it's, you're
+going to build an R package to share code that you allow other people to use to improve their
+analysis. So, we're going to teach you how to build
+those; we're also going to teach you how to use rCharts; you can think of
+this is like for marketing, build graphics, interactive
+graphics like you see in the New York Times it'll allow you to share information that
+can be interacted with by other people. And then, finally, Shiny, sort of for end
+users, you can now use R itself to build web
+applications that are quite intricate and involved and allow you
+to just interact with data or interact with your analysis in
+novel and unique ways. So, we'll talk about all of these things
+in Building Data Products.

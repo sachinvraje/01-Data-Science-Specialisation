@@ -1,0 +1,148 @@
+This lecture's about the Types of Data
+Science Questions. So last week we covered a lot of installation and building up software
+and this week we're going to cover a little bit more about the conceptual ideas behind
+data science. So there are, a few different kinds of
+data science questions that I've listed up here in their approximate order of
+difficulty of actually achieving the goal of that
+analysis. So it starts with descriptive, and then it goes to exploratory, inferential,
+predictive, causal, and mechanistic. And I'm going to talk about each of these types of analysis over the next couple of
+slides. So the first is the descriptive analysis. So the goal here is just to describe a set
+of data. You're not trying to make any sort of decisions based on it or anything like
+that. It's the first kind of data analysis that
+was ever performed. And it's most commonly applied when you're
+talking about census data. The description and interpretation of this
+data are sort of different steps, so you gotta describe the data and then
+interpret what you've seen. Descriptions can usually not be generalized without additional statistical
+modeling. So in other words, you are describing what
+you are seeing in this data but you are not saying what that might be for
+the next person that might come along. So an example of a descriptive analysis is
+this US census. So this is a picture of the census twenty ten, a website that has collected a bunch
+of information about people in the United
+States and they are not necessarily analyzing it to
+predict something about, [INAUDIBLE]. Now other people or other countries they're just trying to describe the
+population. Another descriptive ex, analysis is the
+Google Ngram Viewer. So what this is is it's a collection of information about pairs or triplets of
+words. And so for example this is a plot over
+time of the observation of those, of the words Albert Einstein, Sherlock
+Holmes, and Frankenstein in books that have been scraped by Google. And so, again, this isn't trying to infer
+anything when making decisions. You could do that, but this is just purely
+a description of what's going on. The next is exploratory analysis. So here you're trying to look at some data
+and find relationships that you didn't know about previously, but not necessarily confirm
+them. So they're good for discovering new
+connections, and they're also useful to find, for
+defining future data science projects, where you're
+actually trying to confirm the exploration that
+you've performed. They're usually not the final say on any
+particular problem, and they usually shouldn't be used for
+generalizing or predicting. The important point is that you've
+probably heard before that correlation does not
+imply causation. So, you don't want to necessarily save it. You've discovered a relationship that is
+the critical relationship between two variables based
+on exploratory analysis alone. So here's an example of an exploratory analysis, where we're looking at brain
+images and trying to identify regions of the brain
+that lit up in response to a particular
+stimulus. So they explored this data, and they
+observed, you know, here's a region that lights up in response
+to that stimulus. And here's another re, region that lights
+up in response to the stimulus. And they haven't necessarily confirmed
+that that, what that means, but they've just discovered a new connection that they
+hadn't seen before they had this data. Another example that's actually hosted
+here at Johns Hopkin's is the Sloan Digital Sky
+Survey. So this is just terabytes or even more of data that has been collected looking at
+the night sky. So it's actually pictures of the night sky
+at different times and at different places
+that you can explore to try to discover new stars or
+try to discover how different things in the
+universe work together. And so, that data is actually used for
+exploration, but not necessarily for confirming
+anything that you discover. Then inferential analysis is a goal where
+you're actually trying to take a small amount of data, on a small number of observations, and sort
+of extrapolate that information, or generalize that
+information to a larger population. Inference is definitely the most common
+goal of most statistical models, and most statistics
+you may have heard about. It involves both estimating some quantity that you're interested in
+and also, more importantly maybe, the
+uncertainty of that quantity that you're interested
+in. And it depends heavily both on the population that you're looking at, the
+group of people or the group of objects that you care about, and a sampling you've
+discovered. So this is an example of, inferential
+analysis. So the idea is, here, you're trying to
+look at the, effect of air pollution control on life
+expectancy in the United States. So, what they've done is, they haven't
+analysed all of the counties in the United States, but they've analysed, so, sort of
+a subset of the counties in the United
+States. And they're using that to try to infer
+something about what's generally happening in the relationship
+between air pollution and life expectancy. Prediction analysis is a little bit
+different. The inferential analysis is that usually a
+little bit more challenging. So the idea is to use the data on some
+objects you collect the data on, to predict the values for another object
+for the next observation that comes to the
+door. An important thing to keep in mind is that
+even if x predicts y, it does not mean that x
+causes y. That's one of the main fallacies that you can run into when dealing with predictive
+analysis. Accurate prediction depends heavily on
+measuring the right variables. And although there are better and worse
+prediction models, it's pretty clear that more data and simple model
+tends to work really well. Prediction is very hard, especially about
+the future, and so I've, I, this is a, a funny quote that it's very
+accurate actually and I've listed some references here where you, or link to
+some references here where you can see other people who have said that
+same pre, thing over and over. So here's an example of a predictive
+analysis. So Nate Silver is one of the data
+scientists I mentioned earlier and FiveThrityEight is his blog where he tries
+to predict the outcome of U.S. elections. So what he does is he takes data from
+polling and he tries to predict what's going to happen
+in the next Presidential vote. And he was very accurate in doing that in
+both the two thousand and eight and two
+thousand and twelve elections. Here's another example, so it's another
+sort of bad example, if you were the teen in
+question. So, target figured out a teen girl was pregnant, before her father did, by
+looking at the purchases she made, and it sent her
+a flyer saying she was pregnant. Of course, the father and girl was a
+little upset, because he didn't know that she was
+pregnant. But it was example of how you could use data to predict characteristics of
+people including metadata. Causal analysis is a next level up. It's substantially harder to identify
+causal relationships from data. So the idea is, what happens if you change
+the values of one variable? What will, how will that change the value
+of another variable? The gold standard for doing this in
+general is using randomized studies or randomized
+controlled trials to identify causation. And you can try to do it from just
+observed data that you have saved in the database but it's a
+much harder sell. You have to make much stronger assumptions
+about the way that your model is work, [SOUND]
+working. Causal relationships are usually
+identified as average effects, in other words, on average, if we give this
+population a particular drug, then on average they will only have
+a little bit longer then if you didn't give them
+that drug. So these are usually the gold standard for
+data analysis in a particular for most scientific applications the goal is
+to end up with a causal relationship between
+variables. So here's an example of a causal analysis. So basically what they did was, they
+actually did Fecal transplants. It's quite a disgusting procedure of
+giving people transplanting fecal matter into different people so that the bacteria
+populate their colon and they recover better for recurrent infection of a
+particular type here. And so they were able to randomize people
+to get the fecal treatments and then they determined that his treatment was constantly associated with
+better outcomes. Mechanistic analysis is very rarely
+covered in data science, and so it's important to keep in mind just to
+keep a full handle on all types of analyses
+that could be done, but it's very rarely the goal of
+most analyses. The idea is to understand the exact
+changes and variables that lead to exact changes in
+other variables. So this is incredibly hard to infer if the
+NOIDs, data is noisy at all except in very simple situations or in situations
+that are very nicely modeled by a deterministic set
+of equations. The most common applications where this is possible is in the physical or engineering
+sciences where some more simplified models can
+describe a lot of the action that is happening. And generally the only random component
+when you're doing a mechanistic analysis is
+measurement error as opposed to any of the other types of
+variation you might see in data. [SOUND] So here's an example of a
+mechanistic analysis where the idea was to try to actually discover, what
+was the differences and changes that you would make in par,
+pavement design, that would directly lead to changes in, the
+functioning of that pavement. And so those with mechanistic analysis
+like I said, tend to end up in, engineering applications or
+in physics applications. That is a quick tour of the types of
+questions we will cover in data science. [SOUND]

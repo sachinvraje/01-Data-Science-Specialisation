@@ -1,0 +1,18 @@
+Statistical Inference is going to be a
+course that covers many of the foundational ideas that are involved with extracting generalizable information
+from data. And so, the course will cover things like
+basic probability, likelihoods common distributions,
+confidence intervals, hypothesis tests, bootstrapping and power. These are the sort of fundamental ideas
+that you often hear coming up when people are
+reporting data analysis. So, for example, we'll talk about sort of
+the way that you model mathematically coin
+flips or proportions. We'll also talk a little bit about how you
+model more continuous distributions, things like, with the
+normal distribution which you've probably heard
+about. As a way to measure sort of the
+variability about a large number of different things including IQ
+and height and things like that. And then we'll talk about things like
+bootstrapping, where you actually use the data itself to sort of
+create measures of variability that you can use to sort of
+decide how generalizable are the answers that you get from
+performing any particular analysis.

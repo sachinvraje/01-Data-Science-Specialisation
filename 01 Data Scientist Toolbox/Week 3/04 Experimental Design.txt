@@ -1,0 +1,260 @@
+This lecture is about the basics of
+Experimental design. You'll see a lot more about this topic in other courses like Inference and
+Prediction. But I thought I'd just give you a little
+bit of the basics, so you can get started. So why should you care about experimental
+design? I'm going to use an example to illustrate
+why you should. This is an example that actually comes
+from my area of research. This is an area where they have used ge-,
+genomic information, so information about your genomes to predict what kind of
+chemotherapy you might respond to best. This was an incredibly exciting result,
+because it would open the door for all sorts of personalized
+medicine within cancer therapeutics. Unfortunately, they actually performed a
+very flawed study design, and a very flawed statistical analysis, which
+was pointed out later in this paper. Even more unfortunately, the studied had
+already been on going for a long time, and they'd actually
+started clinical trials. But they were using those predictions that
+they'd developed in the earlier study to decide what
+chemo-therapies people should get. This was causing all sorts of problems for people because they had performed a poor
+analysis. So this ultimately led to a lawsuit from
+the people that were enrolled in the clinical trial against the
+original investigators who developed the predictive model, this illustrates how a
+very exciting result can lead you astray if you are not very careful about
+experimental design and analysis. The first thing to be aware of when
+performing any sort of an experimental design or data science
+project is to care about the analysis plan. This is actually a publishes paper where,
+believe it or not, in the abstract of the published
+paper, it says insert statistical method here
+because the person who was writing the paper didn't know what the
+statistical method was. It's critically important that you pay
+attention to all aspects of the design and analysis of
+the study so that everything from the data
+cleaning to the data analysis to the reporting so
+that you don't end up, first of all in silly, embarrassing situations like this,
+but more importantly so that you're aware of what are the key
+issues in the study design that can trip you up. Regardless of what study you are doing,
+you need to plan for data and code sharing, you all now
+have GitHub accounts that you have developed either through
+this course or previously to the course, so that is a good place to
+share your code. If you want to share your data with very small amounts, you can share it on the
+GitHub. Larger amounts might go on a site like
+FigShare, where you can share your scientific data, and also other
+kinds of data with other people. But you might also need a larger data
+sharing plan, if your data are much more unwieldy, or large and can't
+be shared on the websites. If you don't have a data sharing plan, can
+I recommend mine? The leek group has developed a guide to
+data sharing that you can find at this website
+here, that outlines all the steps that are involved
+in taking a broad data set and making it available to
+other people. So the first thing that you need to do when
+you're actually performing an experiment is
+formulate your question in advance. So the key component of data science, if
+we were going to define it for the purposes of this course track, is that it's actually a scientific
+discipline. And a scientific discipline requires that
+you're answering a specific question when you're using data, so here's
+one example of that. This is actually a study that was
+performed by Barack Obama when he was running for re-election
+for United States Presidency. What they did was they compared two
+versions of a website, whether they were going to change the text on the website
+and see if it would improve donations. So the experiment was to randomly show
+visitors one version or the other of the website, measure how much they donate, and then determine which is
+better. This brings us to the key idea of a large component of data science, which is
+statistical inference. They wouldn't want to show the website to
+every single person, because it would be expensive to
+run that experiment. So the population of people is all
+possible donors in the United States. All possible people that might go to
+Barack Obama's website to donate. They might select some small subset of
+those with a probability argument to decide to show them one version or the
+other of the website. This would result in a sample, a much
+smaller number of people that had observed the data, or had observed the websites and decided whether to donate or
+not. They would then calculate descriptive
+statistics, say the total number of donations that they got over a certain
+number of visits, or the average number of donations, amount of
+donations, they got over a certain number of visits, and then they
+would use inferential statistics. To try to decide if the statistics that
+they calculated on this small sample would play
+out in the same way if they applied it to the large population of all people that might come
+to the website. So in here is one scenario, suppose that
+the data work that they collected
+hypothetically turned out this way, there were two versions of the
+website, there was the donate version and there was the
+sign-up version. And so what they could do is they could
+say for every 1000 visitors, what was the total number
+of dollars that were donated? So if they did that over a, or the average
+number of dollars donated. So for a 1000 visits you might get about
+$6,000 on average over a course of a week. And so, suppose you ran that experiment
+three different times. You might get observations of very different amounts of dollars that you
+would observe for the donate case, and for the
+sign-up version of the website. So what you see here is that the average
+number of donations may be more or less the same, or it may be
+slightly different, but it's very hard to tell, because at each of
+the different experiments, you get a highly variable answer, under both
+of the different versions of the website. Here's another hypothetical case. Suppose in this case, you got a very
+slightly smaller number of dollars donated under when you showed the sign up version
+than you did the donate version. Here, the variability is much smaller, so
+you can tell for sure that the donate version gives you
+more money. You might implement the donate version,
+but it's not sort of the that would be a huge benefit. The much bigger benefit comes when you run the same experiment, and a domain version
+has small variability, and the sign up version
+has small variability in the total number of
+dollars donated. But there's a large difference between the
+amount people donated when they saw the donate sign, and the amount they
+donated when they saw the sign outside. So this overwhelms the variability that
+they saw in the experiment and so it is very
+interesting for them, and would suggest they should only show
+the donate version of the website to people that came
+to visit. Another important issue is the issue of
+confounding. So suppose in a particular study that you
+measured both shoe size and literacy and suppose that you were looking for correlations between shoe size and
+literacy. You might actually observe quite a few of
+these correlations, because people with small shoes tend to
+have less literacy. But what you might be missing is that age is actually the variable that's
+causing this relationship. When you're very young, say a baby, you
+have a very small shoe size, you also have a very
+small literacy. As you get older, you get a larger shoe
+size and a larger literacy so that the variable
+age is actually a confounder for the relationship between
+shoe size and literacy, which might be very, very small once you
+account for age. So if you only measure shoe size and
+literacy, you might be led astray if you observe the
+correlation between these two variables this is what is called
+confounding, so it's paying attention to what are the other variables that might
+be causing a relationship. This plays out all the time in lots of
+different studies, so here's one example. This is actually from a possibly serious
+paper in The New England Journal of Medicine, where
+they plotted chocolate consumption in kilograms per
+year per capita versus the Nobel laureates per ten million in the
+population. And they observed that there's a
+relationship between these two variables. So what could be going on here? There's lots of reasons why you might
+consume more chocolate and have more Nobel Prize
+winners. For example, your country might have
+better education system if they have more money and so they would have
+more Nobel Laureates. And if they have more money per capita,
+they would also probably consume more choclat,
+chocolate per capita. And so there's one reason, not many
+reasons why though, this observed correlation may not
+be an actual relationship. That is due to a scientific relationship between chocolate consumption and Nobel
+Laureates per capita. This is sometimes called Spurious
+correlation and it's also why you often here the phrase correlation
+is not causation. Even if you observe that two variables are
+correlated with each other, you have to prove to yourself that they're not
+correlated because of some other variables we didn't
+measure. So there are some ways that you can deal
+with potential confounders. So one way is you can fix var, fix a bunch
+of variables for example, in the case where you're considering websites for
+Obama, 20 2012, you can fix Obama 2012 on all the
+websites. That should be a two there and then, that
+way, that variable doesn't change no matter what the
+text is that you're showing. People see you fix that variable so it
+can't be a con factor. Another way is, that you can stratify. So suppose you have two website colors,
+and you want to try out both of those website colors with both phrases,
+and you want to know which phrase works
+better. Then what you can do is use both phrases
+equally on both colors. That way, you've stratified your sample so
+you have both website colors used equally with
+both phrases. If you can't do any of the, either of the
+other two things, if you can't fix a variable or stratify it, then
+what you can do is randomize it. And so what we mean by randomization is
+that you need to be able to use a computer program, or flip a coin in
+order randomly assign people to groups. Why does this help? So, suppose that there's a particular
+study that we're preforming, and suppose that there are ten experimental
+units that look like this. So suppose there's a confounding variable,
+and lighter values of that confounding variable correspond, lower values of that confounding variable correspond to lighter
+colors. And higher value of course, compounding
+variable correspond to the darker colors, so you have these
+experimental units, and suppose they are ordered by values in the
+compounding variable, and suppose we are silly enough to apply one
+treatment applied it. All of the var, all of the people that
+have a high value of the confounding variable, and another treatment to all the
+people that have a low value of the confounding
+variable. Then it would be impossible to distinguish
+whether any difference we saw was due to
+differences in treatment, or due to differences in the confounding variable, but if we randomly
+assign the treatment. Then some of the people that get the green
+treatment will have low value of the confounding variable and
+some will have high values. And so since that'll be balanced, we'll be able to determine whether the
+difference will be to determine that the difference in
+treatment is what we're actually observing in the
+outcome. So for a prediction study, you actually
+have slightly different issues that come up from the
+inferential case. So again, you might have a population of
+individuals, and you might not be able to collect the data on all those individuals but you want to predict
+something about them. So for example, we might get individuals
+that come in and we measure something about
+their genome, and we want to predict whether they should
+get whether they're going to respond to
+chemotherapy or not. So what we do is, we collect these
+individuals and we might collect observations from people that did respond
+to chemotherapy, and did not respond to
+chemoptherapy. And then what we want to do is build a
+predictive function so that if we get a new
+individual, we can predict whether they're going to respond
+to chemotherapy up here, as an orange person, or not respond down here
+as a green person. So the idea here is that we'll still need
+to deal with probability and sampling and potential compounding variables, because,
+when we're building this prediction function, we want it to be
+highly accurate. Another issue that comes up is that, prediction is slightly more challenging
+than inference. So for example, if you look at these two populations, the, the population for the
+light grey curve has a mean, value about here, and the
+population for the dark grey curve has a mean value about
+here. If you look at the distribution of observations from these two populations,
+and so what you can see is, there's a difference in
+the P value of these two populations. But if I tell you, for example, that I've observed the value that comes, say,
+right here. It's very difficult to know which of these
+two populations it came from, because it's relatively likely that
+it came from the light gray population. But it's also relatively likely that it
+came from the dark gray population, so it's very
+difficult to tell the difference. For prediction, you actually need the
+distributions to be a little bit more separated, so these
+also, these two distributions also have a
+different mean, but now, they're far enough apart based on
+their variability. That if I give you an observation that
+lands right about here, you know it probably came from the
+dark grid population. Where if I give you an observation here, it probably came from a light grid
+population. So it's important to pay attention to the relative size of effects when considering
+prediction versus inference. For prediction there's several key qual,
+quantities that we need to be aware of. So the first set of key quantities is,
+positive and negative statuses so, for example, this is comes from a test
+a medical testing scenario. So you can have, suppose you can either
+have a disease or not have a disease. So plus means you have the disease, and
+minus means you don't have the disease, and you have a test to determine
+whether you have that disease or not. And the plus means you do, the test was positive, and a negative means the test
+was negative. So, if you have the disease, and you test
+positive, then you're a true positive. If you do not have the disease, and you
+test positive, that's a false positive. If you do not if you have the disease, but
+don't test positive, that's a false negative, and if you don't have the
+disease, and you test negative, that's a true
+negative. Some quantities that you need to pay
+attention to are the probability you have a positive test,
+given you have disease that sensitivity. The probability you have a negative test, given you have no disease that
+specificity. The probability you have disease, given
+you have a positive test. This is probably what you care about if
+you come in to the clinics, so I tell you that you have a
+positive test. Then you want to know, what's the
+probability you have disease. Similarly, I tell you if you have a
+negative test, you might know, you might want to know what's the
+probability that you have disease. Accuracy is just the probability that you
+are correct in the outcome, regardless of whether you are
+positive or negative. Another key component of paying attention
+to big data and data science is data being aware of
+data dredging. So suppose you want to consider something
+silly, like jelly beans cause acne. This comes from an XKCD cartoon. So, scientists could investigate, and they
+find out that jelly beans aren't related to causing accuracy
+or sorry, causing acne. So then what they say well that settles that, but you could try to change your
+hypothesis. You could say oh, well, actually it's just
+purple jelly beans that cause acne. No, it's brown jelly beans that cause
+acne. No, it's pink jelly beans, and you keep going and going and going until you found
+a result that you liked and you'd come up
+with good news, green jelly beans are linked to
+acne. But this of course ignores the fact that
+you can try a whole bunch of different things
+first. So one thing you have to pay attention to
+when dealing with big data, or any data science problem, is being
+aware of the problem of data dredging. So in summary, good experiments have replication so that you can measure
+variability. They'd measure that variability, and
+compare it to the signal that they were looking for, and they'd generalize to
+the problem that you care about. Also important, good experiments are
+transparent in both their code and their data. Prediction is not inference, and both can
+be important but it depends on what your
+application is. Also, in any data science pro, problem,
+you need to be aware of data dredging. The other important issues with
+experimental design, will be covered in later classes.

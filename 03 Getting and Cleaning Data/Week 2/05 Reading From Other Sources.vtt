@@ -1,0 +1,352 @@
+WEBVTT
+
+1
+00:00:00.630 --> 00:00:03.610
+So far we've covered reading data
+from a large number of sources,
+
+2
+00:00:03.610 --> 00:00:07.310
+whether it's from different
+file types like the XML or
+
+3
+00:00:07.310 --> 00:00:11.660
+JSON files, or whether it's different
+sources like HDFI, or MySQL.
+
+4
+00:00:11.660 --> 00:00:13.450
+While I've covered a few
+of the highlights,
+
+5
+00:00:13.450 --> 00:00:16.480
+I think that there's a large number
+of other places where you might wanna
+
+6
+00:00:16.480 --> 00:00:20.260
+be able to get data from, and I have by
+no means comprehensively covered all of
+
+7
+00:00:20.260 --> 00:00:23.930
+the different R packages that can
+be used to access those data.
+
+8
+00:00:23.930 --> 00:00:26.960
+Roger has a really nice advertising
+video on how there's an R package for
+
+9
+00:00:26.960 --> 00:00:29.710
+everything, kind of modeled on the Apple,
+there's an app for
+
+10
+00:00:29.710 --> 00:00:33.740
+everything, Here I'm gonna briefly review
+a few useful packages I know about,
+
+11
+00:00:33.740 --> 00:00:37.380
+but you should by no means consider
+this a comprehensive list.
+
+12
+00:00:37.380 --> 00:00:41.560
+In general, I found the best way to find
+out if an R package exists is to Google
+
+13
+00:00:41.560 --> 00:00:44.260
+data storage mechanism,
+followed by R package.
+
+14
+00:00:44.260 --> 00:00:48.800
+You just time R, sometimes I haven't
+been able to find it with the search.
+
+15
+00:00:48.800 --> 00:00:52.460
+So for example, I might type,
+my SQL R package, and
+
+16
+00:00:52.460 --> 00:00:56.990
+that usually comes up with the very first
+taking, the most interesting package.
+
+17
+00:00:56.990 --> 00:01:01.320
+I found that almost every kind of data
+type that you might wanna have access to,
+
+18
+00:01:01.320 --> 00:01:04.800
+as long as its relatively common, there's
+a R package for accessing the data.
+
+19
+00:01:04.800 --> 00:01:09.660
+If you wanna interact directly with files,
+we've seen how to use URL in
+
+20
+00:01:09.660 --> 00:01:14.640
+getting data lectures so far, but you
+can also use the File function to access
+
+21
+00:01:14.640 --> 00:01:19.900
+a connection to a particular file that's
+already localized on your computer.
+
+22
+00:01:19.900 --> 00:01:22.372
+You could also use gzfile and
+
+23
+00:01:22.372 --> 00:01:28.350
+bzfile to access zipped files that
+might be laying on your computer.
+
+24
+00:01:28.350 --> 00:01:31.250
+And then, if you do question mark
+connections, you can learn a lot
+
+25
+00:01:31.250 --> 00:01:34.230
+more about opening connections to files,
+both locally and remotely.
+
+26
+00:01:35.310 --> 00:01:38.710
+The foreign package is very useful if
+you work with people who use other
+
+27
+00:01:38.710 --> 00:01:41.890
+programming languages or
+other statistical programming languages.
+
+28
+00:01:41.890 --> 00:01:49.150
+So, it loads data from files for Minitab,
+S, SAS, SPSS and a bunch of others.
+
+29
+00:01:49.150 --> 00:01:53.940
+So, the basic functions read like read and
+then .foo, where foo is the extension for
+
+30
+00:01:53.940 --> 00:01:57.270
+the particular file from
+the particular programming language.
+
+31
+00:01:57.270 --> 00:02:03.160
+So, for example it's dta for Stata, and
+it it's an Octave file it's .octave.
+
+32
+00:02:03.160 --> 00:02:05.366
+And if it's SPSS it's .spss.
+
+33
+00:02:05.366 --> 00:02:09.710
+And then you can read .xport
+files from SAS, for example.
+
+34
+00:02:09.710 --> 00:02:12.660
+If you want to see a lot more
+about this you can go read
+
+35
+00:02:12.660 --> 00:02:17.030
+about the Foreign package in the help file
+which is pretty self explanatory, and
+
+36
+00:02:17.030 --> 00:02:21.680
+I've been able to read most files
+from other programming languages.
+
+37
+00:02:21.680 --> 00:02:24.510
+There's also a large number of
+other database packages, so for
+
+38
+00:02:24.510 --> 00:02:31.680
+example PostgreSQL, I've provided
+DB-compliant database connection from R.
+
+39
+00:02:31.680 --> 00:02:35.010
+So, here's a tutorial,
+actually at this first link.
+
+40
+00:02:35.010 --> 00:02:37.810
+And then the second link is the help file.
+
+41
+00:02:37.810 --> 00:02:40.870
+There's also the RODBC,
+which provides interfaces for
+
+42
+00:02:40.870 --> 00:02:47.375
+multiple databases including PostgreQL,
+MySQL, Microsoft Access, and SQLite.
+
+43
+00:02:48.485 --> 00:02:52.025
+There's a tutorial here
+that's very nice as well, and
+
+44
+00:02:52.025 --> 00:02:56.885
+then a help file that will give you,
+walk you through most of the functions.
+
+45
+00:02:56.885 --> 00:03:01.747
+If you use MongoDb, there's actually
+a very nice package called RMongo, and
+
+46
+00:03:01.747 --> 00:03:06.297
+there's also another package, RMongoDb,
+which can be used to interface with
+
+47
+00:03:06.297 --> 00:03:09.297
+MongoDb and
+extract data from that database.
+
+48
+00:03:09.297 --> 00:03:12.217
+Again, you're gonna be sending queries
+very similar to the way you were doing
+
+49
+00:03:12.217 --> 00:03:14.457
+with the R MySQL package,
+
+50
+00:03:14.457 --> 00:03:19.537
+you're gonna actually send queries to the
+database using the database's own syntax.
+
+51
+00:03:19.537 --> 00:03:22.537
+So, if you're gonna use the R package,
+you have to learn just a little bit about
+
+52
+00:03:22.537 --> 00:03:24.897
+the syntax for
+the database to be able to extract data.
+
+53
+00:03:26.120 --> 00:03:31.040
+You can also read other things that aren't
+necessarily data in the traditional format
+
+54
+00:03:31.040 --> 00:03:33.420
+in terms of text files and so forth.
+
+55
+00:03:33.420 --> 00:03:36.217
+You can read directly images with jpeg,
+or readbitmap, png.
+
+56
+00:03:36.217 --> 00:03:41.637
+These are all, png,
+these are all functions that allow you
+
+57
+00:03:41.637 --> 00:03:48.372
+to access image files that load them
+into R directly and manipulate them.
+
+58
+00:03:48.372 --> 00:03:52.830
+The EBI image package in bioconductor
+is also very nice for analyzing and
+
+59
+00:03:52.830 --> 00:03:54.610
+manipulating image data.
+
+60
+00:03:55.715 --> 00:04:00.575
+You can read GIS data, so this is
+geographic information systems data.
+
+61
+00:04:00.575 --> 00:04:04.595
+You can read it with a variety of
+different packages that will allow you
+
+62
+00:04:04.595 --> 00:04:09.695
+to access and play with different
+kinds of GIS data that are exported by
+
+63
+00:04:09.695 --> 00:04:12.305
+proprietary and not proprietary software.
+
+64
+00:04:12.305 --> 00:04:15.055
+Another cool thing that you
+can read is directly from mp3.
+
+65
+00:04:15.055 --> 00:04:17.377
+So you can use either the tuneR or
+
+66
+00:04:17.377 --> 00:04:22.550
+the seewave packages to actually
+read musical data, and do analysis.
+
+67
+00:04:22.550 --> 00:04:27.420
+There's a lot of nice musical processing
+software in R that you can use to
+
+68
+00:04:27.420 --> 00:04:31.510
+analyze those data, and come up with
+interesting cool new analysis, as well.
+
+69
+00:04:31.510 --> 00:04:35.590
+So like I said, this is just a list of
+the packages that I thought of off the top
+
+70
+00:04:35.590 --> 00:04:38.320
+of my head, but
+whatever your application is,
+
+71
+00:04:38.320 --> 00:04:41.870
+you can just Google the R package that
+will allow you to access the data.
+
+72
+00:04:41.870 --> 00:04:43.190
+There's always an R package for that.

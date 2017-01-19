@@ -1,0 +1,994 @@
+WEBVTT
+
+1
+00:00:00.370 --> 00:00:03.150
+So the key process of data cleaning is
+looking at the
+
+2
+00:00:03.150 --> 00:00:06.630
+data set that you've loaded into R, and
+identifying any sort
+
+3
+00:00:06.630 --> 00:00:09.630
+of quirks or weird issues or missing
+values, or other problems
+
+4
+00:00:09.630 --> 00:00:12.290
+that you need to address before you can do
+downstream analysis.
+
+5
+00:00:12.290 --> 00:00:14.140
+So the first thing that you're want to
+going to be able
+
+6
+00:00:14.140 --> 00:00:17.360
+to do is summarize the data that you have
+loaded in.
+
+7
+00:00:17.360 --> 00:00:19.250
+So we are going to be looking at this
+example data set
+
+8
+00:00:19.250 --> 00:00:23.050
+here, and this is actually data set about
+restaurants in Baltimore.
+
+9
+00:00:23.050 --> 00:00:26.260
+And so, we collected this data set again
+from the web.
+
+10
+00:00:26.260 --> 00:00:31.750
+And so, if you to this URL and then you go
+to export,
+
+11
+00:00:31.750 --> 00:00:35.080
+you'll be able to see a list of different
+versions of this data size.
+
+12
+00:00:35.080 --> 00:00:37.553
+We're going to look at the csv version of
+the data set.
+
+13
+00:00:37.553 --> 00:00:43.080
+And so we create a data directory, and
+again, this is the URL that points to
+
+14
+00:00:43.080 --> 00:00:46.036
+the CSV version of the data set that
+
+15
+00:00:46.036 --> 00:00:48.980
+we're going to be talking about, the
+Baltimore City data.
+
+16
+00:00:48.980 --> 00:00:53.190
+And so we're going to download that file
+and then read it in with read.csv.
+
+17
+00:00:53.190 --> 00:00:59.130
+So this is what you remember from reading
+data in the internet sources.
+
+18
+00:00:59.130 --> 00:01:01.960
+So the first thing that you're going to
+want to do is look at your data set.
+
+19
+00:01:01.960 --> 00:01:05.350
+So one thing that you can do is just type
+the name of the data frame that we have.
+
+20
+00:01:05.350 --> 00:01:07.370
+So in this case it could be rest data.
+
+21
+00:01:07.370 --> 00:01:08.750
+You could just type that in and hit
+
+22
+00:01:08.750 --> 00:01:11.680
+return, and it will return the entire data
+frame.
+
+23
+00:01:11.680 --> 00:01:13.390
+But often the data frame will be a little
+bit too
+
+24
+00:01:13.390 --> 00:01:16.270
+big for you to be able to see it all very
+neatly.
+
+25
+00:01:16.270 --> 00:01:19.940
+So, the first command we're going to talk
+about is the head command.
+
+26
+00:01:19.940 --> 00:01:22.640
+So if I type head of the data frame that
+
+27
+00:01:22.640 --> 00:01:24.760
+I'm interested in and I tell it the number
+of
+
+28
+00:01:24.760 --> 00:01:27.240
+rows I should report, it will just show me
+the
+
+29
+00:01:27.240 --> 00:01:30.980
+top three, in this case rows from that
+data frame.
+
+30
+00:01:30.980 --> 00:01:34.430
+By default, it will show me the top six
+rows of any data frame.
+
+31
+00:01:34.430 --> 00:01:36.880
+So if I don't give it the n command or the
+n
+
+32
+00:01:36.880 --> 00:01:41.530
+parameter, it'll just return the top six
+rows of the data frame.
+
+33
+00:01:41.530 --> 00:01:44.320
+The tail command is another command that
+will
+
+34
+00:01:44.320 --> 00:01:45.940
+give you a little bit of the data set.
+
+35
+00:01:45.940 --> 00:01:49.160
+In this case it will show you the bottom
+part o the data set.
+
+36
+00:01:49.160 --> 00:01:52.300
+So if I pass it this data frame and tell
+it n
+
+37
+00:01:52.300 --> 00:01:55.210
+equals three, it'll show me the bottom
+three rows of the data frame.
+
+38
+00:01:57.030 --> 00:01:59.650
+The other thing that we can do is, we can
+use the summary command to
+
+39
+00:01:59.650 --> 00:02:02.970
+get a little bit of a, an overall summary
+of the data set that we have.
+
+40
+00:02:02.970 --> 00:02:07.380
+So what this will do is, for every single
+variable, it'll give you some information.
+
+41
+00:02:07.380 --> 00:02:12.170
+For variables that are text-based
+variables or factor variables,
+
+42
+00:02:12.170 --> 00:02:13.990
+it will tell you the count of each factor.
+
+43
+00:02:13.990 --> 00:02:15.870
+So, for example, in this data set, there
+are
+
+44
+00:02:15.870 --> 00:02:19.380
+eight McDonald's and there seven seven
+Popeye's Famous Fried Chicken.
+
+45
+00:02:20.540 --> 00:02:22.560
+For variables that are quantitative, in
+this case
+
+46
+00:02:22.560 --> 00:02:25.870
+it's treating zip code as a quantitative
+variable.
+
+47
+00:02:25.870 --> 00:02:30.480
+It'll tell you the minimum, the first
+quartile, the median, and so forth.
+
+48
+00:02:30.480 --> 00:02:31.590
+So this has already given us an
+
+49
+00:02:31.590 --> 00:02:33.730
+interesting bit of information because one
+of the
+
+50
+00:02:33.730 --> 00:02:35.030
+zip codes is actually coded as a
+
+51
+00:02:35.030 --> 00:02:38.289
+negative value, which obviously probably
+shouldn't have happened.
+
+52
+00:02:40.480 --> 00:02:43.090
+You can also use the STR command to give
+
+53
+00:02:43.090 --> 00:02:45.570
+you a little bit more information about
+the data frame.
+
+54
+00:02:45.570 --> 00:02:49.404
+So, here it tells you the class of
+variable it is, it's a data frame.
+
+55
+00:02:49.404 --> 00:02:51.577
+If it was a matrix, it would tell you it
+was a matrix.
+
+56
+00:02:51.577 --> 00:02:52.760
+It tells you a little bit about the
+
+57
+00:02:52.760 --> 00:02:55.300
+dimensions of the data frame that you
+have.
+
+58
+00:02:55.300 --> 00:02:56.870
+And then it also tells you all the
+
+59
+00:02:56.870 --> 00:03:00.840
+different classes that the different
+columns correspond to.
+
+60
+00:03:00.840 --> 00:03:05.030
+So, for example, neighborhood is a Factor,
+zip code is an integer, and so forth.
+
+61
+00:03:05.030 --> 00:03:08.510
+So that, they give you a little bit of
+extra information so that you can
+
+62
+00:03:08.510 --> 00:03:10.080
+know if you need to manipulate things and
+
+63
+00:03:10.080 --> 00:03:12.770
+change quantitative variables to
+qualitative and so forth.
+
+64
+00:03:14.280 --> 00:03:18.840
+You can use quartile to look at,
+variability and quantitative variables.
+
+65
+00:03:18.840 --> 00:03:22.940
+So, for example, if I look at the quartile
+of the councilDistrict variable.
+
+66
+00:03:23.950 --> 00:03:28.260
+If I, look at that variable I see that the
+smallest value is
+
+67
+00:03:28.260 --> 00:03:32.190
+1 and the top value is 14, and the median
+value is 9.
+
+68
+00:03:32.190 --> 00:03:36.530
+So, you can also tell it to look at
+different probabilities.
+
+69
+00:03:36.530 --> 00:03:39.520
+So, if I pass qurntile probs, it
+
+70
+00:03:39.520 --> 00:03:42.030
+will look at different quartiles of the
+distribution.
+
+71
+00:03:42.030 --> 00:03:44.630
+So, the zeroth quartile is the minimum
+value.
+
+72
+00:03:44.630 --> 00:03:49.320
+The 0.5 quartile, the medium 99th
+quartile.
+
+73
+00:03:49.320 --> 00:03:52.320
+You can give it a sort of 99th percentile
+of the data set.
+
+74
+00:03:52.320 --> 00:03:55.630
+So you can do this to look at different
+percentiles if your interested in them.
+
+75
+00:03:57.490 --> 00:03:58.710
+You can also make tables.
+
+76
+00:03:58.710 --> 00:04:00.210
+So another way to look at the data is
+
+77
+00:04:00.210 --> 00:04:03.370
+to look at specific variables and make a
+table.
+
+78
+00:04:03.370 --> 00:04:07.640
+And so in this case we're making zip code
+table and we can see
+
+79
+00:04:07.640 --> 00:04:12.810
+that only of the varou, one zip code is
+coded as a negative value.
+
+80
+00:04:12.810 --> 00:04:15.900
+You can also see where the bulk of the zip
+code values are.
+
+81
+00:04:15.900 --> 00:04:20.240
+So for example 21201 has a lot of values.
+
+82
+00:04:20.240 --> 00:04:23.860
+So does 21202 and 21 21224, and so forth.
+
+83
+00:04:25.410 --> 00:04:28.410
+I've added a little bit here to the inside
+the table command.
+
+84
+00:04:28.410 --> 00:04:30.910
+I say use NA if any.
+
+85
+00:04:30.910 --> 00:04:32.370
+And so what this will mean, is if there
+
+86
+00:04:32.370 --> 00:04:35.190
+are any missing values, they'll be an
+added column
+
+87
+00:04:35.190 --> 00:04:37.560
+to this table, which will be NA, and it'll
+
+88
+00:04:37.560 --> 00:04:40.110
+tell you the number of missing values
+there is.
+
+89
+00:04:40.110 --> 00:04:42.670
+By default, the table function in R
+actually
+
+90
+00:04:42.670 --> 00:04:44.690
+does not tell you the number of missing
+values.
+
+91
+00:04:44.690 --> 00:04:47.500
+So it's important to use the command,
+useNA ifany
+
+92
+00:04:47.500 --> 00:04:50.780
+to make sure that you're not missing
+missing values.
+
+93
+00:04:52.260 --> 00:04:54.300
+You can also make two dimensional tables.
+
+94
+00:04:54.300 --> 00:04:56.810
+So in this case, I'm again using the table
+command.
+
+95
+00:04:56.810 --> 00:05:01.090
+And now I'm passing in two variables, the
+councildistrict, and the zip code.
+
+96
+00:05:01.090 --> 00:05:03.320
+And so now it breaks down a table
+
+97
+00:05:03.320 --> 00:05:06.220
+that's two dimensional by zip code and by
+district.
+
+98
+00:05:06.220 --> 00:05:08.180
+And so, for example, you see that district
+
+99
+00:05:08.180 --> 00:05:14.650
+two has 27 restaurants in the 21206 zip
+code.
+
+100
+00:05:14.650 --> 00:05:18.160
+And so you can do this for different
+quanti, qualitative
+
+101
+00:05:18.160 --> 00:05:21.330
+variables and get a sense of the
+relationship between those variables.
+
+102
+00:05:22.520 --> 00:05:25.350
+The next thing that you might want to do
+is check for missing values.
+
+103
+00:05:25.350 --> 00:05:29.850
+So, the function that could be useful
+there is that is.na function.
+
+104
+00:05:29.850 --> 00:05:32.340
+So, if you used the is.na function and
+apply it
+
+105
+00:05:32.340 --> 00:05:35.650
+to this variable the councilDistrict and
+then take the sum
+
+106
+00:05:35.650 --> 00:05:39.840
+of the kind that is.na, is.na will return
+a 1
+
+107
+00:05:39.840 --> 00:05:42.990
+if it's missing and a zero if it's not
+missing.
+
+108
+00:05:42.990 --> 00:05:46.080
+So, if the sum is equal to zero, that
+means there are no missing values.
+
+109
+00:05:47.310 --> 00:05:49.280
+You can also use the any command.
+
+110
+00:05:49.280 --> 00:05:53.510
+The any command will just look through
+this entire set of values.
+
+111
+00:05:53.510 --> 00:05:58.990
+In this case, is.na re, returns true or
+false, and what it can do
+
+112
+00:05:58.990 --> 00:06:03.850
+is then check and see if any of these
+values are equal to true.
+
+113
+00:06:03.850 --> 00:06:07.640
+In that case, there would be any value
+that's equal to na.
+
+114
+00:06:07.640 --> 00:06:11.770
+In this case none of the values are na, so
+any returns false,
+
+115
+00:06:11.770 --> 00:06:15.680
+because all of the values are false,
+they're not, none of them are na.
+
+116
+00:06:15.680 --> 00:06:19.760
+You can also look at all all which I can
+see if.
+
+117
+00:06:19.760 --> 00:06:23.510
+So, for example, every single value
+satisfy the condition.
+
+118
+00:06:23.510 --> 00:06:25.130
+So we would hope that all the zip codes
+
+119
+00:06:25.130 --> 00:06:27.210
+are greater than zero, but it turns out
+that
+
+120
+00:06:27.210 --> 00:06:29.230
+actually one of them isn't greater than
+zero, so
+
+121
+00:06:29.230 --> 00:06:31.110
+you can see that again with that all
+command.
+
+122
+00:06:32.910 --> 00:06:36.010
+Another thing that you might want to do is
+take sums, so
+
+123
+00:06:36.010 --> 00:06:39.790
+for example, you might want to take sums
+across columns or across rows.
+
+124
+00:06:39.790 --> 00:06:43.750
+You can do that with the colsums and
+rowsums command.
+
+125
+00:06:43.750 --> 00:06:46.290
+So here I'm going to take the column sums
+
+126
+00:06:46.290 --> 00:06:49.396
+of the is.na applied to the entire data
+set.
+
+127
+00:06:49.396 --> 00:06:52.840
+So I've applied is.na to the entire data
+set, and that will
+
+128
+00:06:52.840 --> 00:06:56.920
+be true whenever there's any NA value and
+false whenever there isn't one.
+
+129
+00:06:56.920 --> 00:07:01.252
+And then I take the sum down every column
+of that variable, and I
+
+130
+00:07:01.252 --> 00:07:06.460
+see that there are zero NA values for
+every single variable in this data set.
+
+131
+00:07:07.690 --> 00:07:10.790
+And then I can apply all to the column
+sums
+
+132
+00:07:10.790 --> 00:07:12.850
+and show that all of them are equal to
+zero.
+
+133
+00:07:12.850 --> 00:07:15.700
+In other words, there are no missing
+values in this data set.
+
+134
+00:07:17.450 --> 00:07:21.250
+I can use some other commands to find
+specific characteristics within data sets.
+
+135
+00:07:21.250 --> 00:07:26.280
+So, for example, suppose I want to find
+all the zip codes that are equal to 21212.
+
+136
+00:07:26.280 --> 00:07:30.590
+I could just use the equals equals command
+to see if that's true, but I could
+
+137
+00:07:30.590 --> 00:07:33.400
+also say, are there any values of this
+
+138
+00:07:33.400 --> 00:07:38.300
+variable that fall into this, this vector
+over here.
+
+139
+00:07:38.300 --> 00:07:40.720
+In this case, are there any values that
+are 21212.
+
+140
+00:07:40.720 --> 00:07:45.050
+That's not very useful when you only have
+one value you care about, so, but suppose
+
+141
+00:07:45.050 --> 00:07:51.050
+you want to find all the zip codes that
+are either equal to 21212 or 21213.
+
+142
+00:07:51.050 --> 00:07:55.450
+Then you can use the %in% command to say,
+are there any ZIP
+
+143
+00:07:55.450 --> 00:07:59.270
+codes that are either equal to one or the
+other of these values.
+
+144
+00:07:59.270 --> 00:08:01.080
+And so in this case you see there's a few
+more,
+
+145
+00:08:01.080 --> 00:08:04.930
+there's 59 values that are equal to either
+21212 or 21213.
+
+146
+00:08:04.930 --> 00:08:05.430
+The
+
+147
+00:08:07.100 --> 00:08:10.730
+next thing that you can do is you can
+actually use this logical
+
+148
+00:08:10.730 --> 00:08:14.600
+variable that you've created by doing
+this, just a subset a data set.
+
+149
+00:08:14.600 --> 00:08:19.557
+So suppose I want to get only restaurants
+that appear on 21212 or 21213, I would
+
+150
+00:08:19.557 --> 00:08:26.080
+create this logical variable here with the
+%in% function.
+
+151
+00:08:26.080 --> 00:08:30.130
+And then I would pass that to the row
+subsetting
+
+152
+00:08:30.130 --> 00:08:33.930
+component of the rest data variable, and
+what would end
+
+153
+00:08:33.930 --> 00:08:35.680
+up happening is I would end up with only
+the
+
+154
+00:08:35.680 --> 00:08:40.680
+rows that were equal to 212121 or 21213
+zip codes.
+
+155
+00:08:42.900 --> 00:08:45.240
+The next thing you might want to do is
+make some sort
+
+156
+00:08:45.240 --> 00:08:49.700
+of summaries or cross tabs about the data
+sets that you observe.
+
+157
+00:08:49.700 --> 00:08:53.690
+So, for example, I'm loading here data on
+Berkeley admissions data.
+
+158
+00:08:53.690 --> 00:08:56.760
+This is sort of one of the classic data
+sets in R.
+
+159
+00:08:56.760 --> 00:09:01.380
+And so I can create a data frame using
+that data set.
+
+160
+00:09:01.380 --> 00:09:03.380
+And if I do a summary I can see
+
+161
+00:09:03.380 --> 00:09:08.390
+there are four variables: Admit, Gender,
+Department and Frequency.
+
+162
+00:09:08.390 --> 00:09:10.990
+And so it tells you how many people
+
+163
+00:09:10.990 --> 00:09:16.430
+each of the different categories are
+admitted to vertically.
+
+164
+00:09:16.430 --> 00:09:19.640
+So one thing you might want to do is make
+cross tabs.
+
+165
+00:09:19.640 --> 00:09:26.000
+So identify where the relationships exist
+in this data set.
+
+166
+00:09:26.000 --> 00:09:28.510
+So what you can do is on the left this is
+going to
+
+167
+00:09:28.510 --> 00:09:32.900
+be the variable that you want to be
+displayed actually in the table.
+
+168
+00:09:32.900 --> 00:09:35.350
+So this is frequency and the table.
+
+169
+00:09:35.350 --> 00:09:38.255
+And then you might want to break that down
+by some different kinds of variables.
+
+170
+00:09:38.255 --> 00:09:40.170
+So you might break it down by gender and
+you
+
+171
+00:09:40.170 --> 00:09:42.050
+might break it down by weather they were
+admitted or not.
+
+172
+00:09:42.050 --> 00:09:45.950
+So then this tells you the frequency that
+males were
+
+173
+00:09:45.950 --> 00:09:51.210
+admitted, and this is the frequency that
+say, females were rejected.
+
+174
+00:09:51.210 --> 00:09:53.530
+And so when you do cross tabs, you have to
+tell
+
+175
+00:09:53.530 --> 00:09:56.960
+it what data you want to perform the cross
+tabs from.
+
+176
+00:09:59.730 --> 00:10:03.260
+One thing that you can do too is do cross
+tabs for
+
+177
+00:10:03.260 --> 00:10:07.200
+a larger number of variables, but they are
+often kind of hard to see.
+
+178
+00:10:07.200 --> 00:10:09.680
+So here I'm using the warp break data set
+
+179
+00:10:09.680 --> 00:10:12.400
+which another one of the standard R data
+sets.
+
+180
+00:10:12.400 --> 00:10:13.650
+And I'm actually adding in another
+
+181
+00:10:13.650 --> 00:10:16.540
+replicate variable just to illustrate this
+point.
+
+182
+00:10:16.540 --> 00:10:23.530
+So, I've got the replicate data sets and
+so, I can create an xtabs.
+
+183
+00:10:23.530 --> 00:10:29.840
+Again where I'm going to have the value
+that appears in the table to be equal
+
+184
+00:10:29.840 --> 00:10:35.460
+to breaks and I'm going to break that down
+by all the variables in the data set.
+
+185
+00:10:35.460 --> 00:10:37.210
+So when I do that, there are three
+
+186
+00:10:37.210 --> 00:10:39.190
+different variables I can break it down
+by.
+
+187
+00:10:39.190 --> 00:10:42.050
+There's replicate, tension and wool.
+
+188
+00:10:42.050 --> 00:10:44.340
+And so to create a table like this
+
+189
+00:10:44.340 --> 00:10:47.100
+I actually have to create multiple two
+dimensional tables.
+
+190
+00:10:48.180 --> 00:10:53.380
+This is a little bit hard to see, because
+there'll be a long list of output.
+
+191
+00:10:53.380 --> 00:10:56.909
+You can make flat tables by taking the
+cross
+
+192
+00:10:56.909 --> 00:10:59.870
+path that you made previously, applying
+the ftable command.
+
+193
+00:10:59.870 --> 00:11:02.260
+And all that will do is it will summarize
+
+194
+00:11:02.260 --> 00:11:04.680
+the data in a much smaller, more compact
+form.
+
+195
+00:11:04.680 --> 00:11:07.149
+So it's easier to see when you have these
+large tables.
+
+196
+00:11:08.900 --> 00:11:10.320
+The last thing that you might want to do
+is
+
+197
+00:11:10.320 --> 00:11:12.400
+actually just sieve the size of the data
+set.
+
+198
+00:11:12.400 --> 00:11:15.640
+So, here, I've just generated some fake
+data with r norm.
+
+199
+00:11:15.640 --> 00:11:18.010
+And then, what I might want to do is use
+the object
+
+200
+00:11:18.010 --> 00:11:21.510
+size command to see how many bytes that
+data set is.
+
+201
+00:11:21.510 --> 00:11:23.670
+And sometimes that's not very
+interpretable.
+
+202
+00:11:23.670 --> 00:11:26.600
+You might want to know on a different
+scale, so you can use the print
+
+203
+00:11:26.600 --> 00:11:29.880
+command and you can tell it what units
+you'd like to see it measured in.
+
+204
+00:11:29.880 --> 00:11:32.550
+Whether it's megabytes or gigabytes or so
+forth.
+
+205
+00:11:32.550 --> 00:11:34.060
+So those are some ways that you can just
+take a
+
+206
+00:11:34.060 --> 00:11:36.160
+look at your data when you first load it
+into R.

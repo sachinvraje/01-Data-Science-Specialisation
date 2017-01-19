@@ -1,0 +1,26 @@
+In this video, I'm going to to briefly
+show how you can install R on the Mac. It's a very simple process. You just have to, it only takes a few
+steps. So the first thing you need to do is open
+your web browser, and go to cran, says the
+comprehensive R archive network. So you can just type in cran here, [SOUND] and you'll see that, [COUGH] there are a
+number of options for you to download here for different platforms, and
+so we're going to download the Mac platform
+here. So we go to download R for the Mac. And you see that the latest version here,
+is version 3.0.3. You want to download this package file
+here, so just click on this, and you'll see that the download
+meter will start going. And it might take a few minutes depending
+on the speed of your internet connection. So just be patient. [BLANK_AUDIO] Okay, so its finished downloading. [BLANK_AUDIO] So I'm just going to open up here, the package and you can see it'll start the
+installer. Uh,and it'll guide you through all the
+steps you need to install R 3.0.3. So, I'll click continue here, and this is just the description of what's going to
+get installed. Click continue. The software license agreement is the [UNKNOWN] new general public license
+version 2. So you should agree to the license, after
+having read it of course. And then, you can just click install here,
+and you might have to type in your
+administrator password. So, just go ahead and do that. [SOUND] And it'll start installing the
+files on your computer. [BLANK_AUDIO] [SOUND]. Now that's finished, I can hit close, and
+then it'll be in my Applications folder. So I can just go to my Applications
+folder, which is right here, and there alphab,
+alphabetic order. So, I'll just scroll down to R, and there
+it is. [BLANK_AUDIO] And there you have it. You have an R, installed R on your
+computer, and now, you can go ahead, you can just use it directly, or if you want to you can install, an interface like R studio,
+if you like. [BLANK_AUDIO]

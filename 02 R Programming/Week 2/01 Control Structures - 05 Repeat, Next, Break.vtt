@@ -1,0 +1,419 @@
+WEBVTT
+
+1
+00:00:03.912 --> 00:00:08.870
+Repeat is a construct that basically
+intiali, initiates and infinite loop.
+
+2
+00:00:08.870 --> 00:00:13.390
+This is not a what I would characterize as
+a commonly used control structure in R but
+
+3
+00:00:13.390 --> 00:00:15.532
+it does have its use occasionally.
+
+4
+00:00:15.532 --> 00:00:17.627
+So the only way to exit a repeat
+loop is to call break, so
+
+5
+00:00:17.627 --> 00:00:19.906
+obviously you are going to have
+to call break at some point,
+
+6
+00:00:19.906 --> 00:00:23.300
+unless you feel like running your program,
+you know, forever.
+
+7
+00:00:23.300 --> 00:00:27.207
+So here is a pretty simple example, here
+I am initializing a value of x 0 to be 1,
+
+8
+00:00:27.207 --> 00:00:30.710
+and I am saying what I think of as
+a tolerance to be 10 to the minus 8, and
+
+9
+00:00:30.710 --> 00:00:33.190
+then I am going to repeat
+the following structure.
+
+10
+00:00:33.190 --> 00:00:37.427
+Basically, I'm going to,
+I imagine that some function that keep
+
+11
+00:00:37.427 --> 00:00:41.740
+computing estimate for x and
+I'm going to call that x1.
+
+12
+00:00:41.740 --> 00:00:46.040
+And basically if,
+if the new value of x that is x1,
+
+13
+00:00:46.040 --> 00:00:49.910
+is, is, if the absolute value
+of the difference between x1 and
+
+14
+00:00:49.910 --> 00:00:52.510
+x0 is less than some tolerance,
+in this case 10 to the minus 8,
+
+15
+00:00:52.510 --> 00:00:56.440
+then I'm going to stop the loop and
+then move on to the next bit of code.
+
+16
+00:00:56.440 --> 00:00:59.330
+If, if the, if the difference
+is greater than my tolerance,
+
+17
+00:00:59.330 --> 00:01:01.970
+then I set x0 to be
+equal to the new value.
+
+18
+00:01:01.970 --> 00:01:04.820
+And then I, I run the loop again,
+I calculate a new estimate and
+
+19
+00:01:04.820 --> 00:01:06.880
+I check to see if,
+if the difference is small.
+
+20
+00:01:06.880 --> 00:01:11.100
+So, this is a common type of
+formulation in in many types of
+
+21
+00:01:11.100 --> 00:01:12.520
+optimization algorithms, for
+
+22
+00:01:12.520 --> 00:01:15.500
+example, if you're trying to find
+the solution to some set of equations, or
+
+23
+00:01:15.500 --> 00:01:20.110
+you're trying to maximize the function,
+often you'll iterate over and over again.
+
+24
+00:01:20.110 --> 00:01:22.480
+And and you'll stop when the,
+
+25
+00:01:22.480 --> 00:01:24.710
+when the estimates that you're
+calculating are getting closer and
+
+26
+00:01:24.710 --> 00:01:27.830
+closer together, because that's usually
+a sign that you're kind of converging to
+
+27
+00:01:27.830 --> 00:01:31.920
+whatever the minimum or ma, or
+maximum of the objective function is.
+
+28
+00:01:31.920 --> 00:01:35.680
+So this is a, in theory this is
+a perfectly reasonable construction.
+
+29
+00:01:35.680 --> 00:01:40.070
+You want to keep recycling through the
+algorithm until the two values are close.
+
+30
+00:01:40.070 --> 00:01:43.370
+So there's one problem which is that first
+of all requires an algorithm that is
+
+31
+00:01:43.370 --> 00:01:48.820
+guaranteed to converge and not necessarily
+every algorithm has that property.
+
+32
+00:01:48.820 --> 00:01:52.300
+Second of all, als, it doe, it, it does
+depend a little bit on the tolerance of
+
+33
+00:01:52.300 --> 00:01:56.530
+the re, the loop will run longer if the
+tolerance is smaller, generally speaking.
+
+34
+00:01:56.530 --> 00:02:02.900
+And because it's hard to predict
+how how long this loop will run.
+
+35
+00:02:02.900 --> 00:02:04.720
+It can be a little bit dangerous
+because it's a little bit
+
+36
+00:02:04.720 --> 00:02:07.820
+because it's unpredictable, it, it,
+it could theoretically run forever, and
+
+37
+00:02:07.820 --> 00:02:11.490
+you have no gar, way to guarantee that
+the program will stop at some point.
+
+38
+00:02:11.490 --> 00:02:12.260
+So this construct,
+
+39
+00:02:12.260 --> 00:02:15.170
+although it's theoretically
+kind of the right thing to do
+
+40
+00:02:15.170 --> 00:02:16.610
+it's usually not a good idea.
+
+41
+00:02:16.610 --> 00:02:19.370
+It's better, probably be better
+off to use a for loop that has a,
+
+42
+00:02:19.370 --> 00:02:24.070
+has a hard limit on the number of
+iterations that it's allowed to run.
+
+43
+00:02:24.070 --> 00:02:27.350
+That way, if you have a problem with
+your algorithm, it will eventually reach
+
+44
+00:02:27.350 --> 00:02:32.880
+the hard limit and stop and, and you will
+know that the reason it stopped is because
+
+45
+00:02:32.880 --> 00:02:36.190
+it didn't converge and then maybe you can
+try to fix something about the algorithm.
+
+46
+00:02:36.190 --> 00:02:40.110
+But with a repeat type of approach if your
+algorithm is not converging you won't
+
+47
+00:02:40.110 --> 00:02:42.110
+have any warning it will just
+be running a really long time.
+
+48
+00:02:43.730 --> 00:02:46.950
+The last control structure element
+I want to talk about is next and
+
+49
+00:02:46.950 --> 00:02:48.420
+then there's also return.
+
+50
+00:02:48.420 --> 00:02:51.410
+Next is basically used in any
+time of looping construct when
+
+51
+00:02:51.410 --> 00:02:52.980
+you want to skip an iteration.
+
+52
+00:02:52.980 --> 00:02:56.689
+So here I've got a basic four loop which
+is going to run for 100 iterations.
+
+53
+00:02:57.790 --> 00:03:01.170
+And then but the idea is I want to
+skip the first 20 iterations and then
+
+54
+00:03:01.170 --> 00:03:04.820
+only kind of execute some code when it's,
+when it offer iterations 20 through 100.
+
+55
+00:03:04.820 --> 00:03:08.350
+So here I've got a basic,
+I've got a very simple if condition.
+
+56
+00:03:08.350 --> 00:03:11.590
+So if i is less than or
+equal to 20 I'm just going to skip, so
+
+57
+00:03:11.590 --> 00:03:16.440
+I hit, I use the next expression, and
+it will skip everything else in the,
+
+58
+00:03:16.440 --> 00:03:18.270
+in the four loop and go and iterate again.
+
+59
+00:03:18.270 --> 00:03:24.280
+So once i gets beyond 20 then of course
+the expression i let's less than or
+
+60
+00:03:24.280 --> 00:03:25.580
+equal to 20 will be false.
+
+61
+00:03:25.580 --> 00:03:28.960
+And so it won't execute the next, it will
+go into whatever the body of the code for
+
+62
+00:03:28.960 --> 00:03:30.670
+the for loop is.
+
+63
+00:03:30.670 --> 00:03:34.940
+so, so next is another, is a way to
+skip an iteration in, in a loop.
+
+64
+00:03:34.940 --> 00:03:39.630
+And of course break is a way to
+execute the, exit the loop entirely.
+
+65
+00:03:39.630 --> 00:03:43.740
+The return function is,
+is another function that can use the exit,
+
+66
+00:03:43.740 --> 00:03:46.650
+exit a loop and
+it's primarily used to exit a function.
+
+67
+00:03:46.650 --> 00:03:51.710
+So it will, it will exit the entire
+function and return a value
+
+68
+00:03:51.710 --> 00:03:55.880
+that you pass it, so we will talk more
+about return when we talk about functions.
+
+69
+00:03:55.880 --> 00:03:59.990
+but, it's something that can break that it
+can interrupt the flow of a program too.
+
+70
+00:04:01.330 --> 00:04:03.030
+So, that's control structures for
+
+71
+00:04:03.030 --> 00:04:06.670
+now so the basic summary is that
+control structures like if, while and
+
+72
+00:04:06.670 --> 00:04:10.910
+for that can allow you to control
+the flow of an R, of an R program.
+
+73
+00:04:10.910 --> 00:04:13.500
+Generally speaking while there
+are construct, constructs that kind of
+
+74
+00:04:13.500 --> 00:04:17.140
+allow you to execute infinite loops you
+generally want to be on the look out for
+
+75
+00:04:17.140 --> 00:04:20.340
+these kinds of things and
+to avoid them if possible.
+
+76
+00:04:20.340 --> 00:04:23.460
+Even if they are kind of theoretically
+correct because they can lead to
+
+77
+00:04:23.460 --> 00:04:26.630
+kind of some unpredictable
+behavior in programs.
+
+78
+00:04:26.630 --> 00:04:28.560
+And the other key thing
+I have mentioned yet
+
+79
+00:04:28.560 --> 00:04:31.671
+is the, the control measures that I've
+mentioned here are primarily useful for
+
+80
+00:04:31.671 --> 00:04:34.890
+writing programs and
+think I mentioned that in the beginning.
+
+81
+00:04:34.890 --> 00:04:39.270
+But for command line and interactive work
+there are other types of looping type
+
+82
+00:04:39.270 --> 00:04:42.530
+functions that we can use, they
+generally have the word apply in them.
+
+83
+00:04:42.530 --> 00:04:45.750
+And they can be a lot more useful for for
+
+84
+00:04:45.750 --> 00:04:48.800
+command line interactive work when you're
+exploring data and things like that,
+
+85
+00:04:48.800 --> 00:04:52.010
+not writing programs although they can
+be very useful in writing programs too.
+
+86
+00:04:52.010 --> 00:04:55.550
+So I'll talk about apply functions
+except in a separate of videos.

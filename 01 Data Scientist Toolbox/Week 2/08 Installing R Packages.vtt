@@ -1,0 +1,465 @@
+WEBVTT
+
+1
+00:00:00.275 --> 00:00:02.270
+So this lecture is about installing R
+Packages.
+
+2
+00:00:03.480 --> 00:00:06.090
+When you download R from the comprehensive
+R
+
+3
+00:00:06.090 --> 00:00:08.680
+Archive Network CRAN, you get the base R
+system.
+
+4
+00:00:08.680 --> 00:00:10.560
+And this includes a bunch of functions
+that you can
+
+5
+00:00:10.560 --> 00:00:14.620
+use to summarize data and make plots and
+things like that.
+
+6
+00:00:14.620 --> 00:00:17.140
+It basically covers the basic function,
+functionality
+
+7
+00:00:17.140 --> 00:00:20.120
+that you'll need including implementing
+the R language.
+
+8
+00:00:20.120 --> 00:00:22.510
+But the real reason R is so useful is that
+there are a lot
+
+9
+00:00:22.510 --> 00:00:24.820
+of add-on packages that extend this basic
+
+10
+00:00:24.820 --> 00:00:26.820
+functionality in a bunch of different
+directions.
+
+11
+00:00:26.820 --> 00:00:29.420
+Everything from cleaning data, to plotting
+data,
+
+12
+00:00:29.420 --> 00:00:35.790
+to analyzing data and making interactive
+applications.
+
+13
+00:00:35.790 --> 00:00:38.200
+So, R Packages are developed and published
+by the larger
+
+14
+00:00:38.200 --> 00:00:41.200
+R community, hopefully including you at
+the end of this course.
+
+15
+00:00:42.410 --> 00:00:46.260
+So, to obtain R Packages the primary place
+that you're going to go is CRAN.
+
+16
+00:00:46.260 --> 00:00:50.370
+But for some biological applications, and
+some big data applications, you might also
+
+17
+00:00:50.370 --> 00:00:53.550
+go to the Bioconductor Project that I have
+linked to both the websites here.
+
+18
+00:00:54.550 --> 00:00:56.650
+You can also obtain information about the
+available
+
+19
+00:00:56.650 --> 00:00:59.960
+packages on CRAN with the available
+packages function.
+
+20
+00:00:59.960 --> 00:01:03.040
+And so what you would do is you can enter
+R, start
+
+21
+00:01:03.040 --> 00:01:07.070
+up, and you'll get a prompt and you can
+type this command: a.
+
+22
+00:01:07.070 --> 00:01:11.960
+And then give it the available packages
+argument just like this.
+
+23
+00:01:11.960 --> 00:01:13.970
+And that will be a large number of
+packages.
+
+24
+00:01:13.970 --> 00:01:17.260
+So you could just hit a after you hit that
+you could just type a
+
+25
+00:01:17.260 --> 00:01:21.080
+and hit return and you would see all the
+packages, but there would be thousands.
+
+26
+00:01:21.080 --> 00:01:24.630
+So instead you can use the head command to
+look at say a certain number,
+
+27
+00:01:24.630 --> 00:01:28.830
+say just three of those, packages so these
+are the first three in alphabetical order.
+
+28
+00:01:29.950 --> 00:01:31.950
+As of the making of this lecture there are
+approximately
+
+29
+00:01:31.950 --> 00:01:35.270
+5200 packages on CRAN covering a wide
+range of topics.
+
+30
+00:01:37.040 --> 00:01:39.650
+An equally large number available on
+Bioconductor.
+
+31
+00:01:40.750 --> 00:01:42.310
+One thing that you can do is if you know
+the
+
+32
+00:01:42.310 --> 00:01:45.130
+area that you're working in, but you don't
+know the R package
+
+33
+00:01:45.130 --> 00:01:47.740
+you're after, you can go to the Task Views
+link which
+
+34
+00:01:47.740 --> 00:01:51.050
+groups together many R packages that are
+related to a specific topic.
+
+35
+00:01:52.210 --> 00:01:57.190
+So to install an R Package you primarily
+use the function install.packages.
+
+36
+00:01:57.190 --> 00:01:58.720
+So what you would, you could do is just
+
+37
+00:01:58.720 --> 00:02:00.930
+use that with the package name as the
+argument.
+
+38
+00:02:00.930 --> 00:02:03.630
+So for example if I want to install the
+Slidify package what I
+
+39
+00:02:03.630 --> 00:02:05.450
+would do is I would just
+
+40
+00:02:05.450 --> 00:02:08.690
+type install.packages and then in quotes,
+slidify.
+
+41
+00:02:08.690 --> 00:02:10.980
+And what that would do is that would go to
+
+42
+00:02:10.980 --> 00:02:15.910
+CRAN and it would install that package on
+your computer.
+
+43
+00:02:15.910 --> 00:02:19.720
+Any package on which that package depends
+will also be downloaded and installed.
+
+44
+00:02:19.720 --> 00:02:21.460
+This is actually one of the nicest parts
+about
+
+45
+00:02:21.460 --> 00:02:24.210
+R, is that it's relatively straightforward
+to install new packages.
+
+46
+00:02:25.560 --> 00:02:28.330
+You can also install multiple R packages
+with a single
+
+47
+00:02:28.330 --> 00:02:32.310
+line, so what you do is you again, you
+type, install.packages.
+
+48
+00:02:32.310 --> 00:02:39.170
+And now what you do is you enclose in
+parentheses, with a C out front.
+
+49
+00:02:39.170 --> 00:02:41.870
+All the different package names separated
+by commas,
+
+50
+00:02:41.870 --> 00:02:45.360
+and surrounded by parenth, or surrounded
+by quotes.
+
+51
+00:02:45.360 --> 00:02:48.860
+And then what that would do is install the
+slidify, ggplot2, and devtools packages.
+
+52
+00:02:51.380 --> 00:02:55.170
+You can also install packages relatively
+straightforward procedure
+
+53
+00:02:55.170 --> 00:02:57.890
+in RStudio, so hopefully you've installed
+R in RStudio.
+
+54
+00:02:57.890 --> 00:03:03.460
+You can go up to the Tools Menu and then
+just go down
+
+55
+00:03:03.460 --> 00:03:07.050
+to Install Packages, and that will open up
+a folder that will allow
+
+56
+00:03:07.050 --> 00:03:10.960
+you to pick the repository and then pick
+the package that you want to
+
+57
+00:03:10.960 --> 00:03:13.940
+be able to install from, and it will
+install that package for you.
+
+58
+00:03:14.940 --> 00:03:17.780
+Installing packages from Bioconductor is a
+little bit different.
+
+59
+00:03:17.780 --> 00:03:21.120
+You don't use install.package, but it's
+still quite since, straightforward.
+
+60
+00:03:21.120 --> 00:03:25.740
+So what you do is you go and you type this
+command, source
+
+61
+00:03:25.740 --> 00:03:30.270
+and then this website right here, and that
+will load the biocLite function.
+
+62
+00:03:30.270 --> 00:03:34.070
+And so then first you just type biocLite
+by itself and what
+
+63
+00:03:34.070 --> 00:03:36.860
+that will do is it will install the basic
+version of Bioconductor.
+
+64
+00:03:36.860 --> 00:03:40.110
+That's actually quite a few packages so be
+prepared for a
+
+65
+00:03:40.110 --> 00:03:43.220
+lot of packages to be installed the first
+time you run it.
+
+66
+00:03:43.220 --> 00:03:45.284
+Then the next time you want to install
+specific
+
+67
+00:03:45.284 --> 00:03:48.037
+package you again would do just like you
+would install.packages.
+
+68
+00:03:48.037 --> 00:03:52.039
+As you type biocLite and then c,
+parentheses, and then
+
+69
+00:03:52.039 --> 00:03:57.280
+each package name in quotation part, marks
+separated by a comma.
+
+70
+00:03:57.280 --> 00:03:59.390
+So that's how you install packages like
+that.
+
+71
+00:04:01.030 --> 00:04:05.530
+You can also load the packages after
+you've installed them.
+
+72
+00:04:05.530 --> 00:04:07.140
+So if you install it, it doesn't mean that
+
+73
+00:04:07.140 --> 00:04:09.760
+all of the functions are immediately
+available to you.
+
+74
+00:04:09.760 --> 00:04:14.140
+You need to use the library command to
+tell R which packages to load in.
+
+75
+00:04:14.140 --> 00:04:17.840
+So, for example, if you've installed the
+ggplot2 library, and
+
+76
+00:04:17.840 --> 00:04:19.830
+you want to be able to use the functions
+in
+
+77
+00:04:19.830 --> 00:04:22.802
+ggplot2, you need to type in the command
+library(ggplot2) in
+
+78
+00:04:22.802 --> 00:04:27.660
+order to get access to that functions in
+that package.
+
+79
+00:04:27.660 --> 00:04:32.840
+All packages need to be loaded, will be
+loaded first, so for example if
+
+80
+00:04:32.840 --> 00:04:38.090
+you are missing some dependancies, then
+you wont be able to load that package.
+
+81
+00:04:38.090 --> 00:04:41.662
+An important note here is that you should
+not put the package names
+
+82
+00:04:41.662 --> 00:04:47.089
+In quotes when you are using library
+otherwise you won't get correct loading.
+
+83
+00:04:47.089 --> 00:04:51.740
+[INAUDIBLE] some packages produce messages
+when they are loading and some don't.
+
+84
+00:04:51.740 --> 00:04:53.460
+Either way you don't need to worry about
+it.
+
+85
+00:04:55.050 --> 00:05:00.790
+So after you load a package the functions
+exported by that package will be attached
+
+86
+00:05:00.790 --> 00:05:05.950
+at the top of the search list so what you
+can do is you can type library(ggplot2).
+
+87
+00:05:05.950 --> 00:05:09.660
+And then if you type search, open
+parentheses, close parentheses, you will
+
+88
+00:05:09.660 --> 00:05:16.380
+see all of the functions that are part of
+the ggplot2 package.
+
+89
+00:05:16.380 --> 00:05:20.556
+So the summary is that R package is a
+powerful mechanism for extending
+
+90
+00:05:20.556 --> 00:05:26.450
+the functionality of our R Packages could
+be obtained by CRAN or other repositories.
+
+91
+00:05:26.450 --> 00:05:28.830
+You install the packages, function could
+be used
+
+92
+00:05:28.830 --> 00:05:32.400
+to install packages from the R console and
+then
+
+93
+00:05:32.400 --> 00:05:34.410
+library is what you do to load the
+
+94
+00:05:34.410 --> 00:05:36.790
+packages in to actually get access to the
+functions.

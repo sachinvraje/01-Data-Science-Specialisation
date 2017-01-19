@@ -1,0 +1,559 @@
+WEBVTT
+
+1
+00:00:00.830 --> 00:00:02.050
+This lecture is going to be a lecture
+
+2
+00:00:02.050 --> 00:00:04.390
+that covers the basic Git and GitHub
+commands that
+
+3
+00:00:04.390 --> 00:00:06.000
+you're going to be using for the files
+
+4
+00:00:06.000 --> 00:00:07.360
+that you're going to be creating in this
+class.
+
+5
+00:00:08.370 --> 00:00:10.830
+So the first thing that we should do is
+sort look at the structure
+
+6
+00:00:10.830 --> 00:00:14.600
+of where the different files are and what
+the different commands are going to do.
+
+7
+00:00:14.600 --> 00:00:16.722
+So you can start off by looking here
+
+8
+00:00:16.722 --> 00:00:20.270
+at the work space where you're actually
+working
+
+9
+00:00:20.270 --> 00:00:22.120
+on files on your computer, so that's like
+
+10
+00:00:22.120 --> 00:00:24.790
+the directories where you're working with
+the files.
+
+11
+00:00:24.790 --> 00:00:25.880
+Then there's an index.
+
+12
+00:00:25.880 --> 00:00:27.630
+This tells Git what are the files
+
+13
+00:00:27.630 --> 00:00:29.660
+that it should be controlling under
+version control.
+
+14
+00:00:29.660 --> 00:00:32.650
+And then there's the local repository;
+these are the files
+
+15
+00:00:32.650 --> 00:00:36.150
+that are stored or version controlled on
+your local computer.
+
+16
+00:00:36.150 --> 00:00:38.110
+Finally, there's the remote repository.
+
+17
+00:00:38.110 --> 00:00:39.520
+In our case, that will always be GitHub.
+
+18
+00:00:39.520 --> 00:00:43.260
+So, the idea here is that you're starting
+
+19
+00:00:43.260 --> 00:00:45.490
+off in your workspace and you create a
+file.
+
+20
+00:00:45.490 --> 00:00:48.450
+And the first thing that you need to do is
+you need to add that file to the
+
+21
+00:00:48.450 --> 00:00:54.000
+index so that Git knows to to monitor that
+file and keep up with all of its changes.
+
+22
+00:00:54.000 --> 00:00:56.530
+And then what you need to do is you need
+to commit that file so that, you need
+
+23
+00:00:56.530 --> 00:00:58.650
+to put a version of that file in your
+
+24
+00:00:58.650 --> 00:01:01.925
+local repository so that it can be stored
+and updated.
+
+25
+00:01:01.925 --> 00:01:03.390
+So as you make changes, you keep
+
+26
+00:01:03.390 --> 00:01:05.640
+committing those changes to your local
+repository.
+
+27
+00:01:07.030 --> 00:01:09.740
+Finally, sometime when you have made a few
+Commits and
+
+28
+00:01:09.740 --> 00:01:12.930
+you want to update the remote repository,
+then what you'll
+
+29
+00:01:12.930 --> 00:01:15.480
+be doing is you'll be issuing a Push
+Command to
+
+30
+00:01:15.480 --> 00:01:19.450
+be able to put those changes into your
+remote repository.
+
+31
+00:01:19.450 --> 00:01:20.420
+Okay, so the first thing that you're
+
+32
+00:01:20.420 --> 00:01:22.322
+going to need to do is suppose you're
+working
+
+33
+00:01:22.322 --> 00:01:28.440
+in a directory that is a repo that is
+being under version control by Git.
+
+34
+00:01:28.440 --> 00:01:32.180
+So the first thing that you're going to
+want to maybe do is put new files
+
+35
+00:01:32.180 --> 00:01:36.280
+under version controls, so what you need
+to do is add them to the index.
+
+36
+00:01:36.280 --> 00:01:38.220
+And so to let know, Git know that they
+
+37
+00:01:38.220 --> 00:01:40.280
+need to be tracked, you can use the add
+command.
+
+38
+00:01:41.463 --> 00:01:43.350
+So this is Gitadd.,
+
+39
+00:01:43.350 --> 00:01:46.630
+adds all the new files in your current
+working directory that you are working in,
+
+40
+00:01:46.630 --> 00:01:50.130
+so this is presuming that you are in the
+directory where you are adding new files.
+
+41
+00:01:52.994 --> 00:01:56.010
+Git add -u will actually update what
+happens to
+
+42
+00:01:56.010 --> 00:01:59.952
+the files that have changed names or were
+deleted.
+
+43
+00:01:59.952 --> 00:02:00.990
+So gitadd.,
+
+44
+00:02:00.990 --> 00:02:04.590
+will just add all the new files, gitadd -u
+deals with all
+
+45
+00:02:04.590 --> 00:02:10.280
+the changes to files either adding or
+deleting or sort of name changing.
+
+46
+00:02:10.280 --> 00:02:16.180
+And then gitadd -A does both of the
+previous things all in one command.
+
+47
+00:02:16.180 --> 00:02:20.190
+So before you try to commit things to your
+local repository, you need to make
+
+48
+00:02:20.190 --> 00:02:23.660
+sure that you use the add command, so that
+you can add things to the index.
+
+49
+00:02:25.210 --> 00:02:29.060
+Then once you've added them to the index,
+you can commit them to your local repo.
+
+50
+00:02:29.060 --> 00:02:31.910
+And so the way that you do that is you can
+use the git
+
+51
+00:02:31.910 --> 00:02:37.470
+commit command, so you do gitcommit, and
+then a flag, -m, and a message here.
+
+52
+00:02:37.470 --> 00:02:40.130
+And so the message is hopefully a useful
+description of
+
+53
+00:02:40.130 --> 00:02:42.390
+what are the changes that are happening in
+this command.
+
+54
+00:02:42.390 --> 00:02:44.210
+So, if I've added some new files, that
+
+55
+00:02:44.210 --> 00:02:47.090
+message might say I've the following new
+files.
+
+56
+00:02:47.090 --> 00:02:48.900
+Or it might tell you a little bit about
+the things that
+
+57
+00:02:48.900 --> 00:02:52.440
+you've deleted or changed so that you can
+change your local repo.
+
+58
+00:02:53.448 --> 00:02:56.490
+This is only going to make changes to the
+local repo, it
+
+59
+00:02:56.490 --> 00:02:59.420
+won't make any changes to GitHub, this is
+still a local action.
+
+60
+00:03:00.570 --> 00:03:03.340
+So if you would like to put things up on
+GitHub, then what you can
+
+61
+00:03:03.340 --> 00:03:04.830
+do is, still in that same working
+
+62
+00:03:04.830 --> 00:03:08.160
+directory, you could type the command, git
+push.
+
+63
+00:03:08.160 --> 00:03:10.870
+And so what that will do is take all the
+changes that you've committed
+
+64
+00:03:10.870 --> 00:03:14.130
+up until then and it will push them to the
+remote directory on Github.
+
+65
+00:03:16.290 --> 00:03:17.540
+Sometimes you might be working on a
+
+66
+00:03:17.540 --> 00:03:19.950
+project, particularly in this class where
+there's
+
+67
+00:03:19.950 --> 00:03:23.630
+a version that might be used by many other
+people, and you might not
+
+68
+00:03:23.630 --> 00:03:26.820
+want to edit the version that's being used
+by everyone because if you make
+
+69
+00:03:26.820 --> 00:03:30.450
+a lot of changes to it, it might break all
+the work that they're doing.
+
+70
+00:03:30.450 --> 00:03:34.220
+So one thing that you might do, first is
+you might actually create a branch.
+
+71
+00:03:34.220 --> 00:03:36.480
+So a branch is just another version of the
+
+72
+00:03:36.480 --> 00:03:40.000
+same directory where you can make changes
+sort of independently.
+
+73
+00:03:40.000 --> 00:03:44.170
+So what you can do is you can use git
+checkout -b and then the
+
+74
+00:03:44.170 --> 00:03:47.860
+name of the branch that you want to do and
+that will create a new branch.
+
+75
+00:03:47.860 --> 00:03:51.100
+The default branch for all the repos that
+are created with Github is the master
+
+76
+00:03:51.100 --> 00:03:53.060
+branch, but you can create a repo with
+
+77
+00:03:53.060 --> 00:03:56.530
+any other names they develop for
+development branch.
+
+78
+00:03:56.530 --> 00:03:58.520
+To see what branch you're on at any given
+time.
+
+79
+00:03:58.520 --> 00:04:01.590
+If you go into the current working
+directory where the repo is,
+
+80
+00:04:01.590 --> 00:04:04.660
+and you type git branch, it'll tell you
+what branch you're on.
+
+81
+00:04:04.660 --> 00:04:08.100
+If you want to switch back to the master
+branch, what you can do is,
+
+82
+00:04:08.100 --> 00:04:10.540
+you can type git checkout master, and
+we'll
+
+83
+00:04:10.540 --> 00:04:12.220
+check you out back to the master branch.
+
+84
+00:04:12.220 --> 00:04:13.640
+And so you can look at that branch.
+
+85
+00:04:15.430 --> 00:04:17.120
+One thing that you can do is once you've
+made a
+
+86
+00:04:17.120 --> 00:04:20.280
+pull request, or a push of your changes up
+to your repo.
+
+87
+00:04:20.280 --> 00:04:23.830
+Suppose that you're working on a repo
+where you're on a different
+
+88
+00:04:23.830 --> 00:04:28.000
+branch or you're working on a repo that
+you forked from somebody else,
+
+89
+00:04:28.000 --> 00:04:30.990
+then what you might want to do is merge
+your changes back into
+
+90
+00:04:30.990 --> 00:04:35.290
+the original repo or into the original
+branch that you were working on.
+
+91
+00:04:35.290 --> 00:04:37.650
+To do this you need to issue a pull
+request.
+
+92
+00:04:37.650 --> 00:04:39.670
+This is a unique fit, feature of Gitbhub.
+
+93
+00:04:39.670 --> 00:04:41.770
+It actually isn't a feature of Git.
+
+94
+00:04:41.770 --> 00:04:43.790
+And so what you do is you go to the Github
+website
+
+95
+00:04:43.790 --> 00:04:47.550
+and you, if you go to the branch that
+you're interested in.
+
+96
+00:04:47.550 --> 00:04:52.160
+So if you go and pick which branch that
+you're working on then what you can
+
+97
+00:04:52.160 --> 00:04:54.010
+do is you can actually click on this
+
+98
+00:04:54.010 --> 00:04:57.390
+button over here which is compare and pull
+request.
+
+99
+00:04:57.390 --> 00:04:59.150
+And what that will do is it will issue a
+pull
+
+100
+00:04:59.150 --> 00:05:03.010
+request to the individual that owns that
+other branch or repo.
+
+101
+00:05:03.010 --> 00:05:04.960
+So if it's yourself, you'll get a
+
+102
+00:05:04.960 --> 00:05:07.350
+notification that there's been a pull
+request.
+
+103
+00:05:07.350 --> 00:05:09.610
+If it's somebody else, they'll get a
+notification.
+
+104
+00:05:09.610 --> 00:05:12.760
+And then they can decide whether to merge
+that pull request
+
+105
+00:05:12.760 --> 00:05:15.550
+into their repo or not if they think the
+changes are appropriate.
+
+106
+00:05:15.550 --> 00:05:17.950
+So you can see all the changes that were
+made and
+
+107
+00:05:17.950 --> 00:05:21.040
+confirm whether they were sort of
+appropriate and interesting or not.
+
+108
+00:05:22.760 --> 00:05:24.760
+So I'm giving you the very, very basis of
+
+109
+00:05:24.760 --> 00:05:27.280
+the Github commands here, but there's a
+whole lot more.
+
+110
+00:05:27.280 --> 00:05:31.110
+And you can often run into little tricks
+and difficulties with Git and Github.
+
+111
+00:05:31.110 --> 00:05:35.610
+So the best place to start is actually a
+Github help I found.
+
+112
+00:05:35.610 --> 00:05:38.230
+But the Git documentation is actually
+quite thorough, it takes
+
+113
+00:05:38.230 --> 00:05:40.670
+a little bit more reading and a little bit
+more doing.
+
+114
+00:05:40.670 --> 00:05:43.210
+Although my experience has been that the
+best place to, to
+
+115
+00:05:43.210 --> 00:05:45.270
+deal with this is to type sort of what you
+think
+
+116
+00:05:45.270 --> 00:05:48.850
+you want to do into Google or into Stack
+Overflow and you
+
+117
+00:05:48.850 --> 00:05:52.050
+find out the answers much more quickly
+that way in my experience.

@@ -1,0 +1,25 @@
+Reproducible research is another one of or
+more unique courses. So reproducible research is concerned with
+creating code and documents that will completely
+reproduce all of the analysis that you've done in a transparent
+way so that you can communicate that to other
+people. It's one of the most fundamental
+components of being a data scientist. But it's often glossed over as a sort of a side component of many other programs of
+data science. So we're going to talk about in the reproducible research course, the
+structure of a data analysis, how do you set it up, how do you
+organize it and put it together. We're going to talk about some of the
+components of reproducible research in terms of programming which
+include Markdown, LaTex, R Markdown. And then we're going to talk a little bit
+about a unique idea called evidence-based data analysis, doing data analysis based
+on what's best practices in the field right
+now. And then ways that you can publish your data outside of your own organization,
+things like RPubs. So for example, we're going to talk about
+the steps in a data analysis or in a data science
+problem. And so, you have to go all the way from
+defining the questions to creating sort of reproducible code that
+you can share with other people. And so, some of these steps are covered by
+different parts of the class, and so reproducible research
+synthesizes where those parts go together. We'll also talk about which files are
+components of a data analysis. Everything from the sort of a raw data to
+the exploratory figures to sort the final
+analysis that you'll be performing.

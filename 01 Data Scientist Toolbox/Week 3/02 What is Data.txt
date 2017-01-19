@@ -1,0 +1,85 @@
+Since you're in a data science track, it
+might be a good idea to figure out what is data. So, for a definition of data we're
+going to go to the number one source of all
+information, Wikipedia. And, we're going to get the definition,
+data are values of qualitative or quantitative variables,
+belonging to a set of items. So, the first thing that you can see from this definition is that you need a set of
+items to be measuring things on and so, the set of items is sometimes called the
+population, in statistical inference. It's basically, what you're trying to
+discover something about, so, it might be the set of all websites or it
+might be the set of all people coming to
+websites, or it might be, a set of all people getting a
+particular drug. But in general, it's a set of things that
+you're going to make measurements on. Variables are measurements or
+characteristics of an item. So, they might be measurements as in, you measure the height of a person, or you
+measure the amount of time a person stays on a website, or they might be more
+qualitative characteristics. So it might be the places that the person
+looks on the website or Whether that you think the person
+visiting is a man or a woman. And so you, have both qualitative and
+quantitative variables. So qualitative variables are things like
+country of origin, sex, or treatment. They're not necessarily ordered, and
+they're not necessarily measurements in that way. Quantitative measurements on the other
+hand are usually Measured on a continuous scale, they're things like
+height, weight and blood pressure. And, they usually have an ordering on that
+scale. So, what do data look like? So, you might think in your mind, when I
+say data, it's something like a big excel table, or something like that, but,
+actually, most data actually starts off in a very raw
+form. So, this is an example of a fast queue
+file, which is a type of file that's produced by a next
+generation sequencing machine. So, a typical experiment will produce
+hundreds of millions of lines of text file that look like this. And so, you can actually see here in this
+file, you can actually see a sequence here, of a particular read
+that comes from a person's genome. And so, what you want to be able to do is
+parse that file, and collect those data, and maybe
+infer something about their genome. Another way the data might look is an API. So this is actually a picture of the
+Twitt, Twitter API website. And so, what you might do is you might try
+to get a particular URL. So you might try to access that URL and
+get information from it. And what you would get back is something
+like this, which is a structured form of data,
+that isn't necessarily something you would see in
+Excel cloud, but it's, a structured form of data that you might
+get back. Here's an example of a medical record. So, this is again another form of data. People are very interested in studying
+medical records, and trying to understand how people can
+either improve the way that we insure people or improve the way that we give people
+medical care. And so, these data again are text files
+that, are not necessarily formatted in a very
+nice way. So what you might want to be able to do is Do things like extract the allergy name
+from this text file. Or subtract or extract with different
+things were ordered and so forth, and then use that data to maybe
+answer some questions. Data might also be a video, so in this particular case machine learning
+experts developed an algorithm that could learn whether a video
+was a cat, or a video was something else. It seems like kind of a trivial
+application. It's actually quite a hard problem And
+they solved. But in this particular case, the data were
+actually the videos themselves. They're stills from the video themselves. Data might also be an audio file. So this is an example, DarwinTunes, where people actually study the evolution of
+music over time, where people decided whether,
+innovations introduced into the audio file were interesting or
+not. So, overtime they evolved music that was
+more melodious and more interesting for people
+to listen to. So, the data itself was actually the audio
+files in this study. Data might also look like access to files,
+whether through an API or through spreadsheets
+through open government websites. So, for example, data.gov has a lot of
+data sets that might be accessible, and those data sites might
+be in any number of formats, from very simple to tab or comma
+separated files, to excel files, to something that's much more
+complicated and messy like RAW text files. Rarely do data look exactly like what
+you'd expected to see at, at the beginning of a data science
+project. So, here's a very clear easy data set
+where you've got variables and columns, and
+observations in rows. And it seems like it's very easy to
+analyze. It's very rare that the data come that easily processed before the beginning of a
+study. So, the data are actually the second most
+important thing in data science. The most important thing, in in data
+science is actually the question you're trying to
+answer. So, the data should follow that question. It's the second most important thing to
+the question. Often the data will limit, or enable the
+questions you're trying to ask, so in other words, you start with the
+question, and you might not have the data to be able to answer that question,
+so you have to modify the question, to be able to answer, sort of a
+sub-question or a related question. But having data in general, can't save you if you don't have a question that you're
+asking. And this is [INAUDIBLE] of the key take
+home message, maybe the theme of this data scientist
+toolbox, is focusing on having a question that you want to answer
+with your data and not being driven by the fact that you
+have data.

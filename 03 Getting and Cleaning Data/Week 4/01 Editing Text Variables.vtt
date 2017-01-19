@@ -1,0 +1,891 @@
+WEBVTT
+
+1
+00:00:00.380 --> 00:00:04.480
+A very common data cleaning step is to
+have text variables that are in sort of
+
+2
+00:00:04.480 --> 00:00:06.970
+a nasty format or have extra spaces or
+
+3
+00:00:06.970 --> 00:00:08.370
+periods or
+underscores that you need to remove.
+
+4
+00:00:08.370 --> 00:00:12.590
+And so this lecture's gonna be about
+how do you manipulate those texts
+
+5
+00:00:14.050 --> 00:00:18.060
+programatically in order to get nice,
+decent variable names but
+
+6
+00:00:18.060 --> 00:00:20.320
+also texts in the actual data set itself.
+
+7
+00:00:20.320 --> 00:00:24.280
+So again, we're gonna go back to this
+Baltimore fixed camera data because I
+
+8
+00:00:24.280 --> 00:00:29.200
+can't stop thinking about all
+the speeding tickets that I get.
+
+9
+00:00:29.200 --> 00:00:32.860
+So again, the first thing that we're gonna
+do is download the data set from the web.
+
+10
+00:00:32.860 --> 00:00:35.620
+So we're gonna check and
+see if this data directory exists.
+
+11
+00:00:35.620 --> 00:00:37.650
+And if it doesn't, we're gonna create it.
+
+12
+00:00:37.650 --> 00:00:39.860
+Then we're gonna download
+the data from this URL and
+
+13
+00:00:39.860 --> 00:00:43.395
+we're gonna read it into R with read.csv.
+
+14
+00:00:43.395 --> 00:00:48.020
+And so first thing that we can do is
+look at the names of this camera data.
+
+15
+00:00:48.020 --> 00:00:49.030
+And so this is the column names.
+
+16
+00:00:49.030 --> 00:00:53.990
+And you can see, for example,
+one of them is this variable crossStreet,
+
+17
+00:00:53.990 --> 00:00:56.150
+and it has a capitalized S in it.
+
+18
+00:00:56.150 --> 00:01:00.026
+This seems like not a big deal, but every
+time that you're gonna type that into R,
+
+19
+00:01:00.026 --> 00:01:03.352
+you might see you have this extra
+capital letter and you might miss it.
+
+20
+00:01:03.352 --> 00:01:05.982
+And so, R might give you an error.
+
+21
+00:01:05.982 --> 00:01:09.585
+So one thing that you might wanna do
+is make all of the letters lowercase.
+
+22
+00:01:09.585 --> 00:01:12.745
+And so one way to do that with R,
+is to just use tolower.
+
+23
+00:01:12.745 --> 00:01:14.047
+So you can make the names,
+
+24
+00:01:14.047 --> 00:01:18.240
+all be only lowercase letters
+by using the tolower command.
+
+25
+00:01:18.240 --> 00:01:22.550
+There's also a toupper command,
+if you need that,
+
+26
+00:01:22.550 --> 00:01:24.270
+in order to make
+the letters all uppercase.
+
+27
+00:01:25.280 --> 00:01:30.079
+Another thing that you might wanna
+do is separate out variables
+
+28
+00:01:30.079 --> 00:01:33.801
+that have values that
+are separated by periods.
+
+29
+00:01:33.801 --> 00:01:36.453
+So if we go back to this
+page you can see for
+
+30
+00:01:36.453 --> 00:01:41.223
+example that this location variable here,
+it's separated with a dot.
+
+31
+00:01:41.223 --> 00:01:45.846
+And that often happens when you have
+variable names loaded into R from files.
+
+32
+00:01:45.846 --> 00:01:50.250
+So what we can use is something
+called a string split command.
+
+33
+00:01:50.250 --> 00:01:53.500
+So it's S-T-R-S P-L-I-T.
+
+34
+00:01:53.500 --> 00:01:56.770
+And so then we can pass at
+the names of our data set and
+
+35
+00:01:56.770 --> 00:01:59.080
+we can tell it to split on periods.
+
+36
+00:01:59.080 --> 00:02:03.630
+So here I have to use this escape
+character because the period is
+
+37
+00:02:03.630 --> 00:02:04.490
+a reserved character.
+
+38
+00:02:04.490 --> 00:02:07.760
+And so what I get if I look at this
+data set, that comes out, split names,
+
+39
+00:02:07.760 --> 00:02:12.590
+which is just a list,
+you can look at say the fifth element and
+
+40
+00:02:12.590 --> 00:02:16.520
+that's the element corresponding
+to the intersection variable.
+
+41
+00:02:16.520 --> 00:02:18.330
+And you can see that
+nothing happened there.
+
+42
+00:02:18.330 --> 00:02:22.070
+It's just one variable because there
+were no periods in that variable name.
+
+43
+00:02:22.070 --> 00:02:24.830
+But if you look at the sixth
+element of that list,
+
+44
+00:02:24.830 --> 00:02:29.030
+you see that the location variable has
+now been split into two components,
+
+45
+00:02:29.030 --> 00:02:31.350
+the location in the one and
+the dot has been removed.
+
+46
+00:02:31.350 --> 00:02:33.725
+So we have been able to
+split that variable out.
+
+47
+00:02:35.540 --> 00:02:39.236
+So one thing that you might want to be
+able to do then is go through and sub set
+
+48
+00:02:39.236 --> 00:02:44.390
+out, and just take the part of variable
+name that doesn't have the dot in it.
+
+49
+00:02:44.390 --> 00:02:47.300
+I want to give you a very
+quick aside on lists because
+
+50
+00:02:47.300 --> 00:02:49.630
+the functions that we're gonna talk
+about in a minute depend on that.
+
+51
+00:02:49.630 --> 00:02:53.070
+And we want to make sure
+we remember how they work.
+
+52
+00:02:53.070 --> 00:02:54.765
+So here I'm creating a variable,
+
+53
+00:02:54.765 --> 00:02:59.010
+my list, and I'm doing that by asking
+it letters, numbers, and a matrix.
+
+54
+00:02:59.010 --> 00:03:03.380
+And so if I look at the list I can
+see that it has these three different
+
+55
+00:03:03.380 --> 00:03:08.240
+components to it,
+including some name components.
+
+56
+00:03:08.240 --> 00:03:13.090
+So I can select out the first element
+in the list and it returns the letters.
+
+57
+00:03:13.090 --> 00:03:16.970
+I can actually subset
+by the named variables.
+
+58
+00:03:16.970 --> 00:03:19.670
+Or I can actually subset
+out just the vector by
+
+59
+00:03:19.670 --> 00:03:21.510
+just taking the first
+element of that list.
+
+60
+00:03:23.310 --> 00:03:28.190
+So one thing that I might want to be able
+to do is actually remove all the periods,
+
+61
+00:03:28.190 --> 00:03:30.660
+and then only get the first
+part of the variable name.
+
+62
+00:03:30.660 --> 00:03:34.400
+So you can see if I took
+the sixth element of this list.
+
+63
+00:03:34.400 --> 00:03:36.300
+And remember, it had two parts to it.
+
+64
+00:03:36.300 --> 00:03:40.600
+It had the location and then it also
+had the one that came after the dot.
+
+65
+00:03:40.600 --> 00:03:44.220
+So if I just take the first
+element of this list element,
+
+66
+00:03:44.220 --> 00:03:47.750
+then I get just the location value.
+
+67
+00:03:47.750 --> 00:03:53.120
+And so what I can do is I can write
+a function called firstElement.
+
+68
+00:03:53.120 --> 00:03:59.180
+And firstElement, will just take the first
+value that comes out of that list.
+
+69
+00:03:59.180 --> 00:04:02.870
+And so,
+I can use sapply to split the name.
+
+70
+00:04:02.870 --> 00:04:06.240
+Apply to the split name which is a list.
+
+71
+00:04:06.240 --> 00:04:09.170
+I can apply the first element
+function which we'll go through and
+
+72
+00:04:09.170 --> 00:04:13.420
+then to each element of that list,
+it will take the first element out.
+
+73
+00:04:13.420 --> 00:04:15.620
+In this case,
+it'll take out just the variable names.
+
+74
+00:04:15.620 --> 00:04:17.510
+And, when you look at location,
+
+75
+00:04:17.510 --> 00:04:20.050
+you'll see that it has removed
+the period from that location.
+
+76
+00:04:20.050 --> 00:04:24.850
+So that's one way that you can remove,
+say, periods from names in data frames.
+
+77
+00:04:24.850 --> 00:04:28.090
+I'm gonna go back to this
+peer review experiment
+
+78
+00:04:28.090 --> 00:04:31.270
+data to show you some other
+ways that you can manipulate,
+
+79
+00:04:31.270 --> 00:04:34.509
+sort of text variables in order
+to get the answers that you need.
+
+80
+00:04:35.630 --> 00:04:39.840
+So again I'm gonna download
+the data from the Internet and
+
+81
+00:04:39.840 --> 00:04:42.078
+I'm gonna store it into two data frames.
+
+82
+00:04:42.078 --> 00:04:45.780
+One is the reviews data frame and
+one is the solutions data frame.
+
+83
+00:04:45.780 --> 00:04:50.090
+Where reviews is the set of problems
+that have been reviewed by peers in this
+
+84
+00:04:50.090 --> 00:04:50.930
+experiment and
+
+85
+00:04:50.930 --> 00:04:54.710
+solutions is the set of the SAT questions
+that have been submitted by people.
+
+86
+00:04:54.710 --> 00:04:56.710
+So I can see the data set again.
+
+87
+00:04:56.710 --> 00:04:58.920
+Looks like this.
+
+88
+00:04:58.920 --> 00:05:03.912
+And so a couple of things that I might
+want to be able to do is substitute out,
+
+89
+00:05:03.912 --> 00:05:06.440
+say characters.
+
+90
+00:05:06.440 --> 00:05:11.810
+So in this case I can see that a couple
+of the variable names are solution ID and
+
+91
+00:05:11.810 --> 00:05:15.030
+reviewer ID, and
+they have these underscores in them.
+
+92
+00:05:15.030 --> 00:05:18.410
+And so I might wanna remove
+the underscores from those variables,
+
+93
+00:05:18.410 --> 00:05:22.110
+also from this variable
+time left over here.
+
+94
+00:05:22.110 --> 00:05:24.150
+And so one thing that I can do,
+is I can use the sub command.
+
+95
+00:05:24.150 --> 00:05:27.670
+I can say every time that
+you find an underscore,
+
+96
+00:05:27.670 --> 00:05:31.980
+replace it with nothing in the names
+of reviews and what you end up with is
+
+97
+00:05:31.980 --> 00:05:36.170
+variable names where all of
+the underscores have been removed.
+
+98
+00:05:38.100 --> 00:05:44.310
+I can also use a g sub to replace multiple
+instances of a particular character.
+
+99
+00:05:44.310 --> 00:05:50.040
+So for example, suppose I have a variable
+name that has multiple underscores in it.
+
+100
+00:05:50.040 --> 00:05:54.090
+If I use sub,
+it will just replace the first underscore.
+
+101
+00:05:54.090 --> 00:05:58.550
+So, if I say Substitute underscore
+with nothing in testName.
+
+102
+00:05:58.550 --> 00:06:00.580
+It'll find the first underscore,
+replace it, but
+
+103
+00:06:00.580 --> 00:06:03.050
+leave the next few underscores alone.
+
+104
+00:06:03.050 --> 00:06:06.512
+If I use gsub, on the other hand, it
+would replace all of the underscores, so
+
+105
+00:06:06.512 --> 00:06:08.180
+you just get one variable like this.
+
+106
+00:06:08.180 --> 00:06:12.420
+You can use that to replace underscores
+and variable names, so that you have nice,
+
+107
+00:06:12.420 --> 00:06:13.600
+clean variable names.
+
+108
+00:06:13.600 --> 00:06:15.840
+Or you can also have
+this happen in actual,
+
+109
+00:06:15.840 --> 00:06:18.770
+the text values that you
+have in your data set.
+
+110
+00:06:18.770 --> 00:06:20.950
+The next thing that I'm
+gonna cover is searching for
+
+111
+00:06:20.950 --> 00:06:25.280
+specific values in variable names,
+or in variables, themselves.
+
+112
+00:06:25.280 --> 00:06:27.480
+So here, I'm gonna go back to
+the camera data, the fixed camera data.
+
+113
+00:06:27.480 --> 00:06:30.660
+And I'm gonna look at
+the intersection variable.
+
+114
+00:06:30.660 --> 00:06:34.609
+So one thing that I might want to be able
+to do is find all of the intersections
+
+115
+00:06:34.609 --> 00:06:37.004
+that include the Alameda
+as one of the roads.
+
+116
+00:06:37.004 --> 00:06:39.826
+So what I'm gonna do is I'm
+gonna use the grep function.
+
+117
+00:06:39.826 --> 00:06:43.818
+The grep will take as input a search
+string that you wanna look for,
+
+118
+00:06:43.818 --> 00:06:47.168
+the Alameda, and
+it will look through this variable and
+
+119
+00:06:47.168 --> 00:06:51.250
+find all of the instances in that
+vector where the Alameda appears.
+
+120
+00:06:52.290 --> 00:06:57.480
+So it appears in the 4th, 5th and
+36th element of the intersection variable.
+
+121
+00:06:58.530 --> 00:07:01.440
+The other thing that I can use
+is the grepl command with an l
+
+122
+00:07:01.440 --> 00:07:02.960
+at the end of the grep.
+
+123
+00:07:02.960 --> 00:07:07.130
+And so, what that will do is it
+will look for this version Alameda.
+
+124
+00:07:07.130 --> 00:07:09.810
+It will look for
+it in this intersection variable.
+
+125
+00:07:09.810 --> 00:07:13.430
+And it will return a vector that's
+true whenever Alameda appears and
+
+126
+00:07:13.430 --> 00:07:15.670
+false whenever Alameda doesn't appear.
+
+127
+00:07:15.670 --> 00:07:19.390
+And so in this case you can see that
+in that three of the times the Alameda
+
+128
+00:07:19.390 --> 00:07:20.800
+appears, and so
+
+129
+00:07:20.800 --> 00:07:24.040
+if I make a table of the true and false
+values, it's true three of the times.
+
+130
+00:07:25.150 --> 00:07:27.500
+So the other thing that you can
+do is you can sort of subset.
+
+131
+00:07:27.500 --> 00:07:28.910
+So, for example,
+
+132
+00:07:28.910 --> 00:07:33.310
+suppose I wanna find all the cases where
+Alameda appears in the intersection.
+
+133
+00:07:33.310 --> 00:07:34.200
+And then I want to say,
+
+134
+00:07:34.200 --> 00:07:38.580
+if Alameda doesn't appear, then I want to
+subset to only that subset of the data.
+
+135
+00:07:38.580 --> 00:07:41.620
+I can do that using this grepl command.
+
+136
+00:07:41.620 --> 00:07:45.670
+So you can use that to subset your
+data based on certain searches
+
+137
+00:07:45.670 --> 00:07:46.860
+that you wanna be able to find.
+
+138
+00:07:48.700 --> 00:07:53.920
+A little bit more about grep you can also
+use value=TRUE as one of the parameters
+
+139
+00:07:53.920 --> 00:07:58.470
+sent to grep and what will do is instead
+of telling you which of the elements it
+
+140
+00:07:58.470 --> 00:08:03.023
+that Alameda appears in, it will actually
+return the values where Alameda appears.
+
+141
+00:08:03.023 --> 00:08:07.760
+So you can see these are the three
+intersections where the Alameda appears in
+
+142
+00:08:07.760 --> 00:08:09.288
+the camera data.
+
+143
+00:08:09.288 --> 00:08:11.860
+The other thing that you can do is you
+can look for values that don't appear.
+
+144
+00:08:11.860 --> 00:08:16.520
+So say, for example, JeffStreet does not
+appear in the intersection data, and so
+
+145
+00:08:16.520 --> 00:08:20.680
+it will return integer (0) when
+that value does not appear.
+
+146
+00:08:20.680 --> 00:08:25.980
+If you look at the link of that
+it actually turns out to be zero.
+
+147
+00:08:25.980 --> 00:08:27.790
+So, that's a nice way to check.
+
+148
+00:08:27.790 --> 00:08:31.633
+So, suppose you want to check and see if
+a particular value appears in a vector.
+
+149
+00:08:31.633 --> 00:08:35.110
+You can grep for that value, and
+then look at the length of that vector,
+
+150
+00:08:35.110 --> 00:08:39.670
+and if it's equal to zero, then you can
+say that that value doesn't appear.
+
+151
+00:08:41.300 --> 00:08:46.590
+A couple of other useful string functions
+appear both in the string package and
+
+152
+00:08:46.590 --> 00:08:48.500
+in the base package.
+
+153
+00:08:48.500 --> 00:08:51.050
+So the NCHAR will tell you
+
+154
+00:08:51.050 --> 00:08:53.750
+the number of characters that
+appear in a particular string.
+
+155
+00:08:53.750 --> 00:08:56.880
+So there are twelve
+characters in my name here.
+
+156
+00:08:56.880 --> 00:09:01.240
+The other thing that you can do is
+you can take out part of the string.
+
+157
+00:09:01.240 --> 00:09:03.990
+So in this case I wanna take this string,
+
+158
+00:09:03.990 --> 00:09:07.280
+and I wanna find the first
+through the seventh letters.
+
+159
+00:09:07.280 --> 00:09:09.070
+In that case, that's just my first name.
+
+160
+00:09:10.128 --> 00:09:13.580
+Another thing that you can do is
+you can paste two strings together.
+
+161
+00:09:13.580 --> 00:09:18.300
+So, suppose I have these two strings,
+and I apply the paste function to them.
+
+162
+00:09:18.300 --> 00:09:21.790
+I get one string that's
+separated by a space.
+
+163
+00:09:21.790 --> 00:09:27.180
+You can actually set the separation
+with the sep argument, S-E-P.
+
+164
+00:09:27.180 --> 00:09:30.970
+A very useful version when you're doing
+data analysis is often you just wanna
+
+165
+00:09:30.970 --> 00:09:33.630
+paste things together
+with no space in between.
+
+166
+00:09:33.630 --> 00:09:36.210
+And the way that you do that is there's
+actually a separate function called
+
+167
+00:09:36.210 --> 00:09:40.620
+paste0, where it pastes things
+together without any space in between.
+
+168
+00:09:40.620 --> 00:09:45.160
+In the stringer package there's a very
+nice function called string trim, and
+
+169
+00:09:45.160 --> 00:09:51.110
+what it'll do is it'll trim off any excess
+space that appears at the end of a string.
+
+170
+00:09:51.110 --> 00:09:55.540
+So you get a nice string without excess
+space at the beginning or the end.
+
+171
+00:09:57.550 --> 00:10:00.080
+So a couple of important points
+about text and data sets.
+
+172
+00:10:00.080 --> 00:10:03.950
+Whenever possible you'd like to have all
+lower case because missing caps can lead
+
+173
+00:10:03.950 --> 00:10:07.630
+to very difficult to find
+bugs in data analysis.
+
+174
+00:10:07.630 --> 00:10:09.050
+You'd like them to be descriptive, so
+
+175
+00:10:09.050 --> 00:10:12.680
+in other words, you'd like it to
+say diagnosis as opposed to Dx.
+
+176
+00:10:12.680 --> 00:10:16.900
+You'd like the variable names not to be
+duplicated and not to have underscores or
+
+177
+00:10:16.900 --> 00:10:20.790
+dots or white spaces,
+which we show you how to remove.
+
+178
+00:10:20.790 --> 00:10:23.830
+Variables with character values
+should usually be made into
+
+179
+00:10:23.830 --> 00:10:27.240
+factor variables as we've talked about,
+creating factor variables.
+
+180
+00:10:27.240 --> 00:10:29.130
+Although this depends a little
+bit on the application.
+
+181
+00:10:29.130 --> 00:10:33.450
+They should also be descriptive, so
+for example, if you have a true and
+
+182
+00:10:33.450 --> 00:10:37.140
+false variable, they should be labeled as
+true and false instead of zero and one or
+
+183
+00:10:37.140 --> 00:10:38.430
+one and zero.
+
+184
+00:10:38.430 --> 00:10:42.090
+And male and female should be labeled
+as such, as opposed to M verses F,
+
+185
+00:10:42.090 --> 00:10:43.350
+and zero verses one.
+
+186
+00:10:43.350 --> 00:10:45.817
+It just makes it easier to see
+what's going on in the data set.

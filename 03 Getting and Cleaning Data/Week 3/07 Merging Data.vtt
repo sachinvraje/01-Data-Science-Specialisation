@@ -1,0 +1,517 @@
+WEBVTT
+
+1
+00:00:00.590 --> 00:00:02.960
+Sometimes you'll load in more than one
+dataset into R
+
+2
+00:00:02.960 --> 00:00:05.500
+and you'll want to be able to merge the
+datasets together.
+
+3
+00:00:05.500 --> 00:00:09.070
+And usually what you'll want to do is
+match those datasets based on an ID.
+
+4
+00:00:09.070 --> 00:00:11.310
+This is very similar to the idea of having
+a
+
+5
+00:00:11.310 --> 00:00:13.740
+linked set of tables and a database like
+My SQL.
+
+6
+00:00:13.740 --> 00:00:16.110
+So, what we're going to be talking about
+
+7
+00:00:16.110 --> 00:00:19.340
+here is data from this peer review
+experiment.
+
+8
+00:00:19.340 --> 00:00:22.510
+And so, this is an experiment that I was
+actually an author on.
+
+9
+00:00:22.510 --> 00:00:26.610
+And so, we collected data on people
+
+10
+00:00:26.610 --> 00:00:29.730
+who submitted answers to questions like
+SAT questions.
+
+11
+00:00:29.730 --> 00:00:31.460
+And then people who reviewed those answers
+and
+
+12
+00:00:31.460 --> 00:00:33.710
+tried to decide whether they were right or
+not.
+
+13
+00:00:33.710 --> 00:00:35.110
+And this was a model system for how
+
+14
+00:00:35.110 --> 00:00:37.460
+the peer review system works in scientific
+studies.
+
+15
+00:00:38.910 --> 00:00:41.070
+So, what we can do is download the peer
+review data.
+
+16
+00:00:41.070 --> 00:00:44.900
+The peer review data is actually available
+from my Dropbox account.
+
+17
+00:00:44.900 --> 00:00:49.838
+And so, we can get the reviews and the
+solutions from this dataset.
+
+18
+00:00:49.838 --> 00:00:52.330
+And so, we download these two files.
+
+19
+00:00:52.330 --> 00:00:56.420
+And so, there are two data frames, one
+corresponding to all
+
+20
+00:00:56.420 --> 00:00:59.640
+the SAT problems that were solved by
+people in the study.
+
+21
+00:00:59.640 --> 00:01:01.630
+And one by all the people, of course,
+bunch
+
+22
+00:01:01.630 --> 00:01:04.390
+of all the times that those problems were
+reviewed.
+
+23
+00:01:04.390 --> 00:01:06.420
+So we read them both into two data frames.
+
+24
+00:01:06.420 --> 00:01:09.860
+We can look at the reviews data frame,
+which has these variable names.
+
+25
+00:01:09.860 --> 00:01:13.190
+So you can see, one of the variable names
+for this data frame is
+
+26
+00:01:13.190 --> 00:01:19.400
+solution id, and that corresponds to the
+id that appears in the solutions dataset.
+
+27
+00:01:19.400 --> 00:01:23.660
+You can see the solutions dataset also has
+a problem id and a subject id.
+
+28
+00:01:23.660 --> 00:01:26.450
+Those will be matched to other datasets
+that we're
+
+29
+00:01:26.450 --> 00:01:28.949
+not going to be talking about in this
+particular example.
+
+30
+00:01:30.120 --> 00:01:31.600
+So, the first thing that we might want to
+use
+
+31
+00:01:31.600 --> 00:01:34.460
+is, the merge command, to merge the
+datasets together.
+
+32
+00:01:34.460 --> 00:01:38.240
+So, again, if we look at the names of
+these two variables.
+
+33
+00:01:38.240 --> 00:01:42.585
+We can use the solution id and the reviews
+variable or dataset
+
+34
+00:01:42.585 --> 00:01:47.940
+and the id variable in the solutions
+dataset to merge these datasets together.
+
+35
+00:01:47.940 --> 00:01:53.700
+So, the important parameters to merge are
+x and y, so those are two data frames.
+
+36
+00:01:53.700 --> 00:01:59.280
+And then, you can use either by, or by.x
+or by.y
+
+37
+00:01:59.280 --> 00:02:02.940
+to tell a merge which of the columns it
+should merge by.
+
+38
+00:02:02.940 --> 00:02:08.340
+By default it merges by all of the columns
+that have the common name.
+
+39
+00:02:08.340 --> 00:02:11.090
+So, for example, in this dataset, it would
+try to
+
+40
+00:02:11.090 --> 00:02:16.580
+merge by id, start, stop, time left, and
+so forth.
+
+41
+00:02:16.580 --> 00:02:19.620
+Because those variables also appear in
+solutions because
+
+42
+00:02:19.620 --> 00:02:23.470
+id is here, start, stop, and time left.
+
+43
+00:02:23.470 --> 00:02:26.000
+Even though those variables might not
+necessarily mean the same thing.
+
+44
+00:02:27.670 --> 00:02:30.130
+So, what we're going to do, instead, is
+tell
+
+45
+00:02:30.130 --> 00:02:32.360
+merge which of the variables it should
+merge on.
+
+46
+00:02:32.360 --> 00:02:37.430
+So, it merges the reviews and the
+solutions for the x data frame in
+
+47
+00:02:37.430 --> 00:02:42.430
+this case is the reviews data frame, we're
+going to merge on the solution id.
+
+48
+00:02:42.430 --> 00:02:46.900
+And in the solutions data frame, we're
+just going to merge based on the id.
+
+49
+00:02:46.900 --> 00:02:48.920
+Here I'm going to tell it, all equals
+true.
+
+50
+00:02:48.920 --> 00:02:51.870
+Which means if, if there's a value that
+appears
+
+51
+00:02:51.870 --> 00:02:54.315
+in one but not in the other, it should
+include
+
+52
+00:02:54.315 --> 00:02:57.460
+another row but with na values for the
+missing
+
+53
+00:02:57.460 --> 00:03:00.700
+values that are, don't appear in the other
+data frame.
+
+54
+00:03:00.700 --> 00:03:06.610
+And so, we can look at the top of this did
+new merge dataset and
+
+55
+00:03:06.610 --> 00:03:10.690
+you can see now that the solution id has
+now taken the place of the id.
+
+56
+00:03:10.690 --> 00:03:15.400
+And it's ordered by that variable and then
+this id variable
+
+57
+00:03:15.400 --> 00:03:20.130
+is the id variable that's left over in the
+reviews datasets.
+
+58
+00:03:20.130 --> 00:03:26.450
+So, this is the reviews main id that's
+appears here in this dataset.
+
+59
+00:03:26.450 --> 00:03:27.710
+So you can see that this has merged
+
+60
+00:03:27.710 --> 00:03:30.780
+the two datasets together, based on their
+common id.
+
+61
+00:03:30.780 --> 00:03:35.404
+So that then you can analyze it as one
+dataset.
+
+62
+00:03:35.404 --> 00:03:39.340
+The default again is to merge based on all
+column names common column names.
+
+63
+00:03:39.340 --> 00:03:43.445
+So, if you do an intersection of the names
+of the solutions data
+
+64
+00:03:43.445 --> 00:03:47.870
+frame and the names of the reviews data
+frame, you get these four variables.
+
+65
+00:03:47.870 --> 00:03:52.140
+And so, if you try to merge without
+telling it what to merge on the
+
+66
+00:03:52.140 --> 00:03:56.550
+basis of, it will try to merge on the
+basis of all those four variables.
+
+67
+00:03:56.550 --> 00:03:58.610
+So, what ends up happening is, the id
+
+68
+00:03:58.610 --> 00:04:01.890
+variable will match up sometimes between
+the two datasets.
+
+69
+00:04:01.890 --> 00:04:05.330
+But the start and the stop times won't
+necessarily match up.
+
+70
+00:04:05.330 --> 00:04:06.680
+So, what it ends up doing is it just
+
+71
+00:04:06.680 --> 00:04:10.160
+creates a data frame that's larger that
+applies multiple rows.
+
+72
+00:04:11.270 --> 00:04:15.300
+One for each row of reviews and each row
+of solutions.
+
+73
+00:04:17.240 --> 00:04:20.910
+You can also use join in the plyr package
+to join datasets together.
+
+74
+00:04:20.910 --> 00:04:24.530
+It's a bit faster than merge but, is a bit
+less full featured.
+
+75
+00:04:24.530 --> 00:04:28.790
+In other words, in other words, it only
+can merge on
+
+76
+00:04:28.790 --> 00:04:33.640
+the basis of common row er, common names
+between the two datasets.
+
+77
+00:04:33.640 --> 00:04:36.950
+And so, you couldn't merge the two
+datasets we talked about just a
+
+78
+00:04:36.950 --> 00:04:41.480
+minute ago because it, we need to merge by
+solution id and id.
+
+79
+00:04:41.480 --> 00:04:45.280
+And join will only merge on the basis of
+id even though it's faster.
+
+80
+00:04:45.280 --> 00:04:46.240
+So, here's an example.
+
+81
+00:04:46.240 --> 00:04:50.420
+I created two made up data frames with a
+common
+
+82
+00:04:50.420 --> 00:04:55.010
+id identifier, but I've sampled them, so
+they're in different orders.
+
+83
+00:04:55.010 --> 00:04:58.120
+And so, what I can do is, I can join the
+two datasets together.
+
+84
+00:04:58.120 --> 00:05:01.530
+It will join them by id, and then I can
+use
+
+85
+00:05:01.530 --> 00:05:06.490
+the arrange command to arrange them in
+increasing order by id.
+
+86
+00:05:06.490 --> 00:05:10.420
+And so you see I've arranged the two
+datasets together in that way.
+
+87
+00:05:10.420 --> 00:05:13.806
+You can play around with these commands to
+see how you could join datasets together.
+
+88
+00:05:14.820 --> 00:05:17.570
+The nice thing about the plyer package,
+and the reason why I bring it up is
+
+89
+00:05:17.570 --> 00:05:19.450
+that if you have multiple data frames it's
+
+90
+00:05:19.450 --> 00:05:22.710
+relatively challenging to do it with the
+merge command.
+
+91
+00:05:22.710 --> 00:05:24.125
+But if they have a common id, it's very
+
+92
+00:05:24.125 --> 00:05:28.460
+straightforward to do it with the join all
+command.
+
+93
+00:05:28.460 --> 00:05:32.990
+So, what I do is I create my three data
+frames, in this case, and
+
+94
+00:05:32.990 --> 00:05:36.960
+I put them all on a list, so one big data
+list of data frames.
+
+95
+00:05:36.960 --> 00:05:40.240
+So it's a data frame list with three data
+frames in it.
+
+96
+00:05:40.240 --> 00:05:43.730
+And then I just use the command join all,
+which merges
+
+97
+00:05:43.730 --> 00:05:46.780
+all of the different datasets on the basis
+of the common variables.
+
+98
+00:05:46.780 --> 00:05:48.210
+In this case, id.
+
+99
+00:05:49.580 --> 00:05:53.460
+So, that's a nice way to merge together
+multiple datasets very quickly.
+
+100
+00:05:54.560 --> 00:05:57.500
+The r da, data merging page is very good,
+
+101
+00:05:57.500 --> 00:06:01.670
+as is the plyr page for merging datasets
+together.
+
+102
+00:06:01.670 --> 00:06:04.350
+Before you start doing this intensively,
+it's worth paying
+
+103
+00:06:04.350 --> 00:06:06.800
+attention to, whether you're performing
+different kinds of joins.
+
+104
+00:06:06.800 --> 00:06:09.210
+Whether you're doing a sort of left joins,
+or right joins.
+
+105
+00:06:09.210 --> 00:06:13.750
+And the best way to learn more about that
+is to go read about joins in databases.
+
+106
+00:06:13.750 --> 00:06:19.360
+For example, here, this is the information
+about joining for SQL database joins.

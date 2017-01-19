@@ -1,0 +1,80 @@
+This is a brief follow-up video to getting
+help and it's about finding answers. The reason why there are two videos about
+this is because it's such a critical skill in
+data science. So you can see one of the three
+fundamental sort of, skills you see in the Venn diagram here is
+Hacking Skills. And the reason why it's one of the three fundamental skill is because almost
+of none of the knowledge that you will need is already sort of set in standardized text
+books. It's often scattered in a bunch of
+different places and you have to be able to sort of synthesize it or find the
+information that you need about. Whether it's about which data set you need
+to be using, or the statistical analysis you need to be doing, or the R Package
+that you need to be using. All of this is sort of scattered around,
+and you have to be willing to do a little bit of hard work and elbow
+grease to find it yourself. Obviously we'll tell you as much as we can in lectures, but we're necessarily limited
+by the amount of time that we can lecture every week, and
+so it's important to be able to find that
+information yourself. So key, some key characteristics packers
+are that they're willing to go out and find the
+answers on their own even if it takes a little bit
+of time or a little bit of effort. They're knowledgeable about where to find
+those answers whether its Google, or stack over glow, or
+cat. Cross validated or a message fo history of
+mailing lists. They're unintimidated by new data types or
+packages. It's very common as a data scientist to be
+thrown a new kind of data or a new kind of Our package that you
+need to learn very quickly to be able to analyze the data to being
+unintimidated by that is important and then being unafraid to say that you
+don't know the answer to a question. And so a key characteristic I would say
+the way to summarize it up is being alive but
+relentless here. Going after the answer and you just trying
+to find it But you're very polite while doing
+it. And so Google knows this too. In their hiring practices they're looking
+for these sort of characteristics. The kind of people that will go after
+these sorts of things as it's described in this article,
+I'm linked to here. [SOUND] So an important question is where to look for, for different types of
+questions. So for our programming you might want to
+go straight to the the archive of the class
+forums. Where the class you're taking will focus
+on very specific questions or functions. And there'll be a large group of
+interested people. You could read the manual or help files like I showed you in the getting help
+lecture. You can search on the web. That's actually one of the best ways to do
+it. You can ask a skilled friend. That's even better if you've got a person
+that you know that already is a bit of a data
+scientist. They can often help you out. And then you can post to the class forums
+and try to get your answers. Remember to be specific with your
+questions. You can also post to forums outside of the
+class. The R Mailing List or Stackoverflow, if
+you have R questions. For data analysis or statistics type
+questions, you want to go to start again with the class forums, and then go
+to the web or to friends. And then there's another outside forum
+called CrossValidated where you can ask these types of
+questions. Brother software you might have to go to
+software specific websites. So forget HUB, they have a lot of
+tutorials and nice information that you can use to get
+answers there. [SOUND] So an important point to know is
+that Googling data science questions isn't always the
+easiest thing in the world. So, the best place to start with if you have a pretty general question is often in
+the forums. And if people can direct you to where you
+should be searching outside of the forums. Keep in mind that Stackoverflow with the
+tag R is a really good place to get information
+about R. And, so, you have to use this tag because
+if you just use the letter R, it obviously is, sometimes,
+a little bit hard to search for. You can also try the R mailing list for software questions or CrossValidated
+for more general questions. Usually what I've found is that if I'm
+going to work in Google, searching Google, I use
+usually type something like the data type and then data
+analysis or I type the data type and then the R
+package. I found that data type R package often
+works a little bit better than data type, data
+analysis when Googling things. Another thing to keep in mind is that data analysis or data science is often called
+something different depending on what kind of data you are looking at, so for example medical data it might be
+called biostatistics. For data from the web it might be data
+science. For data in computer vision it might be
+machine learning or natural language processing for data
+from text and so on. So, knowing what the right word to Google
+is, is often half the battle. And so, you can often find that out by
+posting to forums and people will let you know what the right
+word to be googling is. [SOUND] Again the credits for this go to
+Roger's Getting Help Video. And it was inspired by Eric Raymond's How
+to Ask Questions the Right Way.

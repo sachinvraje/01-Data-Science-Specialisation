@@ -1,0 +1,501 @@
+WEBVTT
+
+1
+00:00:01.060 --> 00:00:03.300
+Since you're in a data science track, it
+might
+
+2
+00:00:03.300 --> 00:00:05.370
+be a good idea to figure out what is data.
+
+3
+00:00:05.370 --> 00:00:07.040
+So, for a definition of data we're
+going to go
+
+4
+00:00:07.040 --> 00:00:08.900
+to the number one source of all
+information, Wikipedia.
+
+5
+00:00:08.900 --> 00:00:12.360
+And, we're going to get the definition,
+data are values of
+
+6
+00:00:12.360 --> 00:00:16.360
+qualitative or quantitative variables,
+belonging to a set of items.
+
+7
+00:00:16.360 --> 00:00:18.870
+So, the first thing that you can see from
+
+8
+00:00:18.870 --> 00:00:21.300
+this definition is that you need a set of
+items
+
+9
+00:00:21.300 --> 00:00:23.440
+to be measuring things on and so, the set
+
+10
+00:00:23.440 --> 00:00:27.552
+of items is sometimes called the
+population, in statistical inference.
+
+11
+00:00:27.552 --> 00:00:30.450
+It's basically, what you're trying to
+discover something about, so,
+
+12
+00:00:30.450 --> 00:00:32.620
+it might be the set of all websites or it
+might
+
+13
+00:00:32.620 --> 00:00:34.620
+be the set of all people coming to
+websites, or it
+
+14
+00:00:34.620 --> 00:00:37.800
+might be, a set of all people getting a
+particular drug.
+
+15
+00:00:37.800 --> 00:00:42.080
+But in general, it's a set of things that
+you're going to make measurements on.
+
+16
+00:00:43.120 --> 00:00:46.620
+Variables are measurements or
+characteristics of an item.
+
+17
+00:00:46.620 --> 00:00:48.740
+So, they might be measurements as in, you
+
+18
+00:00:48.740 --> 00:00:50.780
+measure the height of a person, or you
+measure
+
+19
+00:00:50.780 --> 00:00:52.450
+the amount of time a person stays on
+
+20
+00:00:52.450 --> 00:00:55.880
+a website, or they might be more
+qualitative characteristics.
+
+21
+00:00:55.880 --> 00:00:59.830
+So it might be the places that the person
+looks on the website
+
+22
+00:00:59.830 --> 00:01:03.760
+or Whether that you think the person
+visiting is a man or a woman.
+
+23
+00:01:05.750 --> 00:01:08.540
+And so you, have both qualitative and
+quantitative variables.
+
+24
+00:01:08.540 --> 00:01:12.340
+So qualitative variables are things like
+country of origin, sex, or treatment.
+
+25
+00:01:12.340 --> 00:01:14.000
+They're not necessarily ordered, and
+they're
+
+26
+00:01:14.000 --> 00:01:16.790
+not necessarily measurements in that way.
+
+27
+00:01:16.790 --> 00:01:19.990
+Quantitative measurements on the other
+hand are usually Measured on
+
+28
+00:01:19.990 --> 00:01:23.400
+a continuous scale, they're things like
+height, weight and blood pressure.
+
+29
+00:01:23.400 --> 00:01:26.580
+And, they usually have an ordering on that
+scale.
+
+30
+00:01:26.580 --> 00:01:29.380
+So, what do data look like?
+
+31
+00:01:29.380 --> 00:01:33.377
+So, you might think in your mind, when I
+say data, it's something like a big excel
+
+32
+00:01:33.377 --> 00:01:36.040
+table, or something like that, but,
+actually, most
+
+33
+00:01:36.040 --> 00:01:38.750
+data actually starts off in a very raw
+form.
+
+34
+00:01:38.750 --> 00:01:41.380
+So, this is an example of a fast queue
+file, which is
+
+35
+00:01:41.380 --> 00:01:44.930
+a type of file that's produced by a next
+generation sequencing machine.
+
+36
+00:01:44.930 --> 00:01:47.940
+So, a typical experiment will produce
+hundreds of millions
+
+37
+00:01:47.940 --> 00:01:51.170
+of lines of text file that look like this.
+
+38
+00:01:51.170 --> 00:01:54.630
+And so, you can actually see here in this
+file, you can actually
+
+39
+00:01:54.630 --> 00:02:00.560
+see a sequence here, of a particular read
+that comes from a person's genome.
+
+40
+00:02:00.560 --> 00:02:03.110
+And so, what you want to be able to do is
+parse that
+
+41
+00:02:03.110 --> 00:02:06.359
+file, and collect those data, and maybe
+infer something about their genome.
+
+42
+00:02:07.860 --> 00:02:10.110
+Another way the data might look is an API.
+
+43
+00:02:10.110 --> 00:02:13.120
+So this is actually a picture of the
+Twitt, Twitter API website.
+
+44
+00:02:13.120 --> 00:02:16.690
+And so, what you might do is you might try
+to get a particular URL.
+
+45
+00:02:16.690 --> 00:02:20.380
+So you might try to access that URL and
+get information from it.
+
+46
+00:02:20.380 --> 00:02:22.000
+And what you would get back is something
+like
+
+47
+00:02:22.000 --> 00:02:25.090
+this, which is a structured form of data,
+that isn't
+
+48
+00:02:25.090 --> 00:02:27.964
+necessarily something you would see in
+Excel cloud, but it's,
+
+49
+00:02:27.964 --> 00:02:29.990
+a structured form of data that you might
+get back.
+
+50
+00:02:31.460 --> 00:02:33.150
+Here's an example of a medical record.
+
+51
+00:02:33.150 --> 00:02:34.830
+So, this is again another form of data.
+
+52
+00:02:34.830 --> 00:02:37.380
+People are very interested in studying
+medical records,
+
+53
+00:02:37.380 --> 00:02:41.040
+and trying to understand how people can
+either
+
+54
+00:02:41.040 --> 00:02:42.690
+improve the way that we insure people or
+
+55
+00:02:42.690 --> 00:02:45.680
+improve the way that we give people
+medical care.
+
+56
+00:02:45.680 --> 00:02:48.190
+And so, these data again are text files
+that,
+
+57
+00:02:48.190 --> 00:02:50.570
+are not necessarily formatted in a very
+nice way.
+
+58
+00:02:50.570 --> 00:02:53.140
+So what you might want to be able to do is
+
+59
+00:02:53.140 --> 00:02:57.000
+Do things like extract the allergy name
+from this text file.
+
+60
+00:02:57.000 --> 00:03:01.356
+Or subtract or extract with different
+things were ordered and so
+
+61
+00:03:01.356 --> 00:03:05.660
+forth, and then use that data to maybe
+answer some questions.
+
+62
+00:03:05.660 --> 00:03:07.330
+Data might also be a video, so in
+
+63
+00:03:07.330 --> 00:03:11.320
+this particular case machine learning
+experts developed an
+
+64
+00:03:11.320 --> 00:03:15.700
+algorithm that could learn whether a video
+was a cat, or a video was something else.
+
+65
+00:03:15.700 --> 00:03:17.440
+It seems like kind of a trivial
+application.
+
+66
+00:03:17.440 --> 00:03:20.940
+It's actually quite a hard problem And
+they solved.
+
+67
+00:03:20.940 --> 00:03:24.150
+But in this particular case, the data were
+actually the videos themselves.
+
+68
+00:03:24.150 --> 00:03:26.660
+They're stills from the video themselves.
+
+69
+00:03:26.660 --> 00:03:28.630
+Data might also be an audio file.
+
+70
+00:03:28.630 --> 00:03:30.810
+So this is an example, DarwinTunes, where
+
+71
+00:03:30.810 --> 00:03:34.100
+people actually study the evolution of
+music over
+
+72
+00:03:34.100 --> 00:03:38.390
+time, where people decided whether,
+innovations introduced
+
+73
+00:03:38.390 --> 00:03:41.040
+into the audio file were interesting or
+not.
+
+74
+00:03:41.040 --> 00:03:43.490
+So, overtime they evolved music that was
+more
+
+75
+00:03:43.490 --> 00:03:45.900
+melodious and more interesting for people
+to listen to.
+
+76
+00:03:45.900 --> 00:03:49.155
+So, the data itself was actually the audio
+files in this study.
+
+77
+00:03:49.155 --> 00:03:52.770
+Data might also look like access to files,
+whether
+
+78
+00:03:52.770 --> 00:03:57.030
+through an API or through spreadsheets
+through open government websites.
+
+79
+00:03:57.030 --> 00:03:59.690
+So, for example, data.gov has a lot of
+data sets that might
+
+80
+00:03:59.690 --> 00:04:02.260
+be accessible, and those data sites might
+be in any number of
+
+81
+00:04:02.260 --> 00:04:06.880
+formats, from very simple to tab or comma
+separated files, to excel
+
+82
+00:04:06.880 --> 00:04:11.010
+files, to something that's much more
+complicated and messy like RAW text files.
+
+83
+00:04:12.470 --> 00:04:14.930
+Rarely do data look exactly like what
+you'd expected to
+
+84
+00:04:14.930 --> 00:04:17.250
+see at, at the beginning of a data science
+project.
+
+85
+00:04:17.250 --> 00:04:20.546
+So, here's a very clear easy data set
+where
+
+86
+00:04:20.546 --> 00:04:24.460
+you've got variables and columns, and
+observations in rows.
+
+87
+00:04:24.460 --> 00:04:26.820
+And it seems like it's very easy to
+analyze.
+
+88
+00:04:26.820 --> 00:04:28.730
+It's very rare that the data come that
+
+89
+00:04:28.730 --> 00:04:32.150
+easily processed before the beginning of a
+study.
+
+90
+00:04:33.660 --> 00:04:36.860
+So, the data are actually the second most
+important thing in data science.
+
+91
+00:04:36.860 --> 00:04:38.510
+The most important thing, in in data
+science
+
+92
+00:04:38.510 --> 00:04:41.400
+is actually the question you're trying to
+answer.
+
+93
+00:04:41.400 --> 00:04:42.870
+So, the data should follow that question.
+
+94
+00:04:42.870 --> 00:04:45.920
+It's the second most important thing to
+the question.
+
+95
+00:04:45.920 --> 00:04:49.260
+Often the data will limit, or enable the
+questions you're trying to ask, so
+
+96
+00:04:49.260 --> 00:04:52.040
+in other words, you start with the
+question, and you might not have the
+
+97
+00:04:52.040 --> 00:04:54.710
+data to be able to answer that question,
+so you have to modify the
+
+98
+00:04:54.710 --> 00:04:59.010
+question, to be able to answer, sort of a
+sub-question or a related question.
+
+99
+00:05:00.010 --> 00:05:02.320
+But having data in general, can't save you
+
+100
+00:05:02.320 --> 00:05:03.882
+if you don't have a question that you're
+asking.
+
+101
+00:05:03.882 --> 00:05:06.850
+And this is [INAUDIBLE] of the key take
+home message,
+
+102
+00:05:06.850 --> 00:05:11.040
+maybe the theme of this data scientist
+toolbox, is focusing on
+
+103
+00:05:11.040 --> 00:05:13.210
+having a question that you want to answer
+with your data
+
+104
+00:05:13.210 --> 00:05:15.390
+and not being driven by the fact that you
+have data.

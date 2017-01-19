@@ -1,0 +1,33 @@
+One of the most widely used tools for
+performing any sort of statistical or data science
+analysis is a regression model. So the next course will be covering those
+regression models. Some would say it's just one other form of just pre, creating a supervised
+predictive function. But it's a little bit more than that in
+that it's, one of the more interpretable and easily used, tools that
+you can use to sort of explain you analyses. The people that are outside of the data
+science community. And, as communication is a critical
+component of data science, that makes regression models a critical
+component of the tool box. So, this course will cover linear
+regression and multiple regression, ideas like
+confounding which we'll see a little bit in this class even,
+some prediction using linear models. Scatterplots smoothing its splines, and
+then resampling inference, and maybe weighted
+regression. So, this will cover also some ideas
+including ideas that you hear about often when you read articles about
+statistical analyses in the popular press. Things like regression to the mean. So, why is it that children of tall
+parents tend to be tall but not as tall as their
+parents were? So these sorts of fundamental ideas will
+be explained in the regression class. So we'll also talk a little bit about the
+basic regression model, there'll be a little bit more
+mathematics in this class than there are in some of the other
+classes and sort of deriving and understanding the basic
+ideas behind a regression model. But calculus and the new algebra are not
+required. We've worked hard to make it so that,
+basic understanding of algebra is sufficient to
+follow this class. We'll also learn about multivariable
+regression analyses so, sometimes you want to relate one variable
+to another variable but you want to account for, what
+happens when you include other variables,
+adjusting your analysis. You often hear about adjusting the
+analysis, and that will be covered in this class as
+well.

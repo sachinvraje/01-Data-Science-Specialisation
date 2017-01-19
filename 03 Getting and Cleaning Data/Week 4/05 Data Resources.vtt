@@ -1,0 +1,296 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:02.800
+This lecture is just to point
+you to some data resources so
+
+2
+00:00:02.800 --> 00:00:05.460
+you might be able to get some free data,
+and do some of analysis,
+
+3
+00:00:05.460 --> 00:00:08.960
+if you don't happen to have any at
+the organization that you're at.
+
+4
+00:00:08.960 --> 00:00:15.058
+So this website consists of data from
+a variety of national organizations.
+
+5
+00:00:15.058 --> 00:00:18.376
+So we can start off with
+the United Nations data sets,
+
+6
+00:00:18.376 --> 00:00:20.293
+which are at this website, and
+
+7
+00:00:20.293 --> 00:00:25.222
+then you can find data that are available
+from the United States at data.gov.
+
+8
+00:00:25.222 --> 00:00:29.360
+And you can go to this blog post to
+find a bunch of other cities and
+
+9
+00:00:29.360 --> 00:00:32.220
+states within the United States
+that have open data.
+
+10
+00:00:32.220 --> 00:00:36.590
+There's also a lot more information
+on a variety of other countries and
+
+11
+00:00:36.590 --> 00:00:40.890
+this website down here
+data.gov/opendatasites actually gives
+
+12
+00:00:40.890 --> 00:00:44.380
+information on data sites for
+other countries all around the world.
+
+13
+00:00:44.380 --> 00:00:46.860
+So that's a good place to start if you
+
+14
+00:00:46.860 --> 00:00:49.750
+don't know if your country has
+an open government data site.
+
+15
+00:00:51.180 --> 00:00:54.190
+Gapminder is another
+website that has a lot of
+
+16
+00:00:54.190 --> 00:00:56.840
+data about development in
+particular in human heath.
+
+17
+00:00:56.840 --> 00:01:00.380
+And so there's a large number
+of datasets that are available
+
+18
+00:01:00.380 --> 00:01:04.360
+on that website which is Gapminder.org.
+
+19
+00:01:04.360 --> 00:01:06.650
+You can also get survey data
+from the United States.
+
+20
+00:01:06.650 --> 00:01:10.150
+This website here gives you a lot of
+information about how do you actually
+
+21
+00:01:10.150 --> 00:01:12.600
+access the surveys and process them in R.
+
+22
+00:01:12.600 --> 00:01:15.940
+So it's actually really nice because the
+surveys are often very big and unwieldy,
+
+23
+00:01:15.940 --> 00:01:18.680
+and this website gives you a lot of
+information on how to access them.
+
+24
+00:01:20.000 --> 00:01:22.565
+The Infochimps Marketplace
+has a bunch of different
+
+25
+00:01:22.565 --> 00:01:25.478
+data sets which you can sort
+by various different tags, and
+
+26
+00:01:25.478 --> 00:01:28.408
+you can identify data sets that
+might be of interest to you.
+
+27
+00:01:28.408 --> 00:01:30.550
+Some of them are free, and
+some of them cost money.
+
+28
+00:01:32.209 --> 00:01:34.690
+Kaggle is another place that
+you can go to for data sets.
+
+29
+00:01:34.690 --> 00:01:38.760
+So Kaggle is a company that offers data
+science competitions, and they often have
+
+30
+00:01:38.760 --> 00:01:42.250
+very interesting data sets that they make
+available as part of those competitions.
+
+31
+00:01:42.250 --> 00:01:46.520
+So they're good for practice, but they're
+also good for potentially discovering new,
+
+32
+00:01:46.520 --> 00:01:51.140
+interesting things that can help
+companies solve real problems.
+
+33
+00:01:51.140 --> 00:01:53.800
+There's also some collections that
+have been put together by famous data
+
+34
+00:01:53.800 --> 00:01:54.510
+scientists.
+
+35
+00:01:54.510 --> 00:01:56.630
+So these are several data scientists.
+
+36
+00:01:56.630 --> 00:02:00.930
+Hilary Mason, Jeff Hammerbacher,
+and others who have
+
+37
+00:02:00.930 --> 00:02:05.020
+put together data sets that are research
+quality and that might be useful for you.
+
+38
+00:02:05.020 --> 00:02:09.160
+These all come from this blog post which
+talks about several other data sets,
+
+39
+00:02:09.160 --> 00:02:11.320
+they're curated by other
+data scientists as well.
+
+40
+00:02:12.430 --> 00:02:15.718
+There are also a large variety of other,
+more specialised collections.
+
+41
+00:02:15.718 --> 00:02:19.543
+So for example, the Stanford
+Large Network Data Archive has
+
+42
+00:02:19.543 --> 00:02:24.268
+a large number of data sets that focus
+on network data, machine learning,
+
+43
+00:02:24.268 --> 00:02:29.068
+the UCI Machine Learning archive has
+a variety of data sets that can be used to
+
+44
+00:02:29.068 --> 00:02:32.160
+practice your classification or
+predictions.
+
+45
+00:02:32.160 --> 00:02:36.430
+The CMU Statlib is one of the most
+famous canonical sets of data sets that
+
+46
+00:02:36.430 --> 00:02:37.438
+are available.
+
+47
+00:02:37.438 --> 00:02:41.899
+Gene Expression Omnibus is focused on
+data sets that come from human genomic
+
+48
+00:02:41.899 --> 00:02:45.338
+experiments or
+other organismal genomics experiments.
+
+49
+00:02:45.338 --> 00:02:50.679
+And then there's data from the ArXiv or
+public datasets on Amazon web services.
+
+50
+00:02:50.679 --> 00:02:54.185
+Finally, there a large number of APIs
+that you've now learned how to use,
+
+51
+00:02:54.185 --> 00:02:55.808
+through the course of this class.
+
+52
+00:02:55.808 --> 00:03:00.369
+And so, for example, there's specific
+packages such as the twitter package which
+
+53
+00:03:00.369 --> 00:03:02.425
+can be used to access the Twitter API,
+
+54
+00:03:02.425 --> 00:03:06.430
+in an easier way than trying to
+set up a application yourself.
+
+55
+00:03:06.430 --> 00:03:09.722
+You can similarly get
+access to figshare data or
+
+56
+00:03:09.722 --> 00:03:12.610
+to data from publications like Plos one.
+
+57
+00:03:12.610 --> 00:03:17.660
+rOpenSci has a large number of very
+nice packages that allow you to access
+
+58
+00:03:17.660 --> 00:03:21.180
+data from a variety of sources
+that are focused on academics.
+
+59
+00:03:21.180 --> 00:03:25.420
+There's also dedicated R packages for
+Facebook and Google Maps.
+
+60
+00:03:25.420 --> 00:03:28.656
+All of these mean that there is really no
+excuse to not be able to find real data to
+
+61
+00:03:28.656 --> 00:03:30.880
+focus on any project that
+you might be interested in.

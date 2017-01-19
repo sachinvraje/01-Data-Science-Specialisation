@@ -1,0 +1,274 @@
+WEBVTT
+
+1
+00:00:04.679 --> 00:00:09.010
+So the while loop is a,
+is the other major looping construct in R.
+
+2
+00:00:09.010 --> 00:00:14.610
+And the basic idea is that the while
+takes a logical expression and
+
+3
+00:00:14.610 --> 00:00:17.630
+will execute the loop based on
+the value of that logical expression.
+
+4
+00:00:17.630 --> 00:00:19.920
+So for example,
+I've got a very simple loop here.
+
+5
+00:00:19.920 --> 00:00:22.410
+It initializes a count
+variable equal to 0.
+
+6
+00:00:22.410 --> 00:00:26.000
+And then while that count is less
+than 10 it prints out the count and
+
+7
+00:00:26.000 --> 00:00:27.860
+then increments the count by 1.
+
+8
+00:00:27.860 --> 00:00:33.330
+So, as soon as the, the value of
+count gets to 10 the loop stops and
+
+9
+00:00:33.330 --> 00:00:36.270
+then it'll go on to the next body of code.
+
+10
+00:00:36.270 --> 00:00:39.430
+So so the, so the while loop makes,
+
+11
+00:00:39.430 --> 00:00:42.480
+the while loop is useful because it
+makes things easy to read sometimes.
+
+12
+00:00:42.480 --> 00:00:46.510
+It's very obvious here that this
+loop is supposed to stop working or
+
+13
+00:00:46.510 --> 00:00:50.760
+stop executing when the value of
+account variable is 10 or more.
+
+14
+00:00:50.760 --> 00:00:51.985
+So it makes a little bit more readable.
+
+15
+00:00:51.985 --> 00:00:55.885
+How after, however you have to be a little
+bit careful with, with while loops
+
+16
+00:00:55.885 --> 00:01:00.515
+because technically speaking they are
+infinite loops while the and there's no.
+
+17
+00:01:00.515 --> 00:01:03.863
+You have to make sure that the,
+the condition that stops the loop
+
+18
+00:01:03.863 --> 00:01:08.040
+will actually occur,
+otherwise your program will never finish.
+
+19
+00:01:08.040 --> 00:01:08.820
+And so in this case,
+
+20
+00:01:08.820 --> 00:01:11.950
+it's fairly obvious that the loop
+will eventually stop executing.
+
+21
+00:01:11.950 --> 00:01:15.150
+But a much more piece of code it can be
+
+22
+00:01:15.150 --> 00:01:18.060
+hard sometimes whether
+the while loop will finish.
+
+23
+00:01:18.060 --> 00:01:21.670
+And so often it's safer to
+to use something like a for
+
+24
+00:01:21.670 --> 00:01:25.620
+loop that has a hard limit on
+the number of times it can execute.
+
+25
+00:01:25.620 --> 00:01:29.410
+So, it's not necessarily saying that
+you should never use a while loop but
+
+26
+00:01:29.410 --> 00:01:31.100
+you just have to be careful
+when you do use them.
+
+27
+00:01:32.720 --> 00:01:36.622
+So, you can, you can test multiple
+conditions in a while loop or in any type
+
+28
+00:01:36.622 --> 00:01:42.540
+of construct, like an if statement, for
+example by using the logical operators.
+
+29
+00:01:42.540 --> 00:01:44.270
+So, here I've got a variable z.
+
+30
+00:01:45.510 --> 00:01:48.510
+Which is equal,
+which I initialized to the value 5.
+
+31
+00:01:48.510 --> 00:01:52.480
+The condition for the while is basically
+while z is greater than equal to 3 and
+
+32
+00:01:52.480 --> 00:01:53.470
+is less than or equal to 10.
+
+33
+00:01:53.470 --> 00:01:56.460
+So, while it's between the values of 3 and
+10.
+
+34
+00:01:56.460 --> 00:01:58.210
+Then what I'm going to do
+is print the value of z.
+
+35
+00:01:58.210 --> 00:02:01.150
+I'm going to flip a coin, a fair coin,
+
+36
+00:02:01.150 --> 00:02:06.000
+and if the coin is a 1 I'm going
+to add 1 to the my value and
+
+37
+00:02:06.000 --> 00:02:10.610
+if it's less than 1, sorry, excuse me,
+if it's, if the coin is equal to 0 or
+
+38
+00:02:10.610 --> 00:02:13.260
+any other value for that matter
+I'm going to subtract 1 from z.
+
+39
+00:02:13.260 --> 00:02:16.380
+So this,
+I'm sharing a little random lock here, and
+
+40
+00:02:16.380 --> 00:02:19.350
+the value of z is going to go up or down
+depending on my little coin flip here.
+
+41
+00:02:21.040 --> 00:02:22.030
+So when, so
+
+42
+00:02:22.030 --> 00:02:25.590
+here you see it's a little bit harder to
+tell when the while loop will finish.
+
+43
+00:02:26.620 --> 00:02:29.940
+Because the,
+the body of the while loop involves ra,
+
+44
+00:02:29.940 --> 00:02:32.260
+random random number generation.
+
+45
+00:02:32.260 --> 00:02:36.750
+So here the z value's going to zigzag up
+and down until it eventually hits 10 or
+
+46
+00:02:36.750 --> 00:02:40.470
+eventually it hits 3 or
+something less than 3.
+
+47
+00:02:40.470 --> 00:02:42.470
+And so this, this may be kind of nice, but
+
+48
+00:02:42.470 --> 00:02:45.120
+you have to be careful that it
+doesn't go off for too long.
+
+49
+00:02:47.180 --> 00:02:51.580
+So, one thing to note, on a more technical
+level is that the conditions in a,
+
+50
+00:02:51.580 --> 00:02:55.344
+when r tests the condition in a kind
+of a multi-expression condition here,
+
+51
+00:02:55.344 --> 00:02:59.200
+I've got a c who I created because of
+the 3 and z less than of equal to the 10.
+
+52
+00:02:59.200 --> 00:03:03.560
+The conditions are always evaluated
+from left to right, so check to see if
+
+53
+00:03:03.560 --> 00:03:06.670
+the left's most condition is true and
+then it goes to the next condition.
+
+54
+00:03:06.670 --> 00:03:09.740
+So, first, it'll check to see if
+z is greater than or equal to 3.
+
+55
+00:03:09.740 --> 00:03:13.580
+If that's true then, if that happens to
+be true, it'll go to the next expression.
+
+56
+00:03:13.580 --> 00:03:17.160
+It'll say, it'll check to see if
+z is less than or equal to 10.
+
+57
+00:03:17.160 --> 00:03:21.750
+So then, if those are both true, it goes
+onto the next into the body of the loop.

@@ -1,0 +1,28 @@
+This is the Getting and Cleaning Data
+course overview. This is actually one of the more unique
+classes in our data science track, but I think its sort of one of the most fundamental components of being a
+data scientist. Which is being able to go out and get data from whatever source it's in and
+whatever form it's in, and turning it into a clean
+processed data set, that then you can use to answer
+questions. So in this class, we'll be talking about raw versus tidy data, how to download
+files. Reading in data from a very large number
+of different sources, merging it together,
+reshaping it, summarizing it, and then finding some data resources that
+you can use to augment the data that you already
+have. So here are a couple of different things
+that you might learn about. So, for example, how to connect to a MySQL
+database, a MySQL database, from R. So this is actually using an R package to
+go to R MySQL, and you'll be able to connect the
+databases and read data from that. Another idea would be sort of merging data
+together. So you take different components of a data
+sets. So there might be one cloud that contains
+reviews and one cloud that ca, contains solutions, say from a peer assessment, and you want to combine them
+together. And so, you can use commands in R to merge
+those data sets together. And then, talking about, sort of, raw
+versus processed data. So talking about, what are the data that
+come to you in their rawest possible form, the original source
+of the data versus the processed data. The data that's ready for analysis, ready
+to be used by people that has happened after
+you've merged it, and sort, subsetted it, and
+transformed it into the nice tidy data set that people can
+use. So that's getting data.

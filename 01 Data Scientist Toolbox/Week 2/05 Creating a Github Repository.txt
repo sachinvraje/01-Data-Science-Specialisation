@@ -1,0 +1,84 @@
+In this lecture, we'll cover one of the
+most fundamental things that you can do with GitHub, which is creating
+a repository, or a repo. So, just to, recap, to refresh your
+memory, so we have two pieces of software that we
+talked about. So, Git is a piece of software that allows
+you to do version control of documents, like
+on your local computer. And then GitHub is a piece of software
+that allows you, well, it's a web service, that allows you to, deal with repos or repositories, remotely, on
+the web. So get GitHub allows you to share your
+repository's with others, access other users public
+repositories, and then store copies of your local repo's on the server in case
+something happens to your local version, you have a
+back up copy. So, there's a couple of different ways of
+creating a GitHub repository. One is you can start a repository from
+scratch, that's creating your own repo, and another is you can fork
+another user's repository. So we'll start off with the first method
+which is just creating your own repo from scratch
+and then we'll talk a little bit about how you can Fork
+or get information from another user and
+start working on their project. So key point to keep in mind is that when people talk about repositories, they
+often call, use repo. So, what you can do is, either go to your profile page, which is going to be
+github.com followed by your username. And click on create a new repo in the upper right hand corner of the page, or
+you could go directly to github.com/new you'll need
+to log in to your GitHub account if you want to do this
+second version. So, the first thing you need to do is
+create a name for your repo, and type a brief
+description so make your name a good idea is to make the name
+of the repo Googleable if you want to share
+it with other people. And then have a description that's pretty
+clear and descriptive of the things that you're going to be trying to do with
+the full files in that folder. And then one thing that you can do is you can select either a public or a
+private repo. Public repos are the default, and they're
+the free version, and they can be shared with
+anybody else. Private repos usually require a paid
+account but if you are at an educational institution you can often
+request up to five private repos. So then you definitely want to check the
+box with initialize this re, repository with a README and click the Create
+repository button down at the bottom. So after you've done that, you've created
+your first GitHub repository. So you can see that right now this is a
+file that's a repo, and Nick Carchetti. repo, and so you can see that it has a
+README document. Because we initialized it with a README
+file. And so the read me file, if you initiate
+with the README file, that will actually be what is, what you observe
+right here is the README file contents. And we'll talk a little bit more about how
+you can use mark down to create a sort of a README file that makes
+the repository very easy to understand. Now you can create a copy of this repo on your computer, so that you can make
+changes to it. So you can open Git Bash, and create a
+directory on your computer where you will store your
+copy of the repo. So, for example you can do mkdir and then,
+here it's in your home directory creating test-repo, and then navigate to
+this new directory using cd. And then what you can do is, you can
+initialize a local get repository by using the command get init, if you've
+installed get, as we've talked about previously in
+our previous lectures on Git, and then you can point your local repository to the remote
+repository. In other words, you can link up your local repository with the remote GitHub
+repository by typing git remote add origin, and then the URL of the remote repository that you created
+on GitHub. Now you've linked up your local copy with
+your remote version of GitHub. So, what you can do is, you can actually,
+here's what it looks like in action. So this is actually a re-creating a repo
+and then cd'ing that repo and then setting it up so it's connected to
+the remote version of that repo as well. So, another thing that you can do is fork
+another user's repository or repo. And so, the idea here is that what you
+want to be able to do is develop software with
+other people. So, they'll have repos that they've
+already created that are on GitHub. Once you find one of those that you're
+interested in, you can go to the, that repository and then you
+can click the Fork button, and so what the Fork button will do is, it
+will create a copy of that repo as it currently is
+situated in your GitHub profile. So now you have it on your GitHub account. And so, you can make a local copy, so you
+can clone the repo down to your compu,
+computer by using the command. Git clone, and that will take your local
+version of your, or sorry, the remote version of your
+repo and clone it down to your computer It will, if you
+use the command like this it will clone to your
+current working directory. And then what you can do is you can
+actually work on that and try to contribute back to the repo, with and hope that they'll use the changes that you
+made. If you made changes to your local copy, you'll want to push your changes to
+GitHub. You may be interested in staying current
+with the changes using your forked copy. We'll cover some more of the Git and GitHub basics in coming lectures, but,
+really the basic, the best place to find all this
+sort of information is to look at these tutorials right here both on GitHub and on
+the Git website which gives you a lot of information about how you Fork and
+clone and all the other components of using
+GitHub.

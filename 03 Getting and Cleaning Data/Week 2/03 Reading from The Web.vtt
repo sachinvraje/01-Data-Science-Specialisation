@@ -1,0 +1,574 @@
+WEBVTT
+
+1
+00:00:00.530 --> 00:00:02.390
+This lecture is about
+reading data from the web.
+
+2
+00:00:02.390 --> 00:00:04.740
+There are a large number ways that
+you can read data from the web.
+
+3
+00:00:04.740 --> 00:00:09.020
+This is primarily going to focus on
+scraping data out of websites and maybe
+
+4
+00:00:09.020 --> 00:00:12.620
+doing a little bit with working with APIs
+and a little bit about authentication.
+
+5
+00:00:13.760 --> 00:00:16.830
+Later we'll have a lecture that
+specifically focuses on just the API
+
+6
+00:00:16.830 --> 00:00:18.850
+component of getting data out of the web.
+
+7
+00:00:20.860 --> 00:00:23.730
+So webscraping is programatically
+extracting data from
+
+8
+00:00:23.730 --> 00:00:26.770
+HTML code of websites or from URLs.
+
+9
+00:00:26.770 --> 00:00:28.280
+It can be a great way to get data.
+
+10
+00:00:28.280 --> 00:00:33.320
+For example, this link that I
+have here is an article about
+
+11
+00:00:33.320 --> 00:00:37.960
+how somebody scraped all of the categories
+that Netflix assigns movies to and
+
+12
+00:00:37.960 --> 00:00:40.620
+then analyzed them in
+a very interesting way.
+
+13
+00:00:40.620 --> 00:00:44.330
+And that ended up being a story that went
+viral because it collected an interesting
+
+14
+00:00:44.330 --> 00:00:48.870
+set of data just by programmatically
+extracting data from websites.
+
+15
+00:00:48.870 --> 00:00:51.940
+I would say almost all websites have
+information that you might want to
+
+16
+00:00:51.940 --> 00:00:55.230
+programmatically read in some
+way if you're interested
+
+17
+00:00:55.230 --> 00:00:57.070
+in getting the data off that site.
+
+18
+00:00:57.070 --> 00:00:59.780
+In some cases this is against
+the terms of service for the website.
+
+19
+00:00:59.780 --> 00:01:04.280
+So some websites don't specifically
+say that they do not wanna be scraped.
+
+20
+00:01:04.280 --> 00:01:05.290
+And so when you do that,
+
+21
+00:01:05.290 --> 00:01:08.500
+if you try to scrape the data from them,
+you're at your own risk.
+
+22
+00:01:08.500 --> 00:01:11.070
+If you attempt to read too
+many pages too quickly,
+
+23
+00:01:11.070 --> 00:01:15.160
+a very common consequence is that you
+can have your IP address blocked.
+
+24
+00:01:15.160 --> 00:01:17.555
+If you read a lot of proprietary
+information off of websites,
+
+25
+00:01:17.555 --> 00:01:20.593
+you can get into even bigger trouble, so
+you should be a little bit careful when
+
+26
+00:01:20.593 --> 00:01:22.546
+you're deciding to scrape
+data off of websites.
+
+27
+00:01:22.546 --> 00:01:26.660
+But in general, it can be a very good way
+to collect a lot of data very quickly.
+
+28
+00:01:28.490 --> 00:01:31.650
+So I'm gonna give you one example of how
+to programmatically extract some data and
+
+29
+00:01:31.650 --> 00:01:33.860
+so that comes from my Google Scholar page.
+
+30
+00:01:33.860 --> 00:01:38.560
+So this is that Google Scholar page and
+there's the link down there at the bottom.
+
+31
+00:01:38.560 --> 00:01:40.690
+That's the web link.
+
+32
+00:01:40.690 --> 00:01:44.750
+And so this is actually a page that
+tells you about the papers that I've
+
+33
+00:01:44.750 --> 00:01:47.820
+published and something about
+how often they've been cited,
+
+34
+00:01:47.820 --> 00:01:49.960
+which is the kind of data
+that academics care about.
+
+35
+00:01:51.240 --> 00:01:53.970
+And so what we're gonna do is,
+first we're gonna use the read_lines
+
+36
+00:01:53.970 --> 00:01:56.190
+command to get some data off the Internet,
+that's one way.
+
+37
+00:01:56.190 --> 00:02:00.379
+And so what you can do is you can open
+a connection to a particular URL and
+
+38
+00:02:00.379 --> 00:02:02.796
+you can do that using this URL function.
+
+39
+00:02:02.796 --> 00:02:05.812
+So you just pass it the name of
+the URL that you would like to open
+
+40
+00:02:05.812 --> 00:02:07.080
+a connection to.
+
+41
+00:02:07.080 --> 00:02:10.250
+And then you can use the readLines
+function to read out
+
+42
+00:02:10.250 --> 00:02:12.610
+some of the data from that connection.
+
+43
+00:02:12.610 --> 00:02:14.840
+And then just like when you
+were working with the database,
+
+44
+00:02:14.840 --> 00:02:18.490
+you're gonna wanna be sure to close
+the connection after you've used it.
+
+45
+00:02:18.490 --> 00:02:21.350
+So if you look at the htmlCode
+that we've collected from this,
+
+46
+00:02:21.350 --> 00:02:22.315
+it's gonna look like this.
+
+47
+00:02:22.315 --> 00:02:26.360
+It's gonna look very,
+like one big long string of letters.
+
+48
+00:02:26.360 --> 00:02:31.470
+You can send readLines a set number of
+lines that you'd like it to read but
+
+49
+00:02:31.470 --> 00:02:33.420
+it'll still come out
+unformatted in this way.
+
+50
+00:02:33.420 --> 00:02:34.550
+So it's a little bit hard to read.
+
+51
+00:02:35.790 --> 00:02:39.620
+One way to deal with that is to, as we've
+seen before is to use the XML package.
+
+52
+00:02:39.620 --> 00:02:42.740
+So again, we could use this same URL.
+
+53
+00:02:42.740 --> 00:02:47.930
+Use the XML package, and
+parse the HTML again,
+
+54
+00:02:47.930 --> 00:02:51.160
+using the InternalNodes to get
+the complete structure out.
+
+55
+00:02:51.160 --> 00:02:54.389
+Then if I wanted to get say, get
+the title of the page, I could look for
+
+56
+00:02:54.389 --> 00:02:56.087
+the node that's in the title tags.
+
+57
+00:02:56.087 --> 00:02:58.980
+And get the title of the page.
+
+58
+00:02:58.980 --> 00:03:02.600
+Or I could get sort of the number of
+times my papers were cited by looking
+
+59
+00:03:02.600 --> 00:03:05.080
+at particular table
+elements of that table.
+
+60
+00:03:07.170 --> 00:03:09.890
+Another approach to getting data
+is actually with the GET command.
+
+61
+00:03:09.890 --> 00:03:11.690
+This is the httr package.
+
+62
+00:03:11.690 --> 00:03:14.130
+For doing things like this
+where there's an open,
+
+63
+00:03:14.130 --> 00:03:18.950
+easily accessible website,
+accessing it with
+
+64
+00:03:18.950 --> 00:03:22.180
+connections like we talked about
+before might be the easiest way.
+
+65
+00:03:22.180 --> 00:03:27.220
+But we'll talk in a minute about why the
+httr package can be very useful in other
+
+66
+00:03:27.220 --> 00:03:27.840
+settings.
+
+67
+00:03:27.840 --> 00:03:32.140
+So here I've loaded the httr package,
+and then what I do is I take that
+
+68
+00:03:32.140 --> 00:03:37.490
+same URL I was using before, and
+I just GET the URL with html2.
+
+69
+00:03:37.490 --> 00:03:42.310
+And then what I have to do now is actually
+have to extract the content from that
+
+70
+00:03:42.310 --> 00:03:43.220
+HTML page.
+
+71
+00:03:43.220 --> 00:03:47.040
+So I do that, and I say I'm gonna
+extract the content as a text.
+
+72
+00:03:47.040 --> 00:03:48.980
+Just one big text string.
+
+73
+00:03:48.980 --> 00:03:53.080
+And then I can use the htmlParse
+command to parse out that text, and
+
+74
+00:03:53.080 --> 00:03:55.500
+get the parsed HTML.
+
+75
+00:03:55.500 --> 00:03:59.030
+And so this parsed HTML is gonna
+look exactly like what I would
+
+76
+00:03:59.030 --> 00:04:03.360
+have got if I had used the XML
+package to extract the data directly.
+
+77
+00:04:03.360 --> 00:04:08.250
+And so then I can use xpathSApply
+to extract out the title
+
+78
+00:04:08.250 --> 00:04:11.379
+of the page again like I did before.
+
+79
+00:04:11.379 --> 00:04:14.591
+So that's how you can use get
+just to do the exact same sort of
+
+80
+00:04:14.591 --> 00:04:18.390
+exercise that you would have
+done with the XML package.
+
+81
+00:04:18.390 --> 00:04:22.560
+In some other cases, you might have to do
+something a little bit more complicated.
+
+82
+00:04:22.560 --> 00:04:25.990
+So if you navigate to this
+webpage with your browser,
+
+83
+00:04:25.990 --> 00:04:30.270
+you'll see that it requires a username and
+password input.
+
+84
+00:04:30.270 --> 00:04:34.039
+And so if I just try to get that page
+using the GET command from the httr
+
+85
+00:04:34.039 --> 00:04:37.149
+package, I get a response
+that says Status: 401 and
+
+86
+00:04:37.149 --> 00:04:41.671
+that's because I wasn't able to login
+because I haven't been authenticated.
+
+87
+00:04:41.671 --> 00:04:46.625
+So what you could do with the HTTR package
+is you can actually authenticate yourself
+
+88
+00:04:46.625 --> 00:04:47.898
+for websites, and so
+
+89
+00:04:47.898 --> 00:04:52.090
+you can do this by assigning to this
+what we're gonna call the handle.
+
+90
+00:04:52.090 --> 00:04:56.360
+We can go and get that website and
+so we pass at the URL again, but
+
+91
+00:04:56.360 --> 00:05:01.040
+then we use this authenticate command, and
+we give it the username and the password.
+
+92
+00:05:01.040 --> 00:05:04.290
+In this case,
+this is just a test website, and so
+
+93
+00:05:04.290 --> 00:05:06.750
+the username is user and
+the password is password.
+
+94
+00:05:06.750 --> 00:05:10.380
+And so you can test out things like
+this to see if you can get access.
+
+95
+00:05:10.380 --> 00:05:13.970
+In this case now, the response
+is Status: 200, which means we
+
+96
+00:05:13.970 --> 00:05:18.620
+actually were able to get access to
+the file and to even authenticate it.
+
+97
+00:05:18.620 --> 00:05:20.990
+And now we can look at
+the names of this pg2,
+
+98
+00:05:20.990 --> 00:05:24.140
+which gives you all
+the different components.
+
+99
+00:05:24.140 --> 00:05:27.580
+We included the cookies that we have for
+this file, and
+
+100
+00:05:27.580 --> 00:05:30.860
+then the handle that we used
+to access it and all that.
+
+101
+00:05:30.860 --> 00:05:35.543
+And so, we can then use the content
+function to extract the content from that
+
+102
+00:05:35.543 --> 00:05:38.337
+website, after having logged in through r.
+
+103
+00:05:38.337 --> 00:05:43.219
+So make sure that you use handles
+because if you use handles then you can
+
+104
+00:05:43.219 --> 00:05:44.880
+actually access.
+
+105
+00:05:44.880 --> 00:05:51.230
+You can sort of save the authentication
+across multiple accesses to a website.
+
+106
+00:05:51.230 --> 00:05:57.270
+So if you set Google to be a handle where
+that Google is a particular website,
+
+107
+00:05:57.270 --> 00:06:01.080
+then what you can do is you can tell
+GET to go and get that handle and
+
+108
+00:06:01.080 --> 00:06:06.950
+you can say go get it for a specific
+path or you can set it a different path.
+
+109
+00:06:06.950 --> 00:06:10.890
+So for example,
+if you authenticate this handle one time
+
+110
+00:06:10.890 --> 00:06:13.760
+then the cookies will stay with that
+handle and you'll be authenticated.
+
+111
+00:06:13.760 --> 00:06:18.420
+You won't have to keep authenticating over
+and over again as you access that website.
+
+112
+00:06:19.970 --> 00:06:24.899
+So, r-bloggers has a lot of good examples
+on how to scrape data from the Web, and
+
+113
+00:06:24.899 --> 00:06:27.945
+so if you search for
+Web scraping on r-bloggers,
+
+114
+00:06:27.945 --> 00:06:30.796
+you'll be able to get
+all of those tutorials.
+
+115
+00:06:30.796 --> 00:06:33.651
+The httr help file also has
+a bunch of useful examples,
+
+116
+00:06:33.651 --> 00:06:36.040
+primarily with sort of toy examples.
+
+117
+00:06:36.040 --> 00:06:39.330
+So if you couple that with some
+of the more applied examples
+
+118
+00:06:39.330 --> 00:06:41.740
+on r-bloggers you can get quite a ways.
+
+119
+00:06:41.740 --> 00:06:46.050
+And then see later lectures on APIs on
+how to programmatically interact with
+
+120
+00:06:46.050 --> 00:06:46.760
+APIs of websites.

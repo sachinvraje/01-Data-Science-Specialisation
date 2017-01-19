@@ -1,0 +1,26 @@
+This is a review of exploratory data
+analysis, which is the next course in the course
+sequence. Exploratory data analysis course will
+cover the principles of how do you create analytic graphics, graphics
+that allow you to analyze data. It'll talk about exploratory graphs, how
+you explore the data and get in, create enough graphs to sort of figure out
+the structure of what's going on. It will talk about the plotting systems in
+R. So it'l talk about base plotting, lattice
+plotting and then ggplot2 which is a popular newer
+platform. It'll talk about hierarchical clustering,
+K-means clustering and a little about dimension
+reduction. These are all techniques that you can use
+to get in and explore data as a first pass. So, for example, it will talk about how to use ggplot2 package to make plots like
+this, sort of, sort of pretty smooth scatter plots
+that allow you to like understand the relationship
+between different variables. It will talk about the principles of
+analytic graphics, so what are the principles that you need
+to create graphics that'll be useful sort of to
+figure out what's actually going on with the data you'll be
+working with. And then it'll cover things like K-means
+clustering. So the idea of how do we, if we have a
+bunch of observations of collecting data on
+that, how we cluster them into relative groups that are similar to each
+other as a method of exploring the data and figuring out the
+structure of what's going on. So this is just a couple of the ideas that will be covered in exploratory
+data analysis.

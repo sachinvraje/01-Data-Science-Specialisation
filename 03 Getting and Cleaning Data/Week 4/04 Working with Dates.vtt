@@ -1,0 +1,479 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:01.910
+This lecture is about working with dates.
+
+2
+00:00:01.910 --> 00:00:04.690
+Dates can be sometimes a little
+bit tricky to work with as data
+
+3
+00:00:04.690 --> 00:00:08.500
+because they have all sorts of quirks like
+starting over after the end of a week or
+
+4
+00:00:08.500 --> 00:00:11.180
+starting over after the end of the month,
+and so forth.
+
+5
+00:00:11.180 --> 00:00:14.020
+So we're gonna start really simple,
+we're gonna look at the date function, so
+
+6
+00:00:14.020 --> 00:00:15.375
+this is the date function right here.
+
+7
+00:00:15.375 --> 00:00:20.150
+And if you call it, you'll actually get
+the time that is happening right then.
+
+8
+00:00:20.150 --> 00:00:23.030
+So this is the time that
+the slides were processed.
+
+9
+00:00:23.030 --> 00:00:25.130
+The class of this variable is
+actually just a character, so
+
+10
+00:00:25.130 --> 00:00:28.700
+the date function just returns a character
+that gives you the date and time.
+
+11
+00:00:29.800 --> 00:00:31.780
+But in general, it's not always so simple.
+
+12
+00:00:31.780 --> 00:00:34.350
+So for example,
+if you use the Sys.Date function,
+
+13
+00:00:34.350 --> 00:00:38.425
+you actually end up with something here
+that looks a little bit just like a date,
+
+14
+00:00:38.425 --> 00:00:41.595
+just like you saw before but
+maybe without the time.
+
+15
+00:00:41.595 --> 00:00:45.975
+And if you look at class of this variable
+here it's actually a Date variable.
+
+16
+00:00:45.975 --> 00:00:49.145
+So it has some different properties that
+make it a little bit nicer in terms of
+
+17
+00:00:49.145 --> 00:00:51.590
+analyzing Date data, but
+a little bit more difficult or
+
+18
+00:00:51.590 --> 00:00:55.730
+tricky than dealing with just
+text files in some respects.
+
+19
+00:00:55.730 --> 00:00:59.690
+So the first thing that we might wanna do
+is reformat that into a different format.
+
+20
+00:00:59.690 --> 00:01:02.370
+So, for example,
+we would use the format function.
+
+21
+00:01:02.370 --> 00:01:04.150
+We would apply it to that date.
+
+22
+00:01:04.150 --> 00:01:09.158
+And then we would say,
+we would like to see the abbreviation for
+
+23
+00:01:09.158 --> 00:01:15.884
+the day, the abbreviation for the month
+and then the actual date that you've seen.
+
+24
+00:01:15.884 --> 00:01:20.920
+So that gives you Sunday,
+January 12th just like this.
+
+25
+00:01:20.920 --> 00:01:24.797
+You can use different characters
+within these quotes, and so for
+
+26
+00:01:24.797 --> 00:01:27.135
+example you can get the day as a number.
+
+27
+00:01:27.135 --> 00:01:34.146
+You can get %a is abbreviated weekday,
+capital %A is unabbreviated weekday,
+
+28
+00:01:34.146 --> 00:01:38.383
+lowercase %m is month,
+0 to 12 and so forth.
+
+29
+00:01:38.383 --> 00:01:42.271
+So you can use all of this to get
+the dates in ad format that is nice and
+
+30
+00:01:42.271 --> 00:01:43.950
+visually appealing to you.
+
+31
+00:01:45.500 --> 00:01:48.905
+You can also take character
+vectors like this.
+
+32
+00:01:48.905 --> 00:01:52.895
+So here is a character vector where
+I have a bunch of different dates.
+
+33
+00:01:52.895 --> 00:01:57.545
+And I can turn them into
+dates by telling the function
+
+34
+00:01:57.545 --> 00:02:00.445
+as that date that you should
+be looking for a day,
+
+35
+00:02:00.445 --> 00:02:04.840
+you should be looking for a month, and
+then you should be looking for a year.
+
+36
+00:02:04.840 --> 00:02:07.350
+And so what will then do
+is turn these into dates.
+
+37
+00:02:07.350 --> 00:02:10.710
+The nice thing about these is that then
+you can sort of manipulate them and
+
+38
+00:02:10.710 --> 00:02:13.330
+figure out how far apart
+they are among other things.
+
+39
+00:02:13.330 --> 00:02:17.689
+So for example, if I look at the
+difference in time between the first day
+
+40
+00:02:17.689 --> 00:02:21.482
+and the second day,
+there's a time difference of -1 days.
+
+41
+00:02:21.482 --> 00:02:27.150
+So if I subtract off the second day
+from the first day I'm one day behind.
+
+42
+00:02:27.150 --> 00:02:29.790
+And so you can actually turn
+that into a numeric variable, so
+
+43
+00:02:29.790 --> 00:02:32.640
+you can actually get the differences
+between dates in terms of the number of
+
+44
+00:02:32.640 --> 00:02:35.150
+days apart that they
+are very easily using dates.
+
+45
+00:02:36.350 --> 00:02:41.550
+You can also convert them to Julian as
+well as to other different variables.
+
+46
+00:02:41.550 --> 00:02:45.490
+So for example if you want to know what
+weekday it is, you can use the weekdays
+
+47
+00:02:45.490 --> 00:02:48.770
+function and it'll tell you that
+this date happened on a Sunday.
+
+48
+00:02:48.770 --> 00:02:49.970
+You can find the months so
+
+49
+00:02:49.970 --> 00:02:53.960
+that happened during January, and
+you can turn it into a Julian date.
+
+50
+00:02:53.960 --> 00:02:57.830
+And so what that is is the number of days
+that have occurred since the origin,
+
+51
+00:02:57.830 --> 00:03:00.320
+and it will tell you
+here what the origin is.
+
+52
+00:03:00.320 --> 00:03:03.832
+In this case,
+the origin is the first of January, 1970.
+
+53
+00:03:03.832 --> 00:03:06.770
+So that's the number of days that
+have occurred since the origin date.
+
+54
+00:03:08.390 --> 00:03:11.270
+The Lubridate package is
+actually very nice and makes
+
+55
+00:03:11.270 --> 00:03:16.570
+working with dates even simpler than it is
+with the ad.Date function, among others.
+
+56
+00:03:16.570 --> 00:03:21.290
+So if you load the Lubridate library
+then what you can do is convert a number
+
+57
+00:03:21.290 --> 00:03:26.300
+to a date and you can do that
+regardless of what the format is.
+
+58
+00:03:26.300 --> 00:03:30.820
+So if you tell it ymd,
+that means it's gonna look for
+
+59
+00:03:30.820 --> 00:03:34.430
+the year first followed by the month
+followed by the date in any
+
+60
+00:03:34.430 --> 00:03:38.450
+sort of the standard formats
+that you might imagine.
+
+61
+00:03:38.450 --> 00:03:44.000
+So in this case it's gonna find 2014,
+then 01 then 08 and turn that into a date.
+
+62
+00:03:45.420 --> 00:03:48.030
+You can also tell it to look for
+the month first, and then the day and
+
+63
+00:03:48.030 --> 00:03:49.667
+the year with the mdy function.
+
+64
+00:03:50.700 --> 00:03:55.380
+So that's month, day, year, and
+it will turn it into a date as well.
+
+65
+00:03:55.380 --> 00:03:57.560
+Or you can tell it to look for
+day, month, year, so
+
+66
+00:03:57.560 --> 00:04:02.530
+that's going to find the day as 03 and
+the month as 04 and the year as 2013.
+
+67
+00:04:02.530 --> 00:04:06.087
+So it's very nice because you don't
+have to actually format the dates or
+
+68
+00:04:06.087 --> 00:04:08.493
+the characters before you
+turn them into dates.
+
+69
+00:04:08.493 --> 00:04:11.220
+You can also do the same thing with time.
+
+70
+00:04:11.220 --> 00:04:14.371
+So you're going to start with year,
+month, day.
+
+71
+00:04:14.371 --> 00:04:17.058
+And then you can have an underscore and
+then hours, minutes,
+
+72
+00:04:17.058 --> 00:04:21.215
+seconds will turn this into a time,
+including hours, and minutes and seconds.
+
+73
+00:04:21.215 --> 00:04:24.475
+If this was in a different order, so
+if it started with seconds, then minutes,
+
+74
+00:04:24.475 --> 00:04:30.510
+then hours, you could make this ymd_,
+seconds, hours, minutes, smh.
+
+75
+00:04:30.510 --> 00:04:32.890
+And so you can also set the time zone.
+
+76
+00:04:32.890 --> 00:04:38.170
+So, here's a date, or a time, that you
+would like to turn into a date object,
+
+77
+00:04:38.170 --> 00:04:41.200
+and you can do that by setting the time
+zone to be a specific time zone.
+
+78
+00:04:41.200 --> 00:04:44.200
+And I'm getting this from
+this tutorial that was
+
+79
+00:04:44.200 --> 00:04:46.890
+on statistics.com about loop or date.
+
+80
+00:04:46.890 --> 00:04:49.960
+And so if you wanna learn more
+about how to set time zones and
+
+81
+00:04:49.960 --> 00:04:53.384
+what time zones are,
+you can look at ?Sys.timezone.
+
+82
+00:04:56.440 --> 00:04:58.890
+Some functions have
+slightly different syntax.
+
+83
+00:04:58.890 --> 00:05:05.460
+So if you're using the base date
+manipulation functions, you use weekday.
+
+84
+00:05:05.460 --> 00:05:08.660
+But if you are using
+the Lubridate package,
+
+85
+00:05:08.660 --> 00:05:12.000
+you're gonna use wday like
+this to get the weekday.
+
+86
+00:05:12.000 --> 00:05:16.858
+And this will give you sort of
+a number here which is gonna be three.
+
+87
+00:05:16.858 --> 00:05:22.444
+And then if you wanna know the weekday
+in terms of the actual abbreviation,
+
+88
+00:05:22.444 --> 00:05:25.470
+you're gonna have to say label=TRUE.
+
+89
+00:05:25.470 --> 00:05:29.190
+And then it'll tell you that it's Tuesday,
+the third day of the week,
+
+90
+00:05:29.190 --> 00:05:32.670
+according to the levels that have
+been defined for this variable.
+
+91
+00:05:33.780 --> 00:05:37.630
+So a lot more information is available on
+this very nice Lubridate tutorial from
+
+92
+00:05:37.630 --> 00:05:40.090
+which I borrowed some of
+the information for this.
+
+93
+00:05:40.090 --> 00:05:44.290
+You can also find similar content
+in the Lubridate Package Vignette.
+
+94
+00:05:44.290 --> 00:05:49.820
+And ultimately you want your dates to
+be of the class POSIXct or POSIXlt.
+
+95
+00:05:49.820 --> 00:05:52.440
+And so for
+more information type ?POSIXlt and
+
+96
+00:05:52.440 --> 00:05:55.770
+that'll give you a little bit more
+information about how to deal with dates.
+
+97
+00:05:55.770 --> 00:05:58.560
+This will become relevant
+later when we do some modeling
+
+98
+00:05:58.560 --> 00:06:01.270
+in the prediction class that
+deal with dates as well.

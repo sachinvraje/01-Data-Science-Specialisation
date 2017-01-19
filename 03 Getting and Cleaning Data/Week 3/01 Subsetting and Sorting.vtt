@@ -1,0 +1,569 @@
+WEBVTT
+
+1
+00:00:00.570 --> 00:00:03.390
+Once you've loaded your data into R, then
+you might want to do is manipulate
+
+2
+00:00:03.390 --> 00:00:07.460
+that data, and so you can set it up to be
+a tidy data set.
+
+3
+00:00:07.460 --> 00:00:10.220
+Variables in the columns and observations
+in the rows, and
+
+4
+00:00:10.220 --> 00:00:12.336
+only the observations that you want to be
+able to analyze.
+
+5
+00:00:12.336 --> 00:00:15.720
+So this, first lec, part of this lecture
+is going to
+
+6
+00:00:15.720 --> 00:00:20.530
+recover some of the information that
+you've already seen about subsetting,
+
+7
+00:00:20.530 --> 00:00:22.590
+that you've probably seen in your R
+programming class, in
+
+8
+00:00:22.590 --> 00:00:25.000
+case you don't remember it off the top of
+your head.
+
+9
+00:00:25.000 --> 00:00:27.970
+So what I'm going to do, is I'm going to
+create a data frame here, and I'm going to
+
+10
+00:00:27.970 --> 00:00:30.090
+create that data frame with three
+variables that
+
+11
+00:00:30.090 --> 00:00:33.710
+they're labeled var one, var two, and var
+three.
+
+12
+00:00:33.710 --> 00:00:35.580
+And then what want to do is I'm actually
+going to scramble
+
+13
+00:00:35.580 --> 00:00:39.280
+up those variables so that they're not in
+a specific order.
+
+14
+00:00:39.280 --> 00:00:41.810
+And I'm going to make some of the values
+be missing.
+
+15
+00:00:41.810 --> 00:00:43.880
+So I'm going to make some of the values
+NA.
+
+16
+00:00:43.880 --> 00:00:47.000
+Once I've done all that, I see that this
+is the data set that I've created.
+
+17
+00:00:47.000 --> 00:00:48.100
+So, you can see in any of the
+
+18
+00:00:48.100 --> 00:00:50.750
+columns that the va, values aren't
+necessarily in order,
+
+19
+00:00:50.750 --> 00:00:52.470
+and you can see that for variable two,
+
+20
+00:00:52.470 --> 00:00:55.640
+there's a couple of missing values with
+the NAs.
+
+21
+00:00:55.640 --> 00:00:58.440
+So, the first thing that I can do is I can
+subset a specific
+
+22
+00:00:58.440 --> 00:01:03.050
+column by doing x comma one, where I have
+x open bracket comma one.
+
+23
+00:01:03.050 --> 00:01:10.720
+And what that'll do is actually open up
+just the first column of that data frame.
+
+24
+00:01:10.720 --> 00:01:12.760
+The other thing I can do is if I want to
+subset
+
+25
+00:01:12.760 --> 00:01:16.760
+by a column, I can again do x open bracket
+comma.
+
+26
+00:01:16.760 --> 00:01:18.560
+And then I can actually use the variable
+name
+
+27
+00:01:18.560 --> 00:01:22.980
+before the close bracket to subset just
+that column.
+
+28
+00:01:22.980 --> 00:01:25.850
+I can subset by both rows and columns at
+the same time.
+
+29
+00:01:25.850 --> 00:01:29.462
+So for example, this command here, x, open
+
+30
+00:01:29.462 --> 00:01:32.816
+bracket, one colon two, comma var two,
+will
+
+31
+00:01:32.816 --> 00:01:39.400
+actually output the first two rows of x,
+and the first and the second column of x.
+
+32
+00:01:39.400 --> 00:01:43.440
+So you could subset both on rows and
+columns at the same time.
+
+33
+00:01:43.440 --> 00:01:47.840
+So, the other thing is that you can do is
+you can subset using logical statements.
+
+34
+00:01:47.840 --> 00:01:51.360
+So, for example, suppose I want to find
+out all the rows
+
+35
+00:01:51.360 --> 00:01:56.098
+of x where variable one is less than or
+equal to three.
+
+36
+00:01:56.098 --> 00:02:00.890
+And variable three is greater than 11, so
+to define
+
+37
+00:02:00.890 --> 00:02:03.770
+those rows I can pass it this logical
+argument like
+
+38
+00:02:03.770 --> 00:02:06.670
+that, to subsetting the rows and I end up
+with
+
+39
+00:02:06.670 --> 00:02:09.480
+just the rows where both of those
+conditions are met.
+
+40
+00:02:09.480 --> 00:02:12.450
+I can also use an or, so I can try to find
+the
+
+41
+00:02:12.450 --> 00:02:17.880
+places the rows where, variable one is
+less than or equal to three or,using
+
+42
+00:02:17.880 --> 00:02:23.790
+type command here variable three is
+greater than 15 ,and the result is this
+
+43
+00:02:23.790 --> 00:02:27.370
+data frame here where one or the other of
+those two conditions is met.
+
+44
+00:02:29.560 --> 00:02:34.640
+Finally, if I'm dealing with NA values
+subsetting on NAs
+
+45
+00:02:34.640 --> 00:02:39.695
+will not produce the actual rows, and so
+what you want to do, is you
+
+46
+00:02:39.695 --> 00:02:42.630
+want to use the which command, so if you
+use which, it will
+
+47
+00:02:42.630 --> 00:02:48.100
+return the indices where variable two is
+greater than eight in this case.
+
+48
+00:02:48.100 --> 00:02:51.406
+And so when it returns the indices where
+variable two is greater than
+
+49
+00:02:51.406 --> 00:02:55.764
+eight, it doesn't return the NAs, and so
+you can subset the data set.
+
+50
+00:02:55.764 --> 00:02:57.770
+Even dealing with the NAs that you might
+have.
+
+51
+00:02:59.860 --> 00:03:01.220
+You can also sort variables.
+
+52
+00:03:01.220 --> 00:03:02.476
+So using the sort command.
+
+53
+00:03:02.476 --> 00:03:05.362
+So if you type sort and then pass it x
+
+54
+00:03:05.362 --> 00:03:11.120
+of variable one, it'll sort the values in
+increasing increasing order.
+
+55
+00:03:11.120 --> 00:03:13.050
+You can tell it to sort them in decreasing
+
+56
+00:03:13.050 --> 00:03:17.160
+order with the parameter decreasing set
+equal to TRUE.
+
+57
+00:03:18.360 --> 00:03:19.500
+And then the other thing you can do
+
+58
+00:03:19.500 --> 00:03:21.380
+is, when you're dealing with a variable
+that has
+
+59
+00:03:21.380 --> 00:03:25.170
+missing values, you can tell it to put all
+the NA values at the end of the sort.
+
+60
+00:03:25.170 --> 00:03:27.350
+So you can say, na.last equals TRUE.
+
+61
+00:03:27.350 --> 00:03:30.810
+The other thing that you can do is, you
+
+62
+00:03:30.810 --> 00:03:33.700
+can actually order a data frame by a
+particular variable.
+
+63
+00:03:33.700 --> 00:03:36.056
+So suppose that I want to order the data
+frame,
+
+64
+00:03:36.056 --> 00:03:39.150
+in other word I want to sort all of these
+rows.
+
+65
+00:03:39.150 --> 00:03:42.266
+By the values of variable one, so that the
+varia, values
+
+66
+00:03:42.266 --> 00:03:45.590
+of variable one are in increasing order as
+I go down.
+
+67
+00:03:45.590 --> 00:03:49.300
+So what I can do is take this function
+order and apply
+
+68
+00:03:49.300 --> 00:03:54.290
+it to that variable one, and then pass the
+results of that ordering
+
+69
+00:03:54.290 --> 00:03:59.860
+as the selection to the rows of the matrix
+x, and what that'll do is
+
+70
+00:03:59.860 --> 00:04:05.200
+reorder the rows so that variable one is
+in increasing order.
+
+71
+00:04:05.200 --> 00:04:08.420
+You can also order by multiple variables,
+so for
+
+72
+00:04:08.420 --> 00:04:11.516
+example, you can pass it variable one and
+variable
+
+73
+00:04:11.516 --> 00:04:13.750
+three and so what it'll do, is it will
+
+74
+00:04:13.750 --> 00:04:17.480
+first sort so variable one is in
+increasing order.
+
+75
+00:04:17.480 --> 00:04:22.430
+And then if there are multiple values of
+variable one that are the same,
+
+76
+00:04:22.430 --> 00:04:26.150
+it will sort the values of variable three
+in increasing order within those values.
+
+77
+00:04:26.150 --> 00:04:30.170
+So it sorts the first variable first, and
+the second variable in the first variable.
+
+78
+00:04:31.570 --> 00:04:33.760
+You can actually do that the same thing
+with the
+
+79
+00:04:33.760 --> 00:04:37.010
+plyr package, which is a package written
+by Hadley Wickham.
+
+80
+00:04:37.010 --> 00:04:38.660
+And what you can do, is once you've
+
+81
+00:04:38.660 --> 00:04:41.310
+loaded that library, you can use the
+arrange command.
+
+82
+00:04:41.310 --> 00:04:45.629
+So the arrange command takes a data frame
+and then you can tell it a variable.
+
+83
+00:04:46.740 --> 00:04:49.920
+And that variable will the variable that
+the data frame is sorted on.
+
+84
+00:04:49.920 --> 00:04:52.708
+So now you can see we've sorted on
+variable one,
+
+85
+00:04:52.708 --> 00:04:56.410
+and so variable one is in an increasing
+order here.
+
+86
+00:04:56.410 --> 00:05:01.850
+You can also tell it to do decreasing
+order by just passing
+
+87
+00:05:02.920 --> 00:05:07.810
+the, to the arrange command, the data
+frame, and variable one but wrapped
+
+88
+00:05:07.810 --> 00:05:12.720
+with the desc function which will tell it
+to put it in ascending order.
+
+89
+00:05:14.980 --> 00:05:17.550
+You can also add rows and columns to data
+frames,
+
+90
+00:05:17.550 --> 00:05:22.370
+quite straight forward process so you just
+basically say x of
+
+91
+00:05:22.370 --> 00:05:24.680
+variable four, so this is a variable that
+wasn't in
+
+92
+00:05:24.680 --> 00:05:28.390
+the data frame before, we are going to
+assign to that variable.
+
+93
+00:05:28.390 --> 00:05:33.146
+A new vector that that's random normal
+vector of length the
+
+94
+00:05:33.146 --> 00:05:38.020
+same dimension as the number of rows of
+the data set.
+
+95
+00:05:38.020 --> 00:05:39.610
+And then you can see that, that variable
+has
+
+96
+00:05:39.610 --> 00:05:41.468
+just been added to the data set like that.
+
+97
+00:05:41.468 --> 00:05:47.010
+Another way that you can do this is by
+using the cbind command,
+
+98
+00:05:47.010 --> 00:05:50.355
+so what that will do is it will take the
+data set, the data
+
+99
+00:05:50.355 --> 00:05:55.170
+frame x, and it will column-bind the new
+vector to [UNKNOWN] basically add
+
+100
+00:05:55.170 --> 00:05:58.800
+a column to basically add a column on the
+right hand side of x.
+
+101
+00:05:58.800 --> 00:06:02.871
+If I put these in any other order, if I
+put rnorm five here, and then put
+
+102
+00:06:02.871 --> 00:06:08.230
+x second, what it would do is it would
+bind that column to the left side of x.
+
+103
+00:06:08.230 --> 00:06:10.040
+Which is sort of intuitive.
+
+104
+00:06:10.040 --> 00:06:13.640
+If you want to bind the rows, you can use
+the rbind command.
+
+105
+00:06:13.640 --> 00:06:16.830
+So it's the same command, only with an r
+at the beginning.
+
+106
+00:06:16.830 --> 00:06:20.430
+And so if you put the rnorm at the end
+
+107
+00:06:20.430 --> 00:06:22.880
+what it'll do is it'll bind it to the
+bottom
+
+108
+00:06:22.880 --> 00:06:25.210
+of the data frame, and if you put it
+before,
+
+109
+00:06:25.210 --> 00:06:26.910
+it'll bind it to the top of the data
+frame.
+
+110
+00:06:29.038 --> 00:06:32.970
+There are a lot more notes that are to be
+had on subsetting
+
+111
+00:06:32.970 --> 00:06:34.730
+and reordering and sorting in the R
+
+112
+00:06:34.730 --> 00:06:37.270
+programming course in the data science
+track.
+
+113
+00:06:37.270 --> 00:06:40.990
+And I've taken some of these information
+from these nice set of lecture notes by
+
+114
+00:06:40.990 --> 00:06:43.190
+Andrew Jaffe, who teaches the Windsor
+Institute here
+
+115
+00:06:43.190 --> 00:06:44.950
+at the John Hopkins School of Public
+Health.
+
+116
+00:06:44.950 --> 00:06:48.360
+And you can check out his lecture notes
+for more information as well.
+
+117
+00:06:48.360 --> 00:06:48.486
+[SOUND]
