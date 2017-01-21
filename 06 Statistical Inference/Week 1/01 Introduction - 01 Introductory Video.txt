@@ -1,0 +1,93 @@
+Hi, my name is Brian Caffo and welcome to this Statistical Inference
+Coursera Data Science class. In this class, we are gonna learn about the process
+of formal statistical inference. So I define statistical
+inference as the process of generating conclusions about
+a population from a noisy sample. Without statistical influence,
+we're simply living within our data. With statistical inference,
+we're trying to generate new knowledge. We're trying to extend beyond our
+data to a population to give answers. With statistical inference, our estimators have actual
+things that they're estimating. And in fact, I would say statistical
+inference is the only formal system of inference that we have. Let me give you some examples. Hopefully you'll understand
+what I'm talking about. Consider trying to predict who's going
+to win an election on election day, given a sample of likely voters today. Well, there our sample is a noisy dataset. Some people might not actually
+vote on election day. Some people might change their mind
+as to what they're going to say now. Or some people be deliberately misleading. So we'd like to try to draw
+together all that uncertainty and use that to predict who's
+gonna win on election day. When a weather man tells you the
+probability that it rains tomorrow is 70%, they're trying to use the historical data
+that is particularly the most recent data, to predict tomorrow's weather and
+actually attach a probability to it. That probability refers to a population. An example that's very close to
+the research I do is trying to predict what areas of the brain activate
+when we put them in an fMRI scanner. In that case, people are doing a task
+while they're in the scanner, for example, tapping their finger or
+something like that. And we like'd to compare when they're
+tapping their finger, to when they're not. And try to figure out what areas of the
+brain are associated with finger tapping. That's just one example there. Again, these are all very different
+aspects of statistical inference. They're very different in the ways
+in which we're thinking about and modeling the randomness. And so I think you'll probably get
+the sense that statistical inference is a kind of challenging
+subject because of that. One thing I want to mention briefly and
+hopefully get out of the way as early as possible is the idea that there's many
+different modes of statistical inference. And, in fact,
+there's a recent New York Times article that described the difference between
+so-called Bayesians and frequentists, two different kinds of
+inferential paradigms. And I think when you first come into this
+discipline, you might even be surprised that there can even be more than
+one way to think about statistics. But, in fact, even amongst so
+called Bayesians and even amongst so-called frequentists, there's all different variations and
+shades of grays, and there's many a Bayesians that I would say just really
+behaved like frequentists and so on. So, what we're gonna do in this class to
+make it as straightforward as possible is to pick a very particular paradigm,
+this frequentist paradigm, that's the one that's most commonly taught
+in introductory statistics classics. The reason I elected to do
+this is because it's the most likely one that you'll
+encounter in practice. And also, I think once you've develop some
+of these fundamentals, you'll be able to extend this knowledge to lots of different
+areas and you'll be able to build on it. So we wanna build a good foundation. We're going to do it with sort
+of frequency style thinking. What I mean by frequency
+style thinking is, we're gonna think of probability
+like how we think of gambling. So I'm gonna think the probability that
+a coin winds up as heads is gonna be, if I were to flip it maybe infinitely many
+times, and there's all this randomness that I'm thinking about in the coin flip,
+and the proportion of heads would really define a sort of intrinsic
+probability of the head to the coin. That's a frequentist style of thinking. It's sort of the idea that we can repeat
+an experiment over and over and over again and the percentage of times that something
+happens defines that population parameter. There is more than one way to
+think about probability, and more than one way to
+think about inference. But we're gonna focus on specifically
+frequency styling inference like that. Like the coin flipping and
+all the gambling experiments that we're very familiar with and we're gonna
+leave all that other stuff to the side. In the notes, I give you some examples of
+all different sorts of topics that you can try to build on after you've mastered
+some of the tools from this class. Let me give you just a quick example. There's a thriving community now
+that's trying to figure out how can we really infer causation,
+not just association, but real causation using noisy statistical
+data, and that's a very deep problem. And what they'd like to do is enumerate
+the assumptions and a set of tools and statistical study designs
+that will lead us to develop causality rather than association. That requires us to do things like
+define what we mean by something causing something else. It's a very deep field and at any rate, that's one example of the couple I give
+in the notes where you can build on this. For example, survey sampling,
+epidemiological studies and so on. But again, what I'd like to do in a very
+short class like this is really focus on building our foundation in basic frequency
+style probability models and testing. So I'd like to welcome you to the class. The way that you want to
+think about this class is, if you're sort of keeping pace with it,
+it's a four-week class. But if you're struggling
+with some of the concepts, don't feel badly about having to
+extend this class out, take it twice. This is deep stuff and it's unusual
+I think, and it's not the math and it's not the,
+I know many mathematicians who really struggle when they first start
+thinking about statistical inference cuz it's just a different way of
+thinking about the world. So think of this as a four-week class. And if you're getting it, if you're not,
+take a little bit more time. There's four quizzes. There's one project. The project, I really think drives home
+some of the central ideas of inference. So I hope that you would spend a fair
+amount of time thinking about the project because it really drives home what we
+mean by sampling distributions and what is meant by frequency
+style statistical inference. The quizzes will be auto-graded. They're, ideally,
+due at the end of each week but you can attempt all the quizzes
+from the start of the class. I've put out some homework problems and
+I've linked those homework problems to the specific quiz questions so you can
+practice before you even try the quiz. So welcome to the class. I'm really enthusiastic
+about teaching you. I really like inference. It's my favorite subject. I've been studying statistical
+inference for probably 15 years now. And every time I think about it,
+I learn something new. And so I hope you can really
+dive into this deep and incredibly important subject with me.

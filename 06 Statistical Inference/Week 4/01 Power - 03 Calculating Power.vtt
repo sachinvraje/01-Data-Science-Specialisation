@@ -1,0 +1,897 @@
+WEBVTT
+
+1
+00:00:00.003 --> 00:00:06.860
+Let's assume that our sample is
+exactly normally distributed.
+
+2
+00:00:06.860 --> 00:00:10.170
+Whether this is because we're willing to
+stomach that assumption because we have
+
+3
+00:00:10.170 --> 00:00:12.840
+a large sample size and we're
+applying the central limit theorem or
+
+4
+00:00:12.840 --> 00:00:16.220
+if we're willing to just assume that
+the underline population is exactly
+
+5
+00:00:16.220 --> 00:00:17.470
+normally distributed.
+
+6
+00:00:17.470 --> 00:00:21.900
+Either way, for the sake of argument let's
+assume that X bar is normally distributed,
+
+7
+00:00:21.900 --> 00:00:25.800
+and that sigma, the standard
+deviation of the population is known.
+
+8
+00:00:27.160 --> 00:00:30.220
+Then we would reject if our z statistic,
+
+9
+00:00:30.220 --> 00:00:34.400
+x bar minus 30 over it's standard
+error is bigger than z1 minus alpha.
+
+10
+00:00:36.340 --> 00:00:40.070
+This is the same as just saying we're
+going to reject if x bar is bigger than 30
+
+11
+00:00:40.070 --> 00:00:44.660
+plus this z quantile times
+the standard err of the mean.
+
+12
+00:00:44.660 --> 00:00:48.920
+Now notice under the null hypothesis
+X bar follows this distribution.
+
+13
+00:00:48.920 --> 00:00:51.060
+Normal with a mean equal to mu naught.
+
+14
+00:00:51.060 --> 00:00:52.330
+In this case 30.
+
+15
+00:00:52.330 --> 00:00:54.970
+And the variance equal
+to sigma squared over N.
+
+16
+00:00:54.970 --> 00:00:57.260
+Under the alternative it
+follows the same distribution.
+
+17
+00:00:57.260 --> 00:01:00.690
+The only difference is instead
+of mu naught we have mu a.
+
+18
+00:01:00.690 --> 00:01:02.970
+Where mu a is the value
+under the alternative.
+
+19
+00:01:05.160 --> 00:01:09.700
+So it's very easy to write out in r,
+what our power would be.
+
+20
+00:01:09.700 --> 00:01:14.710
+We want to take pnorm of
+the probab in other words,
+
+21
+00:01:14.710 --> 00:01:18.470
+the normal probability of
+getting a sample mean.
+
+22
+00:01:19.880 --> 00:01:22.930
+Mu naught plus z times
+sigma over square root n or
+
+23
+00:01:22.930 --> 00:01:27.920
+larger, where this probability simply
+calculated with mu equal to mu a.
+
+24
+00:01:27.920 --> 00:01:32.840
+So here we have mean mu, mean equal
+to mu a, our standard deviation is
+
+25
+00:01:32.840 --> 00:01:36.490
+the standard error of the mean, and
+I've put lower.tail equals false.
+
+26
+00:01:36.490 --> 00:01:39.120
+So that I get the upper probability.
+
+27
+00:01:39.120 --> 00:01:44.580
+Now notice if I were to plug in mu equal
+to mu naught then I should get alpha, and
+
+28
+00:01:44.580 --> 00:01:48.020
+now as I plug as mu
+a moves away from alpha
+
+29
+00:01:48.020 --> 00:01:50.370
+the power should get larger and larger.
+
+30
+00:01:50.370 --> 00:01:51.100
+So let's try it.
+
+31
+00:01:54.190 --> 00:01:57.440
+Suppose someone were to give me this
+information that they wanted to conduct
+
+32
+00:01:57.440 --> 00:02:00.890
+this study, they wanted to test whether or
+not mu was 30 for
+
+33
+00:02:00.890 --> 00:02:03.300
+this population or it was larger than 30.
+
+34
+00:02:03.300 --> 00:02:05.110
+So mu naught equals 30.
+
+35
+00:02:05.110 --> 00:02:10.260
+They were interested
+a difference as large as 32,
+
+36
+00:02:10.260 --> 00:02:13.890
+their end was 16,
+
+37
+00:02:13.890 --> 00:02:19.530
+that they were hoping to get, and
+they knew that sigma was around 4.
+
+38
+00:02:19.530 --> 00:02:20.030
+Okay?
+
+39
+00:02:20.030 --> 00:02:23.850
+So here I've plugged in the values
+mu naught equal 30, mu a equals 32,
+
+40
+00:02:23.850 --> 00:02:30.100
+sigma equals 4, n equals 16, here's my
+z is my normal quintile, and then first
+
+41
+00:02:30.100 --> 00:02:33.940
+I want to show you if I plug in mu equal
+to mu naught that it should give me 5%.
+
+42
+00:02:33.940 --> 00:02:38.760
+So here I plug in mu equal
+to mu naught and I get 5%.
+
+43
+00:02:38.760 --> 00:02:45.400
+Now I'm plugging in mu equal to mu a 32,
+and you see that this jumps up to 64%.
+
+44
+00:02:45.400 --> 00:02:50.951
+So, there's a 64% probability of
+detecting a mean as large as 32 or
+
+45
+00:02:50.951 --> 00:02:53.955
+larger if we conduct this experiment.
+
+46
+00:02:58.309 --> 00:03:02.933
+So here I'm plotting the power curves,
+
+47
+00:03:02.933 --> 00:03:07.421
+which is the power as a function of Mu a,
+
+48
+00:03:07.421 --> 00:03:11.770
+as n varies by color here, and.
+
+49
+00:03:11.770 --> 00:03:15.850
+As we head to the right on this plot,
+so as we head along this axis,
+
+50
+00:03:15.850 --> 00:03:20.500
+that's mua getting bigger,
+and this axis is power.
+
+51
+00:03:20.500 --> 00:03:21.080
+Okay?
+
+52
+00:03:21.080 --> 00:03:25.080
+So let's take a specific one
+of these lines and look at it.
+
+53
+00:03:25.080 --> 00:03:32.010
+So this line, right here,
+is the power when n equals a.
+
+54
+00:03:32.010 --> 00:03:36.860
+And what you can see is all of the lines,
+is including the one that we're discussing
+
+55
+00:03:36.860 --> 00:03:43.510
+right now,
+converge at 0.05 as mu approaches 30.
+
+56
+00:03:43.510 --> 00:03:50.149
+And then what you can see is that
+power increases as mu a gets larger.
+
+57
+00:03:51.760 --> 00:03:56.420
+Okay?
+And basically that means we're more likely
+
+58
+00:03:56.420 --> 00:04:03.560
+to detect a difference if the difference
+we want to detect is very big.
+
+59
+00:04:03.560 --> 00:04:05.260
+And that makes a lot of sense.
+
+60
+00:04:05.260 --> 00:04:09.365
+If something's a huge effect,
+we should be very probably,
+
+61
+00:04:09.365 --> 00:04:12.105
+it should be very probably to detect it.
+
+62
+00:04:12.105 --> 00:04:16.345
+And then the other thing I would
+note is that as we head up here,
+
+63
+00:04:16.345 --> 00:04:21.974
+we're seeing sample sizes doubled with
+each line, I start out with N equal to 8,
+
+64
+00:04:21.974 --> 00:04:27.718
+then I move to N equal to 16 right there
+and then 32 and then 64 and then 128.
+
+65
+00:04:27.718 --> 00:04:31.190
+And what you can see is the curves
+all getting shoved up to higher and
+
+66
+00:04:31.190 --> 00:04:33.410
+higher power earlier and earlier.
+
+67
+00:04:33.410 --> 00:04:36.040
+And this makes a lot of sense as well.
+
+68
+00:04:36.040 --> 00:04:42.180
+In other words, as we collect a lot
+more data, we should be more likely
+
+69
+00:04:42.180 --> 00:04:48.030
+to detect a power of a var, of a specific,
+for a specific value of mu a.
+
+70
+00:04:48.030 --> 00:04:55.430
+And so that's why, the mu n equal
+to 128 curve is uniformly above.
+
+71
+00:04:56.510 --> 00:04:59.240
+The N equal to 64 curve, and so on.
+
+72
+00:05:01.620 --> 00:05:04.660
+Let's use our studio's manipulate function
+
+73
+00:05:04.660 --> 00:05:10.410
+to evaluate power as it relates
+to the two normal densities.
+
+74
+00:05:10.410 --> 00:05:13.110
+So here I'm going to
+do library manipulate,
+
+75
+00:05:13.110 --> 00:05:15.359
+then I'm going to define mu0 to be 30.
+
+76
+00:05:16.540 --> 00:05:20.140
+Then I'm going to define a plotting
+function that depends on the population,
+
+77
+00:05:20.140 --> 00:05:25.360
+standard deviation, the mean under
+the alternative, the sample size,
+
+78
+00:05:25.360 --> 00:05:27.250
+and the type-1 error rate.
+
+79
+00:05:27.250 --> 00:05:29.520
+Then it does ggplot.
+
+80
+00:05:29.520 --> 00:05:36.260
+So, I'm,
+then it's going to execute that plot.
+
+81
+00:05:36.260 --> 00:05:41.520
+But it's going to give me a slider so
+that I can vary all of these parameters.
+
+82
+00:05:43.490 --> 00:05:48.210
+Let me first describe these two plots
+before we start using manipulate function.
+
+83
+00:05:48.210 --> 00:05:52.300
+Currently the parameters are set at
+the values we've used in the previous
+
+84
+00:05:52.300 --> 00:05:53.068
+calculations.
+
+85
+00:05:53.068 --> 00:05:54.680
+Sigma was 4.
+
+86
+00:05:55.960 --> 00:05:59.970
+Mu a was 32, n was 16 and alpha was 5%.
+
+87
+00:05:59.970 --> 00:06:03.530
+So what this plot is saying is
+
+88
+00:06:03.530 --> 00:06:08.460
+under the null hypothesis here's
+the distribution of our sample mean.
+
+89
+00:06:08.460 --> 00:06:14.380
+It's centered at 30 and
+it has a variance of sigma squared over n.
+
+90
+00:06:14.380 --> 00:06:15.630
+Under the alternative.
+
+91
+00:06:16.720 --> 00:06:21.860
+It's centered at 32 and
+it has a variance of sigma squared over n.
+
+92
+00:06:23.730 --> 00:06:29.430
+We've set a critical value, so
+that if we get a sample mean that's
+
+93
+00:06:29.430 --> 00:06:34.620
+larger than a specific threshold
+we reject the null hypothesis.
+
+94
+00:06:34.620 --> 00:06:36.310
+That's this line.
+
+95
+00:06:36.310 --> 00:06:40.920
+We set this line such that the
+probability, if the red density is true,
+
+96
+00:06:42.090 --> 00:06:44.790
+the null hypothesis is true this area,
+
+97
+00:06:44.790 --> 00:06:49.615
+the probability of getting
+statistics larger than it is 5%.
+
+98
+00:06:49.615 --> 00:06:53.800
+Now power is
+
+99
+00:06:53.800 --> 00:06:58.250
+nothing other than the probability
+of getting larger than this
+
+100
+00:06:58.250 --> 00:07:02.767
+line which is calibrated to have
+this area under the red curve is 5%.
+
+101
+00:07:02.767 --> 00:07:07.010
+The probability that we reject if
+in fact the blue curve is true.
+
+102
+00:07:07.010 --> 00:07:08.540
+That's the power.
+
+103
+00:07:08.540 --> 00:07:12.539
+Here's 1 minus the power or
+the type two error rate.
+
+104
+00:07:13.870 --> 00:07:14.370
+Okay.
+
+105
+00:07:15.870 --> 00:07:19.050
+Now let's start varianting and,
+and see what happens.
+
+106
+00:07:19.050 --> 00:07:23.840
+So if we move it so that its all the way
+down at 1% that's just saying that this
+
+107
+00:07:23.840 --> 00:07:28.814
+area right here under the red curve
+needs to be 1, calibrated to be 1%.
+
+108
+00:07:30.060 --> 00:07:31.610
+At, as we move it down.
+
+109
+00:07:31.610 --> 00:07:33.390
+Let me just reiterate this point.
+
+110
+00:07:33.390 --> 00:07:35.870
+As we move it down its going to
+move to the right like that.
+
+111
+00:07:35.870 --> 00:07:37.140
+But what's going to happen to power?
+
+112
+00:07:38.810 --> 00:07:39.935
+Power is going to go down.
+
+113
+00:07:39.935 --> 00:07:40.872
+Right?
+
+114
+00:07:44.808 --> 00:07:51.050
+This area is going down
+as that thing moves.
+
+115
+00:07:51.050 --> 00:07:56.910
+And what's this,
+what is this thing saying?
+
+116
+00:07:56.910 --> 00:08:01.900
+By moving alpha down we're making it
+harder to reject a null hypothesis.
+
+117
+00:08:01.900 --> 00:08:07.890
+We're making the requirement
+of having a lot more evidence.
+
+118
+00:08:07.890 --> 00:08:10.400
+Before we conclude
+the alternative is true.
+
+119
+00:08:10.400 --> 00:08:13.500
+That simply re, results in less power.
+
+120
+00:08:16.350 --> 00:08:19.144
+Now it's also it's got a lower
+type I error rate, but
+
+121
+00:08:19.144 --> 00:08:21.641
+a larger type II error rate,
+and a lower power.
+
+122
+00:08:21.641 --> 00:08:23.486
+Okay, conversely.
+
+123
+00:08:29.523 --> 00:08:33.045
+If we increase alpha to
+the highest level I set here,
+
+124
+00:08:33.045 --> 00:08:37.700
+now we have a 10% type one error rate but
+we have much better power.
+
+125
+00:08:37.700 --> 00:08:42.220
+In other words, if we are willing to
+be a little bit looser in how much,
+
+126
+00:08:42.220 --> 00:08:46.700
+when we reject, if we, you know, get
+smaller means and we're still rejecting.
+
+127
+00:08:46.700 --> 00:08:48.140
+Then we'll get better power.
+
+128
+00:08:48.140 --> 00:08:51.520
+Of course we do have
+a larger type I error rate.
+
+129
+00:08:51.520 --> 00:08:53.330
+10%, in this case, instead of 5%.
+
+130
+00:08:53.330 --> 00:08:56.440
+So let's set it back to 5%.
+
+131
+00:08:56.440 --> 00:09:00.810
+Let's see what happens
+as we decrease sigma.
+
+132
+00:09:00.810 --> 00:09:03.020
+Sigma goes all the way down to 1.
+
+133
+00:09:03.020 --> 00:09:05.430
+Okay.
+Now our black line moves.
+
+134
+00:09:05.430 --> 00:09:06.440
+Right.
+Because I've, I've,
+
+135
+00:09:06.440 --> 00:09:08.470
+these are not standard normal curves.
+
+136
+00:09:08.470 --> 00:09:13.570
+These are, so our rejection region isn't
+always so many standard errors from the,
+
+137
+00:09:13.570 --> 00:09:18.220
+from the mean in that,
+instead we've decided to plot this on the,
+
+138
+00:09:18.220 --> 00:09:20.000
+on the scale of the problem.
+
+139
+00:09:20.000 --> 00:09:24.060
+So this black line then depends on sigma.
+
+140
+00:09:24.060 --> 00:09:30.220
+So as we move it, as we move sigma,
+the black line moves with it.
+
+141
+00:09:30.220 --> 00:09:33.612
+Okay so let's move sigma down
+to the lowest low, level I'm a,
+
+142
+00:09:33.612 --> 00:09:36.830
+allowing which is sigma
+equal to 1 in this case.
+
+143
+00:09:36.830 --> 00:09:40.674
+Okay so our black line has moved down and
+
+144
+00:09:40.674 --> 00:09:45.579
+it's still calibrated so
+that this area is 5%.
+
+145
+00:09:45.579 --> 00:09:47.376
+But what we've seen is we have so
+
+146
+00:09:47.376 --> 00:09:51.573
+little variability in the sample mean
+that the probability of rejecting,
+
+147
+00:09:51.573 --> 00:09:56.235
+the probability of getting larger than
+the black line, if the blue distribution,
+
+148
+00:09:56.235 --> 00:09:59.655
+alternative distribution,
+is true, is almost 100%.
+
+149
+00:10:01.090 --> 00:10:05.119
+Okay, what happens if we move in the
+opposite direction, we make SIGMA larger?
+
+150
+00:10:06.440 --> 00:10:08.650
+Well, here sigma very large.
+
+151
+00:10:08.650 --> 00:10:16.080
+Again we're still calibrated, so that this
+area is 5%, but now power is much lower.
+
+152
+00:10:16.080 --> 00:10:20.530
+All this is saying, is that,
+if we have a lot more
+
+153
+00:10:20.530 --> 00:10:24.630
+noise in our measurements,
+then we're going to have lower power.
+
+154
+00:10:26.830 --> 00:10:27.720
+Let's try some more.
+
+155
+00:10:29.830 --> 00:10:32.560
+Let's set this back to what it was at for
+the problem 4.
+
+156
+00:10:32.560 --> 00:10:35.900
+How about the mean under the alternative.
+
+157
+00:10:35.900 --> 00:10:37.000
+Let's make it bigger.
+
+158
+00:10:39.140 --> 00:10:40.130
+What happens?
+
+159
+00:10:40.130 --> 00:10:41.320
+Well, it just moves along.
+
+160
+00:10:42.320 --> 00:10:43.160
+Right?
+
+161
+00:10:43.160 --> 00:10:46.260
+It just moves along to the right and
+now we get a lot more power.
+
+162
+00:10:47.820 --> 00:10:50.840
+And the black line doesn't depend on
+the mean under the alternative, so
+
+163
+00:10:50.840 --> 00:10:55.720
+it doesn't move, and then as it moves
+towards 30, you can see the power's
+
+164
+00:10:55.720 --> 00:11:00.540
+getting lower, and the lowest the power
+can be is if it's, lies right on top of
+
+165
+00:11:00.540 --> 00:11:06.570
+the null distribution and then this,
+the power'll be exactly point zero five.
+
+166
+00:11:06.570 --> 00:11:10.330
+Then it'll get a little bit bigger as it
+moves further away and further away and
+
+167
+00:11:10.330 --> 00:11:14.340
+further away, until if we're at
+35 we have almost 100% power.
+
+168
+00:11:15.860 --> 00:11:19.810
+Okay, let's set this back to 32, the value
+that we're using for the problem.
+
+169
+00:11:19.810 --> 00:11:20.560
+How about n?
+
+170
+00:11:21.560 --> 00:11:25.700
+So, remember what happens as n increases.
+
+171
+00:11:25.700 --> 00:11:29.070
+Our sample mean gets less variable,
+
+172
+00:11:29.070 --> 00:11:32.520
+more observations go into our
+sample mean it gets less variable.
+
+173
+00:11:32.520 --> 00:11:33.708
+So lets see what happens.
+
+174
+00:11:33.708 --> 00:11:34.825
+Okay?
+
+175
+00:11:34.825 --> 00:11:39.730
+Less variance, in our sample mean.
+
+176
+00:11:39.730 --> 00:11:42.229
+So these densities are getting tighter and
+tighter.
+
+177
+00:11:43.270 --> 00:11:43.810
+Okay?
+
+178
+00:11:43.810 --> 00:11:45.870
+But the black line moves,
+because remember,
+
+179
+00:11:45.870 --> 00:11:47.780
+we it's always gotta be calibrated.
+
+180
+00:11:49.510 --> 00:11:53.100
+It's always gotta be calibrated so
+that this area is 5%.
+
+181
+00:11:53.100 --> 00:12:00.130
+But you can see now, we have a much better
+power when we have a sample size of 50.
+
+182
+00:12:00.130 --> 00:12:02.676
+If we move it down to a sample size.
+
+183
+00:12:06.405 --> 00:12:11.374
+Very low and a four,
+again the black is moved,
+
+184
+00:12:11.374 --> 00:12:16.727
+because it,
+it has to force this area to be 5% and
+
+185
+00:12:16.727 --> 00:12:19.670
+now our power is quite low.
+
+186
+00:12:20.940 --> 00:12:27.310
+So I would highly recommend that you
+go through the code for this manipulate
+
+187
+00:12:27.310 --> 00:12:32.060
+experiment to understand how power works
+in this particular setting, it's, it's,
+
+188
+00:12:32.060 --> 00:12:37.300
+it's quite easy, but, basically, what you
+can see is power has a bunch of knobs.
+
+189
+00:12:37.300 --> 00:12:38.600
+Oops.
+And as you turn them,
+
+190
+00:12:38.600 --> 00:12:40.140
+the power changes in different ways,
+
+191
+00:12:40.140 --> 00:12:44.730
+and in the next slide, we'll summarize
+the various aspects of power.
+
+192
+00:12:44.730 --> 00:12:47.091
+But using the manipulate
+function like this,
+
+193
+00:12:47.091 --> 00:12:49.520
+you can actually experiment
+with it your self.

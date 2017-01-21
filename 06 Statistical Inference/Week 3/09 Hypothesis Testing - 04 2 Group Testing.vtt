@@ -1,0 +1,1183 @@
+WEBVTT
+
+1
+00:00:00.270 --> 00:00:02.740
+So consider our example again.
+
+2
+00:00:02.740 --> 00:00:05.420
+Suppose that n was 16 rather than 100.
+
+3
+00:00:05.420 --> 00:00:09.370
+Then our test statistic remains the same.
+
+4
+00:00:09.370 --> 00:00:12.980
+It's the sample mean minus
+the hypothesized mean,
+
+5
+00:00:12.980 --> 00:00:17.972
+mean where remember we're
+testing H naught mu equal to 30,
+
+6
+00:00:17.972 --> 00:00:21.080
+versus Ha u greater than 30.
+
+7
+00:00:21.080 --> 00:00:25.284
+And then divided by the standard
+error of the mean where now we're,
+
+8
+00:00:25.284 --> 00:00:30.100
+we have square root 16 rather than
+square root 100 and recall s was 10.
+
+9
+00:00:33.103 --> 00:00:37.871
+This test statistic how many estimated
+standard errors from the hypothesized mean
+
+10
+00:00:37.871 --> 00:00:42.093
+the sample mean is follows a T
+distribution with 15 degrees of freedom in
+
+11
+00:00:42.093 --> 00:00:43.340
+this specific case.
+
+12
+00:00:44.980 --> 00:00:48.080
+So under the null hypothesis,
+the probability that is larger
+
+13
+00:00:48.080 --> 00:00:51.080
+than the 95th percentile of T sis,
+distribution is 5%.
+
+14
+00:00:51.080 --> 00:00:55.250
+So we need to calculate that 5th
+percentile of the T distribution.
+
+15
+00:00:55.250 --> 00:00:59.430
+This can be done with qt .95 and
+15 degrees of freedom,
+
+16
+00:00:59.430 --> 00:01:02.512
+which works out to be 1.7531.
+
+17
+00:01:02.512 --> 00:01:08.056
+Our test statistic,
+if we actually plug in the ten
+
+18
+00:01:08.056 --> 00:01:12.944
+in our x bar of 32, works out to be 0.8.
+
+19
+00:01:12.944 --> 00:01:20.084
+And so, we're failing to reject,
+because 0.8 is smaller than 1.75.
+
+20
+00:01:20.084 --> 00:01:27.166
+Let's also go through a two sided
+test Suppose that we wanted redre,
+
+21
+00:01:27.166 --> 00:01:32.010
+reject an hypothesis, if in fact
+the mean was too large or too small.
+
+22
+00:01:32.010 --> 00:01:35.280
+This doesn't make a lot of sense in
+our specific scientific setting,
+
+23
+00:01:35.280 --> 00:01:38.560
+because we were specifically
+interested in whether or
+
+24
+00:01:38.560 --> 00:01:43.668
+not the, this particular population
+of obese subjects had a or
+
+25
+00:01:43.668 --> 00:01:47.050
+respiratory disturbance index larger
+than 30, our reference value.
+
+26
+00:01:48.400 --> 00:01:50.910
+However, it is often the case
+in scientific settings,
+
+27
+00:01:50.910 --> 00:01:54.970
+a two sided test is demanded regardless of
+whether or not it makes scientific sense.
+
+28
+00:01:54.970 --> 00:02:00.040
+So, it's, it's important to understand
+how to do two sided tests and the fact
+
+29
+00:02:00.040 --> 00:02:04.470
+that there are some instances where you
+are mandated to do a two sided test.
+
+30
+00:02:04.470 --> 00:02:07.140
+Even though it doesn't necessarily
+make that much sense to
+
+31
+00:02:07.140 --> 00:02:08.410
+consider the other side.
+
+32
+00:02:10.390 --> 00:02:13.740
+So we want to reject, in this case,
+if we were to do a two sided test,
+
+33
+00:02:13.740 --> 00:02:17.700
+we want to reject whether or
+not mu is different from 30.
+
+34
+00:02:17.700 --> 00:02:19.250
+So, in other words,
+
+35
+00:02:19.250 --> 00:02:23.730
+we'll reject if our test statistic
+is either too large or too small.
+
+36
+00:02:24.800 --> 00:02:27.250
+In this case because our test statistic is
+
+37
+00:02:27.250 --> 00:02:29.830
+positive we only need to
+consider the large side.
+
+38
+00:02:32.020 --> 00:02:35.920
+What does change, however,
+is in order to get that 5% in
+
+39
+00:02:37.390 --> 00:02:41.350
+a way that allows our test statistic
+to be too large or too small.
+
+40
+00:02:41.350 --> 00:02:46.880
+We need to split the probability as
+2.5% in either tail of the distribution,
+
+41
+00:02:46.880 --> 00:02:51.300
+be it the t distribution for small
+sample sizes, or the z distribution for
+
+42
+00:02:51.300 --> 00:02:52.950
+large sample sizes.
+
+43
+00:02:52.950 --> 00:03:00.230
+So now, instead of the qt at 0.95,
+we're going to get to do qt at 0.975.
+
+44
+00:03:00.230 --> 00:03:02.440
+Again, with 15 degrees of freedom.
+
+45
+00:03:04.440 --> 00:03:07.720
+And so we want to reject if our
+test statistic is larger than this.
+
+46
+00:03:09.310 --> 00:03:12.713
+Right, so let me draw an example
+of our t distribution.
+
+47
+00:03:12.713 --> 00:03:21.050
+This will be the point qt .975,
+with 15 degrees of freedom.
+
+48
+00:03:21.050 --> 00:03:23.850
+It would be 2.5% in that field.
+
+49
+00:03:23.850 --> 00:03:28.460
+And this is the point qt .025
+with 15 degrees of freedom and
+
+50
+00:03:28.460 --> 00:03:31.420
+that's 2.5% in that tail,
+that point right there.
+
+51
+00:03:32.668 --> 00:03:37.830
+So we going to reject, if our test
+statistic is larger than this guy or
+
+52
+00:03:37.830 --> 00:03:40.630
+smaller than this guy.
+
+53
+00:03:41.740 --> 00:03:47.320
+However, because the lower quartile is
+the negative of the positive quartile,
+
+54
+00:03:47.320 --> 00:03:50.810
+we can always say that's the same thing
+as taking the absolute value of our test
+
+55
+00:03:50.810 --> 00:03:53.320
+statistic and
+rejecting if it is too large.
+
+56
+00:03:56.420 --> 00:03:57.750
+That point is made right here.
+
+57
+00:04:00.420 --> 00:04:03.499
+So, in this case we failed to
+reject the one-sided test.
+
+58
+00:04:04.590 --> 00:04:08.290
+And now in this slide we're showing that
+we failed to reject a two sided test.
+
+59
+00:04:08.290 --> 00:04:12.710
+However, I think you'll probably all
+ready noticed that because we've moved
+
+60
+00:04:12.710 --> 00:04:16.880
+further out into the tails of the t
+distribution with our rejection that
+
+61
+00:04:18.090 --> 00:04:23.430
+if you fail to reject the one sided test
+then you will have also failed to reject
+
+62
+00:04:23.430 --> 00:04:24.550
+the two sided test.
+
+63
+00:04:29.630 --> 00:04:33.840
+Usually we don't calculate the rejection
+region and perform the hypothesis
+
+64
+00:04:33.840 --> 00:04:38.400
+test in the formal manner in which we have
+gone through in these slides by hand.
+
+65
+00:04:38.400 --> 00:04:42.490
+Instead, we usually pass the data
+to a function like t.test.
+
+66
+00:04:42.490 --> 00:04:45.680
+And, it outputs all
+the relevant statistics for us,
+
+67
+00:04:45.680 --> 00:04:48.720
+for us to understand what's
+going on with the test.
+
+68
+00:04:48.720 --> 00:04:51.480
+What's interesting is we
+already know how to do this,
+
+69
+00:04:51.480 --> 00:04:55.500
+because we've used t.test in order
+to perform confidence intervals.
+
+70
+00:04:55.500 --> 00:04:59.405
+We just haven't gone through the output
+to understand what it's doing for a test.
+
+71
+00:05:04.208 --> 00:05:09.030
+Let's look at, in the using R package,
+the data father.son.
+
+72
+00:05:09.030 --> 00:05:15.680
+And we'd like to test whether
+the population of sons' height
+
+73
+00:05:15.680 --> 00:05:21.380
+was equivalent to the popsol,
+population mean of father's heights.
+
+74
+00:05:21.380 --> 00:05:25.530
+Now the observations
+here were paired it was
+
+75
+00:05:25.530 --> 00:05:29.530
+one son's measurement to one
+father's measurement, and so on.
+
+76
+00:05:29.530 --> 00:05:32.820
+So it's, in this case we're
+going to take the difference and
+
+77
+00:05:32.820 --> 00:05:37.370
+we want to test whether the difference in
+the heights is zero, or it's non zero.
+
+78
+00:05:37.370 --> 00:05:43.240
+You do that with t.test,
+and you can either pass
+
+79
+00:05:43.240 --> 00:05:49.050
+the difference directly to the function
+t.test or you could pass it the two
+
+80
+00:05:49.050 --> 00:05:54.080
+vectors and
+then add the argument paired equals true.
+
+81
+00:05:56.370 --> 00:06:00.827
+It gives you your t
+statistic right here 11.79.
+
+82
+00:06:00.827 --> 00:06:06.140
+Its gives you your degrees of
+freedom right here, 1,077, so
+
+83
+00:06:06.140 --> 00:06:13.630
+we had exactly 1,078 pairs that
+we took the difference of.
+
+84
+00:06:13.630 --> 00:06:20.279
+Now 11 is a quite large t statistic, so we
+reject the null hypothesis in this case.
+
+85
+00:06:21.730 --> 00:06:24.620
+Also notice that the degrees
+of freedom are quite large,
+
+86
+00:06:24.620 --> 00:06:29.250
+so the distinction between a t-test and
+a z-test in this case is irrelevant.
+
+87
+00:06:30.470 --> 00:06:37.520
+It very nicely gives us the t confidence
+interval automatically, when we do t.test.
+
+88
+00:06:37.520 --> 00:06:40.760
+It's useful almost always to
+look at the confidence interval
+
+89
+00:06:40.760 --> 00:06:43.470
+in addition to the output of the test.
+
+90
+00:06:43.470 --> 00:06:48.070
+Simply because the confidence interval
+bridges this gap between statistical
+
+91
+00:06:48.070 --> 00:06:50.850
+significance and
+practical significance quite nicely.
+
+92
+00:06:50.850 --> 00:06:55.476
+You can see whether the range of values
+in the confidence interval are of
+
+93
+00:06:55.476 --> 00:06:57.251
+practical significance or
+
+94
+00:06:57.251 --> 00:07:02.359
+not because its expressed in the units
+of the data that you're interested in.
+
+95
+00:07:06.030 --> 00:07:08.169
+Speaking of confidence intervals,
+
+96
+00:07:08.169 --> 00:07:12.516
+in the previous couple of lectures
+when we covered confidence intervals,
+
+97
+00:07:12.516 --> 00:07:16.932
+we investigated whether or not a
+hypothesized mean was supported by looking
+
+98
+00:07:16.932 --> 00:07:20.900
+at whether ort not it was in
+the confidence interval or not.
+
+99
+00:07:20.900 --> 00:07:22.780
+If it was in the confidence interval,
+
+100
+00:07:22.780 --> 00:07:26.050
+then it'd seem to be
+a supported value of the mean.
+
+101
+00:07:26.050 --> 00:07:28.410
+If it was outside, it was not.
+
+102
+00:07:28.410 --> 00:07:29.160
+You might wonder,
+
+103
+00:07:29.160 --> 00:07:35.100
+how does that procedure compare to
+formally performing the hypothesis test.
+
+104
+00:07:35.100 --> 00:07:38.220
+Say, for example, the hypothesis
+test that the mean is equal to
+
+105
+00:07:38.220 --> 00:07:42.000
+a specific value versus not
+equal to a specific value.
+
+106
+00:07:42.000 --> 00:07:44.060
+Consider the previous example.
+
+107
+00:07:44.060 --> 00:07:48.800
+We were interested in whether or not,
+father's and son heights were equal.
+
+108
+00:07:48.800 --> 00:07:53.130
+We got the answer that, no, they weren't
+as far as the hypnosis test was concerned.
+
+109
+00:07:54.860 --> 00:07:58.170
+We also got the answer that
+the interval did not contain zero.
+
+110
+00:07:59.230 --> 00:08:02.920
+You might be wondering whether or not
+those two statements could ever disagree
+
+111
+00:08:02.920 --> 00:08:05.400
+and it turns out that no they can't.
+
+112
+00:08:05.400 --> 00:08:08.900
+Checking whether or
+not munot is in the interval
+
+113
+00:08:10.330 --> 00:08:15.560
+is identical to performing the two
+sided hypothesis test with the caveat
+
+114
+00:08:15.560 --> 00:08:21.300
+that the alpha that you use for
+the interval, for the hypothesis test.
+
+115
+00:08:21.300 --> 00:08:25.430
+Has to be equal to 1 minus alpha for
+the confidence interval.
+
+116
+00:08:25.430 --> 00:08:29.610
+In other words if you
+construct a 95% interval, and
+
+117
+00:08:29.610 --> 00:08:34.740
+just look for whether or
+not munot is in that interval and
+
+118
+00:08:34.740 --> 00:08:39.080
+failed to reject if it's in that interval
+and reject if it's outside the interval.
+
+119
+00:08:39.080 --> 00:08:43.020
+That is the same as performing that
+hypotheses test with an alpha level,
+
+120
+00:08:43.020 --> 00:08:45.070
+with a type point error of exactly alpha.
+
+121
+00:08:45.070 --> 00:08:49.110
+This is stated here in
+this slide by saying
+
+122
+00:08:50.200 --> 00:08:55.130
+the confidence interval can be constructed
+as the set of all possible values for
+
+123
+00:08:55.130 --> 00:08:57.309
+which you fail to reject
+a null hypothesis.
+
+124
+00:08:59.240 --> 00:09:02.230
+Now, with all the infrastructure
+that we have in place,
+
+125
+00:09:02.230 --> 00:09:06.620
+both understanding confidence intervals,
+and understanding hypothesis tests for
+
+126
+00:09:06.620 --> 00:09:11.480
+one group, two group intervals should be a
+very minor extension of what we're doing.
+
+127
+00:09:13.010 --> 00:09:17.330
+Basically, the rejection rules are the
+same, and we want to now test whether or
+
+128
+00:09:17.330 --> 00:09:19.140
+not the mean for one group.
+
+129
+00:09:19.140 --> 00:09:21.220
+Is equal to the mean for another group.
+
+130
+00:09:22.920 --> 00:09:27.090
+We have the same set of alternatives that
+mew one say is greater than mew two,
+
+131
+00:09:27.090 --> 00:09:31.630
+that mew one is less than mew two
+versus mew one is not equal to mew two.
+
+132
+00:09:31.630 --> 00:09:34.180
+Our test statistics will
+always be the same.
+
+133
+00:09:34.180 --> 00:09:38.190
+It will be the estimate X
+bar one minus X bar two.
+
+134
+00:09:38.190 --> 00:09:40.320
+Minus the hypothesized mean.
+
+135
+00:09:40.320 --> 00:09:45.090
+In this case, the hypothesized mean
+difference, Mu 1 minus Mu 2 is zero,
+
+136
+00:09:45.090 --> 00:09:48.280
+divided by the standard error of the mean.
+
+137
+00:09:48.280 --> 00:09:51.730
+We'll go through an example
+to illustrate this.
+
+138
+00:09:51.730 --> 00:09:53.300
+Recall it the chickWeight data.
+
+139
+00:09:55.870 --> 00:09:59.160
+Recall it the chickWeight data that
+we looked at in the last lecture.
+
+140
+00:10:00.220 --> 00:10:04.650
+We're going to do library(datasets),
+data(ChickWeight), and then remember we
+
+141
+00:10:04.650 --> 00:10:08.780
+needed the reshape2 package to get
+it in the format that we wanted.
+
+142
+00:10:08.780 --> 00:10:13.280
+Specifically the chick weight data
+is such that it's like this: chick,
+
+143
+00:10:14.420 --> 00:10:18.700
+one, one, one, one, one, and
+then it has a bunch of measurements.
+
+144
+00:10:18.700 --> 00:10:23.820
+At for that chick at several different
+times, so this is a so called long format.
+
+145
+00:10:23.820 --> 00:10:27.900
+We wanted a wide format so
+we're going to use the dcast function.
+
+146
+00:10:27.900 --> 00:10:33.050
+And then I, I want to rename it and
+then I want to define a variable that
+
+147
+00:10:33.050 --> 00:10:38.100
+is weight gain basically time21,
+minus time0.
+
+148
+00:10:39.440 --> 00:10:43.630
+In this case, almost all the chicks
+are about exactly the same weight at time0
+
+149
+00:10:43.630 --> 00:10:45.750
+relative to their time21.
+
+150
+00:10:45.750 --> 00:10:48.763
+So this doesn't make that
+big of a difference, but
+
+151
+00:10:48.763 --> 00:10:51.777
+I also wanted to show people
+this mutate function,
+
+152
+00:10:51.777 --> 00:10:55.159
+which makes it very easy to add
+a variable to a data frame.
+
+153
+00:11:00.132 --> 00:11:06.110
+So I grab the subset of the diets in 1 and
+4 in this specific case.
+
+154
+00:11:06.110 --> 00:11:13.570
+The reason being that this tilde
+operator in the t.test function requires
+
+155
+00:11:13.570 --> 00:11:18.410
+that the predictor variable, diet,
+in this case only have exactly two levels.
+
+156
+00:11:18.410 --> 00:11:21.310
+So, it's because I want to compare one and
+four, I did it that way.
+
+157
+00:11:21.310 --> 00:11:25.516
+I'm going to say paired equals false,
+because in this case, the chicks that
+
+158
+00:11:25.516 --> 00:11:29.991
+received diet one were a totally separate
+set of chicks than those that received
+
+159
+00:11:29.991 --> 00:11:34.498
+diet four, so it wouldn't make an, sense
+to treat them as if they were paired.
+
+160
+00:11:34.498 --> 00:11:41.405
+Chick one from diet one has nothing
+to do with chick one from diet four.
+
+161
+00:11:41.405 --> 00:11:46.183
+I am assuming that equal variances in
+the in the last lecture we concluded that
+
+162
+00:11:46.183 --> 00:11:50.684
+equal variance maybe isn't the best
+thing to do in this particular data set,
+
+163
+00:11:50.684 --> 00:11:55.254
+so I would suggest that you try on your
+own running this example with var equal as
+
+164
+00:11:55.254 --> 00:11:58.390
+FALSE to see how it change, changes.
+
+165
+00:11:58.390 --> 00:12:04.480
+In this case our t statistic, which is the
+estimate, the difference in the average
+
+166
+00:12:04.480 --> 00:12:11.150
+weight gain between the two diets minus
+the hypothesized value, in this case 0.
+
+167
+00:12:11.150 --> 00:12:15.040
+Whenever you're doing two groups, unless
+you specify a hypothesized difference in
+
+168
+00:12:15.040 --> 00:12:18.500
+the means it's going to assume that your
+interested in testing whether the means
+
+169
+00:12:18.500 --> 00:12:22.560
+are equal under the null hypothesis or
+different under the alternative.
+
+170
+00:12:23.620 --> 00:12:28.056
+The degrees of freedom is 23, those
+are the same degrees of freedom n1 plus n2
+
+171
+00:12:28.056 --> 00:12:32.910
+minus 2 that we covered in
+the confidence interval lecture, or
+
+172
+00:12:32.910 --> 00:12:35.940
+if you're doing the unequal
+variance degrees of freedom,
+
+173
+00:12:35.940 --> 00:12:37.690
+you might get a fractional
+degrees of freedom.
+
+174
+00:12:37.690 --> 00:12:40.230
+So the same thing we covered in
+the confidence interval lecture.
+
+175
+00:12:41.230 --> 00:12:44.070
+And it gives you your confidence
+interval here again which
+
+176
+00:12:44.070 --> 00:12:48.140
+is always good to look at whenever
+you're performing a hypothesis test.
+
+177
+00:12:48.140 --> 00:12:51.050
+In the next lecture we'll talk
+about what a P value is and
+
+178
+00:12:51.050 --> 00:12:57.550
+how it makes doing these kinds of tests
+fairly, a fairly easy thing to do.
+
+179
+00:12:57.550 --> 00:13:04.200
+So our T statistic which calculates
+how many estimated standard errors our
+
+180
+00:13:04.200 --> 00:13:09.420
+difference in means is from the hypothesis
+me, hypothesized mean that's negative 2.7.
+
+181
+00:13:09.420 --> 00:13:13.730
+That's pretty far out in
+the tail of a t distribution or
+
+182
+00:13:13.730 --> 00:13:19.010
+a normal distribution, and so
+it's well below our cut-off value.
+
+183
+00:13:19.010 --> 00:13:23.190
+We don't actually explicitly t, get
+a cut-off value in this particular case.
+
+184
+00:13:23.190 --> 00:13:26.080
+Because we know that it's pretty low and
+
+185
+00:13:26.080 --> 00:13:30.190
+after we go through the p value lecture
+we'll be able to tell immediately
+
+186
+00:13:30.190 --> 00:13:34.120
+that we know that this would be rejected
+if that was a 5% level test we'll,
+
+187
+00:13:34.120 --> 00:13:37.490
+we'll know without having to actually
+specifically calculate the t quant.
+
+188
+00:13:39.170 --> 00:13:41.680
+Let's go through a fairly simple example
+
+189
+00:13:41.680 --> 00:13:44.190
+of hypothesis testing
+that's not a normal or a t.
+
+190
+00:13:45.420 --> 00:13:49.770
+So remember this problem where your friend
+had eight children seven of which were
+
+191
+00:13:49.770 --> 00:13:55.140
+girls and you wanted to evaluate
+that with respect to ID
+
+192
+00:13:55.140 --> 00:13:59.980
+coin flipping thinking that maybe genders
+from a couple are like a coin flip.
+
+193
+00:13:59.980 --> 00:14:07.400
+And you're interested in how much
+evidence is this, that the gend,
+
+194
+00:14:07.400 --> 00:14:12.260
+genders are iid coin, fair coin flips
+between boys and girls for this couple.
+
+195
+00:14:14.330 --> 00:14:19.360
+So you want to test the known hypothesis
+that p, the probability of the girl,
+
+196
+00:14:19.360 --> 00:14:22.520
+is 0.5 versus the hypothesis
+that its greater than 0.5
+
+197
+00:14:22.520 --> 00:14:23.740
+because you're a little skeptical.
+
+198
+00:14:23.740 --> 00:14:29.220
+This, this, your friend had eight,
+seven girls out of eight children.
+
+199
+00:14:30.800 --> 00:14:36.300
+So if you were to set up a hypothesis
+test what would be the number of girls
+
+200
+00:14:36.300 --> 00:14:42.560
+that the couple could have in order for
+the probability of having that many or
+
+201
+00:14:42.560 --> 00:14:47.640
+more the 5% under the,
+under the null hypothesis of a fair coin?
+
+202
+00:14:47.640 --> 00:14:50.690
+Well, if we set up a rejection region, so
+
+203
+00:14:50.690 --> 00:14:54.520
+in other words we're going to reject
+the null hypothesis if the couple had
+
+204
+00:14:54.520 --> 00:14:57.970
+anywhere between zero and eight girls,
+well of course we'd always reject.
+
+205
+00:14:59.020 --> 00:15:03.812
+If If we set up the rejection region, so
+that we're going to reject if a couple
+
+206
+00:15:03.812 --> 00:15:08.840
+have one to eight girls, well it's
+still not 5%, It's, it's almost one.
+
+207
+00:15:08.840 --> 00:15:13.880
+Okay, if we keep following down what we
+see is let's say seven girls, what we'd
+
+208
+00:15:13.880 --> 00:15:19.700
+see is that if we set up or rejection
+region as being seven or eight girls,
+
+209
+00:15:19.700 --> 00:15:24.650
+and the probability of rejecting under
+the null hypothesis is just under 5%.
+
+210
+00:15:24.650 --> 00:15:29.660
+Notice we can't get it exactly equal to 5%
+because there's a jump if we set the rate
+
+211
+00:15:29.660 --> 00:15:34.520
+rejection review to be six or higher,
+it's 14% if we set it to be seven or
+
+212
+00:15:34.520 --> 00:15:35.800
+eight, it's 3%.
+
+213
+00:15:35.800 --> 00:15:41.246
+If we set it to be eight, in other words
+you would only reject the hypothesis
+
+214
+00:15:41.246 --> 00:15:46.346
+of a fair point, if, in fact,
+the coin came up heads all eight times,
+
+215
+00:15:46.346 --> 00:15:50.690
+well, then you would have
+a type 1 error rate of .004.
+
+216
+00:15:56.994 --> 00:16:01.080
+Let's give a couple of notes
+about this specific test.
+
+217
+00:16:01.080 --> 00:16:06.360
+Now, what we see is that the closest
+rejection region is seven and eight.
+
+218
+00:16:06.360 --> 00:16:11.800
+And the fact
+
+219
+00:16:11.800 --> 00:16:16.560
+that your friend had seven girls means
+that we reject the null hypothesis.
+
+220
+00:16:17.760 --> 00:16:21.570
+But we note it's also impossible to get
+an exact 5% level test in this case, but
+
+221
+00:16:21.570 --> 00:16:23.890
+that's just because of
+the discreteness of the binomial.
+
+222
+00:16:26.140 --> 00:16:29.660
+For larger sample sizes, you could
+have just done a normal approximation.
+
+223
+00:16:29.660 --> 00:16:33.480
+You could have counted the coin flip as an
+average, treated it as if it was Gaussian,
+
+224
+00:16:33.480 --> 00:16:35.360
+but, but you already know how to do this.
+
+225
+00:16:37.140 --> 00:16:39.520
+For the two sided test, it's not obvious.
+
+226
+00:16:39.520 --> 00:16:40.640
+I, in, in this case,
+
+227
+00:16:40.640 --> 00:16:45.810
+if you wanted to test whether p was
+0.5 versus different from 0.5, and
+
+228
+00:16:47.770 --> 00:16:52.130
+we'll talk about a way to do
+two-sided tests in the next lecture.
+
+229
+00:16:54.020 --> 00:16:57.050
+And, I would say I think this gets
+a little bit easier when we think about it
+
+230
+00:16:57.050 --> 00:16:58.150
+in terms of p values.
+
+231
+00:16:58.150 --> 00:17:00.520
+So if this example is
+a little confusing to you.
+
+232
+00:17:00.520 --> 00:17:02.070
+Wait til you hear the p value lecture.
+
+233
+00:17:02.070 --> 00:17:05.140
+I think it'll, it'll make it
+a little clearer the exact binomial
+
+234
+00:17:05.140 --> 00:17:09.920
+poisson conflicts or, or
+test will be a little bit easier.
+
+235
+00:17:09.920 --> 00:17:14.260
+I would however say, it is interesting
+that if you can do a two sided test for
+
+236
+00:17:14.260 --> 00:17:17.510
+a binomial or poisson,
+than you can invert those tests.
+
+237
+00:17:17.510 --> 00:17:22.330
+You can think of the values for which you
+would fail to reject a known hypothesis
+
+238
+00:17:22.330 --> 00:17:25.070
+and generated exact confidence
+interval for the poisson parameter and
+
+239
+00:17:25.070 --> 00:17:29.560
+the binomial parameter, and
+that is exactly how they get those exact
+
+240
+00:17:29.560 --> 00:17:34.420
+intervals in R where you
+don't do an asymptotic or
+
+241
+00:17:34.420 --> 00:17:38.010
+central limit theorem type approximation
+but you get an exact binomial interval
+
+242
+00:17:38.010 --> 00:17:42.950
+they're, they're inverting a two
+sided hypothesis test of this sort.
+
+243
+00:17:42.950 --> 00:17:45.820
+So I look forward to, next time,
+talking about P values,
+
+244
+00:17:45.820 --> 00:17:48.740
+where I think we'll solidify
+some of these con, concepts.
+
+245
+00:17:48.740 --> 00:17:52.890
+And also make the performance of our
+hypothesis test a little bit easier.

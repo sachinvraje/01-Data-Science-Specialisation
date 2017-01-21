@@ -1,0 +1,514 @@
+WEBVTT
+
+1
+00:00:00.930 --> 00:00:05.490
+Hi, my name is Brian Caffo, and this is
+the lecture on p-values in the statistical
+
+2
+00:00:05.490 --> 00:00:09.480
+inference Coursera class as part of
+our data science specialization.
+
+3
+00:00:09.480 --> 00:00:12.190
+This class is co-taught with my
+c-instructors, Jeff Leek and
+
+4
+00:00:12.190 --> 00:00:14.860
+Roger Peng, we're all in
+the department of Bio statistics
+
+5
+00:00:14.860 --> 00:00:18.625
+at the Johns Hopkins Bloomberg School
+of Public Health.
+
+6
+00:00:18.625 --> 00:00:22.070
+P-values are the most common measure
+of statistical significance.
+
+7
+00:00:22.070 --> 00:00:26.170
+Basically, every statistical software
+that performs a hypothesis test
+
+8
+00:00:26.170 --> 00:00:28.400
+outputs a p-value for you.
+
+9
+00:00:28.400 --> 00:00:31.910
+And, because they're so popular, and
+because often they get misinterpreted,
+
+10
+00:00:31.910 --> 00:00:35.490
+they are quite controversial
+among statisticians.
+
+11
+00:00:35.490 --> 00:00:38.690
+And, so what I give here
+are some comments both in favor,
+
+12
+00:00:38.690 --> 00:00:43.090
+of and some papers and
+commentaries against P-value.
+
+13
+00:00:43.090 --> 00:00:46.320
+In this class, we're not going to focus
+too much on these controversies, but
+
+14
+00:00:46.320 --> 00:00:49.840
+instead are just going to focus on
+how do you generate a P-value and
+
+15
+00:00:49.840 --> 00:00:51.180
+how do you correctly interpret it?
+
+16
+00:00:52.860 --> 00:00:57.520
+The basic idea of a P-value is to start
+under the null hypothesis assume that
+
+17
+00:00:57.520 --> 00:01:03.190
+nothing is going on, and then calculate
+the probability of obtaining evidence as
+
+18
+00:01:03.190 --> 00:01:07.720
+or more extreme than we actually obtained
+under this null hypothesis basically,
+
+19
+00:01:07.720 --> 00:01:12.280
+how unusual is the result we got
+if the null hypothesis is true.
+
+20
+00:01:12.280 --> 00:01:16.010
+So let's go through the approach
+through maybe three simple steps, and
+
+21
+00:01:16.010 --> 00:01:19.810
+then we'll go through basic
+calculations in the next set of slides.
+
+22
+00:01:19.810 --> 00:01:24.010
+So first of all you get the hypothetical
+distribution of a data summary,
+
+23
+00:01:24.010 --> 00:01:29.110
+which we'll just call a statistic like
+our test statistic from the T lecture and
+
+24
+00:01:29.110 --> 00:01:31.240
+figure out its distribution
+when nothing is going on,
+
+25
+00:01:31.240 --> 00:01:33.630
+the so-called null distribution
+option of the statistic.
+
+26
+00:01:35.280 --> 00:01:39.450
+Then we calculate the statistic with
+the data that we actually have so, for
+
+27
+00:01:39.450 --> 00:01:43.690
+example we calculate our T statistic
+we actually plug in the empirical mean,
+
+28
+00:01:43.690 --> 00:01:46.625
+subtract off the hypothesized mean and
+divide by the standard error.
+
+29
+00:01:48.135 --> 00:01:52.505
+Then we calculate the probability
+of obtaining a statistic as or
+
+30
+00:01:52.505 --> 00:01:56.715
+more extreme in other words, we compare
+what we calculated to our hypothetical
+
+31
+00:01:56.715 --> 00:02:01.445
+distribution, and we see how extreme
+it is, in toward the alternative.
+
+32
+00:02:02.485 --> 00:02:06.065
+So, if the P-value is small, what you're
+saying is the probability of observing
+
+33
+00:02:06.065 --> 00:02:11.690
+a test statistic as extreme as we saw,
+is low if the null hypothesis were true.
+
+34
+00:02:13.020 --> 00:02:16.618
+Okay, let's go over P-values with
+a little bit more formality.
+
+35
+00:02:16.618 --> 00:02:21.120
+So, the P-value is the probability
+under the null hypothesis of
+
+36
+00:02:21.120 --> 00:02:25.510
+obtaining evidence as or
+more extreme than was actually obtained.
+
+37
+00:02:27.330 --> 00:02:31.740
+So, and, and, we're, usually we're talking
+about evidence here in terms of the test
+
+38
+00:02:31.740 --> 00:02:35.180
+statistic, so it's the probability
+of obtaining a test statistic as or
+
+39
+00:02:35.180 --> 00:02:38.770
+more extreme in favor of the alternative
+than was actually obtained.
+
+40
+00:02:39.970 --> 00:02:45.830
+So, if your P-value is small,
+then either the null hypothesis is true,
+
+41
+00:02:45.830 --> 00:02:50.370
+and you've observed something that is
+highly supportive of the alternative
+
+42
+00:02:51.480 --> 00:02:56.810
+that was quite unlikely, or
+the null hypothesis is false.
+
+43
+00:02:56.810 --> 00:03:00.580
+So let's go through an exam- a quick,
+just numerical example.
+
+44
+00:03:00.580 --> 00:03:04.730
+So, we've covered the T statistic,
+and simple T test so
+
+45
+00:03:04.730 --> 00:03:09.380
+imagine if you wanted to test mu equal to
+mu knot versus mu greater than mu not, and
+
+46
+00:03:09.380 --> 00:03:13.060
+our T statistic work got to be
+2.5 on 15 degrees of freedom.
+
+47
+00:03:14.390 --> 00:03:17.080
+What is the probability
+of getting a T statistic
+
+48
+00:03:17.080 --> 00:03:21.840
+as large as 2.5 under this,
+in this scenario?
+
+49
+00:03:23.200 --> 00:03:28.380
+Well, here we can calculate
+it it's just pt, 2.5 in 15,
+
+50
+00:03:28.380 --> 00:03:33.340
+15 for the degrees of freedom,
+we want lower.tail = false because we
+
+51
+00:03:33.340 --> 00:03:38.370
+want the probability of being larger
+than 2.5, right, as or more extreme
+
+52
+00:03:38.370 --> 00:03:42.710
+in the direction of the alternative and
+that works out to be about 1%.
+
+53
+00:03:42.710 --> 00:03:47.040
+So therefore, the probability of
+seeing evidence as or more extreme.
+
+54
+00:03:48.850 --> 00:03:53.265
+Then actually obtained under
+the null hypothesis is one 1%, so
+
+55
+00:03:53.265 --> 00:03:58.001
+either the null hypothesis is true,
+and we've seen an exceptionally
+
+56
+00:03:58.001 --> 00:04:01.630
+large T statistic, or
+the null hypothesis is false.
+
+57
+00:04:04.869 --> 00:04:08.647
+So, there's another way to think about
+the P-value as the so-called attained
+
+58
+00:04:08.647 --> 00:04:11.781
+significance level, and
+let's go through that really quickly.
+
+59
+00:04:11.781 --> 00:04:17.010
+So we're calling through way an example
+where our test statistic was two, for
+
+60
+00:04:17.010 --> 00:04:19.990
+H not mu equal to 30
+versus mu greater than 30.
+
+61
+00:04:19.990 --> 00:04:22.550
+So test statistics larger
+than two are,I,m sorry test
+
+62
+00:04:22.550 --> 00:04:25.830
+statistics that are larger
+are going to be more supportive
+
+63
+00:04:25.830 --> 00:04:29.460
+of the alternative where two
+here is two standard, or
+
+64
+00:04:29.460 --> 00:04:35.340
+that our test statistic is two standard
+errors above the hypothesized mean of 30.
+
+65
+00:04:35.340 --> 00:04:39.640
+Let's assume that our test statistic
+is standard normal, distributed
+
+66
+00:04:39.640 --> 00:04:42.530
+rather than T distributed just to make
+our discussion a little bit easier.
+
+67
+00:04:44.050 --> 00:04:47.916
+Now if we were to set alpha equal to .05.
+
+68
+00:04:52.281 --> 00:04:56.329
+We know that we would reject
+because we know the point,
+
+69
+00:04:56.329 --> 00:05:01.970
+the rejection region, and the quantile
+that we would reject for at .05.
+
+70
+00:05:04.875 --> 00:05:12.309
+So that, that area was 0.05 would be, the
+quantile would be 1.645 since we know 2,
+
+71
+00:05:18.160 --> 00:05:24.719
+Since we know 2 lies above 1.645 we would,
+we would reject.
+
+72
+00:05:26.710 --> 00:05:31.765
+Now imagine if instead of 0.05,
+imagine if we did 0.04 then
+
+73
+00:05:31.765 --> 00:05:37.220
+we would have another line that was
+a little bit closer than 1.645.
+
+74
+00:05:37.220 --> 00:05:44.670
+So what if we were to find the exact error
+rate where the line fell exactly on 2?
+
+75
+00:05:44.670 --> 00:05:49.270
+Well that would simply be
+calculating this probability
+
+76
+00:05:49.270 --> 00:05:53.560
+right here of 2 or larger, and that's
+nothing other than the P-value we just did
+
+77
+00:05:53.560 --> 00:05:57.950
+that calculation that's the probability
+of getting a test statistic as large or
+
+78
+00:05:57.950 --> 00:06:01.110
+larger than 2 under the null hypothesis.
+
+79
+00:06:01.110 --> 00:06:06.930
+So at any rate another way to think about
+the P-value, is its the smallest value for
+
+80
+00:06:06.930 --> 00:06:10.180
+alpha for which you would still
+reject the null hypothesis.
+
+81
+00:06:10.180 --> 00:06:14.350
+And so because of that they call it
+the attained significance level.
+
+82
+00:06:14.350 --> 00:06:19.320
+And what this means is that
+the P-value is an extremely convenient
+
+83
+00:06:19.320 --> 00:06:25.200
+test statistic to communicate to people,
+because when you give it to them,
+
+84
+00:06:25.200 --> 00:06:28.069
+they can test it versus whatever
+alpha level they would like.
+
+85
+00:06:29.490 --> 00:06:32.490
+Let's reiterate some of the points
+we made on the previous slide.
+
+86
+00:06:33.500 --> 00:06:35.940
+So by reporting a P-value your reader,
+
+87
+00:06:35.940 --> 00:06:39.000
+or whoever you're giving the P-value to,
+to interpret it,
+
+88
+00:06:39.000 --> 00:06:43.030
+can perform the hypothesis test at
+whatever alpha level he or she chooses to.
+
+89
+00:06:44.480 --> 00:06:48.250
+The simple rule is, if the P-value
+is less than the alpha level,
+
+90
+00:06:48.250 --> 00:06:50.310
+then you reject a null hypothesis.
+
+91
+00:06:50.310 --> 00:06:53.730
+If the P-value is greater than it,
+then you fail to reject.
+
+92
+00:06:55.540 --> 00:07:01.130
+Now, we calculated our P-values for
+one sided hypothesis test, T and Z test.
+
+93
+00:07:02.400 --> 00:07:05.900
+In order to get the two sided hypothesis
+test, you have to account for
+
+94
+00:07:05.900 --> 00:07:10.250
+the evidence as or
+more extreme too large or as or
+
+95
+00:07:10.250 --> 00:07:15.440
+more extreme to small negative so
+because the equal
+
+96
+00:07:15.440 --> 00:07:20.360
+probability in either tail you'll
+wind up doubling the P-value.
+
+97
+00:07:20.360 --> 00:07:26.200
+I would give a cautionary note that
+the software automatically interprets for
+
+98
+00:07:26.200 --> 00:07:30.470
+most tests, automatically interprets the
+two-sided test most of the time they'll
+
+99
+00:07:30.470 --> 00:07:32.900
+denote this as P-value for
+a two-sided test.
+
+100
+00:07:32.900 --> 00:07:36.154
+But if they don't,
+they're always calculating the P-value for
+
+101
+00:07:36.154 --> 00:07:37.270
+the two-sided test.
+
+102
+00:07:37.270 --> 00:07:42.000
+The other thing I would know is that if
+you happen to take some more advanced
+
+103
+00:07:42.000 --> 00:07:46.830
+classes in statistics that cover things
+like Chi-squared test, those P-values
+
+104
+00:07:46.830 --> 00:07:50.250
+are automatically, in a sense, two-sided
+you would not have to double them.

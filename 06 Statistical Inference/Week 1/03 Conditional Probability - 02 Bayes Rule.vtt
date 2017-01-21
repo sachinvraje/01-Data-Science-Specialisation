@@ -1,0 +1,618 @@
+WEBVTT
+
+1
+00:00:00.900 --> 00:00:04.718
+Perhaps one of the most famous
+uses of conditional probability is
+
+2
+00:00:04.718 --> 00:00:06.508
+so-called Bayes' rule.
+
+3
+00:00:06.508 --> 00:00:10.890
+This rule is named after a Presbyterian
+minister named Thomas Bayes who had his
+
+4
+00:00:10.890 --> 00:00:12.585
+work published posthumously.
+
+5
+00:00:12.585 --> 00:00:17.450
+Bayes' rule allows us to reverse
+the role of the conditioning set and
+
+6
+00:00:17.450 --> 00:00:19.610
+the set that we want the probability of.
+
+7
+00:00:19.610 --> 00:00:23.180
+So imagine in the event that we
+want the probability of b given a.
+
+8
+00:00:24.260 --> 00:00:28.851
+When we have, or can easily calculate
+the probability of a given b.
+
+9
+00:00:28.851 --> 00:00:30.510
+Well Bayes' rule says you can do that.
+
+10
+00:00:30.510 --> 00:00:33.410
+You can evaluate b given a to a given b.
+
+11
+00:00:33.410 --> 00:00:34.930
+But you need some other information.
+
+12
+00:00:34.930 --> 00:00:38.910
+You need the probability
+of b marginalized over a.
+
+13
+00:00:38.910 --> 00:00:41.850
+And this is quite useful in
+the sense of diagnostic test.
+
+14
+00:00:41.850 --> 00:00:44.050
+And we'll go over some
+examples here in a minute.
+
+15
+00:00:46.850 --> 00:00:49.400
+So, let's talk about conditional
+probability in the context of
+
+16
+00:00:49.400 --> 00:00:50.640
+diagnostic test.
+
+17
+00:00:50.640 --> 00:00:55.030
+One of the most important examples of
+conditional probability and Bayes' Rule.
+
+18
+00:00:55.030 --> 00:00:55.870
+Let's let plus and
+
+19
+00:00:55.870 --> 00:01:00.280
+minus be the events of the, be the event
+that the test is positive or negative.
+
+20
+00:01:00.280 --> 00:01:02.360
+Let's think of a test for a disease.
+
+21
+00:01:02.360 --> 00:01:05.510
+So plus being that the test says
+the person has the disease, and
+
+22
+00:01:05.510 --> 00:01:07.580
+minus being that, saying that they don't.
+
+23
+00:01:07.580 --> 00:01:11.820
+And then let's D and D complement be
+the event that the person either does or
+
+24
+00:01:11.820 --> 00:01:14.130
+does not have the dis,
+disease, respectively.
+
+25
+00:01:15.280 --> 00:01:18.490
+Then the sensitivity is the probability
+that the test is positive given that
+
+26
+00:01:18.490 --> 00:01:20.830
+the subject actually has the disease.
+
+27
+00:01:20.830 --> 00:01:22.670
+This would be a marker of a good test.
+
+28
+00:01:22.670 --> 00:01:25.250
+You would want the sensitive,
+sensitivity to be high.
+
+29
+00:01:25.250 --> 00:01:28.700
+The specificity is
+the probability that the test is
+
+30
+00:01:28.700 --> 00:01:31.240
+negative given that the subject
+does not have the disease.
+
+31
+00:01:31.240 --> 00:01:34.670
+Probability minus given D complement.
+
+32
+00:01:34.670 --> 00:01:37.950
+Again, you want the specificity
+to be high for a test to be good.
+
+33
+00:01:37.950 --> 00:01:42.100
+And notice in the development
+of diagnostic test,
+
+34
+00:01:42.100 --> 00:01:44.530
+these things are at least
+conceptually obtainable.
+
+35
+00:01:44.530 --> 00:01:47.760
+There is, of course, a lot of difficulties
+in finding good sensitivity and
+
+36
+00:01:47.760 --> 00:01:49.260
+specificity estimates.
+
+37
+00:01:49.260 --> 00:01:52.580
+But for example, in an HIV blood test,
+you could take people who you
+
+38
+00:01:52.580 --> 00:01:57.430
+know to have the disease and
+apply the diagnostic test to that blood.
+
+39
+00:01:57.430 --> 00:02:02.490
+You could also take people who you knew
+for sure did not have the disease.
+
+40
+00:02:02.490 --> 00:02:05.480
+And you could apply the diagnostic
+test to the blood sample,
+
+41
+00:02:05.480 --> 00:02:07.100
+blood samples from those subjects.
+
+42
+00:02:09.160 --> 00:02:12.600
+If you happen to have a positive test,
+the number that is most of
+
+43
+00:02:12.600 --> 00:02:16.340
+concern to you is the probability of
+having disease given that positive test,
+
+44
+00:02:16.340 --> 00:02:18.606
+the so-called positive predictor value.
+
+45
+00:02:18.606 --> 00:02:22.180
+If you have a negative test,
+your interested in the probability of not
+
+46
+00:02:22.180 --> 00:02:24.670
+having the disease,
+given that negative test.
+
+47
+00:02:24.670 --> 00:02:26.220
+The so called negative predictive value.
+
+48
+00:02:27.820 --> 00:02:31.481
+We might say in the absence of a test,
+we might say the probability of
+
+49
+00:02:31.481 --> 00:02:34.900
+having the disease is the so
+called prevalence of the disease.
+
+50
+00:02:37.890 --> 00:02:39.670
+Let's go through an example.
+
+51
+00:02:39.670 --> 00:02:44.250
+A study comparing the efficacy of HIV test
+reports on an experiment which concluded
+
+52
+00:02:44.250 --> 00:02:49.563
+that the antibody tests have a sensitivity
+of 99.7 and a specificity of 98.5.
+
+53
+00:02:49.563 --> 00:02:51.130
+So these are kind of made up numbers.
+
+54
+00:02:51.130 --> 00:02:56.600
+So don't think of these as cardinal
+truths about antibody test for HIV.
+
+55
+00:02:57.750 --> 00:03:02.390
+Suppose that a subject from a population
+with a 0.1% prevalence of HIV
+
+56
+00:03:02.390 --> 00:03:04.020
+receives a positive test result.
+
+57
+00:03:05.140 --> 00:03:07.320
+What is the associated
+positive predictive value?
+
+58
+00:03:08.550 --> 00:03:12.720
+So mathematically, we want the probability
+of disease, given a positive test result,
+
+59
+00:03:12.720 --> 00:03:19.850
+given the sensitivity and the specificity
+and the prevalence, P of D, 0.001.
+
+60
+00:03:19.850 --> 00:03:22.290
+So let's plug directly into Bayes' rule.
+
+61
+00:03:22.290 --> 00:03:26.120
+We want probability of disease
+given a positive test result.
+
+62
+00:03:26.120 --> 00:03:30.810
+That's the probability of the positive
+test result, given disease,
+
+63
+00:03:30.810 --> 00:03:35.370
+times the probability of disease,
+divided by this denominator right here.
+
+64
+00:03:36.900 --> 00:03:41.162
+And again, it's not immediately
+clear where the numbers from
+
+65
+00:03:41.162 --> 00:03:43.502
+the problem are coming from here.
+
+66
+00:03:43.502 --> 00:03:47.562
+But let's just note that the probability
+of a positive test result,
+
+67
+00:03:47.562 --> 00:03:52.182
+given that the person does not have
+the disease, is 1 minus the probability of
+
+68
+00:03:52.182 --> 00:03:56.382
+a negative test result given that
+the person does not have the disease or
+
+69
+00:03:56.382 --> 00:03:58.900
+that's 1 minus the specificity.
+
+70
+00:03:58.900 --> 00:04:02.810
+And the probability of disease complement
+is 1 minus the probability of disease.
+
+71
+00:04:02.810 --> 00:04:06.150
+Now we've rewritten it only in
+terms of things that we know.
+
+72
+00:04:06.150 --> 00:04:10.460
+And we can just plug in the numbers and
+get 6% as our probability.
+
+73
+00:04:11.550 --> 00:04:14.240
+So in this population,
+a positive test result only res,
+
+74
+00:04:14.240 --> 00:04:18.320
+suggests a 6% probability that
+the subject has the disease.
+
+75
+00:04:18.320 --> 00:04:21.629
+So in other words, the positive
+predictive value is 6% for this test.
+
+76
+00:04:24.160 --> 00:04:26.980
+The low positive predictor value
+in this case is largely due to
+
+77
+00:04:26.980 --> 00:04:29.630
+the low prevalence of the disease.
+
+78
+00:04:29.630 --> 00:04:32.870
+However, imagine in the process of
+counselling this person about their
+
+79
+00:04:32.870 --> 00:04:34.970
+positive test result,
+
+80
+00:04:34.970 --> 00:04:37.680
+the counselor learned that
+the subject was an intravenous drug
+
+81
+00:04:37.680 --> 00:04:41.450
+user that routinely had intercourse
+with an HIV infected partner.
+
+82
+00:04:41.450 --> 00:04:44.610
+They would assume that the,
+the relevant prevalence for
+
+83
+00:04:44.610 --> 00:04:48.550
+this person was much higher, and thus the
+positive predictor value is much higher.
+
+84
+00:04:49.990 --> 00:04:54.330
+I want to now distinguish
+between the component that is
+
+85
+00:04:54.330 --> 00:04:59.270
+dependent on this prevalence and
+the component that is what I
+
+86
+00:04:59.270 --> 00:05:02.970
+would describe as the objective evidence
+of the positive test result, and
+
+87
+00:05:02.970 --> 00:05:06.260
+that's what the diagnostic likely ratios
+are, and that's what we'll cover next.
+
+88
+00:05:07.640 --> 00:05:09.510
+Here I just give the formula for
+
+89
+00:05:09.510 --> 00:05:13.390
+the positive predictive value again
+as it's plugged into Bayes' rule.
+
+90
+00:05:13.390 --> 00:05:17.480
+And remember, this formula then
+only depends on the sensitivity,
+
+91
+00:05:17.480 --> 00:05:21.910
+1 minus the specificity in
+the prevalence of disease.
+
+92
+00:05:23.230 --> 00:05:26.015
+We can do the exact same thing for
+1 minus this probability.
+
+93
+00:05:26.015 --> 00:05:29.840
+One minus the positive predicted value,
+which is the probability of not having
+
+94
+00:05:29.840 --> 00:05:33.920
+the disease given a positive test result,
+and you get this formula to the right.
+
+95
+00:05:36.680 --> 00:05:42.940
+Notice that the denominator is identical
+in either of the two probabilities.
+
+96
+00:05:42.940 --> 00:05:44.410
+And the numerator changes.
+
+97
+00:05:45.560 --> 00:05:48.170
+So if we were to divide these two
+equations, we get the following.
+
+98
+00:05:50.550 --> 00:05:53.710
+The probability of disease given
+a positive test result divided by
+
+99
+00:05:53.710 --> 00:05:57.770
+the probability of not having the disease
+given a positive test result.
+
+100
+00:05:57.770 --> 00:05:59.310
+Whenever you take a probability and
+
+101
+00:05:59.310 --> 00:06:03.500
+divide it by 1 minus that probability,
+you get the so called odds.
+
+102
+00:06:03.500 --> 00:06:04.800
+So here on the leftmost side,
+
+103
+00:06:04.800 --> 00:06:08.900
+we have the odds of disease given
+a positive test result, and
+
+104
+00:06:08.900 --> 00:06:13.940
+on the rightmost side, we have the odds of
+disease in the absence of the test result.
+
+105
+00:06:13.940 --> 00:06:17.360
+Here this factor in the middle is
+the diagnostic likelihood ratio of
+
+106
+00:06:17.360 --> 00:06:18.820
+a positive test result.
+
+107
+00:06:18.820 --> 00:06:22.400
+So the equation is,
+the pretest odds of disease
+
+108
+00:06:22.400 --> 00:06:26.980
+times the diagnostic likelihood ratio,
+equals the post-test odds of disease.
+
+109
+00:06:26.980 --> 00:06:30.630
+So in other words, the diagnostic
+likelihood ratio of a positive test
+
+110
+00:06:30.630 --> 00:06:35.750
+result is the factor by which you
+multiply your odds in the presence of
+
+111
+00:06:35.750 --> 00:06:38.990
+a positive test to obtain
+your post-test odds.
+
+112
+00:06:40.360 --> 00:06:41.960
+So let's go through our example.
+
+113
+00:06:41.960 --> 00:06:45.220
+Suppose that subject has
+a positive HIV test.
+
+114
+00:06:45.220 --> 00:06:47.290
+If we calculate using our sensitivity and
+
+115
+00:06:47.290 --> 00:06:51.950
+specificity from before, the diagnostic
+likelihood ratio works out to be 0.997,
+
+116
+00:06:51.950 --> 00:06:56.070
+divided by 1 minus 0.985,
+which works out to be 66.
+
+117
+00:06:56.070 --> 00:07:00.690
+In other words,
+no matter what your pre-test odds are,
+
+118
+00:07:00.690 --> 00:07:05.040
+you multiply them times 66 to
+obtain your post-test odds.
+
+119
+00:07:05.040 --> 00:07:08.320
+Or in other words,
+the hypothesis of disease is 66
+
+120
+00:07:08.320 --> 00:07:12.560
+times more supported by the data
+than the hypothesis of no disease.
+
+121
+00:07:12.560 --> 00:07:16.180
+Now, if the pretest odds are very small,
+then still multiplying by
+
+122
+00:07:16.180 --> 00:07:21.970
+66 will result in a still small number,
+though 66 times larger.
+
+123
+00:07:21.970 --> 00:07:24.850
+Let's just very quickly go over
+an incidence when a subject has
+
+124
+00:07:24.850 --> 00:07:27.380
+a negative test result
+in using the DLR minus.
+
+125
+00:07:27.380 --> 00:07:30.640
+So, in this case,
+the DLR minus from the sensitivity and
+
+126
+00:07:30.640 --> 00:07:33.503
+specificity given before is 0.003.
+
+127
+00:07:33.503 --> 00:07:37.900
+So, therefore, your post-test
+odds of disease in the light of
+
+128
+00:07:37.900 --> 00:07:43.350
+a negative test result is now 0.3% that
+of the pre-test odds of the te, disease.
+
+129
+00:07:43.350 --> 00:07:48.050
+Or in other words, the hypothesis of
+disease is supported 0.003 times that of
+
+130
+00:07:48.050 --> 00:07:52.030
+the hypothesis of the absence of
+disease given the negative test result.

@@ -1,0 +1,590 @@
+WEBVTT
+
+1
+00:00:01.890 --> 00:00:05.300
+We're going to end the class on
+something that is an incredibly use fur,
+
+2
+00:00:05.300 --> 00:00:09.850
+useful tool for data scientists,
+so called permutation tests, and
+
+3
+00:00:09.850 --> 00:00:14.660
+these are used for group comparisons, so
+let's start with a motivating example of
+
+4
+00:00:14.660 --> 00:00:19.460
+group comparisons we may, where it may
+not be immediately obvious what to do.
+
+5
+00:00:21.270 --> 00:00:27.600
+So in this example researchers
+took batches of insects and
+
+6
+00:00:27.600 --> 00:00:32.890
+applied different pesticides to them,
+labeled as sprays here.
+
+7
+00:00:32.890 --> 00:00:36.200
+And they counted the number of
+dead insects in each batch.
+
+8
+00:00:36.200 --> 00:00:37.800
+So for each spray,
+
+9
+00:00:37.800 --> 00:00:44.100
+they had a collection of counts that were
+presented the efficacy of that pesticide.
+
+10
+00:00:44.100 --> 00:00:49.601
+Let's consider looking at insect
+spray B versus insect spray C.
+
+11
+00:00:51.744 --> 00:00:55.851
+Consider the null hypothesis
+that the distribution of
+
+12
+00:00:55.851 --> 00:01:01.294
+the observations from each group is
+the same in other words which label,
+
+13
+00:01:01.294 --> 00:01:04.701
+particular count received was irrelevant.
+
+14
+00:01:07.244 --> 00:01:13.304
+So operationally think about a data
+frame with the counts down one column,
+
+15
+00:01:13.304 --> 00:01:17.260
+and the spray group labels
+down another column.
+
+16
+00:01:19.080 --> 00:01:24.260
+We would calculate a statistic such
+as the difference in the average
+
+17
+00:01:24.260 --> 00:01:28.100
+number of insects killed for group b and
+
+18
+00:01:28.100 --> 00:01:32.040
+subtract that off from group c,
+that would be our observed test statistic.
+
+19
+00:01:33.320 --> 00:01:37.690
+Now consider permuting the group labels,
+
+20
+00:01:37.690 --> 00:01:41.280
+just taking that vector of labels and
+permuting it for
+
+21
+00:01:41.280 --> 00:01:46.390
+example with just the command sample in r,
+which if you give a vector with
+
+22
+00:01:46.390 --> 00:01:51.280
+no arguments the command sample will
+just randomly permutate the entries.
+
+23
+00:01:53.120 --> 00:01:57.020
+Then you could recalculate
+the statistic for
+
+24
+00:01:57.020 --> 00:02:00.429
+each permutation,
+you could use any statistic you like.
+
+25
+00:02:01.650 --> 00:02:04.590
+For example, it could be the mean
+difference in counts between the two
+
+26
+00:02:04.590 --> 00:02:08.330
+groups, it could be the geometric means or
+even a T statistic,
+
+27
+00:02:08.330 --> 00:02:12.380
+you can use a T statistic and
+not compare it with a T null distribution,
+
+28
+00:02:12.380 --> 00:02:15.280
+you could compare it to a permutation
+based null distribution.
+
+29
+00:02:16.630 --> 00:02:21.160
+To calculate a P-value, you simply want to
+calculate the percentage of simulations
+
+30
+00:02:21.160 --> 00:02:25.390
+where the simulated statistic was more
+extreme, in the favor of the alternative,
+
+31
+00:02:25.390 --> 00:02:26.620
+than the observed.
+
+32
+00:02:26.620 --> 00:02:29.940
+So more extreme, in the difference
+of mean settings, would be
+
+33
+00:02:29.940 --> 00:02:33.910
+having a greater difference in the means,
+towards the direction of the alternative.
+
+34
+00:02:35.820 --> 00:02:39.950
+This will yeed,
+yield a permutation based P-value.
+
+35
+00:02:39.950 --> 00:02:42.030
+Let's go through an example and
+I think it'll be mu.
+
+36
+00:02:43.410 --> 00:02:45.720
+I'm not going to dwell too
+much on this slide, but
+
+37
+00:02:45.720 --> 00:02:50.880
+I just want to say that permutation
+test are very powerful,
+
+38
+00:02:50.880 --> 00:02:55.530
+and so much so that they keep being
+reinvented in different setting.
+
+39
+00:02:55.530 --> 00:02:58.800
+For example, the rank sum test,
+a famous test and
+
+40
+00:02:58.800 --> 00:03:03.200
+statistic, is a permutation test where
+you've replaced your data in some fashion
+
+41
+00:03:03.200 --> 00:03:05.890
+by ranks,
+rather than the original raw values.
+
+42
+00:03:07.220 --> 00:03:09.310
+Fisher's exact test,
+which you might have heard of,
+
+43
+00:03:09.310 --> 00:03:12.790
+is exactly a permutation based test,
+where simply,
+
+44
+00:03:12.790 --> 00:03:18.120
+our data type is binary, and there's
+a specific test statistic you're using.
+
+45
+00:03:18.120 --> 00:03:21.640
+If you use the raw the data then you're
+just doing an ordinary permutation test.
+
+46
+00:03:21.640 --> 00:03:27.830
+I would also add that there's a separate
+entity called randomization test,
+
+47
+00:03:27.830 --> 00:03:32.560
+when you explicitly had randomization
+your group labels were randomized.
+
+48
+00:03:32.560 --> 00:03:37.460
+For example in our insect spray test,
+batches might have had sprays
+
+49
+00:03:37.460 --> 00:03:42.190
+randomized to them, so it might be
+considered a ram- randomization test.
+
+50
+00:03:42.190 --> 00:03:47.106
+Oper- Operationally, your randomization
+test is going to to performed in the same
+
+51
+00:03:47.106 --> 00:03:51.761
+way as a permutation test, however you
+might have stronger conclusions from your
+
+52
+00:03:51.761 --> 00:03:55.320
+randomization test and the way in
+which you interpret your randomization
+
+53
+00:03:55.320 --> 00:03:56.840
+test might be a little bit different.
+
+54
+00:03:59.230 --> 00:04:04.130
+I would also add you can use permutation
+strategies in regression, so
+
+55
+00:04:04.130 --> 00:04:07.930
+you perm, just simply permuate a regressor
+and this is a different way to get a null
+
+56
+00:04:07.930 --> 00:04:12.060
+distribution than using the normal
+distributions that we'll cover
+
+57
+00:04:12.060 --> 00:04:15.960
+in our regression class as,
+as the next part of the specialization.
+
+58
+00:04:17.420 --> 00:04:21.510
+In permutation tests work very well
+with multi variant settings, because you
+
+59
+00:04:21.510 --> 00:04:26.348
+can calculate sort of maximum statistics
+that control family wide error rates.
+
+60
+00:04:26.348 --> 00:04:29.780
+We're not going to go over
+too much of any of this,
+
+61
+00:04:29.780 --> 00:04:33.180
+we simply want you to be able to go
+through a simple permutation test,
+
+62
+00:04:33.180 --> 00:04:37.170
+get the ideas, so later on you can
+build on top of this foundation.
+
+63
+00:04:39.250 --> 00:04:43.900
+Let's go through an example where we
+just illustrate doing permutation tests.
+
+64
+00:04:43.900 --> 00:04:48.220
+First I'm going to subset the data just so
+I have InsectSprays B and C.
+
+65
+00:04:48.220 --> 00:04:53.200
+My y's going to be my outcome,
+my count of dead insects.
+
+66
+00:04:53.200 --> 00:04:56.290
+My group is just going to be group labels,
+or
+
+67
+00:04:56.290 --> 00:04:58.830
+spray in this case pesticide in this case.
+
+68
+00:04:58.830 --> 00:05:03.900
+So y element one received is
+the count of dead insects for
+
+69
+00:05:03.900 --> 00:05:08.390
+InsectSpray element one
+of the vector group, and
+
+70
+00:05:08.390 --> 00:05:11.840
+the same thing for element two of y and
+element two of group in other words,
+
+71
+00:05:11.840 --> 00:05:15.940
+my y and
+my group vectors are perfectly lined up.
+
+72
+00:05:17.830 --> 00:05:21.110
+So my test statistic is just
+the average difference,
+
+73
+00:05:21.110 --> 00:05:26.470
+the mean average number of
+dead insects from group B
+
+74
+00:05:26.470 --> 00:05:31.590
+minus the average number of dead insects
+in group C averaged over batches.
+
+75
+00:05:35.300 --> 00:05:39.600
+My actual observed statistic is
+just my testStat applied to my sp,
+
+76
+00:05:39.600 --> 00:05:43.380
+my outcome and group here,
+the two are lined up correctly.
+
+77
+00:05:44.450 --> 00:05:48.820
+Now, I'm going to break that
+line-up by permuting, so
+
+78
+00:05:48.820 --> 00:05:54.410
+now when I apply my test statistic
+I'm going to give it my y but
+
+79
+00:05:54.410 --> 00:05:59.115
+my group label is permuted so I'm doing
+sample group which permute my group label
+
+80
+00:05:59.115 --> 00:06:04.400
+and i,m going to do that 10,000
+to get 10,000 test statistics,
+
+81
+00:06:04.400 --> 00:06:09.740
+where I've broken any association between
+y and group, by permuting my group labels.
+
+82
+00:06:09.740 --> 00:06:15.143
+This is under the null hypothesis that my
+group label is unrelated to my outcome.
+
+83
+00:06:15.143 --> 00:06:22.390
+This means that the 13.25
+is the difference
+
+84
+00:06:22.390 --> 00:06:27.440
+in the average count of dead insects for
+B, minus dead insects for C, so
+
+85
+00:06:28.770 --> 00:06:33.840
+in excess of 13 dead insects on
+average killed per batch for
+
+86
+00:06:33.840 --> 00:06:36.820
+B versus C.
+
+87
+00:06:36.820 --> 00:06:41.860
+Let's now calculate the percentage
+of our permuted test statistics that
+
+88
+00:06:41.860 --> 00:06:47.070
+are larger or more extreme in favor of the
+alternative in our observed statistic and
+
+89
+00:06:47.070 --> 00:06:51.790
+it turns out in this data
+set that we get zero.
+
+90
+00:06:51.790 --> 00:06:53.360
+So across 10,000 permutations,
+
+91
+00:06:53.360 --> 00:06:58.250
+we couldn't find a reconfiguration of
+the group labels that leaded, that
+
+92
+00:06:58.250 --> 00:07:02.450
+lead to a more extreme value of the test
+statistic than our observed statistic.
+
+93
+00:07:03.550 --> 00:07:09.230
+Or, more formally the P-value
+is very small close to zero and
+
+94
+00:07:09.230 --> 00:07:15.220
+so we reject the null hypothesis for
+any reasonable level of alpha.
+
+95
+00:07:15.220 --> 00:07:19.190
+I would note the P-value is not exactly
+zero because we can think of at
+
+96
+00:07:19.190 --> 00:07:24.190
+least one permutation, that is as big
+as our observed statistic, namely,
+
+97
+00:07:24.190 --> 00:07:27.010
+the permutation that gives
+us back our original data.
+
+98
+00:07:27.010 --> 00:07:31.430
+This is kind of a minor point, because
+we're going to do thousands and thousands
+
+99
+00:07:31.430 --> 00:07:36.000
+of simulations and whether or not we add
+that one in or not is kind of irrelevant
+
+100
+00:07:36.000 --> 00:07:41.470
+when we compare our p val, p value to
+any normal critical value like 5%.
+
+101
+00:07:41.470 --> 00:07:47.250
+Here I'm showing the null distribution
+generated by our permutations.
+
+102
+00:07:49.590 --> 00:07:53.890
+Basically this is serving the same
+role that our t distribution or
+
+103
+00:07:53.890 --> 00:07:55.820
+standard z distribution.
+
+104
+00:07:55.820 --> 00:08:00.550
+Does in hypothesis testing where we're
+willing to assume that either the data is
+
+105
+00:08:00.550 --> 00:08:03.240
+normal, or we're appealing to
+the central limit theorem.
+
+106
+00:08:04.690 --> 00:08:08.310
+We'll see that our null distribution
+in this case is centered at zero, and
+
+107
+00:08:08.310 --> 00:08:13.580
+goes from minus 10 to plus 10, so
+the fact that we see a minus 10 means that
+
+108
+00:08:13.580 --> 00:08:18.950
+when we permuted group labels we saw
+test statistics as low as minus 10.
+
+109
+00:08:18.950 --> 00:08:23.750
+What I put here as a vertical
+line is the observed statistic,
+
+110
+00:08:23.750 --> 00:08:28.810
+and you'll see that it's way far out
+in the tail of our null distribution.
+
+111
+00:08:28.810 --> 00:08:31.970
+Suggesting that likely
+the null distribution
+
+112
+00:08:31.970 --> 00:08:37.000
+is not the correct true distribution in
+that B really is very different from C,
+
+113
+00:08:37.000 --> 00:08:39.530
+I think we can just see
+that from the histogram but
+
+114
+00:08:39.530 --> 00:08:45.390
+now we can quantify it with a P-value, and
+we can perform a formal hypothesis test.
+
+115
+00:08:47.050 --> 00:08:50.010
+Whether in bootstrapping where
+you're looking at the s-,
+
+116
+00:08:50.010 --> 00:08:52.440
+sampling distribution of a statistic.
+
+117
+00:08:52.440 --> 00:08:57.710
+Or in permutation testing,
+we are looking at a formal inference
+
+118
+00:08:57.710 --> 00:09:01.950
+based on an idea of exchangability
+of group labels In either case,
+
+119
+00:09:01.950 --> 00:09:04.190
+I think it's very important
+to do these histograms or
+
+120
+00:09:04.190 --> 00:09:07.370
+density estimates to see your
+resampled distributions.

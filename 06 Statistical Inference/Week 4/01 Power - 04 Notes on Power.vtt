@@ -1,0 +1,330 @@
+WEBVTT
+
+1
+00:00:01.060 --> 00:00:05.030
+So let's just reiterate when
+we're testing our alternative
+
+2
+00:00:05.030 --> 00:00:07.185
+being that mu is greater than mu0.
+
+3
+00:00:08.320 --> 00:00:12.800
+And then I'm going to specify
+power in terms of 1 minus beta,
+
+4
+00:00:12.800 --> 00:00:15.110
+where beta is the type two error rate.
+
+5
+00:00:15.110 --> 00:00:17.270
+Then we get this equation.
+
+6
+00:00:17.270 --> 00:00:22.470
+Our power is equal to
+the probability that x
+
+7
+00:00:22.470 --> 00:00:30.680
+bar is larger than mu0 plus the standard
+normal quintile times the standard error.
+
+8
+00:00:30.680 --> 00:00:34.410
+Where this probability's calculated under
+the hypothesis that mu equals mu a.
+
+9
+00:00:34.410 --> 00:00:37.890
+And then I simply reiterate that
+point here on the next line,
+
+10
+00:00:37.890 --> 00:00:41.380
+where I'm explicitly stating
+that x bar is normal,
+
+11
+00:00:41.380 --> 00:00:45.130
+with mean mu a and
+variance sigma squared over n.
+
+12
+00:00:46.470 --> 00:00:51.416
+So the point I'd like to make, is that
+the unknowns in this equation are mu a,
+
+13
+00:00:51.416 --> 00:00:58.100
+sigma, n, and beta, or
+equivalently to beta the power you want.
+
+14
+00:00:59.770 --> 00:01:03.030
+The knowns are mu0 and
+usually you know alpha,
+
+15
+00:01:03.030 --> 00:01:09.150
+you know exactly which type one
+error way that you would like.
+
+16
+00:01:11.120 --> 00:01:17.690
+So, given these four unknowns and our
+two knowns, this is simply an equation.
+
+17
+00:01:17.690 --> 00:01:21.560
+If you specify any three,
+you can solve for the fourth.
+
+18
+00:01:21.560 --> 00:01:25.900
+So if you know the alternative
+mean that you'd like to detect.
+
+19
+00:01:25.900 --> 00:01:30.410
+This a sigma that you're willing to
+assume, the n that you want then you can
+
+20
+00:01:30.410 --> 00:01:35.370
+solve for power like we've done
+previously, otherwise what you could do,
+
+21
+00:01:35.370 --> 00:01:42.000
+is you could say here's power that I want,
+here's a m, mean that I'd like to detect.
+
+22
+00:01:42.000 --> 00:01:46.270
+And here's a sigma that I can tolerate,
+and then I'd like to solve for the n
+
+23
+00:01:46.270 --> 00:01:50.170
+that would allow me to have that power,
+maybe at the process of planning a trial.
+
+24
+00:01:52.550 --> 00:01:55.920
+And this is how power
+calculations usually work.
+
+25
+00:01:55.920 --> 00:02:01.280
+You are particularly concerned most
+of the time with either n or beta.
+
+26
+00:02:01.280 --> 00:02:03.710
+You usually either want to figure out for
+
+27
+00:02:03.710 --> 00:02:08.990
+a particular power that I want, what n
+would I like to have, or should I have?
+
+28
+00:02:08.990 --> 00:02:12.360
+Or, I can only conduct
+a study of this size,
+
+29
+00:02:12.360 --> 00:02:15.290
+of size n, what is my power for
+doing that?
+
+30
+00:02:15.290 --> 00:02:17.410
+Should I even waste my time?
+
+31
+00:02:17.410 --> 00:02:21.416
+So, those are the two most common ways,
+but of course,
+
+32
+00:02:21.416 --> 00:02:24.324
+you could also solve for mu a, or sigma.
+
+33
+00:02:24.324 --> 00:02:29.004
+So I'm hoping at this point in the class,
+that you'll be able to take the work
+
+34
+00:02:29.004 --> 00:02:33.328
+we've done for the greater than test,
+and do it for the less than test.
+
+35
+00:02:33.328 --> 00:02:34.743
+H0, mu, less than mu0,
+
+36
+00:02:34.743 --> 00:02:38.139
+just by extending the arguments
+from the previous set of slides.
+
+37
+00:02:40.160 --> 00:02:45.550
+When you're testing not equal to just make
+sure you use the z1 minus alpha over 2,
+
+38
+00:02:45.550 --> 00:02:47.730
+instead of, z1 minus alpha,
+that critical value.
+
+39
+00:02:47.730 --> 00:02:48.924
+So for example, for
+
+40
+00:02:48.924 --> 00:02:53.930
+alpha equal to 0.05, you want to make
+sure you use 1.96 and not 1.645.
+
+41
+00:02:53.930 --> 00:02:57.890
+And then just do the one sided power for
+whatever direction mu a is,
+
+42
+00:02:57.890 --> 00:03:01.620
+whether it's mu a greater than mu0,
+or Mu a less than Mu0.
+
+43
+00:03:01.620 --> 00:03:04.260
+And this isn't,
+this is only approximately right,
+
+44
+00:03:04.260 --> 00:03:07.880
+it omits a small component of power,
+but that, that
+
+45
+00:03:07.880 --> 00:03:12.630
+component of power is only meaningful,
+if Mu a and Mu0 are close together.
+
+46
+00:03:13.870 --> 00:03:15.730
+So let's go through some
+basic rules about power.
+
+47
+00:03:17.060 --> 00:03:20.620
+As Alpha gets larger,
+our power gets larger.
+
+48
+00:03:22.450 --> 00:03:26.450
+So the power of a 1 sided test is greater
+than the power of the associated 2
+
+49
+00:03:26.450 --> 00:03:29.950
+sided test, and we can see that by virtue
+of just dividing alpha by 2 in this,
+
+50
+00:03:29.950 --> 00:03:31.550
+in this, bullet point above.
+
+51
+00:03:31.550 --> 00:03:38.000
+The further mu a gets, gets from mu0,
+the higher the power is.
+
+52
+00:03:40.000 --> 00:03:45.410
+As n goes up the sample mean has less
+variability, and so, we have higher power.
+
+53
+00:03:47.140 --> 00:03:51.890
+As sigma goes down our sample
+mean has less variability, and so
+
+54
+00:03:51.890 --> 00:03:54.540
+we're going to have higher power.
+
+55
+00:03:54.540 --> 00:04:00.120
+Now here's an interesting fact,
+power usually doesn't depend
+
+56
+00:04:00.120 --> 00:04:05.110
+on all of these separate parameters, but
+on some function of those parameters.
+
+57
+00:04:05.110 --> 00:04:08.365
+And in this particular case,
+that function is one dimensional.
+
+58
+00:04:08.365 --> 00:04:13.200
+So you really only need to know one number
+to, to know to, to calculate power, and
+
+59
+00:04:13.200 --> 00:04:16.286
+it's basically the difference
+between the null and
+
+60
+00:04:16.286 --> 00:04:19.320
+alternative means divided
+by the standard error.
+
+61
+00:04:22.000 --> 00:04:26.840
+And power only depends on those things,
+or if you have power and
+
+62
+00:04:26.840 --> 00:04:30.610
+this number then you can calculate,
+then you can calculate n.
+
+63
+00:04:30.610 --> 00:04:34.454
+So this quantity the difference and
+the means divided by sigma,
+
+64
+00:04:34.454 --> 00:04:36.101
+is called the effect size.
+
+65
+00:04:36.101 --> 00:04:41.627
+And, what's nice about the effect size is
+that it's unit free, so when you subtract
+
+66
+00:04:41.627 --> 00:04:46.719
+mu0 and minus mu a, mu, and divide it
+by sigma, you get a unit free quantity.
+
+67
+00:04:46.719 --> 00:04:50.171
+And that's why the effect size
+is very useful because it,
+
+68
+00:04:50.171 --> 00:04:55.111
+you know, being unit free it has some hope
+of being interpretable cross problems.

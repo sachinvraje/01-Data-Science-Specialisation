@@ -1,0 +1,517 @@
+WEBVTT
+
+1
+00:00:00.960 --> 00:00:04.010
+So we never actually calculate
+power in the way that I've
+
+2
+00:00:04.010 --> 00:00:05.700
+described in the previous slides.
+
+3
+00:00:05.700 --> 00:00:09.070
+That's for understanding the concepts,
+and we assumed we knew sigma and
+
+4
+00:00:09.070 --> 00:00:12.980
+the data for either Gaussian or
+that, that sample mean
+
+5
+00:00:12.980 --> 00:00:16.860
+could be believed to be Gaussian
+because of the central limit theorem.
+
+6
+00:00:16.860 --> 00:00:20.990
+I, I think for me personally
+the most common function I use for
+
+7
+00:00:20.990 --> 00:00:24.040
+calculating power is this
+function power.t.test in r.
+
+8
+00:00:24.040 --> 00:00:28.390
+So let's just talk a little
+bit about t test power
+
+9
+00:00:28.390 --> 00:00:33.180
+before we talk about how
+you use power.t.test.
+
+10
+00:00:33.180 --> 00:00:39.720
+The argument is very similar to what
+we did in our normal distribution case.
+
+11
+00:00:39.720 --> 00:00:43.510
+We're going to reject if our
+test statistic, in this case
+
+12
+00:00:43.510 --> 00:00:48.210
+x bar minus mu0 over the estimated
+standard error is now bigger than a t
+
+13
+00:00:48.210 --> 00:00:51.870
+quantile rather than a z quantile,
+because we're talking about a t test.
+
+14
+00:00:51.870 --> 00:00:54.270
+Only because we're talking about power,
+
+15
+00:00:54.270 --> 00:00:58.970
+this is going to be calculated not under
+the hypothesis that mu equal to mu0, but
+
+16
+00:00:58.970 --> 00:01:03.300
+under the hypothesis that mu equal to
+mu a, the value under the alternative.
+
+17
+00:01:04.340 --> 00:01:09.540
+It turns out that this statistic, x bar
+minus mu nought, over the standard error,
+
+18
+00:01:09.540 --> 00:01:15.355
+does not follow a t distribution,
+if the true mean is not mu0.
+
+19
+00:01:15.355 --> 00:01:20.195
+If it's mu a, and mu a is different from
+mu0, it doesn't follow a t distribution,
+
+20
+00:01:20.195 --> 00:01:23.175
+it follows something called
+the non-central t distribution,
+
+21
+00:01:23.175 --> 00:01:24.495
+which we're not going to cover.
+
+22
+00:01:25.555 --> 00:01:26.995
+So, calculating this power,
+
+23
+00:01:26.995 --> 00:01:31.670
+calculating power requires the ability to
+evaluate the non-central t distribution,
+
+24
+00:01:31.670 --> 00:01:35.760
+and that's what power.t.test does for
+you on your behalf.
+
+25
+00:01:35.760 --> 00:01:40.630
+What's nice about power.t.test is just
+like before, we have some parameter
+
+26
+00:01:40.630 --> 00:01:45.575
+that we know, mu naught and alpha, and
+some parameters that we don't know, mu a,
+
+27
+00:01:45.575 --> 00:01:50.430
+sigma and n, for example.
+
+28
+00:01:50.430 --> 00:01:53.440
+And if you omit o, omit one of them but
+
+29
+00:01:53.440 --> 00:01:58.240
+specify the remainder power.t.test will
+solve for the one that you've omitted.
+
+30
+00:01:58.240 --> 00:02:02.940
+So lets go through some examples of using
+power.t.test to either calculate power,
+
+31
+00:02:02.940 --> 00:02:07.010
+or calculate sample size, or calculate
+the minimum detectable difference.
+
+32
+00:02:11.300 --> 00:02:14.892
+Okay, lets go to a couple examples and
+
+33
+00:02:14.892 --> 00:02:20.171
+I'm going to point to this
+middle one here first I'm doing
+
+34
+00:02:20.171 --> 00:02:24.890
+power.t.test so
+its calculating t test power,
+
+35
+00:02:24.890 --> 00:02:30.130
+we're testing H0 mu
+equals to mu0 verses Ha.
+
+36
+00:02:30.130 --> 00:02:34.080
+And then the question is whether it's
+doing a one sided or two sided test.
+
+37
+00:02:34.080 --> 00:02:35.020
+Well in this case,
+
+38
+00:02:36.440 --> 00:02:40.958
+you can see here I have always specified
+alternate equals one sided, so that's mu,
+
+39
+00:02:40.958 --> 00:02:46.060
+greater than mu0 is what it's testing,
+or equivalently, mu less than
+
+40
+00:02:46.060 --> 00:02:51.240
+mu naught if you appropriately specify
+the difference in the means is negative.
+
+41
+00:02:51.240 --> 00:02:56.380
+So delta here, this parameter,
+is the difference in the, the means.
+
+42
+00:02:56.380 --> 00:03:00.260
+So if I specify n,
+
+43
+00:03:00.260 --> 00:03:05.650
+I specify how different mu a is from mu0
+and I give it a standard deviation of 4.
+
+44
+00:03:05.650 --> 00:03:08.380
+I'm telling it its a one sample t test.
+
+45
+00:03:08.380 --> 00:03:12.220
+And I want one side of power and
+then I'm grabbing the power part of it.
+
+46
+00:03:13.430 --> 00:03:16.030
+Then it gives me back my power, 60%.
+
+47
+00:03:16.030 --> 00:03:21.180
+What I show here, you notice in all
+the other examples I've given here,
+
+48
+00:03:21.180 --> 00:03:24.770
+it also gives 60% as the number.
+
+49
+00:03:24.770 --> 00:03:31.030
+And what I'm showing is
+that the power.t.test,
+
+50
+00:03:31.030 --> 00:03:35.678
+just like the normal power, only defen,
+depends on the effect size.
+
+51
+00:03:35.678 --> 00:03:40.750
+How different mu0 and
+Mu a are divided by the standard devi,
+
+52
+00:03:40.750 --> 00:03:42.760
+this standard deviation.
+
+53
+00:03:44.590 --> 00:03:50.790
+So here, I specify my delta as 0.5,
+and give it
+
+54
+00:03:53.110 --> 00:03:57.360
+a standard deviation of 1, and notice, so
+
+55
+00:03:57.360 --> 00:04:03.280
+if I'm defining this numerator as,
+as delta, notice this is the same
+
+56
+00:04:03.280 --> 00:04:07.170
+effect size as in this case right here,
+okay?
+
+57
+00:04:07.170 --> 00:04:12.530
+And since everything's getting a little
+clouded let me re-grab my marker.
+
+58
+00:04:12.530 --> 00:04:18.262
+So, delta divided by sd is
+equivalent between that power.ttest,
+
+59
+00:04:18.262 --> 00:04:23.087
+p, power.t.test call and
+this power.t.test call,
+
+60
+00:04:23.087 --> 00:04:27.000
+and that's why they give the same number.
+
+61
+00:04:27.000 --> 00:04:29.410
+The same thing is true here, okay?
+
+62
+00:04:30.440 --> 00:04:34.230
+Where it's 100 and 200, and
+if you divide the two you get 0.5.
+
+63
+00:04:34.230 --> 00:04:35.820
+So it's also true there.
+
+64
+00:04:37.440 --> 00:04:42.630
+Let's go through a couple more
+examples of using power.t.test.
+
+65
+00:04:42.630 --> 00:04:46.029
+Now, in these, all of these cases,
+I calculated power
+
+66
+00:04:47.820 --> 00:04:51.800
+while inputting n delta and
+the standard deviation.
+
+67
+00:04:56.970 --> 00:05:00.310
+Now, let's try to
+calculate sample size where
+
+68
+00:05:00.310 --> 00:05:03.500
+I give power.t.test
+the power that I would like.
+
+69
+00:05:06.570 --> 00:05:07.850
+Okay.
+
+70
+00:05:07.850 --> 00:05:10.630
+So, now here, I'm going to,
+
+71
+00:05:10.630 --> 00:05:15.520
+again, show you in all three cases that it
+only defen, depends on the effect size.
+
+72
+00:05:15.520 --> 00:05:20.990
+So here, I'm specifying delta 0.5 and
+my standard deviation of 1.
+
+73
+00:05:20.990 --> 00:05:24.928
+So an effect size of 0.5 divided by 1 or
+0.5, and
+
+74
+00:05:24.928 --> 00:05:30.920
+I'm telling power.t.test, I'd like to
+know what is the relevant sample size,
+
+75
+00:05:30.920 --> 00:05:35.026
+if I wanted a power of 80%,
+then over here, you know,
+
+76
+00:05:35.026 --> 00:05:40.540
+again I'm doing one-sample and
+one-sided, and grabbing n, okay?
+
+77
+00:05:40.540 --> 00:05:45.460
+And it gives me a sample size of 26, and
+then in these kinds of calculations,
+
+78
+00:05:45.460 --> 00:05:48.100
+you always want to err on
+the side of conservatism.
+
+79
+00:05:48.100 --> 00:05:51.740
+So you bump it up to 27 whenever you
+get a fractional value, you always get
+
+80
+00:05:51.740 --> 00:05:55.540
+a fractional value, you always want
+to bump it up to the nearest integer.
+
+81
+00:05:55.540 --> 00:06:01.447
+So you need a sample of size 27,
+to have a power of 80% to defe,
+
+82
+00:06:01.447 --> 00:06:05.180
+detect an effect size as large as 0.5.
+
+83
+00:06:05.180 --> 00:06:12.170
+And what I'm showing here, is that
+the calculation is the same when I,
+
+84
+00:06:12.170 --> 00:06:17.620
+as I specify an equivalent effect
+size of 0.5, whether its delta
+
+85
+00:06:18.670 --> 00:06:23.780
+of two over four or delta 100 over 200
+its always giving me the same number.
+
+86
+00:06:23.780 --> 00:06:28.640
+Now what I'll leave is an exercise for
+you guys, is to for
+
+87
+00:06:28.640 --> 00:06:32.591
+example omit delta and put in an n and
+
+88
+00:06:32.591 --> 00:06:37.516
+have power.t.test show you what's
+the minimum detectable delta,
+
+89
+00:06:37.516 --> 00:06:44.630
+in order to detect, in order to have
+80% power for a specific sample size.
+
+90
+00:06:44.630 --> 00:06:48.519
+And I think given the code that I've given
+you here this shouldn't be too hard of a,
+
+91
+00:06:48.519 --> 00:06:50.310
+hard of a extension.
+
+92
+00:06:50.310 --> 00:06:55.455
+I would say that I, I almost always use
+
+93
+00:06:55.455 --> 00:07:00.520
+power.t.test as my first
+attack on a power calculation.
+
+94
+00:07:01.600 --> 00:07:07.470
+One of the main reasons behind
+this is that, power has a lot,
+
+95
+00:07:07.470 --> 00:07:09.840
+as I think I've maybe explained
+throughout the lecture,
+
+96
+00:07:09.840 --> 00:07:13.050
+power has kind of a lot of knobs and
+dials that you can turn.
+
+97
+00:07:13.050 --> 00:07:17.870
+And it's very easy to get tripped up on
+thinking that you have better power than
+
+98
+00:07:17.870 --> 00:07:20.610
+you have or thinking that you
+need a smaller sample size.
+
+99
+00:07:20.610 --> 00:07:25.910
+And so, when in doubt, try to make your
+power calculations as simple as possible.
+
+100
+00:07:25.910 --> 00:07:29.670
+So try to revert the question that
+you're asking down to a t test or
+
+101
+00:07:29.670 --> 00:07:34.190
+a binomial test, or something like
+that in order to calculate power,
+
+102
+00:07:34.190 --> 00:07:36.300
+in order to calculate power
+as simply as possible.
+
+103
+00:07:36.300 --> 00:07:40.030
+And that will give you maybe a slightly
+conservative, either power or sample size
+
+104
+00:07:40.030 --> 00:07:44.240
+estimate, but on the other hand you'll
+be able to understand it quite well.
+
+105
+00:07:44.240 --> 00:07:49.290
+From then you might want to move on to mo,
+much more complex power calculations, but
+
+106
+00:07:49.290 --> 00:07:53.720
+as a first pass you always
+want to do the t test power or
+
+107
+00:07:53.720 --> 00:07:58.500
+the normal calculation power or the basic
+power calculation in a binomial problem,
+
+108
+00:07:58.500 --> 00:08:00.360
+as, as the very first thing that you do.

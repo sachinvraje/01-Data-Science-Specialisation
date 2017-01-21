@@ -1,0 +1,229 @@
+WEBVTT
+
+1
+00:00:00.760 --> 00:00:03.570
+Hi, my name is Brian Caffo and
+welcome to the lecture on
+
+2
+00:00:03.570 --> 00:00:07.770
+some common distributions in
+the Statistical Inference Coursera class,
+
+3
+00:00:07.770 --> 00:00:10.200
+as part of our data
+science specialization.
+
+4
+00:00:10.200 --> 00:00:13.620
+The specialization is co-taught with
+my co-instructors Jeff Leek and
+
+5
+00:00:13.620 --> 00:00:16.510
+Roger Peng,
+we're all at Johns Hopkins University in
+
+6
+00:00:16.510 --> 00:00:20.170
+the Department of Biostatistics in
+the Bloomberg School of Public Health.
+
+7
+00:00:20.170 --> 00:00:24.700
+Let's start with perhaps the simplest
+distribution, the Bernoulli distribution.
+
+8
+00:00:24.700 --> 00:00:28.880
+The Bernoulli distribution is named after
+Jacob Bernoulli, a famous mathematician,
+
+9
+00:00:28.880 --> 00:00:33.490
+who actually comes from a family of famous
+mathematicians, and if you're interested,
+
+10
+00:00:33.490 --> 00:00:38.910
+you can read up on the Bernoulli's, they
+have lots of Wikipedia pages, for example.
+
+11
+00:00:38.910 --> 00:00:42.940
+So, the Bernoulli di, distribution arises
+out of a coin flip, say, with a zero for
+
+12
+00:00:42.940 --> 00:00:47.400
+a tail and a one for a head, and
+you have a potentially biased coin with
+
+13
+00:00:47.400 --> 00:00:51.710
+probabilities, p for a head and
+1 minus p for a tail We usually write
+
+14
+00:00:51.710 --> 00:00:56.090
+the Bernoulli probability mass function as
+p to the x, 1 minus p, to the 1 minus x.
+
+15
+00:00:58.030 --> 00:01:03.080
+The mean of a Bernoulli random variable is
+p, and the variance is p times 1 minus p,
+
+16
+00:01:03.080 --> 00:01:04.770
+we've seen these facts before.
+
+17
+00:01:06.720 --> 00:01:09.430
+And if we,
+let x be a Bernoulli random variable,
+
+18
+00:01:09.430 --> 00:01:13.810
+we typically call x equal 1 as a success,
+eve, regardless of whether or not
+
+19
+00:01:13.810 --> 00:01:18.090
+the outcome is successful in some sense of
+the word, and x equal to 0 as a failure.
+
+20
+00:01:19.760 --> 00:01:22.000
+Now that we've discussed
+the Bernoulli distribution,
+
+21
+00:01:22.000 --> 00:01:24.050
+let's talk about
+the binomial distribution.
+
+22
+00:01:25.050 --> 00:01:29.530
+The bino, a binomial random variable
+is obtained as the sum of a bunch of
+
+23
+00:01:29.530 --> 00:01:32.530
+iid Bernoulli random variables.
+
+24
+00:01:32.530 --> 00:01:35.150
+So ostensibly, a binomial random variable,
+
+25
+00:01:35.150 --> 00:01:39.320
+is the total number of heads,
+on the flips of a potentially biased coin.
+
+26
+00:01:41.570 --> 00:01:46.760
+Mathematically, let's let x 1
+to x n be Bernoulli p, then x,
+
+27
+00:01:46.760 --> 00:01:50.250
+the sum of them,
+is a binomial random variable.
+
+28
+00:01:50.250 --> 00:01:54.080
+The binomial mass function looks a lot
+like the Bernoulli mass function,
+
+29
+00:01:54.080 --> 00:01:55.769
+though with n choose x out front.
+
+30
+00:01:55.769 --> 00:01:56.269
+.
+
+31
+00:01:57.809 --> 00:02:02.376
+Recall that the notation n choose
+x stands for n factorial over x
+
+32
+00:02:02.376 --> 00:02:07.650
+factorial n minus x factorial, and
+n choose 0 and n choose n are both 1.
+
+33
+00:02:07.650 --> 00:02:10.356
+This solves a particular
+common notarial problem of
+
+34
+00:02:10.356 --> 00:02:13.367
+counting the number of the ways
+of selecting x items out of n
+
+35
+00:02:13.367 --> 00:02:16.643
+without replacement disregarding
+the ordering of the items.
+
+36
+00:02:16.643 --> 00:02:20.660
+Let's go through a quick example
+of a binomial calculation.
+
+37
+00:02:20.660 --> 00:02:24.674
+Suppose you have a friend who has eight
+children, seven of which are girls and
+
+38
+00:02:24.674 --> 00:02:25.549
+none are twins.
+
+39
+00:02:25.549 --> 00:02:29.036
+If each gender has an independent
+50% probability for each birth,
+
+40
+00:02:29.036 --> 00:02:33.690
+what's the probability of getting seven or
+more girls out of eight births?
+
+41
+00:02:33.690 --> 00:02:36.901
+Well let's plug right into
+the binomial formula.
+
+42
+00:02:36.901 --> 00:02:41.427
+That's the probability of seven,
+which is 8 choose 7, .5 to the 7,
+
+43
+00:02:41.427 --> 00:02:44.858
+1 minus .5 to the 1 plus 8 choose 8,
+.5 to the 8,
+
+44
+00:02:44.858 --> 00:02:48.810
+1 minus .5 to the 0 which works
+out to be a val, a 4% chance.
+
+45
+00:02:50.600 --> 00:02:54.881
+Here, I give you the r code for
+performing this calculation.
+
+46
+00:02:54.881 --> 00:03:00.045
+Also, as with, most of the common
+distributions there's an r function and
+
+47
+00:03:00.045 --> 00:03:02.800
+pbinom gives you these probabilities.

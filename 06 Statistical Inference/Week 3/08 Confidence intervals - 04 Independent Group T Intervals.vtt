@@ -1,0 +1,1016 @@
+WEBVTT
+
+1
+00:00:01.230 --> 00:00:04.630
+Suppose that we want to compare
+the mean blood pressure between two
+
+2
+00:00:04.630 --> 00:00:07.750
+groups in a randomized trial,
+those who received the treatment and
+
+3
+00:00:07.750 --> 00:00:09.930
+those who received a placebo.
+
+4
+00:00:09.930 --> 00:00:12.410
+Here this is not unlike
+so-called A B testing,
+
+5
+00:00:12.410 --> 00:00:16.280
+which is probably the language is
+used most often in data science.
+
+6
+00:00:17.540 --> 00:00:21.218
+Here whether in A B testing or
+in randomized trial,
+
+7
+00:00:21.218 --> 00:00:26.180
+you are performing the randomization
+in order to balance unobserved
+
+8
+00:00:26.180 --> 00:00:29.790
+co-variats that may
+contaminate your results.
+
+9
+00:00:29.790 --> 00:00:32.654
+Because you've performed
+this randomization,
+
+10
+00:00:32.654 --> 00:00:37.153
+it's reasonable to just compare the two
+groups with a t confidence interval or
+
+11
+00:00:37.153 --> 00:00:39.415
+a t test, which we'll cover later on.
+
+12
+00:00:39.415 --> 00:00:41.784
+But we can't use a paired t test,
+
+13
+00:00:41.784 --> 00:00:46.708
+because there is no matching of
+the subjects between the two groups.
+
+14
+00:00:46.708 --> 00:00:50.829
+So we now present methods from com,
+comparing across independent groups.
+
+15
+00:00:54.499 --> 00:01:00.589
+The standard confidence interval
+in this case is Y bar minus X bar,
+
+16
+00:01:00.589 --> 00:01:06.136
+the average in one group minus
+the average in another group,
+
+17
+00:01:06.136 --> 00:01:09.095
+times the relevant t quantile.
+
+18
+00:01:09.095 --> 00:01:13.820
+Where here the degrees of
+freedom are a little bit hard.
+
+19
+00:01:13.820 --> 00:01:17.770
+The degrees of freedom
+are nx plus ny minus 2,
+
+20
+00:01:17.770 --> 00:01:21.400
+where nx is the number of
+observations going into the X group,
+
+21
+00:01:21.400 --> 00:01:24.230
+and y is the number of observations
+going into the Y group.
+
+22
+00:01:25.590 --> 00:01:30.177
+Here this is the standard
+error of the difference.
+
+23
+00:01:30.177 --> 00:01:34.781
+This S sub p right here I'll
+talk about in a minute.
+
+24
+00:01:34.781 --> 00:01:38.259
+But it is multiplied
+times this factor here,
+
+25
+00:01:38.259 --> 00:01:42.752
+1 over nx plus 1 over ny,
+raised to the one-half power.
+
+26
+00:01:42.752 --> 00:01:47.338
+You'll notice that as we
+collect more data, 1 over nx,
+
+27
+00:01:47.338 --> 00:01:51.076
+gets very small and
+1 over ny gets very small.
+
+28
+00:01:51.076 --> 00:01:55.522
+The S sub p squared is the so-called
+pooled standard deviation.
+
+29
+00:01:55.522 --> 00:01:59.730
+Or, I'm sorry, S sub p squared is
+the so-called pooled variance.
+
+30
+00:01:59.730 --> 00:02:04.526
+Its square root is the pooled
+standard deviation.
+
+31
+00:02:04.526 --> 00:02:09.545
+If we're willing to assume that the
+variance is the same in the two groups,
+
+32
+00:02:09.545 --> 00:02:13.766
+which would be reasonable if we
+had performed randomization,
+
+33
+00:02:13.766 --> 00:02:18.387
+then our estimate of the variance
+should at some level be an average of
+
+34
+00:02:18.387 --> 00:02:23.750
+the variance estimate from group one and
+the variance estimate from group two.
+
+35
+00:02:23.750 --> 00:02:25.996
+However, if we have
+different sample sizes,
+
+36
+00:02:25.996 --> 00:02:29.682
+we'd like to weight the variance estimate
+from group one more than we weight
+
+37
+00:02:29.682 --> 00:02:31.597
+the variance estimate from group two.
+
+38
+00:02:31.597 --> 00:02:35.602
+And that is exactly what
+the pooled variance estimate does.
+
+39
+00:02:35.602 --> 00:02:40.886
+If in fact you have equal numbers
+of observations in both groups,
+
+40
+00:02:40.886 --> 00:02:46.074
+nx is equal to ny, then the pooled
+variance is the simple average
+
+41
+00:02:46.074 --> 00:02:51.378
+of the variance from the X group and
+the variance from the Y group.
+
+42
+00:02:51.378 --> 00:02:56.130
+But remember, this interval assumes
+a constant variance across the two groups.
+
+43
+00:02:56.130 --> 00:02:57.960
+If that assumption is violated,
+
+44
+00:02:57.960 --> 00:03:00.570
+then this interval won't give
+you the proper coverage.
+
+45
+00:03:02.440 --> 00:03:06.220
+If there's some doubt, simply assume
+a different variance per group,
+
+46
+00:03:06.220 --> 00:03:09.440
+which we'll cover later on in the lecture
+with a slightly different interval.
+
+47
+00:03:13.020 --> 00:03:17.189
+Here I go through an example from Rosner's
+Fundamentals of Biostatistics book.
+
+48
+00:03:17.189 --> 00:03:18.707
+This is a very good reference book.
+
+49
+00:03:18.707 --> 00:03:20.460
+I quite like it.
+
+50
+00:03:20.460 --> 00:03:23.330
+However, you don't want to put it in your
+backpack, because it's pretty heavy.
+
+51
+00:03:23.330 --> 00:03:26.470
+It's a very thorough book
+about couple hundred pages,
+
+52
+00:03:26.470 --> 00:03:29.880
+and weighing over five pounds is my guess.
+
+53
+00:03:29.880 --> 00:03:33.285
+In one of the examples from this book,
+they're comparing 8
+
+54
+00:03:33.285 --> 00:03:37.578
+oral contraceptive users to 21 controls
+with respect to blood pressure.
+
+55
+00:03:37.578 --> 00:03:43.571
+For the oral contraceptive users,
+they got a average systolic blood pressure
+
+56
+00:03:43.571 --> 00:03:48.927
+of 133 milligrams of mercury,
+with a standard deviation of 15,
+
+57
+00:03:48.927 --> 00:03:54.308
+a control blood pressure of 127
+with a standard deviation of 18.
+
+58
+00:03:54.308 --> 00:03:59.110
+Let's go ahead and manually construct
+the independent group interval once,
+
+59
+00:03:59.110 --> 00:04:01.595
+just to churn through the calculation.
+
+60
+00:04:01.595 --> 00:04:04.492
+When you tend to do this on your
+own you tend to use t.test or
+
+61
+00:04:04.492 --> 00:04:07.047
+something like that because
+you have the raw data.
+
+62
+00:04:07.047 --> 00:04:11.657
+So the pooled standard deviation
+estimate is going to be
+
+63
+00:04:11.657 --> 00:04:15.785
+the square root of the pooled
+variance estimate.
+
+64
+00:04:15.785 --> 00:04:17.829
+There we need to take 15.34,
+
+65
+00:04:17.829 --> 00:04:22.983
+the standard deviation from the oral
+contraceptive users, square it, 18.23.
+
+66
+00:04:22.983 --> 00:04:25.861
+The standard deviation from
+the controls and square it.
+
+67
+00:04:25.861 --> 00:04:29.378
+And take their weighted average,
+weighted by their sample sizes.
+
+68
+00:04:29.378 --> 00:04:33.094
+So 7, which is 8 minus 1,
+and 20, which is 21 minus 1,
+
+69
+00:04:33.094 --> 00:04:35.220
+from the two sample sizes minus 1.
+
+70
+00:04:35.220 --> 00:04:38.807
+Then divided by the sum of
+the sample sizes minus 2.
+
+71
+00:04:38.807 --> 00:04:43.309
+That gives us a weighted
+average of the variances,
+
+72
+00:04:43.309 --> 00:04:47.498
+where the group,
+the control group with 21,
+
+73
+00:04:47.498 --> 00:04:52.852
+gets more impact than the oral
+contraceptive users with 8.
+
+74
+00:04:52.852 --> 00:04:56.487
+Then I square root the whole things,
+because I want the standard deviation.
+
+75
+00:04:56.487 --> 00:04:59.800
+Then my interval is
+the difference in the means.
+
+76
+00:04:59.800 --> 00:05:03.386
+And then you always, whenever you're
+doing an independent group interval,
+
+77
+00:05:03.386 --> 00:05:06.154
+you always want to kind of mentally think,
+which one of my su,
+
+78
+00:05:06.154 --> 00:05:08.620
+which one is the first part of the sub,
+subtraction.
+
+79
+00:05:08.620 --> 00:05:11.885
+In this case my oral contraceptive
+users are the first part,
+
+80
+00:05:11.885 --> 00:05:13.622
+so I want to just remember that.
+
+81
+00:05:13.622 --> 00:05:16.276
+Because you don't want to look silly and
+
+82
+00:05:16.276 --> 00:05:20.180
+suggest the controls have
+a higher blood pressure than oral
+
+83
+00:05:20.180 --> 00:05:25.178
+contraceptive users when the empirical
+averages are exactly the reverse,
+
+84
+00:05:25.178 --> 00:05:30.039
+just because you reverse the order in
+which you were subtracting things.
+
+85
+00:05:30.039 --> 00:05:35.605
+Then I want to add and
+subtract the relevant t quantile,
+
+86
+00:05:35.605 --> 00:05:41.419
+27 degrees of freedom,
+which is 8 plus 21 minus 2.
+
+87
+00:05:41.419 --> 00:05:46.819
+The pooled standard deviation estimate
+times 1 over n1 plus 1 over n2,
+
+88
+00:05:46.819 --> 00:05:49.141
+raised to the one-half power.
+
+89
+00:05:49.141 --> 00:05:52.060
+I get about negative 10 to 20.
+
+90
+00:05:52.060 --> 00:05:57.837
+In this case my interval contains 0, so
+I cannot rule out 0 as the possibility for
+
+91
+00:05:57.837 --> 00:06:01.541
+the population difference
+between the two groups.
+
+92
+00:06:04.942 --> 00:06:09.040
+Let's move on to another example.
+
+93
+00:06:09.040 --> 00:06:14.469
+Let's revisit the example where we
+were looking at the sleep patients
+
+94
+00:06:14.469 --> 00:06:20.648
+on the two drugs, but let's tr,
+pretend that the subjects weren't matched.
+
+95
+00:06:20.648 --> 00:06:24.770
+Okay, so I have n1 is from group 1,
+n2 is from group 2.
+
+96
+00:06:24.770 --> 00:06:27.150
+Remember in this case both
+of those would be 10.
+
+97
+00:06:27.150 --> 00:06:30.830
+I go through the construction of
+the pooled standard deviation estimate.
+
+98
+00:06:30.830 --> 00:06:33.500
+I get the mean difference.
+
+99
+00:06:33.500 --> 00:06:37.950
+And I get the standard error of the mean
+difference, which is the pooled standard
+
+100
+00:06:37.950 --> 00:06:41.958
+deviation est, estimate times square
+root 1 over n1 plus 1 over n2.
+
+101
+00:06:41.958 --> 00:06:46.963
+Then I collect together my manual
+construction of the confidence interval,
+
+102
+00:06:46.963 --> 00:06:49.273
+which takes the mean difference and
+
+103
+00:06:49.273 --> 00:06:53.360
+subtracts the t quantile times
+the standard error of the mean.
+
+104
+00:06:53.360 --> 00:06:55.610
+And then I do t.test.
+
+105
+00:06:55.610 --> 00:06:58.710
+And I give it the first vector and
+the second vector.
+
+106
+00:06:58.710 --> 00:07:00.610
+I tell it paired equals FALSE.
+
+107
+00:07:00.610 --> 00:07:03.762
+And then because I want the interval,
+where I'm treating
+
+108
+00:07:03.762 --> 00:07:07.570
+the variance in the two groups as equal,
+I do var equal, equals TRUE.
+
+109
+00:07:07.570 --> 00:07:09.950
+And then I grab
+the confidence interval part.
+
+110
+00:07:09.950 --> 00:07:13.900
+And then I want to compare it, where
+the instance where paired equals TRUE,
+
+111
+00:07:13.900 --> 00:07:17.739
+just to remind us that ignoring pairing
+can, can really mess things up.
+
+112
+00:07:17.739 --> 00:07:19.632
+And I want to grab
+the confidence interval.
+
+113
+00:07:19.632 --> 00:07:21.350
+So here we get the interval.
+
+114
+00:07:21.350 --> 00:07:25.644
+And my manual calculation of course
+exactly agrees with the standard t
+
+115
+00:07:25.644 --> 00:07:26.597
+calculation.
+
+116
+00:07:26.597 --> 00:07:30.240
+And you see that you get a very different
+interval than when you do the paired.
+
+117
+00:07:30.240 --> 00:07:34.759
+If you take into account of the pairing,
+actually the interval is entirely above 0,
+
+118
+00:07:34.759 --> 00:07:38.666
+where if you disregard the pairing,
+the interval actually contains 0.
+
+119
+00:07:38.666 --> 00:07:43.407
+And I think when you actually look at
+the plot it seems quite clear to me why
+
+120
+00:07:43.407 --> 00:07:45.280
+that's the case.
+
+121
+00:07:45.280 --> 00:07:48.570
+If you're comparing this
+variation to that variation,
+
+122
+00:07:48.570 --> 00:07:51.020
+that's a lot variability
+in the two groups.
+
+123
+00:07:51.020 --> 00:07:53.664
+However, when you're
+matching up the subjects and
+
+124
+00:07:53.664 --> 00:07:56.068
+looking at the variability
+in the difference,
+
+125
+00:07:56.068 --> 00:08:00.229
+there's a lot of that variability is
+explained by inter-subject variability.
+
+126
+00:08:02.830 --> 00:08:04.552
+Let's go through another example.
+
+127
+00:08:08.334 --> 00:08:11.305
+The ChickWeight data in R contains
+
+128
+00:08:11.305 --> 00:08:16.127
+weights of chicks from birth
+to a couple of weeks later.
+
+129
+00:08:16.127 --> 00:08:22.884
+So to get it you can do,
+library datasets, data ChickWeight.
+
+130
+00:08:22.884 --> 00:08:28.850
+And then I need to work with the data and
+I highly recommend the package reshape2.
+
+131
+00:08:28.850 --> 00:08:34.551
+And I'll go through a little bit about
+some of the reshape commands and
+
+132
+00:08:34.551 --> 00:08:36.395
+what they're doing.
+
+133
+00:08:36.395 --> 00:08:41.096
+So, the ChickWeight data
+comes in a formate,
+
+134
+00:08:41.096 --> 00:08:44.116
+format that is a long format.
+
+135
+00:08:44.116 --> 00:08:47.842
+So, it's the chicks lined
+up in a long vector.
+
+136
+00:08:47.842 --> 00:08:52.546
+So, if you want to take that long
+vector and make it a wide vector, so
+
+137
+00:08:52.546 --> 00:08:58.342
+that there's one column saved for each
+time point that we measure the chick, then
+
+138
+00:08:58.342 --> 00:09:04.790
+you want to do something like dcast, which
+is a function in the reshape package.
+
+139
+00:09:04.790 --> 00:09:09.228
+So we want to dcast this
+ChickWeight data frame.
+
+140
+00:09:09.228 --> 00:09:16.177
+And the variables Diet and Chick
+are the things that are staying the same,
+
+141
+00:09:16.177 --> 00:09:21.668
+and the Time variable is the one
+that's going to get sort of
+
+142
+00:09:21.668 --> 00:09:26.737
+converted from a long format
+to a short ver, format.
+
+143
+00:09:26.737 --> 00:09:31.594
+So, and then I don't, I didn't like
+the names that it was giving it, so
+
+144
+00:09:31.594 --> 00:09:34.317
+I renamed the latter couple of columns.
+
+145
+00:09:34.317 --> 00:09:39.289
+Then I wanted to create
+a specific variable that
+
+146
+00:09:39.289 --> 00:09:43.894
+is simply total weight
+gain from time zero.
+
+147
+00:09:43.894 --> 00:09:47.978
+So I use the package dplyr.
+
+148
+00:09:47.978 --> 00:09:53.876
+Which then I take my data frame and
+I do the command mutate.
+
+149
+00:09:53.876 --> 00:09:56.231
+And I want to give it my data frame again.
+
+150
+00:09:56.231 --> 00:10:00.293
+And I want to create a new
+variable which is just the final
+
+151
+00:10:00.293 --> 00:10:05.230
+time point minus the baseline time point,
+so the change in weight.
+
+152
+00:10:05.230 --> 00:10:10.698
+And the change in weight is what I'm
+going to analyze from here on out.
+
+153
+00:10:10.698 --> 00:10:14.971
+But let's actually look at the data
+first before we run our test.
+
+154
+00:10:19.198 --> 00:10:26.651
+Here's the data for each of the four diets
+plotted as a so-called spaghetti plot.
+
+155
+00:10:26.651 --> 00:10:30.051
+And again the command for
+this plot, I used g g plot two.
+
+156
+00:10:30.051 --> 00:10:35.187
+I've been trying throughout the lectures
+to convert all the graphics
+
+157
+00:10:35.187 --> 00:10:40.508
+to g g plot two, since we teach g g
+plot earlier on in the specialization.
+
+158
+00:10:40.508 --> 00:10:45.648
+Here, we show each of the diets
+
+159
+00:10:45.648 --> 00:10:50.789
+from baseline here to the final
+
+160
+00:10:50.789 --> 00:10:55.939
+time point here for each case.
+
+161
+00:10:55.939 --> 00:10:59.555
+So you'll notice there are some things
+that are potentially suspect, though
+
+162
+00:10:59.555 --> 00:11:03.128
+they're a little bit hard to ascertain
+because of the varying sample sizes.
+
+163
+00:11:03.128 --> 00:11:06.482
+For example,
+there appears to be a lot more end
+
+164
+00:11:06.482 --> 00:11:10.269
+variation in the first diet
+than in the fourth diet.
+
+165
+00:11:10.269 --> 00:11:11.070
+Though again,
+
+166
+00:11:11.070 --> 00:11:15.201
+there's a greater number of chicks in
+the first diet than in the fourth diet, so
+
+167
+00:11:15.201 --> 00:11:19.229
+it's maybe actually a little bit hard
+to actually compare the variability.
+
+168
+00:11:19.229 --> 00:11:25.603
+I put a reference line here that is
+the mean for each of the groups.
+
+169
+00:11:25.603 --> 00:11:30.505
+And I think, at least without
+any formal statistical test,
+
+170
+00:11:30.505 --> 00:11:35.789
+it does appear that the average
+weight gain for the first diet does
+
+171
+00:11:35.789 --> 00:11:42.349
+appear to be a little bit slower than the
+average weight gain for the fourth diet.
+
+172
+00:11:42.349 --> 00:11:47.708
+Well let's actually look at it,
+using a formal confidence interval.
+
+173
+00:11:52.006 --> 00:11:57.574
+Here I just show, rather than
+plotting the individual measurements,
+
+174
+00:11:57.574 --> 00:12:03.230
+I show the en, end weight minus
+the baseline weight by each of the diets,
+
+175
+00:12:03.230 --> 00:12:05.890
+using a so-called violin plot.
+
+176
+00:12:05.890 --> 00:12:10.757
+We're going to look at diets one and
+four, and so
+
+177
+00:12:10.757 --> 00:12:15.270
+we're going to be
+comparing this violin plot,
+
+178
+00:12:15.270 --> 00:12:18.967
+basically verses that violin plot.
+
+179
+00:12:18.967 --> 00:12:25.570
+So our assumption of equal
+variances appears suspect here.
+
+180
+00:12:25.570 --> 00:12:31.845
+In order to do the t test notation, where
+you take an outcome variable like gain,
+
+181
+00:12:31.845 --> 00:12:37.570
+weight gain, and use tilde times
+the explanatory variable of interest,
+
+182
+00:12:37.570 --> 00:12:40.891
+for the t test function, for that to work,
+
+183
+00:12:40.891 --> 00:12:45.820
+it needs to only have two levels for
+the explanatory variable.
+
+184
+00:12:46.890 --> 00:12:53.550
+So that's what this subset command does,
+is that I merely take those records for
+
+185
+00:12:53.550 --> 00:12:58.730
+which diet is in the variables one or
+four.
+
+186
+00:12:58.730 --> 00:13:00.710
+So omitting diets two and three.
+
+187
+00:13:00.710 --> 00:13:04.176
+And again,
+when you repeat this analysis on your own,
+
+188
+00:13:04.176 --> 00:13:08.140
+you might want to compare one to two,
+one to three, one to four,
+
+189
+00:13:08.140 --> 00:13:13.250
+two to three, two to four, and three to
+four, and do all possible comparisons.
+
+190
+00:13:13.250 --> 00:13:14.750
+If you were to do that, I might add,
+
+191
+00:13:14.750 --> 00:13:18.020
+you would also want to account for
+multiplicity,
+
+192
+00:13:18.020 --> 00:13:20.860
+which later on in the inference class
+we're going to discuss how to do.
+
+193
+00:13:23.230 --> 00:13:25.700
+Here, I show the interval.
+
+194
+00:13:25.700 --> 00:13:29.810
+Again I'm collecting the results
+with an rbind statement.
+
+195
+00:13:29.810 --> 00:13:30.890
+Here I show the interval.
+
+196
+00:13:30.890 --> 00:13:32.644
+I want paired equals FALSE.
+
+197
+00:13:32.644 --> 00:13:37.054
+Which in this case paired equal TRUE isn't
+even an option because the variables
+
+198
+00:13:37.054 --> 00:13:41.550
+are of different, the vectors of,
+are of different length.
+
+199
+00:13:41.550 --> 00:13:46.060
+But what I do compare here is
+assumption that the variances are equal
+
+200
+00:13:46.060 --> 00:13:49.500
+versus the assumptions that
+the variances are unequal.
+
+201
+00:13:49.500 --> 00:13:52.320
+And you do get difference,
+different intervals.
+
+202
+00:13:52.320 --> 00:13:54.630
+Both cases I'm grabbing
+the confidence interval.
+
+203
+00:13:55.700 --> 00:14:00.218
+In the first one I get
+negative 108 to negative 14.
+
+204
+00:14:00.218 --> 00:14:04.687
+In the second I get
+negative 104 to negative18.
+
+205
+00:14:04.687 --> 00:14:09.010
+Both cases the intervals
+are entirely below zero,
+
+206
+00:14:09.010 --> 00:14:13.947
+suggesting less weight gain on
+diet one than on diet four.
+
+207
+00:14:13.947 --> 00:14:17.732
+However, the specific interval does
+change depending on whether or
+
+208
+00:14:17.732 --> 00:14:21.333
+not you have the variances are equal and
+the variances are false.
+
+209
+00:14:21.333 --> 00:14:25.486
+Now I don't know enough about the specific
+dataset to ascertain whether that's
+
+210
+00:14:25.486 --> 00:14:27.020
+a substantive change or not.
+
+211
+00:14:28.080 --> 00:14:30.870
+But because it might be important,
+
+212
+00:14:30.870 --> 00:14:36.150
+let's also cover the t interval where you
+assume that the variances are unequal.

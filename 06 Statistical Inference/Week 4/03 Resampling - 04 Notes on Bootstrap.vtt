@@ -1,0 +1,691 @@
+WEBVTT
+
+1
+00:00:00.950 --> 00:00:05.800
+So the bootstrap principle, is if you
+have a statistic that estimates some
+
+2
+00:00:05.800 --> 00:00:08.810
+population parameter that
+you're interested in, but
+
+3
+00:00:08.810 --> 00:00:11.470
+you don't know that statistic's
+sampling distribution.
+
+4
+00:00:13.110 --> 00:00:14.630
+Then the bootstrap principle,
+
+5
+00:00:14.630 --> 00:00:19.500
+is simply to use the distribution
+defined by the observed data,
+
+6
+00:00:20.770 --> 00:00:25.520
+to investigate that sampling is for me to
+estimate of that sampling distribution.
+
+7
+00:00:27.770 --> 00:00:31.940
+The bootstrap principle actually
+doesn't require simulation,
+
+8
+00:00:31.940 --> 00:00:35.560
+in the same way that if we want to know
+what is the distribution of the average
+
+9
+00:00:35.560 --> 00:00:37.340
+of 50 die rolls.
+
+10
+00:00:37.340 --> 00:00:39.840
+Well, we could maybe
+mathematically figure that out.
+
+11
+00:00:39.840 --> 00:00:40.850
+Good luck.
+
+12
+00:00:40.850 --> 00:00:43.450
+But it's easier to do
+that with simulation.
+
+13
+00:00:43.450 --> 00:00:48.510
+So we never kind of figure out
+what's the limit of what you get
+
+14
+00:00:48.510 --> 00:00:52.220
+when you roll the die infinitely
+many times, because, you know,
+
+15
+00:00:52.220 --> 00:00:55.130
+we can, we can approximate that so
+well with Monte Carlo.
+
+16
+00:00:57.445 --> 00:01:01.135
+We're also only going to
+cover a couple of aspects of
+
+17
+00:01:01.135 --> 00:01:03.265
+what you can do with your
+bootstrapper samples.
+
+18
+00:01:03.265 --> 00:01:06.385
+It's a rich subject, and we're mostly
+going to cover creating a confidence
+
+19
+00:01:06.385 --> 00:01:08.165
+interval and estimating standard errors.
+
+20
+00:01:08.165 --> 00:01:09.335
+So we'll go over those two things.
+
+21
+00:01:11.335 --> 00:01:13.835
+But let's go over
+the general procedure again.
+
+22
+00:01:13.835 --> 00:01:16.490
+What you do is you take your,
+your observe data.
+
+23
+00:01:16.490 --> 00:01:18.970
+And you simulate complete data sets by
+
+24
+00:01:18.970 --> 00:01:21.120
+drawing from the observed
+data with replacement.
+
+25
+00:01:23.200 --> 00:01:26.670
+And this is approximately drawing,
+in in, for
+
+26
+00:01:26.670 --> 00:01:30.370
+each of the simulated data sets you
+calculate the statistic of interest, and
+
+27
+00:01:30.370 --> 00:01:35.540
+this is approximately drawing from the
+sampling distribution of that statistic.
+
+28
+00:01:35.540 --> 00:01:41.610
+At least as far as the data approximates
+the real population distribution.
+
+29
+00:01:42.940 --> 00:01:46.000
+So just as a reminder,
+we're going to calculate the statistic for
+
+30
+00:01:46.000 --> 00:01:50.810
+each simulated data set, and then we're
+going to use these simulated statistics to
+
+31
+00:01:50.810 --> 00:01:55.270
+either define a confidence interval or
+to take the standard deviation of this
+
+32
+00:01:55.270 --> 00:01:57.669
+distribution in order to
+calculate a standard error.
+
+33
+00:01:58.820 --> 00:02:03.690
+So, let's go through the bootstrap
+algorithm in a little bit of detail, for
+
+34
+00:02:03.690 --> 00:02:07.450
+calculating a confidence interval or
+bootstrap standard air for
+
+35
+00:02:07.450 --> 00:02:09.930
+the median from a set of N observations.
+
+36
+00:02:11.540 --> 00:02:14.470
+So, the data that we have
+is a vector of length N.
+
+37
+00:02:15.990 --> 00:02:21.960
+Then, what we're going to do is re-sample
+N observations with replacement
+
+38
+00:02:21.960 --> 00:02:27.700
+from the observed data to basically
+get a re-sampled complete data set.
+
+39
+00:02:30.000 --> 00:02:34.070
+Remember, when you sample
+from the observed data,
+
+40
+00:02:34.070 --> 00:02:36.860
+you're going to sample with replacement.
+
+41
+00:02:36.860 --> 00:02:39.420
+If you didn't do it with replacement,
+
+42
+00:02:39.420 --> 00:02:44.480
+then you would basically after
+having simulated sampled N of them,
+
+43
+00:02:44.480 --> 00:02:48.270
+you would just have a copy of the data
+set again just with the order permuted.
+
+44
+00:02:50.320 --> 00:02:54.670
+Instead it's important to sample with
+replacement, which means that you likely
+
+45
+00:02:54.670 --> 00:03:01.990
+get some observations repeated on
+multiple times, which is fine.
+
+46
+00:03:01.990 --> 00:03:06.770
+This is part of bootstrap resampling,
+when you get a resampled data set,
+
+47
+00:03:07.840 --> 00:03:11.030
+in our example, we're going to take
+the median, or if you're using a different
+
+48
+00:03:11.030 --> 00:03:14.390
+statistic, you'll simply take that
+statistic, of the simulated data set.
+
+49
+00:03:15.710 --> 00:03:18.290
+Then you're going to repeat this step,
+over and over.
+
+50
+00:03:18.290 --> 00:03:20.180
+I say B times.
+
+51
+00:03:20.180 --> 00:03:26.160
+Here me, where B is the number
+of bootstrap re-samples.
+
+52
+00:03:26.160 --> 00:03:32.480
+You want B to be large, so
+that your Monte Carlo error is small.
+
+53
+00:03:32.480 --> 00:03:36.970
+And what I mean by that is remember,
+if we could, we would just figure out
+
+54
+00:03:36.970 --> 00:03:42.030
+the exact bootstrap distribution
+without involving any resampling.
+
+55
+00:03:42.030 --> 00:03:45.890
+We would just know exactly what
+the distribution of the median is from
+
+56
+00:03:45.890 --> 00:03:50.195
+a distribution that places probability
+1 over N on each observed data point.
+
+57
+00:03:51.665 --> 00:03:56.135
+Instead we're going to do it via Monte
+Carlo this process of re-sampling, so
+
+58
+00:03:56.135 --> 00:03:58.015
+you don't want the Monte Carlo error or
+
+59
+00:03:58.015 --> 00:04:01.955
+basically how long you've run your
+computer, to be driving your results.
+
+60
+00:04:03.155 --> 00:04:07.452
+The easiest way to fix this is to
+simply make B be fairly large,
+
+61
+00:04:07.452 --> 00:04:10.027
+10,000 or more simulations.
+
+62
+00:04:12.907 --> 00:04:16.423
+The medians that you get from this
+process are approximately drawn
+
+63
+00:04:16.423 --> 00:04:19.890
+from the sampling distribution
+of the median of N observations.
+
+64
+00:04:20.970 --> 00:04:27.140
+We're really sort of approximating the
+population distribution, but that's okay.
+
+65
+00:04:27.140 --> 00:04:30.730
+There's a lot of theory that shows
+that the bootstrap actually works.
+
+66
+00:04:32.790 --> 00:04:37.400
+When we do this, what we can do
+with our bootstrap resamples
+
+67
+00:04:37.400 --> 00:04:41.120
+is the first thing you always want to draw
+a density estimate or a histogram of them.
+
+68
+00:04:42.760 --> 00:04:46.570
+But you also could calculate their
+standard deviation which will give you
+
+69
+00:04:46.570 --> 00:04:51.068
+a standard error of the median
+an estimated standard error of the median.
+
+70
+00:04:52.210 --> 00:04:56.608
+You could take quantiles of your
+bootstrap re-sampled medians and, say,
+
+71
+00:04:56.608 --> 00:04:59.975
+for example, the 2.5th and
+97.5th quantile, and
+
+72
+00:04:59.975 --> 00:05:05.010
+those form are so-called bootstrap
+confidence interval for the median.
+
+73
+00:05:05.010 --> 00:05:09.917
+So notice what we've done in this process
+is we've figured out a very easy way
+
+74
+00:05:09.917 --> 00:05:13.089
+to develop a confidence interval for
+the median,
+
+75
+00:05:13.089 --> 00:05:16.508
+without having to do anything
+like fancy anstotics.
+
+76
+00:05:20.327 --> 00:05:23.079
+Let's go through some quick example code.
+
+77
+00:05:23.079 --> 00:05:26.820
+Remember the father son data.
+
+78
+00:05:26.820 --> 00:05:29.610
+Where our x, is our sons' heights.
+
+79
+00:05:29.610 --> 00:05:36.090
+We might, remember we assigned this
+vector X to be the sons' heights.
+
+80
+00:05:36.090 --> 00:05:37.881
+I'm going to define B to be 10,000,
+
+81
+00:05:37.881 --> 00:05:40.520
+that's going to be my number
+of bootstrap resamples.
+
+82
+00:05:40.520 --> 00:05:43.700
+And I've already previously
+defined N as the length of X,
+
+83
+00:05:43.700 --> 00:05:45.680
+the number of observations that I have.
+
+84
+00:05:47.420 --> 00:05:52.960
+So, if I want to draw N complete
+data sets with replacement,
+
+85
+00:05:52.960 --> 00:06:00.540
+a B complete data sets with replacement
+from X, then I need N times B draws.
+
+86
+00:06:00.540 --> 00:06:03.860
+The R command sample
+does this where it's X
+
+87
+00:06:04.910 --> 00:06:08.430
+as the vector that I'm sampling from,
+N times B.
+
+88
+00:06:08.430 --> 00:06:12.240
+The number of times that I want to
+draw from it and replace equals true.
+
+89
+00:06:12.240 --> 00:06:15.522
+In this case if I didn't
+have replace equals true,
+
+90
+00:06:15.522 --> 00:06:21.190
+it would give me an error
+because you can't draw N times B
+
+91
+00:06:21.190 --> 00:06:25.550
+elements from X which only has
+N elements without replacement.
+
+92
+00:06:28.580 --> 00:06:32.710
+This now gives me a vector
+of N times B samples from X.
+
+93
+00:06:32.710 --> 00:06:39.660
+And now I'm going to simply arrange them
+into a matrix, with B rows and N columns.
+
+94
+00:06:41.075 --> 00:06:45.575
+So every row now, is a bootstrap resample.
+
+95
+00:06:46.775 --> 00:06:48.205
+And it has N observations.
+
+96
+00:06:50.335 --> 00:06:55.132
+So, I'm going to go along
+the rows in the next line and
+
+97
+00:06:55.132 --> 00:06:56.962
+take the median for each row.
+
+98
+00:06:58.732 --> 00:07:05.162
+When I take my standard deviation
+of my medians, I get 0.08473.
+
+99
+00:07:05.162 --> 00:07:08.982
+This is an estimated standard
+error of the median.
+
+100
+00:07:10.272 --> 00:07:13.090
+If we want a confidence interval for
+the median.
+
+101
+00:07:13.090 --> 00:07:16.030
+I'm going to take my vector
+of re-sampled medians.
+
+102
+00:07:16.030 --> 00:07:18.429
+And I am going to simply
+take the quantiles.
+
+103
+00:07:18.429 --> 00:07:23.391
+And I want a 95% intervals, so
+I am going to take the 2.5 and
+
+104
+00:07:23.391 --> 00:07:25.499
+the 97.5 quantiles.
+
+105
+00:07:25.499 --> 00:07:29.258
+It gives a fairly tight confidence
+interval in this case because
+
+106
+00:07:29.258 --> 00:07:31.896
+there's lots and lots of observed data.
+
+107
+00:07:36.679 --> 00:07:39.162
+Here's my histogram of
+bootstrap resamples, and
+
+108
+00:07:39.162 --> 00:07:41.530
+this is just always a good thing to do.
+
+109
+00:07:41.530 --> 00:07:45.800
+I did it with ggplot, and so
+here you see me assigning g
+
+110
+00:07:45.800 --> 00:07:50.855
+the output of the ggplot function.
+
+111
+00:07:50.855 --> 00:07:55.890
+Gggplot works on data frames, so I define
+a data frame as my collection of medians.
+
+112
+00:07:57.040 --> 00:08:00.600
+And then my aesthetic my X
+variable is the medians,
+
+113
+00:08:00.600 --> 00:08:04.260
+then I'm going to add to my plot I'm
+going to add a layer that is a histogram,
+
+114
+00:08:04.260 --> 00:08:09.250
+the black means the bars,
+the outside of the bars are black.
+
+115
+00:08:09.250 --> 00:08:13.335
+Fill being light blue means the inside of
+the bars I wanted to be light blue, and
+
+116
+00:08:13.335 --> 00:08:18.530
+binwidth talks about the width of
+the bins to create my his, histogram.
+
+117
+00:08:19.530 --> 00:08:22.340
+Then I type G to actually show the plot.
+
+118
+00:08:24.290 --> 00:08:30.120
+So this plot is an estimate, of
+the sampling distribution of the median.
+
+119
+00:08:32.020 --> 00:08:36.670
+If we had the true
+population distribution, and
+
+120
+00:08:36.670 --> 00:08:39.440
+we were to sample over and over again.
+
+121
+00:08:39.440 --> 00:08:44.180
+This would be a very good
+estimate up to Monte Carlo error
+
+122
+00:08:44.180 --> 00:08:45.790
+of the sampling
+distribution of the median.
+
+123
+00:08:46.800 --> 00:08:50.170
+Instead, we don't have the exact
+population distribution we've replaced it
+
+124
+00:08:50.170 --> 00:08:54.660
+with the bootstrap principle of
+resampling from the observed data.
+
+125
+00:08:54.660 --> 00:08:58.730
+And now instead we just get
+this approximate, distribution
+
+126
+00:09:00.270 --> 00:09:04.000
+of this, this approximate sample
+distribution of the median.
+
+127
+00:09:07.920 --> 00:09:10.900
+So a couple of final
+notes on the bootstrap.
+
+128
+00:09:10.900 --> 00:09:13.590
+The way in which we presented
+the bootstrap here is the so
+
+129
+00:09:13.590 --> 00:09:15.240
+called non-parametric bootstrap.
+
+130
+00:09:18.510 --> 00:09:22.468
+The confidence interval that I
+showed you just taking the 2.5th and
+
+131
+00:09:22.468 --> 00:09:27.850
+97.5th percentiles is actually a somewhat
+poorly performing confidence interval,
+
+132
+00:09:27.850 --> 00:09:30.170
+and you can improve on it very easily.
+
+133
+00:09:30.170 --> 00:09:34.490
+The one I would recommend, is called the
+bias-corrected and accelerated interval,
+
+134
+00:09:34.490 --> 00:09:40.124
+BCa interval, and it's very easy to
+implement in the bootstrap package in R.
+
+135
+00:09:40.124 --> 00:09:45.600
+You simply take your
+bootstrap resamples and
+
+136
+00:09:45.600 --> 00:09:49.100
+pass it through this function, and
+it just gives you the BCa interval.
+
+137
+00:09:49.100 --> 00:09:54.220
+It's basically a quick, little fix of what
+quantiles you take to correct for a bias.
+
+138
+00:09:56.740 --> 00:09:57.980
+What I've done here,
+
+139
+00:09:57.980 --> 00:10:02.070
+is I've just given you a very basic
+introduction to the bootstrap.
+
+140
+00:10:02.070 --> 00:10:05.570
+It is a,
+an incredibly useful procedure and
+
+141
+00:10:05.570 --> 00:10:10.830
+it has lots of variations and
+extremely wide applicability and a lot
+
+142
+00:10:10.830 --> 00:10:15.610
+of intricacies when you try to apply it in
+settings like when you have time series.
+
+143
+00:10:15.610 --> 00:10:19.560
+Or when your have a regression model or
+when you have longitudinal or
+
+144
+00:10:19.560 --> 00:10:20.620
+multi level data.

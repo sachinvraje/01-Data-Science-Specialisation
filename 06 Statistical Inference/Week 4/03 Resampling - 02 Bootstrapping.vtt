@@ -1,0 +1,503 @@
+WEBVTT
+
+1
+00:00:00.300 --> 00:00:04.260
+Hi, my name is Brian Caffo and welcome to
+the resampled inference lectures part of
+
+2
+00:00:04.260 --> 00:00:08.470
+the Coursera inference class, which is
+part of our data sign specialization.
+
+3
+00:00:08.470 --> 00:00:13.340
+So the bootstrap,
+is a tremendously important and
+
+4
+00:00:13.340 --> 00:00:16.850
+useful tool for construction confidence
+intervals and standard errors, and
+
+5
+00:00:16.850 --> 00:00:20.319
+basically performing inferences where
+it would otherwise be difficult.
+
+6
+00:00:21.390 --> 00:00:25.730
+Was invented in 1979 by a famous
+statistician named Ephron who's in
+
+7
+00:00:25.730 --> 00:00:30.190
+the Stanford Statistics Department, easily
+one of the top statisticians in history.
+
+8
+00:00:31.480 --> 00:00:35.660
+And I would say the bootstrap is one of
+the, the most important procedures that's
+
+9
+00:00:35.660 --> 00:00:38.690
+been discovered in the,
+in the history of statistics.
+
+10
+00:00:38.690 --> 00:00:44.600
+And, and the reason being that it
+really liberated data analysts,
+
+11
+00:00:44.600 --> 00:00:48.840
+from having to do a lot of mathematics
+in order to perform inferences.
+
+12
+00:00:48.840 --> 00:00:52.540
+So as, just as a simple example, if you
+wanted to do a confidence interval for
+
+13
+00:00:52.540 --> 00:00:56.910
+the median, there are some kind
+of complicated asymptotics that
+
+14
+00:00:56.910 --> 00:00:59.799
+you can appeal to, but
+it involves a lot of mathematics.
+
+15
+00:01:01.040 --> 00:01:04.210
+On the other hand, you can just perform
+a bootstrap and it gives you a confidence
+
+16
+00:01:04.210 --> 00:01:07.770
+interval for the median,
+without having to do all of that work.
+
+17
+00:01:07.770 --> 00:01:13.580
+So it, you know maybe,
+maybe dangerously so but none the less
+
+18
+00:01:13.580 --> 00:01:18.970
+it liberated people from having to do a
+lot of complex mathematics, to understand
+
+19
+00:01:18.970 --> 00:01:24.220
+some distributional properties of
+statistics that they calculated.
+
+20
+00:01:26.630 --> 00:01:32.180
+The phrase bootstrap, comes from that,
+of the dev, the name of the procedure,
+
+21
+00:01:32.180 --> 00:01:36.840
+bootstrap, comes from the phrase, pullings
+one selves up from their own bootstrap.
+
+22
+00:01:36.840 --> 00:01:41.490
+That phrase, I initially thought it came
+from the Baron Munchausen character,
+
+23
+00:01:41.490 --> 00:01:44.740
+which, by the way, if you haven't seen the
+Monty Python movie, you definitely should.
+
+24
+00:01:46.000 --> 00:01:47.380
+I, I, I thought it came from that, but
+
+25
+00:01:47.380 --> 00:01:51.230
+I've since read that it, maybe,
+even existed earlier than that.
+
+26
+00:01:51.230 --> 00:01:54.840
+And the idea of pulling oneselves up
+from one ow, one's own bootstrap,
+
+27
+00:01:54.840 --> 00:01:59.310
+is the idea of doing something
+that's physically impossible.
+
+28
+00:01:59.310 --> 00:02:03.900
+And that's not a terribly appropriate
+name, for what's going in this
+
+29
+00:02:03.900 --> 00:02:08.180
+statistical procedure of the bootstrap,
+because we can draw a direct line.
+
+30
+00:02:08.180 --> 00:02:13.150
+From the information that we're using
+to the inferences that we're making.
+
+31
+00:02:13.150 --> 00:02:18.700
+So, so it's not at all like pulling
+oneself's up from one's own bootstraps.
+
+32
+00:02:18.700 --> 00:02:22.220
+It's quite possible and
+how it's working is pretty clear.
+
+33
+00:02:23.390 --> 00:02:26.410
+So, it's an important technique.
+
+34
+00:02:26.410 --> 00:02:27.150
+It's very liberating.
+
+35
+00:02:27.150 --> 00:02:31.596
+And I think it's also very much so
+in the spirit of data science.
+
+36
+00:02:31.596 --> 00:02:39.280
+So, consider this example imagine if we
+
+37
+00:02:39.280 --> 00:02:44.180
+wanted to evaluate the behavior
+of the average of 50 die rolls.
+
+38
+00:02:44.180 --> 00:02:47.610
+So, our population distribution
+is this left hand distribution.
+
+39
+00:02:47.610 --> 00:02:50.979
+The bar, equally weighted bars
+with the values one through six.
+
+40
+00:02:52.180 --> 00:02:55.520
+And there's a couple of ways
+we might go about doing that.
+
+41
+00:02:55.520 --> 00:02:58.180
+One is we could just try and
+mathematically figure out,
+
+42
+00:02:58.180 --> 00:03:02.180
+what the distribution of the average
+of 50 die rolls is with no simulation,
+
+43
+00:03:02.180 --> 00:03:05.560
+just doing the relevant
+algebraic calculations.
+
+44
+00:03:07.470 --> 00:03:12.260
+Another way to do it would be to
+roll a die 50 times, get an average,
+
+45
+00:03:12.260 --> 00:03:17.250
+and then repeat that process over and over
+and get lot's of averages of 50 die rolls.
+
+46
+00:03:17.250 --> 00:03:21.770
+But, this is predicated on
+us knowing that the true
+
+47
+00:03:21.770 --> 00:03:26.390
+population distribution is one
+sixth of each number, right?
+
+48
+00:03:26.390 --> 00:03:30.050
+But, it does seem to be an easy way to do
+things cause it would be hard to sort of
+
+49
+00:03:30.050 --> 00:03:34.638
+figure out exactly whats the probability
+of getting a of 5.5, right?
+
+50
+00:03:34.638 --> 00:03:39.050
+Instead, it's easier to just
+roll the dice 50 times, take
+
+51
+00:03:40.200 --> 00:03:43.950
+the average, repeat that over and over
+again, and get a pretty good sense of it.
+
+52
+00:03:43.950 --> 00:03:45.730
+Now a lot of these things for
+the average we don't have to do,
+
+53
+00:03:45.730 --> 00:03:48.540
+because we know things about
+the distribution of the average.
+
+54
+00:03:50.050 --> 00:03:51.920
+We know that it's centered
+at the population mean,
+
+55
+00:03:51.920 --> 00:03:54.269
+we know that its variance
+is sigma squared over n.
+
+56
+00:03:55.440 --> 00:03:58.480
+Several things like that, but
+I'm going to talk about it with respect to
+
+57
+00:03:58.480 --> 00:04:00.130
+the average first and
+then you'll see hopefully,
+
+58
+00:04:00.130 --> 00:04:03.860
+how this extends to other
+statistics other than the average.
+
+59
+00:04:03.860 --> 00:04:09.653
+So, let's consider a very similar problem.
+
+60
+00:04:09.653 --> 00:04:13.727
+Imagine if you didn't know whether or
+not the die,
+
+61
+00:04:13.727 --> 00:04:16.961
+that was generating your data was fair.
+
+62
+00:04:16.961 --> 00:04:21.530
+We didn't know that it, the probabilities
+that placed on one, two, three, four,
+
+63
+00:04:21.530 --> 00:04:22.232
+five or six.
+
+64
+00:04:22.232 --> 00:04:25.995
+So, what we have is one sample of size 50,
+so
+
+65
+00:04:25.995 --> 00:04:31.396
+we only have one average,
+not a distribution of average from the,
+
+66
+00:04:31.396 --> 00:04:36.650
+from whatever the die was
+that was generating the data.
+
+67
+00:04:36.650 --> 00:04:39.890
+So here, on the left-hand side,
+I'm showing you the histogram
+
+68
+00:04:41.140 --> 00:04:44.080
+of the various occurrences one,
+two, three, four, five, six for
+
+69
+00:04:44.080 --> 00:04:49.990
+one sample realization that
+we drew from this population.
+
+70
+00:04:49.990 --> 00:04:55.050
+Now, I can't evaluate what's the behavior
+of averages of 50 die rolls from
+
+71
+00:04:55.050 --> 00:04:56.090
+this population.
+
+72
+00:04:56.090 --> 00:04:59.310
+Because, I don't know what the population
+is, I don't what die to roll from.
+
+73
+00:05:01.170 --> 00:05:04.180
+To execute the simulation exercise.
+
+74
+00:05:04.180 --> 00:05:08.370
+So what bootstrapping says is, well,
+why don't we do the next best thing?
+
+75
+00:05:08.370 --> 00:05:13.369
+Why don't we sample from our empirical
+distribution, repeatedly sample?
+
+76
+00:05:14.440 --> 00:05:17.900
+Collections of 50 die rolls not
+from the true distribution, but
+
+77
+00:05:17.900 --> 00:05:19.930
+from whatever our sample
+size 50 estimates.
+
+78
+00:05:19.930 --> 00:05:25.310
+So in this case,
+I would sample from these blue bars
+
+79
+00:05:25.310 --> 00:05:29.400
+with the heights, with the probabilities
+related to the heights and
+
+80
+00:05:29.400 --> 00:05:32.712
+I would do that over and
+over again and I would get averages.
+
+81
+00:05:32.712 --> 00:05:37.041
+Repeated averages of 50 draws
+from this distribution, and
+
+82
+00:05:37.041 --> 00:05:42.036
+that would tell me about the distribution
+of averages even though I only
+
+83
+00:05:42.036 --> 00:05:47.217
+get to observe one real true average
+from the, from the real population.
+
+84
+00:05:47.217 --> 00:05:50.723
+And that's the process of bootstrapping.
+
+85
+00:05:50.723 --> 00:05:55.672
+Mechanically, what we're doing is
+taking each observation, each one, two,
+
+86
+00:05:55.672 --> 00:06:00.396
+three, four, five, or six, that we get,
+and throwing them into a bag, and
+
+87
+00:06:00.396 --> 00:06:02.833
+then drawing out samples of size 50.
+
+88
+00:06:02.833 --> 00:06:06.787
+Where we're drawing with replacements,
+is the same number might,
+
+89
+00:06:06.787 --> 00:06:10.070
+same data point might get taken
+up twice in this process.
+
+90
+00:06:11.600 --> 00:06:13.870
+Sampling from that bag samples of size 50,
+
+91
+00:06:13.870 --> 00:06:18.410
+taking the average and repeating
+that process over and over again.
+
+92
+00:06:18.410 --> 00:06:21.820
+But, the fundamental idea,
+the fundamental idea is,
+
+93
+00:06:23.480 --> 00:06:27.070
+is to exactly replicate
+our simulation experiment.
+
+94
+00:06:27.070 --> 00:06:32.170
+That we would have done if we could
+roll the true population die,
+
+95
+00:06:32.170 --> 00:06:36.930
+with the observed
+distribution generated by
+
+96
+00:06:36.930 --> 00:06:42.210
+the specific one realization of
+50 die rolls that we got, okay?
+
+97
+00:06:42.210 --> 00:06:45.382
+And, so
+that's the basic bootstrap principle,
+
+98
+00:06:45.382 --> 00:06:48.470
+we use our data, our observed data.
+
+99
+00:06:48.470 --> 00:06:52.320
+To construct an estimated population
+distribution, we simulate from
+
+100
+00:06:53.500 --> 00:06:56.810
+that population distribution to
+figure out the distribution,
+
+101
+00:06:56.810 --> 00:07:02.610
+of a statistic that we're interested it,
+and that's the basic idea.
+
+102
+00:07:02.610 --> 00:07:06.200
+So let,
+we'll go through some examples with,
+
+103
+00:07:06.200 --> 00:07:10.456
+with less contrived
+settings than this example.

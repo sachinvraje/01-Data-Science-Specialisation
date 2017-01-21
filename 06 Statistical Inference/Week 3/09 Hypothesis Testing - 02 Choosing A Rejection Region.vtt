@@ -1,0 +1,340 @@
+WEBVTT
+
+1
+00:00:00.200 --> 00:00:00.760
+This test.
+
+2
+00:00:02.600 --> 00:00:05.620
+Consider our respiratory
+disturbance index example again.
+
+3
+00:00:07.040 --> 00:00:11.350
+A reasonable strategy, would be to reject
+the null hypothesis of our sample mean
+
+4
+00:00:11.350 --> 00:00:14.940
+respiratory disturbance index
+was larger than some constant.
+
+5
+00:00:14.940 --> 00:00:17.830
+Let's label that constant C.
+
+6
+00:00:17.830 --> 00:00:20.880
+C will take into account
+the variability of X bar.
+
+7
+00:00:22.920 --> 00:00:28.470
+Typically, C is chosen so that
+the probability of a type one error rate,
+
+8
+00:00:28.470 --> 00:00:30.965
+this probability label is a low number.
+
+9
+00:00:30.965 --> 00:00:35.360
+5% has emerged as sort of
+a benchmark in hypothesis testing.
+
+10
+00:00:35.360 --> 00:00:41.590
+So to repeat, alpha,
+is the type one error rate.
+
+11
+00:00:41.590 --> 00:00:44.880
+Which in other words is, the probability
+of rejecting the null hypothesis when,
+
+12
+00:00:44.880 --> 00:00:46.880
+in fact, the null hypothesis is correct.
+
+13
+00:00:46.880 --> 00:00:50.250
+That's a bad thing, you don't
+want to make these kind of mistakes.
+
+14
+00:00:50.250 --> 00:00:54.230
+But as in our court of law example,
+you don't want to set this rate too low,
+
+15
+00:00:55.410 --> 00:00:58.560
+because then we would never
+reject a null hypothesis.
+
+16
+00:01:00.800 --> 00:01:03.150
+Let's see if we can choose
+this constant C, so
+
+17
+00:01:04.340 --> 00:01:09.185
+that the probability we would reject
+is simply tolerably low, say 5%.
+
+18
+00:01:12.700 --> 00:01:14.500
+The standard error of the mean is 10,
+
+19
+00:01:14.500 --> 00:01:17.790
+the assumed standard
+deviation of the population.
+
+20
+00:01:17.790 --> 00:01:20.900
+And here we haven't drawn a distinction
+as to whether we estimate, or
+
+21
+00:01:20.900 --> 00:01:22.610
+this is just a number that I've given you.
+
+22
+00:01:23.780 --> 00:01:25.350
+Divided by square root 100,
+
+23
+00:01:25.350 --> 00:01:28.660
+that's the square root of the sample size,
+that works out to be 1.
+
+24
+00:01:28.660 --> 00:01:31.782
+Here I just created the settings, so
+it completely worked out to be 1.
+
+25
+00:01:34.238 --> 00:01:38.110
+Under the null hypothesis where
+under H not mute is equal to 30,
+
+26
+00:01:38.110 --> 00:01:43.200
+the distribution of the sample mean
+X bar is normal with a mean of 30,
+
+27
+00:01:43.200 --> 00:01:47.640
+and a variance of one which we just
+calculated as the standard error square of
+
+28
+00:01:47.640 --> 00:01:49.960
+the standard error of
+the mean in the line above.
+
+29
+00:01:51.200 --> 00:01:53.880
+So, we want to choose the constant C.
+
+30
+00:01:53.880 --> 00:01:57.230
+So that the probability that
+X bar is larger than C,
+
+31
+00:01:57.230 --> 00:02:00.460
+under the null hypothesis is 5%.
+
+32
+00:02:00.460 --> 00:02:05.075
+So remember the 95th percentile of
+the standard normal distribution is
+
+33
+00:02:05.075 --> 00:02:08.330
+1.645 standard deviations from the mean.
+
+34
+00:02:08.330 --> 00:02:13.370
+So, if we set the constant as
+1.645 standard deviations,
+
+35
+00:02:13.370 --> 00:02:16.360
+from the mean under the null hypothesis.
+
+36
+00:02:16.360 --> 00:02:21.251
+We will have achieved a cup point, so
+that the probability that a randomly drawn
+
+37
+00:02:21.251 --> 00:02:24.615
+mean from this population
+is larger than this is 5%.
+
+38
+00:02:42.534 --> 00:02:48.214
+So in this case it's 30, the hypothesized
+mean under the null hypothesis, plus 1,
+
+39
+00:02:48.214 --> 00:02:53.667
+the standard error of the mean times
+1.645, the number of standard deviations
+
+40
+00:02:53.667 --> 00:02:59.330
+from the mean that we're considering which
+in this case works out to be 31.645.
+
+41
+00:02:59.330 --> 00:03:05.520
+So, just to reiterate, the probability
+that a normal 30 with a mean of 30,
+
+42
+00:03:05.520 --> 00:03:10.580
+and a variance of 1,
+is larger than this constant is 5%.
+
+43
+00:03:10.580 --> 00:03:14.710
+So the rule,
+reject the null hypothesis when
+
+44
+00:03:14.710 --> 00:03:20.150
+you receive an average larger
+than 31.645 has the property.
+
+45
+00:03:20.150 --> 00:03:25.969
+That we will reject 5% of the time
+when the null hypothesis is true.
+
+46
+00:03:25.969 --> 00:03:30.466
+Again, 5% of the time in the instances
+where the sample size is exactly a 100,
+
+47
+00:03:30.466 --> 00:03:33.889
+and the standard deviation of
+the population is exactly 10.
+
+48
+00:03:35.520 --> 00:03:40.790
+In the previous slide, we reverted
+the calculation of the rejection region
+
+49
+00:03:40.790 --> 00:03:43.610
+C back to the original units of the data.
+
+50
+00:03:43.610 --> 00:03:46.730
+However, I hope you got the gist
+from the problem that basically,
+
+51
+00:03:46.730 --> 00:03:51.955
+whenever you are testing greater than,
+if the sample mean is more than
+
+52
+00:03:51.955 --> 00:03:56.920
+1.645 standard errors from the mean, from
+the hypothesized mean, you would reject.
+
+53
+00:03:56.920 --> 00:04:02.660
+And there is nothing particular about 30,
+and the standard error of the mean of 1.
+
+54
+00:04:02.660 --> 00:04:05.920
+So, instead of
+
+55
+00:04:05.920 --> 00:04:10.350
+calculating this constant back on units of
+the original data, we tend to convert our
+
+56
+00:04:10.350 --> 00:04:15.200
+sample mean into however many standard
+errors from the hypothesized mean it is.
+
+57
+00:04:15.200 --> 00:04:17.800
+So, take this specific example.
+
+58
+00:04:17.800 --> 00:04:22.290
+If our observed sample mean was 32,
+our hypothesized mean is 30,
+
+59
+00:04:22.290 --> 00:04:27.565
+and our standard error is 10 divided
+by square root of 100, we're in a real.
+
+60
+00:04:27.565 --> 00:04:30.625
+Problem if 10 would be
+estimated from the data.
+
+61
+00:04:30.625 --> 00:04:34.215
+So, be the sample standard deviation,
+this works out to be 2.
+
+62
+00:04:34.215 --> 00:04:40.932
+This is greater than 1.645 the chance
+of this occurring is less than 5%.
+
+63
+00:04:40.932 --> 00:04:42.992
+So we're going to reject
+the null hypothesis.
+
+64
+00:04:42.992 --> 00:04:46.102
+I, I should reiterate that
+the chance of this occurring,
+
+65
+00:04:46.102 --> 00:04:48.802
+under the null hypothesis is less than 5%.
+
+66
+00:04:48.802 --> 00:04:51.192
+So, we're going to reject
+the null hypothesis,
+
+67
+00:04:51.192 --> 00:04:54.102
+in favor of the alternative hypothesis.
+
+68
+00:04:54.102 --> 00:04:58.110
+So, I've just simply written out this
+rule again here on the final line.
+
+69
+00:04:58.110 --> 00:05:02.500
+We're going to reject whenever X
+bar minus the hypothesized mean,
+
+70
+00:05:02.500 --> 00:05:06.650
+divided by the standard error of the mean,
+is grater than
+
+71
+00:05:06.650 --> 00:05:11.590
+the appropriate upper quantile that
+leaves Alpha percent in the upper tail.

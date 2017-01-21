@@ -1,0 +1,474 @@
+WEBVTT
+
+1
+00:00:01.600 --> 00:00:05.720
+If there were a competition for
+the most useful distribution, that's over.
+
+2
+00:00:05.720 --> 00:00:07.850
+The normal distribution
+won it in a landslide.
+
+3
+00:00:09.560 --> 00:00:12.670
+However, we could have a pretty
+active discussion about what
+
+4
+00:00:12.670 --> 00:00:14.050
+deserves second place.
+
+5
+00:00:14.050 --> 00:00:16.080
+The Poisson distribution would
+certainly be in the running.
+
+6
+00:00:17.340 --> 00:00:19.820
+At any rate, the Poisson distribution
+is used to model counts.
+
+7
+00:00:21.630 --> 00:00:25.820
+The Poisson mask function is lambda
+to the x, e to the negative lambda,
+
+8
+00:00:25.820 --> 00:00:31.150
+all over x factorial where x is
+defined on the non-negative integers.
+
+9
+00:00:31.150 --> 00:00:33.970
+Zero, one, two and so on.
+
+10
+00:00:33.970 --> 00:00:38.299
+The mean of a Poisson random variable
+is lambda, this parameter here.
+
+11
+00:00:40.330 --> 00:00:42.750
+And the variance of this
+distribution is also lambda.
+
+12
+00:00:44.480 --> 00:00:48.350
+So that's an interesting thing to take
+into account when you model things is if
+
+13
+00:00:48.350 --> 00:00:49.070
+they're a poisson.
+
+14
+00:00:50.090 --> 00:00:52.310
+The mean and
+the variance have to be equal.
+
+15
+00:00:52.310 --> 00:00:57.220
+Which of you have repeated poisson data,
+this is a checkable assumption.
+
+16
+00:00:57.220 --> 00:01:00.099
+I'd like to get some instances where
+we use the poisson distribution.
+
+17
+00:01:01.230 --> 00:01:04.170
+Any time you want to model count data,
+the Poisson distribution is a candidate.
+
+18
+00:01:04.170 --> 00:01:06.510
+Especially if those counts are unbounded.
+
+19
+00:01:06.510 --> 00:01:10.760
+There's also another set of
+data that's very common in
+
+20
+00:01:10.760 --> 00:01:12.930
+the field of bio-statistics.
+
+21
+00:01:12.930 --> 00:01:15.550
+So called event time or survival data.
+
+22
+00:01:15.550 --> 00:01:19.830
+So for example, in cancer trials,
+you might be trying out a new therapy.
+
+23
+00:01:19.830 --> 00:01:22.370
+You would model the time until people
+have a recurrence of some symptoms.
+
+24
+00:01:22.370 --> 00:01:26.580
+Some people may not ever
+have that recurrence.
+
+25
+00:01:26.580 --> 00:01:29.260
+And some people may,
+in the time of the study.
+
+26
+00:01:29.260 --> 00:01:33.210
+You need special statistical
+techniques to deal with that so,
+
+27
+00:01:33.210 --> 00:01:36.050
+that so,
+that problem of so-called censoring.
+
+28
+00:01:36.050 --> 00:01:39.760
+And those techniques have a deep
+connection with the Poisson distribution.
+
+29
+00:01:43.590 --> 00:01:45.770
+Whenever you take a sample of people and
+
+30
+00:01:45.770 --> 00:01:48.190
+you classify them according
+to some characteristics, and
+
+31
+00:01:48.190 --> 00:01:51.670
+just look at the counts of
+the people of various hair colors.
+
+32
+00:01:51.670 --> 00:01:53.020
+That's called a contingency table.
+
+33
+00:01:54.030 --> 00:01:56.580
+You can create plot,
+cross classified contingency table for
+
+34
+00:01:56.580 --> 00:01:59.930
+example you were to count
+hair color by race, and
+
+35
+00:01:59.930 --> 00:02:02.760
+each cell would be the specific
+race hair color combination.
+
+36
+00:02:02.760 --> 00:02:05.990
+The count of the people in the sample
+that had that specific combination.
+
+37
+00:02:05.990 --> 00:02:11.250
+The Poisson distribution is the devault,
+
+38
+00:02:11.250 --> 00:02:14.950
+default distribution for
+modeling contingency table data.
+
+39
+00:02:14.950 --> 00:02:17.930
+And it turns out that it has again
+a deep connection with some of
+
+40
+00:02:17.930 --> 00:02:21.980
+the other models you might think to use
+such as multi nomials, binomials, and
+
+41
+00:02:23.986 --> 00:02:28.770
+A final instance where the poisson
+is used, and this is done so
+
+42
+00:02:28.770 --> 00:02:32.740
+commonly it's not even really stated
+as people, people are doing it.
+
+43
+00:02:32.740 --> 00:02:38.950
+Is in instances where you have a binomial,
+but n is very large and p is very small.
+
+44
+00:02:38.950 --> 00:02:42.420
+This, for example, happens very
+commonly in the field of epidemiology.
+
+45
+00:02:43.420 --> 00:02:46.210
+My friend Roger studies air pollution.
+
+46
+00:02:46.210 --> 00:02:49.230
+And he looks at,
+as air pollution rates rise and
+
+47
+00:02:49.230 --> 00:02:52.478
+fall, the number of new cases of say,
+respiratory diseases.
+
+48
+00:02:52.478 --> 00:02:56.320
+In large areas, like cities for example.
+
+49
+00:02:57.660 --> 00:02:59.940
+Well the n is very large,
+the population of the city,
+
+50
+00:02:59.940 --> 00:03:03.330
+but the number of events that he's
+looking at are often quite small.
+
+51
+00:03:03.330 --> 00:03:07.300
+And so
+he models those as if they were poisson.
+
+52
+00:03:08.560 --> 00:03:11.830
+And this is done so commonly in the field
+of epidemiology that people don't even
+
+53
+00:03:11.830 --> 00:03:13.070
+really say when they're doing it.
+
+54
+00:03:13.070 --> 00:03:14.960
+They just do it, and
+everyone knows what they're talking.
+
+55
+00:03:14.960 --> 00:03:18.780
+The Poisson distribution is
+often used to model rates.
+
+56
+00:03:18.780 --> 00:03:21.580
+So for example,
+let's let x be Poisson lambda t.
+
+57
+00:03:21.580 --> 00:03:25.170
+It's important to note that
+lambda here has units.
+
+58
+00:03:25.170 --> 00:03:28.220
+It's the average number
+of events per unit time,
+
+59
+00:03:28.220 --> 00:03:31.740
+where t is expressed in that,
+that particular time unit.
+
+60
+00:03:33.740 --> 00:03:39.240
+So lambda is the expected count per unit
+time, and t is the total monitoring time.
+
+61
+00:03:39.240 --> 00:03:43.939
+So this is a very common use of the
+Poisson distribution for modeling rates.
+
+62
+00:03:45.440 --> 00:03:49.190
+So, imagine if the number of people that
+show up to a bus stop is Poisson with
+
+63
+00:03:49.190 --> 00:03:50.970
+a mean of 2.5 people per hour.
+
+64
+00:03:50.970 --> 00:03:53.960
+We watch the bus stop for four hours.
+
+65
+00:03:53.960 --> 00:03:55.630
+What's the probability that three or
+
+66
+00:03:55.630 --> 00:03:59.080
+four, three or
+fewer people show up the whole time?
+
+67
+00:03:59.080 --> 00:04:03.520
+So that's just the Poi,
+Poisson probability of three, three, two,
+
+68
+00:04:03.520 --> 00:04:04.080
+one, and zero.
+
+69
+00:04:05.110 --> 00:04:07.077
+And the rate we want at
+this point is not 2.5.
+
+70
+00:04:07.077 --> 00:04:08.000
+Cause it's 2.5 events prior.
+
+71
+00:04:08.000 --> 00:04:11.070
+But we watched it for four hours.
+
+72
+00:04:11.070 --> 00:04:13.220
+So we want to put in
+a rate of 2.5 times four.
+
+73
+00:04:13.220 --> 00:04:15.790
+And here we get
+the probability here of 1%.
+
+74
+00:04:15.790 --> 00:04:20.380
+Let's talk about the Poisson
+approximation to the binomial.
+
+75
+00:04:21.380 --> 00:04:23.060
+Particularly when n is large and
+p is small.
+
+76
+00:04:24.570 --> 00:04:27.510
+The Poisson can be a quite accurate
+approximation of the binomial.
+
+77
+00:04:29.030 --> 00:04:33.570
+To tie down notation,
+let's let x be binomial n, p.
+
+78
+00:04:33.570 --> 00:04:36.550
+And define lambda as n times p.
+
+79
+00:04:36.550 --> 00:04:40.170
+But here we're considering circumstances
+where n is very large, and
+
+80
+00:04:40.170 --> 00:04:41.610
+p is very small.
+
+81
+00:04:41.610 --> 00:04:46.520
+Then the proposal is that the probability
+distribution governing acts which is
+
+82
+00:04:46.520 --> 00:04:49.210
+binomial can be well approximated by
+
+83
+00:04:49.210 --> 00:04:56.280
+Poisson probabilities with this
+specific notation lambda as n times p.
+
+84
+00:04:56.280 --> 00:05:01.800
+As our final example to this,
+to discussing the Poisson distribution.
+
+85
+00:05:01.800 --> 00:05:04.160
+Let's go through a Poisson
+approximation of the binomial.
+
+86
+00:05:05.750 --> 00:05:13.770
+So imagine if we were to flip a coin
+with success probability 0.01 500 times.
+
+87
+00:05:13.770 --> 00:05:15.450
+What's the probability of two or
+fewer successes?
+
+88
+00:05:16.490 --> 00:05:20.060
+This is simply to illustrate that I have
+a setting that's a binomial probability
+
+89
+00:05:21.320 --> 00:05:24.100
+with a large n, 500, and a small p, 0.01.
+
+90
+00:05:24.100 --> 00:05:25.140
+And now I want, but
+
+91
+00:05:25.140 --> 00:05:29.450
+it's, it's still in the realm where
+the binomial calculations are possible.
+
+92
+00:05:29.450 --> 00:05:34.590
+So here when I do pbinom, for two,
+because the question asked for two or
+
+93
+00:05:34.590 --> 00:05:39.984
+fewer successes, size equals 500,
+500 coin flips, probability equals .01,
+
+94
+00:05:39.984 --> 00:05:42.929
+suggesting that the true success
+probability of the problem.
+
+95
+00:05:43.990 --> 00:05:46.846
+Of the coin is .01.
+
+96
+00:05:46.846 --> 00:05:48.590
+I get around 12%.
+
+97
+00:05:48.590 --> 00:05:54.120
+When I do the same calculation with
+Poisson, two and then now instead of
+
+98
+00:05:54.120 --> 00:06:02.680
+inputting the size and the probability, I
+put in lambda as n times p 500 times .01.
+
+99
+00:06:02.680 --> 00:06:05.369
+I get 12, 12.5%.
+
+100
+00:06:05.369 --> 00:06:08.470
+So, fairly close.

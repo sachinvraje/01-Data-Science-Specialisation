@@ -1,0 +1,1468 @@
+WEBVTT
+
+1
+00:00:00.610 --> 00:00:03.800
+So let's develop a more practical
+use of the central limit theorem.
+
+2
+00:00:05.030 --> 00:00:08.290
+Recall that the sample meet is
+approximately normal distributed with
+
+3
+00:00:08.290 --> 00:00:12.530
+population mean equal to mu and standard
+deviation equal to the standard error of
+
+4
+00:00:12.530 --> 00:00:14.820
+the means sigma over square root 10.
+
+5
+00:00:14.820 --> 00:00:19.870
+In this distribution, mu plus 2 standard
+errors is pretty far out in the tail.
+
+6
+00:00:19.870 --> 00:00:24.100
+With only a 2.5% chance of a normal being
+larger than two standard deviations in
+
+7
+00:00:24.100 --> 00:00:24.630
+the, the tail.
+
+8
+00:00:26.206 --> 00:00:29.910
+Similarly, mu minus 2 standard error
+is pretty far in the left tail,
+
+9
+00:00:29.910 --> 00:00:33.930
+with only a 2.5% chance of a normal being
+smaller than two standard deviations in
+
+10
+00:00:33.930 --> 00:00:34.610
+the left tail.
+
+11
+00:00:35.700 --> 00:00:40.364
+So the probability that x bar is bigger
+than mu plus 2 standard errors or
+
+12
+00:00:40.364 --> 00:00:43.644
+smaller than mu minus 2
+standard errors is 5%.
+
+13
+00:00:43.644 --> 00:00:49.940
+Where equivalently, the probability
+that mu is between these limits is 95%.
+
+14
+00:00:49.940 --> 00:00:53.790
+We can reverse the role of
+x bar mu without changing
+
+15
+00:00:53.790 --> 00:00:58.330
+the probability inequalities and get the,
+get that the quantity x bar plus or
+
+16
+00:00:58.330 --> 00:01:03.640
+minus 2 standard errors contains
+mu with probability 95%.
+
+17
+00:01:03.640 --> 00:01:07.590
+Remember here, that we're treating
+the interval as random x bar plus or
+
+18
+00:01:07.590 --> 00:01:09.990
+minus 2 standard errors,
+while mu is fixed.
+
+19
+00:01:09.990 --> 00:01:13.450
+So we talked about the probability
+that the interval contains mu.
+
+20
+00:01:16.660 --> 00:01:21.440
+The actual interpretation of this is that
+if we were to repeatedly get samples of
+
+21
+00:01:21.440 --> 00:01:23.670
+size n from this population.
+
+22
+00:01:23.670 --> 00:01:26.332
+Construct a confidence
+interval in each case.
+
+23
+00:01:26.332 --> 00:01:29.780
+About 95% of the intervals we
+obtained would contain mu,
+
+24
+00:01:29.780 --> 00:01:31.550
+the parameter that we're
+trying to estimate.
+
+25
+00:01:33.130 --> 00:01:36.620
+I would note that I get the 2 by
+rounding up the 97.5th quantile,
+
+26
+00:01:36.620 --> 00:01:38.510
+which is closer to 1.96.
+
+27
+00:01:38.510 --> 00:01:45.170
+If you wanted a 90% interval,
+what you need is 5% in either tail.
+
+28
+00:01:45.170 --> 00:01:48.049
+So you would replace the 2 with 1.645.
+
+29
+00:01:48.049 --> 00:01:51.240
+Let's go through a simple example.
+
+30
+00:01:51.240 --> 00:01:54.720
+Consider the father.son data
+from the using r package.
+
+31
+00:01:54.720 --> 00:01:59.220
+To find x to be the son's height,
+I'm simply going to take mean of x plus or
+
+32
+00:01:59.220 --> 00:02:03.580
+minus the 0.975th normal quantile
+times the standard error of the mean.
+
+33
+00:02:03.580 --> 00:02:07.150
+Standard deviation of x divided
+by the square root of n,
+
+34
+00:02:07.150 --> 00:02:09.460
+which is the length of the vector x.
+
+35
+00:02:09.460 --> 00:02:10.343
+I divided by 12 so
+
+36
+00:02:10.343 --> 00:02:13.334
+that my confidence interval will
+be in feet rather than inches.
+
+37
+00:02:13.334 --> 00:02:18.430
+And I get the confidence
+interval 5.710 to 5.738.
+
+38
+00:02:18.430 --> 00:02:21.980
+So if we were willing to assume that
+the sons from this data were and
+
+39
+00:02:21.980 --> 00:02:25.080
+ideal draw from a population of interest.
+
+40
+00:02:25.080 --> 00:02:26.710
+Then the confidence interval for
+
+41
+00:02:26.710 --> 00:02:30.986
+the average height to the sons
+would be 5.71 to 5.74.
+
+42
+00:02:30.986 --> 00:02:34.530
+Let's consider coin flips in
+developing confidence interval for
+
+43
+00:02:34.530 --> 00:02:35.980
+the success probability of the coin.
+
+44
+00:02:37.080 --> 00:02:42.935
+So, in this case, each observation xi, is
+a 0 or 1 with a common success probably p.
+
+45
+00:02:42.935 --> 00:02:46.910
+And remember the variance of coin flip
+was p times 1 minus p, where again,
+
+46
+00:02:46.910 --> 00:02:50.020
+p is the true success
+probability of the coin.
+
+47
+00:02:52.040 --> 00:02:57.350
+Remember, then, the standard error of the
+mean is square p times 1 minus p over n.
+
+48
+00:02:58.840 --> 00:03:01.580
+So the interval takes of the form,
+p hat plus or
+
+49
+00:03:01.580 --> 00:03:05.670
+minus the normal quantile times
+square root p times 1 minus p over n.
+
+50
+00:03:07.760 --> 00:03:10.780
+We don't know p,
+it's what we want to estimate.
+
+51
+00:03:10.780 --> 00:03:14.080
+And so we don't have the standard error,
+but we would replace it by p hat.
+
+52
+00:03:14.080 --> 00:03:18.230
+And this is a confidence interval that
+is called the Wald confidence intervals,
+
+53
+00:03:18.230 --> 00:03:20.130
+named after the great statistician Wald.
+
+54
+00:03:21.660 --> 00:03:27.210
+It turns out p times 1 minus p is as
+large as it can be when p equals a half,
+
+55
+00:03:27.210 --> 00:03:30.970
+so that square root p times
+1 minus p is one-half.
+
+56
+00:03:30.970 --> 00:03:35.960
+And when we multiply it times the 2 in
+the 95% interval, those cancel out and
+
+57
+00:03:35.960 --> 00:03:39.630
+we get that for
+95% intervals, p hat plus or
+
+58
+00:03:39.630 --> 00:03:43.750
+minus 1 over square root n is a very
+quick confidence interval estimate for p.
+
+59
+00:03:45.540 --> 00:03:49.050
+Imagine you were running for political
+office and your campaign advisor told you
+
+60
+00:03:49.050 --> 00:03:53.170
+that in a random sample of 100 likely
+voters, 56 intended to vote for you.
+
+61
+00:03:54.450 --> 00:03:55.030
+Can you relax?
+
+62
+00:03:55.030 --> 00:03:57.338
+Do you have this race in the bag?
+
+63
+00:03:57.338 --> 00:04:00.582
+Is 0.56 out of 100 sampled
+enough evidence to
+
+64
+00:04:00.582 --> 00:04:05.460
+conclude that you'll likely
+get more than 50% of the vote?
+
+65
+00:04:05.460 --> 00:04:07.450
+But you don't have access to a computer or
+calculator.
+
+66
+00:04:08.890 --> 00:04:13.972
+So what you do is you do 1 over
+square root 100, which yields 0.1.
+
+67
+00:04:13.972 --> 00:04:17.248
+So the back-of-the-envelope
+calculation gives
+
+68
+00:04:17.248 --> 00:04:20.905
+an approximate 95%
+interval of 0.46 to 0.66.
+
+69
+00:04:20.905 --> 00:04:25.453
+The confidence interval says that we can't
+rule out possibilities below 0.5 with
+
+70
+00:04:25.453 --> 00:04:26.731
+95% confidence.
+
+71
+00:04:27.760 --> 00:04:30.610
+So, not enough for you to relax, and
+you'd better go do more campaigning.
+
+72
+00:04:32.780 --> 00:04:36.700
+So, some general rough guidelines is that
+you need 100 for one decimal place in
+
+73
+00:04:36.700 --> 00:04:40.760
+a binomial experiment, 10,000 for
+two, and a million for three.
+
+74
+00:04:40.760 --> 00:04:44.600
+Here I just give 1 over
+the square root of a bunch of
+
+75
+00:04:44.600 --> 00:04:46.780
+powers of 10 just to illustrate that.
+
+76
+00:04:49.030 --> 00:04:51.691
+Here I just go through
+the calculation where I
+
+77
+00:04:51.691 --> 00:04:55.062
+plug 0.56 directly into
+the standard area formula.
+
+78
+00:04:55.062 --> 00:04:59.755
+So we have 0.56 plus or minus the relevant
+standard normal quantile times
+
+79
+00:04:59.755 --> 00:05:02.870
+square root 0.56 times 0.44 over 100.
+
+80
+00:05:02.870 --> 00:05:07.470
+This yields the interval 0.46
+to 0.66 just like before.
+
+81
+00:05:08.890 --> 00:05:13.910
+Also the function binom.test with 56
+successes out of 100 trials in grabbing
+
+82
+00:05:13.910 --> 00:05:21.903
+the confidence interval component yields
+a very similar interval, 0.46 to 0.66.
+
+83
+00:05:21.903 --> 00:05:27.290
+The binom.test function is exactly
+the sense that it yields 95% coverage or
+
+84
+00:05:27.290 --> 00:05:30.440
+higher, regardless of the size N.
+
+85
+00:05:30.440 --> 00:05:33.570
+These so called exact procedures
+are a nice compliment to
+
+86
+00:05:33.570 --> 00:05:35.090
+large sample procedures.
+
+87
+00:05:35.090 --> 00:05:38.620
+They tend to involve computations
+that cannot be done by hand and
+
+88
+00:05:38.620 --> 00:05:40.300
+can be conservative.
+
+89
+00:05:40.300 --> 00:05:42.205
+I have wider intervals, but
+
+90
+00:05:42.205 --> 00:05:44.650
+nonetheless they do not rely
+on the Central Limit Theorem.
+
+91
+00:05:45.820 --> 00:05:48.140
+Let's consider a simulation.
+
+92
+00:05:49.198 --> 00:05:52.830
+Here I'm going to do a simulation
+where I flip a coin with a given
+
+93
+00:05:52.830 --> 00:05:55.320
+success probability over and
+over and over again.
+
+94
+00:05:55.320 --> 00:05:58.430
+And calculate the percentage
+of times my walled interval
+
+95
+00:05:58.430 --> 00:06:04.340
+covers the true coin probability
+that we used to generate the data.
+
+96
+00:06:04.340 --> 00:06:07.670
+So I'm going to say, in each one of my
+simulations I'm going to do 20 coin flips.
+
+97
+00:06:08.960 --> 00:06:14.473
+The true values of the success probability
+of the coin that I'd like to look at,
+
+98
+00:06:14.473 --> 00:06:19.768
+vary between 0.1 and 0.9 where I
+step through them by value 0.05.
+
+99
+00:06:19.768 --> 00:06:24.750
+I'm going to do 1,000 simulations.
+
+100
+00:06:24.750 --> 00:06:29.990
+And then I'm going to loop over the,
+these true success probabilities.
+
+101
+00:06:29.990 --> 00:06:35.619
+And for each true success probability
+I'm going to generate 1,000 sets
+
+102
+00:06:35.619 --> 00:06:40.410
+of 10 coin flips where I take
+the sample proportion in each case.
+
+103
+00:06:40.410 --> 00:06:43.490
+Then I'm going to calculate the lower
+limit of the confidence interval in
+
+104
+00:06:43.490 --> 00:06:44.750
+each of those cases.
+
+105
+00:06:44.750 --> 00:06:48.280
+And the upper limit of the confidence
+interval in each of those cases.
+
+106
+00:06:48.280 --> 00:06:51.390
+And I'm going to calculate
+the proportion of times that they can
+
+107
+00:06:51.390 --> 00:06:55.980
+cover that true value of p that
+I used to simulate the data.
+
+108
+00:06:57.420 --> 00:07:02.980
+This will all be in this variable
+that I'm calling coverage.
+
+109
+00:07:02.980 --> 00:07:06.250
+Now what I'd like to do is plot
+coverage as the function of
+
+110
+00:07:06.250 --> 00:07:09.510
+the true success probability
+I used to simulate the data.
+
+111
+00:07:11.050 --> 00:07:16.510
+Here I show the plot of the coverage by
+the true values of p used for simulation.
+
+112
+00:07:16.510 --> 00:07:22.220
+So, for example,
+at the value 0.5 I flipped
+
+113
+00:07:22.220 --> 00:07:28.700
+the coin ten times, took the sample
+proportion, found the confidence interval,
+
+114
+00:07:28.700 --> 00:07:32.650
+and then gave it a one if it
+covered the value 0.5 or not.
+
+115
+00:07:32.650 --> 00:07:34.520
+I did that 1,000 times and
+
+116
+00:07:34.520 --> 00:07:40.150
+in this case over 95% of the time it
+did in fact cover that probability.
+
+117
+00:07:40.150 --> 00:07:45.370
+So it's basically saying if
+the true value of p was 0.5 and
+
+118
+00:07:45.370 --> 00:07:49.740
+I do a confidence interval the coverage
+is actually better than 95% a little bit.
+
+119
+00:07:49.740 --> 00:07:52.230
+There is some Monte Carlo error, right?
+
+120
+00:07:52.230 --> 00:07:55.080
+In that I didn't do an infinite
+number of simulations.
+
+121
+00:07:55.080 --> 00:07:57.980
+I only did 1,000, but
+1,000 is pretty good, right?
+
+122
+00:07:57.980 --> 00:08:01.410
+As we saw in a couple slide ago it's
+giving us a little bit better than one
+
+123
+00:08:01.410 --> 00:08:02.700
+decimal place accuracy.
+
+124
+00:08:04.430 --> 00:08:10.302
+Now, here, it's pretty clear that
+I'm getting nowhere near 95%
+
+125
+00:08:10.302 --> 00:08:17.280
+confidence level for the case where
+the p is around here around 12% or so.
+
+126
+00:08:17.280 --> 00:08:18.300
+Now why is this the case?
+
+127
+00:08:18.300 --> 00:08:21.210
+Why is it that a 95% confidence
+interval procedure is
+
+128
+00:08:21.210 --> 00:08:24.350
+clearly giving us coverage less than 95%?
+
+129
+00:08:24.350 --> 00:08:29.040
+And it's simply because the central
+limit theorem isn't as accurate,
+
+130
+00:08:29.040 --> 00:08:31.240
+isn't as accurate as we need it to be for
+
+131
+00:08:31.240 --> 00:08:35.689
+this specific value of N for
+coins with this specific true probability.
+
+132
+00:08:38.490 --> 00:08:43.400
+So, I'll give you a quick fix to address
+this problem for smaller values of n.
+
+133
+00:08:45.150 --> 00:08:50.070
+The quick fix, is to simply take your
+number of successes x and add 2, and
+
+134
+00:08:50.070 --> 00:08:52.880
+your number of failures and also add 2.
+
+135
+00:08:52.880 --> 00:08:57.890
+So that your p hat is now
+x plus 2 over n plus 4.
+
+136
+00:08:57.890 --> 00:09:00.210
+So adding two successes and failures.
+
+137
+00:09:00.210 --> 00:09:04.010
+Then you just churn through the confidence
+interval procedure as normal.
+
+138
+00:09:04.010 --> 00:09:08.310
+But with this new sample proportion that's
+been shrunk towards 0.5 a little bit.
+
+139
+00:09:08.310 --> 00:09:11.090
+This is called the Agresti/Coull interval.
+
+140
+00:09:11.090 --> 00:09:14.719
+And in a minute we'll show you how
+it performs a little bit better.
+
+141
+00:09:16.880 --> 00:09:21.070
+Before I show the results for adding
+two successes and adding two failures,
+
+142
+00:09:21.070 --> 00:09:25.370
+I want to simply show that the performance
+is the better when n is larger.
+
+143
+00:09:25.370 --> 00:09:28.300
+Here, I've done exactly the same
+simulation that turned n
+
+144
+00:09:28.300 --> 00:09:30.380
+into 100 rather than 20.
+
+145
+00:09:30.380 --> 00:09:35.520
+And here you see the coverage probability
+as a function of the different values of
+
+146
+00:09:35.520 --> 00:09:39.590
+p, only now the only difference is that
+within each conference interval that I
+
+147
+00:09:39.590 --> 00:09:43.330
+simulated, I use a greater
+number of coin flips.
+
+148
+00:09:43.330 --> 00:09:46.850
+So in each case, take for
+example this point right here.
+
+149
+00:09:46.850 --> 00:09:52.460
+For that specific true value of p,
+I simulated 100 coin flips.
+
+150
+00:09:52.460 --> 00:09:55.950
+Took the sample proportion,
+created the confidence interval and
+
+151
+00:09:55.950 --> 00:09:57.802
+saw if it contained this true value of p.
+
+152
+00:09:57.802 --> 00:10:02.536
+In over 95% of the instances
+that was the case.
+
+153
+00:10:02.536 --> 00:10:08.367
+You see here's the 95% line right here and
+you see that the, the coverage probability
+
+154
+00:10:08.367 --> 00:10:14.059
+is fairly close to it throughout, it never
+dips below 90 like it did in the 20 case.
+
+155
+00:10:15.930 --> 00:10:18.030
+Now, let's look back at the 20 case again.
+
+156
+00:10:19.250 --> 00:10:21.420
+So I'm setting n equal to 20.
+
+157
+00:10:21.420 --> 00:10:22.830
+Okay?
+
+158
+00:10:22.830 --> 00:10:26.710
+But now, when I calculate my
+confidence interval here,
+
+159
+00:10:26.710 --> 00:10:31.409
+notice that I am adding two successes and
+two failures.
+
+160
+00:10:33.080 --> 00:10:35.020
+So lets see the performance of that.
+
+161
+00:10:35.020 --> 00:10:39.890
+And you can see that the add two successes
+and add two failures interval, tends to
+
+162
+00:10:39.890 --> 00:10:46.079
+cover the true success probability with
+a higher percentage of time than 95%.
+
+163
+00:10:47.740 --> 00:10:51.410
+This is a little bit better than
+the extremely poor coverage of
+
+164
+00:10:51.410 --> 00:10:55.050
+the Wald interval for
+certain values of the true probability.
+
+165
+00:10:55.050 --> 00:10:57.730
+However, being too conservative,
+in other words,
+
+166
+00:10:57.730 --> 00:11:01.430
+having too high of a coverage rate is
+also not necessarily a good thing,
+
+167
+00:11:01.430 --> 00:11:04.119
+as it implies that the interval's
+probably too wide.
+
+168
+00:11:05.465 --> 00:11:09.200
+Nonetheless I have done some thinking
+about this specific problem and I could
+
+169
+00:11:09.200 --> 00:11:13.730
+give a very categorical recommendation
+that the add 2 successes and
+
+170
+00:11:13.730 --> 00:11:17.360
+2 failures interval should generally
+be used instead of the Wald interval.
+
+171
+00:11:18.820 --> 00:11:23.500
+Lets create a poisson interval
+using the estimate plus or
+
+172
+00:11:23.500 --> 00:11:28.650
+minus normal quantile standard
+error of an estimate formula.
+
+173
+00:11:28.650 --> 00:11:32.140
+This is based on the central limit theorem
+though it's maybe a little less clear how
+
+174
+00:11:32.140 --> 00:11:35.010
+the central limit theorem
+is applying in this case.
+
+175
+00:11:35.010 --> 00:11:36.550
+I'll talk about that
+a little bit in a minute.
+
+176
+00:11:37.790 --> 00:11:42.022
+So let's talk about a nuclear pump
+that failed 5 times out of 94.32 days,
+
+177
+00:11:42.022 --> 00:11:46.160
+given 95% confidence interval for
+the failure rate per day.
+
+178
+00:11:48.230 --> 00:11:51.670
+So I'm going to assume that my
+number of failures is Poisson
+
+179
+00:11:53.910 --> 00:11:58.100
+with failure rate lambda and
+t being the number of days.
+
+180
+00:11:59.380 --> 00:12:02.530
+So my estimate of the failure rate is
+
+181
+00:12:02.530 --> 00:12:07.995
+the number of failures divided
+by the total monitoring time.
+
+182
+00:12:07.995 --> 00:12:13.000
+The variance of this estimate
+turns out to be lambda over t.
+
+183
+00:12:13.000 --> 00:12:18.010
+So that lambda hat over t is our
+empirical variance estimate.
+
+184
+00:12:20.560 --> 00:12:23.210
+Here I just go through
+the calculations in r.
+
+185
+00:12:23.210 --> 00:12:29.984
+I define my number of events here as x
+being 5, the monitoring time is 94.32.
+
+186
+00:12:29.984 --> 00:12:32.430
+My estimate of the rate as x over t, and
+
+187
+00:12:32.430 --> 00:12:36.331
+my confidence interval estimate
+as the rate estimate plus or
+
+188
+00:12:36.331 --> 00:12:41.224
+minus the relevant standard normal
+quantile times the standard error, and
+
+189
+00:12:41.224 --> 00:12:45.710
+then I round it so that I only
+get three decimal place accuracy.
+
+190
+00:12:45.710 --> 00:12:48.350
+So here is my estimate for the rate,
+
+191
+00:12:48.350 --> 00:12:50.860
+my 95% confidence interval estimate for
+the rate.
+
+192
+00:12:52.640 --> 00:12:54.680
+In addition to doing
+a large sample interval,
+
+193
+00:12:54.680 --> 00:12:58.180
+we can do an exact Poisson interval,
+and R has a function for doing it.
+
+194
+00:12:58.180 --> 00:12:59.870
+It's poisson.test.
+
+195
+00:12:59.870 --> 00:13:01.950
+We give it the number of events.
+
+196
+00:13:01.950 --> 00:13:05.800
+And the monitoring time, and then you can
+just grab conference interval compart,
+
+197
+00:13:05.800 --> 00:13:09.820
+part of it, and
+there it gives the exact Poisson interval.
+
+198
+00:13:09.820 --> 00:13:11.320
+What I mean by exact here,
+
+199
+00:13:11.320 --> 00:13:15.060
+again, is that it guarantees the coverage,
+but that might be conservative.
+
+200
+00:13:15.060 --> 00:13:19.450
+It might give you a wider
+interval than necessary, but
+
+201
+00:13:19.450 --> 00:13:22.690
+it will guarantee 95% coverage.
+
+202
+00:13:22.690 --> 00:13:27.510
+Just because we're very interested in
+seeing how confidence intervals perform on
+
+203
+00:13:27.510 --> 00:13:32.120
+repeated samplings since that defines our
+idea of what a confidence interval is.
+
+204
+00:13:32.120 --> 00:13:37.220
+Let's repeat the process that we did for
+the coin, for the Poisson coverage rate.
+
+205
+00:13:37.220 --> 00:13:42.930
+So let's pick a set of lambda values,
+kind of near the ones from our example.
+
+206
+00:13:42.930 --> 00:13:45.170
+Let's do 1,000 simulations.
+
+207
+00:13:45.170 --> 00:13:49.480
+Let's set our monitoring time as 100
+instead of 94 just to make it simple.
+
+208
+00:13:50.690 --> 00:13:53.620
+And then, I'm going to define
+coverage in the same way.
+
+209
+00:13:53.620 --> 00:13:59.280
+I'm going to simulate a bunch of
+Poissons with this particular rate, and
+
+210
+00:13:59.280 --> 00:14:02.340
+then I'm going to divide it
+by the monitoring time to get
+
+211
+00:14:02.340 --> 00:14:06.440
+a vector of lambda hats
+over 1,000 simulations.
+
+212
+00:14:06.440 --> 00:14:11.920
+I'm then going to create my
+95% confidence interval by
+
+213
+00:14:11.920 --> 00:14:15.530
+constructing the lower
+limit where I subtract off
+
+214
+00:14:15.530 --> 00:14:20.170
+the standard normal quantile times
+the standard error, and then a bunch of
+
+215
+00:14:20.170 --> 00:14:25.600
+upper limits where I add the standard
+normal quantile times the standard error.
+
+216
+00:14:25.600 --> 00:14:31.130
+And then I'm going to take
+the percentage of times that my
+
+217
+00:14:31.130 --> 00:14:34.980
+interval contains the true lambda used for
+simulation.
+
+218
+00:14:34.980 --> 00:14:38.230
+And I'm going to do that over
+a series of lambda values and
+
+219
+00:14:38.230 --> 00:14:40.970
+then in the next slide,
+I'm going to show you the plot of
+
+220
+00:14:40.970 --> 00:14:43.980
+the lambda values by the monte
+carlo estimated coverage.
+
+221
+00:14:46.080 --> 00:14:51.840
+So here's the plot of our
+lambda values by the coverage.
+
+222
+00:14:51.840 --> 00:14:56.230
+So every point in this plot is
+an instance where we simulated and
+
+223
+00:14:56.230 --> 00:15:01.290
+repeatedly generated Poisson confidence
+intervals and took the percentage of
+
+224
+00:15:01.290 --> 00:15:05.790
+time that those intervals contained the
+true lambda value used for the simulation.
+
+225
+00:15:05.790 --> 00:15:10.990
+We can see as the lambda values get
+larger, the coverage gets closer to 95%.
+
+226
+00:15:10.990 --> 00:15:15.740
+There is of course some monte carlo air
+because we didn't do an infinite number of
+
+227
+00:15:15.740 --> 00:15:17.720
+simulations, only 1,000.
+
+228
+00:15:17.720 --> 00:15:21.809
+We also see that as lambda as the true
+value of lambda gets smaller,
+
+229
+00:15:23.240 --> 00:15:25.770
+the coverage gets very poor and I don't.
+
+230
+00:15:25.770 --> 00:15:28.070
+You probably can't see this
+number terribly well here.
+
+231
+00:15:28.070 --> 00:15:29.330
+So, I'll zoom in.
+
+232
+00:15:29.330 --> 00:15:31.330
+That coverage is 50% right there.
+
+233
+00:15:31.330 --> 00:15:40.160
+So your purported 95% interval is
+only giving you 50% actual coverage.
+
+234
+00:15:40.160 --> 00:15:45.050
+So our brief simulation here is
+suggesting that for very small values of
+
+235
+00:15:45.050 --> 00:15:49.550
+lambda which we have a good sense of if
+we could have relatively few events for
+
+236
+00:15:49.550 --> 00:15:51.880
+a large amount of monitoring time.
+
+237
+00:15:51.880 --> 00:15:55.070
+For relatively small values
+of lambda we shouldn't be
+
+238
+00:15:55.070 --> 00:15:56.570
+using this asymptotic interval.
+
+239
+00:15:58.010 --> 00:16:01.240
+Since it's not immediately clear how
+the central limit theorem works in
+
+240
+00:16:01.240 --> 00:16:05.950
+the Poisson case I just wanted to
+put up one simulation to show that
+
+241
+00:16:05.950 --> 00:16:09.900
+what's going to infinity to
+make the Poisson case have very
+
+242
+00:16:09.900 --> 00:16:12.850
+good approximations using
+the central limit theorem.
+
+243
+00:16:12.850 --> 00:16:16.200
+And basically as the monitoring
+time goes to infinity,
+
+244
+00:16:16.200 --> 00:16:18.620
+the coverage will converge to 95%.
+
+245
+00:16:18.620 --> 00:16:24.480
+So in this simulation, I changed t from
+100 to 1,000 so that we're monitoring
+
+246
+00:16:24.480 --> 00:16:30.850
+not for a total of 94.32 days, but
+a total monitoring time of the 1,000 days.
+
+247
+00:16:30.850 --> 00:16:34.800
+And here we see that the coverage, if we
+look at the reference line here at 95%,
+
+248
+00:16:34.800 --> 00:16:39.720
+the coverage is much, much,
+much better for most values of lambda.
+
+249
+00:16:39.720 --> 00:16:44.680
+There is some poor coverage down here
+near, near the smaller values of lambda,
+
+250
+00:16:44.680 --> 00:16:48.710
+but we know that this interval has
+problems with small values of lambda.
+
+251
+00:16:48.710 --> 00:16:52.910
+But remember in this case, we do have
+the exact Poisson interval as an option.
+
+252
+00:16:54.460 --> 00:16:57.910
+So congratulations on making it
+through this marathon lecture.
+
+253
+00:16:57.910 --> 00:17:01.680
+Because there was so much content,
+I'd like to summarize very briefly.
+
+254
+00:17:01.680 --> 00:17:04.370
+First of all we cover
+the law of large numbers.
+
+255
+00:17:04.370 --> 00:17:08.720
+And that simply states that averages
+of IID random variables converges to
+
+256
+00:17:08.720 --> 00:17:09.750
+the things that they're estimating.
+
+257
+00:17:09.750 --> 00:17:15.180
+I would also add that it also shows
+that Poisson rates converge to the rates
+
+258
+00:17:15.180 --> 00:17:19.410
+that they're estimating, though it's maybe
+a little less clear how that works, but
+
+259
+00:17:19.410 --> 00:17:21.750
+as the monitoring time goes to infinity,
+for example.
+
+260
+00:17:23.280 --> 00:17:26.060
+The central limit theorem is also
+a theorem involving averages and
+
+261
+00:17:26.060 --> 00:17:28.670
+it states that averages
+are approximately normal.
+
+262
+00:17:28.670 --> 00:17:32.520
+With distributions centered at the
+population mean, which we knew regardless
+
+263
+00:17:32.520 --> 00:17:36.210
+of the central limit theorem, and with
+standard deviations equal to the standard
+
+264
+00:17:36.210 --> 00:17:40.360
+error of the mean, which we already
+knew without the central limit theorem.
+
+265
+00:17:40.360 --> 00:17:42.290
+However the central limit
+theorem also tells us
+
+266
+00:17:42.290 --> 00:17:43.610
+that they're approximately normal.
+
+267
+00:17:46.220 --> 00:17:51.180
+However, the central limit theorem doesn't
+give any guarantee that n is large enough
+
+268
+00:17:51.180 --> 00:17:55.090
+for this approximation to be accurate and
+we've seen some instances with confidence
+
+269
+00:17:55.090 --> 00:17:59.630
+intervals where it's very accurate and
+instances where it's less accurate.
+
+270
+00:18:01.390 --> 00:18:04.080
+Speaking of confidence intervals
+taking the mean and adding and
+
+271
+00:18:04.080 --> 00:18:07.980
+subtracting the relevant normal
+quantile times the standard error
+
+272
+00:18:07.980 --> 00:18:10.210
+yields a confidence interval for the mean.
+
+273
+00:18:10.210 --> 00:18:14.850
+And this process of estimate plus or
+minus some sort of quantile times
+
+274
+00:18:14.850 --> 00:18:19.150
+the standard error is our default way for
+creating confidence intervals.
+
+275
+00:18:19.150 --> 00:18:22.190
+Whether it's in this context or
+in our regression class.
+
+276
+00:18:22.190 --> 00:18:24.690
+Or even when we're talking about
+general isolinear models and
+
+277
+00:18:24.690 --> 00:18:26.110
+more complex subjects.
+
+278
+00:18:26.110 --> 00:18:28.250
+We tend to use these so
+called walled intervals.
+
+279
+00:18:30.340 --> 00:18:33.850
+The specific case where we want
+a 95% confidence interval, you can
+
+280
+00:18:33.850 --> 00:18:38.290
+take 2 as the quantile or if you want to
+be a little bit more accurate, use 1.96.
+
+281
+00:18:38.290 --> 00:18:42.124
+Now confidence intervals get wider
+as the coverage increases if
+
+282
+00:18:42.124 --> 00:18:44.830
+you're staying within a single technique.
+
+283
+00:18:46.630 --> 00:18:48.810
+Now why would this be the case?
+
+284
+00:18:48.810 --> 00:18:52.120
+So imagine if someone were to
+put a gun to your head, and say,
+
+285
+00:18:52.120 --> 00:18:55.370
+unless this conference interval contains
+the true parameters it's estimating I'm
+
+286
+00:18:55.370 --> 00:18:59.470
+going to pull the trigger, which is
+a ridiculous circumstance, but humor me.
+
+287
+00:19:01.480 --> 00:19:02.550
+What would you do?
+
+288
+00:19:02.550 --> 00:19:06.420
+Well, you certainly don't want them to,
+to pull the trigger.
+
+289
+00:19:06.420 --> 00:19:07.520
+Right?
+So you, what you would do
+
+290
+00:19:07.520 --> 00:19:11.080
+is you'd make the conference intervals
+as wide as you possibly could.
+
+291
+00:19:11.080 --> 00:19:15.150
+Because you want to be very sure that
+the interval contains the parameter.
+
+292
+00:19:15.150 --> 00:19:17.360
+So that's the same thing
+that the mathematics does.
+
+293
+00:19:17.360 --> 00:19:21.240
+The more sure you want the, the more sure
+that you want to be that the interval will
+
+294
+00:19:21.240 --> 00:19:25.060
+contain the parameter, the wider
+the procedure makes the interval.
+
+295
+00:19:25.060 --> 00:19:29.770
+If you don't care at all, if you want
+a 2% confidence interval and only,
+
+296
+00:19:29.770 --> 00:19:33.459
+then you're going to have an interval
+that's very close to the mean itself.
+
+297
+00:19:36.310 --> 00:19:39.500
+Now the Poisson and binomial cases
+are discreet cases, and we saw that
+
+298
+00:19:39.500 --> 00:19:44.400
+the central limit theorem can sometimes
+not approximate their distributions well.
+
+299
+00:19:45.620 --> 00:19:48.580
+And in those cases there
+are exact procedures.
+
+300
+00:19:48.580 --> 00:19:50.320
+But we also saw a simple fix for
+
+301
+00:19:50.320 --> 00:19:53.115
+the binomial case if you're
+creating confidence intervals.
+
+302
+00:19:53.115 --> 00:19:55.840
+Where if you add two successes and
+you add two failures,
+
+303
+00:19:55.840 --> 00:19:59.010
+you get a much better confidence
+interval with out much extra thinking or
+
+304
+00:19:59.010 --> 00:20:02.780
+having to resort to something
+that requires a computer.
+
+305
+00:20:02.780 --> 00:20:07.410
+So you can still do that calculation
+by hand if you happen to be or, or
+
+306
+00:20:07.410 --> 00:20:10.250
+in your head if you,
+if you happen to be not around a computer.

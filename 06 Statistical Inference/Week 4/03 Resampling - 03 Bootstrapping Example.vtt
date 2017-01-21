@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:01.640 --> 00:00:07.860
+So, let's consider the data, the library
+using r, and then the father.son data.
+
+2
+00:00:07.860 --> 00:00:13.530
+And I'm, just to make my life a little
+bit easier, I'm going to define x here,
+
+3
+00:00:13.530 --> 00:00:18.110
+as the son's heights, just so I don't
+have to keep referring to the data frame.
+
+4
+00:00:19.300 --> 00:00:20.849
+Let's let n be the number of observations.
+
+5
+00:00:21.980 --> 00:00:24.880
+And then I'm going to do
+10,000 boot strap resamples.
+
+6
+00:00:26.190 --> 00:00:31.100
+So what I'm going to do now,
+is the sample command.
+
+7
+00:00:31.100 --> 00:00:34.460
+So when I say sample x,
+that means draw from x,
+
+8
+00:00:35.520 --> 00:00:40.980
+n times b numbers of resamples.
+
+9
+00:00:40.980 --> 00:00:44.840
+Where in every case when I,
+because I put replace equals true,
+
+10
+00:00:44.840 --> 00:00:49.330
+every time I take an observation,
+I take a son's height out of the bag.
+
+11
+00:00:49.330 --> 00:00:51.490
+I put it back in okay.
+
+12
+00:00:51.490 --> 00:00:52.330
+So what is this?
+
+13
+00:00:52.330 --> 00:00:56.830
+This is simulating from an empirical
+distribution defined by our data
+
+14
+00:00:56.830 --> 00:01:00.310
+that puts probability 1 over n
+on each observed data point.
+
+15
+00:01:00.310 --> 00:01:01.880
+This is called the empirical.
+
+16
+00:01:01.880 --> 00:01:02.530
+Distribution.
+
+17
+00:01:04.430 --> 00:01:10.090
+And then I'm going to arrange these in
+a matrix with number of bootstrap rows and
+
+18
+00:01:10.090 --> 00:01:12.040
+number of sample sizes columns.
+
+19
+00:01:13.060 --> 00:01:18.640
+And so what that means is, every row of
+this matrix that I'm calling resamples
+
+20
+00:01:19.760 --> 00:01:25.310
+is now a completely resampled data
+set where I took my original data.
+
+21
+00:01:25.310 --> 00:01:30.160
+And I drew a sample of size n with
+replacement from that dataset.
+
+22
+00:01:31.370 --> 00:01:36.040
+And that's exactly equivalent to
+regenerating a sample of size n from
+
+23
+00:01:36.040 --> 00:01:41.440
+a distribution that places probability
+of 1 over n on each observed data point.
+
+24
+00:01:41.440 --> 00:01:44.609
+And then let's suppose the statistic
+I'm interested in is the median.
+
+25
+00:01:45.630 --> 00:01:48.850
+And so I'm going to take for
+each of these data sets,
+
+26
+00:01:48.850 --> 00:01:51.830
+each of these resampled data sets,
+and I'm going to apply the median, and
+
+27
+00:01:52.830 --> 00:01:57.900
+that's what this final
+apply statement does.
+
+28
+00:01:57.900 --> 00:02:01.870
+So here's a density estimate
+from the resample of medians.
+
+29
+00:02:01.870 --> 00:02:04.749
+I've drawn a vertical line for
+our observed median.
+
+30
+00:02:05.860 --> 00:02:08.800
+So what we've done in this case
+
+31
+00:02:08.800 --> 00:02:13.850
+is we've taken our vector of sun's
+heights and we've repeatedly drawn
+
+32
+00:02:13.850 --> 00:02:18.710
+from those collection of sun's heights
+a new data set of the same length.
+
+33
+00:02:18.710 --> 00:02:25.530
+Where we drew with replacement with equal
+probability on every observed data point.
+
+34
+00:02:25.530 --> 00:02:28.900
+Then for each one of these new data
+sets we calculated the median,
+
+35
+00:02:28.900 --> 00:02:33.940
+we did that 10,000 times, and
+we got a collection of medians.
+
+36
+00:02:33.940 --> 00:02:38.670
+What this density estimate is,
+is an estimate
+
+37
+00:02:38.670 --> 00:02:43.240
+of the distribution of
+medians where we don't
+
+38
+00:02:43.240 --> 00:02:47.435
+know the actual population distribution
+we're estimating from our observed.
+
+39
+00:02:47.435 --> 00:02:48.492
+Data.
+
+40
+00:02:48.492 --> 00:02:54.440
+This is the central quantity
+used in bootstrapping.
+
+41
+00:02:54.440 --> 00:02:57.940
+For example, in the case, we're
+bootstrapping the median, and we might
+
+42
+00:02:57.940 --> 00:03:02.620
+want to do something like take the
+standard deviation of this distribution,
+
+43
+00:03:02.620 --> 00:03:06.500
+and that is going to be an estimate of
+the standard error of the median, right?
+
+44
+00:03:06.500 --> 00:03:10.320
+The standard deviation of the sampling
+distribution of the median.
+
+45
+00:03:10.320 --> 00:03:14.510
+We could do for example, quantiles to
+get confidence interval estimates, and
+
+46
+00:03:14.510 --> 00:03:20.110
+these are the sorts of things that you do
+with your bootstrap resample distribution.
+
+47
+00:03:20.110 --> 00:03:22.680
+So let's go through a couple
+of the principles and
+
+48
+00:03:22.680 --> 00:03:26.420
+just rediscuss broot,
+bootstrapping generally, and
+
+49
+00:03:26.420 --> 00:03:28.530
+then we'll work through this
+example a little bit more.

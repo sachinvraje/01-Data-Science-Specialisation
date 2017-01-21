@@ -1,0 +1,281 @@
+WEBVTT
+
+1
+00:00:00.900 --> 00:00:04.180
+And so
+let's actually go through a data example.
+
+2
+00:00:04.180 --> 00:00:08.446
+Here I'm going to use the father son
+data from the using our data set, and
+
+3
+00:00:08.446 --> 00:00:11.337
+I'm going to grab the,
+the son's height, and
+
+4
+00:00:11.337 --> 00:00:14.610
+n is going to be the number
+of observations like always.
+
+5
+00:00:16.110 --> 00:00:20.030
+If I were to plot a histogram of the son's
+height, I get this distribution right
+
+6
+00:00:20.030 --> 00:00:24.100
+here and I overlayed the histogram
+with a continuous density estimate.
+
+7
+00:00:24.100 --> 00:00:25.170
+It's quite Gaussian looking.
+
+8
+00:00:26.420 --> 00:00:31.780
+Now this density estimate is
+an estimate of the population density.
+
+9
+00:00:31.780 --> 00:00:33.450
+We don't have the population
+density because we
+
+10
+00:00:33.450 --> 00:00:35.000
+didn't collect an infinite amount of data.
+
+11
+00:00:36.470 --> 00:00:41.130
+Variability of this histogram, which is
+what the sample variance is calculating.
+
+12
+00:00:41.130 --> 00:00:45.950
+It's estimating the variability
+of son's height
+
+13
+00:00:45.950 --> 00:00:47.860
+from whatever population
+this was drawn from.
+
+14
+00:00:47.860 --> 00:00:49.380
+Let's assume that it was a random sample.
+
+15
+00:00:51.400 --> 00:00:54.450
+Let's just go through a couple of
+numbers we can calculate here.
+
+16
+00:00:54.450 --> 00:00:57.280
+So here I took variance of x,
+variance of x divided by n,
+
+17
+00:00:57.280 --> 00:01:01.580
+standard deviation of x, standard
+deviation of x divided by square root n.
+
+18
+00:01:01.580 --> 00:01:06.146
+I rounded all the numbers
+to two decimal places.
+
+19
+00:01:06.146 --> 00:01:10.200
+So 7.92 and 2.81, the variance of x and
+the standard deviation of x,
+
+20
+00:01:10.200 --> 00:01:15.690
+are simply talking about the variability
+in son's heights from this data set,
+
+21
+00:01:15.690 --> 00:01:17.580
+which are estimates of the variability.
+
+22
+00:01:17.580 --> 00:01:20.850
+The population variability of
+sons heights if you're willing to
+
+23
+00:01:20.850 --> 00:01:25.418
+assume that these sons are a random
+sample from some meaningful population.
+
+24
+00:01:25.418 --> 00:01:30.123
+I like 2.81 in this case over 7.92 because
+
+25
+00:01:30.123 --> 00:01:34.800
+7.92 is expressed in inches squared and
+2.81 is expressed in inches, so
+
+26
+00:01:34.800 --> 00:01:37.538
+I like to work in the units
+rather than the units squared.
+
+27
+00:01:37.538 --> 00:01:44.830
+0.01 and 0.09 are no longer talking about
+the variability in the children's heights.
+
+28
+00:01:44.830 --> 00:01:48.730
+It's talking about the variability in
+averages of ten children's heights.
+
+29
+00:01:49.990 --> 00:01:53.490
+So 0.09 is probably the most meaningful
+one, and it's the standard error.
+
+30
+00:01:53.490 --> 00:01:54.250
+Or in other words,
+
+31
+00:01:54.250 --> 00:02:00.290
+the standard deviation in the distribution
+of averages of n children's heights.
+
+32
+00:02:02.620 --> 00:02:05.278
+And a, again,
+in this case it's an estimate of that, but
+
+33
+00:02:05.278 --> 00:02:07.959
+it's the best estimate we have
+from the data that we have.
+
+34
+00:02:10.548 --> 00:02:13.745
+So let's summarize what we know
+because we covered a lot of
+
+35
+00:02:13.745 --> 00:02:16.530
+somewhat complicated
+topics in this lecture.
+
+36
+00:02:16.530 --> 00:02:20.410
+And I would say, fundamentally,
+what differentiates understanding
+
+37
+00:02:20.410 --> 00:02:24.300
+statistics from not understanding
+statistics is understanding variability.
+
+38
+00:02:24.300 --> 00:02:29.710
+So if I were to say, what's the most
+important lecture, it might be this one.
+
+39
+00:02:30.890 --> 00:02:32.630
+So let's summarize what we know.
+
+40
+00:02:32.630 --> 00:02:35.280
+The sample variance is an estimate
+of the population variance.
+
+41
+00:02:36.330 --> 00:02:39.350
+The distribution of the sample variance
+is centered at what it's estimating.
+
+42
+00:02:39.350 --> 00:02:40.180
+This is a good thing.
+
+43
+00:02:40.180 --> 00:02:41.840
+This means that it's unbiased.
+
+44
+00:02:43.030 --> 00:02:47.020
+And it gets more concentrated about what
+it's estimating as you collect more data.
+
+45
+00:02:47.020 --> 00:02:48.840
+Again, this is a good thing.
+
+46
+00:02:48.840 --> 00:02:51.140
+This means if we go to the trouble
+of collecting more data,
+
+47
+00:02:51.140 --> 00:02:54.400
+we get a better estimate, that
+the distribution of the sample variance is
+
+48
+00:02:54.400 --> 00:02:56.350
+more concentrated about
+what it's estimating.
+
+49
+00:02:57.610 --> 00:03:00.060
+We also know a lot about
+the distribution of sample means.
+
+50
+00:03:00.060 --> 00:03:02.550
+We know where it was centered
+at from the last lecture, but
+
+51
+00:03:02.550 --> 00:03:06.580
+we also know in this lecture
+that the variance of
+
+52
+00:03:06.580 --> 00:03:11.080
+the sample mean is the population variance
+divided by n and the square root of it,
+
+53
+00:03:11.080 --> 00:03:14.910
+sigma divided by square root n,
+is the so called standard error.
+
+54
+00:03:14.910 --> 00:03:19.810
+These quantities represent how variable
+averages are drawn from this population.
+
+55
+00:03:19.810 --> 00:03:24.360
+And it turns out that we can say a lot
+of about the distribution of averages
+
+56
+00:03:24.360 --> 00:03:27.930
+from random samples even though we only
+get to look at one on a given data set.
+
+57
+00:03:27.930 --> 00:03:30.572
+And this gives a lot of work,
+a lot to work with and
+
+58
+00:03:30.572 --> 00:03:33.007
+it forms a lot of the foundation
+of ways in which we can perform

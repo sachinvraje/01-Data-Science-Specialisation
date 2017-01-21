@@ -1,0 +1,252 @@
+WEBVTT
+
+1
+00:00:01.350 --> 00:00:05.990
+In R typing data sleep brings up the sleep
+data that was originally analyzed in
+
+2
+00:00:05.990 --> 00:00:07.350
+Gosset's Biometrika paper.
+
+3
+00:00:07.350 --> 00:00:12.010
+This shows the increase in hours slept for
+patients onto sleep medications.
+
+4
+00:00:13.450 --> 00:00:16.520
+R treats the data as two groups,
+rather than paired.
+
+5
+00:00:16.520 --> 00:00:20.031
+But here we're going to treat
+the data is if they were paired.
+
+6
+00:00:20.031 --> 00:00:28.168
+Here, data sleep will load the data.
+
+7
+00:00:28.168 --> 00:00:33.040
+Head sleep will first, will print
+the first few rows of the data frame.
+
+8
+00:00:34.440 --> 00:00:37.255
+Variable extra, is the extra hours slept.
+
+9
+00:00:37.255 --> 00:00:40.730
+Group is a group ID,
+and ID is a subject ID.
+
+10
+00:00:40.730 --> 00:00:45.900
+So, 1 through 10 will
+give you subjects ID,
+
+11
+00:00:45.900 --> 00:00:52.345
+1 through 10 observation,
+11 is subject ID 1 again, and so on.
+
+12
+00:00:52.345 --> 00:00:58.917
+[SOUND] Here I plot the data,
+and again the code for
+
+13
+00:00:58.917 --> 00:01:04.857
+the plot can be found in
+the R mark down file.
+
+14
+00:01:04.857 --> 00:01:07.530
+I've connected each subject with a line.
+
+15
+00:01:09.390 --> 00:01:12.150
+I think it's pretty clear here,
+the benefit from
+
+16
+00:01:14.850 --> 00:01:18.600
+acknowledging that these are repeat
+measurements on the same subjects.
+
+17
+00:01:20.680 --> 00:01:24.700
+If you do not acknowledge that, then what
+you are comparing is this variation,
+
+18
+00:01:24.700 --> 00:01:29.480
+group one variation, minus this variation,
+group two variation.
+
+19
+00:01:29.480 --> 00:01:35.990
+If you do acknowledge that,
+then you are comparing
+
+20
+00:01:35.990 --> 00:01:41.350
+these subject specific differences,
+when comparing across groups.
+
+21
+00:01:41.350 --> 00:01:45.793
+But a variation in these differences is
+much lower because observations within
+
+22
+00:01:45.793 --> 00:01:47.658
+a subject are quite correlated.
+
+23
+00:01:54.461 --> 00:02:00.700
+Here I grab the first ten measurements,
+which are subjects 1 through 10.
+
+24
+00:02:00.700 --> 00:02:04.080
+And here I grab the latter
+ten measurements,
+
+25
+00:02:04.080 --> 00:02:06.620
+which is subjects 1 through
+10 on the second medication.
+
+26
+00:02:06.620 --> 00:02:12.100
+The difference then is
+group 2 minus group 1.
+
+27
+00:02:12.100 --> 00:02:14.370
+Here, the vector y subdra,
+
+28
+00:02:14.370 --> 00:02:18.480
+subtraction making sense, because I
+grabbed them in the specific order.
+
+29
+00:02:20.850 --> 00:02:22.490
+The mean of the difference is just mean,
+
+30
+00:02:22.490 --> 00:02:26.630
+and the standard deviation
+of the difference can be
+
+31
+00:02:27.880 --> 00:02:32.220
+obtained with the function sd,
+here I define n to be 10.
+
+32
+00:02:32.220 --> 00:02:34.626
+My t confidence interval
+can be given like this.
+
+33
+00:02:34.626 --> 00:02:40.660
+It is the mean plus or
+minus the relevant t quantile,
+
+34
+00:02:40.660 --> 00:02:45.250
+evaluated at n minus 1 degrees of freedom
+times the standard error of the interval.
+
+35
+00:02:46.940 --> 00:02:49.050
+Of course,
+we don't want to do this every time, so
+
+36
+00:02:49.050 --> 00:02:53.990
+we can just do the function t
+test of difference, and t test
+
+37
+00:02:55.040 --> 00:02:59.920
+where we pass it the two vectors, and
+give it the argument paired equals true.
+
+38
+00:02:59.920 --> 00:03:05.472
+Or you can actually give it a form
+of model statement where you say,
+
+39
+00:03:05.472 --> 00:03:10.430
+outcome extra is a function of
+the group where paired equals
+
+40
+00:03:10.430 --> 00:03:14.610
+true the value weighted for
+the data frame sleep.
+
+41
+00:03:14.610 --> 00:03:20.584
+[SOUND] I formatted these
+results a little bit,
+
+42
+00:03:20.584 --> 00:03:28.100
+because it gives you much,
+much, more output than this.
+
+43
+00:03:28.100 --> 00:03:30.641
+But I concatenated them into a matrix, and
+
+44
+00:03:30.641 --> 00:03:34.602
+you can see that all those commands
+give you about the same result.
+
+45
+00:03:34.602 --> 00:03:39.820
+The difference in the groups being
+somewhere between 0.7 and 2.46.
+
+46
+00:03:39.820 --> 00:03:43.690
+So, because this is a confidence
+interval the interpretation is,
+
+47
+00:03:43.690 --> 00:03:49.150
+that if we were to repeatedly perform
+this procedure on independent samples,
+
+48
+00:03:49.150 --> 00:03:51.280
+about 95% of the intervals
+that we obtained.
+
+49
+00:03:51.280 --> 00:03:55.370
+Would contain the true mean
+difference that we're estimating.
+
+50
+00:03:55.370 --> 00:03:59.655
+This, of course, assumes that these
+subjects are relevant sample from
+
+51
+00:03:59.655 --> 00:04:03.391
+a population of subdec,
+subjects that we're interested in.
+
+52
+00:04:06.246 --> 00:04:06.799
+Suppose

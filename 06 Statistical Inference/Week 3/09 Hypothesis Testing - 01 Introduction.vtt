@@ -1,0 +1,332 @@
+WEBVTT
+
+1
+00:00:00.610 --> 00:00:03.550
+Hi, and welcome to the lecture
+on hypothesis testing
+
+2
+00:00:03.550 --> 00:00:06.500
+as part of
+the Statistical Inference Coursera class.
+
+3
+00:00:06.500 --> 00:00:08.000
+My name is Brian Caffo and
+
+4
+00:00:08.000 --> 00:00:11.492
+this class is co-taught by my
+co-instructors Jeff Leek and Roger Peng.
+
+5
+00:00:11.492 --> 00:00:14.068
+We're all in the department
+of Biostatistics at
+
+6
+00:00:14.068 --> 00:00:16.960
+the Johns Hopkins Bloomberg School
+of Public Health.
+
+7
+00:00:16.960 --> 00:00:18.970
+Given our existing work
+on confidence intervals,
+
+8
+00:00:18.970 --> 00:00:22.180
+hypothesis testing will be
+relatively easy to develop.
+
+9
+00:00:23.250 --> 00:00:26.470
+Hypothesis testing is concerned
+with making decisions using data.
+
+10
+00:00:27.690 --> 00:00:32.360
+Typically, hypothesis testing starts with
+a null hypothesis which is specified,
+
+11
+00:00:32.360 --> 00:00:34.500
+that represents the status quo.
+
+12
+00:00:34.500 --> 00:00:38.672
+It's usually labeled H0,
+pronounced H naught.
+
+13
+00:00:38.672 --> 00:00:42.405
+The null hypothesis, H naught,
+is assumed to be true, and
+
+14
+00:00:42.405 --> 00:00:47.112
+statistical evidence is required to
+reject it in favor of an alternative or
+
+15
+00:00:47.112 --> 00:00:49.380
+so-called research hypothesis.
+
+16
+00:00:49.380 --> 00:00:52.290
+Let's motivate hypothesis testing
+with a straightforward example.
+
+17
+00:00:52.290 --> 00:00:56.915
+A respiratory disturbance index,
+RDI, of more than 30 events per
+
+18
+00:00:56.915 --> 00:01:01.555
+hour is considered evidence of
+severe sleep disordered breathing.
+
+19
+00:01:01.555 --> 00:01:06.149
+Suppose that in a sample of 100 overweight
+subjects with other risk factors for sleep
+
+20
+00:01:06.149 --> 00:01:10.745
+disordered breathing in a sleep clinic,
+the mean RDI was 32 events per hour.
+
+21
+00:01:10.745 --> 00:01:13.790
+So the sample mean RDI
+was 32 events per hour,
+
+22
+00:01:13.790 --> 00:01:16.100
+with a standard deviation
+of 10 events per hour.
+
+23
+00:01:17.180 --> 00:01:22.020
+We'd like to test whether or not
+the population mean for this population
+
+24
+00:01:22.020 --> 00:01:26.650
+that we're drawing the sample from
+is equal to 30, our benchmark for
+
+25
+00:01:26.650 --> 00:01:30.790
+severe sleep disordered breathing, or
+whether or not it's larger than 30.
+
+26
+00:01:30.790 --> 00:01:34.780
+So we specify that as H0,
+mu equal to 30, and
+
+27
+00:01:34.780 --> 00:01:39.170
+the alternative hypothesis,
+Ha as mu greater than 30.
+
+28
+00:01:39.170 --> 00:01:44.950
+In our example, we specified Ha
+that mu was greater than 30.
+
+29
+00:01:44.950 --> 00:01:47.080
+However it could've been less than, or
+
+30
+00:01:47.080 --> 00:01:51.340
+not equal to, depending on the research
+hypothesis that we were interested in.
+
+31
+00:01:51.340 --> 00:01:54.740
+In that application,
+we're specifically interested in whether
+
+32
+00:01:54.740 --> 00:01:58.564
+the respiratory disturbance index for
+this population was larger than 30.
+
+33
+00:02:00.600 --> 00:02:05.550
+Notice that the truth is either
+that H0 is true or Ha is true.
+
+34
+00:02:05.550 --> 00:02:08.940
+We could either decide Ho or decide Ha.
+
+35
+00:02:10.900 --> 00:02:13.870
+Therefore there's only four possibilities.
+
+36
+00:02:13.870 --> 00:02:14.880
+If the truth is Ho,
+
+37
+00:02:14.880 --> 00:02:19.750
+and we decide H0, we have simply
+correctly accepted the null hypothesis.
+
+38
+00:02:19.750 --> 00:02:25.340
+If the truth is H0, and we decide Ha, we
+have made what is called a Type I error.
+
+39
+00:02:26.400 --> 00:02:29.425
+In the version of hypothesis
+testing that we're going present,
+
+40
+00:02:29.425 --> 00:02:32.510
+we're going to control the probability
+of a Type I error to be small.
+
+41
+00:02:32.510 --> 00:02:36.390
+If the truth is Ha and we conclude Ha,
+
+42
+00:02:36.390 --> 00:02:39.660
+we reject the null hypothesis,
+then we've correctly rejected the null.
+
+43
+00:02:41.120 --> 00:02:46.220
+And if the truth is Ha, and we decide H0,
+we've made what is called a Type II error.
+
+44
+00:02:47.740 --> 00:02:50.990
+The Type I error rate and
+the Type II error rate are related
+
+45
+00:02:50.990 --> 00:02:53.640
+in the sense that as the Type I
+error rate increases,
+
+46
+00:02:53.640 --> 00:02:56.980
+the Type II error rate decreases,
+and vice versa.
+
+47
+00:02:56.980 --> 00:02:59.690
+We can illustrate this pretty easily
+by considering a court of law.
+
+48
+00:03:01.090 --> 00:03:02.133
+In most courts,
+
+49
+00:03:02.133 --> 00:03:06.902
+the null hypothesis is that the defendant
+is innocent until proven guilty.
+
+50
+00:03:06.902 --> 00:03:11.040
+Here, rejecting the null hypothesis
+is to convict the defendant.
+
+51
+00:03:13.030 --> 00:03:14.640
+We're going to require evidence and
+
+52
+00:03:14.640 --> 00:03:18.010
+a standard on that evidence to
+reject the null hypothesis.
+
+53
+00:03:19.380 --> 00:03:22.410
+If we set a very low standard, i.e.,
+
+54
+00:03:22.410 --> 00:03:26.190
+we don't require much in evidence to
+convict people, then we're going to
+
+55
+00:03:26.190 --> 00:03:31.058
+increase the percentage of innocent people
+convicted, Type I errors in this case.
+
+56
+00:03:31.058 --> 00:03:34.892
+However, we would also increase
+the percentage of guilty people convicted,
+
+57
+00:03:34.892 --> 00:03:37.750
+which would be correctly
+rejecting the null hypothesis.
+
+58
+00:03:37.750 --> 00:03:42.084
+If we set a very high standard, basically
+a person has to have a smoking gun in
+
+59
+00:03:42.084 --> 00:03:46.150
+their hand, to convict them,
+then we would increase the percentage of
+
+60
+00:03:46.150 --> 00:03:50.393
+innocent people let free, a good thing,
+correctly accepting the null.
+
+61
+00:03:50.393 --> 00:03:54.709
+But we would also increase the percentage
+of guilty people let free, or so called,
+
+62
+00:03:54.709 --> 00:03:55.730
+Type II errors.
+
+63
+00:03:55.730 --> 00:03:58.910
+And this illustrates how the two,
+the Type I error rate and
+
+64
+00:03:58.910 --> 00:04:01.920
+the Type II error rate, are related.
+
+65
+00:04:01.920 --> 00:04:06.120
+Of course ideally, what you would
+like is to get better evidence for
+
+66
+00:04:06.120 --> 00:04:07.160
+a given standard.
+
+67
+00:04:07.160 --> 00:04:10.813
+And that's the idea of doing things
+like increasing the sample size.
+
+68
+00:04:10.813 --> 00:04:13.257
+But before we discuss
+those sorts of issues,
+
+69
+00:04:13.257 --> 00:04:16.100
+let's talk about how we
+conduct hypothesis tests.

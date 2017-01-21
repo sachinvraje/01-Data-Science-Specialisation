@@ -1,0 +1,591 @@
+WEBVTT
+
+1
+00:00:01.890 --> 00:00:04.610
+So now we've talked a lot about variances,
+and
+
+2
+00:00:04.610 --> 00:00:08.495
+even touched a little bit on
+the distribution of sample variances.
+
+3
+00:00:08.495 --> 00:00:11.800
+Now let's talk again about
+the distribution of sample means.
+
+4
+00:00:11.800 --> 00:00:16.410
+So remember that the average of numbers
+that are sampled from a population is
+
+5
+00:00:16.410 --> 00:00:17.789
+itself a random variable.
+
+6
+00:00:18.810 --> 00:00:22.040
+It has its own population mean and
+population variance.
+
+7
+00:00:23.580 --> 00:00:27.010
+We know that that population mean is
+the same as the original population.
+
+8
+00:00:28.050 --> 00:00:31.690
+We actually also have a result
+that relates its variance back to
+
+9
+00:00:31.690 --> 00:00:33.220
+the variance of the original population.
+
+10
+00:00:33.220 --> 00:00:35.570
+In fact, it's sigma squared
+the variance of the original,
+
+11
+00:00:35.570 --> 00:00:37.420
+original population divided by n.
+
+12
+00:00:37.420 --> 00:00:42.000
+So the variance of the sample
+mean decreases to zero as it
+
+13
+00:00:42.000 --> 00:00:43.460
+accumulates more data.
+
+14
+00:00:43.460 --> 00:00:45.370
+Which is exactly what we know,
+
+15
+00:00:45.370 --> 00:00:49.030
+that the mean becomes more
+concentrated as we collect more data,
+
+16
+00:00:49.030 --> 00:00:52.160
+more concentrated about the population
+mean that it's trying to estimate.
+
+17
+00:00:53.860 --> 00:00:57.960
+This is very useful because we only get
+one sample mean in a given data set.
+
+18
+00:00:57.960 --> 00:01:01.800
+We don't get lots of repeated versions to
+investigate its variability the way we
+
+19
+00:01:01.800 --> 00:01:04.960
+do in these fabricated
+simulation experiments.
+
+20
+00:01:06.040 --> 00:01:10.800
+So, we can estimate sigma squared, and we
+do know n, so we actually know quite a bit
+
+21
+00:01:10.800 --> 00:01:14.680
+about the distribution of the sample
+mean from the data that we observe.
+
+22
+00:01:16.180 --> 00:01:20.450
+So, the square root of the statistic
+is sigma over square root n is
+
+23
+00:01:20.450 --> 00:01:24.540
+called the standard error of the mean and
+we use this notation, we call a standard
+
+24
+00:01:24.540 --> 00:01:28.900
+deviation of the distribution of
+a statistic, we call it a standard error.
+
+25
+00:01:28.900 --> 00:01:32.170
+So we talk about the standard
+error of a mean to imply a number
+
+26
+00:01:32.170 --> 00:01:33.990
+that represents variability of means.
+
+27
+00:01:33.990 --> 00:01:38.201
+And the standard error of
+a regression coefficient talks about
+
+28
+00:01:38.201 --> 00:01:41.392
+the variability in
+regression coefficients.
+
+29
+00:01:41.392 --> 00:01:42.850
+So let's summarize.
+
+30
+00:01:42.850 --> 00:01:48.000
+So imagine a population that has mean
+mew and variance sigma squared, so
+
+31
+00:01:48.000 --> 00:01:50.340
+measure of spread, sigma squared.
+
+32
+00:01:50.340 --> 00:01:53.160
+If we were to draw a random
+sample from that population and
+
+33
+00:01:53.160 --> 00:01:56.140
+take the variance,
+that is an estimate of sigma squared.
+
+34
+00:01:56.140 --> 00:01:58.224
+If we were to take the mean
+that's an estimate of mu.
+
+35
+00:01:59.740 --> 00:02:03.850
+However, s squared is itself a random
+variable and it has a distribution.
+
+36
+00:02:03.850 --> 00:02:06.540
+We don't know much about that
+distribution, but we do know one thing,
+
+37
+00:02:06.540 --> 00:02:09.950
+it's centered around sigma squared,
+and it gets more concentrated around
+
+38
+00:02:09.950 --> 00:02:15.440
+sigma squared, the more observations that
+are going into that at squared value.
+
+39
+00:02:15.440 --> 00:02:19.470
+We also, we know a little bit more
+about the distribution of sample means
+
+40
+00:02:19.470 --> 00:02:20.910
+from that population.
+
+41
+00:02:20.910 --> 00:02:22.010
+We know that they're centered at mu,
+
+42
+00:02:22.010 --> 00:02:25.100
+and we also know it get's more
+concentrated around mu as
+
+43
+00:02:25.100 --> 00:02:26.860
+more observations go into the means.
+
+44
+00:02:28.130 --> 00:02:31.140
+However, we also know exactly what
+the variance of the distribution of
+
+45
+00:02:31.140 --> 00:02:32.830
+sample means is.
+
+46
+00:02:32.830 --> 00:02:34.680
+Namely, it's sigma squared over n.
+
+47
+00:02:36.750 --> 00:02:40.810
+Now, in a given data set we don't have
+repeated sample means to estimate this.
+
+48
+00:02:40.810 --> 00:02:45.160
+But what we do is we have repeated draws
+from the original population in order to
+
+49
+00:02:45.160 --> 00:02:46.660
+estimate sigma squared.
+
+50
+00:02:46.660 --> 00:02:51.910
+So the logical estimate of the sample
+variance of the mean is s squared over n.
+
+51
+00:02:51.910 --> 00:02:55.820
+And thus the logical estimate of the
+standard error is s over square root n.
+
+52
+00:02:55.820 --> 00:02:59.690
+This quantity right here, s over square
+root n is so important its given its
+
+53
+00:02:59.690 --> 00:03:05.740
+own name the standard error of the mean,
+or the sample standard area of the mean.
+
+54
+00:03:05.740 --> 00:03:09.560
+So s, the standard deviation,
+
+55
+00:03:09.560 --> 00:03:13.460
+is really an estimate of how
+variable your population is.
+
+56
+00:03:13.460 --> 00:03:19.230
+S over square root n, the standard error,
+is really talking about how variable
+
+57
+00:03:19.230 --> 00:03:25.140
+averages of random samples of
+size n are from the population.
+
+58
+00:03:25.140 --> 00:03:27.690
+Let's go through some simulation examples.
+
+59
+00:03:27.690 --> 00:03:29.460
+Standard normals have a variance of one.
+
+60
+00:03:31.520 --> 00:03:33.840
+Then that means they have
+a standard deviation also of one,
+
+61
+00:03:33.840 --> 00:03:35.051
+because the square root of 1 is 1.
+
+62
+00:03:36.080 --> 00:03:39.530
+So means of n standard normals,
+if our math is right,
+
+63
+00:03:39.530 --> 00:03:42.520
+should have a standard deviation
+of one over square root n.
+
+64
+00:03:42.520 --> 00:03:47.140
+So let's say my number of
+simulations is 1000, my n is ten,
+
+65
+00:03:47.140 --> 00:03:52.430
+and here what I'm going to do,
+you can sift through this code a little,
+
+66
+00:03:52.430 --> 00:03:54.030
+but let me tell you
+the gist of what I'm doing.
+
+67
+00:03:54.030 --> 00:03:57.545
+When I simulate r-norm,
+number of simulations times n
+
+68
+00:03:57.545 --> 00:04:02.857
+I'm simulating 1,000 times ten draws
+from a random normal distribution, and
+
+69
+00:04:02.857 --> 00:04:04.975
+I'm arranging them in a matrix.
+
+70
+00:04:04.975 --> 00:04:09.570
+And then with 1,000 rows and
+ten columns, then for
+
+71
+00:04:09.570 --> 00:04:13.240
+each row, I'm calculating the mean.
+
+72
+00:04:13.240 --> 00:04:19.805
+Thus each row is the mean of ten IID draws
+from the standard normal distribution.
+
+73
+00:04:19.805 --> 00:04:21.120
+Okay?
+
+74
+00:04:21.120 --> 00:04:26.103
+And I've done that lots of times so when
+I take the standard deviation of this,
+
+75
+00:04:26.103 --> 00:04:30.935
+this should be a good approximation of
+the standard deviation of averages of
+
+76
+00:04:30.935 --> 00:04:34.201
+ten draws from the standard
+normal distribution.
+
+77
+00:04:34.201 --> 00:04:37.669
+And if you're un, if you don't think so,
+then maybe add a couple extra zeroes to
+
+78
+00:04:37.669 --> 00:04:41.149
+the number of simulations but not too much
+because your computer will get stuck.
+
+79
+00:04:43.100 --> 00:04:47.678
+So if you do that you get 0.31,
+or point, around 0.32.
+
+80
+00:04:47.678 --> 00:04:51.450
+If you just take 1 over square root n,
+that's 0.31 or around 0.32.
+
+81
+00:04:51.450 --> 00:04:52.740
+So they have to be the same.
+
+82
+00:04:55.120 --> 00:04:56.310
+Let's try it again.
+
+83
+00:04:56.310 --> 00:05:00.659
+Standard uniforms, remember that density
+that's a flat line between zero and one.
+
+84
+00:05:02.040 --> 00:05:04.020
+That turns out that has
+a variance of 1/12.
+
+85
+00:05:04.020 --> 00:05:07.470
+So let's take means of random
+samples of n uniforms.
+
+86
+00:05:07.470 --> 00:05:08.180
+So what we're going to do is,
+
+87
+00:05:08.180 --> 00:05:11.760
+we're going to simulate in
+this case ten uniforms.
+
+88
+00:05:11.760 --> 00:05:12.590
+Take their average.
+
+89
+00:05:12.590 --> 00:05:15.160
+And then do that over and over again.
+
+90
+00:05:15.160 --> 00:05:17.920
+And then take the standard deviation of
+
+91
+00:05:17.920 --> 00:05:22.270
+the collection of averages of
+ten uniforms, and that will
+
+92
+00:05:22.270 --> 00:05:27.850
+tell us about the distribution of averages
+of ten uniforms from this population.
+
+93
+00:05:27.850 --> 00:05:31.490
+Our math says that it should be
+1 over square root 12 times n.
+
+94
+00:05:31.490 --> 00:05:35.740
+So if we do this, we get 0.09, and if we
+just take 1 over square root 12 times n,
+
+95
+00:05:35.740 --> 00:05:37.660
+we get 0.09.
+
+96
+00:05:37.660 --> 00:05:41.710
+Poisson's 4 have a variance of 4, so
+
+97
+00:05:41.710 --> 00:05:44.430
+Poisson is a distribution that
+we'll cover later on the class.
+
+98
+00:05:44.430 --> 00:05:46.420
+But for the time being,
+just think it's a random,
+
+99
+00:05:46.420 --> 00:05:48.900
+discreet random variable that
+happens to have a variance of four.
+
+100
+00:05:49.930 --> 00:05:53.870
+So means of random samples
+of n Poisson 4 then
+
+101
+00:05:53.870 --> 00:05:58.370
+must have standard deviation 2 over
+square root n according to our rule.
+
+102
+00:05:58.370 --> 00:06:01.950
+Okay?
+So here I do it, I get 0.62 when I
+
+103
+00:06:01.950 --> 00:06:08.730
+empirically simulate lots of averages
+of size 10 of Poisson fours.
+
+104
+00:06:08.730 --> 00:06:10.606
+I take the standard deviation
+of thousands of them.
+
+105
+00:06:10.606 --> 00:06:12.380
+I get 0.62.
+
+106
+00:06:12.380 --> 00:06:15.376
+If I do 2 over square root n, I get 0.63.
+
+107
+00:06:15.376 --> 00:06:20.049
+So I may be off by a little bit, but maybe
+beef up the number of simulations and
+
+108
+00:06:20.049 --> 00:06:21.811
+you'll get it much closer.
+
+109
+00:06:21.811 --> 00:06:23.670
+So let's go through one more example.
+
+110
+00:06:23.670 --> 00:06:28.270
+Remember that coin flips for bias point
+have a variance p times 1 minus p,
+
+111
+00:06:28.270 --> 00:06:32.050
+when p is a half, that gives you a,
+0.25 is the variance.
+
+112
+00:06:33.270 --> 00:06:35.740
+Means of random samples of n coin flips,
+
+113
+00:06:35.740 --> 00:06:40.500
+according to our theory, should be 1
+over 2 square root n fair coin flips.
+
+114
+00:06:40.500 --> 00:06:43.200
+So what I've done here is I've
+flipped a coin ten times and
+
+115
+00:06:43.200 --> 00:06:45.610
+taken the average of the ten coin flips.
+
+116
+00:06:45.610 --> 00:06:47.500
+And I do that thousands of times.
+
+117
+00:06:47.500 --> 00:06:50.200
+And I'm going to look at
+the variability in that distribution.
+
+118
+00:06:50.200 --> 00:06:52.045
+I'm going to look at
+the standard deviation because I
+
+119
+00:06:52.045 --> 00:06:54.090
+like standard deviations
+better than variances.
+
+120
+00:06:54.090 --> 00:06:56.710
+And so I get 0.16 when I do that.
+
+121
+00:06:56.710 --> 00:06:59.440
+The theory tells me it has
+to be about 0.16 when I do
+
+122
+00:06:59.440 --> 00:07:01.360
+1 over 2 times square-root n.
+
+123
+00:07:01.360 --> 00:07:02.940
+I get about 0.16.
+
+124
+00:07:02.940 --> 00:07:07.470
+So, again the only time you'll ever have
+to do these simulation experiments is in
+
+125
+00:07:07.470 --> 00:07:11.730
+a class like this where you're learning
+about what the standard error of the mean
+
+126
+00:07:11.730 --> 00:07:12.810
+is actually implying.

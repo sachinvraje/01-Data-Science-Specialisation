@@ -1,0 +1,416 @@
+WEBVTT
+
+1
+00:00:00.610 --> 00:00:04.370
+So, we actually covered an instance of
+a p-value previously in the class, and
+
+2
+00:00:04.370 --> 00:00:08.330
+I wanted to go through it again now
+that we know what p-values are.
+
+3
+00:00:08.330 --> 00:00:12.120
+So, suppose we're going to think
+of gender assignment for kids,
+
+4
+00:00:12.120 --> 00:00:15.290
+that we're going to think of this for
+a specific couple as if it's a coin flip.
+
+5
+00:00:15.290 --> 00:00:19.140
+Now, there's a lot of complexity to this
+problem, and we're going to reduce it, but
+
+6
+00:00:19.140 --> 00:00:21.870
+let's just assume that it's a coin flip.
+
+7
+00:00:21.870 --> 00:00:22.730
+And what we're wondering,
+
+8
+00:00:22.730 --> 00:00:27.450
+because you have a friend that has, out of
+eight kids, had seven girls, whether or
+
+9
+00:00:27.450 --> 00:00:32.250
+not the probability that that
+coin lands on girl, right?
+
+10
+00:00:32.250 --> 00:00:35.140
+Let's say p is the probability
+of having a girl
+
+11
+00:00:35.140 --> 00:00:38.000
+is equal to 0.5 versus greater than 0.5.
+
+12
+00:00:38.000 --> 00:00:41.600
+So the null hypothesis
+is H0:p equal to 0.5.
+
+13
+00:00:41.600 --> 00:00:45.720
+And the alternative is
+Ha:p greater than 0.5.
+
+14
+00:00:45.720 --> 00:00:48.780
+Well, under the null hypothesis,
+
+15
+00:00:48.780 --> 00:00:52.520
+we want to calculate the probability
+of getting evidence as or more extreme.
+
+16
+00:00:52.520 --> 00:00:55.750
+Now, we don't know what a test, the test
+statistic is in this case, but the most
+
+17
+00:00:55.750 --> 00:01:00.540
+logical one is just to count the number
+of girls out of the, out of the eight.
+
+18
+00:01:00.540 --> 00:01:05.780
+So, seven or eight would be as or
+more extreme than was actually observed,
+
+19
+00:01:05.780 --> 00:01:09.815
+so the p value calculation is
+the binomial calculation for
+
+20
+00:01:09.815 --> 00:01:16.815
+7 plus the binomial calculation for 8,
+under the null hypothesis where p is 0.5.
+
+21
+00:01:18.590 --> 00:01:20.550
+That works out to be about 3.5%.
+
+22
+00:01:20.550 --> 00:01:26.000
+I also go through the calculation here,
+
+23
+00:01:26.000 --> 00:01:30.950
+where I do pbinom instead of directly
+plugging into the binomial formula,
+
+24
+00:01:30.950 --> 00:01:33.545
+and, of course, you get the same number.
+
+25
+00:01:33.545 --> 00:01:37.750
+We, if we were testing that hypothesis,
+we would reject at a 5% level.
+
+26
+00:01:37.750 --> 00:01:40.737
+We would reject at a 4% level, but
+
+27
+00:01:40.737 --> 00:01:45.040
+we would not reject at
+an type 1 error rate of 3%.
+
+28
+00:01:45.040 --> 00:01:50.040
+Now I would mention on this
+specific problem, it's not obvious
+
+29
+00:01:50.040 --> 00:01:53.570
+what the two-sided p-value is,
+so I'll give you a simple trick.
+
+30
+00:01:53.570 --> 00:01:58.705
+And the simple trick, in this case, is
+to simply, if you wanted to test whether
+
+31
+00:01:58.705 --> 00:02:05.060
+0.5 versus p different from 0.5, then you
+just calculate the two one-sided p values.
+
+32
+00:02:05.060 --> 00:02:10.770
+In this case, the probability of being 7
+or larger would be one one-sided p value,
+
+33
+00:02:10.770 --> 00:02:15.330
+and the probability of being 7 or smaller
+would be the other one-sided p-values.
+
+34
+00:02:15.330 --> 00:02:21.050
+You take those two one-sided p values, you
+take the smaller one, and you double it.
+
+35
+00:02:21.050 --> 00:02:22.330
+And that's the procedure for
+
+36
+00:02:22.330 --> 00:02:26.770
+getting a two-sided p value in these
+binomial, exact binomial calculations.
+
+37
+00:02:28.650 --> 00:02:30.820
+Let's go through a poisson example.
+
+38
+00:02:30.820 --> 00:02:35.242
+So suppose that a hospital has
+an infection rate of 10 infections per 100
+
+39
+00:02:35.242 --> 00:02:37.190
+person days at risk, for
+
+40
+00:02:37.190 --> 00:02:43.140
+a rate of 0.1 infections per person day at
+risk during their last monitoring period.
+
+41
+00:02:44.450 --> 00:02:49.792
+And, we want to assume
+that the rate of 0.05
+
+42
+00:02:49.792 --> 00:02:54.490
+infections per person day at
+risk is an important benchmark.
+
+43
+00:02:54.490 --> 00:02:57.780
+If the rate goes above that
+they would implement some
+
+44
+00:02:57.780 --> 00:02:59.479
+quality control procedures, let's say.
+
+45
+00:03:00.790 --> 00:03:05.320
+But you don't want to just have this,
+this these expensive quality
+
+46
+00:03:05.320 --> 00:03:08.910
+control procedures go into place
+just because of random fluctuation.
+
+47
+00:03:08.910 --> 00:03:12.310
+So you'd like to formally test
+this hypothesis, accounting for
+
+48
+00:03:12.310 --> 00:03:17.760
+the uncertainty in the data in here
+we're going to assume that the count,
+
+49
+00:03:17.760 --> 00:03:21.260
+the number of infections is Poisson.
+
+50
+00:03:21.260 --> 00:03:26.610
+Well, the null hypothesis then
+is that lambda's 0.05 versus
+
+51
+00:03:26.610 --> 00:03:31.970
+the alternative that lambda is 0.,
+greater that 0.05.
+
+52
+00:03:31.970 --> 00:03:36.410
+Or given that we're specifically talking
+about 100 person days at risk for
+
+53
+00:03:36.410 --> 00:03:40.560
+this particular monitoring period, we
+could think of this as the null hypothesis
+
+54
+00:03:40.560 --> 00:03:44.330
+is that the, the rate times 100 is 5,
+
+55
+00:03:44.330 --> 00:03:48.100
+versus the rate times
+100 is greater than 5.
+
+56
+00:03:48.100 --> 00:03:51.360
+So what we want to know is, if in fact
+
+57
+00:03:52.470 --> 00:03:57.680
+the rate is 0.05 having been monitored for
+100 person days at risk,
+
+58
+00:03:57.680 --> 00:04:01.939
+what's the probability of obtaining 10 or
+more infections.
+
+59
+00:04:03.370 --> 00:04:07.680
+Okay, so this is a Poisson probability,
+we want the upper tail,
+
+60
+00:04:07.680 --> 00:04:09.120
+so remember this little quirk of R.
+
+61
+00:04:09.120 --> 00:04:11.930
+If you want the upper tail and
+you're doing a discreet distribution,
+
+62
+00:04:11.930 --> 00:04:14.240
+you actually have to drop
+the number down by one.
+
+63
+00:04:15.390 --> 00:04:17.494
+So we're going to, P-P-O-I-S.
+
+64
+00:04:17.494 --> 00:04:20.550
+So, ppois, for the ppois on probability.
+
+65
+00:04:20.550 --> 00:04:23.800
+We want to put in 9 because we want
+the upper tail and because of this
+
+66
+00:04:23.800 --> 00:04:27.420
+issue that it does strictly greater
+than for the upper direction.
+
+67
+00:04:28.650 --> 00:04:34.450
+Then the Poisson rate is 0.05 times
+the 100 person days at risk, so 5.
+
+68
+00:04:34.450 --> 00:04:39.540
+And then we want to specify lower.tail
+equals false, to make sure that we don't
+
+69
+00:04:39.540 --> 00:04:45.070
+get 9 and fewer, but we want strictly
+greater than 9, which is 10 or more.
+
+70
+00:04:45.070 --> 00:04:46.960
+And that will give us
+our realm of p-value.
+
+71
+00:04:46.960 --> 00:04:48.780
+So what is this probability?
+
+72
+00:04:48.780 --> 00:04:55.660
+This is the probability of obtaining 10 or
+more infections if, in fact, the true
+
+73
+00:04:55.660 --> 00:05:00.810
+rate of infections we've should've seen
+on a 100 person days at risk is 5, okay?
+
+74
+00:05:00.810 --> 00:05:04.230
+And it turns out that that's
+a relatively low probability.
+
+75
+00:05:04.230 --> 00:05:05.470
+It's unlikely for
+
+76
+00:05:05.470 --> 00:05:09.938
+us to have seen as many as 10 infections
+for a 100 person days at risk.
+
+77
+00:05:09.938 --> 00:05:12.680
+So only 3% chance of that occurring,
+if, in fact,
+
+78
+00:05:12.680 --> 00:05:18.150
+the real infection was 5 for
+a 100 person days at risk.
+
+79
+00:05:18.150 --> 00:05:22.459
+So this hospital perhaps should execute
+those quality control procedures.
+
+80
+00:05:24.030 --> 00:05:26.850
+So hopefully what you've gotten out of
+this lecture, is that the way that you
+
+81
+00:05:26.850 --> 00:05:32.370
+calculate a p value, is you calculate
+the probability of obtaining
+
+82
+00:05:32.370 --> 00:05:37.960
+data as or more extreme than you actually
+obtained in favor of the alternative,
+
+83
+00:05:37.960 --> 00:05:40.590
+where the probability calculation
+is done under the null.
+
+84
+00:05:40.590 --> 00:05:44.000
+And all the p values are done this way and
+I think what we, what we saw was we saw
+
+85
+00:05:44.000 --> 00:05:47.910
+the the kind of formal rules that you
+could execate, execute in the z and
+
+86
+00:05:47.910 --> 00:05:51.750
+the t test which are, are kind of easy,
+but then we our way through some of these
+
+87
+00:05:51.750 --> 00:05:54.720
+other examples like the binomial
+example and the Poisson example.

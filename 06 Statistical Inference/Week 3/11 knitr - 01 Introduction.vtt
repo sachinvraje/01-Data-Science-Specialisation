@@ -1,0 +1,264 @@
+WEBVTT
+
+1
+00:00:00.960 --> 00:00:01.630
+Hi everyone.
+
+2
+00:00:01.630 --> 00:00:05.500
+This is a 2 minute tutorial on using
+Knitr.
+
+3
+00:00:05.500 --> 00:00:08.160
+You need a little bit of Knitr to create
+your art
+
+4
+00:00:08.160 --> 00:00:12.870
+project that you will hand in as part of
+the assignments.
+
+5
+00:00:12.870 --> 00:00:16.316
+So let's, I've got RStudio open here,
+hopefully
+
+6
+00:00:16.316 --> 00:00:18.975
+you can see it and, I want to go File,
+
+7
+00:00:18.975 --> 00:00:21.244
+so Alt-F and New File, and then as
+
+8
+00:00:21.244 --> 00:00:26.610
+you look, there's all these different
+options here, probably.
+
+9
+00:00:26.610 --> 00:00:28.070
+I'm in RStudio, by the way.
+
+10
+00:00:28.070 --> 00:00:32.670
+And there's all these different options
+here.
+
+11
+00:00:32.670 --> 00:00:36.350
+You want to go down to R Markdown.
+
+12
+00:00:38.050 --> 00:00:39.150
+There we go.
+
+13
+00:00:39.150 --> 00:00:42.900
+And it actually populates a simple Knitr
+document.
+
+14
+00:00:42.900 --> 00:00:45.360
+So I'm going to edit the title.
+
+15
+00:00:45.360 --> 00:00:49.850
+I just want to say, this is a, is a test
+Knitr document.
+
+16
+00:00:51.500 --> 00:00:54.510
+Okay, and there's a bunch of text there.
+
+17
+00:00:54.510 --> 00:00:59.410
+And it shows you the R command R commands
+here.
+
+18
+00:00:59.410 --> 00:01:04.765
+So what you need is you need three little
+forward, well I, I don't
+
+19
+00:01:04.765 --> 00:01:10.060
+know if there are right tick marks here or
+right quotation marks.
+
+20
+00:01:11.770 --> 00:01:15.400
+You know one's slanted from the upper left
+to the lower right,
+
+21
+00:01:15.400 --> 00:01:19.570
+so the key at least on my keyboard that's
+right below escape.
+
+22
+00:01:19.570 --> 00:01:25.530
+And then you need a, if you put an r here
+in this little area, it will
+
+23
+00:01:27.730 --> 00:01:31.020
+it will execute R code, and the comma
+after
+
+24
+00:01:31.020 --> 00:01:33.780
+the R will open up a bunch of options.
+
+25
+00:01:33.780 --> 00:01:40.649
+So there's a ton of Knitr options, but
+cache tells R whether or not to keep it.
+
+26
+00:01:43.320 --> 00:01:45.990
+Probably the most useful ones for me, eval
+
+27
+00:01:45.990 --> 00:01:49.050
+tells whether or not is should evaluate
+the code.
+
+28
+00:01:49.050 --> 00:01:52.580
+Sometimes you might just want to show code
+in your document.
+
+29
+00:01:52.580 --> 00:01:54.459
+These are all figure things.
+
+30
+00:01:54.459 --> 00:01:58.670
+[BLANK_AUDIO]
+
+31
+00:01:58.670 --> 00:02:02.671
+Results equals, so the, so you can have
+results
+
+32
+00:02:02.671 --> 00:02:07.070
+as marked up, which show syntax
+highlighting as is.
+
+33
+00:02:08.740 --> 00:02:13.660
+Hide will hide the results and I find that
+most, most useful.
+
+34
+00:02:13.660 --> 00:02:16.460
+Probably the other one that's most useful
+for me is echo.
+
+35
+00:02:16.460 --> 00:02:18.550
+So you have echo as true or false.
+
+36
+00:02:18.550 --> 00:02:24.240
+It, echo, true shows the code, and then
+also shows the results of the code.
+
+37
+00:02:24.240 --> 00:02:27.275
+Echo false does not show the code.
+
+38
+00:02:27.275 --> 00:02:30.191
+[SOUND] Okay.
+
+39
+00:02:30.191 --> 00:02:33.360
+So any rate, so here's our, here's our
+examples.
+
+40
+00:02:33.360 --> 00:02:40.400
+Here, here's a, gives an example of a plot
+too, so plot cars, okay?
+
+41
+00:02:40.400 --> 00:02:41.870
+So let's save this.
+
+42
+00:02:41.870 --> 00:02:41.960
+Oop.
+
+43
+00:02:41.960 --> 00:02:43.950
+And this is I need to save it as
+something.
+
+44
+00:02:43.950 --> 00:02:48.065
+So let's put test.Rmd, okay?
+
+45
+00:02:48.065 --> 00:02:55.700
+And then I go control, well, so I need to
+make sure that, that Knitr is,
+
+46
+00:02:55.700 --> 00:03:00.290
+is loaded, but actually there's a little
+button right here that you can just do.
+
+47
+00:03:00.290 --> 00:03:02.450
+I on this tiny computer so it's hard to
+see,
+
+48
+00:03:02.450 --> 00:03:06.140
+but you can just actually click Knit HTML
+right there.
+
+49
+00:03:06.140 --> 00:03:07.430
+And there it will knit it.
+
+50
+00:03:07.430 --> 00:03:10.060
+And there you can see how it, kind of what
+it looks like.
+
+51
+00:03:13.230 --> 00:03:15.900
+And it, and it creates an HTML document.
+
+52
+00:03:15.900 --> 00:03:18.550
+So if I were for example to do dir in
+
+53
+00:03:18.550 --> 00:03:24.310
+R, you can see that it's created this
+test.html document.
+
+54
+00:03:24.310 --> 00:03:27.120
+That, that's a, that's just a standard
+HTML document.
+
+55
+00:03:27.120 --> 00:03:33.446
+You could do browse.url, browseURL,
+browseURL test.html, and
+
+56
+00:03:33.446 --> 00:03:40.590
+it'll bring up, it'll bring up a browser
+window with it in, within it.
+
+57
+00:03:40.590 --> 00:03:42.330
+Okay, so that's Knitr in a nutshell.

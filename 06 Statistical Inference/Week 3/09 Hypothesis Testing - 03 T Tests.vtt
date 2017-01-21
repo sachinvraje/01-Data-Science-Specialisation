@@ -1,0 +1,455 @@
+WEBVTT
+
+1
+00:00:00.140 --> 00:00:05.235
+Consider our example again,
+suppose that n was 16 rather than 100.
+
+2
+00:00:06.270 --> 00:00:08.870
+Then our test statistic remains the same.
+
+3
+00:00:08.870 --> 00:00:12.765
+It's the sample mean minus
+the hypothesis me, mean.
+
+4
+00:00:12.765 --> 00:00:17.500
+Remember,we're testing H0 mu equal to 30.
+
+5
+00:00:17.500 --> 00:00:20.580
+Versus Ha mu greater than 30.
+
+6
+00:00:20.580 --> 00:00:24.600
+And then divided by the standard
+error of the mean where now,
+
+7
+00:00:24.600 --> 00:00:29.625
+where we have square root 16 rather than
+square root 100, if you recall s was 10.
+
+8
+00:00:32.840 --> 00:00:34.010
+This test statistic,
+
+9
+00:00:34.010 --> 00:00:38.640
+how many estimated standard errors from
+the hypothesised mean, the sample mean is.
+
+10
+00:00:38.640 --> 00:00:42.840
+Follows a t distribution with 15 degrees
+of freedom in this specific case.
+
+11
+00:00:44.480 --> 00:00:47.580
+So under the null hypothesis
+the probability that is larger
+
+12
+00:00:47.580 --> 00:00:50.600
+than the 95th percentile
+the t distribution is 5%.
+
+13
+00:00:50.600 --> 00:00:54.750
+So we need to calculate that fifth
+percentile of the t distribution,
+
+14
+00:00:54.750 --> 00:00:57.160
+this can be done with qt 0.95 and
+
+15
+00:00:57.160 --> 00:01:02.020
+15 degrees of freedom which
+works out to be 1.7531.
+
+16
+00:01:02.020 --> 00:01:06.320
+Our test statistic, if we actually plug in
+
+17
+00:01:06.320 --> 00:01:11.900
+the 10 in our x bar of 32,
+works out to be 0.8.
+
+18
+00:01:11.900 --> 00:01:17.190
+And so we're failing to reject
+because 0.8 is smaller than 1.75.
+
+19
+00:01:17.190 --> 00:01:22.230
+Let's also go through a two-sided test.
+
+20
+00:01:25.050 --> 00:01:26.130
+Suppose that we wanted to re,
+
+21
+00:01:26.130 --> 00:01:31.510
+reject the null hypothesis if in fact
+the mean was too large or too small.
+
+22
+00:01:31.510 --> 00:01:35.630
+This doesn't make a lot of sense in our
+specific scientific setting, because we're
+
+23
+00:01:35.630 --> 00:01:41.450
+specifically interested in whether or not
+thi, this particular population of obese
+
+24
+00:01:41.450 --> 00:01:46.560
+subjects had a respiratory disturbance
+index, larger than 30 or reference value.
+
+25
+00:01:47.900 --> 00:01:50.970
+However, it's often the case,
+that in scientific settings, a two-sided
+
+26
+00:01:50.970 --> 00:01:54.470
+test is demanded, regardless of whether or
+not it makes scientific sense.
+
+27
+00:01:54.470 --> 00:01:58.348
+So it's, it's important to understand
+how to do two-sided tests, and
+
+28
+00:01:58.348 --> 00:02:01.911
+the fact that there are some instances
+where you are mandated to deal
+
+29
+00:02:01.911 --> 00:02:05.415
+with two-sided tests,
+even though it doesn't necessarily make
+
+30
+00:02:05.415 --> 00:02:07.750
+that much sense to
+consider the other side.
+
+31
+00:02:09.793 --> 00:02:13.834
+So we want to reject, in this case,
+if we were to do a two-sided test,
+
+32
+00:02:13.834 --> 00:02:17.200
+we want to reject whether or
+not mu is different from 30.
+
+33
+00:02:17.200 --> 00:02:18.750
+So in other words,
+
+34
+00:02:18.750 --> 00:02:23.230
+we'll reject if our test statistic
+is either too large or too small.
+
+35
+00:02:24.300 --> 00:02:24.890
+In this case,
+
+36
+00:02:24.890 --> 00:02:29.220
+because our test statistic is positive,
+we only need to consider the large side.
+
+37
+00:02:31.520 --> 00:02:36.950
+What does change however,
+is in order to get that 5% in
+
+38
+00:02:36.950 --> 00:02:41.700
+a way that allows our test statistic to be
+too large or too small, we need to split.
+
+39
+00:02:42.950 --> 00:02:47.740
+The probability is 2.5% in either tail of
+the distribution, be it the t distribution
+
+40
+00:02:47.740 --> 00:02:52.460
+for small sample sizes, or
+the z distribution for large sample sizes.
+
+41
+00:02:52.460 --> 00:02:56.750
+So now, instead of qt at 0.95,
+we're going to get,
+
+42
+00:02:56.750 --> 00:03:01.950
+do qt at 0.975 with, again,
+with 15 degrees of freedom.
+
+43
+00:03:03.940 --> 00:03:07.220
+And so we want to reject if our
+test statistic is larger than this.
+
+44
+00:03:08.810 --> 00:03:12.213
+Right, so let me draw an example
+of our t distribution.
+
+45
+00:03:12.213 --> 00:03:18.320
+This will be the point qt 0.975,
+
+46
+00:03:18.320 --> 00:03:23.350
+with 15 degrees of freedom
+would be 2.5% in that tail.
+
+47
+00:03:23.350 --> 00:03:27.870
+And this is the point Q T .025
+with 15 degrees of freedom.
+
+48
+00:03:27.870 --> 00:03:29.680
+And that's 2.5% in that tail.
+
+49
+00:03:29.680 --> 00:03:32.670
+That point right there.
+
+50
+00:03:32.670 --> 00:03:37.330
+So we're going to reject if our test
+statistic is larger than this guy, or
+
+51
+00:03:37.330 --> 00:03:40.130
+smaller than this guy.
+
+52
+00:03:41.240 --> 00:03:45.839
+However, because the lower quintile is
+the negative of the positive quintile,
+
+53
+00:03:45.839 --> 00:03:50.302
+we can always say that's the same thing
+as taking the absolute value of our test
+
+54
+00:03:50.302 --> 00:03:52.825
+statistic and
+rejecting if it is too large.
+
+55
+00:03:55.843 --> 00:03:57.190
+That point is made right here.
+
+56
+00:03:59.628 --> 00:04:03.079
+So, in this case,
+we've failed to reject the one-sided test.
+
+57
+00:04:04.090 --> 00:04:07.790
+And now in this slide we're showing that
+we failed to reject the two sided test.
+
+58
+00:04:07.790 --> 00:04:11.174
+However, I think you'll
+probably already noticed,
+
+59
+00:04:11.174 --> 00:04:15.512
+that because we've moved further out
+into the tails of t distribution
+
+60
+00:04:15.512 --> 00:04:19.921
+with our rejection region, that if
+you fail to reject the one sided test
+
+61
+00:04:19.921 --> 00:04:23.918
+that then you will also have failed
+to reject the two sided test.
+
+62
+00:04:28.864 --> 00:04:33.820
+Usually we don't calculate the rejection
+region and perform the hypothesis test
+
+63
+00:04:33.820 --> 00:04:38.771
+in the formal manner in which we've gone
+through in the slides by hand, instead,
+
+64
+00:04:38.771 --> 00:04:41.990
+we usually pass the data
+to a function like t.test.
+
+65
+00:04:41.990 --> 00:04:45.180
+And it outputs all the relevant
+statistics for us,
+
+66
+00:04:45.180 --> 00:04:48.220
+for us to understand what's
+going on with the text.
+
+67
+00:04:48.220 --> 00:04:50.980
+What's interesting is we
+already know how to do this,
+
+68
+00:04:50.980 --> 00:04:55.000
+because we've used t.test in order
+to perform confidence intervals.
+
+69
+00:04:55.000 --> 00:04:59.309
+We just haven't gone through the output
+to understand what it's doing for a test.
+
+70
+00:05:03.814 --> 00:05:10.410
+Let's look at, in the using R package,
+the data father.son.
+
+71
+00:05:10.410 --> 00:05:15.148
+And we'd like to test whether
+the population of son's height was
+
+72
+00:05:15.148 --> 00:05:20.880
+equivalent to the populat,
+population mean of father's heights.
+
+73
+00:05:20.880 --> 00:05:23.790
+Now, the observations here were paired.
+
+74
+00:05:23.790 --> 00:05:29.040
+It was one son's measurement to one
+father's measurement, and so on.
+
+75
+00:05:29.040 --> 00:05:32.320
+So its in this case we're
+going to take the difference and
+
+76
+00:05:32.320 --> 00:05:36.170
+we want to test whether
+the difference in the heights is 0 or
+
+77
+00:05:36.170 --> 00:05:40.450
+its non zero, we do that with t.test.
+
+78
+00:05:40.450 --> 00:05:47.443
+And you can either pass the difference
+directly to the function t.test,
+
+79
+00:05:47.443 --> 00:05:51.162
+or you could pass it, the two vectors,
+
+80
+00:05:51.162 --> 00:05:55.817
+and then add the argument,
+paired equals true.
+
+81
+00:05:55.817 --> 00:06:00.623
+It gives you your t statistic right here,
+11.79.
+
+82
+00:06:00.623 --> 00:06:05.517
+It gives you your degrees of freedom,
+right here, 1,077.
+
+83
+00:06:05.517 --> 00:06:13.120
+So we had e, exactly 1,078 pairs
+that we took the difference of.
+
+84
+00:06:13.120 --> 00:06:17.420
+Now, 11 is a quite large t statistic, so
+
+85
+00:06:17.420 --> 00:06:19.779
+we reject the null
+hypothesis in this case.
+
+86
+00:06:21.230 --> 00:06:24.300
+Also notice that the degrees
+of freedom are quite large so
+
+87
+00:06:24.300 --> 00:06:28.750
+the distinction between a t-test and
+a z-test in this case is irrelevant.
+
+88
+00:06:29.970 --> 00:06:37.020
+It very nicely gives us the t confidence
+interval, automatically when we do t.test.
+
+89
+00:06:37.020 --> 00:06:40.990
+It's useful almost always to look at
+the confidence interval in addition to
+
+90
+00:06:40.990 --> 00:06:42.970
+the output of the test.
+
+91
+00:06:42.970 --> 00:06:47.570
+Simply because the confidence interval
+bridges this gap between statistical
+
+92
+00:06:47.570 --> 00:06:50.350
+significance and
+practical significance quite nicely.
+
+93
+00:06:50.350 --> 00:06:55.320
+You can see whether the range of
+values in the confidence interval
+
+94
+00:06:55.320 --> 00:06:57.630
+are of practical significance or
+
+95
+00:06:57.630 --> 00:07:02.030
+not, because it's expressed in the units
+of the data that you're interested in.

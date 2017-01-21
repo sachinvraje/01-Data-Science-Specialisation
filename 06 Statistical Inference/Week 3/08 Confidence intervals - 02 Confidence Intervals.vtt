@@ -1,0 +1,638 @@
+WEBVTT
+
+1
+00:00:00.820 --> 00:00:05.384
+Hi, my name is Brian Caffo, and welcome
+to the lecture on T Confidence Intervals.
+
+2
+00:00:05.384 --> 00:00:08.685
+This is part of
+the Coursera Statistical Inference class,
+
+3
+00:00:08.685 --> 00:00:12.060
+which is part of our
+Coursera Data Science Specialization.
+
+4
+00:00:12.060 --> 00:00:16.670
+The class is co-taught with my
+co-instructors, Jeff Leek and Roger Peng.
+
+5
+00:00:16.670 --> 00:00:18.220
+We're all in the Department
+of Biostatistics at
+
+6
+00:00:18.220 --> 00:00:20.940
+the Johns Hopkins Bloomberg School
+of Public Health.
+
+7
+00:00:22.450 --> 00:00:23.830
+In the previous lecture,
+
+8
+00:00:23.830 --> 00:00:27.730
+we discussed creating confidence intervals
+using the central limit theorem.
+
+9
+00:00:27.730 --> 00:00:31.190
+All the intervals we discussed took
+the form of estimates, plus or
+
+10
+00:00:31.190 --> 00:00:33.500
+minus, a quantile from
+the standard normal distribution
+
+11
+00:00:34.700 --> 00:00:36.560
+times the estimated standard
+error of the estimate.
+
+12
+00:00:38.490 --> 00:00:41.420
+In this lecture, we're going to discuss
+some methods for small samples.
+
+13
+00:00:42.500 --> 00:00:44.030
+Notably, we're going to
+talk about student or
+
+14
+00:00:44.030 --> 00:00:48.754
+Gosset's T distribution and
+T confidence intervals.
+
+15
+00:00:48.754 --> 00:00:51.700
+These intervals are going to be
+of the form estimate plus or
+
+16
+00:00:51.700 --> 00:00:55.210
+minus a T quantile times
+the standard error of the estimate.
+
+17
+00:00:55.210 --> 00:01:01.019
+So, the only change is, we've changed
+the z quantile to a t quantile.
+
+18
+00:01:02.630 --> 00:01:05.070
+The t distribution has heavier
+tails than the normal distribution,
+
+19
+00:01:05.070 --> 00:01:09.110
+so these intervals are going to
+be a little bit wider.
+
+20
+00:01:10.120 --> 00:01:14.270
+These are some of the handiest
+intervals in all of statistics, and
+
+21
+00:01:14.270 --> 00:01:16.940
+if you ever want to rule between
+when to use a t interval or
+
+22
+00:01:16.940 --> 00:01:22.450
+a z interval for the cases where both
+are available, simply use the t interval.
+
+23
+00:01:22.450 --> 00:01:26.560
+Because as you collect more data,
+the t interval will just become more and
+
+24
+00:01:26.560 --> 00:01:28.120
+more like the z interval, anyway.
+
+25
+00:01:28.120 --> 00:01:33.050
+We're just going to cover the single and
+two group version of the t interval.
+
+26
+00:01:33.050 --> 00:01:34.620
+In our regression class,
+
+27
+00:01:34.620 --> 00:01:37.320
+we'll cover some other t intervals
+that come in handy, as well.
+
+28
+00:01:38.400 --> 00:01:42.450
+T distribution was invented by
+William Gosset under the pseudonym Student
+
+29
+00:01:42.450 --> 00:01:43.230
+in 1908.
+
+30
+00:01:43.230 --> 00:01:46.470
+He worked for
+the Guinness Brewery, and in fact,
+
+31
+00:01:46.470 --> 00:01:49.160
+they didn't want him to
+publish under his real name.
+
+32
+00:01:49.160 --> 00:01:50.810
+So, he published under
+the pseudonym Student.
+
+33
+00:01:52.320 --> 00:01:55.620
+So, we're often talking about
+the Student's t distribution or
+
+34
+00:01:55.620 --> 00:01:57.030
+the Student's t test.
+
+35
+00:01:59.850 --> 00:02:01.860
+The t distribution has thicker
+tails than the normal.
+
+36
+00:02:04.560 --> 00:02:08.120
+Unlike the normal, which is indexed
+by two parameters the mean and
+
+37
+00:02:08.120 --> 00:02:10.920
+the variance,
+we really only talk about the t
+
+38
+00:02:10.920 --> 00:02:14.900
+distribution as it is centered around zero
+with a standard formula for the scale.
+
+39
+00:02:14.900 --> 00:02:20.755
+It's only indexed by one parameter,
+the so called degrees of freedom.
+
+40
+00:02:20.755 --> 00:02:24.290
+As these degrees of freedom increase,
+it gets more like a standard normal.
+
+41
+00:02:27.140 --> 00:02:30.210
+The reason for
+the t distribution is as follows.
+
+42
+00:02:30.210 --> 00:02:35.335
+If we take x bar, subtract off the mean,
+and divide it by the estimated standard
+
+43
+00:02:35.335 --> 00:02:40.910
+error for iid Gaussian data,
+it in fact is not Gaussian distributed.
+
+44
+00:02:42.310 --> 00:02:48.368
+If we replaced s by sigma,
+it would be exactly standard normal.
+
+45
+00:02:48.368 --> 00:02:51.610
+However, when we replace sigma by s,
+
+46
+00:02:51.610 --> 00:02:55.370
+it no longer has a distribution
+as that of a standard normal.
+
+47
+00:02:55.370 --> 00:02:57.230
+Instead, it has a t distribution.
+
+48
+00:02:58.920 --> 00:03:03.160
+As n increases,
+this distinction is irrelevant.
+
+49
+00:03:03.160 --> 00:03:07.460
+However, for small sample sizes,
+the difference can be quite large.
+
+50
+00:03:07.460 --> 00:03:11.640
+And so, if you use standard normal for
+small sample sizes you can get,
+
+51
+00:03:11.640 --> 00:03:14.200
+for example,
+confidence intervals that are too narrow.
+
+52
+00:03:16.910 --> 00:03:21.160
+Our interval winds up to be x bar plus or
+minus the t quantile with
+
+53
+00:03:21.160 --> 00:03:27.340
+the degrees of freedom n minus 1
+times the estimated standard error.
+
+54
+00:03:27.340 --> 00:03:29.960
+We'll go through some examples, and
+I hope you'll get the hang of it.
+
+55
+00:03:32.270 --> 00:03:36.890
+Here, I'll use R Studios manipulate
+function to show the t distribution as it
+
+56
+00:03:36.890 --> 00:03:41.163
+overlays over the normal distribution for
+varying degrees of freedom.
+
+57
+00:03:41.163 --> 00:03:45.270
+Here, I have it for 20 degrees of freedom,
+and you can see they're quite similar.
+
+58
+00:03:45.270 --> 00:03:47.420
+As I draw the degrees of freedom down,
+
+59
+00:03:47.420 --> 00:03:51.010
+you can see that the t distribution gets
+to the point where it has heavier tails.
+
+60
+00:03:51.010 --> 00:03:54.860
+Well, it always has heavier tails, and
+it looks like a normal distribution.
+
+61
+00:03:54.860 --> 00:04:01.802
+Whereas if you were to squash it down,
+sort of
+
+62
+00:04:01.802 --> 00:04:06.600
+squash it down right there, and the, the
+extra mass had to head out in the tails.
+
+63
+00:04:10.580 --> 00:04:15.120
+It's a little bit hard to see the impact,
+because so much of this plot is devoted
+
+64
+00:04:15.120 --> 00:04:18.550
+to the peak part of the distributions
+where they're actually fairly similar.
+
+65
+00:04:19.900 --> 00:04:20.950
+Let's plot the quantiles.
+
+66
+00:04:20.950 --> 00:04:27.180
+So, what I'm showing in this plot now,
+are the quantiles of the t distribution by
+
+67
+00:04:27.180 --> 00:04:32.850
+the quantiles of the normal distribution
+starting at the 50th percentile.
+
+68
+00:04:32.850 --> 00:04:36.240
+So, for example, we start at zero, and
+
+69
+00:04:36.240 --> 00:04:40.820
+since at the 50th percentile, since both
+
+70
+00:04:40.820 --> 00:04:44.790
+distributions are symmetric about zero,
+you see that zero is the 50th percentile.
+
+71
+00:04:44.790 --> 00:04:47.750
+So, this plot goes through the point zero,
+zero.
+
+72
+00:04:47.750 --> 00:04:50.580
+I don't plot percentiles lower
+than the 50th percentile,
+
+73
+00:04:51.630 --> 00:04:54.680
+because the distributions are symmetric,
+and that information is redundant.
+
+74
+00:04:55.780 --> 00:05:03.040
+What I've drawn here are reference
+lines at the 97 point fifth quantile.
+
+75
+00:05:03.040 --> 00:05:07.520
+This will always be around 1.96 for
+the standard normal distribution, but
+
+76
+00:05:07.520 --> 00:05:10.720
+can be a, quite a bit larger for
+the t distribution.
+
+77
+00:05:10.720 --> 00:05:15.000
+For example,
+right now with two degrees of freedom,
+
+78
+00:05:15.000 --> 00:05:17.190
+we get a t quantile that is over four.
+
+79
+00:05:19.350 --> 00:05:23.794
+Now, let me emphasize though,
+with two degrees of freedom,
+
+80
+00:05:23.794 --> 00:05:28.750
+that would mean in our t interval,
+that you only had three data points
+
+81
+00:05:28.750 --> 00:05:33.383
+in order to, to estimate your variance,
+which is not too many.
+
+82
+00:05:33.383 --> 00:05:38.323
+Let's bump it up to 20 degrees of freedom,
+
+83
+00:05:38.323 --> 00:05:42.743
+and now what we see is
+that the t quantiles
+
+84
+00:05:42.743 --> 00:05:47.294
+are much closer to the normal quantiles.
+
+85
+00:05:47.294 --> 00:05:51.460
+Right here in this light blue
+reference line is an identity line.
+
+86
+00:05:51.460 --> 00:05:55.792
+If the t quantiles were exactly
+identical to the normal quantiles,
+
+87
+00:05:55.792 --> 00:05:57.997
+they would just fall on that line.
+
+88
+00:05:57.997 --> 00:06:03.745
+I have I have again at 1.96 and
+the relevant t quantile,
+
+89
+00:06:03.745 --> 00:06:07.760
+I show the reference lines here.
+
+90
+00:06:07.760 --> 00:06:13.350
+So, this distance right here is exactly
+the distinction between the two intervals.
+
+91
+00:06:14.400 --> 00:06:15.960
+Where now with the t interval,
+
+92
+00:06:15.960 --> 00:06:19.430
+we're going to have a quantile
+that's slightly larger then two.
+
+93
+00:06:19.430 --> 00:06:24.630
+Whereas for the z quantile, we're going to
+have one that's slightly smaller then two.
+
+94
+00:06:24.630 --> 00:06:28.220
+This can make a fairly sizable
+difference in the intervals,
+
+95
+00:06:28.220 --> 00:06:30.630
+and often can make the difference between
+
+96
+00:06:30.630 --> 00:06:33.470
+the interval containing zero versus
+the interval not containing zero.
+
+97
+00:06:35.710 --> 00:06:38.860
+And nonetheless,
+this is why we use the t distribution.
+
+98
+00:06:38.860 --> 00:06:44.699
+This plot, this quantile plot
+is such that this t interval,
+
+99
+00:06:44.699 --> 00:06:51.223
+the t quantile, is always going to
+be above this blue reference line,
+
+100
+00:06:51.223 --> 00:06:57.291
+which is effectively saying that
+the t constructed confidence
+
+101
+00:06:57.291 --> 00:07:02.800
+interval will always be wider
+than the normal interval.
+
+102
+00:07:02.800 --> 00:07:03.739
+Which makes sense.
+
+103
+00:07:03.739 --> 00:07:07.289
+We have an extra parameter that
+we're assuming we're estimating,
+
+104
+00:07:07.289 --> 00:07:08.645
+the standard deviation.
+
+105
+00:07:08.645 --> 00:07:09.205
+And so,
+
+106
+00:07:09.205 --> 00:07:14.750
+it would make sense that that uncertainty
+would cause us to have wider intervals.
+
+107
+00:07:14.750 --> 00:07:17.050
+Let's go to a couple notes
+about the t interval.
+
+108
+00:07:19.140 --> 00:07:22.030
+So, the T interval technically
+assumes that the data are iid normal,
+
+109
+00:07:22.030 --> 00:07:24.680
+though it's a very robust
+to this assumption.
+
+110
+00:07:26.010 --> 00:07:28.860
+Basically, whenever the distribution
+is roughly symmetric and
+
+111
+00:07:28.860 --> 00:07:31.370
+mound shaped,
+the t interval will work fairly well.
+
+112
+00:07:31.370 --> 00:07:35.700
+If you have paired observations,
+for example,
+
+113
+00:07:35.700 --> 00:07:40.810
+when you measure something once and then
+the same obser, it's the same unit a few
+
+114
+00:07:40.810 --> 00:07:44.446
+days later or for a second measurement,
+and we'll go through some examples.
+
+115
+00:07:44.446 --> 00:07:48.880
+You can use,
+you can use the t interval to analyze
+
+116
+00:07:48.880 --> 00:07:53.460
+this kind of data by taking differences or
+differences on the log scale.
+
+117
+00:07:56.090 --> 00:07:57.610
+For large degrees of freedom,
+
+118
+00:07:57.610 --> 00:08:01.410
+the t quantiles become exactly like
+that of the standard normal quantiles.
+
+119
+00:08:01.410 --> 00:08:03.730
+So, the t interval converges to
+that of the normal interval,
+
+120
+00:08:03.730 --> 00:08:07.650
+the same one that you would obtain
+with the central limit theorem.
+
+121
+00:08:08.860 --> 00:08:13.528
+Because of this, I, instead of saying,
+instead of between, picking between the t
+
+122
+00:08:13.528 --> 00:08:17.701
+interval and the normal interval,
+I always say, just use the t interval.
+
+123
+00:08:20.410 --> 00:08:23.436
+For distributions that are skewed,
+
+124
+00:08:23.436 --> 00:08:28.029
+the spirit of the t interval
+assumptions are violated.
+
+125
+00:08:30.020 --> 00:08:35.320
+And so, you could either work on this
+data on the log scale where logging will
+
+126
+00:08:35.320 --> 00:08:41.700
+often take care of the skewness of
+the data, or you can use other procedures.
+
+127
+00:08:42.730 --> 00:08:45.140
+For example,
+creating bootstrap confidence intervals.
+
+128
+00:08:46.835 --> 00:08:50.200
+Nonetheless, it simply doesn't make
+sense to use the t interval for
+
+129
+00:08:50.200 --> 00:08:53.220
+skewed distributions,
+because it, in a lot of ways,
+
+130
+00:08:53.220 --> 00:08:58.020
+it doesn't make sense to center intervals
+for skewed distributions at the mean.
+
+131
+00:09:00.520 --> 00:09:06.160
+Also, I'd add for highly discrete data,
+like binary or Poyson data, other
+
+132
+00:09:06.160 --> 00:09:10.350
+intervals are available, and it's probably
+preferable to use them to the t interval.

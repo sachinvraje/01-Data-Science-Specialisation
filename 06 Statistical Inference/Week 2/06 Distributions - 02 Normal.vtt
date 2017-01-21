@@ -1,0 +1,1034 @@
+WEBVTT
+
+1
+00:00:00.110 --> 00:00:01.680
+Probabilities.
+
+2
+00:00:01.680 --> 00:00:04.570
+Definitely, the most important
+distribution to know is
+
+3
+00:00:04.570 --> 00:00:06.020
+the normal distribution.
+
+4
+00:00:06.020 --> 00:00:09.390
+We'll see in the next lecture why it's so
+
+5
+00:00:09.390 --> 00:00:12.760
+important, or
+one of the reasons why it's so important.
+
+6
+00:00:12.760 --> 00:00:15.190
+But nonetheless, if all the distributions
+were to get together and
+
+7
+00:00:15.190 --> 00:00:18.940
+elect a leader, it would for
+sure be the normal distribution.
+
+8
+00:00:18.940 --> 00:00:21.890
+So anyway a random variable is
+set to follow a normal Gaut, or
+
+9
+00:00:21.890 --> 00:00:25.270
+Gaussian distribution with mean mu and
+variance sigma squared.
+
+10
+00:00:25.270 --> 00:00:29.060
+If its associated density is this
+function here with the bell curve,
+
+11
+00:00:29.060 --> 00:00:29.880
+which we'll show in a minute.
+
+12
+00:00:31.780 --> 00:00:34.160
+If X is a random variable
+with this density,
+
+13
+00:00:34.160 --> 00:00:38.620
+then the expected value of X is mu,
+and its variance is sigma squared.
+
+14
+00:00:38.620 --> 00:00:42.880
+And we simply write this in shorthand
+as X, with a little tilde here,
+
+15
+00:00:42.880 --> 00:00:44.630
+normal mu sigma squared.
+
+16
+00:00:46.080 --> 00:00:48.680
+When mu equals 0 and sigma equals 1,
+
+17
+00:00:48.680 --> 00:00:51.700
+the resulting distribution is called
+the standard normal distribution.
+
+18
+00:00:52.720 --> 00:00:55.549
+And standard normal random
+variables are often labeled z.
+
+19
+00:00:57.180 --> 00:00:59.770
+Here I draw the standard
+normal density function,
+
+20
+00:00:59.770 --> 00:01:02.150
+the famous bell curve that
+you've probably seen before.
+
+21
+00:01:03.300 --> 00:01:07.850
+Remember, that for the standard normal
+distribution, its mean is 0 and
+
+22
+00:01:07.850 --> 00:01:10.760
+its standard deviation and variance are 1.
+
+23
+00:01:10.760 --> 00:01:15.890
+Here I've drawn 1 standard deviation above
+and below the mean, 2 standard deviations
+
+24
+00:01:15.890 --> 00:01:20.550
+above and below the mean, and 3 standard
+deviations above and below the mean.
+
+25
+00:01:20.550 --> 00:01:21.100
+The units of
+
+26
+00:01:21.100 --> 00:01:24.780
+the standard normal can be thought
+of as just standard deviation units.
+
+27
+00:01:24.780 --> 00:01:29.250
+For example if you go 1 in this direction
+you've gone 1 standard deviation unit.
+
+28
+00:01:30.340 --> 00:01:35.310
+And I would note that for non-standard
+normals, it makes a lot of sense and
+
+29
+00:01:35.310 --> 00:01:38.290
+I think statisticians just kind
+of get use to reverting back to
+
+30
+00:01:38.290 --> 00:01:42.770
+the standard normal by virtue of talking
+about standard deviations from the mean.
+
+31
+00:01:42.770 --> 00:01:48.810
+So if you want to know the probability
+that a non-standard normal,
+
+32
+00:01:48.810 --> 00:01:52.760
+is between mu plus 1 sigma, where mu and
+
+33
+00:01:52.760 --> 00:01:56.720
+sigma are from it's distribution and
+mu minus 1 sigma.
+
+34
+00:01:56.720 --> 00:02:01.266
+So that would be the area between 1
+standard deviation [NOISE] from the mean
+
+35
+00:02:01.266 --> 00:02:03.257
+for the non-standard normal.
+
+36
+00:02:03.257 --> 00:02:07.211
+Well, that is exactly the same
+probability area for one, for
+
+37
+00:02:07.211 --> 00:02:11.400
+the, between minus 1 and
+plus 1 on the standard normal.
+
+38
+00:02:11.400 --> 00:02:15.720
+So basically,
+all normal distributions look identical.
+
+39
+00:02:15.720 --> 00:02:19.150
+The only thing that changes
+is the units along the axis.
+
+40
+00:02:19.150 --> 00:02:23.520
+And then if you revert, when you're
+talking about normal probabilities to
+
+41
+00:02:23.520 --> 00:02:26.770
+talking about standard deviations from
+the mean, all the probabilities and
+
+42
+00:02:26.770 --> 00:02:29.690
+everything revert back to
+the standard normal calculations.
+
+43
+00:02:29.690 --> 00:02:32.160
+We'll go through some of the examples but
+that's the intuition.
+
+44
+00:02:33.900 --> 00:02:38.530
+Let me go through some basic reference
+probabilities on the standard normal
+
+45
+00:02:38.530 --> 00:02:42.850
+distribution and draw on their,
+maybe this will help us remember them.
+
+46
+00:02:42.850 --> 00:02:46.148
+So if we talk about one standard
+deviation from the mean,
+
+47
+00:02:46.148 --> 00:02:50.008
+in the standard normal distribution or
+any normal distribution.
+
+48
+00:02:50.008 --> 00:02:55.239
+1 standard deviation from the, the mean,
+then about 34% should lie here, and
+
+49
+00:02:55.239 --> 00:02:57.495
+34% of the mass should lie here.
+
+50
+00:02:57.495 --> 00:03:03.984
+So that this total area within 1 standard
+deviation right here [NOISE] is 68%.
+
+51
+00:03:08.789 --> 00:03:11.700
+Let's now look at two standard deviations.
+
+52
+00:03:11.700 --> 00:03:14.580
+So this magenta area here.
+
+53
+00:03:16.140 --> 00:03:18.750
+So if we go from minus two to plus two,
+and
+
+54
+00:03:18.750 --> 00:03:22.270
+this is on any normal distribution,
+the probability of it being, a nor,
+
+55
+00:03:22.270 --> 00:03:25.970
+a normal distribution being within
+two standard deviations of the mean.
+
+56
+00:03:25.970 --> 00:03:29.977
+The probability mass
+associated with that is 95%.
+
+57
+00:03:29.977 --> 00:03:33.514
+That leaves 2.5% in either tail.
+
+58
+00:03:36.984 --> 00:03:39.854
+We'll use that frequently when we
+talk about confidence intervals.
+
+59
+00:03:45.192 --> 00:03:48.162
+Now let's look at three standard
+deviations from the mean.
+
+60
+00:03:51.532 --> 00:03:56.937
+That area is about 99% of the mass.
+
+61
+00:03:56.937 --> 00:03:59.560
+Thought it's hard to read but
+it's about 99% of the mass.
+
+62
+00:04:01.760 --> 00:04:04.810
+So these reference probabilities
+you should just commit to memory.
+
+63
+00:04:04.810 --> 00:04:10.284
+Let's go over some simple rules for moving
+between standard and non-standard normals.
+
+64
+00:04:10.284 --> 00:04:13.859
+So if X is normal with mean
+mu in varying sigma squared,
+
+65
+00:04:13.859 --> 00:04:18.626
+then if we convert the units if of X
+to standard deviations from the mean.
+
+66
+00:04:18.626 --> 00:04:20.857
+In other words,
+subtract off the mean mu and
+
+67
+00:04:20.857 --> 00:04:23.480
+divide by the standard deviation sigma.
+
+68
+00:04:23.480 --> 00:04:26.400
+The resulting random variable
+Z is a standard normal.
+
+69
+00:04:27.830 --> 00:04:30.230
+Conversely, if we have
+a standard normal and
+
+70
+00:04:30.230 --> 00:04:32.380
+we convert back to the units
+of the original data.
+
+71
+00:04:32.380 --> 00:04:36.680
+In other words,
+we multiply times sigma and add the mean.
+
+72
+00:04:36.680 --> 00:04:41.460
+The resulting random variable X is
+non standard normal with mean mu and
+
+73
+00:04:41.460 --> 00:04:43.140
+variance sigma squared.
+
+74
+00:04:43.140 --> 00:04:47.150
+We've already discussed this
+first bullet point here.
+
+75
+00:04:47.150 --> 00:04:49.140
+That 68%, 95%, and 99% of the normal
+distribution lies within 1, 2, and
+
+76
+00:04:49.140 --> 00:04:55.190
+3 standard deviations from the mean,
+respectively.
+
+77
+00:04:55.190 --> 00:05:00.735
+Let's also talk about some standard normal
+quantiles that we should commit to memory.
+
+78
+00:05:04.405 --> 00:05:07.140
+I'm drawing a normal
+distribution right here.
+
+79
+00:05:07.140 --> 00:05:11.312
+And let me put the point, minus 1.28.
+
+80
+00:05:11.312 --> 00:05:14.940
+The mean is of course 0, of course,
+the standard normal distribution.
+
+81
+00:05:16.950 --> 00:05:21.050
+That point is such that 10% of the
+density, this is of course is not drawn to
+
+82
+00:05:21.050 --> 00:05:27.160
+a very good scale, 10% of the den, density
+lies below it and then 90% lies above it.
+
+83
+00:05:29.820 --> 00:05:35.099
+Now for a not necessarily stan,
+not standard normal,
+
+84
+00:05:35.099 --> 00:05:42.470
+this point is not negative 1.28,
+it's mu minus 1.28 times sigma.
+
+85
+00:05:42.470 --> 00:05:44.004
+And this point right here is mu.
+
+86
+00:05:45.180 --> 00:05:46.730
+But then that would follow the same rule.
+
+87
+00:05:46.730 --> 00:05:51.167
+10% of this potentially
+non-standard normal
+
+88
+00:05:51.167 --> 00:05:56.568
+distribution lies below
+the point mu minus 1.28 sigma.
+
+89
+00:05:56.568 --> 00:06:05.459
+By symmetry, this point right here,
+1.28 on the standard normal distribution,
+
+90
+00:06:05.459 --> 00:06:10.590
+is the quantile,
+such that 10% lies above it.
+
+91
+00:06:12.590 --> 00:06:20.830
+For potentially non-standard normal, this
+point would be mu plus 1.28 times sigma.
+
+92
+00:06:20.830 --> 00:06:23.871
+So this point 1.28,
+on the standard normal and
+
+93
+00:06:23.871 --> 00:06:28.200
+mu plus 1.28 times sigma on
+the potentially non-standard normal.
+
+94
+00:06:29.510 --> 00:06:34.929
+Would be the point such that 10% lies
+above it, and 90% lies below it.
+
+95
+00:06:39.633 --> 00:06:40.700
+Let's do one more.
+
+96
+00:06:43.240 --> 00:06:47.110
+One of the more important quantiles
+that we have to remember is 1.96,
+
+97
+00:06:47.110 --> 00:06:49.984
+or close enough to 2,
+we often round it up to 2.
+
+98
+00:06:52.140 --> 00:06:54.950
+Negative 1.96 is the point
+that such that 2.5%
+
+99
+00:06:54.950 --> 00:06:58.440
+of the mass of the normal
+distribution lies below it.
+
+100
+00:06:58.440 --> 00:07:06.930
+And positive 1.96 is the point such
+that 2.5% of the mass lies above it.
+
+101
+00:07:06.930 --> 00:07:11.575
+This would mean that 97.5% lie
+above this point right here, and
+
+102
+00:07:11.575 --> 00:07:14.980
+97.5 lies below that point right there.
+
+103
+00:07:14.980 --> 00:07:21.250
+So that 95% lies in between.
+
+104
+00:07:21.250 --> 00:07:26.800
+If we're dealing with a potentially
+non-standard normal, notice then it's mu
+
+105
+00:07:26.800 --> 00:07:34.050
+minus 1.96 times sigma and
+mu plus 1.96 times sigma.
+
+106
+00:07:34.050 --> 00:07:35.880
+Or again the center there would be mew and
+for
+
+107
+00:07:35.880 --> 00:07:37.660
+the standard normal,
+the center would be 0.
+
+108
+00:07:37.660 --> 00:07:39.665
+Of course notice this calculation for
+
+109
+00:07:39.665 --> 00:07:42.545
+the standard normal when you
+plug-in mu equal to 0 and
+
+110
+00:07:42.545 --> 00:07:47.320
+sigma equal to 1, just of course gives you
+back the correct number, 1.96 by itself.
+
+111
+00:07:47.320 --> 00:07:53.759
+Let's go through some quick
+calculations of increasing difficulty.
+
+112
+00:07:54.770 --> 00:08:01.150
+So first what is the 95th percentile of
+a normal mu sigma squared distribution?
+
+113
+00:08:01.150 --> 00:08:08.890
+So in other words we want
+the point X.95 from a normal
+
+114
+00:08:08.890 --> 00:08:14.890
+distribution having mean mu in variant
+sigma squared so that 95% lies below it.
+
+115
+00:08:16.970 --> 00:08:21.001
+You want that to be 95% and that to be 5%.
+
+116
+00:08:21.001 --> 00:08:25.830
+So this is the value if we were to
+draw samples from this population.
+
+117
+00:08:25.830 --> 00:08:29.990
+This would be the point such
+that 95% of the samples would be
+
+118
+00:08:29.990 --> 00:08:34.082
+smaller than if we were to draw
+a sufficiently large sample.
+
+119
+00:08:36.650 --> 00:08:41.940
+The easy answer is to use the q
+qualifier for the density in R.
+
+120
+00:08:41.940 --> 00:08:47.395
+In this case qnorm and
+the quintile that we want .95.
+
+121
+00:08:47.395 --> 00:08:51.680
+And make sure that we plug-in the mean,
+mu, and standard deviation that we wants.
+
+122
+00:08:51.680 --> 00:08:53.180
+The square root of sigma squared.
+
+123
+00:08:53.180 --> 00:08:55.504
+Make sure you plugin the standard
+deviation not the variants.
+
+124
+00:08:57.970 --> 00:09:01.330
+But there's another way
+to do this that's easy.
+
+125
+00:09:01.330 --> 00:09:04.120
+Because we have our standard
+normal quartiles memorized.
+
+126
+00:09:05.210 --> 00:09:08.360
+So we know for the standard
+normal which is centered at 0 and
+
+127
+00:09:08.360 --> 00:09:13.090
+the units along the axis are standard
+deviation units from the mean.
+
+128
+00:09:13.090 --> 00:09:16.984
+That the point 1.645 standard
+deviations from the mean Is
+
+129
+00:09:16.984 --> 00:09:19.560
+the point such that 95% lies below it.
+
+130
+00:09:22.530 --> 00:09:23.610
+And 5% lies above it.
+
+131
+00:09:23.610 --> 00:09:30.580
+So, we know that for a non-standard
+normal, the point that follows
+
+132
+00:09:30.580 --> 00:09:35.799
+the same probability, the quantile that
+has the same 95% below it and 5% above it.
+
+133
+00:09:37.040 --> 00:09:40.990
+Has to be exactly 1.645 standard
+deviations from the mean.
+
+134
+00:09:40.990 --> 00:09:44.120
+So we can simply take mu
+plus sigma times 1.645 and
+
+135
+00:09:44.120 --> 00:09:45.470
+that will have to give us our answer.
+
+136
+00:09:46.590 --> 00:09:50.620
+Let me answer a highly generic
+question and as we go through it,
+
+137
+00:09:50.620 --> 00:09:54.300
+I think it will inform some of our
+next couple of questions where we
+
+138
+00:09:54.300 --> 00:09:55.456
+put some context around it.
+
+139
+00:09:56.500 --> 00:10:03.190
+So what is the probability that a normal
+mu sigma squared is larger than x?
+
+140
+00:10:03.190 --> 00:10:08.830
+So take our normal distribution that's
+non standard so it's centered at mu.
+
+141
+00:10:08.830 --> 00:10:12.380
+And the width is governed by
+the variable sigma squared.
+
+142
+00:10:13.760 --> 00:10:21.310
+And take a point X, we'd want to
+know what's this area right here.
+
+143
+00:10:21.310 --> 00:10:28.603
+So in R, we could just do p norm,
+x mean equals
+
+144
+00:10:28.603 --> 00:10:33.022
+mu, standard deviation equals sigma,
+of course remember that you
+
+145
+00:10:33.022 --> 00:10:38.440
+plugin the sigma value,
+not sigma squared value.
+
+146
+00:10:38.440 --> 00:10:39.533
+Otherwise you'll get it very wrong.
+
+147
+00:10:39.533 --> 00:10:45.752
+And then we want lower.tail
+equals false to tell
+
+148
+00:10:45.752 --> 00:10:52.887
+R that we want the upper tail
+rather than the lower tail.
+
+149
+00:10:52.887 --> 00:10:57.750
+Or you could omit that,
+you could omit that and do 1 minus that.
+
+150
+00:10:58.950 --> 00:11:00.970
+Okay that's the easy way.
+
+151
+00:11:00.970 --> 00:11:04.750
+But a conceptually easy way to do it and
+in a way that we can kind of do these
+
+152
+00:11:04.750 --> 00:11:09.170
+things in my head and get a sense of what
+the probabilities are like rather quickly.
+
+153
+00:11:09.170 --> 00:11:14.921
+Is to convert X into how many standard
+deviations from the mean it is.
+
+154
+00:11:14.921 --> 00:11:19.800
+To do that we simply take X,
+subtract off the mean mu and
+
+155
+00:11:19.800 --> 00:11:21.630
+divide by the standard deviation sigma.
+
+156
+00:11:22.700 --> 00:11:27.340
+This new number here is
+simply X expressed in
+
+157
+00:11:27.340 --> 00:11:29.660
+how many standard deviations
+from the mean it is.
+
+158
+00:11:29.660 --> 00:11:32.950
+So, for example, if this works out to
+be around two standard deviations from
+
+159
+00:11:32.950 --> 00:11:37.135
+the mean, we know that,
+that should be about 2.5%.
+
+160
+00:11:37.135 --> 00:11:42.440
+So let's put some context around this
+by considering a specific example.
+
+161
+00:11:42.440 --> 00:11:44.340
+Assume the number of daily ad clicks for
+
+162
+00:11:44.340 --> 00:11:47.670
+companies is approximately
+normally distributed with a mean
+
+163
+00:11:47.670 --> 00:11:51.140
+of 1,020 clicks per day, and
+a standard deviation of 50 clicks per day.
+
+164
+00:11:51.140 --> 00:11:57.060
+Well let's assume that, a get,
+days are sort of a random sample of days,
+
+165
+00:11:57.060 --> 00:11:59.170
+in that if we're talking
+about a specific day,
+
+166
+00:11:59.170 --> 00:12:01.160
+it's a draw from this
+general distribution.
+
+167
+00:12:02.390 --> 00:12:06.858
+What's the probability of getting more
+than 1,060 clicks on a given day?
+
+168
+00:12:06.858 --> 00:12:14.370
+Well, 1,160 clicks is 2.8 standard
+deviations from the mean.
+
+169
+00:12:14.370 --> 00:12:18.059
+So we know this probability has to
+be pretty low because it's about 3,
+
+170
+00:12:18.059 --> 00:12:20.450
+almost 3 standard
+deviations from the mean.
+
+171
+00:12:20.450 --> 00:12:23.780
+We remember, we remember that 3 standard
+deviations is pretty far out into
+
+172
+00:12:23.780 --> 00:12:25.080
+the tail of the normal.
+
+173
+00:12:25.080 --> 00:12:27.320
+So we know that this probability's
+gotta be fairly small.
+
+174
+00:12:28.440 --> 00:12:29.650
+But let's work through it.
+
+175
+00:12:30.940 --> 00:12:32.950
+So it's not very likely.
+
+176
+00:12:32.950 --> 00:12:35.149
+We can obtain that with pnorm,
+
+177
+00:12:35.149 --> 00:12:40.490
+1,160, mean equals 1,020,
+standard deviation equals 50.
+
+178
+00:12:40.490 --> 00:12:44.490
+And we put lower tail equals false
+because we want the probability being
+
+179
+00:12:44.490 --> 00:12:45.433
+larger than it.
+
+180
+00:12:45.433 --> 00:12:48.020
+And we get .003 about.
+
+181
+00:12:49.380 --> 00:12:53.630
+Just to illustrate that if we do this
+calculation directly using the standard
+
+182
+00:12:53.630 --> 00:12:58.240
+normal distribution, where we've
+expressed 1,160 as the number of
+
+183
+00:12:58.240 --> 00:13:02.050
+standard deviations from mean that it is,
+then we get the same answer.
+
+184
+00:13:02.050 --> 00:13:05.659
+I plug-in pnorm 2.8 and
+do lower.tail equals false and
+
+185
+00:13:05.659 --> 00:13:07.979
+of course it gives us the same number.
+
+186
+00:13:09.350 --> 00:13:11.270
+So we've done a probability calculation,
+
+187
+00:13:11.270 --> 00:13:13.320
+let's do a quantile
+calculation that's similar.
+
+188
+00:13:14.590 --> 00:13:18.060
+Assume that the number of daily ad clicks
+for this company is approximately normally
+
+189
+00:13:18.060 --> 00:13:22.590
+distributed with a mean of 1020 and
+a standard deviation of 50.
+
+190
+00:13:22.590 --> 00:13:25.880
+What number of daily ad clicks
+would represent the one
+
+191
+00:13:25.880 --> 00:13:27.710
+where 75% have fewer clicks?
+
+192
+00:13:27.710 --> 00:13:31.190
+And again we're going to assume
+the days are our random sample from
+
+193
+00:13:31.190 --> 00:13:32.150
+a population of days.
+
+194
+00:13:32.150 --> 00:13:33.385
+There are samples.
+
+195
+00:13:33.385 --> 00:13:36.130
+So we're not going to be concerned
+about whether one day being
+
+196
+00:13:36.130 --> 00:13:37.330
+close to another day.
+
+197
+00:13:37.330 --> 00:13:40.778
+Is going to be more co-related or
+whether weekend days have more clicks or
+
+198
+00:13:40.778 --> 00:13:42.390
+fewer clicks than weekday days.
+
+199
+00:13:42.390 --> 00:13:46.754
+Or any of these intricacies that we'll
+learn later on in the class how to
+
+200
+00:13:46.754 --> 00:13:47.930
+deal with better.
+
+201
+00:13:50.140 --> 00:13:55.590
+Let's do some just scratch work before we
+go to R and actually do the calculation.
+
+202
+00:13:57.780 --> 00:14:00.960
+Here's our normal distribution with 1,020.
+
+203
+00:14:00.960 --> 00:14:03.110
+Because 1,020 is both the mean and
+
+204
+00:14:03.110 --> 00:14:06.150
+the median,
+of this specific normal distribution.
+
+205
+00:14:06.150 --> 00:14:11.620
+We know that, that point is the point
+where about 50% lie below it.
+
+206
+00:14:11.620 --> 00:14:15.890
+So whatever number we get,
+it has to be above 1020.
+
+207
+00:14:15.890 --> 00:14:23.564
+Also consider one standard deviation
+above the mean, [NOISE] 1070.
+
+208
+00:14:23.564 --> 00:14:31.700
+That point, recall, between one standard
+deviation, recall that was 68%.
+
+209
+00:14:31.700 --> 00:14:33.670
+Well that leaves out this
+little tail right here.
+
+210
+00:14:33.670 --> 00:14:36.000
+Let's see if we can think about that.
+
+211
+00:14:36.000 --> 00:14:41.250
+Well if there's 68% between these two
+numbers, that would put 32% outside
+
+212
+00:14:41.250 --> 00:14:45.840
+of it and then 16% in either tail because
+the normal distribution is symmetric.
+
+213
+00:14:45.840 --> 00:14:50.140
+So from 1070 below should be about 84%.
+
+214
+00:14:53.480 --> 00:15:00.269
+So we know that whatever number we get
+has to be between 1,020 and 1,070.
+
+215
+00:15:00.269 --> 00:15:04.025
+And here's the command right
+here where we do qnorm 0.75,
+
+216
+00:15:04.025 --> 00:15:09.140
+mean equal to 1,020 and standard
+deviation equal to 50 and of course we
+
+217
+00:15:09.140 --> 00:15:12.799
+get a number between the two numbers
+that we were talking about before, 1,054

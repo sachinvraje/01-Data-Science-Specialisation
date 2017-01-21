@@ -1,0 +1,338 @@
+WEBVTT
+
+1
+00:00:01.300 --> 00:00:05.880
+Hi, my name is Brian Caffo, and welcome
+to the lecture on asymptotics as part of
+
+2
+00:00:05.880 --> 00:00:10.700
+the statistical inference class in
+the Courseera data science specialization.
+
+3
+00:00:10.700 --> 00:00:13.390
+This class is co-taught by my
+co-instructors, Jeff Leek and
+
+4
+00:00:13.390 --> 00:00:17.440
+Roger Peng, relative to Johns Hopkins
+Bloomberg School of Public Health.
+
+5
+00:00:17.440 --> 00:00:19.130
+So, asymptotics is the term for
+
+6
+00:00:19.130 --> 00:00:23.310
+the behavior of statistics as the sample
+size or some other relevant quantity of
+
+7
+00:00:23.310 --> 00:00:27.580
+limits to infinity or, in some cases
+as something else limits to zero.
+
+8
+00:00:27.580 --> 00:00:30.810
+We're going to deal only with
+the case with the sample size is
+
+9
+00:00:30.810 --> 00:00:32.740
+the quantity that's limiting to infinity.
+
+10
+00:00:34.590 --> 00:00:35.898
+Asymptopia is my name for
+
+11
+00:00:35.898 --> 00:00:39.950
+the land of asymptotics where everything
+works out well and it should work out
+
+12
+00:00:39.950 --> 00:00:43.959
+well because there's an infinite amount
+of data in the land of Asymptopia.
+
+13
+00:00:45.020 --> 00:00:46.820
+So, asymptotics are incredibly useful for
+
+14
+00:00:46.820 --> 00:00:50.050
+simple statistical inference and
+approximations.
+
+15
+00:00:50.050 --> 00:00:53.420
+Asymptotics are like a little swiss
+army knife that you can pull out
+
+16
+00:00:53.420 --> 00:00:58.570
+to investigate the statistical
+properties of many statistics,
+
+17
+00:00:58.570 --> 00:01:00.820
+without having to do much computing.
+
+18
+00:01:00.820 --> 00:01:05.260
+So, asymptotics also form the basis for
+frequency interpretation of probabilities.
+
+19
+00:01:05.260 --> 00:01:09.070
+For example, everyone kind of intuitively
+knows that if you flip a coin and
+
+20
+00:01:09.070 --> 00:01:13.680
+take the proportion of heads that that
+should limit to 0.5 for a fair coin.
+
+21
+00:01:15.370 --> 00:01:16.630
+That property is the so
+
+22
+00:01:16.630 --> 00:01:19.370
+called law of large numbers that
+we'll explore here in a minute.
+
+23
+00:01:20.770 --> 00:01:25.630
+Fortunately, instead of diving into
+the mathematics of the limits of
+
+24
+00:01:25.630 --> 00:01:29.530
+random variables, there's a set of
+powerful tools that we can rely on.
+
+25
+00:01:31.380 --> 00:01:34.789
+These results allow us to talk about
+the large sample distribution of
+
+26
+00:01:34.789 --> 00:01:37.800
+behavior sample means of
+a collection of iid observations.
+
+27
+00:01:39.379 --> 00:01:43.883
+The first of these, we already intuitively
+know, the so-called Law of Large Numbers.
+
+28
+00:01:45.520 --> 00:01:50.310
+It says that the average limits to what
+it's estimating, the population means.
+
+29
+00:01:52.200 --> 00:01:53.230
+So for example,
+
+30
+00:01:53.230 --> 00:01:57.620
+the average could be the result of n coin
+flips, the sample proportion of heads.
+
+31
+00:01:59.660 --> 00:02:01.370
+As we flip a fair coin over and
+
+32
+00:02:01.370 --> 00:02:04.570
+over, it eventually converges to
+the true probability of a head.
+
+33
+00:02:05.780 --> 00:02:08.462
+Let's show the law of
+large numbers in action.
+
+34
+00:02:08.462 --> 00:02:13.671
+[SOUND] I'm going to set my
+number of simulations to be 1000.
+
+35
+00:02:13.671 --> 00:02:16.460
+Then I'm going to generate
+a thousand random normals, and
+
+36
+00:02:16.460 --> 00:02:18.310
+I'm going to take their cumulative sum.
+
+37
+00:02:19.850 --> 00:02:23.820
+Then dividing the cumulative sums by
+1 over n gives the cumulative means.
+
+38
+00:02:23.820 --> 00:02:26.904
+In other words, the mean of
+the first observation by itself,
+
+39
+00:02:26.904 --> 00:02:30.996
+then the mean of the first and the second
+observation, then the mean of the first,
+
+40
+00:02:30.996 --> 00:02:33.577
+second, and third observation,
+[SOUND] and so on.
+
+41
+00:02:33.577 --> 00:02:37.358
+What you see when you plot the cumulative
+means by the index is early on,
+
+42
+00:02:37.358 --> 00:02:39.817
+there's a lot of variability in the mean,
+but
+
+43
+00:02:39.817 --> 00:02:43.489
+then as time goes on, not as time as
+the number of simulation goes on.
+
+44
+00:02:44.690 --> 00:02:48.530
+We get closer and closer to the true
+population value which is zero.
+
+45
+00:02:51.650 --> 00:02:53.114
+[SOUND] Let's do it again,
+
+46
+00:02:53.114 --> 00:02:57.644
+only this time let's ask r to flip a coin
+rather than generate standard normals.
+
+47
+00:02:57.644 --> 00:03:01.298
+So the function sample,
+when I give the arguments 0 and
+
+48
+00:03:01.298 --> 00:03:05.820
+1, samples from the elements 0 and
+1 with equal probability.
+
+49
+00:03:05.820 --> 00:03:07.080
+Here I want n of them, 1,000.
+
+50
+00:03:07.080 --> 00:03:11.670
+And replace equals TRUE, just means
+that I want to sample with replacement.
+
+51
+00:03:11.670 --> 00:03:16.695
+So this command is exactly flipping
+a coin 1,000 times where 0 is a tail and
+
+52
+00:03:16.695 --> 00:03:18.340
+1 is a head.
+
+53
+00:03:18.340 --> 00:03:18.980
+I'm taking again,
+
+54
+00:03:18.980 --> 00:03:23.167
+the cumulative sum, and then dividing it
+by 1 to n to get the cumulative means.
+
+55
+00:03:23.167 --> 00:03:26.960
+When I plot the cumulative means,
+
+56
+00:03:26.960 --> 00:03:31.920
+what I see again is variability in
+the sample proportion early on.
+
+57
+00:03:31.920 --> 00:03:37.030
+But as the number of coin flips going into
+the sample proportion goes to infinity it
+
+58
+00:03:37.030 --> 00:03:42.010
+converges to the true value,
+which is 0.5, which is right there.
+
+59
+00:03:43.830 --> 00:03:45.414
+[SOUND] Let's have a brief discussion.
+
+60
+00:03:45.414 --> 00:03:50.560
+We define an estimator as consistent if it
+converges to what you want to estimate.
+
+61
+00:03:50.560 --> 00:03:55.580
+So, for example, the sample proportion
+from iid coin flips is consistent for
+
+62
+00:03:55.580 --> 00:03:57.820
+the true success probability of a coin.
+
+63
+00:03:57.820 --> 00:04:01.890
+As you flip a coin over and over, the
+sample proportion of heads converges to
+
+64
+00:04:01.890 --> 00:04:03.770
+the probability of getting
+a head on that coin.
+
+65
+00:04:05.150 --> 00:04:08.972
+The law of large numbers says that
+the sample mean of iid samples is
+
+66
+00:04:08.972 --> 00:04:11.207
+consistent for the population mean.
+
+67
+00:04:12.972 --> 00:04:16.398
+This is a very good property to have,
+because it's basically saying,
+
+68
+00:04:16.398 --> 00:04:19.481
+if we go to the trouble of collecting
+an infinite amount of data,
+
+69
+00:04:19.481 --> 00:04:21.750
+we get exactly the right answer.
+
+70
+00:04:21.750 --> 00:04:25.250
+But it's not only true that sample means
+are consistent, the sample variance and
+
+71
+00:04:25.250 --> 00:04:28.800
+the sample standard deviation of iid
+random variables are consistent as well.
