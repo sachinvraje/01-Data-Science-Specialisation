@@ -1,0 +1,558 @@
+WEBVTT
+
+1
+00:00:04.185 --> 00:00:07.180
+Hi everybody,
+welcome to reproducible research.
+
+2
+00:00:07.180 --> 00:00:10.205
+The purpose of this lecture is
+to introduce you to the idea of
+
+3
+00:00:10.205 --> 00:00:14.210
+reproducibility and to explain why
+I think it's really important.
+
+4
+00:00:14.210 --> 00:00:18.480
+Even if you dont think of yourself as
+a researcher or as conducting research,
+
+5
+00:00:18.480 --> 00:00:22.300
+if you analyze data at all, it's
+critically important that you understand
+
+6
+00:00:22.300 --> 00:00:25.850
+the ideas of reproducibility and
+the problems that it introduces.
+
+7
+00:00:25.850 --> 00:00:28.720
+So I want to get that across to
+everybody right off the bat so
+
+8
+00:00:28.720 --> 00:00:31.710
+you can understand it and
+see why it's so important.
+
+9
+00:00:31.710 --> 00:00:34.604
+Now, in case you're not
+familiar with the idea already,
+
+10
+00:00:34.604 --> 00:00:38.620
+I thought I'd introduce some of the issues
+that are raised by reproducibility by
+
+11
+00:00:38.620 --> 00:00:41.588
+drawing an analogy from another area,
+and that's music.
+
+12
+00:00:41.588 --> 00:00:43.394
+So before we go on any further,
+
+13
+00:00:43.394 --> 00:00:47.149
+just take a quick listen to this
+excerpt that I'll play for you.
+
+14
+00:00:47.149 --> 00:00:57.149
+[MUSIC]
+
+15
+00:01:42.489 --> 00:01:45.325
+Okay, so
+that was a song called Code Monkey.
+
+16
+00:01:45.325 --> 00:01:50.625
+It was written and performed by Jonathon
+Colton, and I just played you the first
+
+17
+00:01:50.625 --> 00:01:54.545
+minute or so of the song that got you
+through the first verse and the chorus.
+
+18
+00:01:54.545 --> 00:01:55.935
+So you might want to just rewind and
+
+19
+00:01:55.935 --> 00:01:59.205
+just maybe listen to that excerpt one more
+time just to kind of get it in your head,
+
+20
+00:01:59.205 --> 00:02:02.450
+it may get stuck in your head,
+so I apologize in advance.
+
+21
+00:02:02.450 --> 00:02:06.220
+But, think about that song and
+what you already know about it, all right?
+
+22
+00:02:06.220 --> 00:02:09.010
+So, you know what it sounds like.
+
+23
+00:02:09.010 --> 00:02:12.460
+You have a sense of who wrote it,
+who performed it.
+
+24
+00:02:12.460 --> 00:02:15.410
+You know that it starts with
+a guitar in the beginning.
+
+25
+00:02:15.410 --> 00:02:18.230
+If you have a pretty good ear,
+you know that it's in F major.
+
+26
+00:02:18.230 --> 00:02:23.430
+And then later on another guitar
+joins as a drum kit that plays along.
+
+27
+00:02:23.430 --> 00:02:25.690
+And of course, he's singing along.
+
+28
+00:02:25.690 --> 00:02:26.925
+He's singing the words.
+
+29
+00:02:26.925 --> 00:02:28.625
+And if you can listen carefully and
+
+30
+00:02:28.625 --> 00:02:32.445
+you understand a language,
+you could even tell what words he saying.
+
+31
+00:02:32.445 --> 00:02:34.765
+And so, and
+that's pretty much the whole song.
+
+32
+00:02:34.765 --> 00:02:37.075
+And of course, I didn't play the whole
+thing for you, but if I had,
+
+33
+00:02:37.075 --> 00:02:41.315
+you could have decoded a lot of this
+information just from the recording, okay?
+
+34
+00:02:41.315 --> 00:02:44.395
+So most popular songs like
+this are not very complicated.
+
+35
+00:02:44.395 --> 00:02:48.460
+They don't have a lot of instruments or
+a lot of voices, and
+
+36
+00:02:48.460 --> 00:02:51.570
+they typically range
+from two to four minutes.
+
+37
+00:02:51.570 --> 00:02:55.000
+And if you're a good musician and
+you can listen very carefully,
+
+38
+00:02:55.000 --> 00:02:59.690
+it's not that hard to
+kind of play the song,
+
+39
+00:02:59.690 --> 00:03:03.540
+maybe on your own guitar or whatever,
+after you've heard it, okay?
+
+40
+00:03:03.540 --> 00:03:04.310
+Now, okay.
+
+41
+00:03:04.310 --> 00:03:06.612
+Now, let's take a listen
+to this piece now.
+
+42
+00:03:06.612 --> 00:03:16.612
+[MUSIC]
+
+43
+00:03:43.631 --> 00:03:45.878
+Okay, so in case you didn't recognize it,
+
+44
+00:03:45.878 --> 00:03:50.390
+that was the very beginning of the
+Symphony Number Eight, by Gustav Mahler.
+
+45
+00:03:50.390 --> 00:03:53.230
+It was performed by
+the Chicago Symphony Orchestra,
+
+46
+00:03:53.230 --> 00:03:56.240
+under the baton of Sir Georg Solti.
+
+47
+00:03:56.240 --> 00:03:59.860
+And so this might be the polar opposite
+of the Code Monkey song that I
+
+48
+00:03:59.860 --> 00:04:01.230
+just played for you.
+
+49
+00:04:01.230 --> 00:04:05.110
+This symphony is sometimes called
+the Symphony of 1000, because just of
+
+50
+00:04:05.110 --> 00:04:09.360
+the sheer number of people that have
+to be on stage to perform this piece.
+
+51
+00:04:09.360 --> 00:04:11.420
+You need an entire symphony orchestra.
+
+52
+00:04:11.420 --> 00:04:15.259
+You need an entire full chorus to sing.
+
+53
+00:04:15.259 --> 00:04:20.342
+And so there's a lot of complex moving
+parts needed to perform this piece,
+
+54
+00:04:20.342 --> 00:04:24.701
+and yet it gets performed all the time,
+and everyone recognizes
+
+55
+00:04:24.701 --> 00:04:29.562
+the piece when they hear it,
+because it's more or less the same thing.
+
+56
+00:04:29.562 --> 00:04:31.660
+Now how does that happen, right?
+
+57
+00:04:31.660 --> 00:04:34.040
+So how is it that orchestras and
+
+58
+00:04:34.040 --> 00:04:37.880
+choruses all over the world can play
+this enormously complex piece and
+
+59
+00:04:37.880 --> 00:04:42.140
+it always seems to come off more or
+less just the same thing, okay?
+
+60
+00:04:42.140 --> 00:04:47.170
+And similarly, how is it that you can
+listen to Johnathan Colton's song and
+
+61
+00:04:47.170 --> 00:04:51.700
+you can hear the music, and then somehow,
+if you are trained musician,
+
+62
+00:04:51.700 --> 00:04:55.010
+you can pick it up and
+maybe play it for yourself, okay?
+
+63
+00:04:55.010 --> 00:04:58.250
+This is really about reproducibility,
+right?
+
+64
+00:04:58.250 --> 00:05:03.780
+So in music, one of the nice things
+about music in general is that
+
+65
+00:05:03.780 --> 00:05:07.320
+when you hear the performance, regardless
+of whether it's a simple popular song or
+
+66
+00:05:07.320 --> 00:05:11.290
+an enormous symphony,
+you get all the information that you need.
+
+67
+00:05:11.290 --> 00:05:14.190
+And now depending on the complexity
+of the music, you may get more or
+
+68
+00:05:14.190 --> 00:05:16.800
+less information, because the brain
+is only able to process so
+
+69
+00:05:16.800 --> 00:05:18.350
+much information at a time.
+
+70
+00:05:18.350 --> 00:05:21.000
+But for something that's very complicated,
+like a symphony,
+
+71
+00:05:21.000 --> 00:05:26.610
+we actually have a way to
+write down the instructions to
+
+72
+00:05:26.610 --> 00:05:30.040
+give to the performers to tell
+them how to play each thing.
+
+73
+00:05:30.040 --> 00:05:31.125
+And so it actually,
+
+74
+00:05:31.125 --> 00:05:35.840
+Mahler is a great example of this
+because he himself was a conductor.
+
+75
+00:05:35.840 --> 00:05:41.052
+And he knew that as a conductor it's
+often difficult to look at a composer's
+
+76
+00:05:41.052 --> 00:05:45.946
+music and understand what is it
+exactly that the composer wanted here?
+
+77
+00:05:45.946 --> 00:05:49.822
+And so when he wrote his music, he put
+instructions on every single inch of
+
+78
+00:05:49.822 --> 00:05:53.823
+that piece of music, because that way
+the conductor who is interpreting and
+
+79
+00:05:53.823 --> 00:05:57.449
+the performers who are interpreting
+the music can understand, oh,
+
+80
+00:05:57.449 --> 00:05:59.602
+that's what the composer wanted here.
+
+81
+00:05:59.602 --> 00:06:04.160
+So for Mahler's Symphony Number Eight
+what we have is the score.
+
+82
+00:06:04.160 --> 00:06:08.950
+So the score is basically a book
+that lists every single part
+
+83
+00:06:08.950 --> 00:06:13.120
+of every instrument, and what they need
+to play, and what instructions they have.
+
+84
+00:06:13.120 --> 00:06:15.610
+And so the conductor can look
+at the score, and say, okay,
+
+85
+00:06:15.610 --> 00:06:18.460
+I know what the violin's playing at this
+time and I know what the flute is playing,
+
+86
+00:06:18.460 --> 00:06:20.710
+and I know what the chorus
+is singing at this time.
+
+87
+00:06:20.710 --> 00:06:26.310
+And that way the music can be coordinated
+and all performed, and synchronized.
+
+88
+00:06:26.310 --> 00:06:31.060
+You can have a score for a popular song
+too, so Code Monkey could have a score,
+
+89
+00:06:31.060 --> 00:06:33.300
+there'd be guitar lines,
+there'd be drum lines.
+
+90
+00:06:33.300 --> 00:06:36.590
+It's typically not written in the same
+way that you would write a symphony, but
+
+91
+00:06:36.590 --> 00:06:40.520
+there is a notation that is
+used sometimes to communicate
+
+92
+00:06:40.520 --> 00:06:42.775
+how a piece of music should be performed.
+
+93
+00:06:42.775 --> 00:06:47.810
+And so what we're talking about in
+this course, Reproducible Research,
+
+94
+00:06:47.810 --> 00:06:52.780
+is basically, how do you develop
+the score for data analysis so
+
+95
+00:06:52.780 --> 00:06:56.520
+that you can communicate to
+someone what was done, and
+
+96
+00:06:56.520 --> 00:06:59.720
+if they want to reproduce the work,
+how to do it, okay?
+
+97
+00:06:59.720 --> 00:07:04.660
+Now the fundamental problem in data
+analysis is that we don't really have
+
+98
+00:07:04.660 --> 00:07:10.840
+an agreed upon notation system for
+communicating data analysis.
+
+99
+00:07:10.840 --> 00:07:17.830
+And so, everyone does it a different way,
+and in aggregate, it's kind of a mess.
+
+100
+00:07:17.830 --> 00:07:22.650
+So some people will just describe in
+words what was done, and in some cases,
+
+101
+00:07:22.650 --> 00:07:23.330
+this is suficient.
+
+102
+00:07:23.330 --> 00:07:26.490
+This is sufficient but
+in many cases, it's not.
+
+103
+00:07:26.490 --> 00:07:30.000
+Some people will provide
+the computer code and the data and
+
+104
+00:07:30.000 --> 00:07:33.430
+everything that you need,
+and sometimes that's good.
+
+105
+00:07:33.430 --> 00:07:36.598
+But sometimes it's enormously complex and
+it's difficult to sort through.
+
+106
+00:07:36.598 --> 00:07:41.900
+And so there are a variety of ways that
+you can communicate data analysis,
+
+107
+00:07:41.900 --> 00:07:45.560
+but we just haven't agreed upon
+what is a way that we can all look,
+
+108
+00:07:45.560 --> 00:07:48.900
+that is sufficient for everybody, or
+more or less sufficient for everybody.
+
+109
+00:07:48.900 --> 00:07:54.160
+So, what we're gonna focus
+on in this course, is how to
+
+110
+00:07:54.160 --> 00:07:59.130
+communicate data analysis, using code by
+writing documents that are very dynamic,
+
+111
+00:07:59.130 --> 00:08:03.440
+and by sharing data so that other people
+can reproduce the work that you're doing.
+
+112
+00:08:03.440 --> 00:08:05.600
+So this is important for
+all data analysis.
+
+113
+00:08:05.600 --> 00:08:08.140
+It's not just about doing research per se.
+
+114
+00:08:08.140 --> 00:08:11.890
+And because if you wanna communicate
+what you've done to other people,
+
+115
+00:08:11.890 --> 00:08:15.260
+you need to be able to give them
+the material so that they can perform, so
+
+116
+00:08:15.260 --> 00:08:18.120
+to speak, the analysis themselves.

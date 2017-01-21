@@ -1,0 +1,684 @@
+WEBVTT
+
+1
+00:00:00.830 --> 00:00:04.150
+This lecture's going to be about literate
+statistical programming.
+
+2
+00:00:04.150 --> 00:00:07.080
+In the lecture about reproducible
+research, I talked about the basic
+
+3
+00:00:07.080 --> 00:00:10.800
+ideas of what it means for an analysis to
+be reproducible.
+
+4
+00:00:10.800 --> 00:00:14.430
+But now I'm going to talk about one of the
+tools that you can use to actually make
+
+5
+00:00:14.430 --> 00:00:16.440
+your analysis reproducible by others, or
+at least
+
+6
+00:00:16.440 --> 00:00:19.290
+help other peoples to kind of reproduce
+your analysis.
+
+7
+00:00:19.290 --> 00:00:20.860
+And one of the ways that we talked about
+
+8
+00:00:21.910 --> 00:00:25.884
+making reproducible documents was to put
+this literate statistical
+
+9
+00:00:25.884 --> 00:00:27.440
+programming, literate statistical
+programming
+
+10
+00:00:27.440 --> 00:00:30.080
+concept, or just literate programming.
+
+11
+00:00:30.080 --> 00:00:33.260
+And so the basic idea is that, you know,
+authors have to
+
+12
+00:00:33.260 --> 00:00:36.060
+undertake a lot of effort to put data and
+results on the web.
+
+13
+00:00:36.060 --> 00:00:40.580
+And even when they put that stuff on the
+web, they, they're all kind of separate.
+
+14
+00:00:40.580 --> 00:00:43.280
+The data's over here, the code is over
+here, and you kind of
+
+15
+00:00:43.280 --> 00:00:46.088
+have to figure out well, which code goes
+with whi, which data
+
+16
+00:00:46.088 --> 00:00:48.626
+and how do you, wha, how do you escape
+this code and
+
+17
+00:00:48.626 --> 00:00:51.056
+do you load this first, do you do this
+first, and so,
+
+18
+00:00:51.056 --> 00:00:54.526
+there can be a lot of confusion even when
+everything is just available.
+
+19
+00:00:54.526 --> 00:00:55.660
+And, and so.
+
+20
+00:00:55.660 --> 00:00:57.840
+One of the ways you can simply that
+process is to
+
+21
+00:00:57.840 --> 00:01:01.520
+put the data, and the code together in the
+same document
+
+22
+00:01:01.520 --> 00:01:04.070
+so to speak so that people can execute the
+code in
+
+23
+00:01:04.070 --> 00:01:07.080
+the right order, and the data are read at
+the right times.
+
+24
+00:01:07.080 --> 00:01:10.810
+So you can have a single document that
+integrates the data analysis with all
+
+25
+00:01:10.810 --> 00:01:16.020
+the textural representations so the words
+that you use to describe was going on.
+
+26
+00:01:16.020 --> 00:01:17.440
+And so you don't have that everything kind
+
+27
+00:01:17.440 --> 00:01:19.910
+of separate pieces but everything's kind
+of linked together.
+
+28
+00:01:21.140 --> 00:01:24.830
+So, the, the, the original idea of how
+literate program comes from Don Knuth.
+
+29
+00:01:24.830 --> 00:01:28.120
+He was a computer scientist at Stanford
+and
+
+30
+00:01:28.120 --> 00:01:29.930
+his original system was for writing just
+regular
+
+31
+00:01:29.930 --> 00:01:33.360
+computer programs and, and documenting the
+computer code
+
+32
+00:01:33.360 --> 00:01:35.460
+at the same time as writing the code.
+
+33
+00:01:35.460 --> 00:01:38.020
+So the basic idea translates over to a
+literate statistical
+
+34
+00:01:38.020 --> 00:01:41.440
+program where you want to document your
+analysis and similarly
+
+35
+00:01:41.440 --> 00:01:45.030
+have the code for your analysis in the
+same document.
+
+36
+00:01:45.030 --> 00:01:47.580
+And so the ideas and article's a string of
+text and
+
+37
+00:01:47.580 --> 00:01:52.790
+code and analysis code is divided into
+text and code chunks.
+
+38
+00:01:52.790 --> 00:01:56.610
+And so the presentation code formats the
+tables, formats figures, things like that.
+
+39
+00:01:56.610 --> 00:01:59.810
+There's article text that talks about
+what's going on.
+
+40
+00:01:59.810 --> 00:02:02.480
+And then these literate programs, there's
+two concepts, you can weave
+
+41
+00:02:02.480 --> 00:02:06.510
+them into readable, human readable
+documents, and you can tangle them to
+
+42
+00:02:06.510 --> 00:02:10.080
+produce machine readable documents or just
+code files.
+
+43
+00:02:10.080 --> 00:02:14.110
+So, literate programming, as I said
+before, is a general concept.
+
+44
+00:02:14.110 --> 00:02:17.620
+You need a documentation language and a
+programming language.
+
+45
+00:02:17.620 --> 00:02:21.980
+So the original Sweave system that I
+talked about before, written by Fritz
+
+46
+00:02:21.980 --> 00:02:25.060
+Leisch, used LaTeX as the documentation
+
+47
+00:02:25.060 --> 00:02:27.660
+language and R as the programming
+language.
+
+48
+00:02:27.660 --> 00:02:29.530
+So on this lecture I'm going to talk
+
+49
+00:02:29.530 --> 00:02:32.270
+about knitr, which supports a variety of
+documentation and
+
+50
+00:02:32.270 --> 00:02:33.120
+programming languages.
+
+51
+00:02:33.120 --> 00:02:35.710
+And so the first thing you want to start
+with, so
+
+52
+00:02:35.710 --> 00:02:38.460
+the basic question is, how do I make my
+work reproducible?
+
+53
+00:02:38.460 --> 00:02:42.900
+And the basic answer to that is that you
+have to decide to do it, okay.
+
+54
+00:02:42.900 --> 00:02:45.810
+And you can decide to do this at any point
+in your, in
+
+55
+00:02:45.810 --> 00:02:49.560
+your analysis, but it's usually easiest to
+do it at the very beginning.
+
+56
+00:02:49.560 --> 00:02:52.280
+If you decide at the very end that you
+want to make your
+
+57
+00:02:52.280 --> 00:02:55.770
+analysis reproducible, then it often is
+much
+
+58
+00:02:55.770 --> 00:02:58.110
+harder to do and maybe even impossible.
+
+59
+00:02:58.110 --> 00:03:01.960
+And, and so we want to keep track of
+things as you go along.
+
+60
+00:03:01.960 --> 00:03:05.320
+You can use a version control system like
+Get of SVN.
+
+61
+00:03:05.320 --> 00:03:06.710
+I won't talk about that here but if you've
+
+62
+00:03:06.710 --> 00:03:08.850
+heard about that that is a good thing to
+learn.
+
+63
+00:03:10.460 --> 00:03:12.390
+It's important to use software,
+statistical
+
+64
+00:03:12.390 --> 00:03:15.250
+software, whose operation can be coded.
+
+65
+00:03:15.250 --> 00:03:16.980
+So the idea is that you can write down the
+
+66
+00:03:16.980 --> 00:03:22.280
+instructions that were used to manipulate
+or analyze the data.
+
+67
+00:03:22.280 --> 00:03:23.410
+So this generally rules
+
+68
+00:03:23.410 --> 00:03:29.090
+out graphical user interfaces unless those
+programs will code or keep track
+
+69
+00:03:29.090 --> 00:03:32.270
+of all the clicks that you make on the
+graphical user interface.
+
+70
+00:03:32.270 --> 00:03:34.150
+Systems like R and other types of
+
+71
+00:03:34.150 --> 00:03:37.510
+packages, because you have to program them
+explicitly.
+
+72
+00:03:37.510 --> 00:03:40.580
+The code, as long as you save the code,
+will be, will kind of,
+
+73
+00:03:40.580 --> 00:03:44.080
+will have everything that you, will store
+everything that you did to the data.
+
+74
+00:03:44.080 --> 00:03:47.910
+Another key lesson is to not save any
+output.
+
+75
+00:03:47.910 --> 00:03:48.530
+And by output,
+
+76
+00:03:48.530 --> 00:03:52.648
+I mean mostly kind of temporary data
+transformation types of [UNKNOWN].
+
+77
+00:03:52.648 --> 00:03:55.459
+So if you pre-process the data, and have a
+kind of clean data set.
+
+78
+00:03:56.680 --> 00:03:59.640
+Rather than store the clean data set, it
+might be better just
+
+79
+00:03:59.640 --> 00:04:03.060
+to have the kind of raw data set with the
+preprocessing code.
+
+80
+00:04:03.060 --> 00:04:04.690
+because then you, you not only do you
+have, can you
+
+81
+00:04:04.690 --> 00:04:07.550
+make the final product, but you can see
+how you got there.
+
+82
+00:04:07.550 --> 00:04:10.270
+If you just keep the clean data set, and,
+and then you accidentally
+
+83
+00:04:10.270 --> 00:04:13.600
+lose the preprocessing code, then you
+don't really have a good record of
+
+84
+00:04:13.600 --> 00:04:15.340
+how you got from A to B.
+
+85
+00:04:15.340 --> 00:04:18.430
+And so try to keep, rather than keeping
+the temporary products or even final
+
+86
+00:04:18.430 --> 00:04:22.620
+products, try to keep the original
+products and the code that got you there.
+
+87
+00:04:22.620 --> 00:04:24.850
+And that will make it easier to understand
+what you did
+
+88
+00:04:24.850 --> 00:04:28.260
+and how you got to the data that you ended
+up analyzing.
+
+89
+00:04:28.260 --> 00:04:31.930
+So not saving up is I think a key element
+of reproducibility.
+
+90
+00:04:31.930 --> 00:04:35.050
+And try not to save data in
+non-proprietary formats.
+
+91
+00:04:35.050 --> 00:04:38.850
+These are data formats that are not where
+the, where the lay
+
+92
+00:04:38.850 --> 00:04:41.520
+out of the data set is not publicly known.
+
+93
+00:04:41.520 --> 00:04:44.630
+There are not too many proprietary formats
+out there any
+
+94
+00:04:44.630 --> 00:04:48.070
+more that I think are commonly used like
+they were before.
+
+95
+00:04:48.070 --> 00:04:50.254
+But a lot of them, for example, products
+will
+
+96
+00:04:50.254 --> 00:04:53.480
+store data and because it's just much more
+efficient.
+
+97
+00:04:53.480 --> 00:04:56.880
+In a proprietary format, but then that
+makes it difficult to transfer
+
+98
+00:04:56.880 --> 00:05:00.130
+to another person if that person doesn't
+have the same exact program.
+
+99
+00:05:00.130 --> 00:05:01.700
+Then they won't be able to read the data.
+
+100
+00:05:01.700 --> 00:05:03.960
+And so using non-proprietary,
+
+101
+00:05:03.960 --> 00:05:09.050
+even textual formats may be compressed can
+be much better at, at making,
+
+102
+00:05:09.050 --> 00:05:14.056
+much much, can make your re, research a
+little bit, or analysis more reproducible.
+
+103
+00:05:14.056 --> 00:05:16.260
+than, proprietary formats.
+
+104
+00:05:17.730 --> 00:05:19.532
+So there are a couple of pros and cons
+when
+
+105
+00:05:19.532 --> 00:05:22.023
+it comes to the literate programming
+style, this is not
+
+106
+00:05:22.023 --> 00:05:23.825
+the only talk you can use to make your
+work
+
+107
+00:05:23.825 --> 00:05:26.924
+reproducible, but literate programming is
+just one of the tools.
+
+108
+00:05:26.924 --> 00:05:29.300
+And so, some of the pros of that; it
+forces
+
+109
+00:05:29.300 --> 00:05:31.544
+you to put all the text and the code of
+your
+
+110
+00:05:31.544 --> 00:05:34.756
+analysis in one place, so it occurs in a
+logical order.
+
+111
+00:05:34.756 --> 00:05:38.068
+All the data and the results are
+automatically updated to
+
+112
+00:05:38.068 --> 00:05:41.518
+reflect external changes, so if you, kind
+of, so you have
+
+113
+00:05:41.518 --> 00:05:45.451
+this live document, and you make some
+changes, when you reprocess
+
+114
+00:05:45.451 --> 00:05:50.130
+the document, it will automatically update
+itself to reflect any changes.
+
+115
+00:05:50.130 --> 00:05:52.110
+So you don't have, you don't have a
+situation where
+
+116
+00:05:52.110 --> 00:05:54.134
+numbers will be out of date or things will
+be mismatch,
+
+117
+00:05:54.134 --> 00:05:55.190
+mismatched.
+
+118
+00:05:55.190 --> 00:05:58.550
+Because the code will kind of
+automatically recalculate everything.
+
+119
+00:05:58.550 --> 00:06:01.470
+Because the code is live in the document,
+a necessity you
+
+120
+00:06:01.470 --> 00:06:03.710
+have to run the code in order to produce
+the final document.
+
+121
+00:06:03.710 --> 00:06:04.890
+That's the weeding process.
+
+122
+00:06:05.920 --> 00:06:09.390
+You get this kind of regression test so to
+speak, not like linear regression, but
+
+123
+00:06:09.390 --> 00:06:10.740
+regression test to see so if there are
+
+124
+00:06:10.740 --> 00:06:13.300
+any mistakes that you introduced into the
+analysis.
+
+125
+00:06:13.300 --> 00:06:16.030
+If the code doesn't run then you know
+you've made, you've
+
+126
+00:06:16.030 --> 00:06:19.190
+made an error, you've introduced a problem
+so the, so the running
+
+127
+00:06:19.190 --> 00:06:20.990
+of the live code will kind of keep
+
+128
+00:06:20.990 --> 00:06:23.390
+you from introducing new errors into the
+analysis.
+
+129
+00:06:24.610 --> 00:06:27.366
+Some of the cons when it comes to literate
+programming
+
+130
+00:06:27.366 --> 00:06:28.950
+are that of course the text and the code
+are
+
+131
+00:06:28.950 --> 00:06:32.100
+all in one place so in particular if you
+have
+
+132
+00:06:32.100 --> 00:06:35.319
+a lot of code or a very complex lengthy
+analysis.
+
+133
+00:06:36.680 --> 00:06:40.140
+Then you're like a human readable text is
+going to be mixed in with all this
+
+134
+00:06:40.140 --> 00:06:42.070
+code and it can make it difficult to
+
+135
+00:06:42.070 --> 00:06:44.430
+edit the document because you have to
+somehow search
+
+136
+00:06:44.430 --> 00:06:46.400
+through all the, this whole document to
+figure
+
+137
+00:06:46.400 --> 00:06:49.320
+out where the text is amongst all the
+code.
+
+138
+00:06:49.320 --> 00:06:52.090
+So that can be a problem for the author.
+
+139
+00:06:52.090 --> 00:06:57.070
+Also, if your analysis is very complicated
+and you have to re-process
+
+140
+00:06:57.070 --> 00:07:00.520
+this document every time you see a human
+readable version of it.
+
+141
+00:07:00.520 --> 00:07:02.190
+It can, it can a bit substantially slow
+
+142
+00:07:02.190 --> 00:07:04.210
+down the process by which you build the
+document.

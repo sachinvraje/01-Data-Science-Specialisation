@@ -1,0 +1,184 @@
+WEBVTT
+
+1
+00:00:01.150 --> 00:00:04.050
+Hi everyone, welcome to Reproducible
+Research.
+
+2
+00:00:04.050 --> 00:00:07.460
+This class is, is the fifth class in the
+Data Sci Specialization.
+
+3
+00:00:07.460 --> 00:00:12.860
+And it covers a very special topic that I
+think doesn't get talked about a lot.
+
+4
+00:00:12.860 --> 00:00:14.730
+In kind of, in typical, typical
+
+5
+00:00:14.730 --> 00:00:17.330
+statistical or data analysis types of
+courses.
+
+6
+00:00:17.330 --> 00:00:20.230
+So even though the word reproducible
+research has the word research in
+
+7
+00:00:20.230 --> 00:00:22.770
+it, it's, so we're not, it, it applies to
+many different areas.
+
+8
+00:00:22.770 --> 00:00:25.750
+Not just to kind of people who are doing
+research per say.
+
+9
+00:00:25.750 --> 00:00:27.370
+The basic idea is that when you do a
+
+10
+00:00:27.370 --> 00:00:30.460
+data analysis and there are many different
+steps, and
+
+11
+00:00:30.460 --> 00:00:32.620
+it's, and it involves a lot of computing,
+and
+
+12
+00:00:32.620 --> 00:00:36.000
+perhaps a lot of kind of of data
+manipulation or processing.
+
+13
+00:00:36.000 --> 00:00:39.040
+It's important that you, when you
+communicate what you've done and you've
+
+14
+00:00:39.040 --> 00:00:40.570
+communicated in a way that someone
+
+15
+00:00:40.570 --> 00:00:42.490
+else could actually reconstruct what
+you've done.
+
+16
+00:00:42.490 --> 00:00:44.710
+So that's reproducible by someone else.
+
+17
+00:00:44.710 --> 00:00:48.780
+Now I think it's ve-, as data analyses and
+data sets get more complicated,
+
+18
+00:00:48.780 --> 00:00:51.370
+it becomes harder and harder to insure
+
+19
+00:00:51.370 --> 00:00:53.340
+that whatever you've done is actually
+reproducible.
+
+20
+00:00:53.340 --> 00:00:55.810
+Because sometimes, you lose a little code
+over here.
+
+21
+00:00:55.810 --> 00:00:59.480
+Sometimes you forget about a, a process or
+a transformation you did over here.
+
+22
+00:00:59.480 --> 00:01:01.750
+And then, if you, and then a subsequent
+analyses are
+
+23
+00:01:01.750 --> 00:01:04.360
+not reproducible if you don't kind of
+document all those details.
+
+24
+00:01:04.360 --> 00:01:09.244
+So what were going to talk about in this
+course are kind of some basic tools that
+
+25
+00:01:09.244 --> 00:01:14.445
+you can use to help make your analyses and
+your work in general reproducible.
+
+26
+00:01:14.445 --> 00:01:16.713
+And I'll talk about thing like Knitter and
+we'll
+
+27
+00:01:16.713 --> 00:01:18.620
+talk about how we can do this in RStudio.
+
+28
+00:01:18.620 --> 00:01:22.370
+And we'll talk about some basic principles
+for kind of that you can
+
+29
+00:01:22.370 --> 00:01:26.370
+follow to make sure that you're work is as
+reproducible as possible.
+
+30
+00:01:26.370 --> 00:01:30.635
+So I think this a very important aspect of
+any data analysis in any area.
+
+31
+00:01:30.635 --> 00:01:33.995
+because it's really about communicating
+exactly what you've done so
+
+32
+00:01:33.995 --> 00:01:37.540
+that someone else can kind of understand
+what's going on.
+
+33
+00:01:37.540 --> 00:01:40.820
+In the last part of the course, we'll talk
+about some case studies.
+
+34
+00:01:40.820 --> 00:01:44.060
+Of kind of where reproducibility either
+went right or went horribly wrong.
+
+35
+00:01:44.060 --> 00:01:48.428
+And I think these are, these cases studies
+are, are highly instructive.
+
+36
+00:01:48.428 --> 00:01:53.230
+And to kind of give you a sense of what
+can and can what is and is not possible.
+
+37
+00:01:53.230 --> 00:01:54.220
+So I hope you enjoy this course.
+
+38
+00:01:54.220 --> 00:01:57.150
+I think it's a really important idea and I
+hope you get a lot out of it.

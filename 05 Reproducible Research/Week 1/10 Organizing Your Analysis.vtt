@@ -1,0 +1,1056 @@
+WEBVTT
+
+1
+00:00:00.430 --> 00:00:01.840
+In this lecture, I'm just going to give a
+couple
+
+2
+00:00:01.840 --> 00:00:05.060
+of basic notes on how to organize a data
+analysis.
+
+3
+00:00:05.060 --> 00:00:09.550
+Of course, there's no universal way to do
+this that would apply to every single
+
+4
+00:00:09.550 --> 00:00:14.820
+data analysis performed by anybody in the
+world but I think there's some useful tips
+
+5
+00:00:14.820 --> 00:00:18.350
+that can be used to help you kind of put
+things together to put things
+
+6
+00:00:18.350 --> 00:00:21.415
+in logical places and to, ultimately you
+want to
+
+7
+00:00:21.415 --> 00:00:25.590
+ensure that your data analysis is
+reproducible either
+
+8
+00:00:25.590 --> 00:00:27.010
+by yourself or by someone else.
+
+9
+00:00:28.550 --> 00:00:32.740
+So if we were to kind of boil down what
+are the kind of key data analysis files
+
+10
+00:00:32.740 --> 00:00:34.930
+that you, you will probably retain and
+over
+
+11
+00:00:34.930 --> 00:00:37.120
+the course of a major project of course
+there's
+
+12
+00:00:37.120 --> 00:00:40.640
+going to be some data there's going to be
+raw data and there's going to be
+
+13
+00:00:40.640 --> 00:00:42.950
+processed data uh,and you're probably
+going to want
+
+14
+00:00:42.950 --> 00:00:45.640
+to save a lot of this in various places.
+
+15
+00:00:45.640 --> 00:00:50.670
+You'll probably generate some figures or
+or tables for example and
+
+16
+00:00:50.670 --> 00:00:52.520
+they're going to be kind of exploratory
+figures that
+
+17
+00:00:52.520 --> 00:00:54.680
+you just kind of put together to look at
+
+18
+00:00:54.680 --> 00:00:59.880
+the data to kind of produce this rough cut
+of what the data analysis might look like.
+
+19
+00:00:59.880 --> 00:01:01.330
+These exploratory figures are not going to
+be
+
+20
+00:01:01.330 --> 00:01:03.340
+very polished they're just going to,
+they'll kind of be,
+
+21
+00:01:03.340 --> 00:01:06.370
+just good enough to kind of get you a
+sense of what the data look like.
+
+22
+00:01:06.370 --> 00:01:08.860
+Then there might be some final figures
+these final figures
+
+23
+00:01:08.860 --> 00:01:10.995
+are going to be useful for you to put in
+reports,
+
+24
+00:01:10.995 --> 00:01:12.660
+they're going to, you're going to show
+them to other people, they're
+
+25
+00:01:12.660 --> 00:01:16.680
+going to be well annotated and nicely
+organized and put together.
+
+26
+00:01:16.680 --> 00:01:18.300
+Of course, there's going to be some code.
+
+27
+00:01:18.300 --> 00:01:24.184
+this, there might be some R code in the
+form of both raw and unused scripts.
+
+28
+00:01:24.184 --> 00:01:26.300
+so, these are kind of things that you just
+kind of code up
+
+29
+00:01:26.300 --> 00:01:29.956
+to see what's going on, maybe in the
+process of making exploratory figures.
+
+30
+00:01:29.956 --> 00:01:32.730
+There;s going to be R code that you
+eventually don't use in the end.
+
+31
+00:01:32.730 --> 00:01:34.720
+so, you'll have some scripts lying around.
+
+32
+00:01:34.720 --> 00:01:38.070
+There will be some final scripts that you
+use in the final analysis.
+
+33
+00:01:38.070 --> 00:01:39.550
+And these will be a little bit, hopefully
+
+34
+00:01:39.550 --> 00:01:42.450
+easier to read, maybe some commented and
+formatted better.
+
+35
+00:01:42.450 --> 00:01:45.650
+And then you might be running some R
+markdown files that kind
+
+36
+00:01:45.650 --> 00:01:51.470
+of annotate a data analysis using a kind
+of literate statistical analysis style.
+
+37
+00:01:51.470 --> 00:01:54.120
+And finally there's going to be some text
+that you write either
+
+38
+00:01:54.120 --> 00:01:56.290
+in the form of readme files that explain
+what's going on in
+
+39
+00:01:56.290 --> 00:01:59.050
+your project, there might be a more formal
+report that you
+
+40
+00:01:59.050 --> 00:02:01.420
+have to write or even a paper that you
+plan on publishing.
+
+41
+00:02:01.420 --> 00:02:03.690
+So all this text is going to kind of
+integrate
+
+42
+00:02:03.690 --> 00:02:05.830
+everything that you've done in this data
+analysis.
+
+43
+00:02:05.830 --> 00:02:07.980
+With the data, the figures, the tables,
+and
+
+44
+00:02:07.980 --> 00:02:08.530
+the R code.
+
+45
+00:02:12.340 --> 00:02:16.090
+So the raw data will come in any number of
+different forms.
+
+46
+00:02:16.090 --> 00:02:19.040
+They might come for example, as just
+records.
+
+47
+00:02:19.040 --> 00:02:22.220
+Or as, or kind of formatted text, like you
+have here.
+
+48
+00:02:22.220 --> 00:02:24.866
+And, and you're going to do something to
+this raw
+
+49
+00:02:24.866 --> 00:02:28.360
+data to make it usable for an analysis
+type of program.
+
+50
+00:02:28.360 --> 00:02:30.602
+So for example in this particular type of
+data
+
+51
+00:02:30.602 --> 00:02:32.903
+you might do some text processing you
+might try
+
+52
+00:02:32.903 --> 00:02:34.968
+to parse the data and if it's formatted in
+
+53
+00:02:34.968 --> 00:02:37.387
+a special format and so that you can
+generate
+
+54
+00:02:37.387 --> 00:02:41.621
+something that can be later used for
+modeling or other types of analysis.
+
+55
+00:02:41.621 --> 00:02:43.861
+So you want to store this raw data in
+your,
+
+56
+00:02:43.861 --> 00:02:47.217
+in your analysis folder if you're working
+on a project.
+
+57
+00:02:47.217 --> 00:02:51.312
+And if the data were accessed from the web
+you want to include things like
+
+58
+00:02:51.312 --> 00:02:54.952
+the URL, where you got the data what the
+data set is, and kind of
+
+59
+00:02:54.952 --> 00:02:59.307
+brief description of what it's for the
+date that you accessed the, the URL
+
+60
+00:02:59.307 --> 00:03:02.427
+on, on the website and you might want to
+this in, in like a
+
+61
+00:03:02.427 --> 00:03:06.002
+readme file just so, so when you look at
+it later or if someone else
+
+62
+00:03:06.002 --> 00:03:10.218
+looks at it they know kind of where this
+data came from and what it's for.
+
+63
+00:03:10.218 --> 00:03:12.650
+Another thing that I like to do if you're
+
+64
+00:03:12.650 --> 00:03:15.850
+using GIT or, or equivalent version
+control system to
+
+65
+00:03:15.850 --> 00:03:18.794
+track things that are going on in your
+project
+
+66
+00:03:18.794 --> 00:03:21.132
+you can add your data set, your raw data.
+
+67
+00:03:21.132 --> 00:03:24.400
+If it's possible, if it's too big then
+it's not really feasible.
+
+68
+00:03:24.400 --> 00:03:27.060
+But you can add your raw data to the
+repository.
+
+69
+00:03:27.060 --> 00:03:27.450
+And in the
+
+70
+00:03:27.450 --> 00:03:30.670
+log file, sorry, in the log message and
+when you add it you can
+
+71
+00:03:30.670 --> 00:03:34.892
+talk about, you know, where the, what the
+website was when you got it.
+
+72
+00:03:34.892 --> 00:03:37.770
+And what the URL, URL was et cetera.
+
+73
+00:03:37.770 --> 00:03:40.780
+And so that's sometimes a convenient place
+to put this kind of information.
+
+74
+00:03:44.122 --> 00:03:48.100
+Processed data usually is a little bit, is
+cleaner than the raw data.
+
+75
+00:03:48.100 --> 00:03:49.480
+It can come in a variety of forms.
+
+76
+00:03:49.480 --> 00:03:51.270
+One possibility is, is as a table.
+
+77
+00:03:51.270 --> 00:03:55.735
+So here you can see there this is a kind
+of classic data table.
+
+78
+00:03:55.735 --> 00:03:57.730
+With rows and columns.
+
+79
+00:03:57.730 --> 00:03:59.830
+You should process data should be named so
+that you can,
+
+80
+00:03:59.830 --> 00:04:02.020
+easy to see, you, you can name the file so
+it's easy
+
+81
+00:04:02.020 --> 00:04:05.630
+to see kind of what's script generated
+what data and so the processing
+
+82
+00:04:05.630 --> 00:04:09.150
+script is very important because it shows
+you how the raw data
+
+83
+00:04:09.150 --> 00:04:11.310
+were mapped to the process data.
+
+84
+00:04:11.310 --> 00:04:13.000
+And so, in any readme file or any
+
+85
+00:04:13.000 --> 00:04:16.640
+sort of documentation it's, it's important
+to, to document
+
+86
+00:04:16.640 --> 00:04:19.380
+you know, what files, what code files were
+used
+
+87
+00:04:19.380 --> 00:04:23.630
+to transform the raw data into the
+processed data.
+
+88
+00:04:23.630 --> 00:04:25.680
+And finally the processed data should be
+tidy so that you
+
+89
+00:04:25.680 --> 00:04:29.909
+can use them in subsequent modeling or
+analysis types of functions.
+
+90
+00:04:34.328 --> 00:04:37.510
+Exploratory figures are usually very
+simple figures,
+
+91
+00:04:37.510 --> 00:04:38.660
+these are figures that you kind of make
+
+92
+00:04:38.660 --> 00:04:41.640
+in the course of your analysis as you're
+kind of getting a look at the data.
+
+93
+00:04:41.640 --> 00:04:44.660
+Typically your data will be high
+dimensional and because you'll be
+
+94
+00:04:44.660 --> 00:04:48.300
+collecting lots of variables on lots of
+subjects or, or observations.
+
+95
+00:04:48.300 --> 00:04:51.350
+And so you're going, going to be able to
+look at pieces of the data at a time.
+
+96
+00:04:51.350 --> 00:04:55.250
+And so exploratory figures serve the role
+of kind of giving you a,
+
+97
+00:04:55.250 --> 00:04:59.540
+a quick look at various kind of aspects of
+your data, of various cuts.
+
+98
+00:04:59.540 --> 00:05:00.970
+And so they're not all necessarily
+going to be
+
+99
+00:05:00.970 --> 00:05:03.030
+part of your final report or final paper.
+
+100
+00:05:03.030 --> 00:05:04.870
+And so you kind of, you kind of, and you,
+and you'll tend,
+
+101
+00:05:04.870 --> 00:05:07.070
+so you'll tend to make a bunch of these
+all in the way.
+
+102
+00:05:07.070 --> 00:05:09.060
+They don't need to be pretty, but they
+need to be usable
+
+103
+00:05:09.060 --> 00:05:12.060
+enough so that you understand kind of
+what's going on in the figure.
+
+104
+00:05:12.060 --> 00:05:13.740
+And, and, and how to reproduce it.
+
+105
+00:05:15.970 --> 00:05:19.160
+Final figures will generally be much more
+polished
+
+106
+00:05:19.160 --> 00:05:21.159
+they'll be, they'll be better organized
+and better,
+
+107
+00:05:21.159 --> 00:05:25.110
+kind of much more readable so here you see
+is a figure that's a four panel plot.
+
+108
+00:05:25.110 --> 00:05:27.480
+It's not a single panel so cramming in a
+
+109
+00:05:27.480 --> 00:05:31.084
+lot more data into this type of four panel
+plot.
+
+110
+00:05:31.084 --> 00:05:33.768
+and, and the final figures usually make a
+very small
+
+111
+00:05:33.768 --> 00:05:37.280
+subset of the set of exploratory figures
+that you might generate.
+
+112
+00:05:37.280 --> 00:05:41.186
+So for example, the typical paper in a, in
+a journal or something like that
+
+113
+00:05:41.186 --> 00:05:43.604
+might have four or maybe five figures in
+it
+
+114
+00:05:43.604 --> 00:05:46.370
+because these figures take up a lot of
+space.
+
+115
+00:05:46.370 --> 00:05:48.110
+You typically don't want to inundate
+people with a
+
+116
+00:05:48.110 --> 00:05:50.852
+lot of figures because then this kind of
+ultimate message
+
+117
+00:05:50.852 --> 00:05:53.950
+of what you're trying to communicate will
+will tend to
+
+118
+00:05:53.950 --> 00:05:57.050
+get lost in, in this kind of pile of
+figures.
+
+119
+00:05:57.050 --> 00:05:59.870
+And so it's important to have these
+figures that are kind of
+
+120
+00:05:59.870 --> 00:06:03.050
+labeled well and annotated so people
+understand what's going on with the data.
+
+121
+00:06:07.630 --> 00:06:09.860
+As you're doing a data analysis you'll
+probably
+
+122
+00:06:09.860 --> 00:06:12.280
+burn through a lot of different R scripts.
+
+123
+00:06:12.280 --> 00:06:14.750
+Code files for various purposes.
+
+124
+00:06:14.750 --> 00:06:16.840
+They'll be a lot of dead ends, kind of
+that
+
+125
+00:06:16.840 --> 00:06:18.780
+you'll go down and maybe they won't be
+that useful.
+
+126
+00:06:18.780 --> 00:06:20.420
+So there'll be a lot of R scripts that
+kind of
+
+127
+00:06:20.420 --> 00:06:24.070
+don't play into the final analysis and so
+these R
+
+128
+00:06:24.070 --> 00:06:26.210
+scripts are going to be kind of less
+commented and maybe
+
+129
+00:06:26.210 --> 00:06:29.460
+just kind of code that kind of puts some
+stuff together.
+
+130
+00:06:29.460 --> 00:06:31.680
+You may have multiple versions of these
+code files.
+
+131
+00:06:32.876 --> 00:06:33.096
+and,
+
+132
+00:06:33.096 --> 00:06:35.970
+and typically, will include, include
+analyses that are later discarded.
+
+133
+00:06:38.860 --> 00:06:42.086
+Final scripts will be much more clearly
+commented.
+
+134
+00:06:42.086 --> 00:06:45.380
+You'll have maybe bigger comment blocks
+for whole sections of code.
+
+135
+00:06:45.380 --> 00:06:48.950
+So there'd be lots of small comments kind
+of explaining what's going on.
+
+136
+00:06:48.950 --> 00:06:51.650
+Any processing details that any code
+that's used to
+
+137
+00:06:51.650 --> 00:06:53.920
+process the raw data would be important to
+include.
+
+138
+00:06:54.940 --> 00:06:57.910
+and, and basically these final scripts you
+want to clean up so they,
+
+139
+00:06:57.910 --> 00:07:02.430
+they for any analysis that would appear in
+a final write up of paper.
+
+140
+00:07:02.430 --> 00:07:04.220
+And so it's important, well,
+
+141
+00:07:04.220 --> 00:07:07.050
+when people see a final a product like a
+paper or a
+
+142
+00:07:07.050 --> 00:07:12.770
+report that they understand, you know,
+what scripts went into this report.
+
+143
+00:07:12.770 --> 00:07:15.240
+and, and, and what processing and kind of
+
+144
+00:07:15.240 --> 00:07:17.270
+analysis scripts that might have gone into
+this.
+
+145
+00:07:17.270 --> 00:07:20.370
+So they know that they can see the kind of
+chain of events that occurred.
+
+146
+00:07:20.370 --> 00:07:21.880
+It's important, of course, to keep a lot
+of the
+
+147
+00:07:21.880 --> 00:07:25.490
+other stuff that was not used in the final
+report
+
+148
+00:07:25.490 --> 00:07:27.170
+just in case someone may want to look at
+some
+
+149
+00:07:27.170 --> 00:07:29.410
+of the, some of the dead ends that he went
+down.
+
+150
+00:07:29.410 --> 00:07:31.890
+But that can be placed in a separate part
+of the project directory.
+
+151
+00:07:35.230 --> 00:07:37.540
+R markdown files are also, are also very
+useful.
+
+152
+00:07:37.540 --> 00:07:39.560
+They may not be exactly required.
+
+153
+00:07:39.560 --> 00:07:42.690
+But they can be very useful to kind of
+summarize parts of analysis.
+
+154
+00:07:42.690 --> 00:07:44.975
+Or an entire analysis itself.
+
+155
+00:07:44.975 --> 00:07:47.950
+R markdown files you can use to generate
+reproducible reports.
+
+156
+00:07:47.950 --> 00:07:52.970
+Because you can embed code and text into
+the same document and then
+
+157
+00:07:52.970 --> 00:07:57.420
+you process the document into something
+readable like a webpage or a PDF file.
+
+158
+00:07:57.420 --> 00:08:00.480
+These are very easy to create in Rstudio
+and they can be useful as a kind
+
+159
+00:08:00.480 --> 00:08:03.890
+of intermediate step either perhap, you
+know, be kind of something in between just
+
+160
+00:08:03.890 --> 00:08:08.300
+kind of code scripts code files and data
+and, and a polished final report.
+
+161
+00:08:12.660 --> 00:08:14.510
+Readme files are really useful because
+they kind of
+
+162
+00:08:14.510 --> 00:08:17.650
+explain what is going on inside your
+project directory.
+
+163
+00:08:17.650 --> 00:08:20.570
+If you use R markdown you may not need
+them because, the
+
+164
+00:08:20.570 --> 00:08:24.204
+markdown file will typically document
+what's going on in a given file.
+
+165
+00:08:24.204 --> 00:08:27.564
+That's the idea behind literate
+programming or literate statistical
+
+166
+00:08:27.564 --> 00:08:30.252
+analysis is that you don't separate the
+document and the
+
+167
+00:08:30.252 --> 00:08:32.604
+code and the data in separate little
+pieces rather
+
+168
+00:08:32.604 --> 00:08:35.560
+you try to integrate them all into a
+single file.
+
+169
+00:08:35.560 --> 00:08:37.675
+However if you don't use R mark down files
+you may
+
+170
+00:08:37.675 --> 00:08:41.990
+want to have readme files that explain
+what's going on so you can see kind of, so
+
+171
+00:08:41.990 --> 00:08:46.540
+that, that you or another person can get a
+sense of the organization of the project.
+
+172
+00:08:46.540 --> 00:08:49.590
+But they could contain you know step by
+step instructions for how
+
+173
+00:08:49.590 --> 00:08:52.650
+the analysis is conducted, what code files
+are called first, what are
+
+174
+00:08:52.650 --> 00:08:55.340
+used to process the data, what are used to
+fit models, and
+
+175
+00:08:55.340 --> 00:08:58.110
+what are used to kind of generate figures
+and things like that.
+
+176
+00:08:58.110 --> 00:09:02.790
+so, readme files are really useful for
+explaining kind of what's going on.
+
+177
+00:09:05.240 --> 00:09:08.790
+Finally in the end you'll probably produce
+some document or report,
+
+178
+00:09:08.790 --> 00:09:11.710
+maybe a paper or summary of all of the
+analysis that
+
+179
+00:09:11.710 --> 00:09:13.520
+you did and kind of the, and the point of
+this
+
+180
+00:09:13.520 --> 00:09:17.010
+is to tell the final story of what you
+generated here.
+
+181
+00:09:17.010 --> 00:09:19.780
+And, and typically you'll have a title, an
+introduction that kind of
+
+182
+00:09:19.780 --> 00:09:24.200
+motivates your problem the methods that
+you used the refine, the results
+
+183
+00:09:24.200 --> 00:09:27.190
+and any measures of uncertainty, and then
+any conclusions that you might
+
+184
+00:09:27.190 --> 00:09:30.590
+draw from the data analysis that you did,
+including any pitfalls or
+
+185
+00:09:30.590 --> 00:09:31.379
+potential problems.
+
+186
+00:09:32.490 --> 00:09:34.360
+The important thing is that you need to
+tell a coherent
+
+187
+00:09:34.360 --> 00:09:37.180
+story, and so you need to do, all, take
+all the
+
+188
+00:09:37.180 --> 00:09:40.450
+analysis that you did and kind of winnow
+it down into
+
+189
+00:09:40.450 --> 00:09:44.080
+a final product that has a, a coherent
+story to it.
+
+190
+00:09:44.080 --> 00:09:46.420
+You definitely should not include every
+analysis that you
+
+191
+00:09:46.420 --> 00:09:48.406
+performed through the whole process, so
+there many, may
+
+192
+00:09:48.406 --> 00:09:51.040
+be many analysis that you did but you want
+
+193
+00:09:51.040 --> 00:09:54.160
+to kind of narrow it down to the important
+parts.
+
+194
+00:09:54.160 --> 00:09:55.810
+That does not mean you need to delete
+everything
+
+195
+00:09:55.810 --> 00:09:59.880
+that you've ever did but the summary
+report should not include everything.
+
+196
+00:09:59.880 --> 00:10:01.795
+And you should always include some
+references for
+
+197
+00:10:01.795 --> 00:10:03.590
+the statistical methods that you use, so
+that way
+
+198
+00:10:03.590 --> 00:10:05.640
+people that know kind of what you used,
+
+199
+00:10:05.640 --> 00:10:08.610
+maybe what software you used, what
+implementation was used.
+
+200
+00:10:08.610 --> 00:10:11.699
+And so this is very important for again
+for reproducibility by others.
+
+201
+00:10:14.130 --> 00:10:16.490
+So, that's a quick overview of how to,
+kind of
+
+202
+00:10:16.490 --> 00:10:19.920
+organize your data analysis, [COUGH] just
+some basic tips because
+
+203
+00:10:19.920 --> 00:10:23.340
+every data analysis will have its specific
+details, just a
+
+204
+00:10:23.340 --> 00:10:26.390
+couple pointers here to things that you
+may be interested in.
+
+205
+00:10:26.390 --> 00:10:31.528
+First is a, kind of a case, a set of
+links, on a kind of case, study of a
+
+206
+00:10:31.528 --> 00:10:37.250
+non-reproducable study, involving cancer,
+cancer data and analysis.
+
+207
+00:10:38.292 --> 00:10:39.140
+And so we have a link
+
+208
+00:10:39.140 --> 00:10:39.840
+to that.
+
+209
+00:10:39.840 --> 00:10:41.235
+There's an editorial in the journal
+
+210
+00:10:41.235 --> 00:10:43.520
+Biostatistics about the reproducible
+research policy.
+
+211
+00:10:43.520 --> 00:10:44.632
+So you can take a look at that.
+
+212
+00:10:44.632 --> 00:10:48.054
+And a couple of links to managing
+statistical analyses and some,
+
+213
+00:10:48.054 --> 00:10:52.070
+some kind of projects guidelines and best
+practices from other people.
+
+214
+00:10:52.070 --> 00:10:53.750
+And then, of course, there's a, there's a
+software
+
+215
+00:10:53.750 --> 00:10:55.980
+package called Project Template, which is
+a, actually an R
+
+216
+00:10:55.980 --> 00:10:58.950
+package, that can be used to automate a
+lot of
+
+217
+00:10:58.950 --> 00:11:02.150
+the kind of mundane aspects of a data
+analysis project.
+
+218
+00:11:02.150 --> 00:11:03.680
+So I encourage you to take a look at that
+too.

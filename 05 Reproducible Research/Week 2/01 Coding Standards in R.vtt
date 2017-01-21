@@ -1,0 +1,850 @@
+WEBVTT
+
+1
+00:00:02.830 --> 00:00:06.780
+Coding standards in R are really important
+because they help you make your code
+
+2
+00:00:06.780 --> 00:00:11.420
+readable and allow you and other people to
+understand what's going on in your code.
+
+3
+00:00:11.420 --> 00:00:16.080
+Now of course just like it is with any
+other style you know whether it's your
+
+4
+00:00:16.080 --> 00:00:18.250
+clothing or whatever it is, it's difficult
+to
+
+5
+00:00:18.250 --> 00:00:21.860
+get everyone to agree on one set of ideas.
+
+6
+00:00:21.860 --> 00:00:23.900
+But I think there are a couple of very
+basic, kind
+
+7
+00:00:23.900 --> 00:00:27.900
+of minimal standards that are important
+when you're coding in R.
+
+8
+00:00:27.900 --> 00:00:29.570
+All right, so I'm just going to talk a
+little bit about some of
+
+9
+00:00:29.570 --> 00:00:34.310
+the coding standards that I think are
+important when you're writing R code.
+
+10
+00:00:34.310 --> 00:00:37.350
+And I think will help make your code more
+readable and
+
+11
+00:00:37.350 --> 00:00:40.650
+more usable by others if that's what
+you're trying to, to achieve.
+
+12
+00:00:42.090 --> 00:00:43.982
+So the first principle that I think is
+very
+
+13
+00:00:43.982 --> 00:00:47.200
+important in pretty much any programming
+language, not just R.
+
+14
+00:00:47.200 --> 00:00:49.480
+Is that you should always write your code
+using
+
+15
+00:00:49.480 --> 00:00:52.480
+a text editor and saved as a text file.
+
+16
+00:00:52.480 --> 00:00:53.340
+Okay so a text
+
+17
+00:00:53.340 --> 00:00:56.200
+file is a kind of basic standard that
+usually doesn't have
+
+18
+00:00:56.200 --> 00:01:02.060
+any sort of formatting or any sort of kind
+of special appearance.
+
+19
+00:01:02.060 --> 00:01:03.170
+It's just text, right?
+
+20
+00:01:03.170 --> 00:01:06.260
+And usually typically, typically it's
+going to be ASCII text.
+
+21
+00:01:06.260 --> 00:01:10.770
+But if you're on, in places outside um,uh,
+the US or
+
+22
+00:01:10.770 --> 00:01:14.430
+the UK using non-English languages, there
+may be other standard text formats.
+
+23
+00:01:14.430 --> 00:01:19.260
+But the basic idea is that a text format
+can be read by pretty much any
+
+24
+00:01:19.260 --> 00:01:20.930
+basic editing program.
+
+25
+00:01:20.930 --> 00:01:22.790
+These days, you know when you're writing
+something, there's a
+
+26
+00:01:22.790 --> 00:01:24.930
+lot of different tools that you can use to
+write.
+
+27
+00:01:24.930 --> 00:01:30.180
+If you're writing a book or a, or a
+webpage or something like that there's all
+
+28
+00:01:30.180 --> 00:01:34.380
+kinds of different tools that you can use
+to write to use, to write those things.
+
+29
+00:01:34.380 --> 00:01:36.980
+But when you're writing code you should
+always try to use a text
+
+30
+00:01:36.980 --> 00:01:41.120
+editor because that's like kind of like
+the, the kind of least common denominator.
+
+31
+00:01:41.120 --> 00:01:44.590
+And it makes it so that everyone will be
+able to access your code and
+
+32
+00:01:44.590 --> 00:01:45.360
+improve upon it.
+
+33
+00:01:47.240 --> 00:01:49.700
+The second principle, is, which is very
+
+34
+00:01:49.700 --> 00:01:52.690
+important for readability, is to indent
+your code.
+
+35
+00:01:52.690 --> 00:01:56.580
+So indenting is something that's often
+hotly debated in lots of mailing lists
+
+36
+00:01:56.580 --> 00:01:58.390
+and other types of discussion groups, in
+
+37
+00:01:58.390 --> 00:02:00.470
+terms of how much indenting is
+appropriate.
+
+38
+00:02:00.470 --> 00:02:03.170
+Now, I'm not going to talk about that,
+although I do have some recommendations.
+
+39
+00:02:03.170 --> 00:02:04.400
+But I think the most important thing
+
+40
+00:02:04.400 --> 00:02:07.160
+is that you understand why indenting is
+important.
+
+41
+00:02:07.160 --> 00:02:09.800
+So indenting is the idea that different
+blocks of codes should be
+
+42
+00:02:09.800 --> 00:02:11.970
+spaced over to the right.
+
+43
+00:02:11.970 --> 00:02:14.670
+A little bit more than other blocks of
+codes so, you can see kind of how
+
+44
+00:02:14.670 --> 00:02:20.030
+the control flow, how the flow of the
+program goes based on the indenting alone.
+
+45
+00:02:21.240 --> 00:02:24.730
+So coupled with indenting is the third
+principle which I think
+
+46
+00:02:24.730 --> 00:02:27.670
+is very simple which the limit the width
+of your code.
+
+47
+00:02:27.670 --> 00:02:33.080
+So, you have indenting, it's possible to
+kind of indent off to the right forever.
+
+48
+00:02:33.080 --> 00:02:34.960
+So you need to limit on the right
+
+49
+00:02:34.960 --> 00:02:37.390
+hand side how wide your code is going to
+be, and usually
+
+50
+00:02:37.390 --> 00:02:41.410
+this is kind of determined by number of
+columns of text.
+
+51
+00:02:41.410 --> 00:02:44.960
+And so one possibility is you limit your
+text to about 80 columns.
+
+52
+00:02:44.960 --> 00:02:49.380
+Of text and then, and so that you're, the
+width of your code never exceeds that.
+
+53
+00:02:49.380 --> 00:02:51.670
+So, let's take a look for, at a quick
+example here.
+
+54
+00:02:51.670 --> 00:02:56.040
+So, here you can see I've got our studio
+open here.
+
+55
+00:02:56.040 --> 00:02:58.360
+With this simple code file with some R
+code in it.
+
+56
+00:02:58.360 --> 00:02:59.960
+And, and, first of all, let me just
+mention that
+
+57
+00:02:59.960 --> 00:03:02.300
+the editor in our studio is a text editor.
+
+58
+00:03:02.300 --> 00:03:06.580
+So, it will always save the R files that
+you write as text format files.
+
+59
+00:03:06.580 --> 00:03:09.230
+so, we've already got that kind of
+handled.
+
+60
+00:03:09.230 --> 00:03:12.430
+But you can see, the indenting scheme here
+is equal to one space.
+
+61
+00:03:12.430 --> 00:03:14.700
+So every indent is one space.
+
+62
+00:03:14.700 --> 00:03:16.620
+And you can see that all of the code
+
+63
+00:03:16.620 --> 00:03:18.870
+is kind of mashed together here on the
+left-hand side.
+
+64
+00:03:18.870 --> 00:03:21.340
+It's difficult to tell kind of where the
+if blocks are, where
+
+65
+00:03:21.340 --> 00:03:24.890
+the else blocks are, where does the
+function kind of end and begin.
+
+66
+00:03:24.890 --> 00:03:29.780
+And so the indenting scheme kind of makes
+the code not very readable in this case.
+
+67
+00:03:29.780 --> 00:03:31.860
+So we can change the indenting in our
+studio.
+
+68
+00:03:31.860 --> 00:03:34.030
+And if I just go up to the preferences
+menu
+
+69
+00:03:34.030 --> 00:03:38.330
+here and go up to code editing and let me
+
+70
+00:03:38.330 --> 00:03:40.750
+just change it to four and you can see
+that
+
+71
+00:03:40.750 --> 00:03:43.310
+the column the margin column is set to 80
+characters.
+
+72
+00:03:43.310 --> 00:03:45.660
+So it will show you the margin when you've
+reached 80 characters.
+
+73
+00:03:46.940 --> 00:03:49.920
+And so I'm going to select all here with
+the command
+
+74
+00:03:49.920 --> 00:03:52.180
+a and then command i to indent this.
+
+75
+00:03:52.180 --> 00:03:55.000
+So now you can see that the indenting is a
+little bit nicer now.
+
+76
+00:03:55.000 --> 00:03:57.350
+You can see, kind of where the function
+begins and ends.
+
+77
+00:03:57.350 --> 00:04:00.060
+You can see where the if blocks start and
+end.
+
+78
+00:04:00.060 --> 00:04:04.520
+and, and the kind of structure of the
+program is much more obvious.
+
+79
+00:04:04.520 --> 00:04:06.853
+so, I'm going to change this one more
+time, though.
+
+80
+00:04:06.853 --> 00:04:10.900
+And, and my, my personal preference for
+indenting is to use eight spaces.
+
+81
+00:04:10.900 --> 00:04:12.120
+So I'm going to change this to eight.
+
+82
+00:04:14.260 --> 00:04:16.650
+Hit OK and Select All > Cmd+I.
+
+83
+00:04:16.650 --> 00:04:19.110
+And now you can see I I prefer the eight
+spaces
+
+84
+00:04:19.110 --> 00:04:22.930
+just because it really makes the structure
+of the code very obvious.
+
+85
+00:04:22.930 --> 00:04:28.040
+And the spacing is nice and clear and it
+makes the code very readable in general.
+
+86
+00:04:28.040 --> 00:04:31.658
+So you can see that indenting is very
+important.
+
+87
+00:04:31.658 --> 00:04:35.290
+And the biggest problem you might have is
+with too little indenting.
+
+88
+00:04:35.290 --> 00:04:36.540
+If you don't indent at all or if you
+
+89
+00:04:36.540 --> 00:04:39.360
+only use a very small amount, the code
+becomes kind
+
+90
+00:04:39.360 --> 00:04:41.106
+of very mashed together.
+
+91
+00:04:41.106 --> 00:04:44.370
+So I recommend at least 4 spaces for an
+indent.
+
+92
+00:04:44.370 --> 00:04:48.340
+And I prefer eight spaces for an indent,
+just because it makes
+
+93
+00:04:48.340 --> 00:04:52.110
+the code much more readable and spaces it
+out much more nicely.
+
+94
+00:04:52.110 --> 00:04:55.670
+One of the advantages of having something
+like an eight space indent
+
+95
+00:04:55.670 --> 00:05:00.540
+is coupled with an 80 character margin on
+the right hand side.
+
+96
+00:05:00.540 --> 00:05:03.660
+Is that it forces you to think about your
+code in a slightly different way.
+
+97
+00:05:03.660 --> 00:05:04.490
+So for example if
+
+98
+00:05:04.490 --> 00:05:06.370
+you have eight space indents if you are
+going to have
+
+99
+00:05:06.370 --> 00:05:09.710
+a four loop nested within another four
+loop within another four loop.
+
+100
+00:05:09.710 --> 00:05:11.680
+Every time you nest another four loop for
+
+101
+00:05:11.680 --> 00:05:14.010
+example you have to indent over eight
+spaces.
+
+102
+00:05:14.010 --> 00:05:16.930
+And by the time you get to maybe your
+fourth nested four loop.
+
+103
+00:05:16.930 --> 00:05:20.350
+You're pretty much hitting the right hand
+column at the 80 column margin, right?
+
+104
+00:05:20.350 --> 00:05:21.910
+And so the nice thing about the eight
+
+105
+00:05:21.910 --> 00:05:24.950
+space indent, coupled with the 80 column
+margin.
+
+106
+00:05:24.950 --> 00:05:26.510
+Is that it prevents you from kind of
+
+107
+00:05:26.510 --> 00:05:29.520
+writing very basic, making kind of very
+kind
+
+108
+00:05:29.520 --> 00:05:33.070
+of fundamental mistakes with code
+readability.
+
+109
+00:05:33.070 --> 00:05:36.460
+So for example with eight space indent,
+and 80 column margin.
+
+110
+00:05:36.460 --> 00:05:39.310
+You might be able to do easily more than
+two nested four loops.
+
+111
+00:05:39.310 --> 00:05:41.650
+And but I think that's really the kind of
+the,
+
+112
+00:05:41.650 --> 00:05:44.190
+the boundary of what is readable in terms
+of code.
+
+113
+00:05:44.190 --> 00:05:47.490
+Typically, except for some special cases,
+a three,
+
+114
+00:05:47.490 --> 00:05:49.330
+you know, a three nested or four nested
+for-loop
+
+115
+00:05:49.330 --> 00:05:52.090
+is difficult to read, and it's probably
+better off
+
+116
+00:05:52.090 --> 00:05:54.418
+splitting off into separate functions or
+something like that.
+
+117
+00:05:54.418 --> 00:05:59.910
+So you know, a good indenting policy not
+only, makes the code more readable.
+
+118
+00:05:59.910 --> 00:06:01.400
+But it actually can force you to think
+
+119
+00:06:01.400 --> 00:06:03.900
+about writing your code in a slightly
+different way.
+
+120
+00:06:03.900 --> 00:06:07.480
+And so that's a really nice advantage of,
+of, of having a logical
+
+121
+00:06:07.480 --> 00:06:09.780
+indenting policy with, coupled with a, you
+
+122
+00:06:09.780 --> 00:06:11.690
+know, a right hand side restriction,
+right?
+
+123
+00:06:12.910 --> 00:06:17.090
+So the last, thing I want to talk about is
+to limit the length of your functions.
+
+124
+00:06:17.090 --> 00:06:19.710
+Alright, so functions in R can,
+
+125
+00:06:19.710 --> 00:06:21.860
+can theoretically go on for quite a long
+time
+
+126
+00:06:21.860 --> 00:06:24.180
+and, of course, just like in any other
+language.
+
+127
+00:06:24.180 --> 00:06:26.970
+But just like in any other language, I
+think the logical thing to
+
+128
+00:06:26.970 --> 00:06:31.740
+do with the function is to limit to kind
+of one basic activity.
+
+129
+00:06:31.740 --> 00:06:35.080
+So, for example, if your function is
+named, read the data.
+
+130
+00:06:35.080 --> 00:06:37.340
+Then your function should simply read the
+data.
+
+131
+00:06:37.340 --> 00:06:39.020
+It should not read the data, process it,
+
+132
+00:06:39.020 --> 00:06:40.990
+fit a model, and then print some output,
+alright?
+
+133
+00:06:40.990 --> 00:06:44.950
+So you should, the logical kind of steps
+like that should probably
+
+134
+00:06:44.950 --> 00:06:47.780
+be split into separate functions.
+
+135
+00:06:47.780 --> 00:06:49.420
+There are a couple of different advantages
+to doing this.
+
+136
+00:06:49.420 --> 00:06:53.180
+First of all it's nice to have a function
+written on a single page of code.
+
+137
+00:06:53.180 --> 00:06:56.060
+So you don't have to scroll endlessly, to
+see
+
+138
+00:06:56.060 --> 00:06:58.430
+you know where all the code for this
+function goes.
+
+139
+00:06:58.430 --> 00:07:02.000
+If you can put all the function, the ent,
+the entire function on like, one screen of
+
+140
+00:07:02.000 --> 00:07:05.960
+the editor, then you can look at the whole
+function and see what it does all at once.
+
+141
+00:07:05.960 --> 00:07:10.210
+Another advantage of splitting up your
+code onto logical sections, to logical
+
+142
+00:07:10.210 --> 00:07:13.500
+functions is that if you use functions
+like
+
+143
+00:07:13.500 --> 00:07:17.210
+trace back or, or the profile or the
+debugger.
+
+144
+00:07:17.210 --> 00:07:19.020
+These often tell you, you know, where in
+the
+
+145
+00:07:19.020 --> 00:07:22.450
+function call stack you are when a problem
+occurs.
+
+146
+00:07:22.450 --> 00:07:23.960
+And if you have multiple functions that
+
+147
+00:07:23.960 --> 00:07:26.640
+are all logically divided into separate
+pieces.
+
+148
+00:07:26.640 --> 00:07:29.750
+Then when a bug occurs and you know it
+occurs in a certain type of function,
+
+149
+00:07:29.750 --> 00:07:33.460
+or a certain function, then you know kind
+of where to go to fix things, right?
+
+150
+00:07:33.460 --> 00:07:35.320
+So if you, but if you just have a single
+
+151
+00:07:35.320 --> 00:07:37.230
+function that just goes on forever and a
+
+152
+00:07:37.230 --> 00:07:39.580
+bug occurs, then the only thing that the
+debugger
+
+153
+00:07:39.580 --> 00:07:42.040
+or the traceback or the profiler can tell
+you
+
+154
+00:07:42.040 --> 00:07:44.140
+is that there's a problem in this one
+function.
+
+155
+00:07:44.140 --> 00:07:49.020
+But it doesn't, it's difficult to tell you
+where exactly the problem occurs.
+
+156
+00:07:49.020 --> 00:07:52.110
+So splitting up your functions has a
+secondary benefit which
+
+157
+00:07:52.110 --> 00:07:55.060
+is that it can help you in debug and
+profiling.
+
+158
+00:07:55.060 --> 00:07:56.970
+So limiting the size of your functions is
+
+159
+00:07:56.970 --> 00:07:59.550
+very useful for readability and for kind
+of debugging.
+
+160
+00:07:59.550 --> 00:08:00.510
+Of course, it's easy
+
+161
+00:08:00.510 --> 00:08:04.060
+to go overboard and to have, you know, 100
+different three line functions.
+
+162
+00:08:04.060 --> 00:08:06.250
+So that's not really what you want to do.
+
+163
+00:08:06.250 --> 00:08:09.320
+So you just want to make it so that the,
+the separation of different
+
+164
+00:08:09.320 --> 00:08:15.360
+functions is logical and each function
+kind of does does one thing in particular.
+
+165
+00:08:16.640 --> 00:08:19.290
+So those are my basic guidelines for
+writing code in R there of
+
+166
+00:08:19.290 --> 00:08:21.190
+course there are many other things that
+you might be able to think about.
+
+167
+00:08:21.190 --> 00:08:26.080
+But then you bordering into areas that we
+might not we might kind of disagree on and
+
+168
+00:08:26.080 --> 00:08:28.870
+so I'm not going to talk about it too much
+more in terms of coding standards.
+
+169
+00:08:28.870 --> 00:08:31.770
+But the basic ideas are, always use a text
+editor,
+
+170
+00:08:31.770 --> 00:08:34.560
+always indent your code, I'd say at least
+four spaces.
+
+171
+00:08:35.830 --> 00:08:38.710
+Limit on the right-hand side how, how wide
+your code can be.
+
+172
+00:08:39.720 --> 00:08:43.740
+And and always limit the size of your
+functions so that you
+
+173
+00:08:43.740 --> 00:08:48.700
+can, so that they're kind of grouped into
+logical pieces of your program.
+
+174
+00:08:48.700 --> 00:08:51.140
+So with those four things I think you'll,
+your, your code will be much
+
+175
+00:08:51.140 --> 00:08:52.250
+more readable.
+
+176
+00:08:52.250 --> 00:08:54.410
+It will be readable to you, it will be
+readable to others.
+
+177
+00:08:54.410 --> 00:08:58.520
+And it will make kind of writing our code
+much more useful to everyone.

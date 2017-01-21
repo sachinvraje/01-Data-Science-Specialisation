@@ -1,0 +1,318 @@
+WEBVTT
+
+1
+00:00:00.330 --> 00:00:03.750
+One basic idea, to kind of, as a tool, to
+make a
+
+2
+00:00:03.750 --> 00:00:07.550
+lot of this stuff easier, is what's known
+as Literate (Statistical) Programing.
+
+3
+00:00:07.550 --> 00:00:12.410
+And, this comes from the idea of literate
+programming, in computer programs.
+
+4
+00:00:12.410 --> 00:00:14.620
+And so the idea is to think of the art-,
+an article,
+
+5
+00:00:14.620 --> 00:00:19.380
+or a publication, or a report, as a stream
+of text and code.
+
+6
+00:00:19.380 --> 00:00:21.080
+And, so the text is, kind of, readable
+
+7
+00:00:21.080 --> 00:00:23.710
+by people and the code is readable by
+computers.
+
+8
+00:00:23.710 --> 00:00:26.180
+And then the idea is that the analysis is
+
+9
+00:00:26.180 --> 00:00:29.830
+described in a series of text and code
+chunks.
+
+10
+00:00:29.830 --> 00:00:32.280
+And each kind of code chunk will do
+something.
+
+11
+00:00:32.280 --> 00:00:34.750
+It'll load some data and compute results.
+
+12
+00:00:34.750 --> 00:00:38.190
+And each text chunk will kind of relay
+something in a human readable language.
+
+13
+00:00:38.190 --> 00:00:40.888
+And so there are going to be presentation
+
+14
+00:00:40.888 --> 00:00:44.290
+code, that kind of formats tables and
+figures.
+
+15
+00:00:44.290 --> 00:00:47.260
+There's article text that explains what's
+going on around all this code.
+
+16
+00:00:47.260 --> 00:00:50.029
+And the idea is that this stream of text
+and code
+
+17
+00:00:50.029 --> 00:00:55.360
+is a literate statistical program or a
+liter, literate statistical analysis.
+
+18
+00:00:55.360 --> 00:00:57.187
+And these programs can be weaved to
+
+19
+00:00:57.187 --> 00:00:59.644
+produce human readable documents like PDFs
+or
+
+20
+00:00:59.644 --> 00:01:01.597
+HTML web pages, and they can tangled
+
+21
+00:01:01.597 --> 00:01:05.515
+to produce machine-readable documents, so
+machine readable code.
+
+22
+00:01:05.515 --> 00:01:09.115
+And so the basic idea behind literate
+programming; is that if you need a
+
+23
+00:01:09.115 --> 00:01:12.415
+documentational language, that's human
+readable and you
+
+24
+00:01:12.415 --> 00:01:15.770
+need a programming language that's machine
+readable.
+
+25
+00:01:15.770 --> 00:01:18.710
+And so one of the original system's in R
+
+26
+00:01:18.710 --> 00:01:21.384
+that was designed to do this was called
+Sweave.
+
+27
+00:01:21.384 --> 00:01:24.464
+And Sweave uses a documentation program
+called
+
+28
+00:01:24.464 --> 00:01:28.550
+LaTeX, and a programming language,
+obviously is R.
+
+29
+00:01:28.550 --> 00:01:32.666
+And it was developed by Fritz Leisch who
+was a core member of
+
+30
+00:01:32.666 --> 00:01:37.980
+R, and is still maintained by R Core and
+his website is listed here.
+
+31
+00:01:37.980 --> 00:01:41.952
+Now there are one, there are many
+limitations to the original Sweave system.
+
+32
+00:01:41.952 --> 00:01:44.337
+One of which is focused primarily on LaTeX
+which is not
+
+33
+00:01:44.337 --> 00:01:49.174
+a language, a documentation language that
+many, many people are familiar with.
+
+34
+00:01:49.174 --> 00:01:51.010
+And so it can be difficult to learn this
+type
+
+35
+00:01:51.010 --> 00:01:54.170
+of markup language if you're not all ready
+in the field.
+
+36
+00:01:54.170 --> 00:01:56.570
+It lacks a lot of features that kind of
+people want
+
+37
+00:01:56.570 --> 00:02:00.390
+like caching, and multiple plots per page
+and mixing programming languages.
+
+38
+00:02:00.390 --> 00:02:06.680
+And so and it's not as frequently updated
+or very actively developed.
+
+39
+00:02:06.680 --> 00:02:08.390
+And so one of the alternative that has
+come
+
+40
+00:02:08.390 --> 00:02:11.034
+up in recent times is, is something called
+knitr.
+
+41
+00:02:11.034 --> 00:02:13.788
+And the knitr package for R is basically,
+kind of, takes a lot of
+
+42
+00:02:13.788 --> 00:02:15.726
+these ideas of literate programming and
+kind
+
+43
+00:02:15.726 --> 00:02:17.890
+of updates them and improves upon them.
+
+44
+00:02:17.890 --> 00:02:19.570
+And there are a lot of kind of features
+that
+
+45
+00:02:19.570 --> 00:02:23.234
+were added on to the Sweave original kind
+of concept.
+
+46
+00:02:23.234 --> 00:02:26.192
+And so it's still, knitr still uses R as
+its programming language,
+
+47
+00:02:26.192 --> 00:02:29.696
+but it allows you to mix a v, other
+programming languages in.
+
+48
+00:02:29.696 --> 00:02:31.890
+And you can use a variety of documentation
+languages now.
+
+49
+00:02:31.890 --> 00:02:33.775
+You can use LaTex, you can also use
+
+50
+00:02:33.775 --> 00:02:36.950
+something called Markdown and you can use
+HTML.
+
+51
+00:02:36.950 --> 00:02:39.238
+And so knitr was developed by Yihui Xie
+who was,
+
+52
+00:02:39.238 --> 00:02:42.422
+who was, while he was a graduate student
+at Iowa State.
+
+53
+00:02:42.422 --> 00:02:48.230
+And it's become a very popular package for
+doing literate statistical programs.
+
+54
+00:02:48.230 --> 00:02:50.500
+So just to summarize very briefly.
+
+55
+00:02:50.500 --> 00:02:52.530
+Reproducible research is a I, I think it's
+an
+
+56
+00:02:52.530 --> 00:02:54.710
+important minimum standard for,
+
+57
+00:02:54.710 --> 00:02:58.610
+computationally intensive, types of
+analysis.
+
+58
+00:02:58.610 --> 00:03:02.330
+And where replication is very difficult
+or, if not impossible.
+
+59
+00:03:02.330 --> 00:03:05.080
+We still need quite a bit of
+infrastructure and tools to kind
+
+60
+00:03:05.080 --> 00:03:07.500
+of create and distribute reproducible
+documents,
+
+61
+00:03:07.500 --> 00:03:09.440
+and beyond what is currently available.
+
+62
+00:03:09.440 --> 00:03:12.664
+But that's kind of improving as the,
+everyday and there
+
+63
+00:03:12.664 --> 00:03:15.960
+are lots of new tools kind of coming on
+the scene.
+
+64
+00:03:15.960 --> 00:03:19.620
+So in the next lecture, I'll talk about
+some of these tools.
+
+65
+00:03:19.620 --> 00:03:21.490
+In particular I'll talk about knitr.
+
+66
+00:03:21.490 --> 00:03:24.680
+And just to show how you can produce
+reproducible documents.

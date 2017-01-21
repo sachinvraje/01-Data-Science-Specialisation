@@ -1,0 +1,597 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:02.580
+This lecture's going to be about R
+markdown.
+
+2
+00:00:02.580 --> 00:00:06.000
+It's going to be a very short and just
+description of what this is, because I
+
+3
+00:00:06.000 --> 00:00:10.450
+talk about it in a little bit more detail
+when I talk about reproducible research.
+
+4
+00:00:10.450 --> 00:00:15.840
+So the basic idea behind R markdown is
+that you want to have R code
+
+5
+00:00:15.840 --> 00:00:21.540
+integrated with a simple language that can
+be used to kind of create documents.
+
+6
+00:00:21.540 --> 00:00:25.590
+And so the coupling is going to be the R
+language with the markdown language.
+
+7
+00:00:25.590 --> 00:00:27.600
+So, first of all, what is markdown?
+
+8
+00:00:27.600 --> 00:00:31.280
+So markdown is a very simple kind of
+markup language,
+
+9
+00:00:31.280 --> 00:00:33.140
+kind of play, a play on the word markup
+language.
+
+10
+00:00:33.140 --> 00:00:36.420
+And the idea is that the, the mark,
+markdown is
+
+11
+00:00:36.420 --> 00:00:40.440
+designed to help you focus on actually
+writing things, right.
+
+12
+00:00:40.440 --> 00:00:43.895
+So when you think about it, if you're
+experienced with languages like HTML or La
+
+13
+00:00:43.895 --> 00:00:47.445
+Tec, or, or some of these other, or XML,
+or some of these other things.
+
+14
+00:00:47.445 --> 00:00:48.700
+you know, one of the things that you
+notice
+
+15
+00:00:48.700 --> 00:00:50.590
+that you spend a lot of time thinking
+about
+
+16
+00:00:50.590 --> 00:00:53.600
+the formatting, and, and thinking about
+everything else
+
+17
+00:00:53.600 --> 00:00:56.670
+except the actual content that you're
+trying to produce.
+
+18
+00:00:56.670 --> 00:00:59.520
+And so the basic philosophy behind
+markdown is say, is to
+
+19
+00:00:59.520 --> 00:01:04.070
+create a language that allows writers to,
+to do writing basically.
+
+20
+00:01:04.070 --> 00:01:04.640
+Right?
+
+21
+00:01:04.640 --> 00:01:07.470
+And so if you look at markdown it looks
+very different from other
+
+22
+00:01:07.470 --> 00:01:13.290
+types of, of kind of markup languages like
+XML or HTML or LATEC.
+
+23
+00:01:13.290 --> 00:01:15.640
+And so there are just very simple,
+
+24
+00:01:15.640 --> 00:01:18.250
+very minimal, kind of intuitive formatting
+elements things
+
+25
+00:01:18.250 --> 00:01:21.535
+like boldface and, and and sections and
+lists.
+
+26
+00:01:21.535 --> 00:01:24.130
+And so be kinds of things that you would
+typically need in
+
+27
+00:01:24.130 --> 00:01:28.300
+a basic document but not the very fancy
+things that you might have.
+
+28
+00:01:28.300 --> 00:01:30.260
+But one of advantages of markdown is that
+
+29
+00:01:30.260 --> 00:01:33.000
+it, you can insert kind of arbitrary HTML
+elements.
+
+30
+00:01:33.000 --> 00:01:35.930
+So if you are familiar with HTML and you
+want something that's specific or
+
+31
+00:01:35.930 --> 00:01:39.020
+particular, and there isn't a basic
+markdown
+
+32
+00:01:39.020 --> 00:01:40.790
+formatting element for it, you can just
+
+33
+00:01:40.790 --> 00:01:44.071
+put some HTML in, in the worst-case
+scenario.
+
+34
+00:01:44.071 --> 00:01:48.126
+So one of the nice things about markdown
+is, it's easily converted into HTML.
+
+35
+00:01:48.126 --> 00:01:51.960
+There are tool chains out there that'll
+take markdown, and in fact
+
+36
+00:01:51.960 --> 00:01:56.666
+convert it into many different formats,
+HTML just being one of them.
+
+37
+00:01:56.666 --> 00:01:58.613
+So you can let a lot of information at the
+
+38
+00:01:58.613 --> 00:02:00.914
+website of, of John Gruber, where he has a
+lot
+
+39
+00:02:00.914 --> 00:02:04.041
+of documentation for markdown, and a
+little bit of background
+
+40
+00:02:04.041 --> 00:02:07.540
+on kind of how, how this, how this project
+evolved.
+
+41
+00:02:07.540 --> 00:02:13.280
+So, that was markdown.
+What is R markdown?
+
+42
+00:02:13.280 --> 00:02:17.800
+So R markdown is basically the coupling of
+R code in a markdown document.
+
+43
+00:02:17.800 --> 00:02:20.690
+So, the idea is that if you want to embed
+R
+
+44
+00:02:20.690 --> 00:02:25.780
+code, in a document that's written in
+markdown, you use R markdown.
+
+45
+00:02:25.780 --> 00:02:27.950
+And the, the basic idea is that this, it's
+going to look a
+
+46
+00:02:27.950 --> 00:02:32.310
+lot like a standard R mark, I'm sorry, a
+standard markdown document.
+
+47
+00:02:32.310 --> 00:02:32.570
+But there's
+
+48
+00:02:32.570 --> 00:02:36.200
+going to be R code sprinkled in, in, in
+what are called code chunks.
+
+49
+00:02:36.200 --> 00:02:38.635
+And the code chunks'll be denoted by a
+special formatting
+
+50
+00:02:38.635 --> 00:02:40.770
+tags, which I'll show you in a little, in
+a minute.
+
+51
+00:02:40.770 --> 00:02:44.630
+So when you integrate R code with markdown
+that's an
+
+52
+00:02:44.630 --> 00:02:48.860
+R markdown document, typically has the r m
+d extension.
+
+53
+00:02:48.860 --> 00:02:51.310
+And so the nice thing about using R
+markdown is it
+
+54
+00:02:51.310 --> 00:02:56.060
+allows you to insert essentially live R
+code into a markdown document.
+
+55
+00:02:56.060 --> 00:02:57.920
+So when you process the markdown document
+
+56
+00:02:57.920 --> 00:03:02.990
+to create your HTML or your PDF ultimate
+you know, format, um,you
+
+57
+00:03:02.990 --> 00:03:07.580
+can evaluate the r code in as part of the
+processing for markdown.
+
+58
+00:03:07.580 --> 00:03:13.053
+And so, so you know that the code in the
+document if you're trying to demonstrate
+
+59
+00:03:13.053 --> 00:03:17.160
+a tool, or you're trying, you know maybe
+show some data or whatever it would be.
+
+60
+00:03:17.160 --> 00:03:20.540
+You know, that the code works in the
+document because in
+
+61
+00:03:20.540 --> 00:03:23.500
+order for a document to be produced in the
+first place the
+
+62
+00:03:23.500 --> 00:03:26.300
+code had to be executed and evaluated and
+run.
+
+63
+00:03:26.300 --> 00:03:28.600
+And so everything in the document, any
+code that
+
+64
+00:03:28.600 --> 00:03:31.140
+you see in a document, you know will work.
+
+65
+00:03:31.140 --> 00:03:33.990
+Because it had to, it had to work to
+create the document.
+
+66
+00:03:33.990 --> 00:03:37.810
+So that's one nice thing about being able
+to embed live R code in a document
+
+67
+00:03:37.810 --> 00:03:42.540
+is that you can ensure a, a, some, a
+certain level of validity of the R code.
+
+68
+00:03:42.540 --> 00:03:45.770
+So the basic idea is the, you know, you
+evaluate R code it,
+
+69
+00:03:45.770 --> 00:03:49.680
+the, the results of the R code is, is
+inserted into the markdown document.
+
+70
+00:03:49.680 --> 00:03:51.810
+And mark, R markdown is a core
+
+71
+00:03:51.810 --> 00:03:54.570
+tool in what's known as literate
+statistical programming.
+
+72
+00:03:54.570 --> 00:03:55.890
+And we'll talk about that a little,
+
+73
+00:03:55.890 --> 00:03:59.050
+much more when we talk about reproducible
+research.
+
+74
+00:03:59.050 --> 00:04:02.030
+But for now, it's important just to think
+of R
+
+75
+00:04:02.030 --> 00:04:03.899
+markdown as a way to put R code in a
+document.
+
+76
+00:04:05.300 --> 00:04:10.960
+So you can evaluate R markdown documents
+using the knitr package in R.
+
+77
+00:04:10.960 --> 00:04:14.865
+So the knitr has a, knitr essentially
+reads an R markdown file,
+
+78
+00:04:14.865 --> 00:04:17.100
+evaluates all the R code in it, it kind of
+sticks in
+
+79
+00:04:17.100 --> 00:04:21.560
+the results of the R code, and then writes
+out a Markdown file.
+
+80
+00:04:21.560 --> 00:04:26.140
+Now, that Markdown file can be converted
+into HTML using the markdown package in R.
+
+81
+00:04:26.140 --> 00:04:29.270
+And so there's a bit, so there's a kind of
+extra step of the pipeline here.
+
+82
+00:04:29.270 --> 00:04:31.810
+If you were just going to write markdown
+you could just
+
+83
+00:04:31.810 --> 00:04:34.340
+convert that to HTML right away, but if
+you're going to
+
+84
+00:04:34.340 --> 00:04:36.470
+write R markdown, then you need to use
+something like
+
+85
+00:04:36.470 --> 00:04:39.860
+knitr, to kind of evaluate the R code,
+create the markdown document,
+
+86
+00:04:39.860 --> 00:04:41.620
+and then, bring it to an HTML file.
+
+87
+00:04:42.930 --> 00:04:46.830
+So the knitr package and the mark down
+package are, are important for this.
+
+88
+00:04:46.830 --> 00:04:48.620
+Any basic text editor can be used to
+
+89
+00:04:48.620 --> 00:04:50.890
+create a markdown document, or R markdown
+document.
+
+90
+00:04:50.890 --> 00:04:55.200
+That's one of the nice features of this
+type of markup
+
+91
+00:04:55.200 --> 00:04:58.210
+language is that you don't need any fancy
+editors to visualize what
+
+92
+00:04:58.210 --> 00:05:01.670
+you're trying write, you can just use any
+old text editor
+
+93
+00:05:01.670 --> 00:05:04.970
+and it will be fine; you don't need any
+special editing tools.
+
+94
+00:05:04.970 --> 00:05:08.670
+So the, the basic workflow that you're
+going to use if you
+
+95
+00:05:08.670 --> 00:05:11.660
+write in R markdown is, R, you write in
+an, you kind,
+
+96
+00:05:11.660 --> 00:05:14.340
+your basic, your core document is an R
+markdown file, so
+
+97
+00:05:14.340 --> 00:05:18.190
+it has markdown formatting elements and it
+has R code in it.
+
+98
+00:05:18.190 --> 00:05:20.880
+Then you convert that into a markdown file
+using the knitr package,
+
+99
+00:05:20.880 --> 00:05:24.330
+and then you take that markdown file,
+which is essentially an intermediate file
+
+100
+00:05:24.330 --> 00:05:27.030
+that you're, you're not going to edit this
+file, and you would take
+
+101
+00:05:27.030 --> 00:05:29.940
+that markdown file, and you convert it to
+HTML using the markdown package.
+
+102
+00:05:29.940 --> 00:05:35.740
+And then HTML is kind of what you would
+view in your browser or other viewer.
+
+103
+00:05:35.740 --> 00:05:40.570
+So the, the, now, the key elements of all
+this is that you don't, you never edit the
+
+104
+00:05:40.570 --> 00:05:42.490
+intermediate or final products, so you
+never edit the
+
+105
+00:05:42.490 --> 00:05:45.030
+markdown file and you never edit the HTML
+file.
+
+106
+00:05:45.030 --> 00:05:47.510
+The only file that you're ever going to
+edit is the R markdown
+
+107
+00:05:47.510 --> 00:05:51.660
+file which has the kind of original R code
+and original markdown in it.
+
+108
+00:05:51.660 --> 00:05:55.950
+The whole workflow is very easily managed,
+if you're using something like R Studio.
+
+109
+00:05:55.950 --> 00:05:58.930
+R Studio has knitr and markdown integrated
+into it and furthermore
+
+110
+00:05:58.930 --> 00:06:01.170
+even has a little web browser built in so
+you can actually
+
+111
+00:06:01.170 --> 00:06:04.200
+view the final product, if you're using R
+Studio, and I'll
+
+112
+00:06:04.200 --> 00:06:07.150
+show a little demonstration of how to do
+that in R Studio.
+
+113
+00:06:07.150 --> 00:06:09.800
+and, and just as one very quick example,
+the slides that
+
+114
+00:06:09.800 --> 00:06:12.340
+you're looking at right now they were
+written in R markdown.
+
+115
+00:06:12.340 --> 00:06:16.170
+Of course, there's no R code in here, so
+it's, it's more or less just
+
+116
+00:06:16.170 --> 00:06:18.150
+plain markdown, but I built these slides
+
+117
+00:06:18.150 --> 00:06:21.020
+using the slidify package which calls
+knitr and
+
+118
+00:06:21.020 --> 00:06:24.170
+the markdown packages, to convert them
+into HTML.
+
+119
+00:06:24.170 --> 00:06:25.740
+So you can, there's a lot of flexibility
+when
+
+120
+00:06:25.740 --> 00:06:29.090
+you're using a format formatting language
+like R markdown
+
+121
+00:06:29.090 --> 00:06:30.790
+or just markdown and you can, because you
+can
+
+122
+00:06:30.790 --> 00:06:33.470
+convert them to a lot of different other
+presentation styles.

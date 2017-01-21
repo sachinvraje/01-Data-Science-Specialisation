@@ -1,0 +1,667 @@
+WEBVTT
+
+1
+00:00:00.958 --> 00:00:01.025
+Hi, everyone.
+
+2
+00:00:01.025 --> 00:00:04.258
+This lecture will be about reproducible
+research, and I want to
+
+3
+00:00:04.258 --> 00:00:07.308
+just talk about some concepts and ideas
+that are, that
+
+4
+00:00:07.308 --> 00:00:10.297
+are related to reproducible research and
+in, just in case
+
+5
+00:00:10.297 --> 00:00:13.385
+you haven't heard about it or don't know
+what it is.
+
+6
+00:00:13.385 --> 00:00:19.420
+So the basic idea is that in science,
+replication is the most important element
+
+7
+00:00:19.420 --> 00:00:24.770
+of kind of verifying and validating
+findings that a scientist discover.
+
+8
+00:00:24.770 --> 00:00:26.250
+So if you claim that
+
+9
+00:00:26.250 --> 00:00:31.800
+x causes y, or that Vitamin C improves
+disease, or that this causes a problem.
+
+10
+00:00:31.800 --> 00:00:33.615
+What happens is that, you know, other
+
+11
+00:00:33.615 --> 00:00:36.362
+scientists that are independent of the
+original.
+
+12
+00:00:36.362 --> 00:00:39.210
+Will, will try to investigate that same
+question and
+
+13
+00:00:39.210 --> 00:00:40.360
+see if they come up with the same result.
+
+14
+00:00:40.360 --> 00:00:41.950
+And if lots of different people come up
+with the
+
+15
+00:00:41.950 --> 00:00:45.430
+same result and replicate the original
+finding, then we can
+
+16
+00:00:45.430 --> 00:00:47.720
+tend to think that, well, the original was
+probably true
+
+17
+00:00:47.720 --> 00:00:50.720
+and that this is a real relationship or
+real finding.
+
+18
+00:00:50.720 --> 00:00:51.750
+So the
+
+19
+00:00:51.750 --> 00:00:55.220
+ultimate standard in strengthening
+scientific evidence is replication.
+
+20
+00:00:55.220 --> 00:00:56.500
+And we, and the goal is to
+
+21
+00:00:56.500 --> 00:00:59.420
+have independent people to do independent
+things with
+
+22
+00:00:59.420 --> 00:01:01.890
+different data, different methods, and
+different laboratories
+
+23
+00:01:01.890 --> 00:01:03.550
+and see if you get the same result.
+
+24
+00:01:03.550 --> 00:01:06.880
+Because if a finding is robust to all
+these different things then it
+
+25
+00:01:06.880 --> 00:01:09.680
+is more likely to be true and the evidence
+is stronger in it's favor.
+
+26
+00:01:10.810 --> 00:01:13.710
+Replication is particularly important in
+studies that have, kind
+
+27
+00:01:13.710 --> 00:01:17.020
+of had big policy impacts or can influence
+regulatory types
+
+28
+00:01:17.020 --> 00:01:21.420
+of decisions.
+So, what's wrong with replication?
+
+29
+00:01:21.420 --> 00:01:22.690
+So there's really nothing wrong with it.
+
+30
+00:01:22.690 --> 00:01:27.010
+This is what science has been doing for a
+long time through hundreds of years.
+
+31
+00:01:27.010 --> 00:01:28.650
+And there's nothing wrong with it today.
+
+32
+00:01:28.650 --> 00:01:30.540
+But the problem is that it's very, it's
+becoming
+
+33
+00:01:30.540 --> 00:01:33.170
+more and more challenging to do
+replication or to
+
+34
+00:01:33.170 --> 00:01:35.280
+replicate other studies and because and
+part of the
+
+35
+00:01:35.280 --> 00:01:38.020
+reason is because studies are getting
+bigger and bigger.
+
+36
+00:01:38.020 --> 00:01:42.220
+In order to do big studies you need a lot
+of money and so there's a lot of money
+
+37
+00:01:42.220 --> 00:01:46.060
+involved and if you want to do ten
+versions of the same study, you need ten
+
+38
+00:01:46.060 --> 00:01:49.874
+times as much money and there's not as
+much money around as there used to be.
+
+39
+00:01:49.874 --> 00:01:52.580
+[COUGH] sometimes it's just, it's
+difficult to replicate
+
+40
+00:01:52.580 --> 00:01:53.770
+a study because you know, if the original
+
+41
+00:01:53.770 --> 00:01:56.220
+study took 20 years to do, it's difficult
+
+42
+00:01:56.220 --> 00:01:58.690
+to wait around another 20 years for
+replication.
+
+43
+00:01:58.690 --> 00:02:00.930
+So that can be a, a challenge.
+
+44
+00:02:00.930 --> 00:02:02.640
+Some studies are just plain unique.
+
+45
+00:02:02.640 --> 00:02:07.020
+So if you're looking at a unique situation
+in time or a unique population,
+
+46
+00:02:07.020 --> 00:02:09.410
+you can't readily replicate that
+situation.
+
+47
+00:02:09.410 --> 00:02:14.080
+So, there are a lot of good reasons why
+you can't replicate a study.
+
+48
+00:02:14.080 --> 00:02:18.400
+And so the idea said, well, if you can't
+replicate it is
+
+49
+00:02:18.400 --> 00:02:22.240
+the alternative just to do nothing, just
+let that study stand by itself?
+
+50
+00:02:22.240 --> 00:02:26.160
+And so the idea behind a reproducible
+research is to create a kind
+
+51
+00:02:26.160 --> 00:02:32.370
+of minimum standard or a middle ground
+where we won't be replicating the study,
+
+52
+00:02:32.370 --> 00:02:33.980
+but maybe we can do something in between.
+
+53
+00:02:33.980 --> 00:02:37.140
+So the basic problem is, you know, you
+have the gold standard, which is, which
+
+54
+00:02:37.140 --> 00:02:40.080
+is replication and then you have the, kind
+
+55
+00:02:40.080 --> 00:02:42.780
+of the, the worst standard which is
+nothing.
+
+56
+00:02:42.780 --> 00:02:44.593
+And so, what can we do that's in between
+the
+
+57
+00:02:44.593 --> 00:02:48.360
+gold standard and nothing, and that's
+where we're thinking is reproducibility.
+
+58
+00:02:48.360 --> 00:02:52.540
+So, that's how we can kind of bridge the
+gap between replication and nothing.
+
+59
+00:02:53.550 --> 00:02:57.910
+So, why do we need this kind of middle
+ground, which I haven't clearly
+
+60
+00:02:57.910 --> 00:03:01.700
+defined yet, but the basic idea is that,
+you know, you
+
+61
+00:03:01.700 --> 00:03:05.640
+make the data available for the original
+study, and you make the
+
+62
+00:03:05.640 --> 00:03:11.380
+computational methods available so that
+other people can can, can look at
+
+63
+00:03:11.380 --> 00:03:15.260
+your data and cam run the kind of analysis
+that you've run.
+
+64
+00:03:15.260 --> 00:03:18.160
+And to kind of come, come to the same
+findings that you found.
+
+65
+00:03:18.160 --> 00:03:20.320
+And so a lot of this, what reproducible
+research
+
+66
+00:03:20.320 --> 00:03:24.320
+is about is a validation of the data
+analysis.
+
+67
+00:03:24.320 --> 00:03:27.220
+Because you're not collecting independent
+data
+
+68
+00:03:27.220 --> 00:03:28.910
+using independent methods, you can, it's
+
+69
+00:03:28.910 --> 00:03:32.960
+a little bit more difficult to validate
+the, the question itself that
+
+70
+00:03:32.960 --> 00:03:36.230
+you're asking, but if you can take
+someone's data and repli, and
+
+71
+00:03:36.230 --> 00:03:39.879
+reproduce their findings, then you can in
+some sense validate the data analysis.
+
+72
+00:03:41.000 --> 00:03:43.040
+And so this involves having the data and
+
+73
+00:03:43.040 --> 00:03:45.760
+the code because, you know, most, more
+likely than
+
+74
+00:03:45.760 --> 00:03:47.140
+not, the analysis will have been done on
+the
+
+75
+00:03:47.140 --> 00:03:50.150
+computer using some sort of programming
+language like R.
+
+76
+00:03:50.150 --> 00:03:53.950
+And so you can take their code and their
+data and reproduce the findings that they
+
+77
+00:03:53.950 --> 00:03:55.300
+come up with, then you can at least
+
+78
+00:03:55.300 --> 00:03:59.100
+have confidence that the analysis was done
+appropriately.
+
+79
+00:03:59.100 --> 00:04:04.140
+And and that the correct methods were
+done, were used excuse me.
+
+80
+00:04:04.140 --> 00:04:07.430
+So what is driving this need for a middle
+
+81
+00:04:07.430 --> 00:04:11.600
+ground, this reproducibility middle ground
+between replication and doing nothing?
+
+82
+00:04:11.600 --> 00:04:13.060
+Well, there's a lot of new technologies on
+
+83
+00:04:13.060 --> 00:04:15.540
+the scene and in many different fields
+including, biology
+
+84
+00:04:15.540 --> 00:04:18.620
+and chemistry and environmental science,
+all kinds of areas.
+
+85
+00:04:18.620 --> 00:04:23.870
+These technology allow us to collect data
+at a much higher throughput.
+
+86
+00:04:23.870 --> 00:04:27.000
+And so we get these very complex and very
+high dimensional data sets.
+
+87
+00:04:27.000 --> 00:04:30.870
+Almost instantaneously compared to even
+just ten years ago.
+
+88
+00:04:30.870 --> 00:04:34.190
+And so, the technology has allowed us to
+create huge
+
+89
+00:04:34.190 --> 00:04:37.640
+data sets, at a, at essentially the touch
+of a button.
+
+90
+00:04:37.640 --> 00:04:40.650
+furthermore, we have computing power that
+allows us to take on
+
+91
+00:04:40.650 --> 00:04:44.810
+existing databases and merge them into,
+just, even bigger and bigger databases.
+
+92
+00:04:44.810 --> 00:04:48.000
+So we can take data that were previously,
+maybe,
+
+93
+00:04:48.000 --> 00:04:51.380
+inaccessible and create new data sets out
+of it.
+
+94
+00:04:51.380 --> 00:04:53.000
+So these new data sets are huge now.
+
+95
+00:04:54.200 --> 00:04:57.810
+and, in addition to allowing us to create
+new data sets
+
+96
+00:04:57.810 --> 00:05:01.900
+computing power allows us to, to to do
+more sophisticated analysis.
+
+97
+00:05:01.900 --> 00:05:05.830
+So the analysis themselves, the models
+that we fit and
+
+98
+00:05:05.830 --> 00:05:09.760
+the algorithms that we run, are much much
+more complicated than they use to be.
+
+99
+00:05:09.760 --> 00:05:12.270
+And so, having a basic understanding of
+these
+
+100
+00:05:12.270 --> 00:05:15.270
+algorithms is difficult, even for a
+sophisticated person.
+
+101
+00:05:15.270 --> 00:05:19.540
+So, understanding what someone did in an
+analysis of data will
+
+102
+00:05:19.540 --> 00:05:24.370
+require looking at code, looking at the
+computer programs that people used.
+
+103
+00:05:24.370 --> 00:05:26.950
+And so the, and so the bottom line with
+all these different
+
+104
+00:05:26.950 --> 00:05:31.670
+trends is that for every field x, there is
+now computational x.
+
+105
+00:05:31.670 --> 00:05:33.810
+There's computational biology,
+computational
+
+106
+00:05:33.810 --> 00:05:35.730
+astronomy, computational whatever is
+
+107
+00:05:35.730 --> 00:05:38.360
+you want, there is a computational version
+of it.
+
+108
+00:05:39.970 --> 00:05:42.870
+So one example from research that I've
+conducted
+
+109
+00:05:42.870 --> 00:05:44.900
+is in the area of air pollution and
+health.
+
+110
+00:05:44.900 --> 00:05:49.020
+Now air pollution and health is a, is a
+big field and it, and it involves
+
+111
+00:05:49.020 --> 00:05:51.320
+a kind of, is a confluence of features
+
+112
+00:05:51.320 --> 00:05:54.480
+that make reproducibility very important
+in this area.
+
+113
+00:05:54.480 --> 00:05:56.610
+The first that we're estimating very
+small,
+
+114
+00:05:56.610 --> 00:06:01.330
+but very important public health effects
+in the presence of a much stronger signal.
+
+115
+00:06:01.330 --> 00:06:03.670
+So you can think about air pollution as
+something that's,
+
+116
+00:06:03.670 --> 00:06:07.140
+you know, perhaps harmful but even if it
+were harmful
+
+117
+00:06:07.140 --> 00:06:09.010
+there are many other things that are
+going, that are
+
+118
+00:06:09.010 --> 00:06:10.870
+going to be more harmful that you have to
+worry about.
+
+119
+00:06:10.870 --> 00:06:12.870
+So pollution is going to be, not at the
+
+120
+00:06:12.870 --> 00:06:14.640
+very top of the list that's going to harm
+you.
+
+121
+00:06:15.780 --> 00:06:17.160
+The results of a lot of air
+
+122
+00:06:17.160 --> 00:06:20.600
+pollution research inform kind of
+substantial policy decisions.
+
+123
+00:06:20.600 --> 00:06:22.060
+Regulations will
+
+124
+00:06:22.060 --> 00:06:24.270
+be based on scientific research in this
+area.
+
+125
+00:06:24.270 --> 00:06:27.990
+And so these regulations can affect a lot
+of stakeholders
+
+126
+00:06:27.990 --> 00:06:32.140
+and, and furthermore, can cost billions of
+dollars to implement.
+
+127
+00:06:32.140 --> 00:06:36.490
+Finally, we use a lot of complex
+statistical methods to do a lot
+
+128
+00:06:36.490 --> 00:06:38.190
+of these stedies and so, and these
+
+129
+00:06:38.190 --> 00:06:40.730
+statistical methods are subjected to
+intense scrutiny.
+
+130
+00:06:40.730 --> 00:06:43.220
+So combinations of an, of an inherently
+
+131
+00:06:43.220 --> 00:06:47.180
+small signal large impacts, and complex
+statistical methods
+
+132
+00:06:47.180 --> 00:06:51.330
+almost require that the research that we
+do be reproducible.
+
+133
+00:06:51.330 --> 00:06:54.590
+And so one of the things that we've done
+and here at John's
+
+134
+00:06:54.590 --> 00:06:55.905
+Hopkins is to create what's called the
+
+135
+00:06:55.905 --> 00:06:58.460
+Internet-based Health and Air Pollution
+Surveillance System.
+
+136
+00:06:58.460 --> 00:07:00.400
+We make a lot of our data available, we
+make a
+
+137
+00:07:00.400 --> 00:07:03.690
+lot of our statistical methods in the form
+of R code
+
+138
+00:07:03.690 --> 00:07:07.270
+available so that they can be examined,
+and the data, and
+
+139
+00:07:07.270 --> 00:07:10.830
+many of the results that we produce can be
+reproduced by others.
