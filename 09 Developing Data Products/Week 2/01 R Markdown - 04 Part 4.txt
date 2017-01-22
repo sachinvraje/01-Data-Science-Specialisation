@@ -1,0 +1,6 @@
+Okay let's show some formatting options. So if I just put in Plain text, and italicized text, and
+notice it auto formats it. Then Bold text. Or I'm sorry,
+it's syntax highlights it I should say. And then, in 1: 10, here's some code. Okay, so the code has single right facing quotation marks,
+bold has two asterisk. Italics has one asterisk. And then plain of course has nothing. The asterisk has to be next
+to the leading character. So if you do it like that,
+I've noticed it doesn't work sometimes. So, have it next to the leading character. I think that's necessary. And then let's run it.

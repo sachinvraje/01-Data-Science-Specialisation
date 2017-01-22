@@ -1,0 +1,75 @@
+So that was pretty quick,
+we were able to actually generate a map, a JavaScript widget basically without
+actually knowing any JavaScript. So just to reiterate the leaflet
+function you can think of is just actually creating like,
+if you're familiar with Photoshop, it's almost like creating a layer or
+something like that. Okay, it's basically just
+creating the background, and then you have to add
+the actual content on top of it, so add tiles is adding specifically
+the mapping data from Open Street Map. Okay, so then when we display that
+map then we have a map that we can zoom around in, and look. And you can see how it's kind of
+zooming in towards Baltimore there, which is where Hopkins is at. But we probably actually want
+to do things like add markers, add some direct interactivity. And so the command to add
+a marker is really easy. It's just add markers, and the first one
+we're going to do is just we're going to add one at a specific longitude and
+latitude. And we are going to give it
+a little label, so let's do that. Okay now, the first thing I want
+to mention is that the variable, my map has already been defined. So, I'm going to go through
+the piping notation once again, because it's a little bit strange here. And then after this I'm going to quit
+going through the piping notation so but let's just run it once and see it and then we'll talk about what
+the code is actually doing. Okay so there we ran it and
+now we see here's Johns Hopkins hospital. And if we click we have
+this little marker. If we click on it we
+see Jeff Leek's office. But let's actually Zoom in and see if we can find Jeff Leek's Surf
+in the internet, there you go. Actually, so we're in the Bloomberg's School of
+Public Health, there it is right there. Actually the oldest School of
+Public Health in the country. Okay, all right, so
+let's go through the code. So the type annotation, once again I'm
+going to just show you the equivalent. So remember my map and
+I'm going to just redo it. My map is already defined from up
+here from when I ran it from the code from the first set of slides,
+so let me redo that. So I've overwritten it
+back to where it's just added the content with no markers, okay? Now this set of commands that we did to
+add the marker is equivalent to saying that my map, which I've already defined,
+is equal to addMarkers(my_map. And then I'm just going to copy this code, because I don't want to have to retype
+it and let me bring this up here. Okay, so this one line here, these lines are equivalent to this
+one line here and there we go. As you can see it does the same thing. Okay, so what is it doing? So first we have to assign my map to
+itself which seems ridiculous but it does just see you can do the piping and
+it's just saying I'm piping this. Variable now into the first argument
+of the function add markers, okay. And then we're still going to
+assign it back to the original variable that's on the left most
+side of all my assignments, okay. And you might think this is a ridiculous
+thing to do especially because Brian you just managed to put this
+whole thing in one line. Why are we placing one line
+with all this other lines. First of all,
+I got rid of some line breaks that probably are better being there. Anyway, but the reason is because
+piping is very powerful and it's something that you
+want to get used to especially when you're doing chained
+operations in deplier for example. And in some of these mapping
+circumstances like this. You crave this variable and then you're
+adding lots of layers and markers and things like that and they can get tedious to keep retyping
+out the same set of commands. And so the only reason we actually have
+this first line is because we didn't, we have it separated from
+these sets of lines up here. If you wanted to do it, the way you would
+likely do it, you would have done this. Let me [INAUDIBLE] just give me,
+stick with me one second here, you would have done something like this, you would have done my map is that and
+then, you would have done like this. [SOUND] I fail at typing. Okay there we go. So this would be a equivalent
+total set of plans. And there you can see now
+the chaining is really useful, right? It's simplifying the code. Okay, and so here, we just created
+it once and we're not having to reassign this variable over time,
+we're just chaining it through each time. It just creates for a nicer code. If you've used it in D Prior,
+the same rationale for using it in D Prior applies
+here in Leaflet, okay. And that's why the code is this way and
+you should get used to it. And so from now on we're not
+going to talk about this. We're just going to go
+through the Leaflet commands. Okay, now,
+to further expand on the Leaflet commands, all that we had to do for
+the add markers right? The first thing is is
+because of the chaining, the first argument is going
+to be your map variable, but then after that you just have to
+give it the longitude and latitude. The specific coordinates that you want for
+your marker, and then the pop up just gives
+you the text for the pop up. So when you click on it, you actually see
+that it says Jeff Leek's office, okay? All right and so you can think,
+you can imagine if you're making a fairly complicated map, you might have lots and
+lots and lots of markers added. And we'll go through some examples.

@@ -1,0 +1,474 @@
+WEBVTT
+
+1
+00:00:01.150 --> 00:00:06.540
+So okay, our Shiny app is only going to be
+useful if it can take in input values, do
+
+2
+00:00:06.540 --> 00:00:12.570
+some R calculations and then spit out the
+result of those calculations or results.
+
+3
+00:00:12.570 --> 00:00:16.996
+And so the first thing we need to be able
+to do is actually take in some input
+
+4
+00:00:16.996 --> 00:00:17.585
+values.
+
+5
+00:00:17.585 --> 00:00:22.474
+And so this next code demonstration,
+all we're going to do is create a slider
+
+6
+00:00:22.474 --> 00:00:25.268
+which has to occur in
+the user interface and
+
+7
+00:00:25.268 --> 00:00:30.001
+then the values for those sliders that
+the user selects is going to be passed
+
+8
+00:00:30.001 --> 00:00:34.577
+into the server function which is then
+just going to send it back as is to
+
+9
+00:00:34.577 --> 00:00:38.100
+the user interface function
+to redisplay it, okay?
+
+10
+00:00:38.100 --> 00:00:40.660
+So, this is just another
+building exercise.
+
+11
+00:00:40.660 --> 00:00:44.100
+We're not going to do anything with
+the input other than spit it back,
+
+12
+00:00:44.100 --> 00:00:47.510
+right back out at the user
+interface to display it as is.
+
+13
+00:00:47.510 --> 00:00:49.060
+So, let's try.
+
+14
+00:00:49.060 --> 00:00:52.100
+Okay, now let's see if we can get our
+
+15
+00:00:52.100 --> 00:00:56.620
+Shiny app to actually take in
+values from the user, via a slider.
+
+16
+00:00:56.620 --> 00:00:59.870
+Put them to the server, and
+then the server will return the values.
+
+17
+00:00:59.870 --> 00:01:05.721
+Okay, so
+I have my ui.R shinyUI function here.
+
+18
+00:01:05.721 --> 00:01:10.998
+And in my sidebar layout, on the sidebar
+panel I'm going to have a slider.
+
+19
+00:01:10.998 --> 00:01:15.570
+So I'm going to give a user prompt
+that says move the slider, and
+
+20
+00:01:15.570 --> 00:01:16.710
+then slider input.
+
+21
+00:01:16.710 --> 00:01:20.947
+This function right here is going to
+create the slider and display it, and
+
+22
+00:01:20.947 --> 00:01:24.279
+then I'm going to name,
+I have it named slider2, okay.
+
+23
+00:01:24.279 --> 00:01:30.980
+So I've named the slider slider2,
+and then the command says Slide Me!
+
+24
+00:01:30.980 --> 00:01:33.026
+Okay, it's going to go from 0 to 100 and
+
+25
+00:01:33.026 --> 00:01:35.930
+it's going to have
+the starting value at 0.
+
+26
+00:01:35.930 --> 00:01:39.420
+Okay, now let's talk about
+the main panel in a second.
+
+27
+00:01:39.420 --> 00:01:45.220
+Okay, so I take that slider value, I input
+it, it's given a value called slider 2,
+
+28
+00:01:45.220 --> 00:01:49.480
+the input from the slider
+displayed to the user.
+
+29
+00:01:49.480 --> 00:01:54.110
+Okay, now my shiny server is
+a function that takes as its argument
+
+30
+00:01:54.110 --> 00:01:58.320
+a function that takes input and
+output, okay?
+
+31
+00:01:58.320 --> 00:02:01.803
+And then you have to
+have these curly braces,
+
+32
+00:02:01.803 --> 00:02:06.028
+because you need to have,
+it's defining a function.
+
+33
+00:02:06.028 --> 00:02:10.681
+So a function has to have the curly
+braces, and then down here, you have to
+
+34
+00:02:10.681 --> 00:02:16.620
+remember to close with the curly braces
+and the shiny server parenthesis, okay?
+
+35
+00:02:16.620 --> 00:02:20.500
+And then, what it's going to do is
+it's going to take the input, okay,
+
+36
+00:02:20.500 --> 00:02:25.980
+input is what's input from the ui.R,
+shiny UI function.
+
+37
+00:02:25.980 --> 00:02:29.530
+And it says take an input, and
+let's get rid of that real quick just so
+
+38
+00:02:29.530 --> 00:02:35.080
+it's consistent with what's in our
+mark down code, from the slides.
+
+39
+00:02:35.080 --> 00:02:38.330
+And it's going to say take in slider 2.
+
+40
+00:02:38.330 --> 00:02:40.907
+And then what I want to
+do is just render it.
+
+41
+00:02:40.907 --> 00:02:46.375
+In other words, display the text and
+I'm going to name that output, text1.
+
+42
+00:02:46.375 --> 00:02:50.913
+Okay, so then when we go back to
+UI.r in the mainPanel, it says,
+
+43
+00:02:50.913 --> 00:02:54.830
+here's the slider value,
+and textOutput is text1.
+
+44
+00:02:54.830 --> 00:03:00.380
+So that same text that we labeled from
+the output from the server function,
+
+45
+00:03:00.380 --> 00:03:02.360
+it's going to get displayed
+in the name panels.
+
+46
+00:03:02.360 --> 00:03:04.535
+Let's run it and just see how it looks.
+
+47
+00:03:04.535 --> 00:03:07.050
+Okay, move the slider part.
+
+48
+00:03:07.050 --> 00:03:08.450
+Here's the slider.
+
+49
+00:03:08.450 --> 00:03:11.590
+As I move it,
+the slider value is displayed over here.
+
+50
+00:03:11.590 --> 00:03:13.040
+So, what's happening?
+
+51
+00:03:13.040 --> 00:03:18.690
+Right, is the slider is
+receiving a value from the user,
+
+52
+00:03:18.690 --> 00:03:21.667
+that value is given the label slider2,
+okay?
+
+53
+00:03:21.667 --> 00:03:26.890
+In the server.R function it's
+grabbing that from the slot
+
+54
+00:03:26.890 --> 00:03:30.629
+input $slider2, okay?
+
+55
+00:03:30.629 --> 00:03:35.850
+And then it's spitting it back out
+
+56
+00:03:35.850 --> 00:03:41.080
+as Output $text1 and
+then the ui.R is displaying it.
+
+57
+00:03:41.080 --> 00:03:45.810
+Now there's nothing in particular,
+I want to emphasize, there's nothing in
+
+58
+00:03:45.810 --> 00:03:51.790
+particular about having the slider
+in the side bar panel and the text
+
+59
+00:03:51.790 --> 00:03:55.230
+in the main panel and that there's
+nothing particular about this order.
+
+60
+00:03:55.230 --> 00:04:00.210
+It's not sort of running the slider and
+then displaying it
+
+61
+00:04:00.210 --> 00:04:06.390
+because this R code happens to occur later
+on in the text than this R code, right?
+
+62
+00:04:06.390 --> 00:04:12.010
+We could have had the slider output
+in the main panel and the slider.
+
+63
+00:04:12.010 --> 00:04:16.330
+I'm sorry, the slider in the main panel,
+in the output, in the sidebar.
+
+64
+00:04:16.330 --> 00:04:20.670
+So that's an important thing to think
+about with Shiny and reactive expressions.
+
+65
+00:04:20.670 --> 00:04:24.140
+It's not kind of, you don't want to
+think about it running linearly,
+
+66
+00:04:24.140 --> 00:04:26.520
+like a regular R program.
+
+67
+00:04:26.520 --> 00:04:29.720
+Of course, at some level it is because,
+it is in our program but,
+
+68
+00:04:29.720 --> 00:04:33.470
+the way which the server is going
+it's sort of running reactively and
+
+69
+00:04:33.470 --> 00:04:35.650
+kind of constantly going back and forth.
+
+70
+00:04:35.650 --> 00:04:40.070
+Okay, so you just want to kind of change
+your mindset about that a little bit
+
+71
+00:04:40.070 --> 00:04:42.660
+then how it is in normal R programming.
+
+72
+00:04:42.660 --> 00:04:46.760
+Okay, and
+now notice another thing is if I were to
+
+73
+00:04:46.760 --> 00:04:51.500
+label this text output$text and
+re-run it, okay.
+
+74
+00:04:51.500 --> 00:04:56.270
+It doesn't display anything because the
+label text doesn't mean anything to ui.R.
+
+75
+00:04:56.270 --> 00:05:00.750
+It's thinking it's text1 when
+it says textOutput, okay.
+
+76
+00:05:00.750 --> 00:05:03.080
+So let's reload it and
+then now it'll work.
+
+77
+00:05:03.080 --> 00:05:05.650
+See, it's displaying it again.
+
+78
+00:05:05.650 --> 00:05:06.720
+Same thing with the slider.
+
+79
+00:05:06.720 --> 00:05:11.439
+If I were to call this slider instead
+of slider2 or call it slider1, okay.
+
+80
+00:05:11.439 --> 00:05:18.111
+It doesn't display anything because
+the render text from the UI data or
+
+81
+00:05:18.111 --> 00:05:22.558
+the server function is looking for
+slider2 and
+
+82
+00:05:22.558 --> 00:05:30.140
+the UI has never put out anything called
+slider2, anything labeled slider2.
+
+83
+00:05:30.140 --> 00:05:35.320
+Okay, so if I were to change this to
+slider1, reload it, it now works.
+
+84
+00:05:35.320 --> 00:05:37.470
+So remember that your
+labels have to match up.
+
+85
+00:05:38.780 --> 00:05:41.731
+The last thing I'll do is just give
+you a sense of how you can start to
+
+86
+00:05:41.731 --> 00:05:43.388
+use these things for manipulation.
+
+87
+00:05:43.388 --> 00:05:47.459
+Let's just add 10 to
+the input of the slider and
+
+88
+00:05:47.459 --> 00:05:50.248
+then show how we can now display.
+
+89
+00:05:50.248 --> 00:05:54.080
+Okay, it's not doing much, right,
+29 adds 10 and gives you 39.
+
+90
+00:05:54.080 --> 00:05:59.370
+But you can see actually now what we've
+done is we've taken a value from the user,
+
+91
+00:05:59.370 --> 00:06:03.050
+used R to manipulate that input value.
+
+92
+00:06:03.050 --> 00:06:04.775
+In this case a very simple manipulation,
+
+93
+00:06:04.775 --> 00:06:08.990
+added 10 and then sent that back to
+the user interface to be displayed.
+
+94
+00:06:08.990 --> 00:06:13.430
+Okay and all these things
+are happening reactively, okay?
+
+95
+00:06:13.430 --> 00:06:17.240
+So try this out, create a slider,
+or a check down box, or
+
+96
+00:06:17.240 --> 00:06:22.230
+a button, or something like that, that
+gets an input and displays it back out.
+
+97
+00:06:22.230 --> 00:06:25.710
+So then we'll move on to the next step of
+actually trying to create a prediction
+
+98
+00:06:25.710 --> 00:06:30.020
+algorithm, or we'll start to create where
+we actually manipulate these numbers
+
+99
+00:06:30.020 --> 00:06:32.080
+in the server.R function.

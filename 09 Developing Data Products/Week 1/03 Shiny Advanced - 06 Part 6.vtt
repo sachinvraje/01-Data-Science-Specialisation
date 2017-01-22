@@ -1,0 +1,463 @@
+WEBVTT
+
+1
+00:00:00.601 --> 00:00:05.834
+In this final example, we're going to show
+how to use the brush argument in the UI
+
+2
+00:00:05.834 --> 00:00:11.401
+and the brushedPoints argument in the
+server to generate an interactive graphic.
+
+3
+00:00:11.401 --> 00:00:15.239
+And in this case what we're going to
+do is highlight points and then
+
+4
+00:00:15.239 --> 00:00:20.245
+show in a scattered plot, and then show
+the fitted line just for those points.
+
+5
+00:00:20.245 --> 00:00:24.005
+Okay, so this is a nice example of
+interactive graphics which I think is one
+
+6
+00:00:24.005 --> 00:00:27.935
+of the key functionalities of Shiny and
+one of its primary uses for
+
+7
+00:00:27.935 --> 00:00:30.620
+those of us that are more
+on the analysis side.
+
+8
+00:00:30.620 --> 00:00:32.170
+Okay, so let's get right.
+
+9
+00:00:32.170 --> 00:00:35.860
+Okay, so once again I've copied the code
+from the R mark down document and
+
+10
+00:00:35.860 --> 00:00:38.640
+I'm just going to go through
+the various lines, and
+
+11
+00:00:38.640 --> 00:00:42.530
+then hopefully you'll get the gist, but
+I'd like you at home also to try it out.
+
+12
+00:00:42.530 --> 00:00:45.619
+It only takes a second to copy
+the code and run the text, and
+
+13
+00:00:45.619 --> 00:00:49.988
+I think you'll see a lot more by doing it
+yourself, than by having me describe it.
+
+14
+00:00:49.988 --> 00:00:54.900
+So once again we're going to have
+the standard layout, side bar and
+
+15
+00:00:54.900 --> 00:00:59.187
+in the side panel it's going to
+have a display of the Slope,
+
+16
+00:00:59.187 --> 00:01:01.797
+slopeOut, Intercept, intOut.
+
+17
+00:01:01.797 --> 00:01:06.054
+So the textOutput (intOut),
+we're going to be looking for
+
+18
+00:01:06.054 --> 00:01:10.825
+that label from the server function,
+textOutput (slopeOut),
+
+19
+00:01:10.825 --> 00:01:15.680
+we're going to looking for
+that label from the Shiny server.
+
+20
+00:01:15.680 --> 00:01:19.840
+Okay, so we got to remember to have both
+those, otherwise they won't display right.
+
+21
+00:01:19.840 --> 00:01:22.240
+And then we want plotOutput, plot1.
+
+22
+00:01:22.240 --> 00:01:26.200
+We got to make sure that
+we're getting the plotOutput,
+
+23
+00:01:27.450 --> 00:01:31.250
+that we're creating a plot
+in the server labeled plot1.
+
+24
+00:01:31.250 --> 00:01:35.950
+And here is the id brush = brush1.
+
+25
+00:01:35.950 --> 00:01:40.850
+That label we're going to need
+to use that on the server side.
+
+26
+00:01:40.850 --> 00:01:45.770
+And this brush = and
+then brushOpts for the brush options.
+
+27
+00:01:45.770 --> 00:01:49.190
+Okay, now let's look at the server.
+
+28
+00:01:50.710 --> 00:01:55.404
+So the Shiny server, input,
+takes in input and output lists, okay?
+
+29
+00:01:56.510 --> 00:01:58.280
+Now, it's going to create a model.
+
+30
+00:01:58.280 --> 00:02:00.075
+The model is going to be reactive.
+
+31
+00:02:00.075 --> 00:02:02.782
+It's going to be reactive to the data,
+okay?
+
+32
+00:02:02.782 --> 00:02:07.474
+So this is going to be reactive as we
+input new things from the user interface,
+
+33
+00:02:07.474 --> 00:02:09.343
+this is going to change, okay?
+
+34
+00:02:09.343 --> 00:02:14.503
+So, and remember it has this notation
+of being inside the curly braces
+
+35
+00:02:14.503 --> 00:02:19.238
+also inside the parentheses for
+the reactive function, okay?
+
+36
+00:02:19.238 --> 00:02:22.480
+brushed_data is just
+going to be short hand for
+
+37
+00:02:22.480 --> 00:02:25.391
+grabbing the data from brush1, okay?
+
+38
+00:02:25.391 --> 00:02:29.691
+So here's our input, input$brush1, okay?
+
+39
+00:02:29.691 --> 00:02:36.026
+And our brush points are going to
+be from the dataset, trees, okay?
+
+40
+00:02:36.026 --> 00:02:40.052
+The xvar is going to be Girth,
+yvar is going to be Volume, okay?
+
+41
+00:02:40.052 --> 00:02:44.570
+And this will create a little
+data frame with Girth and Volume.
+
+42
+00:02:44.570 --> 00:02:50.369
+And if it's null, I'm sorry,
+if there's fewer than two points,
+
+43
+00:02:50.369 --> 00:02:54.960
+then it's just going to return null, okay?
+
+44
+00:02:54.960 --> 00:03:00.947
+And then otherwise,
+It's going to fit a linear,
+
+45
+00:03:00.947 --> 00:03:06.237
+it fit in return a linear model
+where Volume is the y variable,
+
+46
+00:03:06.237 --> 00:03:12.573
+Girth is the x variable, and
+the data here is that brushed_data, okay?
+
+47
+00:03:12.573 --> 00:03:16.181
+And then we don't need to put
+a parentheses here because this is inside
+
+48
+00:03:16.181 --> 00:03:17.903
+the reactive statement, okay?
+
+49
+00:03:17.903 --> 00:03:22.430
+The data is going to be that brushed_data
+and this will output that linear model.
+
+50
+00:03:23.470 --> 00:03:26.520
+Now, if that model is fit or
+output$slopeOut,
+
+51
+00:03:26.520 --> 00:03:29.370
+remember we're looking for
+some text with that label.
+
+52
+00:03:29.370 --> 00:03:33.110
+Okay, here's our renderText telling
+Shiny that this is going to be text,
+
+53
+00:03:33.110 --> 00:03:35.810
+this is going to be rendered
+in the user interface.
+
+54
+00:03:35.810 --> 00:03:38.960
+We've got our curly braces, okay?
+
+55
+00:03:38.960 --> 00:03:43.980
+And if it's null then it's just
+going to say, No Model Found.
+
+56
+00:03:43.980 --> 00:03:47.297
+Otherwise it's going to say,
+it's going to grab the slope term.
+
+57
+00:03:49.324 --> 00:03:52.900
+Okay, and then same thing for
+the intercept.
+
+58
+00:03:52.900 --> 00:03:57.252
+So the same discussion but it's
+going to grab the intercept term, okay?
+
+59
+00:03:57.252 --> 00:04:00.557
+And here's plot1 which we need to display.
+
+60
+00:04:00.557 --> 00:04:02.758
+And that's going to be renderPlot, okay?
+
+61
+00:04:02.758 --> 00:04:06.900
+And it has the reactive notation of having
+the curly braces there inside the function
+
+62
+00:04:06.900 --> 00:04:07.494
+argument.
+
+63
+00:04:07.494 --> 00:04:13.989
+And it's going to be plot(trees$Girth,
+trees$Volume).
+
+64
+00:04:13.989 --> 00:04:20.857
+So, Girth is x, Volume is y,
+it's got nice x labels and y labels, okay?
+
+65
+00:04:20.857 --> 00:04:23.940
+It's got a title,
+it says Tree Measurements.
+
+66
+00:04:23.940 --> 00:04:29.170
+Let's go down here and
+just see if the model is not null,
+
+67
+00:04:29.170 --> 00:04:32.720
+then it's going to add a line.
+
+68
+00:04:32.720 --> 00:04:36.530
+Just now,
+because it's through the model, right?
+
+69
+00:04:36.530 --> 00:04:44.460
+Through the model, that was fit just
+on the point scribe from the brush.
+
+70
+00:04:44.460 --> 00:04:49.820
+It's going to fit the line, it's
+going to plot the line that is only for
+
+71
+00:04:49.820 --> 00:04:52.410
+those specific data points.
+
+72
+00:04:52.410 --> 00:04:57.230
+Okay, great.
+All right, now,
+
+73
+00:04:57.230 --> 00:04:59.390
+let's run it and see how it looks.
+
+74
+00:05:02.070 --> 00:05:03.250
+Okay, I ran the app.
+
+75
+00:05:03.250 --> 00:05:06.420
+Okay, so now see no model has been fit,
+so it is correctly saying,
+
+76
+00:05:06.420 --> 00:05:10.720
+No Model Found for the Slope, and
+No Model Found for the Intercept.
+
+77
+00:05:10.720 --> 00:05:13.331
+Okay, so
+if I highlight this cluster of points,
+
+78
+00:05:13.331 --> 00:05:17.614
+that’s the line that you would fit and
+it gives you the slope and the intercept.
+
+79
+00:05:17.614 --> 00:05:21.716
+But if I were to grab all of those, that's
+the line that and that's the intercept.
+
+80
+00:05:21.716 --> 00:05:24.350
+Let's grab over here where there's
+no point, see what happens.
+
+81
+00:05:24.350 --> 00:05:28.041
+Okay, it correctly says,
+No Model Found and No Model Found.
+
+82
+00:05:28.041 --> 00:05:32.436
+And if you do the whole thing, everything
+except that last point, there it goes.
+
+83
+00:05:32.436 --> 00:05:34.640
+Let's see if we can get the whole thing,
+there we go.
+
+84
+00:05:34.640 --> 00:05:38.280
+That would be the line that you'd fit
+if you grabbed all the data points.
+
+85
+00:05:38.280 --> 00:05:44.530
+Okay, so this is a nice little interactive
+graph that you can create using Shiny.
+
+86
+00:05:44.530 --> 00:05:47.400
+And I'd like you to go ahead and
+try to recreate this example, but
+
+87
+00:05:47.400 --> 00:05:51.605
+then also maybe try to create your own
+example of interactive graph using one of
+
+88
+00:05:51.605 --> 00:05:54.920
+R's default, kind of canned data sets.
+
+89
+00:05:54.920 --> 00:05:58.210
+And I think this is one of
+the primary uses for Shiny.
+
+90
+00:05:58.210 --> 00:05:59.426
+And I think at this point,
+
+91
+00:05:59.426 --> 00:06:02.815
+you should also have enough to go on
+to start making Shiny useful for you.
+
+92
+00:06:02.815 --> 00:06:07.207
+And there's a lot of other things you
+can do with Shiny, such as input and
+
+93
+00:06:07.207 --> 00:06:09.227
+output data sets, data frames.
+
+94
+00:06:09.227 --> 00:06:16.928
+You can actually embed RGL, RS 3D graphics
+library in a Shiny webpage using WebGL.
+
+95
+00:06:16.928 --> 00:06:21.970
+But that stuff's maybe a little bit
+more fringy, especially the RGL stuff.
+
+96
+00:06:21.970 --> 00:06:26.510
+Right now, I think you have enough to
+get started, and I think you should
+
+97
+00:06:26.510 --> 00:06:29.840
+definitely should give Shiny a try, and
+work it into your standard toolbox.

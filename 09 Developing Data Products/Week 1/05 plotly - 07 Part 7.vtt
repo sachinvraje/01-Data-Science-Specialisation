@@ -1,0 +1,54 @@
+WEBVTT
+
+1
+00:00:00.850 --> 00:00:03.320
+So if you're a fan of ggplot,
+
+2
+00:00:03.320 --> 00:00:07.530
+then I think you'll be happy about
+this code from the Plotly website.
+
+3
+00:00:07.530 --> 00:00:09.740
+So here, I'm just going to
+show it to you really quick.
+
+4
+00:00:09.740 --> 00:00:12.950
+I'm creating a ggplot from
+the diamond data set.
+
+5
+00:00:12.950 --> 00:00:20.690
+So if I show it to you here, you see it's
+just diamond carat versus price, okay?
+
+6
+00:00:20.690 --> 00:00:27.250
+Now, what I wanted to show you is that
+Plotly has this command, ggplotly, where
+
+7
+00:00:27.250 --> 00:00:33.440
+you can just immediately convert a ggplot
+into a Plotly interactive HTML graphic.
+
+8
+00:00:33.440 --> 00:00:41.020
+So up here in the top window, it's a R
+graphic in the RStudio viewer pane.
+
+9
+00:00:41.020 --> 00:00:43.657
+I'm sorry in the RStudio plotting pane and
+
+10
+00:00:43.657 --> 00:00:48.060
+then in the bottom one it's an HTML
+graphic in the RStudio viewer pane.
+
+11
+00:00:48.060 --> 00:00:52.840
+So the bottom one's just displaying it
+as you would see it in a web browser

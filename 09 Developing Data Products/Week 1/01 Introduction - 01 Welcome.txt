@@ -1,0 +1,18 @@
+Hi, my name is Bryan Caffo and welcome
+to the Developing Data Products course. This course is about building tools for improving the data analysis process,
+making data driven decisions, or for other infrastructure that
+supports other data products. This is the second version of the class,
+and it's been co-developed by Shaun Cross
+who's also in the Department of Biostatistics at the Johns Hopkins
+Bloomberg School of Public Health. We've updated much of the old content and
+we're including lots of new techniques for building in-demand data tools in R. So just to preview some of
+the topics we'll be covering. With the R Markdown package you can
+create websites, PDFs, presentations, and even e-books from a single file in R in
+a way that you're very comfortable and familiar with. We'll teach the latest
+features of the Shiny package which you can use to create
+interactive web applications in R. We'll talk about interactive
+graphics using Plotly and Leaflet which allows you to create
+beautiful maps that you can share online. We'll do similar things with the package
+GoogleViz which allows you to create maps and interactive graphics and tables. We've also added how to use swirl and
+swirlify to design courses in R so that you can share your knowledge. So thanks for joining and we look
+forward to seeing you in the class.

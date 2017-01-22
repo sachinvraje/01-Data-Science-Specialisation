@@ -1,0 +1,29 @@
+Okay, so here's the slide we're at, in
+case you're keeping score, now we're just going to go through and start doing this
+code demonstration of how to do this. So, the next couple of slides
+actually just talk about doing this. So, instead of going through the slides,
+I'm just going to show you in our studio. It's worth noting that we actually
+practice what we preach, and here is our slides for
+this class written in R Markdown. But, so here is the RMD file for
+the class, but we're going to follow through the notes
+and create a new presentation. So look what it says, it says,
+File> New File> R Markdown. Okay, so you could just do that by Alt+F > F > R Markdown, that is M. And then look here,
+I'm going to click on Presentation Title. I'm going to call it My Fancy Presentation
+and the Author is me. And then you have different outputs. So this has a different
+presentation style. I'm just going to stick with
+ioslides right now, okay? And then if you want PDF this requires,
+we'll go through this later, but it requires MiKTeX being setup
+on Windows which is a variant. MacTeX on OS X, and then TeX Live or
+something like that on Linux. So each of these is pretty easy to
+install, but they tend to be kind of big. We'll cover that later on in the lecture. So right now let's just stick with
+the default, which is ioslides, kind of a format that
+was created I think from one of these Google
+presentations at one point. Okay, so there you see it's Untitled1, and that's the name of the file that
+contains the R Markdown commands. But right now, we're just going to compile it once,
+and see what it looks like. So if you click here and
+say Knit the current document, or it also gives you the command
+Ctrl+Shift+K, there we go. R_Markdown, let me name
+it a separate R_Markdown, I'll name it briansSlides, okay? There its goes. It runs it, and there it is. My Fancy Presentation. Okay. So homework number one, just go through
+this, create a new presentation, a new template presentation,
+compile it once and then let's move on from there and
+fill it up with some content.

@@ -1,0 +1,164 @@
+WEBVTT
+
+1
+00:00:01.920 --> 00:00:04.900
+So sometimes you have enough
+points that when they
+
+2
+00:00:04.900 --> 00:00:08.870
+all appear close together you
+can't really differentiate them.
+
+3
+00:00:08.870 --> 00:00:12.320
+And leaflet has a pretty
+nice solution to this and
+
+4
+00:00:12.320 --> 00:00:16.950
+that's to cluster them together and in a
+different resolution they'll break apart.
+
+5
+00:00:16.950 --> 00:00:20.590
+So let's go through
+an example like this and
+
+6
+00:00:20.590 --> 00:00:22.580
+I think you'll see
+immediately why it's useful.
+
+7
+00:00:24.270 --> 00:00:26.230
+Okay, so let's just go through the code.
+
+8
+00:00:26.230 --> 00:00:28.580
+Let's define a data frame
+with 500 latitude and
+
+9
+00:00:28.580 --> 00:00:32.940
+longitude points that are kind of
+close together, okay?
+
+10
+00:00:32.940 --> 00:00:38.700
+And then, I'm going to take my data frame,
+and pass it as the argument to leaflet.
+
+11
+00:00:38.700 --> 00:00:42.210
+Then I'm going to pass the output of
+the leaflet evaluated at the data
+
+12
+00:00:42.210 --> 00:00:44.140
+frame to the addTiles command.
+
+13
+00:00:44.140 --> 00:00:47.920
+And then I'm going to pass the output
+of that to the add markers command and
+
+14
+00:00:47.920 --> 00:00:52.620
+then it's just going to have
+default cluster options, okay.
+
+15
+00:00:52.620 --> 00:00:54.590
+There we go and look at that.
+
+16
+00:00:54.590 --> 00:00:55.690
+Now we see the cluster in it.
+
+17
+00:00:55.690 --> 00:00:58.700
+It gives you the number of
+points in this cluster.
+
+18
+00:00:58.700 --> 00:00:59.800
+So let's look at this big one.
+
+19
+00:01:01.100 --> 00:01:05.709
+Actually, I want to do this 96 one
+since it's, see, there you go.
+
+20
+00:01:05.709 --> 00:01:07.263
+It's right in the center of Baltimore.
+
+21
+00:01:07.263 --> 00:01:08.876
+Look at that.
+
+22
+00:01:08.876 --> 00:01:10.991
+Zowie!
+That's cool.
+
+23
+00:01:10.991 --> 00:01:15.916
+Okay, see how they all bunch back
+together at different resolutions?
+
+24
+00:01:17.911 --> 00:01:21.750
+There is all 500 of them,
+they're all in Baltimore.
+
+25
+00:01:21.750 --> 00:01:24.720
+And as I zoom in,
+I could just do this forever.
+
+26
+00:01:24.720 --> 00:01:26.840
+Okay, all right,
+now let's move onto the next thing.
+
+27
+00:01:26.840 --> 00:01:31.910
+Since it's really quick I'm not
+going to really introduce it.
+
+28
+00:01:31.910 --> 00:01:37.590
+Instead of adding clusters or
+standard pop-ups, you can add circles.
+
+29
+00:01:37.590 --> 00:01:43.300
+And the way to do that is just add circles
+markers, see this command right here.
+
+30
+00:01:43.300 --> 00:01:45.540
+Okay, so let's do the same thing.
+
+31
+00:01:45.540 --> 00:01:50.629
+Here we're just going to do, A couple
+
+32
+00:01:50.629 --> 00:01:55.076
+of 20 markers that we're going to add.
+
+33
+00:01:55.076 --> 00:01:57.189
+And then we're just going to
+add circle markers.
+
+34
+00:01:57.189 --> 00:01:58.355
+Okay, and there they are.
+
+35
+00:01:58.355 --> 00:02:00.030
+And see now they look like little circles.

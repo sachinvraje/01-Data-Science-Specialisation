@@ -1,0 +1,153 @@
+WEBVTT
+
+1
+00:00:01.608 --> 00:00:05.040
+Hello, I'm Sean Cross and
+I'm going to show you
+
+2
+00:00:05.040 --> 00:00:10.210
+how to start writing your own Swirl
+courses and Swirl lessons with Swirlify.
+
+3
+00:00:10.210 --> 00:00:11.500
+If you're not familiar with Swirl,
+
+4
+00:00:11.500 --> 00:00:17.660
+it's an R package that turns the R console
+into an interactive learning environment.
+
+5
+00:00:17.660 --> 00:00:22.027
+Let me give you a short tour of Swirl
+in case you haven't used it before.
+
+6
+00:00:22.027 --> 00:00:25.536
+So let me load the Swirl package and
+
+7
+00:00:25.536 --> 00:00:31.475
+then I can just start up Swirl
+by using the swirl function.
+
+8
+00:00:31.475 --> 00:00:35.489
+And as you can see,
+the R console starts talking to me and
+
+9
+00:00:35.489 --> 00:00:37.462
+asking me some questions.
+
+10
+00:00:37.462 --> 00:00:38.720
+So you can call me Sean.
+
+11
+00:00:40.320 --> 00:00:41.260
+I don't want to.
+
+12
+00:00:41.260 --> 00:00:43.590
+I was working on a lesson before.
+
+13
+00:00:43.590 --> 00:00:47.830
+As you can see, I get a selection,
+
+14
+00:00:47.830 --> 00:00:52.820
+I get a couple options to pick
+a Swirl course to start, so
+
+15
+00:00:52.820 --> 00:00:57.420
+I'm going to pick R Programming, and then
+within that course I can pick a lesson.
+
+16
+00:00:57.420 --> 00:01:01.110
+I'm going to start the,
+first lesson, Basic Building Blocks.
+
+17
+00:01:03.170 --> 00:01:09.470
+So the R console starts displaying some
+text as I get into the Swirl lesson.
+
+18
+00:01:12.410 --> 00:01:17.250
+The console in Swirl wants me to
+
+19
+00:01:17.250 --> 00:01:21.920
+type in 5 + 7 and I did that correctly,
+
+20
+00:01:21.920 --> 00:01:24.660
+so I got the question right so
+we can move on to further questions.
+
+21
+00:01:27.550 --> 00:01:32.220
+Now Swirl wants me to assign
+the value of 5 + 7 to a variable x.
+
+22
+00:01:33.290 --> 00:01:35.890
+So I'm going to do the wrong
+things to show you what happens.
+
+23
+00:01:35.890 --> 00:01:38.030
+I'm going to assign 5 + 8.
+
+24
+00:01:38.030 --> 00:01:41.824
+And as you can see, it says, nice try,
+
+25
+00:01:41.824 --> 00:01:45.540
+I didn't get the question right,
+and it shows me a hint.
+
+26
+00:01:45.540 --> 00:01:49.000
+So I'm going to follow that
+hint's advice and type 5 + 7.
+
+27
+00:01:49.000 --> 00:01:54.100
+All right, so
+it's a short introduction to Swirl.
+
+28
+00:01:54.100 --> 00:01:56.940
+There are several different
+kinds of questions that
+
+29
+00:01:56.940 --> 00:01:59.670
+the R console can ask a student.
+
+30
+00:01:59.670 --> 00:02:03.417
+So I'm going to exit out of
+this lesson right now, and
+
+31
+00:02:03.417 --> 00:02:06.511
+I did that using the Escape key,
+by the way.
+
+32
+00:02:06.511 --> 00:02:10.671
+And, I'm going to show you how you can
+start writing your own Swirl lessons with
+
+33
+00:02:10.671 --> 00:02:11.313
+Swirlify.

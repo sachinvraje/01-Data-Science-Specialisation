@@ -1,0 +1,21 @@
+So the last thing I want to do is just
+show you how to post a plotly directly. So I created in the last video this GG
+plot example, and here it is over here. It was labeled GG so if I type GG in the R prompt, it's
+going to bring it up in the viewer pane. But if I typed plotly_POST GG, then what it'll do is actually
+post it to the plotly website. And at the plotly website
+there's all different things that you can do,
+this is the sort of output but if you click on edit here,
+it will give you all different tools to edit it with their web base
+graphical user interface. So, I think plotly,
+it's fairly self-explanatory, but they also have videos on how to use it and
+a lot of tutorials and things like that. So try exporting a graphic to plotly and
+working with their user interface for playing around with it, changing the axes,
+changing the variable names and so on. The last thing I want to say before
+I finish is that, in order for this to kind of work seamlessly, you have
+to set these two environment variables. If you just look at Google search on post to plotly from R,
+it will direct you to this page, you basically have to set a plotly
+username and plotly API key. To get your API key, you just go in
+plotly to settings and there's and just copy and paste it from there, okay. And so, then when you set these two
+environment variables especially if you put those in your .Rprofile so
+that they're set every time you start up R then you won't be prompted for
+your credentials.

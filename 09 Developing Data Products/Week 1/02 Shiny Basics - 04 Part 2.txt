@@ -1,0 +1,70 @@
+Okay, so let's go ahead and
+create our first app. So you need a relatively
+recent version of RStudio or I think you should have a relatively
+recent version of RStudio just because of some
+things like the filing. So I think probably the easiest
+way to start is Alt+F or File, and then New File, and
+then Shiny Web App, okay? So when you click that, it brings up
+a thing, name it whatever you want, so you could name it myApp or
+something like that. And then you can choose whether to have
+the files in a single file which we did not talk about or in two files. A ui.R and a server.R file,
+which we did talk, and we will talk about. I'm going to recommend doing it this way,
+just because I always like to have, I'd rather have many small files than one
+big file with lots of functions in it. So I always tend to work that way,
+but also note that it's not the files that it needs,
+it's not ui.R and server.R that it needs. It's the specific named
+functions in the ur.R and server.R files that it actually needs. And you'll see those in a second. I'm not going to create this
+because I've already done it. So when it creates it,
+it creates the directory and then it creates the two files. You can see here's my ur.R and server.R. No I took the Shiny pre-populated ui.R and server.R files and then just pasted in
+the versions from the lecture notes, okay? So the key thing in the ui.r is you
+need to have this ShinyUI function, well you need to have library(shiny), but
+you need to have this ShinyUI function, that's going to control
+the user interface, okay? And then in the server.R you need
+something called shinyServer. In this case our server is not
+going to do anything, okay? Now let's look at the shinyUI function
+a little bit In a little bit more detail. Let's put a little space right there. Okay, so we have fluid page,
+which just describes the page type that we're going to use
+to create our user interface. So this is kind of a default and I would just suggest that you use it
+until you learn a little bit more. So titlePanel,
+you'll see where this comes up. And it's going to say Data science FTW!. So this is just going to set
+one of the GUI elements, and in this case just a title. And then by default in the fluidPage
+it's got a main panel and a side panel. So here we're going to give
+it the sidebar layout. Okay, so it's just saying what's
+going to occur in the sidebar. So the sidebarPanel is going to tell us
+what's going to occur in the sidebar. And h3, so h3 is going to give
+you the html third level index. So if you've learned a little bit of html,
+just h3 is just going to be smaller text than h2, which is just
+going to be smaller text than h1. So it's the heading level. So third level heading. And it's just going to say slidebar Text
+and this is where the slidebar goes. So and main panel is just
+going to be that center panel and we're also going to do that in h3 and
+it's going to say main panel text, okay. So sidebar layout is just going to say in
+my fluid page I'm going to have a sidebar type layout with a part on the left that's
+going to give us navigation and things like that and a main panel on the right,
+that's going to have the main content. Okay, and so
+just keep track of these three phrases, titlePanel("Data science FTW!), sidebar, Sidebar Text Main panel, main panel text,
+and you'll see where it puts them all. So, there's two ways to run it. The easiest way, if you have
+a relatively recent version of RStudio, you can just click run app. And I want to save them. I should have clicked
+always save before build. And there you go, there you see
+your elements, Data science FTW! In the title, this is in the sidebar and
+this is in the main panel, okay? So those are our three elements in our
+fluid page with the sidebar layout. Let me just show you
+the other way to run it. We gotta switch to the directory
+where our ui.R and server.R are at. So you can just do Alt + S + W + Return. Okay, so that's Alt + S + W + Return,
+or click on Session, click on Set Working Directory and
+click on To Source File Location, okay? And then you just type runApp(). There you go. Okay? When you type in runApp, you can put
+in here the path to the app, okay? So, if you'd rather do it that way,
+you can put in the path to the app, and then you don't even have
+to be in the directory. Notice it's running it in RStudio. This is RStudio bringing up the HTML page. Let me show you one other thing. So here it is running,
+but if you look down here, it says listening on and it gives a URL. So basically what it's doing, Shiny is just creating a little
+web server on your computer and that web page is just RStudio's
+browser accessing that web server. So when you run and debug things locally. It's just going to create a little
+web server for you running locally. And that RStudio is going
+to be able to access. And at some point we want to push it up
+in to the Internet so that it's running on a public web server so that anyone can
+access it, not just you on your computer. But this would also show you how
+the lowest and kind of easiest form of delivering a Shiny app to another RStudio
+user is to just give them the ur.R, server.r functions and all the other
+functions that they need to run it. Just give it to them and
+they can run it just like you can, but that's not what we want in the long run. We want it up and running on a webpage. So we've done the first step and
+let's keep moving and see if we can populate and
+make our app a little bit more useful.

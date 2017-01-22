@@ -1,0 +1,26 @@
+Okay so here I have the R markdown
+document that's associated with the Plotly lecture. I'm going to do library(plotly) of
+course after I've installed it, and then the command is really simple,
+plot_ly(mtcars, x =,
+mtcars is a dataset which is a dataframe. It's stored as a dataframe. The x is weight, the y is miles
+per gallon, mode is markers. So, that's just going to create
+a scatter plot, so you could copy that exact code for any data frame, and
+it would give you a scatter plot. Okay, and you can see your scatter plot in
+the RStudio viewer pane, it's interactive. Right, as you hover over points,
+they're showing their x and y values but there's all this controls up here which
+include things like downloading as a PNG, re-scaling, resetting the axes, changing
+what the hover over action does and so on. The Publish button works as well,
+you can you can publish this to RPubs just by clicking on this button,
+which will create a web graphic for you. But we'll show you some other ways
+to publish it here in a little bit. Well, one other easy way to publish it,
+right here, is when you click on Export. You can save it as an image,
+copy it to Clipboard, but let's just Save as Web Page to show you
+maybe the easiest thing to do, okay? Then you just need to pick a name,
+so let me just call it test. I already named something test,
+so there it goes. And then it brings up a Web page with
+it on, and there's a file test.html on your computer that you could reference. And you could go in and
+actually look at the code. If you know some JavaScript
+you'll understand it totally. If you don't you should just be able to clip out the parts that you
+need if you wanted to embed it. So it's super easy to use Plotly. So your first assignment is to
+create a simple scatter plot. Try it with a different dataset. Create a webpage. Create a graphic like a PNG and a PDF. Maybe publish it to RPubs. And so try that out and
+then we'll move to some other examples.

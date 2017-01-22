@@ -1,0 +1,455 @@
+WEBVTT
+
+1
+00:00:00.650 --> 00:00:03.970
+So that was pretty quick,
+we were able to actually generate a map,
+
+2
+00:00:03.970 --> 00:00:08.630
+a JavaScript widget basically without
+actually knowing any JavaScript.
+
+3
+00:00:10.240 --> 00:00:15.200
+So just to reiterate the leaflet
+function you can think of is
+
+4
+00:00:15.200 --> 00:00:18.700
+just actually creating like,
+if you're familiar with Photoshop,
+
+5
+00:00:18.700 --> 00:00:21.760
+it's almost like creating a layer or
+something like that.
+
+6
+00:00:21.760 --> 00:00:25.241
+Okay, it's basically just
+creating the background,
+
+7
+00:00:25.241 --> 00:00:28.647
+and then you have to add
+the actual content on top of it,
+
+8
+00:00:28.647 --> 00:00:33.331
+so add tiles is adding specifically
+the mapping data from Open Street Map.
+
+9
+00:00:33.331 --> 00:00:38.175
+Okay, so then when we display that
+map then we have a map that we
+
+10
+00:00:38.175 --> 00:00:40.606
+can zoom around in, and look.
+
+11
+00:00:40.606 --> 00:00:45.171
+And you can see how it's kind of
+zooming in towards Baltimore there,
+
+12
+00:00:45.171 --> 00:00:47.650
+which is where Hopkins is at.
+
+13
+00:00:47.650 --> 00:00:52.040
+But we probably actually want
+to do things like add markers,
+
+14
+00:00:52.040 --> 00:00:54.480
+add some direct interactivity.
+
+15
+00:00:54.480 --> 00:00:57.930
+And so the command to add
+a marker is really easy.
+
+16
+00:00:57.930 --> 00:01:02.170
+It's just add markers, and the first one
+we're going to do is just we're going to
+
+17
+00:01:02.170 --> 00:01:05.370
+add one at a specific longitude and
+latitude.
+
+18
+00:01:05.370 --> 00:01:08.930
+And we are going to give it
+a little label, so let's do that.
+
+19
+00:01:08.930 --> 00:01:12.892
+Okay now, the first thing I want
+to mention is that the variable,
+
+20
+00:01:12.892 --> 00:01:15.740
+my map has already been defined.
+
+21
+00:01:15.740 --> 00:01:21.150
+So, I'm going to go through
+the piping notation once again,
+
+22
+00:01:21.150 --> 00:01:23.790
+because it's a little bit strange here.
+
+23
+00:01:23.790 --> 00:01:27.070
+And then after this I'm going to quit
+going through the piping notation so
+
+24
+00:01:27.070 --> 00:01:29.990
+but let's just run it once and see it and
+
+25
+00:01:29.990 --> 00:01:33.160
+then we'll talk about what
+the code is actually doing.
+
+26
+00:01:33.160 --> 00:01:38.170
+Okay so there we ran it and
+now we see here's Johns Hopkins hospital.
+
+27
+00:01:38.170 --> 00:01:39.610
+And if we click we have
+this little marker.
+
+28
+00:01:39.610 --> 00:01:42.190
+If we click on it we
+see Jeff Leek's office.
+
+29
+00:01:42.190 --> 00:01:44.120
+But let's actually Zoom in and
+
+30
+00:01:44.120 --> 00:01:48.780
+see if we can find Jeff Leek's Surf
+in the internet, there you go.
+
+31
+00:01:48.780 --> 00:01:49.350
+Actually, so
+
+32
+00:01:49.350 --> 00:01:52.260
+we're in the Bloomberg's School of
+Public Health, there it is right there.
+
+33
+00:01:53.470 --> 00:01:56.860
+Actually the oldest School of
+Public Health in the country.
+
+34
+00:01:58.100 --> 00:02:04.220
+Okay, all right, so
+let's go through the code.
+
+35
+00:02:04.220 --> 00:02:07.720
+So the type annotation, once again I'm
+going to just show you the equivalent.
+
+36
+00:02:07.720 --> 00:02:11.950
+So remember my map and
+I'm going to just redo it.
+
+37
+00:02:11.950 --> 00:02:16.050
+My map is already defined from up
+here from when I ran it from the code
+
+38
+00:02:16.050 --> 00:02:18.870
+from the first set of slides,
+so let me redo that.
+
+39
+00:02:18.870 --> 00:02:22.670
+So I've overwritten it
+back to where it's just
+
+40
+00:02:22.670 --> 00:02:26.094
+added the content with no markers, okay?
+
+41
+00:02:26.094 --> 00:02:31.831
+Now this set of commands that we did to
+add the marker is equivalent to saying
+
+42
+00:02:31.831 --> 00:02:37.946
+that my map, which I've already defined,
+is equal to addMarkers(my_map.
+
+43
+00:02:37.946 --> 00:02:41.090
+And then I'm just going to copy this code,
+
+44
+00:02:41.090 --> 00:02:46.089
+because I don't want to have to retype
+it and let me bring this up here.
+
+45
+00:02:48.760 --> 00:02:50.200
+Okay, so this one line here,
+
+46
+00:02:50.200 --> 00:02:55.850
+these lines are equivalent to this
+one line here and there we go.
+
+47
+00:02:55.850 --> 00:02:57.960
+As you can see it does the same thing.
+
+48
+00:02:57.960 --> 00:03:00.210
+Okay, so what is it doing?
+
+49
+00:03:00.210 --> 00:03:04.730
+So first we have to assign my map to
+itself which seems ridiculous but
+
+50
+00:03:04.730 --> 00:03:09.610
+it does just see you can do the piping and
+it's just saying I'm piping this.
+
+51
+00:03:09.610 --> 00:03:17.090
+Variable now into the first argument
+of the function add markers, okay.
+
+52
+00:03:17.090 --> 00:03:20.450
+And then we're still going to
+assign it back to the original
+
+53
+00:03:20.450 --> 00:03:25.120
+variable that's on the left most
+side of all my assignments, okay.
+
+54
+00:03:25.120 --> 00:03:29.060
+And you might think this is a ridiculous
+thing to do especially because Brian you
+
+55
+00:03:29.060 --> 00:03:31.110
+just managed to put this
+whole thing in one line.
+
+56
+00:03:31.110 --> 00:03:33.500
+Why are we placing one line
+with all this other lines.
+
+57
+00:03:33.500 --> 00:03:37.100
+First of all,
+I got rid of some line breaks
+
+58
+00:03:37.100 --> 00:03:39.500
+that probably are better being there.
+
+59
+00:03:39.500 --> 00:03:44.030
+Anyway, but the reason is because
+piping is very powerful and
+
+60
+00:03:44.030 --> 00:03:46.870
+it's something that you
+want to get used to
+
+61
+00:03:46.870 --> 00:03:51.840
+especially when you're doing chained
+operations in deplier for example.
+
+62
+00:03:51.840 --> 00:03:56.380
+And in some of these mapping
+circumstances like this.
+
+63
+00:03:56.380 --> 00:04:00.800
+You crave this variable and then you're
+adding lots of layers and markers and
+
+64
+00:04:00.800 --> 00:04:01.870
+things like that and
+
+65
+00:04:01.870 --> 00:04:06.270
+they can get tedious to keep retyping
+out the same set of commands.
+
+66
+00:04:06.270 --> 00:04:11.290
+And so the only reason we actually have
+this first line is because we didn't,
+
+67
+00:04:11.290 --> 00:04:14.250
+we have it separated from
+these sets of lines up here.
+
+68
+00:04:14.250 --> 00:04:19.210
+If you wanted to do it, the way you would
+likely do it, you would have done this.
+
+69
+00:04:19.210 --> 00:04:23.979
+Let me [INAUDIBLE] just give me,
+stick with me one second here,
+
+70
+00:04:23.979 --> 00:04:27.190
+you would have done something like this,
+
+71
+00:04:27.190 --> 00:04:32.905
+you would have done my map is that and
+then, you would have done like this.
+
+72
+00:04:32.905 --> 00:04:42.140
+[SOUND] I fail at typing.
+
+73
+00:04:42.140 --> 00:04:43.690
+Okay there we go.
+
+74
+00:04:43.690 --> 00:04:47.060
+So this would be a equivalent
+total set of plans.
+
+75
+00:04:47.060 --> 00:04:51.420
+And there you can see now
+the chaining is really useful, right?
+
+76
+00:04:51.420 --> 00:04:54.313
+It's simplifying the code.
+
+77
+00:04:54.313 --> 00:05:00.870
+Okay, and so here, we just created
+it once and we're not having
+
+78
+00:05:00.870 --> 00:05:06.170
+to reassign this variable over time,
+we're just chaining it through each time.
+
+79
+00:05:06.170 --> 00:05:07.510
+It just creates for a nicer code.
+
+80
+00:05:07.510 --> 00:05:10.870
+If you've used it in D Prior,
+the same rationale for
+
+81
+00:05:10.870 --> 00:05:14.210
+using it in D Prior applies
+here in Leaflet, okay.
+
+82
+00:05:14.210 --> 00:05:16.720
+And that's why the code is this way and
+you should get used to it.
+
+83
+00:05:16.720 --> 00:05:18.820
+And so from now on we're not
+going to talk about this.
+
+84
+00:05:18.820 --> 00:05:21.620
+We're just going to go
+through the Leaflet commands.
+
+85
+00:05:21.620 --> 00:05:25.090
+Okay, now,
+to further expand on the Leaflet commands,
+
+86
+00:05:26.890 --> 00:05:29.750
+all that we had to do for
+the add markers right?
+
+87
+00:05:29.750 --> 00:05:32.230
+The first thing is is
+because of the chaining,
+
+88
+00:05:32.230 --> 00:05:35.540
+the first argument is going
+to be your map variable, but
+
+89
+00:05:35.540 --> 00:05:38.210
+then after that you just have to
+give it the longitude and latitude.
+
+90
+00:05:38.210 --> 00:05:42.460
+The specific coordinates that you want for
+your marker, and
+
+91
+00:05:42.460 --> 00:05:44.550
+then the pop up just gives
+you the text for the pop up.
+
+92
+00:05:44.550 --> 00:05:51.570
+So when you click on it, you actually see
+that it says Jeff Leek's office, okay?
+
+93
+00:05:51.570 --> 00:05:54.370
+All right and so you can think,
+you can imagine if you're making a fairly
+
+94
+00:05:54.370 --> 00:05:57.580
+complicated map, you might have lots and
+lots and lots of markers added.
+
+95
+00:05:57.580 --> 00:05:59.069
+And we'll go through some examples.

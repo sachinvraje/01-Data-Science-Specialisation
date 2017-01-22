@@ -1,0 +1,56 @@
+So remember that when we're
+building our Shiny app, at least when we're using
+the default type work flow, we're going to be using R
+to put in our HTML element. So all of the really standard
+HTML tags exist in Shiny. So you have all of the heading tags,
+oops, let me get my pen, pen here. We have all of our heading tags,
+h1 through h6, the little p hyper-refs, and divs, and spans, and
+all the most common ones. So if you do ?builder, it'll give just
+a complete list of all the various HTML tags you can use. Later on, we'll actually show you
+how you can use your own HTML file, so that you can use whatever you
+want to build your Shiny app. And you can make your page
+as elaborate as you'd like. For right now, we're just going to
+be using the built-in functions. So in the next code example, I'm just going to show you the different
+headings and things like that. So we're just going to show
+you the different kinds of HTML tags that we can use or
+just a subset of them. So mostly, I'm going to go over this one,
+to formatting tags, so here in my UI.R function, here,
+I've just put a couple of the headings, I've copied this code from the next
+slide on the slide deck, okay? So here, we have h1, h2, h3,
+these all occur in the sidebar layout. I give some emphasized text right here,
+and here, I give some code text,
+which will put it in a mono space format. You want to do that when you're displaying
+code, you always want to display, just like when you're editing code,
+you always want it in a mono space format. Okay, so you want to run the app now,
+and there, you can see it,
+the different heading values and so on, okay, the main panel,
+the code listed in some mono space format. So you can look at all these
+things just by doing ?builder. Okay, and there we go. These are all the different
+html tags that you have. Another thing you can do,
+let me run the app again, so it's running. Okay, if you just click
+on Open in Browser, it will open it up in a web browser, okay? And here is your html tags,
+but I just want to do Ctrl+U. So that you can actually just see the R
+code then effectively creates a webpage, and here, you can actually see
+the webpage that it's created. You can see the JavaScript
+libraries that it loads up and so on to actually run Shiny. But more importantly, so I probably
+wouldn't worry too much about the head, unless you're familiar with
+a little bit of JavaScript. Most of what this stuff is, is style sheets in the Twitter
+bootstrap stuff, which is the style, the formatting for all the buttons and
+style and everything that Shiny uses. But also, it has some of the input,
+output things that Shiny requires as well. But most of the stuff we're displaying
+is here in this part in the body and then you can just see how
+it uses the function and how it creates the HTML commands, okay? So it's just translating your UI.R
+into this function right here. And this is a useful thing to do, especially when you start to do things
+like named buttons and things like that. You can see how it actually
+goes into the HTML. And in fact, if you're comfortable with
+Shiny, but not very comfortable with HTML, this will be a way to get
+used to coding in HTML. because I think, at some point, if you're
+going to want to develop fancy enough webpages that call R on the back end, even
+if you're using Shiny as the mechanism for doing that, you probably are going to
+want to be developing your own webpages and not using a UI.R. Okay, so hopefully, this gets you a little bit of familiarity
+with using some of the HTML tags. Play around with them, and try and
+design just a simple webpage with no interactivity, just a webpage
+that shows what you like on it. Okay, and then next, we're going to start
+working towards adding some buttons and some sliders and some graphs, and
+calling R in the back end, and some of the important things
+that Shiny will do for us.

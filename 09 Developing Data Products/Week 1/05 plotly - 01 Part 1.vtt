@@ -1,0 +1,293 @@
+WEBVTT
+
+1
+00:00:01.550 --> 00:00:03.510
+Hi, my name is Brian Caffo, and
+
+2
+00:00:03.510 --> 00:00:07.007
+this is the Developing Data Products
+lecture on Plotly.
+
+3
+00:00:07.007 --> 00:00:13.787
+Plotly is a really nifty little
+web application and library for R.
+
+4
+00:00:13.787 --> 00:00:17.779
+I had an old video on, but
+it was early in their R development, and
+
+5
+00:00:17.779 --> 00:00:19.810
+I just went back and looked at it,
+
+6
+00:00:19.810 --> 00:00:24.476
+and I was really astounded at how much
+development has occurred since then.
+
+7
+00:00:24.476 --> 00:00:27.196
+And for
+creating interactive web graphics in R,
+
+8
+00:00:27.196 --> 00:00:30.540
+Plotly is certainly something
+that you should look into.
+
+9
+00:00:30.540 --> 00:00:35.910
+The nice part is it integrates with
+a lot of different languages, too.
+
+10
+00:00:35.910 --> 00:00:37.550
+So what is Plotly?
+
+11
+00:00:37.550 --> 00:00:40.719
+Plotly is a web application for
+creating and sharing visualizations.
+
+12
+00:00:41.780 --> 00:00:43.290
+It can work with several languages.
+
+13
+00:00:43.290 --> 00:00:46.895
+Off the top of my head,
+I know that it works with MATLAB, Python,
+
+14
+00:00:46.895 --> 00:00:49.300
+JavaScript, and so on.
+
+15
+00:00:49.300 --> 00:00:52.750
+And they also have a web
+interface if you like to point and
+
+16
+00:00:52.750 --> 00:00:56.410
+click your way to victory, just uploading
+a csv file, or something like that.
+
+17
+00:00:56.410 --> 00:01:01.380
+And you'll see, I think, in some of our
+first applications that we're going to do
+
+18
+00:01:01.380 --> 00:01:07.220
+with code demonstrations that Plotly
+is really easy to get up and going,
+
+19
+00:01:07.220 --> 00:01:12.270
+especially if you work in RStudio and
+in R, now.
+
+20
+00:01:12.270 --> 00:01:15.700
+So installing Plotly I'm not going
+to do code demonstrations on this.
+
+21
+00:01:15.700 --> 00:01:18.204
+This should be familiar to you
+at this point in the class.
+
+22
+00:01:18.204 --> 00:01:21.260
+Install.packages("plotly") and
+then, of course, to bring it up,
+
+23
+00:01:21.260 --> 00:01:25.070
+you can do Library or require ("plotly"),
+or something like that.
+
+24
+00:01:25.070 --> 00:01:28.310
+Later on,
+as the last part of this lecture series,
+
+25
+00:01:28.310 --> 00:01:32.150
+I'll talk about sharing you Plotly plot,
+which isn't specifically an R thing.
+
+26
+00:01:32.150 --> 00:01:36.628
+It's more of a how do you share
+HTML graphics discussion.
+
+27
+00:01:36.628 --> 00:01:40.553
+And one of the ways is
+actually on the Plotly site.
+
+28
+00:01:40.553 --> 00:01:45.782
+And they have free options and paid
+options if you want private displays and
+
+29
+00:01:45.782 --> 00:01:49.730
+user authentication and things like that.
+
+30
+00:01:49.730 --> 00:01:52.620
+So, if you want to share your
+visualizations through Plotly then,
+
+31
+00:01:52.620 --> 00:01:53.510
+of course, you can do that.
+
+32
+00:01:53.510 --> 00:01:58.730
+But, in addition, they just make
+HTML graphics that you can create
+
+33
+00:01:58.730 --> 00:02:03.580
+a web page and share on your own
+without involving Plotly at all,
+
+34
+00:02:03.580 --> 00:02:06.910
+other than the Plotly R package, okay?
+
+35
+00:02:06.910 --> 00:02:11.010
+But, also, they're web interface
+is pretty interesting.
+
+36
+00:02:11.010 --> 00:02:16.546
+It gives you a lot of nifty tools that
+even are not that easy to do in R,
+
+37
+00:02:16.546 --> 00:02:21.808
+for example, interactively
+changing access labels, right?
+
+38
+00:02:21.808 --> 00:02:24.548
+So that's something that you can't really
+do in R, you have to rerun the code and
+
+39
+00:02:24.548 --> 00:02:25.250
+that sort of thing.
+
+40
+00:02:25.250 --> 00:02:31.160
+And at any rate, at the Plotly web
+interface you can do things like that.
+
+41
+00:02:31.160 --> 00:02:34.510
+So we'll show that at the end, but
+for right now we're just going to work
+
+42
+00:02:34.510 --> 00:02:39.980
+in the R console and just show
+Plotly when running things locally.
+
+43
+00:02:39.980 --> 00:02:43.270
+Okay, so
+before I do the code demonstration,
+
+44
+00:02:43.270 --> 00:02:45.730
+let me go through the slides a little bit.
+
+45
+00:02:45.730 --> 00:02:51.770
+Here, the slides just go through
+creating the command, or
+
+46
+00:02:51.770 --> 00:02:58.420
+invoking the command, plot_ly, the ntcars
+dataset, and just specify the x and the y.
+
+47
+00:02:58.420 --> 00:03:01.780
+And then one thing I just want to show
+before we go to the code demonstration,
+
+48
+00:03:01.780 --> 00:03:09.020
+is this is actually embedded
+into this knitter document here.
+
+49
+00:03:09.020 --> 00:03:14.296
+Okay, so the R Markdown document that
+got then knit into an HTML document,
+
+50
+00:03:14.296 --> 00:03:18.403
+is actually displaying
+the interactive graphic as part of
+
+51
+00:03:18.403 --> 00:03:21.447
+the actual document in the actual slides.
+
+52
+00:03:21.447 --> 00:03:26.038
+So, you can zoom in, for
+example, and things like that,
+
+53
+00:03:26.038 --> 00:03:29.900
+that you can't normally
+do with a static graph.
+
+54
+00:03:29.900 --> 00:03:32.480
+And this is all embedded in the slides.
+
+55
+00:03:32.480 --> 00:03:36.678
+So when you look at
+the R Markdown document,
+
+56
+00:03:36.678 --> 00:03:40.999
+the commands are very
+simple to just do that.
+
+57
+00:03:40.999 --> 00:03:46.956
+So one interesting application of Plotly
+is embedding it in your Slidify or
+
+58
+00:03:46.956 --> 00:03:52.140
+R Studio Presenter or
+Slidy just knitter documents, okay.
+
+59
+00:03:52.140 --> 00:03:54.660
+So let's do some code demonstrations
+
+60
+00:03:54.660 --> 00:03:57.200
+where we go through a couple of
+different Plotly-type plots.
+
+61
+00:03:57.200 --> 00:03:59.250
+And then at the end,
+we'll talk about how we share them.

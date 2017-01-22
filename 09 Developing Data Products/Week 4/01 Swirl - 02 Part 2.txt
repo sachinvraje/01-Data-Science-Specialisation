@@ -1,0 +1,72 @@
+Now I'll show you how you can write
+your own swirl courses and lessons. In order to do that, you're going to
+need a package call swirlify, which I'll load up right now. All right, so swirlify is always aware of
+your current working directory. My working directory right now
+is just my home folder, so I'm going to set my directory. I have a special directory
+on my desktop called Courses where I like to keep some of
+my swirl courses and develop them. So you can start writing
+a new swirl course and a new lesson with the new lesson function. I'm going to name this lesson one and I'll name the course My First Course. All right, so executing that
+function did several things. The first thing that it does is
+that it opens up this YAML file. All swirl lessons are written in YAML. YAML is a fairly easy to
+understand markup language. The way that swirl uses it is
+in this way where each question is demarcated by a hyphen, and
+then there is a set of key value pairs that specifies
+each type of question, and what goes into that question
+in your swirl lesson. So just to show you,
+just to sort of give you a look, let's go to My Courses folder. So, this is the course I just created,
+called My First Course. Opening it up there is one lesson
+inside of it, called Lesson_1. Each course is its own folder and each lesson is its own
+folder inside of a course. And then that new lesson
+function created a couple files. The first file, customTests.R is where
+you can specify your own functions for testing the correctness
+of swirl questions. We'll talk about answer
+testing a little bit later. Dependson.txt is a text file
+that you can use to list the names of functions, excuse me,
+the names of R packages that are on Cram. That's where we'll check to make sure
+R installed before the lesson begins. initLesson.R is an R script, and whatever you write in that R script
+will happen before a lesson starts, so you can load the data
+inside of initLesson.R or you can create functions that will
+soon then be used in the lesson. And then this lesson.yaml file is
+exactly what we're looking at here inside of RStudio. I like using RStudio for writing swirl
+lessons because having a text editor and an R console next to each other
+on the same screen works for me. I certainly recommend using RStudio but different people have their
+different work flows. So I have this new lesson all set up. Now I want to start adding questions. So you can use the wq series of
+functions that come with swirl find. And as you can see, there's several different kinds of questions that
+you can include in a lesson. The most simple kind of question that
+you can include is what's called a message question. So I'm just going to execute
+this wq message function and go over to my lesson.yaml file, and as you can see, it's added
+the template for a message question. So I'm going to edit this message
+question and say, Welcome to lesson 1! And then that's all I need to do in order
+to write a simple message question. I'm then going to add another question,
+this time a command question. So a command question
+will prompt the student to actually enter some R
+code into the R console. And as you can see, the question template
+is added to the lesson.yaml file. So I'm going to ask a student
+a simple question like add 2 and 2 using the plus operator. And then the CorrectAnswer is just
+the very simple R expression of 2 + 2. And then this AnswerTests is a function that tests the correctness of what
+the student enters into the console. Omnitest is a function that
+comes packaged in swirl and for 80-90% of the questions you're going
+to be asking, you want to use Omnitest. So in this case I'm just going
+to write 2 + 2 inside of this CorrectExpression argument,
+and then I'm going to give a very simple hint to the user and
+say Just type 2 + 2. All right, so I've written some questions,
+now time to start testing this lesson. Whenever I add a lesson to a course, you should add it to what's
+called the course manifest. You can do this very easily by
+using the add_to_manifest function. And just to show you what that did
+is that created this manifest file. This is so we're inside of
+the course directory right now. That is the course which
+is my first course. And this manifest file just keeps track of the order that you
+want your lessons to be displayed in. And it also keeps track of what
+the lessons in the course are. That way if you want to put data or
+other files inside of this course folder, you can do that and
+those files won't show up as a lesson that the student
+can select when they're going, when they're choosing a lesson
+to work on inside of swirl. So this manifest file just
+kind of keeps things organized. So I've added this lesson to the manifest. Now I'm, now let's test out this lesson. So just to check the general
+formatting of this lesson, I'm going to use the test lesson function. If I didn't get any warnings or
+any messages, that means that this lesson passed some formatting
+checks that come with swirlify. Then I want to actually use
+this lesson inside of swirl, so I'm going to use the demo lesson function. And as you can see, that takes us right
+into the lesson that we're writing. And I don't need to go
+through swirl's menu, so Welcome to lesson 1
+is the first question. Add 2 and 2 using a plus operator. I'll do that. And then that's the end of the lesson.

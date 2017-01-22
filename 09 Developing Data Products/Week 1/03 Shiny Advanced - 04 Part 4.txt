@@ -1,0 +1,51 @@
+So, let's just go over now a couple of
+different ways we can tweak the UI for shiny. You already have kind of a default
+theme with the side bar panel. Let's go over one with the tab and
+I think once you've gone through these two versions, you'll kind of
+notice the patterns and you'll be able to tweak it with
+a lot of different settings. Also we'll talk a little bit at
+the end about how you can actually do Shiny with a custom HTML function. Okay, so let’s just go through this
+Advanced UI example and at the end, we'll have some final discussion. Okay, so I copied the code from
+the R marked down document. Hopefully the first couple of lines
+are very familiar to you at this point. We're still going to have a side bar
+layout and you can do tabs within a single panel,
+just with no side bar, just the tabs. You just need to change the layout. So you can have a different layout with
+tabs but we're going to have a side bar layout where the side bar is
+going to have the inputs and then the main panel is going to have tabs. But you can also just have one big panel,
+not with a side bar, and have it have tabs. Or as we'll talk about later you can
+tweak the UI infinitely with custom HTML. Okay so our sidebar panel is just
+going to have three text input boxes and the labels for those inputs are going to
+be box one, box two, box three. The prompts to the user are going to be
+enter tab one text, enter tab two text, enter tab three text. And then the starting value is
+going to be Tab 1, Tab 2 and Tab 3. Okay now in the main panel we are going
+to have a subset of the main panel, called a tabset panel. And this is kind of this nested
+user-interface-structured that shiny allows with
+it's with a syntax here. So we have a mainPanel, and then we have
+a tabsetPanel inside that function, okay? And type = "tabs", and
+then we have three tabPanels. And these tabPanel statements
+are working just like our mainPanel and sidebarPanel functions. They work in the same way. We just have them strung out into one line
+because they're very short in this case. So our tabPanel is going to
+have a label that says Tab 1. It's going to have, basically,
+a character term, to go down a line. And then it's going to have textOutput,
+out1. So it's going to be looking for out1 from
+the sever.R function, textOutput, out2. Again, it's going to be looking for something labeled output$out2 from
+the server, Server.ourfile and so on. Okay, so now let's look at our server. Okay, it's going to be a very simple one,
+shinyServer(function(input, output) so this should all be very familiar. Okay, and there's our output$out1 and
+it's going to be renderText. Okay, because remember what we want to do
+in this piece when we go back to the UI we want to display the text, and
+we're just going to do nothing. We' re just going to Spit back out
+whatever the person entered in box1, box2 and box3. So let's go ahead and run that. All right, so here's our three
+text boxes for entering text. And here's our three tabs. So let's put it in tab two. So if I just put it enter new text, okay,
+and I go to Tab 2, it says enter new text. Okay so that's just a nice
+little tweak of the UI and hopefully as you're doing it, you're
+starting to get a sense of the syntax and how it works a little bit better. Make sure when you're doing all your UI
+tweaks in everything that you don't have any errors in the r code, or
+studio will give you a little X's in the code if you've forgotten to come or
+something like that. And I think that's probably the biggest
+challenge with the UI programming, and R is making sure you've closed
+all your parenthesis and added all the necessary commas and
+that sort of thing. And I think proper indentation and
+doing your coding in a nice environment like RStudio
+will really help that tremendously. Okay, so your homework now is to develop
+a tabbed user interface for Shiny and just next we're going to go through
+just some of our final comments on Shiny.

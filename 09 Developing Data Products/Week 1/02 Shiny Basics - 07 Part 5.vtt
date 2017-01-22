@@ -1,0 +1,692 @@
+WEBVTT
+
+1
+00:00:01.280 --> 00:00:05.460
+So now we're starting to get to the point
+where we actually can use Shiny
+
+2
+00:00:05.460 --> 00:00:07.670
+in a way that would be helpful for us.
+
+3
+00:00:07.670 --> 00:00:09.840
+And one of the main ways
+in which Shiny is useful,
+
+4
+00:00:09.840 --> 00:00:11.770
+is in creating interactive graphics.
+
+5
+00:00:11.770 --> 00:00:14.840
+R, by default,
+doesn't have a lot of capacity for
+
+6
+00:00:14.840 --> 00:00:16.930
+creating interactive graphics.
+
+7
+00:00:16.930 --> 00:00:22.030
+Shiny really expands that capacity, and
+gives you a nice way to disseminate your
+
+8
+00:00:22.030 --> 00:00:27.512
+results, because they're embedded in a Web
+page that you could put out very broadly.
+
+9
+00:00:27.512 --> 00:00:30.664
+So in this case,
+we're going to create an interactive plot.
+
+10
+00:00:30.664 --> 00:00:34.934
+We're going to actually have a little
+bit more code in the server.R functions.
+
+11
+00:00:34.934 --> 00:00:39.369
+And, I think at this point,
+once you go through this example,
+
+12
+00:00:39.369 --> 00:00:44.476
+you should hopefully be able to start
+using Shiny in a much more realistic
+
+13
+00:00:44.476 --> 00:00:48.932
+way that would help you with your
+day to day data science needs.
+
+14
+00:00:48.932 --> 00:00:51.518
+Okay, so let's get right to it.
+
+15
+00:00:51.518 --> 00:00:55.145
+Okay, so I've copied the code
+from the R markdown document.
+
+16
+00:00:55.145 --> 00:00:56.638
+And let's just run it first and
+
+17
+00:00:56.638 --> 00:00:59.346
+see the app before we start
+digging into its internals.
+
+18
+00:00:59.346 --> 00:01:03.525
+So what it basically does,
+is it plots two sets of random uniforms.
+
+19
+00:01:03.525 --> 00:01:06.396
+So you input the number of uniforms, and
+
+20
+00:01:06.396 --> 00:01:09.942
+see this is a text box that
+also has an increment and
+
+21
+00:01:09.942 --> 00:01:14.936
+decrement operator here in the buttons
+on the right hand side, okay?
+
+22
+00:01:14.936 --> 00:01:20.871
+And then you have these sliders
+that can change the range
+
+23
+00:01:20.871 --> 00:01:28.079
+of the uniforms that you generate
+both on the X axis and on the Y axis.
+
+24
+00:01:28.079 --> 00:01:32.924
+Then you have these buttons that
+say Show/Hide the X Axis Label,
+
+25
+00:01:32.924 --> 00:01:36.900
+Show/Hide the Y Axis Label,
+Show/Hide the Title.
+
+26
+00:01:36.900 --> 00:01:40.725
+So we have these three check boxes here,
+these two sliders, okay?
+
+27
+00:01:40.725 --> 00:01:43.598
+And our numeric input right here, okay?
+
+28
+00:01:43.598 --> 00:01:47.395
+And notice how the code is
+executed interactively, right?
+
+29
+00:01:47.395 --> 00:01:53.055
+Every time I change a value it's rerun,
+the whole set of code is rerun.
+
+30
+00:01:53.055 --> 00:01:57.690
+So that's something you're going to have
+to get used to with Shiny, is how to
+
+31
+00:01:57.690 --> 00:02:02.770
+program with its server calculations and
+its reactive coding, which operates in
+
+32
+00:02:02.770 --> 00:02:07.716
+my mind, a little bit differently than
+standard highly linear R programming.
+
+33
+00:02:07.716 --> 00:02:10.652
+Okay, so now let's go through the code and
+see how we accomplish this.
+
+34
+00:02:12.763 --> 00:02:17.604
+So I think it's usually best to start
+out going through the UI.r function,
+
+35
+00:02:17.604 --> 00:02:19.582
+the Shiny UI function, okay?
+
+36
+00:02:19.582 --> 00:02:22.420
+So title pane, we know about that, okay?
+
+37
+00:02:22.420 --> 00:02:30.100
+The numeric input, okay,
+it's labeling that input numeric.
+
+38
+00:02:30.100 --> 00:02:34.171
+And then here's the title, and
+then it gives you the starting value, and
+
+39
+00:02:34.171 --> 00:02:36.863
+then it gives you the minimum and
+the maximum, so
+
+40
+00:02:36.863 --> 00:02:39.704
+you don't input values above or
+below that range.
+
+41
+00:02:39.704 --> 00:02:42.460
+And then the step sizer for
+those little buttons,
+
+42
+00:02:42.460 --> 00:02:45.950
+when you push those little buttons,
+how much it steps, okay?
+
+43
+00:02:45.950 --> 00:02:50.163
+Then we have the two sliders, we've
+gone through the sliders before, okay?
+
+44
+00:02:52.079 --> 00:02:55.218
+All right, and notice these sliders there.
+
+45
+00:02:55.218 --> 00:02:58.918
+It had the double slider,
+it had the two values, okay?
+
+46
+00:02:58.918 --> 00:03:03.080
+So you need the two values here and
+the two values here, so
+
+47
+00:03:03.080 --> 00:03:06.481
+that you can have the slider
+at the two points.
+
+48
+00:03:06.481 --> 00:03:09.356
+And here's the Y slider,
+basically the same thing.
+
+49
+00:03:09.356 --> 00:03:11.285
+And then here's our three check boxes.
+
+50
+00:03:11.285 --> 00:03:13.819
+Okay, so just back to the sliders,
+
+51
+00:03:13.819 --> 00:03:18.135
+notice the first one was sliderX
+the second one was sliderY.
+
+52
+00:03:18.135 --> 00:03:22.459
+And then these have very obvious labels,
+"show_xlab", "show_ylab",
+
+53
+00:03:22.459 --> 00:03:23.950
+"show_title", okay?
+
+54
+00:03:24.960 --> 00:03:28.410
+Then in the main panel,
+it's just going to show the graph, and
+
+55
+00:03:28.410 --> 00:03:30.520
+it's going to do plotOutput of plot1.
+
+56
+00:03:30.520 --> 00:03:34.472
+So it's somewhere in our server function
+we're going to have to create something
+
+57
+00:03:34.472 --> 00:03:40.250
+called plot1 that is going to get sent
+back to our user interface, okay?
+
+58
+00:03:40.250 --> 00:03:44.300
+Now in our server, shinyServer,
+it looks like it always does.
+
+59
+00:03:44.300 --> 00:03:49.036
+It has function(input, output), or
+curly braces, cause it's a function, and
+
+60
+00:03:49.036 --> 00:03:50.380
+then output$plot1.
+
+61
+00:03:50.380 --> 00:03:51.026
+Okay, this is good.
+
+62
+00:03:51.026 --> 00:03:54.125
+This means that the output
+from our shinyServer is
+
+63
+00:03:54.125 --> 00:03:56.708
+going to have something labeled plot1, so
+
+64
+00:03:56.708 --> 00:04:01.603
+that when we display it with the user
+interface, there will be a plot1 there.
+
+65
+00:04:01.603 --> 00:04:06.360
+And okay, because it's a plot,
+the statement is renderPlot, okay?
+
+66
+00:04:06.360 --> 00:04:09.196
+And then all of our reactive expressions,
+
+67
+00:04:09.196 --> 00:04:13.938
+reactive means kind of interacting
+with server calculations, okay?
+
+68
+00:04:13.938 --> 00:04:18.776
+They're going to have this notation
+where they have the curly braces next to
+
+69
+00:04:18.776 --> 00:04:22.145
+the parentheses from
+the renderPlot statements.
+
+70
+00:04:22.145 --> 00:04:27.646
+So you gotta get used to writing these
+curly braces in reactive statements, okay?
+
+71
+00:04:27.646 --> 00:04:31.050
+So just get used to that code.
+
+72
+00:04:31.050 --> 00:04:35.300
+Okay, so here we're just
+setting a random number seed.
+
+73
+00:04:35.300 --> 00:04:39.300
+Okay, now here we're just
+doing some regular R coding.
+
+74
+00:04:39.300 --> 00:04:44.670
+The number of points we're just
+re-labeling the input$numeric.
+
+75
+00:04:44.670 --> 00:04:47.700
+And that's just for convenience so
+we don't have to actually
+
+76
+00:04:47.700 --> 00:04:51.080
+refer to the input function to make
+our code look a little bit readable.
+
+77
+00:04:51.080 --> 00:04:55.160
+And honestly, for pedagogical purposes
+here, where I'm just showing you how you
+
+78
+00:04:55.160 --> 00:05:00.650
+grab the numeric value from
+that numeric input, okay?
+
+79
+00:05:00.650 --> 00:05:05.250
+So the min for X, the max for
+X are the elements of the slider.
+
+80
+00:05:05.250 --> 00:05:12.720
+And these come out as input as a list,
+and the slider X value is a vector.
+
+81
+00:05:12.720 --> 00:05:16.883
+And so the first element of
+the vector is that minimum value,
+
+82
+00:05:16.883 --> 00:05:20.565
+the second element of
+the vector is the larger value.
+
+83
+00:05:20.565 --> 00:05:25.596
+Same thing for our two Y points,
+and so we're going to do those.
+
+84
+00:05:25.596 --> 00:05:29.610
+We're going to assign
+those all to variables,
+
+85
+00:05:29.610 --> 00:05:36.057
+because it would be a lot to type if we
+wanted to reuse those every time, okay?
+
+86
+00:05:36.057 --> 00:05:39.773
+And then our data,
+the list of random uniform numbers,
+
+87
+00:05:39.773 --> 00:05:41.363
+is just going to be runif.
+
+88
+00:05:41.363 --> 00:05:44.321
+That just generates a bunch
+of random uniform numbers.
+
+89
+00:05:44.321 --> 00:05:47.829
+And this takes in the number of points,
+and
+
+90
+00:05:47.829 --> 00:05:52.127
+the range between the min of the X and
+the max of the X.
+
+91
+00:05:52.127 --> 00:05:55.377
+And then our dataY, and
+that'll just return a vector of uniforms.
+
+92
+00:05:55.377 --> 00:06:01.302
+DataY, number of points,
+okay, minY, maxY, okay?
+
+93
+00:06:01.302 --> 00:06:08.221
+The label, right, is,
+this is just an ifelse statement.
+
+94
+00:06:08.221 --> 00:06:13.127
+The input$show_xlab is the check boxes,
+is either going to be true or false as to
+
+95
+00:06:13.127 --> 00:06:17.960
+whether or not it's checked, and that's
+going to be in this label show_xlab,
+
+96
+00:06:17.960 --> 00:06:22.500
+because remember that's what we
+labeled that check box, okay?
+
+97
+00:06:22.500 --> 00:06:27.430
+And then it's saying if that's true,
+in other words if showing the label,
+
+98
+00:06:27.430 --> 00:06:31.890
+then give the label "X Axis",
+if not, give it nothing.
+
+99
+00:06:31.890 --> 00:06:32.937
+Same thing with ylab.
+
+100
+00:06:32.937 --> 00:06:37.392
+So, these are two just R
+variables that are going to be
+
+101
+00:06:37.392 --> 00:06:41.946
+the text that we're going to
+display in the plot, okay?
+
+102
+00:06:41.946 --> 00:06:46.197
+And the same thing with the title, so
+the title is going to be if this is true,
+
+103
+00:06:46.197 --> 00:06:49.010
+we're going to have
+the title labeled "Title",
+
+104
+00:06:49.010 --> 00:06:52.254
+otherwise it's just going to
+be labeled nothing, okay?
+
+105
+00:06:52.254 --> 00:06:53.518
+And then we give our plot.
+
+106
+00:06:53.518 --> 00:06:59.773
+We're going to plot our X data with our
+Y data, our xlab is going to be xlab,
+
+107
+00:06:59.773 --> 00:07:04.506
+where that is defined as
+either "X Axis" or nothing.
+
+108
+00:07:04.506 --> 00:07:08.496
+Ylab is going to be ylab, where that's
+either going to be defined as "Y Axis" or
+
+109
+00:07:08.496 --> 00:07:09.045
+nothing.
+
+110
+00:07:09.045 --> 00:07:12.960
+And the main, same thing with the main,
+is either going to be "Title" or nothing.
+
+111
+00:07:12.960 --> 00:07:17.560
+And then our x limit is going to be
+always set, fixed at those values.
+
+112
+00:07:17.560 --> 00:07:21.380
+That's why the plot is
+always in the same space.
+
+113
+00:07:21.380 --> 00:07:24.690
+Y limit is always this, and
+then we'll return it, okay?
+
+114
+00:07:24.690 --> 00:07:26.120
+So that's it.
+
+115
+00:07:26.120 --> 00:07:28.730
+Let's run it again now that we know
+what it's doing, and look at it again.
+
+116
+00:07:29.840 --> 00:07:33.750
+So remember what it's doing
+as we change a value, okay?
+
+117
+00:07:33.750 --> 00:07:36.880
+It's taking this value, right?
+
+118
+00:07:36.880 --> 00:07:40.050
+This is input for the server.
+
+119
+00:07:40.050 --> 00:07:44.850
+This is going to be input,
+slider X, value one, okay?
+
+120
+00:07:44.850 --> 00:07:48.640
+This is going to be,
+yeah, that's the minimum.
+
+121
+00:07:48.640 --> 00:07:51.332
+I think I said right earlier,
+but it should have been left.
+
+122
+00:07:51.332 --> 00:07:55.351
+This is going to be slider X,
+value two, okay?
+
+123
+00:07:55.351 --> 00:07:59.498
+This is going to be slider Y, value one,
+
+124
+00:07:59.498 --> 00:08:03.658
+this is going to be slider Y, value two.
+
+125
+00:08:03.658 --> 00:08:05.814
+This is going to be true or false for
+show X lab, this is going to be true or
+
+126
+00:08:05.814 --> 00:08:06.748
+false for show Y lab, okay?
+
+127
+00:08:06.748 --> 00:08:10.041
+And so whats going on,
+is as we put in these values,
+
+128
+00:08:10.041 --> 00:08:13.424
+the Shiny server is always checking for
+new things.
+
+129
+00:08:13.424 --> 00:08:17.524
+And every time it's got a new set of
+values, it's re-running everything and
+
+130
+00:08:17.524 --> 00:08:21.703
+re-displaying it, going back and
+forth between the server and the UI, okay?
+
+131
+00:08:21.703 --> 00:08:26.608
+So later on we'll show you how to put in
+a done button in case your calculations
+
+132
+00:08:26.608 --> 00:08:29.776
+going on in the back-end
+are much weightier, and
+
+133
+00:08:29.776 --> 00:08:34.090
+you don't want to run them immediately
+upon receiving new values.
+
+134
+00:08:34.090 --> 00:08:37.735
+Right now this is such fast code,
+that doesn't matter.
+
+135
+00:08:37.735 --> 00:08:40.049
+But later on we'll show you
+how to put a done button.
+
+136
+00:08:40.049 --> 00:08:43.529
+That will help in these instances
+where when you click a button,
+
+137
+00:08:43.529 --> 00:08:47.560
+it runs a gigantic Monte Carlo
+simulation or something like that, okay?
+
+138
+00:08:47.560 --> 00:08:51.558
+But this a pretty nice,
+handy little interactive graphic.
+
+139
+00:08:51.558 --> 00:08:54.450
+I mean, it's not doing anything very
+terribly meaningful, but I think you could
+
+140
+00:08:54.450 --> 00:08:57.850
+extend this to your setting, where it's
+actually doing something quite meaningful.
+
+141
+00:08:59.000 --> 00:09:01.930
+Okay, so now your homework
+is go through this example,
+
+142
+00:09:01.930 --> 00:09:05.080
+create a plot,
+maybe use some different kinds of inputs.
+
+143
+00:09:05.080 --> 00:09:09.010
+Don't just use sliders and numeric inputs,
+try some other kinds of inputs.
+
+144
+00:09:09.010 --> 00:09:12.820
+And create an interactive graphic,
+a simple interactive graphic in Shiny

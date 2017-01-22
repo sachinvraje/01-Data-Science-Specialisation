@@ -1,0 +1,65 @@
+So this lecture is going to
+talk about creating reproducible presentations
+using R Markdown. In previous versions of
+this class we covered a couple of the many different
+ways that you could do this. R Studio has this thing
+called R Studio Presenter, there's this thing called Slidify. And in this latest
+incarnation of the class, we're just focusing on straight Markdown. Now, R Markdown is already covered in the data science specialization
+in the class on reproducible research. However, we're going to kind of
+focus here just on creating reproducible presentations. But we're going to recover some of
+the content that justifies why you might want to do reproducible presentations,
+or do reproducible documents in general. So just a little bit about R Markdown,
+is R Markdown is built into R Studio. And basically it allows
+you to create documents, particularly HTML documents from within R. But in such a way that it embeds
+the code and the results of the code and the plots and everything else that you're
+doing from your analysis Into the document in one big reproducible mish mash. And that's incredibly useful,
+because the changes this old workflow of having some analytic R code that is
+maybe documented, but probably not. And then a separate document, say a Google
+document or a Word document, or whatever, a LaTeX document or whatever. And the way you're combining them
+is by copying and pasting or saving files manually and
+inputting them into the documents. Same thing with presentation, you might
+have a PowerPoint presentation and you're running your code over here and
+then pasting or copying those things
+into the presentation. And that leads to issues with version
+control, it also leads to the problem that the person you're giving the presentation
+to if you're handing them the file can't necessarily reproduce all
+the figures and graphs in it. So, again, this is just in general
+a better way to do things if you're concerned with having
+things like reproducibility and having a nice consistent structure for
+generating your presentations. I can imagine an instance
+in say a corporate setting where a particular report
+has to be given routinely. Say every couple of weeks or
+something like that, from data, important data that's being generated for
+the company. And instead of redoing that presentation
+and having the error prone process of copying and pasting each time, the idea
+of having a script that would generate the presentation with the latest numbers
+in a way that everything was traceable and version controlled would be
+an incredibly useful thing. So one way to think about R Markdown in
+creating presentations like this is as a useful way for creating recurring
+presentations or automated presentations. But, it has a lot of uses and I want to
+emphasis this idea of reproducibility. So this has received a lot attention here, we talk about it a little
+bit in the slides. This has received a lot of attention
+in the academic community now, because mostly, with regard to papers,
+people have put out papers and then independent groups have just tried
+to reproduce the results of the papers. Not redo the experiments,
+just take the same data sets and try to reproduce the analysis and it turns
+out that it's often not possible and it creates disputes over who's right
+the first people or the second people and now a third group did it and
+they can't reproduce it, but they get something different
+than both the other two people. So having a document that has the code embedded in it really improves the status
+of reproducibility of the document. It's not perfect, because there's
+probably some external files or datasets that you have to call,
+some libraries. There's probably differences
+between computing architectures and other things that may impact your results. But by and large this goes leaps and bounds towards creating more
+reproducible results in your documents. Okay, so hopefully you've heard a lot of
+this before when you were talking about reproducability as it pertained
+to Nitter and things like that, in your reproducible research class that's
+part of the data science specialization. But if you're taking this class in Ovo,
+then we're just going to walk you through a couple of example,
+focusing mainly on presentations. An in this class,
+we focus on presentations just because we like to think of this
+class as a products class, so the idea is that you're
+generating product. And that your presentation will
+be your pitch for the product. And we want your pitch to be created
+in one of these reproducible formats. Okay, so next we're just going to
+start going through some examples.

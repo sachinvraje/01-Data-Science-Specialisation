@@ -1,0 +1,270 @@
+WEBVTT
+
+1
+00:00:01.390 --> 00:00:04.340
+So the next couple examples are easy
+enough that I'm not going to
+
+2
+00:00:04.340 --> 00:00:07.340
+do code demonstrations,
+I'm just going to show you the output.
+
+3
+00:00:07.340 --> 00:00:11.795
+A histogram is easy enough,
+you just do type = "histogram" and
+
+4
+00:00:11.795 --> 00:00:13.497
+you need one x variable.
+
+5
+00:00:13.497 --> 00:00:15.770
+Show it, it looks like this.
+
+6
+00:00:15.770 --> 00:00:21.980
+It'll actually show you the height of
+the bars as you move your mouse along.
+
+7
+00:00:21.980 --> 00:00:25.828
+And you can change the colors,
+do side by side histograms, and
+
+8
+00:00:25.828 --> 00:00:30.921
+a variety of other things in plot_ly, and
+they all kind of work in the obvious way.
+
+9
+00:00:30.921 --> 00:00:36.154
+So for boxplot here,
+plot_ly data frame is iris in this case,
+
+10
+00:00:36.154 --> 00:00:41.760
+y is petal length, and
+then color is species and type = "box".
+
+11
+00:00:41.760 --> 00:00:48.630
+So this is going to create separate
+boxplots, one for each species type.
+
+12
+00:00:48.630 --> 00:00:50.930
+Okay, and here it is, our three species.
+
+13
+00:00:50.930 --> 00:00:54.050
+When you hover over the box it gives
+you the values for the boxplot, so
+
+14
+00:00:54.050 --> 00:00:58.830
+this the 25th percentile,
+the 75th percentile, the median.
+
+15
+00:00:58.830 --> 00:01:02.340
+And then the whiskers
+extend out to 1.5 times
+
+16
+00:01:02.340 --> 00:01:04.910
+the distance between these two values.
+
+17
+00:01:04.910 --> 00:01:09.364
+That was Tukey's idea, that references
+back to the normal distribution,
+
+18
+00:01:09.364 --> 00:01:12.086
+the 1.5 times the inter-quartile range.
+
+19
+00:01:12.086 --> 00:01:14.280
+So here's your boxplot.
+
+20
+00:01:14.280 --> 00:01:17.190
+If you have an outlier like this, it'll
+actually show you the little point for
+
+21
+00:01:17.190 --> 00:01:18.600
+the outlier, okay?
+
+22
+00:01:19.640 --> 00:01:22.700
+So this can get a little crowded if it's
+all squashed together like that one.
+
+23
+00:01:23.920 --> 00:01:27.660
+But still, nice plot for almost no effort.
+
+24
+00:01:30.900 --> 00:01:36.490
+So a heatmap is basically just
+a graphical display of an image.
+
+25
+00:01:36.490 --> 00:01:40.710
+In this case, our image is going
+to be a matrix that we create.
+
+26
+00:01:40.710 --> 00:01:47.210
+So pretty much all images, all raster
+images, are just a matrix, right?
+
+27
+00:01:47.210 --> 00:01:49.640
+They're rows and columns.
+
+28
+00:01:49.640 --> 00:01:54.210
+And then they have the intensity
+value as the value for
+
+29
+00:01:54.210 --> 00:01:57.290
+each specific row and column combination.
+
+30
+00:01:57.290 --> 00:01:57.900
+So in this case,
+
+31
+00:01:57.900 --> 00:02:01.590
+let's just crate a simple matrix where
+we have 100 rows and 100 columns.
+
+32
+00:02:01.590 --> 00:02:04.800
+And we just fill it in
+with random normals, okay?
+
+33
+00:02:04.800 --> 00:02:07.630
+And that's what plot_ly's expecting for
+a heatmap.
+
+34
+00:02:07.630 --> 00:02:12.740
+Okay, the z is just
+going to be this matrix.
+
+35
+00:02:12.740 --> 00:02:14.700
+And then the type is going to be heatmap.
+
+36
+00:02:14.700 --> 00:02:17.378
+Okay, and
+then when it does that it plots an image.
+
+37
+00:02:17.378 --> 00:02:22.800
+A heat map is ultimately just an image,
+okay, just a raster image.
+
+38
+00:02:22.800 --> 00:02:25.330
+Okay, and the nice thing about
+the way plot_ly does it is,
+
+39
+00:02:25.330 --> 00:02:28.530
+as you move your mouse around it
+gives you the x and the y values, and
+
+40
+00:02:28.530 --> 00:02:30.630
+the z values, the intensity values.
+
+41
+00:02:30.630 --> 00:02:35.450
+And then the intensity values are given
+a color key here on the right,
+
+42
+00:02:35.450 --> 00:02:39.290
+which is quite nice so
+you don't have to set that up, okay?
+
+43
+00:02:39.290 --> 00:02:44.230
+So that is a pretty easy way to generate a
+heat map, and an interactive one at that.
+
+44
+00:02:46.040 --> 00:02:51.130
+So you could imagine taking that heat map,
+and what if you wanted to plot z, instead
+
+45
+00:02:51.130 --> 00:02:56.650
+of it as just color, what if you wanted to
+plot it pulled up into a third dimension?
+
+46
+00:02:56.650 --> 00:02:58.700
+Well, that would be plotting a surface.
+
+47
+00:02:58.700 --> 00:03:01.160
+So why don't we create this same dataset,
+
+48
+00:03:01.160 --> 00:03:05.060
+this time with different random normals,
+and then our z is the same thing.
+
+49
+00:03:05.060 --> 00:03:08.960
+Our type is now surface
+instead of heatmap, okay?
+
+50
+00:03:08.960 --> 00:03:13.030
+And so the intensity value is going to
+be the z value, and then the row and
+
+51
+00:03:13.030 --> 00:03:16.180
+column values,
+it's just going to assign integers for
+
+52
+00:03:16.180 --> 00:03:20.280
+those, are just going to be the x and
+y values.
+
+53
+00:03:20.280 --> 00:03:25.090
+And then when you do that,
+you get a nice 3D surface.
+
+54
+00:03:25.090 --> 00:03:30.760
+Now whenever you do a 3D surface like
+this, it's doing some smoothing, okay?
+
+55
+00:03:30.760 --> 00:03:34.370
+So you need to, this is just to
+show you how the commands work, but
+
+56
+00:03:34.370 --> 00:03:37.350
+of course if you want to do this for
+
+57
+00:03:37.350 --> 00:03:42.160
+real, you are going to need to actually
+understand what the smoothing is doing.

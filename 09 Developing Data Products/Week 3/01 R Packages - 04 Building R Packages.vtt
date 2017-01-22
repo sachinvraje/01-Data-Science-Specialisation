@@ -1,0 +1,1467 @@
+WEBVTT
+
+1
+00:00:04.180 --> 00:00:07.910
+Hey everyone, this lecture is going to be
+about building an actual r package.
+
+2
+00:00:07.910 --> 00:00:09.880
+So we've already seen kind of what is in R
+
+3
+00:00:09.880 --> 00:00:13.720
+package and what are the different
+components of the package.
+
+4
+00:00:13.720 --> 00:00:16.240
+So I thought in this lecture I'd like to
+make do a little demo,
+
+5
+00:00:16.240 --> 00:00:20.286
+and going to show exactly you know how to
+put all of the pieces together.
+
+6
+00:00:20.286 --> 00:00:22.170
+In particular, how to do it in our studio
+which actually
+
+7
+00:00:22.170 --> 00:00:26.020
+makes it pretty convenient So the package
+we're going to build today.
+
+8
+00:00:26.020 --> 00:00:27.330
+Is going to be a very small package.
+
+9
+00:00:27.330 --> 00:00:29.220
+It's only going to be two functions.
+
+10
+00:00:29.220 --> 00:00:30.970
+And the functions in the package are going
+to be.
+
+11
+00:00:30.970 --> 00:00:34.560
+Are going to build a prediction model for
+a high dimensional data set.
+
+12
+00:00:34.560 --> 00:00:36.920
+Using just the top ten predictors.
+
+13
+00:00:36.920 --> 00:00:38.560
+So if you want a little bit of a
+background on kind
+
+14
+00:00:38.560 --> 00:00:43.170
+of what the rationale for this model is,
+I'll put a link up.
+
+15
+00:00:43.170 --> 00:00:45.080
+You can look at the link right here.
+
+16
+00:00:46.160 --> 00:00:48.010
+and, you can read more about it.
+
+17
+00:00:48.010 --> 00:00:49.240
+So that's the package that we're going to
+build.
+
+18
+00:00:49.240 --> 00:00:51.680
+It's going to be called the top ten
+package.
+
+19
+00:00:51.680 --> 00:00:54.270
+And so, we'll do that in R studio.
+
+20
+00:00:54.270 --> 00:00:56.510
+And you can see how you know everything is
+done.
+
+21
+00:00:57.590 --> 00:01:00.490
+Okay, so the first thing that we need to
+do is start up R studio.
+
+22
+00:01:00.490 --> 00:01:01.689
+So, let's just start it up here.
+
+23
+00:01:03.520 --> 00:01:07.120
+And I might as well just make it full
+screen, while we're at it.
+
+24
+00:01:08.820 --> 00:01:12.084
+Okay, so, this is the kind of the default,
+screen
+
+25
+00:01:12.084 --> 00:01:13.900
+for R studio, the first thing we're
+going to want to do
+
+26
+00:01:13.900 --> 00:01:16.680
+when we start on R project, sorry on R
+package project,
+
+27
+00:01:16.680 --> 00:01:18.320
+is to kind of start a new project, I'm
+going to
+
+28
+00:01:18.320 --> 00:01:21.420
+open up a project menu here and say new
+project
+
+29
+00:01:21.420 --> 00:01:23.900
+and we want to start this project in a new
+directory,
+
+30
+00:01:23.900 --> 00:01:26.970
+so I'll click on that then what we want to
+do
+
+31
+00:01:26.970 --> 00:01:30.300
+is build in R package, and the name of R
+package.
+
+32
+00:01:30.300 --> 00:01:31.870
+You can create whatever name you want, but
+
+33
+00:01:31.870 --> 00:01:33.370
+I'm just going to call it the top ten
+package.
+
+34
+00:01:33.370 --> 00:01:36.460
+Cause that's the predictor model that we
+are building, and it's going
+
+35
+00:01:36.460 --> 00:01:39.800
+to be in the sub directory of my home
+directory which is fine.
+
+36
+00:01:39.800 --> 00:01:40.970
+So I'll just hit create project.
+
+37
+00:01:42.330 --> 00:01:42.590
+Okay.
+
+38
+00:01:42.590 --> 00:01:43.230
+So you can see.
+
+39
+00:01:44.520 --> 00:01:49.420
+That that puts me in the directory here,
+where where
+
+40
+00:01:49.420 --> 00:01:51.090
+the packaged files are going to live, and
+you can see
+
+41
+00:01:51.090 --> 00:01:53.520
+these are the package files here and you
+can see,
+
+42
+00:01:53.520 --> 00:01:55.240
+it's kind of put up a bunch of default
+files
+
+43
+00:01:55.240 --> 00:01:57.620
+in there, there is a description file, a
+namespace file
+
+44
+00:01:59.170 --> 00:02:01.460
+and then, if you look in the R directory
+there
+
+45
+00:02:01.460 --> 00:02:02.910
+is a, there is a file, there is a code
+
+46
+00:02:02.910 --> 00:02:05.530
+file but you'll notice that there is
+actually nothing in it.
+
+47
+00:02:05.530 --> 00:02:08.020
+So, we'll have to fill that up in just a
+second.
+
+48
+00:02:08.020 --> 00:02:08.230
+let's.
+
+49
+00:02:08.230 --> 00:02:11.450
+So let's just navigate this, file
+directory a little bit more.
+
+50
+00:02:11.450 --> 00:02:14.560
+In the top level directory see there's a
+description file we talked about.
+
+51
+00:02:14.560 --> 00:02:18.140
+If you open it up you'll see it's pre
+filled a bunch of the fields for you.
+
+52
+00:02:18.140 --> 00:02:19.220
+It put the package in.
+
+53
+00:02:19.220 --> 00:02:20.790
+Name in there for me.
+
+54
+00:02:20.790 --> 00:02:22.200
+But we're going to have to fill our, you
+know, with
+
+55
+00:02:22.200 --> 00:02:26.040
+the the title, the author, the maintainer,
+the description, etcetera.
+
+56
+00:02:26.040 --> 00:02:27.260
+So why don't we do that just right now.
+
+57
+00:02:27.260 --> 00:02:31.800
+So the title of this package is going to
+be, the top, excuse me.
+
+58
+00:02:31.800 --> 00:02:38.820
+Just the we'll call it, building
+
+59
+00:02:38.820 --> 00:02:43.463
+a prediction
+
+60
+00:02:43.463 --> 00:02:47.148
+model from the top 10 features.
+
+61
+00:02:47.148 --> 00:02:50.220
+And version 1.0 is fine.
+
+62
+00:02:50.220 --> 00:02:51.700
+The date is fine.
+
+63
+00:02:51.700 --> 00:02:53.660
+Who wrote it, so that's going to be me,
+let's say.
+
+64
+00:02:56.705 --> 00:02:59.310
+Uh,the maintainer's going to be me, but
+the important thing, of course,
+
+65
+00:02:59.310 --> 00:03:02.220
+about a maintainer is that there has to be
+an email address there.
+
+66
+00:03:02.220 --> 00:03:03.755
+So it'll be me again.
+
+67
+00:03:03.755 --> 00:03:07.710
+[NOISE]
+
+68
+00:03:07.710 --> 00:03:10.662
+And then the description is just a little
+bit longer.
+
+69
+00:03:10.662 --> 00:03:17.508
+Than the title so I'll just say you know
+build
+
+70
+00:03:17.508 --> 00:03:25.380
+functions for [SOUND] prediction models
+from selecting.
+
+71
+00:03:26.560 --> 00:03:36.320
+Actually building, let's say building and
+predicting from models from selecting
+
+72
+00:03:42.280 --> 00:03:45.639
+the top ten predictors in a data set.
+
+73
+00:03:47.400 --> 00:03:48.080
+Something like that.
+
+74
+00:03:48.080 --> 00:03:49.710
+It doesn't have to be too long.
+
+75
+00:03:49.710 --> 00:03:53.690
+And then the license, we'll just choose a
+nice, open source license like, Gnu Gpl.
+
+76
+00:03:53.690 --> 00:03:59.380
+So, we'll just call that Gpl version 3,
+and that's our description file.
+
+77
+00:04:01.030 --> 00:04:02.110
+So I'm just going to save that,
+
+78
+00:04:04.210 --> 00:04:06.920
+and, by hitting command s.
+
+79
+00:04:06.920 --> 00:04:09.200
+And then I'll just close it up because we
+don't need it anymore.
+
+80
+00:04:09.200 --> 00:04:12.560
+So, I think at this point there really
+aren't any other files that
+
+81
+00:04:12.560 --> 00:04:16.180
+we can fill out, so we might as well just
+start coding away.
+
+82
+00:04:16.180 --> 00:04:20.840
+Okay, so the first thing we're going to
+want to do is build R top ten functions.
+
+83
+00:04:20.840 --> 00:04:23.310
+Let's call it top ten.
+
+84
+00:04:24.760 --> 00:04:26.850
+And we will take two arguments x and y.
+
+85
+00:04:28.120 --> 00:04:31.825
+So the x is going to be the kind of matrix
+of predictors and y is going to
+
+86
+00:04:31.825 --> 00:04:33.775
+be the vector of responses so p is the
+
+87
+00:04:33.775 --> 00:04:36.582
+number of columns that is going to be p
+predictors.
+
+88
+00:04:36.582 --> 00:04:39.001
+Uh,I think it doesn't really make sense to
+look
+
+89
+00:04:39.001 --> 00:04:41.184
+at the top ten predictors if there aren't
+at
+
+90
+00:04:41.184 --> 00:04:44.075
+least ten predictors, so we're going to
+say, we're going to
+
+91
+00:04:44.075 --> 00:04:45.820
+check to see if p is at least ten.
+
+92
+00:04:45.820 --> 00:04:49.488
+And if it's not we'll just stop.
+
+93
+00:04:49.488 --> 00:04:55.256
+>> [SOUND] So the way this model works is
+basically, for each predictor
+
+94
+00:04:55.256 --> 00:05:00.921
+in your kind of matrix of predictors, we
+fit a, a univariate
+
+95
+00:05:00.921 --> 00:05:07.560
+regression model of the, of the response
+on each individual predictor.
+
+96
+00:05:07.560 --> 00:05:09.480
+And then for each individual predictors,
+so there is going to be
+
+97
+00:05:09.480 --> 00:05:12.350
+all these regression models that we fit
+and for each predictor,
+
+98
+00:05:12.350 --> 00:05:15.560
+there is going to be a p value associated
+with that,
+
+99
+00:05:15.560 --> 00:05:19.610
+that given predictor, you know, depending
+on how strong the association is.
+
+100
+00:05:19.610 --> 00:05:22.490
+So, so for every predictor we're going to
+have a p value, and then
+
+101
+00:05:22.490 --> 00:05:24.620
+what we're going to do is we're going to
+sort the p values from kind of
+
+102
+00:05:24.620 --> 00:05:29.240
+smallest to largest and then we'll take
+the top ten smallest in this
+
+103
+00:05:29.240 --> 00:05:31.280
+case p values, which indicate kind of
+
+104
+00:05:31.280 --> 00:05:33.230
+the, the predictors of the strongest
+associations.
+
+105
+00:05:33.230 --> 00:05:34.720
+So we'll take those top ten predictors,
+
+106
+00:05:34.720 --> 00:05:37.500
+and then we'll fit a separate regression
+model
+
+107
+00:05:37.500 --> 00:05:40.080
+with those ten predictors in it and that
+
+108
+00:05:40.080 --> 00:05:43.550
+will be kind of the final prediction
+model.
+
+109
+00:05:43.550 --> 00:05:45.200
+>> Alright so we're, first, so we've
+already
+
+110
+00:05:45.200 --> 00:05:47.230
+checked to see if there's at least ten
+predictors.
+
+111
+00:05:47.230 --> 00:05:49.930
+And we'll initialize our vector of p
+values here.
+
+112
+00:05:49.930 --> 00:05:53.340
+This is going to be an empty vector of
+zeros.
+
+113
+00:05:53.340 --> 00:05:55.410
+And the original loop through each of the
+predictors
+
+114
+00:05:58.090 --> 00:06:00.330
+and righ, and fit univary regression
+models.
+
+115
+00:06:00.330 --> 00:06:03.170
+And fit lm y to the x, and it'll [UNKNOWN]
+i.
+
+116
+00:06:03.170 --> 00:06:07.750
+And then we want to, we want to get the p
+
+117
+00:06:07.750 --> 00:06:10.480
+values out, so we need the summary of that
+model fit.
+
+118
+00:06:13.270 --> 00:06:16.740
+And then the p values for that predictor,
+p value for that
+
+119
+00:06:16.740 --> 00:06:21.390
+predictor, is just going to be the, key in
+the coefficients element.
+
+120
+00:06:23.970 --> 00:06:27.730
+And it's the forth, column here.
+
+121
+00:06:27.730 --> 00:06:30.210
+And so we are going to accumulate all of
+those p values.
+
+122
+00:06:30.210 --> 00:06:32.130
+And then once we've done that, we want to,
+we'll look at.
+
+123
+00:06:32.130 --> 00:06:33.390
+We want to sort the p values.
+
+124
+00:06:33.390 --> 00:06:36.276
+We'll look at all of the ordering of p
+values.
+
+125
+00:06:36.276 --> 00:06:40.320
+In order by default, we'll sort them for
+lower to
+
+126
+00:06:40.320 --> 00:06:43.389
+giver the index indicies for the smallest
+to the largest.
+
+127
+00:06:46.110 --> 00:06:46.710
+And then
+
+128
+00:06:48.940 --> 00:06:49.760
+okay.
+
+129
+00:06:49.760 --> 00:06:52.200
+So then and then we just want to take the
+top ten.
+
+130
+00:06:52.200 --> 00:06:57.990
+So the so the the order, what we really
+want, just the, as one through ten here.
+
+131
+00:06:59.230 --> 00:07:03.170
+And then we want a, so now we create a new
+data set called x10.
+
+132
+00:07:03.170 --> 00:07:08.930
+With the kind of top ten predictors, from
+the old data set, the original data set,
+
+133
+00:07:08.930 --> 00:07:13.590
+and fit this final linear model, [SOUND]
+
+134
+00:07:13.590 --> 00:07:16.640
+and then grab the coefficients, from the
+model and
+
+135
+00:07:16.640 --> 00:07:18.641
+so that's kind of what the top ten
+function returns.
+
+136
+00:07:20.060 --> 00:07:23.080
+So we've got our top ten function, which
+kind of fits the model,
+
+137
+00:07:23.080 --> 00:07:25.690
+it, it goes through all the p values and
+picks the top ten.
+
+138
+00:07:25.690 --> 00:07:30.570
+So I'm going to write one for function
+that that takes the coefficients from the
+
+139
+00:07:30.570 --> 00:07:35.870
+final fitted model, and it takes some,
+kind of, additional input vectors, and
+
+140
+00:07:35.870 --> 00:07:38.120
+gives you a prediction for the new values,
+right, so it takes the
+
+141
+00:07:38.120 --> 00:07:40.470
+coefficients and some data and gives you
+
+142
+00:07:40.470 --> 00:07:43.450
+predictions, a predicted response for each
+one.
+
+143
+00:07:43.450 --> 00:07:45.560
+So we will call that, lets call predict10
+and
+
+144
+00:07:48.940 --> 00:07:50.490
+it's going to take a matrix of predictors.
+
+145
+00:07:50.490 --> 00:07:53.930
+Now, this matrix can only have ten
+predictors in it because that's what
+
+146
+00:07:53.930 --> 00:07:57.654
+the model, final mode says and then a
+vector coefficients is called b.
+
+147
+00:07:59.090 --> 00:07:59.850
+And then it's pretty simple.
+
+148
+00:07:59.850 --> 00:08:00.980
+We are going to do, first thing, we are
+going to do
+
+149
+00:08:00.980 --> 00:08:04.030
+is I am going to add the intercepts to
+this matrix
+
+150
+00:08:05.750 --> 00:08:08.625
+and then we're going to do a matrix
+multiplication of the
+
+151
+00:08:08.625 --> 00:08:12.520
+new kind of data and the coefficients from
+the model.
+
+152
+00:08:12.520 --> 00:08:16.900
+So, I'll do x times b is the matrix
+multiplication and then I want to
+
+153
+00:08:16.900 --> 00:08:20.890
+drop the dimension eh, so that it gives me
+a vector I'll call drop.
+
+154
+00:08:20.890 --> 00:08:24.610
+So this just returns a vector predicted
+responses.
+
+155
+00:08:26.870 --> 00:08:30.440
+Okay, so we've got our code for the
+package it's pretty straightforward.
+
+156
+00:08:30.440 --> 00:08:32.850
+Just this two functions, but in order to
+have
+
+157
+00:08:32.850 --> 00:08:34.210
+a package of course, we need a, a bunch
+
+158
+00:08:34.210 --> 00:08:36.640
+of other stuff; we need some
+documentation, and we
+
+159
+00:08:36.640 --> 00:08:38.750
+need to be able to specify the namespace
+file.
+
+160
+00:08:38.750 --> 00:08:40.830
+So the way that we're going to
+documentation in
+
+161
+00:08:40.830 --> 00:08:44.020
+this package is we're going to use Roxygen
+2 package.
+
+162
+00:08:44.020 --> 00:08:46.440
+And so the, what the, what's nice about
+this, the format is
+
+163
+00:08:46.440 --> 00:08:50.930
+that allows you put all the documentation
+in the code file itself.
+
+164
+00:08:50.930 --> 00:08:53.580
+And then what the Roxygen 2 package does
+
+165
+00:08:53.580 --> 00:08:55.800
+is it strips out the documentation that
+you put
+
+166
+00:08:55.800 --> 00:08:56.945
+in the code file and it makes the
+
+167
+00:08:56.945 --> 00:08:59.360
+man pages, it formats it in the
+appropriate way.
+
+168
+00:08:59.360 --> 00:09:00.830
+So, you don't have to worry about,
+
+169
+00:09:01.900 --> 00:09:07.500
+documenting separate, writing out separate
+documentation files.
+
+170
+00:09:07.500 --> 00:09:10.620
+Two nice things about this is one is that
+it kind of keeps you focused on one file.
+
+171
+00:09:10.620 --> 00:09:12.850
+You don't have to kind of constantly
+switch back and forth.
+
+172
+00:09:12.850 --> 00:09:15.550
+And the other thing is that since the
+documentation is actually
+
+173
+00:09:15.550 --> 00:09:19.730
+close, physically close to the code,
+there's a better chance that the
+
+174
+00:09:19.730 --> 00:09:22.720
+documentation will stay up to date because
+you'll be able to see
+
+175
+00:09:22.720 --> 00:09:26.000
+if there are any discrepancies between the
+documentation and the code itself.
+
+176
+00:09:26.000 --> 00:09:27.160
+So, let's go ahead and do that.
+
+177
+00:09:29.730 --> 00:09:31.500
+So the first function I want to document
+here is
+
+178
+00:09:31.500 --> 00:09:35.440
+the top ten function and so the first, so
+one
+
+179
+00:09:35.440 --> 00:09:37.810
+of, I need to give it a, so the first you
+want to do is give it a little hash
+
+180
+00:09:37.810 --> 00:09:41.090
+then the and then the apostrophe there,
+and I'll give
+
+181
+00:09:41.090 --> 00:09:44.930
+it a title so I'll call it building a
+model
+
+182
+00:09:44.930 --> 00:09:48.560
+with top ten features, and you can see
+that our
+
+183
+00:09:48.560 --> 00:09:51.010
+studio nicely kind of insert those extra
+hashes for you.
+
+184
+00:09:51.010 --> 00:09:57.210
+And I'll give a little title, description
+here so this function develops
+
+185
+00:09:57.210 --> 00:10:03.490
+a prediction algorithm based on the top
+
+186
+00:10:03.490 --> 00:10:10.760
+ten features in x that are most predictive
+of y.
+
+187
+00:10:10.760 --> 00:10:11.810
+Okay seems reasonable.
+
+188
+00:10:15.040 --> 00:10:16.500
+And then we want to start documenting some
+of
+
+189
+00:10:16.500 --> 00:10:19.820
+the arguments so first we can use the
+parameter here
+
+190
+00:10:19.820 --> 00:10:24.200
+say, there's an x argument and say this is
+a n by p
+
+191
+00:10:25.330 --> 00:10:30.560
+matrix of n observations and p predictors.
+
+192
+00:10:31.780 --> 00:10:37.040
+There's another parameter here called y,
+[SOUND]
+
+193
+00:10:37.040 --> 00:10:42.930
+and this is a vector of length n
+representing
+
+194
+00:10:42.930 --> 00:10:47.110
+the response, okay, and I will save the
+return
+
+195
+00:10:47.110 --> 00:10:52.340
+value Is a vector of
+
+196
+00:10:52.340 --> 00:10:57.270
+coefficients from the final fitted model
+with
+
+197
+00:10:58.640 --> 00:10:59.990
+top ten features.
+
+198
+00:11:03.240 --> 00:11:05.550
+There's a couple other things we can fill
+out.
+
+199
+00:11:05.550 --> 00:11:07.729
+Such as the author, and that's me.
+
+200
+00:11:09.430 --> 00:11:11.180
+If there's some extra details we can write
+out,
+
+201
+00:11:11.180 --> 00:11:13.140
+somebody will write some details here for
+the reader.
+
+202
+00:11:14.416 --> 00:11:20.506
+I'll say this function runs a univariate
+
+203
+00:11:20.506 --> 00:11:25.900
+regression of y on each predictor in x
+
+204
+00:11:25.900 --> 00:11:31.468
+and calculates a p-value indication
+
+205
+00:11:31.468 --> 00:11:37.260
+the significance of the association.
+
+206
+00:11:39.770 --> 00:11:49.590
+And, the final set of ten predictors is
+taken from the ten smallest.
+
+207
+00:11:49.590 --> 00:11:51.800
+P values, okay, so that's a little
+description there.
+
+208
+00:11:54.290 --> 00:11:59.380
+You might want direct readers to the LM
+function just in case,
+
+209
+00:11:59.380 --> 00:12:01.830
+you know, they want to know where the hava
+linear models fit.
+
+210
+00:12:03.760 --> 00:12:06.430
+Now what's important about, actually
+important about this function.
+
+211
+00:12:06.430 --> 00:12:08.690
+First of all, it's going the be the
+function that we want to export.
+
+212
+00:12:08.690 --> 00:12:11.910
+So we want to make sure that we export in
+the main space file.
+
+213
+00:12:11.910 --> 00:12:13.560
+So we gotta put the export directive here.
+
+214
+00:12:13.560 --> 00:12:16.070
+And then furthermore, because this
+function uses
+
+215
+00:12:16.070 --> 00:12:17.950
+the LM function, which comes from the
+
+216
+00:12:17.950 --> 00:12:21.700
+stats package, we need to import that
+function, so that we can use it.
+
+217
+00:12:21.700 --> 00:12:26.360
+So we need to import from the stats
+package, the LM function.
+
+218
+00:12:26.360 --> 00:12:28.730
+So that's going to go into the name space
+file.
+
+219
+00:12:28.730 --> 00:12:32.140
+Alright, so that's our documentation for
+the top ten function.
+
+220
+00:12:32.140 --> 00:12:35.160
+Now let's go down here and look at the
+predict ten function.
+
+221
+00:12:35.160 --> 00:12:37.550
+So we gotta do, probably gotta do the same
+thing here.
+
+222
+00:12:37.550 --> 00:12:42.830
+Start a little documentation with the
+prediction of the top ten features.
+
+223
+00:12:44.080 --> 00:12:48.129
+And this will say this function instead of
+coefficience.
+
+224
+00:12:50.850 --> 00:12:56.190
+Produced by the top ten function.
+
+225
+00:12:56.190 --> 00:13:01.305
+And makes a prediction for each of the
+
+226
+00:13:01.305 --> 00:13:06.810
+values provided in the input x matrix.
+
+227
+00:13:08.900 --> 00:13:10.700
+Okay, it's in that little description
+there.
+
+228
+00:13:10.700 --> 00:13:14.960
+So what parameters does this function have
+well.there's
+
+229
+00:13:14.960 --> 00:13:20.650
+x there's b, then we know it returns
+
+230
+00:13:23.590 --> 00:13:24.650
+a numeric vector
+
+231
+00:13:26.850 --> 00:13:28.849
+containing the predicted values.
+
+232
+00:13:30.960 --> 00:13:38.920
+Alright so what's x, this is an by 10
+matrix, containing n new observations.
+
+233
+00:13:40.650 --> 00:13:41.580
+And then what is v?
+
+234
+00:13:41.580 --> 00:13:47.170
+V is a vector of coefficients obtained
+from the
+
+235
+00:13:49.630 --> 00:13:51.150
+top ten function.
+
+236
+00:13:51.150 --> 00:13:52.300
+Alright.
+
+237
+00:13:52.300 --> 00:13:55.410
+So, then, of course, we also want to
+export this function.
+
+238
+00:13:55.410 --> 00:13:57.250
+So we hit the export directive.
+
+239
+00:13:57.250 --> 00:14:00.820
+This function doesn't export anything
+special.
+
+240
+00:14:00.820 --> 00:14:02.550
+So, we don't need an import directive.
+
+241
+00:14:03.650 --> 00:14:04.620
+Alright.
+
+242
+00:14:04.620 --> 00:14:06.804
+So, let's save that with command s here.
+
+243
+00:14:08.500 --> 00:14:10.740
+Okay, so we've written our R-code.
+
+244
+00:14:10.740 --> 00:14:14.900
+We've written some documentation in the
+R-code, and so now it's going to
+
+245
+00:14:14.900 --> 00:14:16.370
+be time to kind of process
+
+246
+00:14:16.370 --> 00:14:19.310
+this information and start building our
+package.
+
+247
+00:14:19.310 --> 00:14:21.340
+So, let's see how we do that in R Studio.
+
+248
+00:14:22.748 --> 00:14:27.400
+So in R Studio we can go over here to the
+build tab and you'll notice that this
+
+249
+00:14:27.400 --> 00:14:29.770
+bill tab only exists if you, if your, if
+
+250
+00:14:29.770 --> 00:14:33.050
+you've created a project that's
+specifically an R package okay.
+
+251
+00:14:33.050 --> 00:14:35.680
+So let's try to build our package and then
+load it into R.
+
+252
+00:14:35.680 --> 00:14:35.930
+Okay?
+
+253
+00:14:35.930 --> 00:14:40.570
+So you can see that at the top, in the top
+window here,
+
+254
+00:14:40.570 --> 00:14:45.660
+the R session has restarted, and then the
+top ten package has been loaded.
+
+255
+00:14:45.660 --> 00:14:46.480
+Okay?
+
+256
+00:14:46.480 --> 00:14:48.330
+So, one of the things you'll notice, if
+you go over here
+
+257
+00:14:48.330 --> 00:14:51.820
+to the left, in the files, if you, let's
+go in the man
+
+258
+00:14:51.820 --> 00:14:56.680
+directory here, Oh, and you see that
+there's a, there's a default kind
+
+259
+00:14:56.680 --> 00:15:01.290
+of, documentation file here that talks,
+that just kind of describes the package.
+
+260
+00:15:01.290 --> 00:15:03.750
+But you notice that the documentation
+files have
+
+261
+00:15:03.750 --> 00:15:06.620
+not been created by the Roxygen 2 package.
+
+262
+00:15:06.620 --> 00:15:07.760
+And so what we actually have to do is
+
+263
+00:15:07.760 --> 00:15:10.730
+we gotta go into here and configure our
+build tools.
+
+264
+00:15:11.970 --> 00:15:15.000
+And then we, what we want to do, we
+want to generate documentation
+
+265
+00:15:15.000 --> 00:15:18.400
+with Roxygen and we want to create the RD
+file from the manual.
+
+266
+00:15:18.400 --> 00:15:22.550
+Let's create the namespace file from the
+documentation in the, that we wrote.
+
+267
+00:15:22.550 --> 00:15:24.600
+And then we'll do it when we build and
+reload.
+
+268
+00:15:24.600 --> 00:15:25.190
+'Kay?
+
+269
+00:15:27.770 --> 00:15:32.400
+This over here on the left this package
+documentation file is not required,
+
+270
+00:15:32.400 --> 00:15:34.920
+so I'm just going to delete it because I
+don't feel like writing it.
+
+271
+00:15:37.680 --> 00:15:39.700
+Alright, so let's build and reload R
+package again.
+
+272
+00:15:39.700 --> 00:15:45.420
+And you'll notice now that the the two
+
+273
+00:15:45.420 --> 00:15:47.640
+documentation files here for our code have
+been written,
+
+274
+00:15:47.640 --> 00:15:49.590
+so if you look in the top10.rd file
+
+275
+00:15:49.590 --> 00:15:52.760
+you can see all this information has been
+extracted
+
+276
+00:15:52.760 --> 00:15:57.510
+from the the documentation that we wrote
+in the R file, so this is all of the
+
+277
+00:15:57.510 --> 00:15:58.750
+stuff that we just wrote, and for the
+
+278
+00:15:58.750 --> 00:16:02.320
+predict ten function again, another set of
+documentation here.
+
+279
+00:16:03.510 --> 00:16:08.220
+So, Let's take a look at our top ten
+package here.
+
+280
+00:16:08.220 --> 00:16:12.841
+I can do library, its already been loaded
+but lets take a, library help top
+
+281
+00:16:12.841 --> 00:16:18.220
+ten, ops, and you can see here's the
+description file that we wrote
+
+282
+00:16:18.220 --> 00:16:23.460
+out as a bit of information these the
+exported functions over here, ahm, if
+
+283
+00:16:23.460 --> 00:16:26.790
+I look at, if I, I can print out the code
+for top ten.
+
+284
+00:16:26.790 --> 00:16:28.040
+And you'll see that's the code that we
+wrote.
+
+285
+00:16:28.040 --> 00:16:31.370
+If I do question mark top ten, you'll see
+that
+
+286
+00:16:31.370 --> 00:16:34.220
+the documentation file that, has been
+built is right here.
+
+287
+00:16:34.220 --> 00:16:36.810
+So, it, it's formatted nicely here.
+
+288
+00:16:36.810 --> 00:16:38.920
+We can look at the documentation for
+predict ten.
+
+289
+00:16:40.190 --> 00:16:42.270
+And you see that here's the documentation
+that we wrote.
+
+290
+00:16:42.270 --> 00:16:43.340
+Should be all familiar to us.
+
+291
+00:16:44.416 --> 00:16:45.970
+Let's bring this down.
+
+292
+00:16:47.290 --> 00:16:51.720
+And so that's R package is pretty much
+all, most of the way there.
+
+293
+00:16:51.720 --> 00:16:55.060
+If you want to see if it passes R command
+check, it's very simple.
+
+294
+00:16:55.060 --> 00:16:58.130
+You just click the check button here and
+it will run our command
+
+295
+00:16:58.130 --> 00:17:00.900
+check, it will build the package and then
+run R command check dot.
+
+296
+00:17:00.900 --> 00:17:02.690
+And so you see all the tests are going by.
+
+297
+00:17:02.690 --> 00:17:08.140
+[BLANK_AUDIO]
+
+298
+00:17:08.140 --> 00:17:10.250
+Okay, so you can see that R command check
+finished
+
+299
+00:17:10.250 --> 00:17:13.690
+and it looks like we passed all of the
+tests.
+
+300
+00:17:13.690 --> 00:17:18.149
+You see everything is okay over here so
+that is a good sign.
+
+301
+00:17:19.900 --> 00:17:26.390
+So I'm not going to upload this package
+this to command, but but we could upload
+
+302
+00:17:26.390 --> 00:17:30.681
+to command because we would see that we
+pass our all the tests in R command check.
+
+303
+00:17:32.170 --> 00:17:35.570
+So this very simple R package, we just
+wrote a little.
+
+304
+00:17:35.570 --> 00:17:37.520
+We wrote two functions, but you can see
+that
+
+305
+00:17:37.520 --> 00:17:40.440
+in R studio there are a lot of handy
+tools.
+
+306
+00:17:40.440 --> 00:17:45.030
+For putting a package together and for
+building documentation files.
+
+307
+00:17:45.030 --> 00:17:48.080
+And so try I,I encourage you to try it
+
+308
+00:17:48.080 --> 00:17:50.350
+out and write, write some functions, maybe
+take some
+
+309
+00:17:50.350 --> 00:17:52.540
+of the homework that you've done already
+and build
+
+310
+00:17:52.540 --> 00:17:55.090
+in R package out of the functions that
+you've written.
+
+311
+00:17:55.090 --> 00:17:57.300
+It's not too hard and particularly when
+you use
+
+312
+00:17:57.300 --> 00:17:59.180
+the tools in R studio, you can go very
+quickly.

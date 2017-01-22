@@ -1,0 +1,75 @@
+In this final example, we're going to show
+how to use the brush argument in the UI and the brushedPoints argument in the
+server to generate an interactive graphic. And in this case what we're going to
+do is highlight points and then show in a scattered plot, and then show
+the fitted line just for those points. Okay, so this is a nice example of
+interactive graphics which I think is one of the key functionalities of Shiny and
+one of its primary uses for those of us that are more
+on the analysis side. Okay, so let's get right. Okay, so once again I've copied the code
+from the R mark down document and I'm just going to go through
+the various lines, and then hopefully you'll get the gist, but
+I'd like you at home also to try it out. It only takes a second to copy
+the code and run the text, and I think you'll see a lot more by doing it
+yourself, than by having me describe it. So once again we're going to have
+the standard layout, side bar and in the side panel it's going to
+have a display of the Slope, slopeOut, Intercept, intOut. So the textOutput (intOut),
+we're going to be looking for that label from the server function,
+textOutput (slopeOut), we're going to looking for
+that label from the Shiny server. Okay, so we got to remember to have both
+those, otherwise they won't display right. And then we want plotOutput, plot1. We got to make sure that
+we're getting the plotOutput, that we're creating a plot
+in the server labeled plot1. And here is the id brush = brush1. That label we're going to need
+to use that on the server side. And this brush = and
+then brushOpts for the brush options. Okay, now let's look at the server. So the Shiny server, input,
+takes in input and output lists, okay? Now, it's going to create a model. The model is going to be reactive. It's going to be reactive to the data,
+okay? So this is going to be reactive as we
+input new things from the user interface, this is going to change, okay? So, and remember it has this notation
+of being inside the curly braces also inside the parentheses for
+the reactive function, okay? brushed_data is just
+going to be short hand for grabbing the data from brush1, okay? So here's our input, input$brush1, okay? And our brush points are going to
+be from the dataset, trees, okay? The xvar is going to be Girth,
+yvar is going to be Volume, okay? And this will create a little
+data frame with Girth and Volume. And if it's null, I'm sorry,
+if there's fewer than two points, then it's just going to return null, okay? And then otherwise,
+It's going to fit a linear, it fit in return a linear model
+where Volume is the y variable, Girth is the x variable, and
+the data here is that brushed_data, okay? And then we don't need to put
+a parentheses here because this is inside the reactive statement, okay? The data is going to be that brushed_data
+and this will output that linear model. Now, if that model is fit or
+output$slopeOut, remember we're looking for
+some text with that label. Okay, here's our renderText telling
+Shiny that this is going to be text, this is going to be rendered
+in the user interface. We've got our curly braces, okay? And if it's null then it's just
+going to say, No Model Found. Otherwise it's going to say,
+it's going to grab the slope term. Okay, and then same thing for
+the intercept. So the same discussion but it's
+going to grab the intercept term, okay? And here's plot1 which we need to display. And that's going to be renderPlot, okay? And it has the reactive notation of having
+the curly braces there inside the function argument. And it's going to be plot(trees$Girth,
+trees$Volume). So, Girth is x, Volume is y,
+it's got nice x labels and y labels, okay? It's got a title,
+it says Tree Measurements. Let's go down here and
+just see if the model is not null, then it's going to add a line. Just now,
+because it's through the model, right? Through the model, that was fit just
+on the point scribe from the brush. It's going to fit the line, it's
+going to plot the line that is only for those specific data points. Okay, great.
+All right, now, let's run it and see how it looks. Okay, I ran the app. Okay, so now see no model has been fit,
+so it is correctly saying, No Model Found for the Slope, and
+No Model Found for the Intercept. Okay, so
+if I highlight this cluster of points, that’s the line that you would fit and
+it gives you the slope and the intercept. But if I were to grab all of those, that's
+the line that and that's the intercept. Let's grab over here where there's
+no point, see what happens. Okay, it correctly says,
+No Model Found and No Model Found. And if you do the whole thing, everything
+except that last point, there it goes. Let's see if we can get the whole thing,
+there we go. That would be the line that you'd fit
+if you grabbed all the data points. Okay, so this is a nice little interactive
+graph that you can create using Shiny. And I'd like you to go ahead and
+try to recreate this example, but then also maybe try to create your own
+example of interactive graph using one of R's default, kind of canned data sets. And I think this is one of
+the primary uses for Shiny. And I think at this point, you should also have enough to go on
+to start making Shiny useful for you. And there's a lot of other things you
+can do with Shiny, such as input and output data sets, data frames. You can actually embed RGL, RS 3D graphics
+library in a Shiny webpage using WebGL. But that stuff's maybe a little bit
+more fringy, especially the RGL stuff. Right now, I think you have enough to
+get started, and I think you should definitely should give Shiny a try, and
+work it into your standard toolbox.

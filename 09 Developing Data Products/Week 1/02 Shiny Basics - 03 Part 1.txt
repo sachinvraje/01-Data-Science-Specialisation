@@ -1,0 +1,75 @@
+Hi and welcome to the lecture on Shiny. My name is Brian Caffo. Shiny is really the cornerstone of this
+class because it's the tool that we're going to use to develop data products. So Shiny is,
+let me advance the slide here. Shiny is a web development framework in R. And the nice thing is you
+only really need to know R. You can use R in the back end, use R
+to actually write the user interface. And you don't need to know the standard
+tools like JavaScript, HTML, and so on. But I'll talk a little
+bit more about that. Let me just talk about Shiny
+more broadly first and then we'll get more into the details. So broadly, Shiny has been more of
+a revolution among those data scientists that really specialize in R and
+focus on developing algorithms, and analysis, and that component. Of course, if you work in web development
+proper and that's the direction you're coming to data science from, then you
+probably have a different tool set. You probably wouldn't elect to use
+Shiny because you already have so many tools already at your disposal. But if you come from this other end, then Shiny is a great way to
+prototype potential data products. It's a great way to create
+small data products that you would deploy if
+you're a smaller organization. Or if you're a big organization, you might
+create something as a prototype, and then send it off to people with these
+other skills that would maybe convert the R code to some compiled language, write a super nice JavaScript front-end,
+and have a bunch of fancy HTML. But the nice part about Shiny
+is we do everything in R. We create the GUI in R, the algorithms and
+everything else that are powering it in terms of the data science
+part is all written in R and so on. And your time to create a data
+product is completely minimized. So Shiny is made by R Studio,
+it's free, it's just an R package. What might cost you is you have
+to host Shiny on a server, right? So, it's a web development framework. You need to actually have a web server
+that is not only going to serve up the web pages but is also going to call R in
+the back end to call your algorithms, or your models, or whatever. So Shiny itself is free and
+open-source, I think it's open-source. But the hosting might cost you, so
+RStudio has this free hosting service, and that's what we're going to use for
+the class. And you can run your smaller applications
+through RStudio's free hosting service. The other two options you have at your
+disposal would be to create your own server, which you could run off of AWS or
+something like that, Amazon AWS. Or you could do something
+like Shiny's paid service. The other thing you can do is you create
+Shiny apps locally, and you test and debug them locally. You can give a Shiny app to another person
+who uses RStudio, and they can use it in the web browser just like, I'm sorry,
+in RStudio just like you do. And so, if portability at
+that level is what you need, then you don't actually
+need the web server part. But really, the interesting component
+about this is making a web server that anyone can use that displays
+your data analysis, or your prediction algorithm,
+or what have you. And Shiny gives you a pretty
+easy way to do that. So we'll talk later on
+more about the server and how to use shinyapps.io, which is going to
+be the free server we use in this class. And so,
+today we're just going to get you started. We're going to go from zero
+up to having a running little web server with running R as the back end. Okay, so some mild prerequisites. Like I said, you do everything in R,
+but I think it would be kind of hard to do this without
+knowledge of a little bit of HTML. CSS and JavaScript I actually think you
+don't need to know any of to do Shiny. But a little bit of HTML just to
+give you some of the basics of what the commands in R are actually doing,
+that would be super useful. And we're not going to teach that here. There's a million HTML
+tutorials on the Internet. Just find any, create a basic web page,
+learn what some of the basic commands are and the format
+of them, and that's all you need. Shiny uses this Bootstrap package,
+which has no relations to the statistics bootstrap, which looks nice and
+I think it renders well. It's the folks at Twitter came up with it. So it creates,
+it has a nice set of buttons and things like that that I think resize
+correctly hen you have your page rendered on a small device like a phone or
+on a big screen as well. So they've thought through that. I think Bootstrap, if you don't know
+a lot about that kind of web development, then just stick with the Bootstrap themes. And so again, I just give you some more
+tutorials if you want to learn about the three core components of at least
+the front end of the kind of applications we're going to be developing. HTML, CSS will give you the style, and JavaScript is what gives
+you all the interactivity. I'm giving you some tutorials there. Most importantly, do some of the HTML one. Okay, so getting started, you got to
+install Shiny, install.packages("shiny"). And then whenever you get it working with
+Shiny, you gotta make sure it's loaded up, so library(shiny). And then there's a,
+before you even start this, you might even consider the official
+Shiny tutorial at RStudio. And mostly this lecture is
+walking through that tutorial. Okay, so I'm going to start going through
+some code demonstrations here in a minute, but let me just go through
+the basics really quick. What you need for
+a Shiny project is you need ui.R, a file called ui.R, and
+a file called server.R. So ui gives you the user interface, and it'll determine how your app looks and
+server.R will control what your app does. Okay? Now I'm going to switch over and start doing some code demonstrations and
+so stay tuned

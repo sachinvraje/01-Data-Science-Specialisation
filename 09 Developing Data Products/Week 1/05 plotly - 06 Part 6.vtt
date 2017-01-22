@@ -1,0 +1,288 @@
+WEBVTT
+
+1
+00:00:00.980 --> 00:00:07.060
+All right, so let's create a map
+with some nice hover-over effects.
+
+2
+00:00:07.060 --> 00:00:10.250
+So the first thing I'm going to do
+is these two statements right here.
+
+3
+00:00:10.250 --> 00:00:13.090
+There's a little bit of
+code in this example.
+
+4
+00:00:13.090 --> 00:00:16.480
+So I'm not going to go over
+every single little detail.
+
+5
+00:00:16.480 --> 00:00:21.610
+But let me just create this dataset,
+and then show it to you.
+
+6
+00:00:23.410 --> 00:00:28.650
+Let me just get the first couple rows.
+
+7
+00:00:28.650 --> 00:00:31.760
+Okay, so notice there's 50 of them, so
+you can see at the end there's 50 of them,
+
+8
+00:00:31.760 --> 00:00:35.910
+so for
+each state we have its abbreviation.
+
+9
+00:00:35.910 --> 00:00:38.690
+Okay, so take Alabama for example,
+
+10
+00:00:38.690 --> 00:00:43.376
+we have it's population in millions,
+and then we have some hover-over text.
+
+11
+00:00:43.376 --> 00:00:47.250
+So this hover-over text is going to
+be the state abbreviation,
+
+12
+00:00:47.250 --> 00:00:51.980
+Alabama, then a line break,
+then population 3,615,000.
+
+13
+00:00:51.980 --> 00:00:56.080
+This is population in 1975.
+
+14
+00:00:56.080 --> 00:00:57.269
+Okay.
+
+15
+00:00:59.557 --> 00:01:03.480
+The borders,
+this is just going to be an option.
+
+16
+00:01:03.480 --> 00:01:07.837
+This is kind of unnecessary, but
+we're just going to make those red.
+
+17
+00:01:07.837 --> 00:01:09.514
+Okay.
+
+18
+00:01:09.514 --> 00:01:12.610
+And then map options, again,
+it's going to be a list.
+
+19
+00:01:14.310 --> 00:01:18.310
+The scope,
+we want the USA to be the scope.
+
+20
+00:01:20.510 --> 00:01:23.000
+And just play around with these options.
+
+21
+00:01:24.770 --> 00:01:29.527
+I think, you'll have to just, if you want
+to dramatically change this map, do it for
+
+22
+00:01:29.527 --> 00:01:34.152
+a different area or country, you'll have
+to flub your way through it a little bit,
+
+23
+00:01:34.152 --> 00:01:36.357
+but I think a lot of it is quite obvious.
+
+24
+00:01:36.357 --> 00:01:40.829
+Like showlakes = TRUE,
+just means you're going to show the lakes.
+
+25
+00:01:43.092 --> 00:01:47.690
+Lake color white, so in this case
+I think we changed the lake color
+
+26
+00:01:47.690 --> 00:01:52.140
+to white just because the color
+coding we're using is blue for
+
+27
+00:01:52.140 --> 00:01:57.130
+population, so we didn't want the lakes to
+
+28
+00:01:57.130 --> 00:02:02.190
+be blended in with the states
+with the same color of blue.
+
+29
+00:02:02.190 --> 00:02:04.792
+Okay, so then plot_ly,
+again, is the command,
+
+30
+00:02:04.792 --> 00:02:08.980
+the state_pop is just the data frame,
+okay.
+
+31
+00:02:10.400 --> 00:02:15.000
+z is the population, text is equals hover,
+
+32
+00:02:15.000 --> 00:02:17.280
+that's just means we want
+some hover-over text.
+
+33
+00:02:17.280 --> 00:02:22.030
+The locations are given
+by the column name State,
+
+34
+00:02:22.030 --> 00:02:25.725
+type is choropleth,
+location mode is USA-states.
+
+35
+00:02:27.160 --> 00:02:31.520
+Color is we're going to
+color-code by the population.
+
+36
+00:02:31.520 --> 00:02:36.427
+The colors, this is just,
+the palette it’s using in this case is
+
+37
+00:02:36.427 --> 00:02:40.636
+just the blues which is just
+a continuous shade of blue.
+
+38
+00:02:40.636 --> 00:02:46.018
+And then this gives how it's
+going to draw the markers,
+
+39
+00:02:46.018 --> 00:02:48.898
+in this case on the borders.
+
+40
+00:02:48.898 --> 00:02:54.432
+And this is then passed, the output
+of plot_ly is then passed to layout,
+
+41
+00:02:54.432 --> 00:03:01.300
+which also then gives it not only a title,
+but then it brings in these map options.
+
+42
+00:03:01.300 --> 00:03:02.240
+Okay?
+
+43
+00:03:02.240 --> 00:03:04.490
+So, let's go ahead and run that.
+
+44
+00:03:06.460 --> 00:03:10.150
+And for me, it wouldn't, I guess, maybe,
+this is just too complicated, but
+
+45
+00:03:10.150 --> 00:03:12.700
+it wouldn't display in the viewer for me.
+
+46
+00:03:12.700 --> 00:03:18.790
+So I'm going to click Save as Web Page,
+and just
+
+47
+00:03:18.790 --> 00:03:23.150
+overwrite the kind of template web page
+that I've been using for this example.
+
+48
+00:03:23.150 --> 00:03:26.730
+And there it is in my browser window.
+
+49
+00:03:26.730 --> 00:03:33.239
+So, now what I hover over a state,
+it's got the state's population.
+
+50
+00:03:33.239 --> 00:03:36.930
+So we could go to Alabama, for example.
+
+51
+00:03:36.930 --> 00:03:41.407
+You can see that's the exact text
+we wanted right there, Alabama.
+
+52
+00:03:41.407 --> 00:03:42.791
+Okay?
+
+53
+00:03:42.791 --> 00:03:46.110
+All right, so try and create a map.
+
+54
+00:03:46.110 --> 00:03:50.500
+First thing I would say is take this
+data frame that we're looking at,
+
+55
+00:03:50.500 --> 00:03:54.130
+it's got other columns in it,
+not just population, and try and
+
+56
+00:03:54.130 --> 00:03:57.780
+create some other maps and
+output them to web pages.
+
+57
+00:03:57.780 --> 00:04:04.209
+And I think as you go through it,
+you'll get a better feel for the options.
+
+58
+00:04:05.230 --> 00:04:09.580
+So as a start, just recreate this map, and
+
+59
+00:04:09.580 --> 00:04:12.170
+then try to recreate one with
+some of the different variables.
+
+60
+00:04:12.170 --> 00:04:15.380
+Try to have the color
+mean a different thing.
+
+61
+00:04:15.380 --> 00:04:20.180
+And I think you'll find this is a pretty
+handy way to create interactive maps

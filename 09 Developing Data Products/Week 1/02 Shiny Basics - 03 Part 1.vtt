@@ -1,0 +1,475 @@
+WEBVTT
+
+1
+00:00:01.230 --> 00:00:03.560
+Hi and welcome to the lecture on Shiny.
+
+2
+00:00:03.560 --> 00:00:05.650
+My name is Brian Caffo.
+
+3
+00:00:05.650 --> 00:00:09.600
+Shiny is really the cornerstone of this
+class because it's the tool that we're
+
+4
+00:00:09.600 --> 00:00:12.210
+going to use to develop data products.
+
+5
+00:00:12.210 --> 00:00:16.072
+So Shiny is,
+let me advance the slide here.
+
+6
+00:00:16.072 --> 00:00:19.993
+Shiny is a web development framework in R.
+
+7
+00:00:19.993 --> 00:00:23.011
+And the nice thing is you
+only really need to know R.
+
+8
+00:00:23.011 --> 00:00:29.729
+You can use R in the back end, use R
+to actually write the user interface.
+
+9
+00:00:29.729 --> 00:00:34.810
+And you don't need to know the standard
+tools like JavaScript, HTML, and so on.
+
+10
+00:00:34.810 --> 00:00:37.300
+But I'll talk a little
+bit more about that.
+
+11
+00:00:38.530 --> 00:00:41.570
+Let me just talk about Shiny
+more broadly first and
+
+12
+00:00:41.570 --> 00:00:43.710
+then we'll get more into the details.
+
+13
+00:00:43.710 --> 00:00:48.550
+So broadly, Shiny has been more of
+a revolution among those data scientists
+
+14
+00:00:48.550 --> 00:00:53.780
+that really specialize in R and
+focus on developing algorithms,
+
+15
+00:00:53.780 --> 00:00:56.930
+and analysis, and that component.
+
+16
+00:00:56.930 --> 00:01:01.840
+Of course, if you work in web development
+proper and that's the direction you're
+
+17
+00:01:01.840 --> 00:01:06.950
+coming to data science from, then you
+probably have a different tool set.
+
+18
+00:01:06.950 --> 00:01:09.660
+You probably wouldn't elect to use
+Shiny because you already have so
+
+19
+00:01:09.660 --> 00:01:11.720
+many tools already at your disposal.
+
+20
+00:01:11.720 --> 00:01:13.200
+But if you come from this other end,
+
+21
+00:01:13.200 --> 00:01:17.080
+then Shiny is a great way to
+prototype potential data products.
+
+22
+00:01:17.080 --> 00:01:21.640
+It's a great way to create
+small data products
+
+23
+00:01:21.640 --> 00:01:25.450
+that you would deploy if
+you're a smaller organization.
+
+24
+00:01:25.450 --> 00:01:29.100
+Or if you're a big organization, you might
+create something as a prototype, and
+
+25
+00:01:29.100 --> 00:01:32.230
+then send it off to people with these
+other skills that would maybe convert
+
+26
+00:01:32.230 --> 00:01:35.260
+the R code to some compiled language,
+
+27
+00:01:35.260 --> 00:01:40.300
+write a super nice JavaScript front-end,
+and have a bunch of fancy HTML.
+
+28
+00:01:42.210 --> 00:01:45.710
+But the nice part about Shiny
+is we do everything in R.
+
+29
+00:01:45.710 --> 00:01:51.730
+We create the GUI in R, the algorithms and
+everything else that are powering
+
+30
+00:01:51.730 --> 00:01:56.731
+it in terms of the data science
+part is all written in R and so on.
+
+31
+00:01:56.731 --> 00:02:02.227
+And your time to create a data
+product is completely minimized.
+
+32
+00:02:02.227 --> 00:02:06.761
+So Shiny is made by R Studio,
+it's free, it's just an R package.
+
+33
+00:02:06.761 --> 00:02:11.795
+What might cost you is you have
+to host Shiny on a server, right?
+
+34
+00:02:11.795 --> 00:02:13.437
+So, it's a web development framework.
+
+35
+00:02:13.437 --> 00:02:18.176
+You need to actually have a web server
+that is not only going to serve up the web
+
+36
+00:02:18.176 --> 00:02:22.763
+pages but is also going to call R in
+the back end to call your algorithms, or
+
+37
+00:02:22.763 --> 00:02:24.614
+your models, or whatever.
+
+38
+00:02:24.614 --> 00:02:30.866
+So Shiny itself is free and
+open-source, I think it's open-source.
+
+39
+00:02:30.866 --> 00:02:36.143
+But the hosting might cost you, so
+RStudio has this free hosting service,
+
+40
+00:02:36.143 --> 00:02:40.090
+and that's what we're going to use for
+the class.
+
+41
+00:02:40.090 --> 00:02:45.650
+And you can run your smaller applications
+through RStudio's free hosting service.
+
+42
+00:02:45.650 --> 00:02:48.730
+The other two options you have at your
+disposal would be to create your own
+
+43
+00:02:48.730 --> 00:02:53.520
+server, which you could run off of AWS or
+something like that, Amazon AWS.
+
+44
+00:02:54.780 --> 00:02:59.080
+Or you could do something
+like Shiny's paid service.
+
+45
+00:02:59.080 --> 00:03:02.790
+The other thing you can do is you create
+Shiny apps locally, and you test and
+
+46
+00:03:02.790 --> 00:03:04.500
+debug them locally.
+
+47
+00:03:04.500 --> 00:03:08.810
+You can give a Shiny app to another person
+who uses RStudio, and they can use it in
+
+48
+00:03:08.810 --> 00:03:12.920
+the web browser just like, I'm sorry,
+in RStudio just like you do.
+
+49
+00:03:12.920 --> 00:03:16.212
+And so, if portability at
+that level is what you need,
+
+50
+00:03:16.212 --> 00:03:19.570
+then you don't actually
+need the web server part.
+
+51
+00:03:19.570 --> 00:03:23.350
+But really, the interesting component
+about this is making a web server that
+
+52
+00:03:23.350 --> 00:03:27.220
+anyone can use that displays
+your data analysis,
+
+53
+00:03:27.220 --> 00:03:30.740
+or your prediction algorithm,
+or what have you.
+
+54
+00:03:30.740 --> 00:03:33.620
+And Shiny gives you a pretty
+easy way to do that.
+
+55
+00:03:33.620 --> 00:03:36.422
+So we'll talk later on
+more about the server and
+
+56
+00:03:36.422 --> 00:03:41.201
+how to use shinyapps.io, which is going to
+be the free server we use in this class.
+
+57
+00:03:41.201 --> 00:03:43.226
+And so,
+today we're just going to get you started.
+
+58
+00:03:43.226 --> 00:03:48.049
+We're going to go from zero
+up to having a running little
+
+59
+00:03:48.049 --> 00:03:51.812
+web server with running R as the back end.
+
+60
+00:03:54.065 --> 00:03:57.885
+Okay, so some mild prerequisites.
+
+61
+00:03:57.885 --> 00:04:03.192
+Like I said, you do everything in R,
+but I think it would be kind
+
+62
+00:04:03.192 --> 00:04:08.213
+of hard to do this without
+knowledge of a little bit of HTML.
+
+63
+00:04:08.213 --> 00:04:12.727
+CSS and JavaScript I actually think you
+don't need to know any of to do Shiny.
+
+64
+00:04:12.727 --> 00:04:18.087
+But a little bit of HTML just to
+give you some of the basics of what
+
+65
+00:04:18.087 --> 00:04:23.768
+the commands in R are actually doing,
+that would be super useful.
+
+66
+00:04:23.768 --> 00:04:25.540
+And we're not going to teach that here.
+
+67
+00:04:25.540 --> 00:04:29.730
+There's a million HTML
+tutorials on the Internet.
+
+68
+00:04:30.820 --> 00:04:35.400
+Just find any, create a basic web page,
+learn what some of
+
+69
+00:04:35.400 --> 00:04:39.249
+the basic commands are and the format
+of them, and that's all you need.
+
+70
+00:04:40.920 --> 00:04:46.280
+Shiny uses this Bootstrap package,
+which has no relations to the statistics
+
+71
+00:04:46.280 --> 00:04:48.920
+bootstrap, which looks nice and
+I think it renders well.
+
+72
+00:04:48.920 --> 00:04:52.220
+It's the folks at Twitter came up with it.
+
+73
+00:04:52.220 --> 00:04:55.514
+So it creates,
+it has a nice set of buttons and
+
+74
+00:04:55.514 --> 00:05:00.460
+things like that that I think resize
+correctly hen you have your page
+
+75
+00:05:00.460 --> 00:05:05.179
+rendered on a small device like a phone or
+on a big screen as well.
+
+76
+00:05:05.179 --> 00:05:06.269
+So they've thought through that.
+
+77
+00:05:06.269 --> 00:05:10.607
+I think Bootstrap, if you don't know
+a lot about that kind of web development,
+
+78
+00:05:10.607 --> 00:05:13.020
+then just stick with the Bootstrap themes.
+
+79
+00:05:15.134 --> 00:05:19.475
+And so again, I just give you some more
+tutorials if you want to learn about
+
+80
+00:05:19.475 --> 00:05:24.100
+the three core components of at least
+the front end of the kind of applications
+
+81
+00:05:24.100 --> 00:05:25.893
+we're going to be developing.
+
+82
+00:05:25.893 --> 00:05:28.283
+HTML, CSS will give you the style, and
+
+83
+00:05:28.283 --> 00:05:32.010
+JavaScript is what gives
+you all the interactivity.
+
+84
+00:05:32.010 --> 00:05:35.040
+I'm giving you some tutorials there.
+
+85
+00:05:35.040 --> 00:05:39.671
+Most importantly, do some of the HTML one.
+
+86
+00:05:39.671 --> 00:05:44.359
+Okay, so getting started, you got to
+install Shiny, install.packages("shiny").
+
+87
+00:05:44.359 --> 00:05:48.037
+And then whenever you get it working with
+Shiny, you gotta make sure it's loaded up,
+
+88
+00:05:48.037 --> 00:05:49.070
+so library(shiny).
+
+89
+00:05:49.070 --> 00:05:51.842
+And then there's a,
+before you even start this,
+
+90
+00:05:51.842 --> 00:05:55.481
+you might even consider the official
+Shiny tutorial at RStudio.
+
+91
+00:05:55.481 --> 00:05:58.899
+And mostly this lecture is
+walking through that tutorial.
+
+92
+00:06:02.321 --> 00:06:06.155
+Okay, so I'm going to start going through
+some code demonstrations here in a minute,
+
+93
+00:06:06.155 --> 00:06:08.890
+but let me just go through
+the basics really quick.
+
+94
+00:06:08.890 --> 00:06:13.850
+What you need for
+a Shiny project is you need ui.R,
+
+95
+00:06:13.850 --> 00:06:17.890
+a file called ui.R, and
+a file called server.R.
+
+96
+00:06:17.890 --> 00:06:20.820
+So ui gives you the user interface, and
+
+97
+00:06:20.820 --> 00:06:25.390
+it'll determine how your app looks and
+server.R will control what your app does.
+
+98
+00:06:27.900 --> 00:06:28.570
+Okay?
+
+99
+00:06:28.570 --> 00:06:29.890
+Now I'm going to switch over and
+
+100
+00:06:29.890 --> 00:06:35.190
+start doing some code demonstrations and
+so stay tuned

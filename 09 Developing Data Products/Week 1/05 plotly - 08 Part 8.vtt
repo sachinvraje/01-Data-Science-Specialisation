@@ -1,0 +1,117 @@
+WEBVTT
+
+1
+00:00:01.040 --> 00:00:04.790
+So the last thing I want to do is just
+show you how to post a plotly directly.
+
+2
+00:00:04.790 --> 00:00:10.500
+So I created in the last video this GG
+plot example, and here it is over here.
+
+3
+00:00:10.500 --> 00:00:12.300
+It was labeled GG so
+
+4
+00:00:12.300 --> 00:00:17.930
+if I type GG in the R prompt, it's
+going to bring it up in the viewer pane.
+
+5
+00:00:17.930 --> 00:00:22.600
+But if I typed plotly_POST GG,
+
+6
+00:00:22.600 --> 00:00:29.270
+then what it'll do is actually
+post it to the plotly website.
+
+7
+00:00:29.270 --> 00:00:33.820
+And at the plotly website
+there's all different things
+
+8
+00:00:33.820 --> 00:00:38.820
+that you can do,
+this is the sort of output but
+
+9
+00:00:38.820 --> 00:00:44.250
+if you click on edit here,
+it will give you all different tools to
+
+10
+00:00:44.250 --> 00:00:48.840
+edit it with their web base
+graphical user interface.
+
+11
+00:00:48.840 --> 00:00:52.590
+So, I think plotly,
+it's fairly self-explanatory, but
+
+12
+00:00:52.590 --> 00:00:57.040
+they also have videos on how to use it and
+a lot of tutorials and things like that.
+
+13
+00:00:57.040 --> 00:01:03.560
+So try exporting a graphic to plotly and
+working with their user interface for
+
+14
+00:01:03.560 --> 00:01:08.340
+playing around with it, changing the axes,
+changing the variable names and so on.
+
+15
+00:01:08.340 --> 00:01:11.970
+The last thing I want to say before
+I finish is that, in order for
+
+16
+00:01:11.970 --> 00:01:15.700
+this to kind of work seamlessly, you have
+to set these two environment variables.
+
+17
+00:01:15.700 --> 00:01:19.930
+If you just look at Google
+
+18
+00:01:19.930 --> 00:01:24.600
+search on post to plotly from R,
+it will direct you to this page,
+
+19
+00:01:24.600 --> 00:01:28.700
+you basically have to set a plotly
+username and plotly API key.
+
+20
+00:01:28.700 --> 00:01:33.520
+To get your API key, you just go in
+plotly to settings and there's and
+
+21
+00:01:33.520 --> 00:01:35.990
+just copy and paste it from there, okay.
+
+22
+00:01:35.990 --> 00:01:39.180
+And so, then when you set these two
+environment variables especially
+
+23
+00:01:39.180 --> 00:01:44.220
+if you put those in your .Rprofile so
+that they're set every time you start
+
+24
+00:01:44.220 --> 00:01:46.370
+up R then you won't be prompted for
+your credentials.

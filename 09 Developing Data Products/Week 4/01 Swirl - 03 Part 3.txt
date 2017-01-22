@@ -1,0 +1,48 @@
+So we've created our first lesson and
+we have tested it, let's get into some of the more complicated question
+types that you can ask in a swirl lesson. And I want to start a new lesson,
+so in order to do that, I can close this lesson.yaml file, and I want to create a lesson in
+the course that I'm working on. So just to remind myself of what course
+I'm working on, I'm going to use the get_current_lesson function, and
+that just returns some data about what lessons and what course swirl
+knows it's working on right now. So my course is called My First Course,
+so let's start a new lesson. We're going to call this lesson Lesson 2,
+and this is still in the My First Course,
+course. All right, so,
+we've got a new lesson here. I forgot to mention this before, but this first question that gets
+generated is called the meta question. The student never sees it, but you can just provide some information
+inside of the meta question. So I'm going to fill out these fields
+of the author and the organization. All right, so now, let's take a look at
+some more complicated question types. For example, if I wanted to write
+a multiple choice question, I could use wq_multiple, and
+then coming over here to edit it, I could ask any kind of
+multiple choice question here. So, a simple question like, Which of these shapes has four sides? And then, I can separate the different
+answer choices with semi-colons. So I'm going to say, Square;Circle. The answer is Square, and the answer test here is just
+repeating what the correct answer is. And then for the hint,
+I can just write anything. I'm going to give a very unhelpful hint. All right, so I'm going to add this
+lesson to the course manifest. Then let's quickly run test_ lesson. We've got no errors. And now let's run demo_lesson. Which of these shapes has four sides? I have to pick 1, 2, or 3. If I pick 2, I get the wrong answer. So I'm going to answer square,
+and that's the end of the lesson. Now I'd like to write
+a figure type question. So I'm going to type into
+the R console wq_figure. And that will add a figure question
+template to my lesson.yaml. So the message that I'm going to
+output to the user is just going to say, This is a simple graph. And then there are two more fields
+that are part of this question, the Figure and the FigureType. So the Figure is an R script that I
+will include in the lesson directory. And whatever code is in that R
+script will be executed in order to show a figure to the student. And then this FigureType
+just specifies new to show that this is going
+to be a new figure. In other words, we're not going to
+be building at all on this figure. So first, let me add this figure file. I'm going to call this file fig1,
+and now let's go over to the Finder. Actually, let me open up a new R script,
+in fact, I have an entitled script right here. And I'm just going to make
+a very quick plot, and then I'm going to save this in
+My First Course > Lesson_2, and we're calling it fig1.R,
+perfect, okay. So let's demo this lesson again. So I have to pick square, and then, as
+you can see, It draws a very simple plot. Now let's say that I wanted to add
+something to this plot after I drew it. I can add another figure question,
+so I'm going to say, wq_figure to add another figure question template, and
+then I'm going to add a line. So, what I'm going to show the user
+is just the text, I added a line! I'm going to write the code for
+adding this line in a file called fig2.R. And this FigureType is add,
+instead of new. Those are the only true choices
+that there are for FigureType. So let me then open up a new script, and I'm just going to say abline, (h = 5, col = "red"). We'll save that as fig2.R. All right, so
+let me demo the lesson one more time. Circle, square, here's a drawing of the graph. And then, it draws the line.

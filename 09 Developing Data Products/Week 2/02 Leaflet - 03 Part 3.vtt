@@ -1,0 +1,170 @@
+WEBVTT
+
+1
+00:00:00.810 --> 00:00:03.140
+So, what if you want to
+add a lot of markers?
+
+2
+00:00:03.140 --> 00:00:05.640
+Well, there's a pretty
+simple way to do that,
+
+3
+00:00:05.640 --> 00:00:09.890
+you just dump the collection of markers
+that you want to add in a data frame.
+
+4
+00:00:09.890 --> 00:00:11.370
+So, let's go through
+an example of doing that.
+
+5
+00:00:12.800 --> 00:00:17.370
+So, let's just create a data frame that
+has some random longitude and latitudes.
+
+6
+00:00:17.370 --> 00:00:18.920
+We'll set the seed first so
+
+7
+00:00:18.920 --> 00:00:23.290
+that you get the same answers as
+we do when you run the same code.
+
+8
+00:00:23.290 --> 00:00:25.160
+So then I'm just going to
+create this data frame.
+
+9
+00:00:25.160 --> 00:00:29.920
+And then let me just show you
+what the data frame looks like.
+
+10
+00:00:29.920 --> 00:00:33.880
+It's got more rows than this,
+20 rows exactly.
+
+11
+00:00:33.880 --> 00:00:36.110
+So the latitude and
+
+12
+00:00:36.110 --> 00:00:40.420
+longitudinal are just columns named
+lat and lng in the data frame.
+
+13
+00:00:41.590 --> 00:00:46.880
+Now, what we're going to do is that
+this data frame is going to get,
+
+14
+00:00:46.880 --> 00:00:48.330
+this is what this code means.
+
+15
+00:00:48.330 --> 00:00:51.530
+This data frame is going to get
+passed as an argument to leaflet.
+
+16
+00:00:51.530 --> 00:00:56.472
+That'll create our map,
+which will have nothing.
+
+17
+00:00:56.472 --> 00:01:00.681
+So if I were to just run those two bits,
+
+18
+00:01:00.681 --> 00:01:05.956
+well actually it's
+expecting something now.
+
+19
+00:01:05.956 --> 00:01:07.796
+So let me get out that.
+
+20
+00:01:07.796 --> 00:01:13.086
+So if I were just run this
+part without the pipe,
+
+21
+00:01:13.086 --> 00:01:16.960
+it's created a blank map.
+
+22
+00:01:16.960 --> 00:01:20.500
+Now if I were to run this code
+where it's taken the data frame,
+
+23
+00:01:20.500 --> 00:01:25.820
+passed as an argument to leaflet, passed
+the output of the argument of leaflet
+
+24
+00:01:25.820 --> 00:01:31.630
+evaluated at the data frame as
+the argument to the addTiles function.
+
+25
+00:01:31.630 --> 00:01:33.800
+I would get this,
+it would have the map, but
+
+26
+00:01:33.800 --> 00:01:36.740
+remember addTiles just
+brings in the mapping data.
+
+27
+00:01:36.740 --> 00:01:38.656
+It doesn't actually plot anything.
+
+28
+00:01:38.656 --> 00:01:43.705
+And now if I pass that to the addMarkers
+it should add the markers.
+
+29
+00:01:43.705 --> 00:01:48.023
+Of course you don't have to run it the way
+I'm running it in bits and pieces,
+
+30
+00:01:48.023 --> 00:01:50.260
+you just run the whole code all at once.
+
+31
+00:01:50.260 --> 00:01:51.040
+Okay?
+And there you
+
+32
+00:01:51.040 --> 00:01:53.509
+see are your multiple markers,
+right like that.
+
+33
+00:01:55.590 --> 00:01:56.770
+So try this out.
+
+34
+00:01:56.770 --> 00:02:00.860
+Create a data frame with some random
+longitude and latitudes in it, and
+
+35
+00:02:00.860 --> 00:02:02.230
+create a marker.
+
+36
+00:02:02.230 --> 00:02:04.110
+Create a map with all the markers in it.

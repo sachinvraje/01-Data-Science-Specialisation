@@ -1,0 +1,80 @@
+Okay, so I just want to show you a plot. Here I created a plot,
+plot, empty cars wait. Empty cars miles per gallon,
+xlab = weight, ylab = MPG. Let's go ahead and show it. Sorry, there we go. Okay, there it is. Well I kind of don't want the code,
+like most often when you show a plot, you don't want to echo the code. So why don't I put echo = FALSE and then go ahead and re-run it. That looks much better. There's a bunch of other figure options in
+Nitter, so you can play around with those. For example, fig.align. Probably center. Okay. fig, yeah we can put a caption. Let's say My AWESOME figure. Okay and
+then let's just show you how this looks. Yeah, see there's your figure caption and
+so on. So go through some of the options and
+play around with them. There's options for controlling the height
+and width of the figure and so on. So the last thing I want to talk
+about is publishing your slides. So as soon as you nit it, when you type nit HTML it creates
+a file in your directory. So for
+example these slides are briansSlides.Rmd with the file extension standing for
+R markdown. Okay, it creates a Brian's
+slides .html file. So if you click on that you'll bring it up this presentation in a browser
+not in out studio browser window. And in fact you can make it easier
+just by clicking on opening browser here in the our studio preview window. Publish will publish it in R pubs, which is one of a couple of
+ways to publish it online. You could also put it in
+a Drop Box public folder and just like you can kind of publish
+web pages in a Drop Box folder. But I think probably my favorite
+way to publish it is in GitHub. So I wanted to show you a couple
+things about GitHub real quick. So these slides, I got them,
+well actually, I'm sorry. These slides, these temporary slides I'm
+working on, I haven't pushed up to GitHub. So why don't we look at the slides for the lecture, which are in
+Shaun Cross' GitHub Repository. I'll show you this in a second,
+more closely. But, this is just an R Markdown file, and the associated HTML files
+pushed up into GitHub, okay. So, let's look at those. Okay. So, here is the developing
+data products course page under slides in seankross's GitHub repo. So, I think I want R Markdown right there,
+okay. Now, here's the R Markdown phone. First thing I want to point out, if you
+click on this in GitHub it does a lot of the formatting for you, it recognizes
+that it's in R Markdown document, and it does a lot of formatting ahead for you. It's not going to run the code of course,
+but it does a lot of formatting, so you can see what the bullets and the various
+points are going to look like, okay? Which is nice, so often when I'm
+reading some of Sean's edit, I'll look just directly
+at his R_Markdown file. Okay, now let's click on the HTML file. There we go. Now notice that it does
+not render the HTML file. It is showing you the raw HTML. Okay, now for the HTML to be rendered, there's a bunch of
+different ways to do this. In fact, there's a Chrome add on and
+a Firefox add on that will go ahead and do this for you. But Sean's published
+this via GitHub pages. And what this means is,
+he has a branch called gh-pages. Usually it requires a node jackal
+file in the root directory of your GitHub pages but I've noticed you didn't
+have that so maybe that isn't necessary. But now if I want to see it, it just means you are just mildly changing the URL and
+you can see it, okay? But the important thing is you have
+to have a branch called gh-pages, that's the most important part. And by the way I find it kind of
+annoying to have a gh-pages branch and then a master branch, and
+I think Sean does too obviously. So he just deleted the master branch,
+okay, so GitHub pages in a sense
+is his master branch. Okay, so
+if we look up here on the address we have github.com/seankross
+which is his user name. What I want is Sean Kross.github.io. Okay, so it's user name.github.io,
+and then slides, and then blob and gh-pages are just internal things for
+GitHub, so we want to get rid of those. And then we want just
+a path to the html file. So in In Sean Krosses GItHub
+the repository it's in the repose slides. The subdirectory Developing Data Products,
+the subdirectory R Markdown and in the file R Markdown.html, and then notice
+these slides are now hosted on GitHub. And this is an extremely convenient way,
+especially for most of us that work in data science
+because we're usually pushing stuff up back and forth to GitHub all the time. For me, personally, all my course stuff
+I just push up to public, GitHub repost. All my private researchy stuff, I push
+up to private, GitHub repost and so on. So this is a very clean way to work for those of us that are already
+working in GitHub. Okay, so after doing this,
+I would like everyone to try to create a figure
+in your presentation. I'd like you to play around
+with the figure options. I'd like you to try and
+publish it to GitHub. Read up on GitHub pages if you're having
+some trouble or publish it to our pubs if you want that’s another option just click
+on the publish button in our studio and see how that works that’s fairly
+self-explanatory and I would also like you to verify that the HTML file gets
+created into your directory. Click on that and
+see how you can host on you computer and look at it on your computer so that way
+you can always visualize it if you're working on an airplane or
+something like that. But most important I think hosting it on
+GitHub is probably the most technically irritating of all the things I have talked
+about, so go ahead and try doing that, just so this way you can always publicly
+host your repositories in a way that's convenient, that probably already fits
+into your work flow, to begin with. Well that's enough about R Markdown,
+I think, to suit our needs for this class. When you develop your project,
+you're actually going to create a pitch in R Markdown, and you'll hopefully
+host it on GitHub or something, so that we can all look at it and
+see that your project is really awesome. All right. Thanks a lot for listening, and
+we'll see you in the next lesson.

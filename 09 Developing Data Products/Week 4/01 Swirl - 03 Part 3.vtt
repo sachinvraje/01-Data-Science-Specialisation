@@ -1,0 +1,348 @@
+WEBVTT
+
+1
+00:00:03.427 --> 00:00:08.756
+So we've created our first lesson and
+we have tested it, let's get
+
+2
+00:00:08.756 --> 00:00:15.320
+into some of the more complicated question
+types that you can ask in a swirl lesson.
+
+3
+00:00:16.910 --> 00:00:20.359
+And I want to start a new lesson,
+so in order to do that,
+
+4
+00:00:21.500 --> 00:00:25.765
+I can close this lesson.yaml file, and
+
+5
+00:00:25.765 --> 00:00:31.350
+I want to create a lesson in
+the course that I'm working on.
+
+6
+00:00:31.350 --> 00:00:35.960
+So just to remind myself of what course
+I'm working on, I'm going to use
+
+7
+00:00:35.960 --> 00:00:40.825
+the get_current_lesson function, and
+that just returns some data about what
+
+8
+00:00:40.825 --> 00:00:46.530
+lessons and what course swirl
+knows it's working on right now.
+
+9
+00:00:46.530 --> 00:00:53.424
+So my course is called My First Course,
+so let's start a new lesson.
+
+10
+00:00:53.424 --> 00:00:57.680
+We're going to call this lesson Lesson 2,
+and
+
+11
+00:00:57.680 --> 00:01:02.051
+this is still in the My First Course,
+course.
+
+12
+00:01:05.209 --> 00:01:08.680
+All right, so,
+we've got a new lesson here.
+
+13
+00:01:08.680 --> 00:01:10.910
+I forgot to mention this before,
+
+14
+00:01:10.910 --> 00:01:15.200
+but this first question that gets
+generated is called the meta question.
+
+15
+00:01:15.200 --> 00:01:16.660
+The student never sees it, but
+
+16
+00:01:16.660 --> 00:01:20.140
+you can just provide some information
+inside of the meta question.
+
+17
+00:01:20.140 --> 00:01:27.587
+So I'm going to fill out these fields
+of the author and the organization.
+
+18
+00:01:32.586 --> 00:01:38.600
+All right, so now, let's take a look at
+some more complicated question types.
+
+19
+00:01:39.690 --> 00:01:43.150
+For example, if I wanted to write
+a multiple choice question,
+
+20
+00:01:44.470 --> 00:01:50.300
+I could use wq_multiple, and
+then coming over here to edit it,
+
+21
+00:01:50.300 --> 00:01:54.559
+I could ask any kind of
+multiple choice question here.
+
+22
+00:01:56.850 --> 00:01:59.920
+So, a simple question like,
+
+23
+00:01:59.920 --> 00:02:04.880
+Which of these shapes has four sides?
+
+24
+00:02:06.560 --> 00:02:12.510
+And then, I can separate the different
+answer choices with semi-colons.
+
+25
+00:02:12.510 --> 00:02:19.823
+So I'm going to say, Square;Circle.
+
+26
+00:02:23.766 --> 00:02:26.136
+The answer is Square, and
+
+27
+00:02:26.136 --> 00:02:32.178
+the answer test here is just
+repeating what the correct answer is.
+
+28
+00:02:35.589 --> 00:02:40.931
+And then for the hint,
+I can just write anything.
+
+29
+00:02:45.134 --> 00:02:47.310
+I'm going to give a very unhelpful hint.
+
+30
+00:02:50.720 --> 00:02:57.110
+All right, so I'm going to add this
+lesson to the course manifest.
+
+31
+00:02:57.110 --> 00:03:02.980
+Then let's quickly run test_ lesson.
+
+32
+00:03:02.980 --> 00:03:04.600
+We've got no errors.
+
+33
+00:03:04.600 --> 00:03:08.110
+And now let's run demo_lesson.
+
+34
+00:03:08.110 --> 00:03:09.578
+Which of these shapes has four sides?
+
+35
+00:03:09.578 --> 00:03:11.630
+I have to pick 1, 2, or 3.
+
+36
+00:03:11.630 --> 00:03:13.660
+If I pick 2, I get the wrong answer.
+
+37
+00:03:13.660 --> 00:03:16.600
+So I'm going to answer square,
+and that's the end of the lesson.
+
+38
+00:03:16.600 --> 00:03:20.840
+Now I'd like to write
+a figure type question.
+
+39
+00:03:20.840 --> 00:03:25.190
+So I'm going to type into
+the R console wq_figure.
+
+40
+00:03:25.190 --> 00:03:30.250
+And that will add a figure question
+template to my lesson.yaml.
+
+41
+00:03:30.250 --> 00:03:35.249
+So the message that I'm going to
+output to the user is just
+
+42
+00:03:35.249 --> 00:03:38.736
+going to say, This is a simple graph.
+
+43
+00:03:42.921 --> 00:03:46.787
+And then there are two more fields
+that are part of this question,
+
+44
+00:03:46.787 --> 00:03:49.320
+the Figure and the FigureType.
+
+45
+00:03:49.320 --> 00:03:54.650
+So the Figure is an R script that I
+will include in the lesson directory.
+
+46
+00:03:54.650 --> 00:03:59.575
+And whatever code is in that R
+script will be executed in order
+
+47
+00:03:59.575 --> 00:04:02.800
+to show a figure to the student.
+
+48
+00:04:02.800 --> 00:04:07.092
+And then this FigureType
+just specifies new to
+
+49
+00:04:07.092 --> 00:04:11.220
+show that this is going
+to be a new figure.
+
+50
+00:04:11.220 --> 00:04:14.990
+In other words, we're not going to
+be building at all on this figure.
+
+51
+00:04:16.080 --> 00:04:20.500
+So first, let me add this figure file.
+
+52
+00:04:20.500 --> 00:04:27.904
+I'm going to call this file fig1,
+and now let's go over to the Finder.
+
+53
+00:04:27.904 --> 00:04:30.317
+Actually, let me open up a new R script,
+in fact,
+
+54
+00:04:30.317 --> 00:04:32.164
+I have an entitled script right here.
+
+55
+00:04:32.164 --> 00:04:37.574
+And I'm just going to make
+a very quick plot, and
+
+56
+00:04:37.574 --> 00:04:44.789
+then I'm going to save this in
+My First Course > Lesson_2,
+
+57
+00:04:44.789 --> 00:04:50.780
+and we're calling it fig1.R,
+perfect, okay.
+
+58
+00:04:50.780 --> 00:04:54.041
+So let's demo this lesson again.
+
+59
+00:04:58.453 --> 00:05:07.730
+So I have to pick square, and then, as
+you can see, It draws a very simple plot.
+
+60
+00:05:07.730 --> 00:05:13.793
+Now let's say that I wanted to add
+something to this plot after I drew it.
+
+61
+00:05:17.100 --> 00:05:20.617
+I can add another figure question,
+so I'm going to say,
+
+62
+00:05:24.185 --> 00:05:28.979
+wq_figure to add another figure question
+
+63
+00:05:28.979 --> 00:05:34.140
+template, and
+then I'm going to add a line.
+
+64
+00:05:34.140 --> 00:05:40.328
+So, what I'm going to show the user
+is just the text, I added a line!
+
+65
+00:05:42.703 --> 00:05:49.690
+I'm going to write the code for
+adding this line in a file called fig2.R.
+
+66
+00:05:49.690 --> 00:05:53.310
+And this FigureType is add,
+instead of new.
+
+67
+00:05:53.310 --> 00:05:56.325
+Those are the only true choices
+that there are for FigureType.
+
+68
+00:05:58.130 --> 00:06:02.863
+So let me then open up a new script,
+
+69
+00:06:02.863 --> 00:06:07.280
+and I'm just going to say abline,
+
+70
+00:06:13.225 --> 00:06:19.820
+(h = 5, col = "red").
+
+71
+00:06:19.820 --> 00:06:21.862
+We'll save that as fig2.R.
+
+72
+00:06:25.618 --> 00:06:28.947
+All right, so
+let me demo the lesson one more time.
+
+73
+00:06:32.063 --> 00:06:35.407
+Circle, square,
+
+74
+00:06:35.407 --> 00:06:39.928
+here's a drawing of the graph.
+
+75
+00:06:39.928 --> 00:06:41.566
+And then, it draws the line.

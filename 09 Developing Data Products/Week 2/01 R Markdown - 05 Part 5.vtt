@@ -1,0 +1,282 @@
+WEBVTT
+
+1
+00:00:00.990 --> 00:00:04.920
+Okay, now let's show some r
+code that's going to get run.
+
+2
+00:00:04.920 --> 00:00:09.660
+Okay, so, one two three,
+single quotation marks, okay.
+
+3
+00:00:09.660 --> 00:00:11.786
+We want it to be r code, okay.
+
+4
+00:00:11.786 --> 00:00:14.456
+And then notice,
+
+5
+00:00:14.456 --> 00:00:19.450
+it does some nice highlighting to let you
+know that you're actually in some r code.
+
+6
+00:00:19.450 --> 00:00:23.240
+And then, let's do head(mtcars).
+
+7
+00:00:23.240 --> 00:00:25.980
+just showing the head
+of the dataset mtcars.
+
+8
+00:00:25.980 --> 00:00:29.420
+You can actually run it here in rStudio
+and it will show you down here.
+
+9
+00:00:30.880 --> 00:00:35.210
+The code being run in the environment
+that you have right now
+
+10
+00:00:35.210 --> 00:00:37.150
+in your interactive r prompt.
+
+11
+00:00:37.150 --> 00:00:40.456
+But then, you won't actually
+run the the whole document.
+
+12
+00:00:40.456 --> 00:00:44.330
+It's control shift k and
+there's my new slide.
+
+13
+00:00:47.190 --> 00:00:50.138
+Okay, so lets play around with
+our options a little bit.
+
+14
+00:00:50.138 --> 00:00:54.020
+I;ve deleted aa couple of
+the rest of the slides just, so
+
+15
+00:00:54.020 --> 00:00:57.870
+we can just play with this little
+extremely simple code example, right here.
+
+16
+00:00:57.870 --> 00:01:01.060
+So i didn't like when,
+let me just show it to you again.
+
+17
+00:01:01.060 --> 00:01:08.320
+When it put this out,
+one thing I didn't like- There we go.
+
+18
+00:01:08.320 --> 00:01:13.890
+I didn't like these comment characters
+in front of the output, okay.
+
+19
+00:01:13.890 --> 00:01:17.830
+So let me just try comment equals and
+then,
+
+20
+00:01:17.830 --> 00:01:19.350
+you can put whatever character you want.
+
+21
+00:01:19.350 --> 00:01:21.380
+But I want nothing, so
+why don't I try that.
+
+22
+00:01:23.270 --> 00:01:24.221
+See how that looks.
+
+23
+00:01:29.203 --> 00:01:32.710
+Great, okay and then now,
+it looks to a little bit better.
+
+24
+00:01:32.710 --> 00:01:36.080
+I didn't want that comic character there,
+so let's see some other things.
+
+25
+00:01:36.080 --> 00:01:40.430
+So notice by default,
+the knitr options were echo equals false.
+
+26
+00:01:40.430 --> 00:01:42.500
+So, it didn't show you what code it ran.
+
+27
+00:01:42.500 --> 00:01:45.100
+It just showed you
+the output from the code.
+
+28
+00:01:45.100 --> 00:01:49.330
+And by the way when you're typing in
+your knitr options, it has a bunch.
+
+29
+00:01:49.330 --> 00:01:51.040
+You can see once you put a comment and
+
+30
+00:01:51.040 --> 00:01:55.389
+start to type them,
+you can see them there.
+
+31
+00:01:56.900 --> 00:02:02.670
+So if I were for example,
+to put echo equals true and then,
+
+32
+00:02:02.670 --> 00:02:07.730
+redo the presentation, okay so
+then, you see head MTcars.
+
+33
+00:02:07.730 --> 00:02:13.980
+it's actually repeating the code
+that I used to generate the output.
+
+34
+00:02:13.980 --> 00:02:18.880
+So down here is the out put and here's
+the code by default in that near option.
+
+35
+00:02:18.880 --> 00:02:23.080
+Set up just from the auto
+completing of the template
+
+36
+00:02:23.080 --> 00:02:24.690
+that I was using to create these slides.
+
+37
+00:02:24.690 --> 00:02:27.620
+It set that option but by default
+you don't have to have that option.
+
+38
+00:02:27.620 --> 00:02:29.280
+I could equivalently,
+
+39
+00:02:29.280 --> 00:02:32.740
+another thing I could have done would
+have been exactly the same thing.
+
+40
+00:02:32.740 --> 00:02:36.990
+Is just gotten rid of this set of
+Knitr options at the beginning.
+
+41
+00:02:36.990 --> 00:02:41.090
+Okay, and then now,
+I don't have to say echo is equals true,
+
+42
+00:02:41.090 --> 00:02:43.620
+because echo equals true
+is the default option.
+
+43
+00:02:45.800 --> 00:02:52.960
+Unless you overwrite it, so there now,
+it's automatically sending the code.
+
+44
+00:02:52.960 --> 00:02:56.367
+Sometimes might just want the code but
+
+45
+00:02:56.367 --> 00:03:01.272
+not having run it, so,
+if I type eval = FALSE, okay.
+
+46
+00:03:04.314 --> 00:03:08.490
+There's just the code, but
+it hasn't been evaluated, okay.
+
+47
+00:03:09.760 --> 00:03:12.730
+And then you can just put
+in a comma here and then,
+
+48
+00:03:12.730 --> 00:03:15.420
+start to look at all
+the different options.
+
+49
+00:03:15.420 --> 00:03:17.790
+They're all the same options or
+it is knitr.
+
+50
+00:03:17.790 --> 00:03:23.970
+So, it's the same options as
+in In any nknitr document but
+
+51
+00:03:23.970 --> 00:03:27.308
+a lot of these are for figures which
+we're going to cover here in a minute.
+
+52
+00:03:27.308 --> 00:03:29.202
+Okay?
+
+53
+00:03:29.202 --> 00:03:34.160
+All right, so go ahead and try and
+
+54
+00:03:34.160 --> 00:03:37.830
+create a slide with some r
+code that isn't evaluated.
+
+55
+00:03:37.830 --> 00:03:40.295
+Some slide with some r
+code that is evaluated.
+
+56
+00:03:40.295 --> 00:03:45.780
+Try and play around.
+
+57
+00:03:45.780 --> 00:03:47.470
+Make sure you can set
+the comment character.
+
+58
+00:03:47.470 --> 00:03:50.250
+And then, just play around with
+some of the Knitr options.
+
+59
+00:03:50.250 --> 00:03:52.890
+And next, we'll move on to doing
+some figures and some other things.

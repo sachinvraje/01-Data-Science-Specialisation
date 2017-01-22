@@ -1,0 +1,215 @@
+WEBVTT
+
+1
+00:00:01.440 --> 00:00:05.320
+Okay, so
+let's look at some of the preamble here,
+
+2
+00:00:05.320 --> 00:00:11.280
+this YAML part is surrounded
+by three dashes here.
+
+3
+00:00:11.280 --> 00:00:13.900
+And so for example the title
+you can change the title now,
+
+4
+00:00:13.900 --> 00:00:20.410
+at this point what you put in in the
+dialog box you can change at this point.
+
+5
+00:00:20.410 --> 00:00:24.540
+Change the author, change the date and
+in the output ioslides that also means you
+
+6
+00:00:24.540 --> 00:00:27.930
+can change the format if you
+want it to be slide instead.
+
+7
+00:00:27.930 --> 00:00:30.180
+The knitr options, by default,
+
+8
+00:00:30.180 --> 00:00:34.860
+that's just means it's not going to
+echo code that you include by default.
+
+9
+00:00:34.860 --> 00:00:38.990
+Okay, so
+now let's just create a new slide.
+
+10
+00:00:38.990 --> 00:00:42.200
+New slide is two pound signs.
+
+11
+00:00:42.200 --> 00:00:46.168
+So my new slide.
+
+12
+00:00:46.168 --> 00:00:48.348
+Okay, now let's knit it.
+
+13
+00:00:48.348 --> 00:00:50.748
+There it's going.
+
+14
+00:00:54.707 --> 00:00:55.620
+There we go.
+
+15
+00:00:55.620 --> 00:00:57.210
+My new slide.
+
+16
+00:00:57.210 --> 00:00:58.050
+Okay, that's slide two.
+
+17
+00:00:58.050 --> 00:01:00.660
+So remember,
+it starts with my fancy presentation.
+
+18
+00:01:00.660 --> 00:01:01.470
+My new slide.
+
+19
+00:01:01.470 --> 00:01:07.990
+Now let's try a slide that
+doesn't have a heading.
+
+20
+00:01:07.990 --> 00:01:12.750
+So this one has some content on it.
+
+21
+00:01:12.750 --> 00:01:20.233
+And then let's try A slide without.
+
+22
+00:01:20.233 --> 00:01:26.876
+[NOISE] A slide without a title.
+
+23
+00:01:26.876 --> 00:01:32.242
+Okay, that's three asterisks.
+
+24
+00:01:35.190 --> 00:01:37.385
+Now there's my new slides
+with some content, and
+
+25
+00:01:37.385 --> 00:01:39.220
+then now here's a slide without a title.
+
+26
+00:01:40.560 --> 00:01:43.690
+Okay, so
+now let's try putting a subheading.
+
+27
+00:01:43.690 --> 00:01:48.140
+So that's three pound signs,
+
+28
+00:01:48.140 --> 00:01:52.938
+which is a top level subheading.
+
+29
+00:01:52.938 --> 00:01:54.988
+Let's say actually let's
+have it like this.
+
+30
+00:01:54.988 --> 00:01:57.452
+Two pound signs for My title.
+
+31
+00:01:57.452 --> 00:02:04.410
+Three pound signs for
+a top level subheading.
+
+32
+00:02:04.410 --> 00:02:09.500
+And four pound signs for
+a second level subheading.
+
+33
+00:02:10.930 --> 00:02:11.910
+Now let's try knitting it.
+
+34
+00:02:13.990 --> 00:02:17.940
+Remember you can also just do
+Ctrl+Shift+K and then you can see.
+
+35
+00:02:19.230 --> 00:02:21.080
+Now let's add some more content.
+
+36
+00:02:21.080 --> 00:02:23.056
+Let's get rid of these sub headings.
+
+37
+00:02:23.056 --> 00:02:29.590
+A list, bullet one.
+
+38
+00:02:29.590 --> 00:02:31.230
+Second one, bullet two.
+
+39
+00:02:33.350 --> 00:02:37.770
+Okay, and notice those are just two
+dashes to start my bulleted list and
+
+40
+00:02:37.770 --> 00:02:45.638
+then if i want an ordered list,
+1 is Item 1, 2 is Item 2 and so on.
+
+41
+00:02:45.638 --> 00:02:48.630
+Okay, or let's spell it Item a and Item b.
+
+42
+00:02:48.630 --> 00:02:50.660
+So, there's no confusion
+over what's going on and
+
+43
+00:02:50.660 --> 00:02:54.990
+let's just call bullet one and bullet two.
+
+44
+00:02:54.990 --> 00:02:59.195
+Okay so let's knit those and
+see, remember Ctrl+Shift+K.
+
+45
+00:03:01.760 --> 00:03:03.130
+There we go.
+
+46
+00:03:03.130 --> 00:03:06.390
+Okay, so now next step.
+
+47
+00:03:07.560 --> 00:03:11.630
+Go ahead and create some slides,
+put some content in with some bullets and
+
+48
+00:03:11.630 --> 00:03:14.559
+some ordered lists, some titles,
+some headings and subheadings.

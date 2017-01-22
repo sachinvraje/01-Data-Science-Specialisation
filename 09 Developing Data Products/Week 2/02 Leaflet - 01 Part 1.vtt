@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.968
+An important aspect to developing
+data products is having a way
+
+2
+00:00:04.968 --> 00:00:07.319
+to create interactive maps.
+
+3
+00:00:07.319 --> 00:00:09.790
+Leaflet is a JavaScript library, and
+
+4
+00:00:09.790 --> 00:00:14.345
+then there is an associated Leaflet
+package for R that makes use of this
+
+5
+00:00:14.345 --> 00:00:19.303
+JavaScript library to create interactive
+maps within your R environment.
+
+6
+00:00:19.303 --> 00:00:23.583
+And it's especially convenient within
+RStudio because it brings it up in
+
+7
+00:00:23.583 --> 00:00:24.831
+the RStudio window.
+
+8
+00:00:24.831 --> 00:00:28.643
+So we're just going to go ahead and
+go through some Leaflet examples and
+
+9
+00:00:28.643 --> 00:00:32.059
+get you started with the bare
+minimum to get going on this, and
+
+10
+00:00:32.059 --> 00:00:34.839
+I think you'll get
+the extended rather quickly.
+
+11
+00:00:34.839 --> 00:00:40.273
+So, and I should say there's several
+other ways to create interactive maps.
+
+12
+00:00:40.273 --> 00:00:45.142
+GoogleVis is another one,
+and so I think Leaflet
+
+13
+00:00:45.142 --> 00:00:50.011
+is worth covering on its
+own just because it's so
+
+14
+00:00:50.011 --> 00:00:55.140
+widely accepted and
+widely used among the R crowd.
+
+15
+00:00:55.140 --> 00:00:59.586
+But again, I would also say, look up, in
+our googleVis lecture we also talk about
+
+16
+00:00:59.586 --> 00:01:03.403
+creating maps using googleVis,
+which directly access Google Maps.
+
+17
+00:01:03.403 --> 00:01:05.602
+And there's still some other ways, but
+
+18
+00:01:05.602 --> 00:01:08.196
+I think those two might
+be the two most popular.
+
+19
+00:01:08.196 --> 00:01:10.894
+So you want to make sure you install
+it first, I won't go through this,
+
+20
+00:01:10.894 --> 00:01:12.654
+just install.packages("leaflet").
+
+21
+00:01:12.654 --> 00:01:17.428
+Now let's just go through a code
+example where we create our
+
+22
+00:01:17.428 --> 00:01:19.344
+first Leaflet map in R.
+
+23
+00:01:19.344 --> 00:01:24.470
+So here I have the R mark down document
+for the next couple of slides.
+
+24
+00:01:24.470 --> 00:01:28.110
+I have the whole R mark down document,
+but here's the code for
+
+25
+00:01:28.110 --> 00:01:29.658
+the next couple of slide.
+
+26
+00:01:29.658 --> 00:01:33.575
+It has two separate sections, one that
+just displays it as code, and one that,
+
+27
+00:01:33.575 --> 00:01:35.394
+the separate one that evaluates it.
+
+28
+00:01:35.394 --> 00:01:37.798
+So you have to call library(leaflet).
+
+29
+00:01:37.798 --> 00:01:44.786
+And then, let me just run these three
+commands, and then we'll talk about them.
+
+30
+00:01:44.786 --> 00:01:47.610
+So, the first thing I want to comment on,
+so I ran the commands and
+
+31
+00:01:47.610 --> 00:01:48.827
+there you can see your map.
+
+32
+00:01:48.827 --> 00:01:52.833
+And then you can zoom in,
+of course, as much as you'd like.
+
+33
+00:01:52.833 --> 00:01:58.324
+So, it is a, and
+this is in the RStudio viewer pane.
+
+34
+00:01:58.324 --> 00:02:04.501
+So it's not a plot, it's in the kind
+of browser viewer that's in RStudio.
+
+35
+00:02:04.501 --> 00:02:07.744
+Okay, so, the first thing I'd like
+to mention is something that we're
+
+36
+00:02:07.744 --> 00:02:11.107
+going to use heavily in these set of
+lectures, which is the piping notation.
+
+37
+00:02:11.107 --> 00:02:16.850
+So, what this code basically
+is equivalent to is,
+
+38
+00:02:16.850 --> 00:02:22.060
+imagine if I wrote up my_map=leaflet(),
+
+39
+00:02:22.060 --> 00:02:28.618
+okay, and
+then my_map=addTiles(my_map), okay?
+
+40
+00:02:28.618 --> 00:02:35.407
+So let me get rid of my map over here and
+then run these three lines, okay?
+
+41
+00:02:35.407 --> 00:02:37.138
+And you'll see it does the same thing.
+
+42
+00:02:37.138 --> 00:02:38.286
+It generates the same map.
+
+43
+00:02:38.286 --> 00:02:45.197
+So this code right here, right,
+is identical to this code right here.
+
+44
+00:02:45.197 --> 00:02:47.147
+That's what the piping notation is doing.
+
+45
+00:02:47.147 --> 00:02:50.721
+It's taking this output, my_map, and
+
+46
+00:02:50.721 --> 00:02:56.846
+then piping it to this next command,
+adding it as the first argument and
+
+47
+00:02:56.846 --> 00:03:01.153
+then reassigning it to the variable here,
+okay?
+
+48
+00:03:01.153 --> 00:03:05.360
+So, and that's a lot cleaner code,
+and easier to read,
+
+49
+00:03:05.360 --> 00:03:09.402
+once you get to used to it
+than what I had written below.
+
+50
+00:03:09.402 --> 00:03:15.294
+Okay, so the first part leaflet
+just kind of generates the map.
+
+51
+00:03:15.294 --> 00:03:19.451
+And then the addTiles is adding
+the first set of content.
+
+52
+00:03:19.451 --> 00:03:24.685
+And we'll talk in a little bit about
+how to actually do some useful things,
+
+53
+00:03:24.685 --> 00:03:26.604
+like add markers and so on.
+
+54
+00:03:26.604 --> 00:03:30.307
+But just first try to do this,
+just generate a world map, zoom around,
+
+55
+00:03:30.307 --> 00:03:33.826
+make sure you can install a Leaflet
+library, and this is step one and
+
+56
+00:03:33.826 --> 00:03:36.709
+then now we'll go on to some
+more interesting things.

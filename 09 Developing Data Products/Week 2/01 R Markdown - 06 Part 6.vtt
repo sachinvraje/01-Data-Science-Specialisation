@@ -1,0 +1,536 @@
+WEBVTT
+
+1
+00:00:01.240 --> 00:00:03.370
+Okay, so I just want to show you a plot.
+
+2
+00:00:03.370 --> 00:00:06.440
+Here I created a plot,
+plot, empty cars wait.
+
+3
+00:00:06.440 --> 00:00:10.680
+Empty cars miles per gallon,
+xlab = weight, ylab = MPG.
+
+4
+00:00:10.680 --> 00:00:12.110
+Let's go ahead and show it.
+
+5
+00:00:14.340 --> 00:00:15.060
+Sorry, there we go.
+
+6
+00:00:18.260 --> 00:00:19.340
+Okay, there it is.
+
+7
+00:00:19.340 --> 00:00:22.350
+Well I kind of don't want the code,
+like most often when you show a plot,
+
+8
+00:00:22.350 --> 00:00:24.310
+you don't want to echo the code.
+
+9
+00:00:24.310 --> 00:00:28.320
+So why don't I put echo = FALSE and
+
+10
+00:00:28.320 --> 00:00:34.560
+then go ahead and re-run it.
+
+11
+00:00:34.560 --> 00:00:35.610
+That looks much better.
+
+12
+00:00:35.610 --> 00:00:39.800
+There's a bunch of other figure options in
+Nitter, so you can play around with those.
+
+13
+00:00:39.800 --> 00:00:42.050
+For example, fig.align.
+
+14
+00:00:42.050 --> 00:00:42.826
+Probably center.
+
+15
+00:00:42.826 --> 00:00:43.687
+Okay.
+
+16
+00:00:43.687 --> 00:00:47.620
+fig, yeah we can put a caption.
+
+17
+00:00:47.620 --> 00:00:52.520
+Let's say My AWESOME figure.
+
+18
+00:00:52.520 --> 00:00:54.750
+Okay and
+then let's just show you how this looks.
+
+19
+00:00:58.575 --> 00:01:00.955
+Yeah, see there's your figure caption and
+so on.
+
+20
+00:01:00.955 --> 00:01:03.755
+So go through some of the options and
+play around with them.
+
+21
+00:01:03.755 --> 00:01:08.055
+There's options for controlling the height
+and width of the figure and so on.
+
+22
+00:01:08.055 --> 00:01:11.097
+So the last thing I want to talk
+about is publishing your slides.
+
+23
+00:01:11.097 --> 00:01:13.387
+So as soon as you nit it,
+
+24
+00:01:13.387 --> 00:01:17.137
+when you type nit HTML it creates
+a file in your directory.
+
+25
+00:01:17.137 --> 00:01:22.103
+So for
+example these slides are briansSlides.Rmd
+
+26
+00:01:22.103 --> 00:01:25.377
+with the file extension standing for
+R markdown.
+
+27
+00:01:25.377 --> 00:01:29.530
+Okay, it creates a Brian's
+slides .html file.
+
+28
+00:01:29.530 --> 00:01:32.060
+So if you click on that you'll bring it up
+
+29
+00:01:32.060 --> 00:01:35.770
+this presentation in a browser
+not in out studio browser window.
+
+30
+00:01:35.770 --> 00:01:39.840
+And in fact you can make it easier
+just by clicking on opening browser
+
+31
+00:01:39.840 --> 00:01:43.100
+here in the our studio preview window.
+
+32
+00:01:43.100 --> 00:01:45.800
+Publish will publish it in R pubs,
+
+33
+00:01:45.800 --> 00:01:47.960
+which is one of a couple of
+ways to publish it online.
+
+34
+00:01:47.960 --> 00:01:53.550
+You could also put it in
+a Drop Box public folder and
+
+35
+00:01:53.550 --> 00:01:57.200
+just like you can kind of publish
+web pages in a Drop Box folder.
+
+36
+00:01:57.200 --> 00:02:00.730
+But I think probably my favorite
+way to publish it is in GitHub.
+
+37
+00:02:00.730 --> 00:02:03.770
+So I wanted to show you a couple
+things about GitHub real quick.
+
+38
+00:02:04.870 --> 00:02:08.680
+So these slides, I got them,
+well actually, I'm sorry.
+
+39
+00:02:08.680 --> 00:02:12.160
+These slides, these temporary slides I'm
+working on, I haven't pushed up to GitHub.
+
+40
+00:02:12.160 --> 00:02:13.690
+So why don't we look at the slides for
+
+41
+00:02:13.690 --> 00:02:17.570
+the lecture, which are in
+Shaun Cross' GitHub Repository.
+
+42
+00:02:17.570 --> 00:02:20.290
+I'll show you this in a second,
+more closely.
+
+43
+00:02:20.290 --> 00:02:23.153
+But, this is just an R Markdown file,
+
+44
+00:02:23.153 --> 00:02:27.720
+and the associated HTML files
+pushed up into GitHub, okay.
+
+45
+00:02:27.720 --> 00:02:29.890
+So, let's look at those.
+
+46
+00:02:29.890 --> 00:02:30.410
+Okay.
+
+47
+00:02:30.410 --> 00:02:34.240
+So, here is the developing
+data products course page
+
+48
+00:02:34.240 --> 00:02:37.160
+under slides in seankross's GitHub repo.
+
+49
+00:02:37.160 --> 00:02:41.620
+So, I think I want R Markdown right there,
+okay.
+
+50
+00:02:41.620 --> 00:02:43.300
+Now, here's the R Markdown phone.
+
+51
+00:02:43.300 --> 00:02:46.470
+First thing I want to point out, if you
+click on this in GitHub it does a lot of
+
+52
+00:02:46.470 --> 00:02:50.040
+the formatting for you, it recognizes
+that it's in R Markdown document, and
+
+53
+00:02:50.040 --> 00:02:52.110
+it does a lot of formatting ahead for you.
+
+54
+00:02:52.110 --> 00:02:55.610
+It's not going to run the code of course,
+but it does a lot of formatting, so you
+
+55
+00:02:55.610 --> 00:03:00.200
+can see what the bullets and the various
+points are going to look like, okay?
+
+56
+00:03:00.200 --> 00:03:04.540
+Which is nice, so often when I'm
+reading some of Sean's edit,
+
+57
+00:03:04.540 --> 00:03:07.870
+I'll look just directly
+at his R_Markdown file.
+
+58
+00:03:07.870 --> 00:03:11.120
+Okay, now let's click on the HTML file.
+
+59
+00:03:11.120 --> 00:03:12.220
+There we go.
+
+60
+00:03:12.220 --> 00:03:15.210
+Now notice that it does
+not render the HTML file.
+
+61
+00:03:15.210 --> 00:03:17.130
+It is showing you the raw HTML.
+
+62
+00:03:18.250 --> 00:03:20.930
+Okay, now for the HTML to be rendered,
+
+63
+00:03:20.930 --> 00:03:22.700
+there's a bunch of
+different ways to do this.
+
+64
+00:03:22.700 --> 00:03:26.620
+In fact, there's a Chrome add on and
+a Firefox add on that will go ahead and
+
+65
+00:03:26.620 --> 00:03:27.790
+do this for you.
+
+66
+00:03:27.790 --> 00:03:30.670
+But Sean's published
+this via GitHub pages.
+
+67
+00:03:30.670 --> 00:03:35.350
+And what this means is,
+he has a branch called gh-pages.
+
+68
+00:03:35.350 --> 00:03:40.540
+Usually it requires a node jackal
+file in the root directory of your
+
+69
+00:03:40.540 --> 00:03:44.920
+GitHub pages but I've noticed you didn't
+have that so maybe that isn't necessary.
+
+70
+00:03:44.920 --> 00:03:48.220
+But now if I want to see it, it just means
+
+71
+00:03:52.380 --> 00:03:59.140
+you are just mildly changing the URL and
+you can see it, okay?
+
+72
+00:03:59.140 --> 00:04:02.480
+But the important thing is you have
+to have a branch called gh-pages,
+
+73
+00:04:02.480 --> 00:04:04.840
+that's the most important part.
+
+74
+00:04:04.840 --> 00:04:09.560
+And by the way I find it kind of
+annoying to have a gh-pages branch and
+
+75
+00:04:09.560 --> 00:04:12.640
+then a master branch, and
+I think Sean does too obviously.
+
+76
+00:04:12.640 --> 00:04:15.620
+So he just deleted the master branch,
+okay, so
+
+77
+00:04:15.620 --> 00:04:18.640
+GitHub pages in a sense
+is his master branch.
+
+78
+00:04:18.640 --> 00:04:23.070
+Okay, so
+if we look up here on the address we
+
+79
+00:04:24.100 --> 00:04:28.190
+have github.com/seankross
+which is his user name.
+
+80
+00:04:28.190 --> 00:04:34.640
+What I want is Sean Kross.github.io.
+
+81
+00:04:34.640 --> 00:04:41.435
+Okay, so it's user name.github.io,
+and then slides, and then blob and
+
+82
+00:04:41.435 --> 00:04:45.190
+gh-pages are just internal things for
+GitHub, so we want to get rid of those.
+
+83
+00:04:45.190 --> 00:04:48.240
+And then we want just
+a path to the html file.
+
+84
+00:04:48.240 --> 00:04:55.830
+So in In Sean Krosses GItHub
+the repository it's in the repose slides.
+
+85
+00:04:55.830 --> 00:05:00.360
+The subdirectory Developing Data Products,
+the subdirectory R Markdown and in
+
+86
+00:05:00.360 --> 00:05:06.280
+the file R Markdown.html, and then notice
+these slides are now hosted on GitHub.
+
+87
+00:05:06.280 --> 00:05:09.540
+And this is an extremely convenient way,
+especially for
+
+88
+00:05:09.540 --> 00:05:13.200
+most of us that work in data science
+because we're usually pushing stuff up
+
+89
+00:05:13.200 --> 00:05:15.460
+back and forth to GitHub all the time.
+
+90
+00:05:15.460 --> 00:05:20.800
+For me, personally, all my course stuff
+I just push up to public, GitHub repost.
+
+91
+00:05:20.800 --> 00:05:25.490
+All my private researchy stuff, I push
+up to private, GitHub repost and so on.
+
+92
+00:05:25.490 --> 00:05:28.250
+So this is a very clean way to work for
+
+93
+00:05:28.250 --> 00:05:30.110
+those of us that are already
+working in GitHub.
+
+94
+00:05:31.460 --> 00:05:35.640
+Okay, so after doing this,
+I would like everyone to
+
+95
+00:05:35.640 --> 00:05:40.330
+try to create a figure
+in your presentation.
+
+96
+00:05:40.330 --> 00:05:42.710
+I'd like you to play around
+with the figure options.
+
+97
+00:05:42.710 --> 00:05:45.560
+I'd like you to try and
+publish it to GitHub.
+
+98
+00:05:45.560 --> 00:05:49.790
+Read up on GitHub pages if you're having
+some trouble or publish it to our pubs if
+
+99
+00:05:49.790 --> 00:05:53.970
+you want that’s another option just click
+on the publish button in our studio and
+
+100
+00:05:53.970 --> 00:05:58.860
+see how that works that’s fairly
+self-explanatory and I would also like you
+
+101
+00:05:58.860 --> 00:06:03.110
+to verify that the HTML file gets
+created into your directory.
+
+102
+00:06:03.110 --> 00:06:06.608
+Click on that and
+see how you can host on you computer and
+
+103
+00:06:06.608 --> 00:06:11.400
+look at it on your computer so that way
+you can always visualize it if you're
+
+104
+00:06:11.400 --> 00:06:14.466
+working on an airplane or
+something like that.
+
+105
+00:06:14.466 --> 00:06:18.169
+But most important I think hosting it on
+GitHub is probably the most technically
+
+106
+00:06:18.169 --> 00:06:21.925
+irritating of all the things I have talked
+about, so go ahead and try doing that,
+
+107
+00:06:21.925 --> 00:06:25.573
+just so this way you can always publicly
+host your repositories in a way that's
+
+108
+00:06:25.573 --> 00:06:29.980
+convenient, that probably already fits
+into your work flow, to begin with.
+
+109
+00:06:29.980 --> 00:06:33.860
+Well that's enough about R Markdown,
+I think, to suit our needs for this class.
+
+110
+00:06:33.860 --> 00:06:37.370
+When you develop your project,
+you're actually going to create a pitch
+
+111
+00:06:37.370 --> 00:06:40.880
+in R Markdown, and you'll hopefully
+host it on GitHub or something, so
+
+112
+00:06:40.880 --> 00:06:44.830
+that we can all look at it and
+see that your project is really awesome.
+
+113
+00:06:44.830 --> 00:06:45.400
+All right.
+
+114
+00:06:45.400 --> 00:06:47.649
+Thanks a lot for listening, and
+we'll see you in the next lesson.

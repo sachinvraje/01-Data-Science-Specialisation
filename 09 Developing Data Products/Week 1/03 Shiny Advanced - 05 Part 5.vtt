@@ -1,0 +1,243 @@
+WEBVTT
+
+1
+00:00:01.516 --> 00:00:05.420
+Okay, so I've promised repeatedly
+that I was going to show you
+
+2
+00:00:05.420 --> 00:00:09.220
+how to just use your own HTML, and
+I have a very quick way to do that.
+
+3
+00:00:09.220 --> 00:00:13.730
+So, right now, what I did was, I
+
+4
+00:00:14.780 --> 00:00:19.620
+took our last example, and
+I just saved the HTML that it was running.
+
+5
+00:00:19.620 --> 00:00:24.410
+So I just did Control+U in Chrome,
+copied the HTML and dumped it in a file.
+
+6
+00:00:24.410 --> 00:00:29.658
+But, importantly, where I dump that
+file is in a file named index.html,
+
+7
+00:00:29.658 --> 00:00:32.200
+in a subdirectory called www.
+
+8
+00:00:32.200 --> 00:00:34.130
+So, there is my server.R function.
+
+9
+00:00:34.130 --> 00:00:41.566
+And then, in www, the directory called
+www, I put the file index.html.
+
+10
+00:00:41.566 --> 00:00:45.840
+The index.html file,
+it has a lot of the preamble,
+
+11
+00:00:45.840 --> 00:00:50.730
+most of which isn't
+necessary from the style,
+
+12
+00:00:50.730 --> 00:00:56.310
+from the bootstrap style,
+that it gets from that package, okay?
+
+13
+00:00:56.310 --> 00:00:59.840
+So, you can get rid of
+a lot of that stuff and
+
+14
+00:00:59.840 --> 00:01:02.040
+just have the style be whatever you want.
+
+15
+00:01:02.040 --> 00:01:06.260
+And maybe if you're not too familiar
+with working with web development,
+
+16
+00:01:06.260 --> 00:01:09.190
+that sort of thing,
+what you can do is do exactly what I did.
+
+17
+00:01:09.190 --> 00:01:14.170
+Start with a simple, shiny page, output
+the HTML, use that as your starting point,
+
+18
+00:01:14.170 --> 00:01:15.500
+and then build off from there.
+
+19
+00:01:15.500 --> 00:01:18.960
+But I think if you're familiar with
+web development, you can just start
+
+20
+00:01:18.960 --> 00:01:23.630
+with a straight index.html file,
+blank HTML file, and work from there.
+
+21
+00:01:24.980 --> 00:01:29.400
+So, the input's just work just
+like regular old HTML input.
+
+22
+00:01:29.400 --> 00:01:31.670
+So, here I have input id="box1".
+
+23
+00:01:31.670 --> 00:01:36.653
+So it's just, id is the label,
+
+24
+00:01:36.653 --> 00:01:44.440
+just like we labeled it in the ui.R file,
+okay?
+
+25
+00:01:44.440 --> 00:01:46.430
+So, it works just like you would think.
+
+26
+00:01:46.430 --> 00:01:52.160
+And then, so in this example, we had three
+boxes labeled Box 1, Box 2, and Box 3.
+
+27
+00:01:52.160 --> 00:01:55.060
+And so, there's my input, ID box 1.
+
+28
+00:01:55.060 --> 00:01:57.690
+Here's my input ID equals box 2.
+
+29
+00:01:57.690 --> 00:02:00.010
+And here's my input ID equals box 3.
+
+30
+00:02:00.010 --> 00:02:05.370
+And all these div statements are because,
+shiny,
+
+31
+00:02:05.370 --> 00:02:12.760
+Bootstrap uses this particular CSS style,
+and all these divs are all
+
+32
+00:02:12.760 --> 00:02:17.220
+these nice little blocky structures
+that you see for the default style.
+
+33
+00:02:18.300 --> 00:02:21.230
+Okay.
+And then, for the output out here, right,
+
+34
+00:02:21.230 --> 00:02:25.330
+you can just see that it's
+referencing out2, right?
+
+35
+00:02:25.330 --> 00:02:27.771
+And then,
+the important thing is the class, right?
+
+36
+00:02:27.771 --> 00:02:30.850
+The class is shiny-text-output, okay?
+
+37
+00:02:30.850 --> 00:02:34.780
+So, you could actually use
+an existing shiny app,
+
+38
+00:02:34.780 --> 00:02:38.290
+a shiny prototype app,
+to get all these little things.
+
+39
+00:02:38.290 --> 00:02:41.860
+Probably, if you're used to web
+development, what you wouldn't have known
+
+40
+00:02:41.860 --> 00:02:46.930
+of off the bat is that the output
+class was called shiny-text-output.
+
+41
+00:02:46.930 --> 00:02:52.340
+At any rate, this would give you,
+if you build a prototype, grab the HTML.
+
+42
+00:02:52.340 --> 00:02:53.990
+This will give you enough to go on.
+
+43
+00:02:53.990 --> 00:02:57.510
+And I think that this will
+be pretty useful for you.
+
+44
+00:02:57.510 --> 00:03:00.840
+So, for example, now if I run my app,
+it should just look identical
+
+45
+00:03:00.840 --> 00:03:03.560
+to what it was before because
+I just copied the same HTML.
+
+46
+00:03:03.560 --> 00:03:06.390
+And, of course,
+you can see that it does look identical.
+
+47
+00:03:06.390 --> 00:03:12.390
+So, I think this'll be very useful for the
+people who know a lot of web development.
+
+48
+00:03:12.390 --> 00:03:17.430
+And I think, when I talk to people who are
+in that camp, they certainly find using R
+
+49
+00:03:17.430 --> 00:03:21.870
+as an intermediary for
+web development as quite annoying.
+
+50
+00:03:21.870 --> 00:03:27.440
+So, if you're in that camp,
+it's very easy to just use a straight
+
+51
+00:03:27.440 --> 00:03:32.890
+HTML file rather than using R to actually
+put in your individual HTML elements.

@@ -1,0 +1,41 @@
+An important aspect to developing
+data products is having a way to create interactive maps. Leaflet is a JavaScript library, and then there is an associated Leaflet
+package for R that makes use of this JavaScript library to create interactive
+maps within your R environment. And it's especially convenient within
+RStudio because it brings it up in the RStudio window. So we're just going to go ahead and
+go through some Leaflet examples and get you started with the bare
+minimum to get going on this, and I think you'll get
+the extended rather quickly. So, and I should say there's several
+other ways to create interactive maps. GoogleVis is another one,
+and so I think Leaflet is worth covering on its
+own just because it's so widely accepted and
+widely used among the R crowd. But again, I would also say, look up, in
+our googleVis lecture we also talk about creating maps using googleVis,
+which directly access Google Maps. And there's still some other ways, but I think those two might
+be the two most popular. So you want to make sure you install
+it first, I won't go through this, just install.packages("leaflet"). Now let's just go through a code
+example where we create our first Leaflet map in R. So here I have the R mark down document
+for the next couple of slides. I have the whole R mark down document,
+but here's the code for the next couple of slide. It has two separate sections, one that
+just displays it as code, and one that, the separate one that evaluates it. So you have to call library(leaflet). And then, let me just run these three
+commands, and then we'll talk about them. So, the first thing I want to comment on,
+so I ran the commands and there you can see your map. And then you can zoom in,
+of course, as much as you'd like. So, it is a, and
+this is in the RStudio viewer pane. So it's not a plot, it's in the kind
+of browser viewer that's in RStudio. Okay, so, the first thing I'd like
+to mention is something that we're going to use heavily in these set of
+lectures, which is the piping notation. So, what this code basically
+is equivalent to is, imagine if I wrote up my_map=leaflet(), okay, and
+then my_map=addTiles(my_map), okay? So let me get rid of my map over here and
+then run these three lines, okay? And you'll see it does the same thing. It generates the same map. So this code right here, right,
+is identical to this code right here. That's what the piping notation is doing. It's taking this output, my_map, and then piping it to this next command,
+adding it as the first argument and then reassigning it to the variable here,
+okay? So, and that's a lot cleaner code,
+and easier to read, once you get to used to it
+than what I had written below. Okay, so the first part leaflet
+just kind of generates the map. And then the addTiles is adding
+the first set of content. And we'll talk in a little bit about
+how to actually do some useful things, like add markers and so on. But just first try to do this,
+just generate a world map, zoom around, make sure you can install a Leaflet
+library, and this is step one and then now we'll go on to some
+more interesting things.

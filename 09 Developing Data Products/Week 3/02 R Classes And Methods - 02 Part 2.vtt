@@ -1,0 +1,1008 @@
+WEBVTT
+
+1
+00:00:00.490 --> 00:00:03.760
+So here's a, simple example of a S3 class
+and method.
+
+2
+00:00:03.760 --> 00:00:07.110
+So in the, in the top I'm generating some
+random, normal data.
+
+3
+00:00:07.110 --> 00:00:08.590
+And, I'm calculating the mean.
+
+4
+00:00:08.590 --> 00:00:10.790
+So here the mean is -0.0307.
+
+5
+00:00:10.790 --> 00:00:12.460
+So that's not particularly complicated.
+
+6
+00:00:12.460 --> 00:00:15.370
+But here's a lot of stuff going on behind
+the scenes.
+
+7
+00:00:15.370 --> 00:00:20.550
+And so, first of all the class of x, which
+is this random normal vector, is numeric.
+
+8
+00:00:20.550 --> 00:00:24.180
+So I called the mean, which is a generic
+function on this numeric vector,
+
+9
+00:00:24.180 --> 00:00:28.600
+it will search to see if there's a
+specific mean method for numeric objects.
+
+10
+00:00:28.600 --> 00:00:30.930
+But there is no as it turns out there is
+no
+
+11
+00:00:30.930 --> 00:00:34.100
+method for a numeric object, so we'll call
+the default function.
+
+12
+00:00:34.100 --> 00:00:36.270
+For mean, which calculates you know, the
+sum of
+
+13
+00:00:36.270 --> 00:00:38.650
+all the elements, and divides by the
+length the vector.
+
+14
+00:00:42.180 --> 00:00:45.130
+So you can look at the default method for
+the mean function by using
+
+15
+00:00:45.130 --> 00:00:49.150
+the get SE method function, and you can
+see that there are other arguments.
+
+16
+00:00:49.150 --> 00:00:53.070
+There's this trim argument, and a .rm, and
+as you go through,
+
+17
+00:00:53.070 --> 00:00:56.010
+the function, you can see that it checks a
+number of things.
+
+18
+00:00:56.010 --> 00:00:58.479
+It look, if you're doing a trimmed mean,
+it takes care of that first.
+
+19
+00:00:59.800 --> 00:01:02.990
+And then, and then ultimately at the very
+bottom there, it calls
+
+20
+00:01:02.990 --> 00:01:04.670
+some internal C code that actually
+
+21
+00:01:04.670 --> 00:01:06.710
+calculates the meme for efficiency
+purposes.
+
+22
+00:01:06.710 --> 00:01:11.920
+[BLANK_AUDIO]
+
+23
+00:01:11.920 --> 00:01:12.990
+So that's sort of.
+
+24
+00:01:12.990 --> 00:01:14.230
+The meme is a simple example here.
+
+25
+00:01:14.230 --> 00:01:14.560
+Is, is.
+
+26
+00:01:14.560 --> 00:01:16.660
+And as, a slightly more complicated
+example I've
+
+27
+00:01:16.660 --> 00:01:20.310
+generated some, random data in a data
+frame now.
+
+28
+00:01:20.310 --> 00:01:23.520
+And I'm S applying The mean function over
+the data frame.
+
+29
+00:01:23.520 --> 00:01:26.490
+So one of the important things to known
+about data-frames
+
+30
+00:01:26.490 --> 00:01:28.910
+is, that each column could potentially be
+of a different class.
+
+31
+00:01:28.910 --> 00:01:31.260
+So you could have the first column be
+numeric like we have here
+
+32
+00:01:31.260 --> 00:01:35.050
+and then the second column be integer so
+when we add supply over the
+
+33
+00:01:35.050 --> 00:01:40.380
+columns and we call the mean function for
+each column the mean will, will
+
+34
+00:01:40.380 --> 00:01:43.950
+protect the class of that column and see
+if there is an appropriate method.
+
+35
+00:01:43.950 --> 00:01:46.550
+So for the first column it's numeric It
+will check for
+
+36
+00:01:46.550 --> 00:01:48.910
+a numeric method, there isn't one, so it
+will call the default.
+
+37
+00:01:48.910 --> 00:01:52.060
+And then the second column is actually
+integer, so it will check for an integer
+
+38
+00:01:52.060 --> 00:01:54.490
+method, again there's no integer method,
+so it
+
+39
+00:01:54.490 --> 00:01:56.850
+will call the default for that column too.
+
+40
+00:01:56.850 --> 00:01:58.740
+So, for, if you have a large data frame
+
+41
+00:01:58.740 --> 00:02:00.470
+and every column, is a, is a slightly, is
+a
+
+42
+00:02:00.470 --> 00:02:03.870
+different class, the mean function will
+check each column
+
+43
+00:02:03.870 --> 00:02:05.880
+to see if there's an appropriate method
+for that class.
+
+44
+00:02:10.300 --> 00:02:14.980
+So in some cases it's possible to call
+the, a method directly, so
+
+45
+00:02:14.980 --> 00:02:18.740
+you may suffer some S3 methods are visible
+to the user, so you make.
+
+46
+00:02:18.740 --> 00:02:21.900
+So, for example the mean.default function,
+is you can
+
+47
+00:02:21.900 --> 00:02:25.380
+possible to call that directly without
+calling the generic function.
+
+48
+00:02:25.380 --> 00:02:29.060
+But in general the rule is you should
+never call methods directly.
+
+49
+00:02:29.060 --> 00:02:31.120
+You should always call the generic
+function and
+
+50
+00:02:31.120 --> 00:02:33.950
+let the, the appropriate message be
+dispatched automatically.
+
+51
+00:02:33.950 --> 00:02:39.980
+And this, this results in cleaner code,
+And and it's slightly more robust.
+
+52
+00:02:39.980 --> 00:02:42.790
+That way the name of the, of the method
+switches so if it
+
+53
+00:02:42.790 --> 00:02:46.128
+changes a little bit you won't have to
+worry about the underlining details.
+
+54
+00:02:46.128 --> 00:02:49.010
+With the S4 system this isn't a problem
+because you
+
+55
+00:02:49.010 --> 00:02:51.880
+cannot call the methods directly for the
+most part at all.
+
+56
+00:02:55.690 --> 00:03:00.540
+So one last method, example for an S3
+Class Method so here is the plot function.
+
+57
+00:03:00.540 --> 00:03:03.280
+And again I'm generating some random
+normal data so when I
+
+58
+00:03:03.280 --> 00:03:07.272
+plot it again it looks for a numeric
+method for plot.
+
+59
+00:03:07.272 --> 00:03:09.810
+And since there isn't one it just calls
+the default method for
+
+60
+00:03:09.810 --> 00:03:13.930
+plot, and it makes a little scatter plot,
+as you probably would've expect.
+
+61
+00:03:13.930 --> 00:03:15.890
+However, this is a slight variation.
+
+62
+00:03:15.890 --> 00:03:18.860
+I'm generating some random normal data,
+and then I'm converting, it into a time
+
+63
+00:03:18.860 --> 00:03:23.020
+series object, so I use the as.ts function
+to convert it into a time series.
+
+64
+00:03:23.020 --> 00:03:25.460
+Now, you'll notice I call plot, I call
+plot the exactly
+
+65
+00:03:25.460 --> 00:03:28.400
+the same way as I called it in the
+previous slide.
+
+66
+00:03:28.400 --> 00:03:30.320
+But now you can see the plot is totally
+different.
+
+67
+00:03:30.320 --> 00:03:34.370
+Instead of a plot with a bunch of circles
+on it it actually creates
+
+68
+00:03:34.370 --> 00:03:38.830
+a kind of type series kind of plot where
+all the, the lines are connected.
+
+69
+00:03:38.830 --> 00:03:42.900
+And also you'll notice on the x axis,
+there's a label on it for, called time,
+
+70
+00:03:42.900 --> 00:03:44.560
+which is different from the x axis that
+
+71
+00:03:44.560 --> 00:03:48.360
+was called for the default function in
+plot.
+
+72
+00:03:48.360 --> 00:03:49.490
+So here you can see that there is a
+
+73
+00:03:49.490 --> 00:03:53.730
+special plotting method for ts objects Or
+time series objects.
+
+74
+00:03:53.730 --> 00:03:56.910
+And that plotting method is actually being
+called here and not the default method.
+
+75
+00:04:02.000 --> 00:04:05.930
+So, if you want to write new methods for
+new classes, if you often create a new
+
+76
+00:04:05.930 --> 00:04:07.880
+class, if you represent a new data type,
+you'll
+
+77
+00:04:07.880 --> 00:04:10.900
+probably end up writing methods for
+printing or showing.
+
+78
+00:04:10.900 --> 00:04:12.780
+You'll probably, may write a method for
+summary.
+
+79
+00:04:12.780 --> 00:04:15.750
+You'll often, you'll write a method for
+plotting because there
+
+80
+00:04:15.750 --> 00:04:19.280
+won't be a plot method for a new type of
+data.
+
+81
+00:04:19.280 --> 00:04:22.770
+And so there are a couple, there are
+basic, two basic
+
+82
+00:04:22.770 --> 00:04:25.410
+ways that you can extend R with the
+classes and method system.
+
+83
+00:04:25.410 --> 00:04:27.010
+You can write a new, you can create a new
+
+84
+00:04:27.010 --> 00:04:30.580
+class and then write a method for an
+existing generic function
+
+85
+00:04:30.580 --> 00:04:33.410
+like Print or Plot Or you can write new
+generic
+
+86
+00:04:33.410 --> 00:04:37.120
+functions, and new methods for those
+generics for your new class.
+
+87
+00:04:42.570 --> 00:04:47.120
+So, for the rest of this lecture, I'm
+going to talk about S4 classes.
+
+88
+00:04:47.120 --> 00:04:48.340
+And, and so, one of these questions, is,
+you
+
+89
+00:04:48.340 --> 00:04:51.060
+know, why would you want to create a new
+class?
+
+90
+00:04:51.060 --> 00:04:51.290
+Right.
+
+91
+00:04:51.290 --> 00:04:53.580
+So what's wrong with the vector in lists,
+
+92
+00:04:53.580 --> 00:04:56.450
+and numerics and integers and logicals, et
+cetera.
+
+93
+00:04:56.450 --> 00:05:00.450
+While it's possible to survive on just the
+basic data types often it's easier
+
+94
+00:05:00.450 --> 00:05:05.520
+and more compact to think at a higher
+level about, more complex data types so,
+
+95
+00:05:05.520 --> 00:05:08.450
+for example, you might want to represent
+new types of data like gene expression
+
+96
+00:05:08.450 --> 00:05:11.390
+data Spacial temporal data, hierarchical
+datas that
+
+97
+00:05:11.390 --> 00:05:13.750
+you might want to represent a sparse
+matrix.
+
+98
+00:05:13.750 --> 00:05:16.450
+These are all data types that don't exist
+in r.
+
+99
+00:05:16.450 --> 00:05:18.630
+And so, you have to create a new class to
+represent them.
+
+100
+00:05:19.640 --> 00:05:22.220
+There are often new concepts that haven't
+been thought of yet.
+
+101
+00:05:22.220 --> 00:05:25.280
+So, if you can think of, you know, there's
+a linear model type of
+
+102
+00:05:25.280 --> 00:05:29.700
+class, but you think of point process
+model is a different kind of class.
+
+103
+00:05:29.700 --> 00:05:31.340
+Mixed effects model is another type.
+
+104
+00:05:31.340 --> 00:05:33.150
+Things like that that haven't been thought
+of
+
+105
+00:05:33.150 --> 00:05:34.860
+that haven't been kind of implemented yet
+in R.
+
+106
+00:05:36.580 --> 00:05:41.140
+And also you might want to hide certain
+implementation details from teh user.
+
+107
+00:05:41.140 --> 00:05:46.420
+And so you, you may be able to represent a
+new type of data using lists.
+
+108
+00:05:46.420 --> 00:05:47.000
+And vectors.
+
+109
+00:05:47.000 --> 00:05:49.380
+But then there maybe a lot of ugly details
+that are exposed
+
+110
+00:05:49.380 --> 00:05:53.650
+to the user that you would rather not, the
+user know about.
+
+111
+00:05:53.650 --> 00:05:55.740
+And so, And.
+
+112
+00:05:55.740 --> 00:05:59.090
+And one thing to, to emphasize, that when
+I say creating a new data,
+
+113
+00:05:59.090 --> 00:06:02.810
+type I don't mean, necessarily mean that
+the data type has never been seen before.
+
+114
+00:06:02.810 --> 00:06:05.380
+All I mean is that it's not known to R
+
+115
+00:06:05.380 --> 00:06:07.640
+and R doesn't have any special handling
+for those data types.
+
+116
+00:06:07.640 --> 00:06:08.140
+Types.
+
+117
+00:06:09.890 --> 00:06:13.740
+So, creating a new class is done with the
+set class function.
+
+118
+00:06:13.740 --> 00:06:15.560
+At the very minimum you can get away with
+
+119
+00:06:15.560 --> 00:06:18.040
+just specifying the name of the new class,
+but often
+
+120
+00:06:18.040 --> 00:06:20.590
+when you specify a new class there will be
+
+121
+00:06:20.590 --> 00:06:24.030
+data elements associated with this class,
+those are called slots.
+
+122
+00:06:25.150 --> 00:06:29.460
+You can define methods For this class
+using the set method function.
+
+123
+00:06:29.460 --> 00:06:34.120
+So, at a loose level, you can think of a
+class as like a list.
+
+124
+00:06:34.120 --> 00:06:35.750
+Every class has a bunch of slots.
+
+125
+00:06:35.750 --> 00:06:37.690
+So, these are kind of like elements of a
+list.
+
+126
+00:06:37.690 --> 00:06:39.760
+But each slot, it's a little bit more
+specific,
+
+127
+00:06:39.760 --> 00:06:43.570
+because each slot is an object of a
+certain class.
+
+128
+00:06:43.570 --> 00:06:46.630
+So you can't just put arbitrary data into
+any slot of a class.
+
+129
+00:06:46.630 --> 00:06:49.940
+You have to put the specific type of data,
+into each slot of a class.
+
+130
+00:06:52.270 --> 00:06:54.940
+So, for example, here I have a simple
+example of creating
+
+131
+00:06:54.940 --> 00:06:59.870
+a polygon class, so there's no polygon,
+data object in r.
+
+132
+00:06:59.870 --> 00:07:01.320
+So there, you can think of a variety
+
+133
+00:07:01.320 --> 00:07:04.170
+of ways in which you might represent
+polygon data.
+
+134
+00:07:04.170 --> 00:07:07.350
+So, you can think of a polygon, as a set
+of vertices, and a set of
+
+135
+00:07:07.350 --> 00:07:09.730
+or it's just a set of vertices and
+
+136
+00:07:09.730 --> 00:07:12.360
+in thinking you can have lines connecting
+the vertices.
+
+137
+00:07:12.360 --> 00:07:13.950
+So here I'm creating a polygon class.
+
+138
+00:07:13.950 --> 00:07:17.550
+And in the representation, I I create two
+slots.
+
+139
+00:07:17.550 --> 00:07:20.980
+One is called x, which contains the x
+coordinates of all of the vertices.
+
+140
+00:07:20.980 --> 00:07:21.610
+.
+
+141
+00:07:21.610 --> 00:07:23.780
+And then another slot is called y, and
+
+142
+00:07:23.780 --> 00:07:26.430
+that contains the y coordinates for all
+the vertices.
+
+143
+00:07:26.430 --> 00:07:30.119
+You can see that, so I've specified that
+the x and the y slots are to be numeric.
+
+144
+00:07:31.910 --> 00:07:34.560
+So if I create a polygon object the x
+
+145
+00:07:34.560 --> 00:07:36.870
+and the y slots have, have to have numeric
+data.
+
+146
+00:07:36.870 --> 00:07:39.900
+They can't have characters, they can't
+have integers, etcetera.
+
+147
+00:07:41.580 --> 00:07:45.950
+So now I've created a polygon class the
+next thing I probably want to
+
+148
+00:07:45.950 --> 00:07:51.250
+do is create a method for, for example,
+for plotting this, a polygon.
+
+149
+00:07:51.250 --> 00:07:55.080
+And so when you call the set method
+function you have to specify generic
+
+150
+00:07:55.080 --> 00:07:58.360
+functions such as plot, and then you have
+to specify something called a signature.
+
+151
+00:07:58.360 --> 00:08:00.984
+And so the signature is basically the, the
+set of
+
+152
+00:08:00.984 --> 00:08:05.000
+classes on which the generic on which the
+method will operate.
+
+153
+00:08:05.000 --> 00:08:06.050
+So in this, case I'm going to want to
+
+154
+00:08:06.050 --> 00:08:08.730
+create a method for the plot generic
+function.
+
+155
+00:08:08.730 --> 00:08:12.499
+The signature is basically going to be
+this Polygon Class that I just created.
+
+156
+00:08:15.720 --> 00:08:19.230
+So here's my method for the plot generic
+called the set method function.
+
+157
+00:08:19.230 --> 00:08:22.270
+The first argument is the name of the
+generic, and the second argument is the
+
+158
+00:08:22.270 --> 00:08:27.310
+signature, in this case, it's polygon and
+so you can see in this function it
+
+159
+00:08:27.310 --> 00:08:30.570
+takes an X and a Y argument and then the
+dot, dot, dot is for
+
+160
+00:08:30.570 --> 00:08:35.290
+kind of other arguments And so you can see
+that within so the x argument.
+
+161
+00:08:35.290 --> 00:08:37.720
+Is just the polygon object.
+
+162
+00:08:37.720 --> 00:08:39.990
+The y argument is missing there's no y
+argument here.
+
+163
+00:08:41.690 --> 00:08:45.600
+And so I can see that within the function
+I actually called plot again.
+
+164
+00:08:45.600 --> 00:08:49.480
+Right so here I'm creating a method for
+the polygon object.
+
+165
+00:08:49.480 --> 00:08:51.510
+And within the method I actually call plot
+again.
+
+166
+00:08:51.510 --> 00:08:53.880
+But that's going to be the default method
+for plot.
+
+167
+00:08:53.880 --> 00:08:56.740
+Because I'm just plotting some numeric
+vectors in that case.
+
+168
+00:08:56.740 --> 00:09:00.020
+So what this function does is it plots the
+vertices.
+
+169
+00:09:00.020 --> 00:09:02.730
+And then it sits, to set up the plotting
+window.
+
+170
+00:09:02.730 --> 00:09:06.460
+And it kind of wraps the vertices around
+themselves so that they kind of connect.
+
+171
+00:09:06.460 --> 00:09:09.990
+And then it uses the lines functions to to
+connect, connect, the dots.
+
+172
+00:09:09.990 --> 00:09:12.610
+And then after that, it makes my little
+polygon here.
+
+173
+00:09:12.610 --> 00:09:15.150
+And so that's the plotting method for
+polygon objects.
+
+174
+00:09:17.070 --> 00:09:19.680
+I know, notice that I, the plot, since,
+since plot already existed
+
+175
+00:09:19.680 --> 00:09:22.770
+as a generic function, I didn't have to
+create a new generic function.
+
+176
+00:09:24.000 --> 00:09:26.390
+And notice that when I want to access the
+slots
+
+177
+00:09:26.390 --> 00:09:29.680
+of an object in an s4 class, I use the at
+
+178
+00:09:29.680 --> 00:09:31.650
+symbol to so it's kind of like a list but
+
+179
+00:09:31.650 --> 00:09:33.740
+instead of using the dollar sign I use the
+at symbol.
+
+180
+00:09:36.810 --> 00:09:39.160
+So after I call the set method function,
+if I call
+
+181
+00:09:39.160 --> 00:09:43.680
+show methods on plot you can see that the
+the polygon method
+
+182
+00:09:43.680 --> 00:09:47.230
+has been added to the list here and then
+in addition to
+
+183
+00:09:47.230 --> 00:09:50.280
+the polygon method there is any method
+which is the default method.
+
+184
+00:09:52.640 --> 00:09:54.270
+So here I am creating.
+
+185
+00:09:54.270 --> 00:09:58.950
+I'm using the new function to create a
+polygon, an object from the polygon class.
+
+186
+00:09:58.950 --> 00:10:02.050
+I create the x vertices and I create the y
+vertices and now
+
+187
+00:10:02.050 --> 00:10:04.110
+when I call plot on it you can see that it
+doesn't just
+
+188
+00:10:04.110 --> 00:10:08.630
+call the default plot method, it actually
+calls my method that I just
+
+189
+00:10:08.630 --> 00:10:12.720
+created and you can see it draws this
+little triangle by connecting the dots.
+
+190
+00:10:14.960 --> 00:10:17.990
+So, that's a very simple example on how to
+
+191
+00:10:17.990 --> 00:10:21.280
+develop, create a new class and develop
+some new methods.
+
+192
+00:10:21.280 --> 00:10:23.300
+It's a in general developing classes and
+methods is
+
+193
+00:10:23.300 --> 00:10:27.010
+a very powerful way to extend the
+functionality of R.
+
+194
+00:10:27.010 --> 00:10:30.400
+And so just, so just to summarize, their
+classes define new data
+
+195
+00:10:30.400 --> 00:10:34.870
+type so they, they, they allow R to
+represent new types of data.
+
+196
+00:10:34.870 --> 00:10:39.040
+Methods extend generic functions to, to
+specify the behavior
+
+197
+00:10:39.040 --> 00:10:41.349
+of generic functions on these new classes
+that he developed.
+
+198
+00:10:42.460 --> 00:10:45.950
+And as you develop these new data types
+and these
+
+199
+00:10:45.950 --> 00:10:48.660
+new concepts and make a familiar to R, the
+classes and
+
+200
+00:10:48.660 --> 00:10:51.520
+methods give you a way to develop kind of
+an easier
+
+201
+00:10:51.520 --> 00:10:55.600
+interface for users to kind of interact
+with new types of data.
+
+202
+00:10:55.600 --> 00:10:57.320
+And so it's really a handy way to
+
+203
+00:10:57.320 --> 00:11:00.130
+kind of create new ,to allow users to
+interact with
+
+204
+00:11:00.130 --> 00:11:02.560
+new kinds of data without, without having
+to
+
+205
+00:11:02.560 --> 00:11:05.740
+get bogged down, a lot of the
+implementation details.
+
+206
+00:11:05.740 --> 00:11:08.270
+And one of the most popular ways to kind
+of make
+
+207
+00:11:08.270 --> 00:11:13.320
+new classes and methods available to users
+is through R packages.
+
+208
+00:11:13.320 --> 00:11:14.910
+And so, most commonly you'll see these
+
+209
+00:11:14.910 --> 00:11:17.770
+kinds of things embedded within an R
+package.

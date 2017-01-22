@@ -1,0 +1,39 @@
+Okay, so I've promised repeatedly
+that I was going to show you how to just use your own HTML, and
+I have a very quick way to do that. So, right now, what I did was, I took our last example, and
+I just saved the HTML that it was running. So I just did Control+U in Chrome,
+copied the HTML and dumped it in a file. But, importantly, where I dump that
+file is in a file named index.html, in a subdirectory called www. So, there is my server.R function. And then, in www, the directory called
+www, I put the file index.html. The index.html file,
+it has a lot of the preamble, most of which isn't
+necessary from the style, from the bootstrap style,
+that it gets from that package, okay? So, you can get rid of
+a lot of that stuff and just have the style be whatever you want. And maybe if you're not too familiar
+with working with web development, that sort of thing,
+what you can do is do exactly what I did. Start with a simple, shiny page, output
+the HTML, use that as your starting point, and then build off from there. But I think if you're familiar with
+web development, you can just start with a straight index.html file,
+blank HTML file, and work from there. So, the input's just work just
+like regular old HTML input. So, here I have input id="box1". So it's just, id is the label, just like we labeled it in the ui.R file,
+okay? So, it works just like you would think. And then, so in this example, we had three
+boxes labeled Box 1, Box 2, and Box 3. And so, there's my input, ID box 1. Here's my input ID equals box 2. And here's my input ID equals box 3. And all these div statements are because,
+shiny, Bootstrap uses this particular CSS style,
+and all these divs are all these nice little blocky structures
+that you see for the default style. Okay.
+And then, for the output out here, right, you can just see that it's
+referencing out2, right? And then,
+the important thing is the class, right? The class is shiny-text-output, okay? So, you could actually use
+an existing shiny app, a shiny prototype app,
+to get all these little things. Probably, if you're used to web
+development, what you wouldn't have known of off the bat is that the output
+class was called shiny-text-output. At any rate, this would give you,
+if you build a prototype, grab the HTML. This will give you enough to go on. And I think that this will
+be pretty useful for you. So, for example, now if I run my app,
+it should just look identical to what it was before because
+I just copied the same HTML. And, of course,
+you can see that it does look identical. So, I think this'll be very useful for the
+people who know a lot of web development. And I think, when I talk to people who are
+in that camp, they certainly find using R as an intermediary for
+web development as quite annoying. So, if you're in that camp,
+it's very easy to just use a straight HTML file rather than using R to actually
+put in your individual HTML elements.

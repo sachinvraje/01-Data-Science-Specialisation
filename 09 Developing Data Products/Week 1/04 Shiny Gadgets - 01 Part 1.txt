@@ -1,0 +1,64 @@
+So hi, My name is Brian Caffo, and I am going to talk about
+Shiny Gadgets during this lecture. I'd like to thank Shaun Cross, who works with the Data Science Lab here
+with us, for preparing these slides. So, we used to have, we used to
+cover a topic called Manipulate. And manipulate was a little r
+package that was produced and created by our studio for
+use in our studio. For simple interactive and
+easy data analysis. So if you needed some interactive plots or
+something like that in the data analysis, Manipulate was a nice way to do it. However, they seem to have stopped
+developing on Manipulate and I think I know why. Because the Shiny environment is just
+kind of a better way to do it and with shiny gadgets,
+you can now do the same thing. Within the the RStudio program and it basically serves the same function
+of what Manipulate used to do. So, just to discuss. The Shiny Gadgets is going to provide a
+way to just use Shiny's interactivity, but in data analysis. So, it's going to be an easier and
+quicker way to use it and it's not going to be
+the full web development. We're going to be using Shiny, for where we wanted kind of a forward facing
+app that other people are going to use. Shiny Gadgets is more for us or maybe for a handful of other people that
+are working for us on data analysis. And then, since we are going to
+display the app in the small screen in our studio program. We're going to use the mini
+UI package which gives us, which helps us create the interfaces for
+the smaller screen. Okay, so I'm going to read
+a little bit of this slide, just because I think
+this is the core here. So, a shiny gadget is a function
+that launches a small single page shiny application In
+the RStudio viewer pane. And again, since they're going to be
+viewed in the RStudio viewer pane, the miniUI package comes in handy. So what we're going to do next is, we're
+going to create a simple shiny gadget. And then, we're going to reduce it down
+to the simplest possible program and go to the element. So I'm to switch over and
+do a code demonstration now. Okay, so here I am in our studio. I've got the simplest
+possible shiny gadget that I grabbed from the code from the slides. Okay, the first two things that I'm
+going to do is make sure Shiny and mini UI are loaded. And if you don't have them,
+just make sure to do install.packages. Or you can of course, add in the patches by clicking your way
+to victory up here with the toolbars. But just do install.packages. It works for my version of R. Right now, my version is 3.2.1,
+so it's a little bit old. But I think if you have a really old
+version of r, you probably want to update. Since this is some relatively
+new developments from RStudio, so if you're running a very old
+version of R, then just update. It's pretty easy to do, so
+I would go ahead and do that. So your gadget is going to be a function. My first gadget here is the R function,
+okay. No arguments right now,
+we'll get to that later and just like a Shiny app, it's got a user
+interface and a server function. So, my UI here says mini page and
+that's just the layout we're going to use. That's from the mini UI library and so, we have the simplest
+possible page that we can create. All it's going to have is a title bar,
+so the command for adding a title bar element
+is gadgetTitleBar. And let's just call it My First Gadget,
+okay now my server is also a function. And it takes some argument Input,
+output and session, okay. And then,all our server
+is going to do now is, it's just going to check the input for
+this variable done, okay. And use the observe event function for
+when that's true to stop the app, okay? So just, I know this syntax,
+Select Shiny is a little bit weird and a little bit unusual relative to
+how we normally program an hour. But I think once you get used to it, the one thing you want to make sure
+is all the rules about reactivity. And things like that are going to
+carry over from Shiny into our Shiny gadgets, okay. And then, we have our function that
+is runGadget ui and server, okay. So, everything is now
+contained in this function. So, I need to source it. [NOISE] There we go and now, let's run it, myFirstGadget Bam, okay? Now, see it says listening. So, it's created a little web server. And now,
+our studio is rendering the web page and listening to the server right
+here in this viewer pane. And it just says My First Gadget, so
+it doesn't do much right now, but if you click done, it just brings
+you back to the RPrompt there. Okay, so this is important first step
+to getting used to Shiny Gadgets but as you've already taken and
+done some Shiny. I think a lot of the more complex
+ideas and Shiny like activities and things like that will come very naturally. As we move further along in Shiny Gadgets. So what I like everybody do now is, if we're going on to the next video, just
+grab this code from the selection notes. Run it once, and then we'll move
+on to some more complex things.

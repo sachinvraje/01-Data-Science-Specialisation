@@ -1,0 +1,106 @@
+WEBVTT
+
+1
+00:00:02.250 --> 00:00:07.060
+Hi, my name is Bryan Caffo and welcome
+to the Developing Data Products course.
+
+2
+00:00:07.060 --> 00:00:08.890
+This course is about building tools for
+
+3
+00:00:08.890 --> 00:00:13.730
+improving the data analysis process,
+making data driven decisions, or
+
+4
+00:00:13.730 --> 00:00:17.290
+for other infrastructure that
+supports other data products.
+
+5
+00:00:18.440 --> 00:00:20.950
+This is the second version of the class,
+and
+
+6
+00:00:20.950 --> 00:00:24.140
+it's been co-developed by Shaun Cross
+who's also in the Department of
+
+7
+00:00:24.140 --> 00:00:27.670
+Biostatistics at the Johns Hopkins
+Bloomberg School of Public Health.
+
+8
+00:00:27.670 --> 00:00:31.590
+We've updated much of the old content and
+we're including lots of new techniques for
+
+9
+00:00:31.590 --> 00:00:34.120
+building in-demand data tools in R.
+
+10
+00:00:34.120 --> 00:00:37.290
+So just to preview some of
+the topics we'll be covering.
+
+11
+00:00:37.290 --> 00:00:42.280
+With the R Markdown package you can
+create websites, PDFs, presentations, and
+
+12
+00:00:42.280 --> 00:00:46.980
+even e-books from a single file in R in
+a way that you're very comfortable and
+
+13
+00:00:46.980 --> 00:00:47.510
+familiar with.
+
+14
+00:00:47.510 --> 00:00:51.130
+We'll teach the latest
+features of the Shiny package
+
+15
+00:00:51.130 --> 00:00:54.120
+which you can use to create
+interactive web applications in R.
+
+16
+00:00:54.120 --> 00:00:58.200
+We'll talk about interactive
+graphics using Plotly and
+
+17
+00:00:58.200 --> 00:01:02.855
+Leaflet which allows you to create
+beautiful maps that you can share online.
+
+18
+00:01:02.855 --> 00:01:07.300
+We'll do similar things with the package
+GoogleViz which allows you to create maps
+
+19
+00:01:07.300 --> 00:01:09.200
+and interactive graphics and tables.
+
+20
+00:01:10.920 --> 00:01:15.650
+We've also added how to use swirl and
+swirlify to design courses in R so
+
+21
+00:01:15.650 --> 00:01:17.010
+that you can share your knowledge.
+
+22
+00:01:18.710 --> 00:01:21.480
+So thanks for joining and we look
+forward to seeing you in the class.

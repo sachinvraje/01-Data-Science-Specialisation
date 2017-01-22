@@ -1,0 +1,53 @@
+Okay, so
+our last example was kind of silly. In that, the function really do anything,
+it just have a button that you click and then it was done. And it just took you back to the R prompt. It also has a cancel button by
+default that will stop the gadget and just return your R prompt
+to quit the server running. Okay, so now let's just show you how
+you can include some arguments in your Shiny Gadget, and we're going to do
+some just simple manipulations of course just because we're going to try and
+show it in its simplest version, and I think once you get
+the gist of how to code it, then you can figure out how to
+do it with your own application. So, let's go through the code. The code here has two parts because it
+was just hard to fit on the screen. So, here's the first part, and
+then the second page is the second part. So remember, of course,
+our shiny gadget has to have the UI part, in this case we're again doing mini page. And then the server part, okay? And of course, we have to have our two libraries loaded up so just make sure, you have that, okay. So, our gadget title is just
+going to be multiply to numbers are a content panels so
+this is new right here. Mini content panels so that's just going to be main body
+of the little pane there, okay. And it's going to have selector input,
+which is going to be like a drag down box, and it's going to have two variables, the
+variable one is going to be labeled num1, and num2, so if we have to reference them
+later, they're going to have that name. And then these are the displayed labels
+and the choices are right here and the choices come from this two arguments
+right here in the function, okay. So, that's going to display
+our user-interface. And then our server, okay. Again, it's going to have input,
+output, and session. We're still going to have the input$done. Variable in the observe event, just to let
+Shiny know that when it's done to quit. And then, we're going to remember
+to have this curly braces here. Remember that kind of odd
+syntax that Shiny has. So just probably the number one
+mistake everyone makes in coding Shiny applications is forgetting to put
+the curly braces in, in the right spot or forgetting to close a brace and
+that sort of thing. Okay, so we're just going to actually
+name in this environment a num1 and num2 as the just input values just so
+that there are easier to work with, okay. And then we're going to
+multiply them together. And the stopApp function is just
+going to tell it to stop and display the result of
+num1 multiply times num2. And remember we have to have
+a runGadget in there and it specify what is the UI and
+what is the server. So technically you could name UI and
+server something else. But by convention I
+think no one does that. Okay, so let's go to the code
+demonstration and see how it works. Okay, so I have my function that I
+copied from the R mark down document. Let's just make sure I've got
+the two libraries loaded. Okay, now let's run our function. I've already run it before, I'm sorry,
+I already went over all the components before, but now let's actually
+see what happens when we run it. Okay, so, obviously nothing, because
+this is just defining the function. Now let's do it, there is it, good. And let's give as choices
+the numbers 1:10 and 1:10. Let's say we're learning our
+multiplication tables and we want this to help us check them. So I want to do 4 and 7,
+hopefully it will give me 28. And then when I click done. Go back in the R pane, see it gave you 28. Okay, so this is just a baby step
+towards some really useful things. But we were able to put in some choices,
+select among them and then have R do some numeric
+manipulations and spit them out. And I am hoping now you can start to
+see the direction that Shiny gadgets is going to go from here to
+actually be useful for you. So next we'll actually do
+an interactive graphic.

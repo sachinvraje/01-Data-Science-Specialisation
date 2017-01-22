@@ -1,0 +1,44 @@
+All right, so let's create a map
+with some nice hover-over effects. So the first thing I'm going to do
+is these two statements right here. There's a little bit of
+code in this example. So I'm not going to go over
+every single little detail. But let me just create this dataset,
+and then show it to you. Let me just get the first couple rows. Okay, so notice there's 50 of them, so
+you can see at the end there's 50 of them, so for
+each state we have its abbreviation. Okay, so take Alabama for example, we have it's population in millions,
+and then we have some hover-over text. So this hover-over text is going to
+be the state abbreviation, Alabama, then a line break,
+then population 3,615,000. This is population in 1975. Okay. The borders,
+this is just going to be an option. This is kind of unnecessary, but
+we're just going to make those red. Okay. And then map options, again,
+it's going to be a list. The scope,
+we want the USA to be the scope. And just play around with these options. I think, you'll have to just, if you want
+to dramatically change this map, do it for a different area or country, you'll have
+to flub your way through it a little bit, but I think a lot of it is quite obvious. Like showlakes = TRUE,
+just means you're going to show the lakes. Lake color white, so in this case
+I think we changed the lake color to white just because the color
+coding we're using is blue for population, so we didn't want the lakes to be blended in with the states
+with the same color of blue. Okay, so then plot_ly,
+again, is the command, the state_pop is just the data frame,
+okay. z is the population, text is equals hover, that's just means we want
+some hover-over text. The locations are given
+by the column name State, type is choropleth,
+location mode is USA-states. Color is we're going to
+color-code by the population. The colors, this is just,
+the palette it’s using in this case is just the blues which is just
+a continuous shade of blue. And then this gives how it's
+going to draw the markers, in this case on the borders. And this is then passed, the output
+of plot_ly is then passed to layout, which also then gives it not only a title,
+but then it brings in these map options. Okay? So, let's go ahead and run that. And for me, it wouldn't, I guess, maybe,
+this is just too complicated, but it wouldn't display in the viewer for me. So I'm going to click Save as Web Page,
+and just overwrite the kind of template web page
+that I've been using for this example. And there it is in my browser window. So, now what I hover over a state,
+it's got the state's population. So we could go to Alabama, for example. You can see that's the exact text
+we wanted right there, Alabama. Okay? All right, so try and create a map. First thing I would say is take this
+data frame that we're looking at, it's got other columns in it,
+not just population, and try and create some other maps and
+output them to web pages. And I think as you go through it,
+you'll get a better feel for the options. So as a start, just recreate this map, and then try to recreate one with
+some of the different variables. Try to have the color
+mean a different thing. And I think you'll find this is a pretty
+handy way to create interactive maps

@@ -1,0 +1,66 @@
+WEBVTT
+
+1
+00:00:01.130 --> 00:00:03.720
+Okay let's show some formatting options.
+
+2
+00:00:03.720 --> 00:00:08.458
+So if I just put in Plain text, and
+
+3
+00:00:08.458 --> 00:00:15.588
+italicized text, and
+notice it auto formats it.
+
+4
+00:00:15.588 --> 00:00:18.310
+Then Bold text.
+
+5
+00:00:20.180 --> 00:00:26.730
+Or I'm sorry,
+it's syntax highlights it I should say.
+
+6
+00:00:26.730 --> 00:00:29.800
+And then, in 1: 10, here's some code.
+
+7
+00:00:29.800 --> 00:00:33.560
+Okay, so the code has single right
+
+8
+00:00:34.760 --> 00:00:39.250
+facing quotation marks,
+bold has two asterisk.
+
+9
+00:00:40.830 --> 00:00:43.160
+Italics has one asterisk.
+
+10
+00:00:43.160 --> 00:00:45.380
+And then plain of course has nothing.
+
+11
+00:00:45.380 --> 00:00:47.670
+The asterisk has to be next
+to the leading character.
+
+12
+00:00:47.670 --> 00:00:51.150
+So if you do it like that,
+I've noticed it doesn't work sometimes.
+
+13
+00:00:51.150 --> 00:00:53.110
+So, have it next to the leading character.
+
+14
+00:00:53.110 --> 00:00:54.840
+I think that's necessary.
+
+15
+00:00:56.600 --> 00:00:57.973
+And then let's run it.

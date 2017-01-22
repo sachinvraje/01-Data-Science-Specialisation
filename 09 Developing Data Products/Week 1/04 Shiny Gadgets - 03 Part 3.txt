@@ -1,0 +1,68 @@
+Okay, so one of the most useful things
+we can do with Shiny gadgets is create interactive plots. Now I know many of you are familiar with
+Shiny syntax because we've already done the modules on Shiny. So we're not going to spend a lot of time
+re-doing that in the context of Shiny gadgets. We're just going to go over one example,
+and hopefully you'll be able to build and generalize off of those using your
+knowledge of Shiny and a little bit of extra syntax that we need for
+Shiny gadgets to put the two together and do what you need in using Shing
+gadgets as will be useful for you. So what we want to do
+in this example is plot the trees data set, and
+plot the girth by volume, and have a cross hair where we can
+select a rectangle, and that our function will then output a data
+frame of the trees from that rectangle. Okay, so let's try and do this. So again, we as always have to do library(shiny) and library(mini) UI. Our shiny gadget is a function, okay? And we have to have a user interface. And it's going to be
+minipage from the mini UI. We have a Title bar, gadgetTitleBar,
+select points by dragging your mouse. And then in the miniContentPanel, so just in the main content
+panel of our Shiny app, we're going to have a plot and the name of that plot is going to be plot,
+okay? So, and
+we'll refer back to that here in a second, when we get to the second
+part of the code, okay? We want the height to be 100%. Just because that's going to make it look. That's going to make it take up
+as much of the page as we can. And then this is an option is
+to actually have the brush. That's going to be the crosshairs
+that select the point. But notably, we're going to
+name the brush, brush, okay? So let's go to the server and remember
+those two things we named plot and brush, okay? Where do those named outputs, where do those named inputs come in,
+in our server function? Okay, output$plot Is going to
+be this renderPlot statement. And remember from Shiny, when we
+render a plot to be displayed, it has to have this kind of reactive notation
+of a parenthesis then curly braces, and you've gotta get them both,
+otherwise it will give you an error. So we're going to plot, the actual plot
+that we're going to plot is going to plot the data set trees girth by volume. The title is going to be trees and it's going to have an x label of girth and
+a y label of volume. Okay, so that's the plot that's
+going to get passed back to the UI with the variable named plot. And then observeEvent, again we're
+going to finish the app if it's done, okay, and
+we have our curly braces right here again. And then we are going to stop
+the app after we collect the brush points which is just
+after we select a rectangle from the trees data set and
+the input is $brush. That's the variable from before when we
+declared in our plots statement in UI and named our brush, brush. This is what we're using it here,
+that's the input. And then the xvar and the yvar here
+have to be named the same thing. And they have to be the correct
+names from the data set trees, okay. And then we have our run gadget statement. So let's run this and see what it does and hopefully you can see that this is kind of
+starting to become a pretty useful tool. Okay, so we're going to load up Shiny and
+mini UI. And again, you only have to do this
+once if you've done it before. If you have multiple gadgets. But I'm doing it every time because
+I'm often restarting the R server. Or I'm sorry,
+I'm off to restarting the R session. So here's my Shiny gadget function,
+pick trees. Okay, now let me run it. Doesn't take any arguments, there it is,
+starts at the little server, and here is my plot. Okay, now what I can do is select say this
+collection of points right here, okay? And now that I've selected it and
+I can actually move it around by the way. But I want those points right there and you can move the box in, okay. Then when I click done,
+and I go over here. It's giving me those data points. So you could, for example, assign this to treesIPicked, okay. And then when I do it, I click Done. And if I do trees, there we go. There they are. So that's the way that you can,
+in this case, this might be useful for example if you wanted to pick outliers from a data analysis where you want to
+know specifically what points they were. Notice it's keeping the original
+data frame row numbers there so you could actually refer back
+to the data frame itself. Okay, so just to be clear
+about the naming, right, so if I had named this plot1 for
+example instead of plot and I redid it. My plot doesn't show up and the reason is
+because I named my plot plot, not plot1. So let's cancel that,
+we have an error there. So let's say for example if we name
+this brush1 instead of brush, okay? Let's do it, okay. Now when I run it,
+it gives me no output, why? Because it's looking for
+input brush, not input brush1. And input brush had no input. Okay, so I hope this gives you some
+tools that you can use and build on so that you can start building
+your own Shiny gadgets. I think this is probably worth learning,
+if only for the interactive graphics. Because interactive graphics are so
+useful, and it's not something that
+R has really done well. Internally and so having this add-on
+through RStudio is really a useful thing. So just for that reason alone, it's
+probably worth learning, shiny gadgets and building that into your workflow.

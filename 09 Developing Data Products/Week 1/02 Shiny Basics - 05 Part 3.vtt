@@ -1,0 +1,316 @@
+WEBVTT
+
+1
+00:00:00.640 --> 00:00:05.130
+So remember that when we're
+building our Shiny app,
+
+2
+00:00:05.130 --> 00:00:08.880
+at least when we're using
+the default type work flow,
+
+3
+00:00:08.880 --> 00:00:13.860
+we're going to be using R
+to put in our HTML element.
+
+4
+00:00:13.860 --> 00:00:19.030
+So all of the really standard
+HTML tags exist in Shiny.
+
+5
+00:00:19.030 --> 00:00:23.510
+So you have all of the heading tags,
+oops, let me get my pen, pen here.
+
+6
+00:00:23.510 --> 00:00:30.680
+We have all of our heading tags,
+h1 through h6, the little p hyper-refs,
+
+7
+00:00:30.680 --> 00:00:35.010
+and divs, and spans, and
+all the most common ones.
+
+8
+00:00:35.010 --> 00:00:39.650
+So if you do ?builder, it'll give just
+a complete list of all the various
+
+9
+00:00:41.000 --> 00:00:42.980
+HTML tags you can use.
+
+10
+00:00:42.980 --> 00:00:48.280
+Later on, we'll actually show you
+how you can use your own HTML file,
+
+11
+00:00:48.280 --> 00:00:53.610
+so that you can use whatever you
+want to build your Shiny app.
+
+12
+00:00:53.610 --> 00:00:56.780
+And you can make your page
+as elaborate as you'd like.
+
+13
+00:00:56.780 --> 00:00:59.659
+For right now, we're just going to
+be using the built-in functions.
+
+14
+00:01:00.680 --> 00:01:02.310
+So in the next code example,
+
+15
+00:01:02.310 --> 00:01:04.950
+I'm just going to show you the different
+headings and things like that.
+
+16
+00:01:06.260 --> 00:01:08.710
+So we're just going to show
+you the different kinds of
+
+17
+00:01:08.710 --> 00:01:10.950
+HTML tags that we can use or
+just a subset of them.
+
+18
+00:01:10.950 --> 00:01:15.359
+So mostly, I'm going to go over this one,
+to formatting tags, so
+
+19
+00:01:15.359 --> 00:01:20.503
+here in my UI.R function, here,
+I've just put a couple of the headings,
+
+20
+00:01:20.503 --> 00:01:25.178
+I've copied this code from the next
+slide on the slide deck, okay?
+
+21
+00:01:25.178 --> 00:01:29.780
+So here, we have h1, h2, h3,
+these all occur in the sidebar layout.
+
+22
+00:01:29.780 --> 00:01:33.850
+I give some emphasized text right here,
+and here,
+
+23
+00:01:33.850 --> 00:01:36.770
+I give some code text,
+which will put it in a mono space format.
+
+24
+00:01:36.770 --> 00:01:39.470
+You want to do that when you're displaying
+code, you always want to display,
+
+25
+00:01:39.470 --> 00:01:43.160
+just like when you're editing code,
+you always want it in a mono space format.
+
+26
+00:01:43.160 --> 00:01:47.970
+Okay, so you want to run the app now,
+and there,
+
+27
+00:01:47.970 --> 00:01:50.500
+you can see it,
+the different heading values and so
+
+28
+00:01:50.500 --> 00:01:55.330
+on, okay, the main panel,
+the code listed in some mono space format.
+
+29
+00:01:55.330 --> 00:02:01.303
+So you can look at all these
+things just by doing ?builder.
+
+30
+00:02:01.303 --> 00:02:05.000
+Okay, and there we go.
+
+31
+00:02:05.000 --> 00:02:06.860
+These are all the different
+html tags that you have.
+
+32
+00:02:08.260 --> 00:02:11.870
+Another thing you can do,
+let me run the app again, so it's running.
+
+33
+00:02:11.870 --> 00:02:15.080
+Okay, if you just click
+on Open in Browser,
+
+34
+00:02:15.080 --> 00:02:17.960
+it will open it up in a web browser, okay?
+
+35
+00:02:17.960 --> 00:02:21.704
+And here is your html tags,
+but I just want to do Ctrl+U.
+
+36
+00:02:21.704 --> 00:02:28.053
+So that you can actually just see the R
+code then effectively creates a webpage,
+
+37
+00:02:28.053 --> 00:02:33.197
+and here, you can actually see
+the webpage that it's created.
+
+38
+00:02:33.197 --> 00:02:36.629
+You can see the JavaScript
+libraries that it loads up and so
+
+39
+00:02:36.629 --> 00:02:38.460
+on to actually run Shiny.
+
+40
+00:02:38.460 --> 00:02:41.550
+But more importantly, so I probably
+wouldn't worry too much about the head,
+
+41
+00:02:41.550 --> 00:02:44.220
+unless you're familiar with
+a little bit of JavaScript.
+
+42
+00:02:45.920 --> 00:02:48.270
+Most of what this stuff is,
+
+43
+00:02:48.270 --> 00:02:53.670
+is style sheets in the Twitter
+bootstrap stuff, which is the style,
+
+44
+00:02:53.670 --> 00:02:57.640
+the formatting for all the buttons and
+style and everything that Shiny uses.
+
+45
+00:02:57.640 --> 00:03:02.040
+But also, it has some of the input,
+output things that Shiny requires as well.
+
+46
+00:03:02.040 --> 00:03:07.010
+But most of the stuff we're displaying
+is here in this part in the body and
+
+47
+00:03:07.010 --> 00:03:10.120
+then you can just see how
+it uses the function and
+
+48
+00:03:10.120 --> 00:03:14.360
+how it creates the HTML commands, okay?
+
+49
+00:03:14.360 --> 00:03:18.530
+So it's just translating your UI.R
+into this function right here.
+
+50
+00:03:18.530 --> 00:03:20.700
+And this is a useful thing to do,
+
+51
+00:03:20.700 --> 00:03:24.830
+especially when you start to do things
+like named buttons and things like that.
+
+52
+00:03:24.830 --> 00:03:27.471
+You can see how it actually
+goes into the HTML.
+
+53
+00:03:27.471 --> 00:03:31.432
+And in fact, if you're comfortable with
+Shiny, but not very comfortable with HTML,
+
+54
+00:03:31.432 --> 00:03:33.563
+this will be a way to get
+used to coding in HTML.
+
+55
+00:03:33.563 --> 00:03:37.478
+because I think, at some point, if you're
+going to want to develop fancy enough
+
+56
+00:03:37.478 --> 00:03:42.034
+webpages that call R on the back end, even
+if you're using Shiny as the mechanism for
+
+57
+00:03:42.034 --> 00:03:46.013
+doing that, you probably are going to
+want to be developing your own webpages
+
+58
+00:03:46.013 --> 00:03:47.258
+and not using a UI.R.
+
+59
+00:03:47.258 --> 00:03:48.297
+Okay, so hopefully,
+
+60
+00:03:48.297 --> 00:03:52.080
+this gets you a little bit of familiarity
+with using some of the HTML tags.
+
+61
+00:03:52.080 --> 00:03:56.604
+Play around with them, and try and
+design just a simple webpage with no
+
+62
+00:03:56.604 --> 00:04:00.681
+interactivity, just a webpage
+that shows what you like on it.
+
+63
+00:04:00.681 --> 00:04:03.973
+Okay, and then next, we're going to start
+working towards adding some buttons and
+
+64
+00:04:03.973 --> 00:04:06.547
+some sliders and some graphs, and
+calling R in the back end, and
+
+65
+00:04:06.547 --> 00:04:08.760
+some of the important things
+that Shiny will do for us.

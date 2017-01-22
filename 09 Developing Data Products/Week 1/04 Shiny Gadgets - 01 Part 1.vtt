@@ -1,0 +1,436 @@
+WEBVTT
+
+1
+00:00:00.910 --> 00:00:02.710
+So hi, My name is Brian Caffo,
+
+2
+00:00:02.710 --> 00:00:06.740
+and I am going to talk about
+Shiny Gadgets during this lecture.
+
+3
+00:00:06.740 --> 00:00:08.710
+I'd like to thank Shaun Cross,
+
+4
+00:00:08.710 --> 00:00:14.080
+who works with the Data Science Lab here
+with us, for preparing these slides.
+
+5
+00:00:15.450 --> 00:00:19.180
+So, we used to have, we used to
+cover a topic called Manipulate.
+
+6
+00:00:19.180 --> 00:00:23.780
+And manipulate was a little r
+package that was produced and
+
+7
+00:00:23.780 --> 00:00:28.150
+created by our studio for
+use in our studio.
+
+8
+00:00:28.150 --> 00:00:33.380
+For simple interactive and
+easy data analysis.
+
+9
+00:00:33.380 --> 00:00:37.214
+So if you needed some interactive plots or
+something like that in the data analysis,
+
+10
+00:00:37.214 --> 00:00:39.350
+Manipulate was a nice way to do it.
+
+11
+00:00:39.350 --> 00:00:43.060
+However, they seem to have stopped
+developing on Manipulate and
+
+12
+00:00:43.060 --> 00:00:44.170
+I think I know why.
+
+13
+00:00:44.170 --> 00:00:49.320
+Because the Shiny environment is just
+kind of a better way to do it and
+
+14
+00:00:49.320 --> 00:00:52.230
+with shiny gadgets,
+you can now do the same thing.
+
+15
+00:00:52.230 --> 00:00:56.690
+Within the the RStudio program and
+
+16
+00:00:56.690 --> 00:01:00.400
+it basically serves the same function
+of what Manipulate used to do.
+
+17
+00:01:00.400 --> 00:01:03.120
+So, just to discuss.
+
+18
+00:01:04.460 --> 00:01:09.270
+The Shiny Gadgets is going to provide a
+way to just use Shiny's interactivity, but
+
+19
+00:01:09.270 --> 00:01:10.440
+in data analysis.
+
+20
+00:01:10.440 --> 00:01:14.076
+So, it's going to be an easier and
+quicker way to use it and
+
+21
+00:01:14.076 --> 00:01:17.960
+it's not going to be
+the full web development.
+
+22
+00:01:17.960 --> 00:01:19.650
+We're going to be using Shiny, for
+
+23
+00:01:19.650 --> 00:01:25.220
+where we wanted kind of a forward facing
+app that other people are going to use.
+
+24
+00:01:25.220 --> 00:01:27.600
+Shiny Gadgets is more for us or maybe for
+
+25
+00:01:27.600 --> 00:01:32.090
+a handful of other people that
+are working for us on data analysis.
+
+26
+00:01:32.090 --> 00:01:36.820
+And then, since we are going to
+display the app in the small screen
+
+27
+00:01:36.820 --> 00:01:38.498
+in our studio program.
+
+28
+00:01:38.498 --> 00:01:42.050
+We're going to use the mini
+UI package which gives us,
+
+29
+00:01:42.050 --> 00:01:45.845
+which helps us create the interfaces for
+the smaller screen.
+
+30
+00:01:45.845 --> 00:01:49.200
+Okay, so I'm going to read
+a little bit of this slide,
+
+31
+00:01:50.230 --> 00:01:52.520
+just because I think
+this is the core here.
+
+32
+00:01:52.520 --> 00:01:56.620
+So, a shiny gadget is a function
+that launches a small single page
+
+33
+00:01:56.620 --> 00:01:59.850
+shiny application In
+the RStudio viewer pane.
+
+34
+00:02:01.130 --> 00:02:05.900
+And again, since they're going to be
+viewed in the RStudio viewer pane,
+
+35
+00:02:05.900 --> 00:02:08.490
+the miniUI package comes in handy.
+
+36
+00:02:08.490 --> 00:02:13.310
+So what we're going to do next is, we're
+going to create a simple shiny gadget.
+
+37
+00:02:13.310 --> 00:02:16.721
+And then, we're going to reduce it down
+to the simplest possible program and
+
+38
+00:02:16.721 --> 00:02:17.570
+go to the element.
+
+39
+00:02:17.570 --> 00:02:20.459
+So I'm to switch over and
+do a code demonstration now.
+
+40
+00:02:21.700 --> 00:02:24.040
+Okay, so here I am in our studio.
+
+41
+00:02:24.040 --> 00:02:28.480
+I've got the simplest
+possible shiny gadget that I
+
+42
+00:02:28.480 --> 00:02:32.910
+grabbed from the code from the slides.
+
+43
+00:02:32.910 --> 00:02:37.770
+Okay, the first two things that I'm
+going to do is make sure Shiny and
+
+44
+00:02:37.770 --> 00:02:39.180
+mini UI are loaded.
+
+45
+00:02:39.180 --> 00:02:42.960
+And if you don't have them,
+just make sure to do install.packages.
+
+46
+00:02:42.960 --> 00:02:44.400
+Or you can of course,
+
+47
+00:02:44.400 --> 00:02:48.960
+add in the patches by clicking your way
+to victory up here with the toolbars.
+
+48
+00:02:48.960 --> 00:02:51.240
+But just do install.packages.
+
+49
+00:02:51.240 --> 00:02:52.870
+It works for my version of R.
+
+50
+00:02:52.870 --> 00:02:57.270
+Right now, my version is 3.2.1,
+so it's a little bit old.
+
+51
+00:02:57.270 --> 00:03:00.700
+But I think if you have a really old
+version of r, you probably want to update.
+
+52
+00:03:00.700 --> 00:03:05.720
+Since this is some relatively
+new developments from RStudio,
+
+53
+00:03:05.720 --> 00:03:10.540
+so if you're running a very old
+version of R, then just update.
+
+54
+00:03:10.540 --> 00:03:14.490
+It's pretty easy to do, so
+I would go ahead and do that.
+
+55
+00:03:14.490 --> 00:03:16.650
+So your gadget is going to be a function.
+
+56
+00:03:16.650 --> 00:03:20.480
+My first gadget here is the R function,
+okay.
+
+57
+00:03:20.480 --> 00:03:23.870
+No arguments right now,
+we'll get to that later and
+
+58
+00:03:23.870 --> 00:03:29.260
+just like a Shiny app, it's got a user
+interface and a server function.
+
+59
+00:03:29.260 --> 00:03:34.150
+So, my UI here says mini page and
+that's just the layout we're going to use.
+
+60
+00:03:34.150 --> 00:03:39.618
+That's from the mini UI library and
+
+61
+00:03:39.618 --> 00:03:44.290
+so, we have the simplest
+possible page that we can create.
+
+62
+00:03:44.290 --> 00:03:48.530
+All it's going to have is a title bar,
+so the command for
+
+63
+00:03:48.530 --> 00:03:51.540
+adding a title bar element
+is gadgetTitleBar.
+
+64
+00:03:51.540 --> 00:03:57.050
+And let's just call it My First Gadget,
+okay now my server is also a function.
+
+65
+00:03:57.050 --> 00:04:02.614
+And it takes some argument Input,
+output and session, okay.
+
+66
+00:04:02.614 --> 00:04:05.699
+And then,all our server
+is going to do now is,
+
+67
+00:04:05.699 --> 00:04:10.910
+it's just going to check the input for
+this variable done, okay.
+
+68
+00:04:10.910 --> 00:04:17.929
+And use the observe event function for
+when that's true to stop the app, okay?
+
+69
+00:04:17.929 --> 00:04:22.380
+So just, I know this syntax,
+Select Shiny is a little bit weird and
+
+70
+00:04:22.380 --> 00:04:26.730
+a little bit unusual relative to
+how we normally program an hour.
+
+71
+00:04:26.730 --> 00:04:28.600
+But I think once you get used to it,
+
+72
+00:04:28.600 --> 00:04:33.480
+the one thing you want to make sure
+is all the rules about reactivity.
+
+73
+00:04:33.480 --> 00:04:36.310
+And things like that are going to
+carry over from Shiny into our
+
+74
+00:04:36.310 --> 00:04:38.070
+Shiny gadgets, okay.
+
+75
+00:04:38.070 --> 00:04:42.740
+And then, we have our function that
+is runGadget ui and server, okay.
+
+76
+00:04:42.740 --> 00:04:46.120
+So, everything is now
+contained in this function.
+
+77
+00:04:46.120 --> 00:04:47.175
+So, I need to source it.
+
+78
+00:04:47.175 --> 00:04:53.580
+[NOISE] There we go and now, let's run it,
+
+79
+00:04:53.580 --> 00:04:57.975
+myFirstGadget Bam, okay?
+
+80
+00:04:57.975 --> 00:05:01.130
+Now, see it says listening.
+
+81
+00:05:01.130 --> 00:05:04.260
+So, it's created a little web server.
+
+82
+00:05:04.260 --> 00:05:10.100
+And now,
+our studio is rendering the web page and
+
+83
+00:05:10.100 --> 00:05:13.420
+listening to the server right
+here in this viewer pane.
+
+84
+00:05:13.420 --> 00:05:18.230
+And it just says My First Gadget, so
+it doesn't do much right now, but
+
+85
+00:05:18.230 --> 00:05:22.470
+if you click done, it just brings
+you back to the RPrompt there.
+
+86
+00:05:22.470 --> 00:05:26.350
+Okay, so this is important first step
+to getting used to Shiny Gadgets but
+
+87
+00:05:26.350 --> 00:05:29.190
+as you've already taken and
+done some Shiny.
+
+88
+00:05:29.190 --> 00:05:33.360
+I think a lot of the more complex
+ideas and Shiny like activities and
+
+89
+00:05:33.360 --> 00:05:35.520
+things like that will come very naturally.
+
+90
+00:05:35.520 --> 00:05:37.920
+As we move further along in Shiny Gadgets.
+
+91
+00:05:37.920 --> 00:05:40.630
+So what I like everybody do now is,
+
+92
+00:05:40.630 --> 00:05:45.800
+if we're going on to the next video, just
+grab this code from the selection notes.
+
+93
+00:05:45.800 --> 00:05:48.990
+Run it once, and then we'll move
+on to some more complex things.

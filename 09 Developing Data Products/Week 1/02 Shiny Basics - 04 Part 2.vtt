@@ -1,0 +1,458 @@
+WEBVTT
+
+1
+00:00:01.040 --> 00:00:03.910
+Okay, so let's go ahead and
+create our first app.
+
+2
+00:00:03.910 --> 00:00:07.020
+So you need a relatively
+recent version of RStudio or
+
+3
+00:00:07.020 --> 00:00:10.830
+I think you should have a relatively
+recent version of RStudio
+
+4
+00:00:10.830 --> 00:00:12.820
+just because of some
+things like the filing.
+
+5
+00:00:12.820 --> 00:00:18.300
+So I think probably the easiest
+way to start is Alt+F or File,
+
+6
+00:00:18.300 --> 00:00:23.570
+and then New File, and
+then Shiny Web App, okay?
+
+7
+00:00:23.570 --> 00:00:27.650
+So when you click that, it brings up
+a thing, name it whatever you want, so
+
+8
+00:00:27.650 --> 00:00:30.580
+you could name it myApp or
+something like that.
+
+9
+00:00:30.580 --> 00:00:34.800
+And then you can choose whether to have
+the files in a single file which we did
+
+10
+00:00:34.800 --> 00:00:37.180
+not talk about or in two files.
+
+11
+00:00:37.180 --> 00:00:41.840
+A ui.R and a server.R file,
+which we did talk, and we will talk about.
+
+12
+00:00:41.840 --> 00:00:45.120
+I'm going to recommend doing it this way,
+just because I always like to have,
+
+13
+00:00:46.820 --> 00:00:52.420
+I'd rather have many small files than one
+big file with lots of functions in it.
+
+14
+00:00:52.420 --> 00:00:56.050
+So I always tend to work that way,
+but also note that it's not
+
+15
+00:00:56.050 --> 00:01:00.750
+the files that it needs,
+it's not ui.R and server.R that it needs.
+
+16
+00:01:00.750 --> 00:01:04.858
+It's the specific named
+functions in the ur.R and
+
+17
+00:01:04.858 --> 00:01:08.210
+server.R files that it actually needs.
+
+18
+00:01:08.210 --> 00:01:09.860
+And you'll see those in a second.
+
+19
+00:01:09.860 --> 00:01:12.660
+I'm not going to create this
+because I've already done it.
+
+20
+00:01:12.660 --> 00:01:16.760
+So when it creates it,
+it creates the directory and
+
+21
+00:01:16.760 --> 00:01:18.020
+then it creates the two files.
+
+22
+00:01:18.020 --> 00:01:21.150
+You can see here's my ur.R and server.R.
+
+23
+00:01:21.150 --> 00:01:25.743
+No I took the Shiny pre-populated ui.R and
+
+24
+00:01:25.743 --> 00:01:31.980
+server.R files and then just pasted in
+the versions from the lecture notes, okay?
+
+25
+00:01:31.980 --> 00:01:36.798
+So the key thing in the ui.r is you
+need to have this ShinyUI function,
+
+26
+00:01:36.798 --> 00:01:42.681
+well you need to have library(shiny), but
+you need to have this ShinyUI function,
+
+27
+00:01:42.681 --> 00:01:46.205
+that's going to control
+the user interface, okay?
+
+28
+00:01:46.205 --> 00:01:49.630
+And then in the server.R you need
+something called shinyServer.
+
+29
+00:01:49.630 --> 00:01:54.040
+In this case our server is not
+going to do anything, okay?
+
+30
+00:01:54.040 --> 00:02:01.150
+Now let's look at the shinyUI function
+a little bit In a little bit more detail.
+
+31
+00:02:01.150 --> 00:02:02.920
+Let's put a little space right there.
+
+32
+00:02:02.920 --> 00:02:07.800
+Okay, so we have fluid page,
+which just describes the page
+
+33
+00:02:07.800 --> 00:02:12.430
+type that we're going to use
+to create our user interface.
+
+34
+00:02:12.430 --> 00:02:14.790
+So this is kind of a default and
+
+35
+00:02:14.790 --> 00:02:18.550
+I would just suggest that you use it
+until you learn a little bit more.
+
+36
+00:02:18.550 --> 00:02:21.240
+So titlePanel,
+you'll see where this comes up.
+
+37
+00:02:21.240 --> 00:02:23.460
+And it's going to say Data science FTW!.
+
+38
+00:02:23.460 --> 00:02:26.620
+So this is just going to set
+one of the GUI elements, and
+
+39
+00:02:26.620 --> 00:02:28.430
+in this case just a title.
+
+40
+00:02:28.430 --> 00:02:33.980
+And then by default in the fluidPage
+it's got a main panel and a side panel.
+
+41
+00:02:33.980 --> 00:02:36.920
+So here we're going to give
+it the sidebar layout.
+
+42
+00:02:36.920 --> 00:02:42.440
+Okay, so it's just saying what's
+going to occur in the sidebar.
+
+43
+00:02:42.440 --> 00:02:46.361
+So the sidebarPanel is going to tell us
+what's going to occur in the sidebar.
+
+44
+00:02:46.361 --> 00:02:53.860
+And h3, so h3 is going to give
+you the html third level index.
+
+45
+00:02:53.860 --> 00:02:57.490
+So if you've learned a little bit of html,
+just h3 is just going to
+
+46
+00:02:57.490 --> 00:03:01.450
+be smaller text than h2, which is just
+going to be smaller text than h1.
+
+47
+00:03:01.450 --> 00:03:02.420
+So it's the heading level.
+
+48
+00:03:02.420 --> 00:03:03.880
+So third level heading.
+
+49
+00:03:03.880 --> 00:03:08.420
+And it's just going to say slidebar Text
+and this is where the slidebar goes.
+
+50
+00:03:08.420 --> 00:03:11.480
+So and main panel is just
+going to be that center panel and
+
+51
+00:03:11.480 --> 00:03:15.610
+we're also going to do that in h3 and
+it's going to say main panel text, okay.
+
+52
+00:03:15.610 --> 00:03:20.500
+So sidebar layout is just going to say in
+my fluid page I'm going to have a sidebar
+
+53
+00:03:20.500 --> 00:03:25.030
+type layout with a part on the left that's
+going to give us navigation and things
+
+54
+00:03:25.030 --> 00:03:29.630
+like that and a main panel on the right,
+that's going to have the main content.
+
+55
+00:03:29.630 --> 00:03:32.508
+Okay, and so
+just keep track of these three phrases,
+
+56
+00:03:32.508 --> 00:03:36.320
+titlePanel("Data science FTW!), sidebar,
+
+57
+00:03:36.320 --> 00:03:40.720
+Sidebar Text Main panel, main panel text,
+and you'll see where it puts them all.
+
+58
+00:03:40.720 --> 00:03:42.340
+So, there's two ways to run it.
+
+59
+00:03:42.340 --> 00:03:46.810
+The easiest way, if you have
+a relatively recent version of RStudio,
+
+60
+00:03:46.810 --> 00:03:48.564
+you can just click run app.
+
+61
+00:03:48.564 --> 00:03:51.689
+And I want to save them.
+
+62
+00:03:51.689 --> 00:03:53.910
+I should have clicked
+always save before build.
+
+63
+00:03:53.910 --> 00:03:56.588
+And there you go, there you see
+your elements, Data science FTW!
+
+64
+00:03:56.588 --> 00:04:04.090
+In the title, this is in the sidebar and
+this is in the main panel, okay?
+
+65
+00:04:04.090 --> 00:04:08.750
+So those are our three elements in our
+fluid page with the sidebar layout.
+
+66
+00:04:08.750 --> 00:04:11.530
+Let me just show you
+the other way to run it.
+
+67
+00:04:11.530 --> 00:04:17.970
+We gotta switch to the directory
+where our ui.R and server.R are at.
+
+68
+00:04:17.970 --> 00:04:22.800
+So you can just do Alt + S + W + Return.
+
+69
+00:04:22.800 --> 00:04:27.770
+Okay, so that's Alt + S + W + Return,
+or click on Session,
+
+70
+00:04:27.770 --> 00:04:33.190
+click on Set Working Directory and
+click on To Source File Location, okay?
+
+71
+00:04:33.190 --> 00:04:37.330
+And then you just type runApp().
+
+72
+00:04:37.330 --> 00:04:38.810
+There you go.
+
+73
+00:04:38.810 --> 00:04:40.465
+Okay?
+
+74
+00:04:40.465 --> 00:04:47.100
+When you type in runApp, you can put
+in here the path to the app, okay?
+
+75
+00:04:47.100 --> 00:04:49.600
+So, if you'd rather do it that way,
+you can put in the path to the app, and
+
+76
+00:04:49.600 --> 00:04:51.790
+then you don't even have
+to be in the directory.
+
+77
+00:04:51.790 --> 00:04:54.980
+Notice it's running it in RStudio.
+
+78
+00:04:54.980 --> 00:04:57.850
+This is RStudio bringing up the HTML page.
+
+79
+00:04:57.850 --> 00:04:58.921
+Let me show you one other thing.
+
+80
+00:04:58.921 --> 00:05:02.291
+So here it is running,
+but if you look down here,
+
+81
+00:05:02.291 --> 00:05:05.340
+it says listening on and it gives a URL.
+
+82
+00:05:05.340 --> 00:05:06.900
+So basically what it's doing,
+
+83
+00:05:06.900 --> 00:05:11.940
+Shiny is just creating a little
+web server on your computer and
+
+84
+00:05:11.940 --> 00:05:17.550
+that web page is just RStudio's
+browser accessing that web server.
+
+85
+00:05:17.550 --> 00:05:20.050
+So when you run and debug things locally.
+
+86
+00:05:20.050 --> 00:05:23.480
+It's just going to create a little
+web server for you running locally.
+
+87
+00:05:23.480 --> 00:05:26.760
+And that RStudio is going
+to be able to access.
+
+88
+00:05:26.760 --> 00:05:30.830
+And at some point we want to push it up
+in to the Internet so that it's running
+
+89
+00:05:30.830 --> 00:05:35.240
+on a public web server so that anyone can
+access it, not just you on your computer.
+
+90
+00:05:35.240 --> 00:05:41.580
+But this would also show you how
+the lowest and kind of easiest form of
+
+91
+00:05:41.580 --> 00:05:46.912
+delivering a Shiny app to another RStudio
+user is to just give them the ur.R,
+
+92
+00:05:46.912 --> 00:05:51.000
+server.r functions and all the other
+functions that they need to run it.
+
+93
+00:05:52.170 --> 00:05:54.850
+Just give it to them and
+they can run it just like you can, but
+
+94
+00:05:54.850 --> 00:05:56.280
+that's not what we want in the long run.
+
+95
+00:05:56.280 --> 00:05:59.150
+We want it up and running on a webpage.
+
+96
+00:05:59.150 --> 00:06:02.040
+So we've done the first step and
+let's keep moving and
+
+97
+00:06:02.040 --> 00:06:04.739
+see if we can populate and
+make our app a little bit more useful.

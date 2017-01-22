@@ -1,0 +1,468 @@
+WEBVTT
+
+1
+00:00:01.550 --> 00:00:06.580
+Now I'll show you how you can write
+your own swirl courses and lessons.
+
+2
+00:00:06.580 --> 00:00:09.150
+In order to do that, you're going to
+need a package call swirlify,
+
+3
+00:00:09.150 --> 00:00:11.540
+which I'll load up right now.
+
+4
+00:00:11.540 --> 00:00:15.000
+All right,
+
+5
+00:00:15.000 --> 00:00:19.570
+so swirlify is always aware of
+your current working directory.
+
+6
+00:00:20.620 --> 00:00:24.540
+My working directory right now
+is just my home folder, so
+
+7
+00:00:24.540 --> 00:00:27.050
+I'm going to set my directory.
+
+8
+00:00:27.050 --> 00:00:31.870
+I have a special directory
+on my desktop called
+
+9
+00:00:31.870 --> 00:00:37.450
+Courses where I like to keep some of
+my swirl courses and develop them.
+
+10
+00:00:38.680 --> 00:00:42.830
+So you can start writing
+a new swirl course and
+
+11
+00:00:42.830 --> 00:00:46.240
+a new lesson with the new lesson function.
+
+12
+00:00:46.240 --> 00:00:50.590
+I'm going to name this lesson one and
+
+13
+00:00:50.590 --> 00:00:55.543
+I'll name the course My First Course.
+
+14
+00:00:58.589 --> 00:01:05.450
+All right, so executing that
+function did several things.
+
+15
+00:01:05.450 --> 00:01:09.180
+The first thing that it does is
+that it opens up this YAML file.
+
+16
+00:01:09.180 --> 00:01:11.660
+All swirl lessons are written in YAML.
+
+17
+00:01:11.660 --> 00:01:15.475
+YAML is a fairly easy to
+understand markup language.
+
+18
+00:01:15.475 --> 00:01:20.585
+The way that swirl uses it is
+in this way where each question
+
+19
+00:01:20.585 --> 00:01:25.381
+is demarcated by a hyphen, and
+then there is a set of key
+
+20
+00:01:25.381 --> 00:01:30.180
+value pairs that specifies
+each type of question, and
+
+21
+00:01:30.180 --> 00:01:34.694
+what goes into that question
+in your swirl lesson.
+
+22
+00:01:34.694 --> 00:01:40.421
+So just to show you,
+just to sort of give you a look,
+
+23
+00:01:40.421 --> 00:01:44.030
+let's go to My Courses folder.
+
+24
+00:01:45.960 --> 00:01:49.670
+So, this is the course I just created,
+called My First Course.
+
+25
+00:01:51.700 --> 00:01:56.030
+Opening it up there is one lesson
+inside of it, called Lesson_1.
+
+26
+00:01:56.030 --> 00:01:58.770
+Each course is its own folder and
+
+27
+00:01:58.770 --> 00:02:01.990
+each lesson is its own
+folder inside of a course.
+
+28
+00:02:01.990 --> 00:02:06.430
+And then that new lesson
+function created a couple files.
+
+29
+00:02:07.640 --> 00:02:14.900
+The first file, customTests.R is where
+you can specify your own functions for
+
+30
+00:02:14.900 --> 00:02:20.160
+testing the correctness
+of swirl questions.
+
+31
+00:02:20.160 --> 00:02:22.380
+We'll talk about answer
+testing a little bit later.
+
+32
+00:02:22.380 --> 00:02:28.870
+Dependson.txt is a text file
+that you can use to list
+
+33
+00:02:28.870 --> 00:02:35.520
+the names of functions, excuse me,
+the names of R packages that are on Cram.
+
+34
+00:02:35.520 --> 00:02:40.202
+That's where we'll check to make sure
+R installed before the lesson begins.
+
+35
+00:02:40.202 --> 00:02:44.870
+initLesson.R is an R script, and
+
+36
+00:02:44.870 --> 00:02:50.810
+whatever you write in that R script
+will happen before a lesson starts,
+
+37
+00:02:50.810 --> 00:02:55.200
+so you can load the data
+inside of initLesson.R or
+
+38
+00:02:55.200 --> 00:03:01.200
+you can create functions that will
+soon then be used in the lesson.
+
+39
+00:03:01.200 --> 00:03:06.470
+And then this lesson.yaml file is
+exactly what we're looking at here
+
+40
+00:03:06.470 --> 00:03:08.840
+inside of RStudio.
+
+41
+00:03:08.840 --> 00:03:15.070
+I like using RStudio for writing swirl
+lessons because having a text editor and
+
+42
+00:03:15.070 --> 00:03:20.290
+an R console next to each other
+on the same screen works for me.
+
+43
+00:03:20.290 --> 00:03:23.790
+I certainly recommend using RStudio but
+
+44
+00:03:23.790 --> 00:03:25.910
+different people have their
+different work flows.
+
+45
+00:03:27.160 --> 00:03:30.070
+So I have this new lesson all set up.
+
+46
+00:03:30.070 --> 00:03:32.560
+Now I want to start adding questions.
+
+47
+00:03:32.560 --> 00:03:38.820
+So you can use the wq series of
+functions that come with swirl find.
+
+48
+00:03:38.820 --> 00:03:41.340
+And as you can see, there's several
+
+49
+00:03:41.340 --> 00:03:43.990
+different kinds of questions that
+you can include in a lesson.
+
+50
+00:03:43.990 --> 00:03:46.980
+The most simple kind of question that
+you can include is what's called
+
+51
+00:03:46.980 --> 00:03:47.790
+a message question.
+
+52
+00:03:47.790 --> 00:03:52.900
+So I'm just going to execute
+this wq message function and
+
+53
+00:03:52.900 --> 00:03:56.110
+go over to my lesson.yaml file, and
+
+54
+00:03:56.110 --> 00:03:59.280
+as you can see, it's added
+the template for a message question.
+
+55
+00:04:00.750 --> 00:04:06.786
+So I'm going to edit this message
+question and say, Welcome to lesson 1!
+
+56
+00:04:06.786 --> 00:04:14.110
+And then that's all I need to do in order
+to write a simple message question.
+
+57
+00:04:14.110 --> 00:04:19.170
+I'm then going to add another question,
+this time a command question.
+
+58
+00:04:19.170 --> 00:04:22.372
+So a command question
+will prompt the student
+
+59
+00:04:22.372 --> 00:04:25.834
+to actually enter some R
+code into the R console.
+
+60
+00:04:25.834 --> 00:04:33.740
+And as you can see, the question template
+is added to the lesson.yaml file.
+
+61
+00:04:33.740 --> 00:04:36.140
+So I'm going to ask a student
+a simple question like
+
+62
+00:04:37.590 --> 00:04:42.570
+add 2 and 2 using the plus operator.
+
+63
+00:04:44.520 --> 00:04:48.755
+And then the CorrectAnswer is just
+the very simple R expression of 2 + 2.
+
+64
+00:04:48.755 --> 00:04:53.090
+And then this AnswerTests is a function
+
+65
+00:04:53.090 --> 00:04:57.740
+that tests the correctness of what
+the student enters into the console.
+
+66
+00:04:57.740 --> 00:05:01.633
+Omnitest is a function that
+comes packaged in swirl and for
+
+67
+00:05:01.633 --> 00:05:08.040
+80-90% of the questions you're going
+to be asking, you want to use Omnitest.
+
+68
+00:05:08.040 --> 00:05:13.149
+So in this case I'm just going
+to write 2 + 2 inside of this
+
+69
+00:05:13.149 --> 00:05:18.161
+CorrectExpression argument,
+and then I'm going to give
+
+70
+00:05:18.161 --> 00:05:22.887
+a very simple hint to the user and
+say Just type 2 + 2.
+
+71
+00:05:22.887 --> 00:05:29.920
+All right, so I've written some questions,
+now time to start testing this lesson.
+
+72
+00:05:30.940 --> 00:05:34.520
+Whenever I add a lesson to a course,
+
+73
+00:05:34.520 --> 00:05:38.990
+you should add it to what's
+called the course manifest.
+
+74
+00:05:38.990 --> 00:05:43.520
+You can do this very easily by
+using the add_to_manifest function.
+
+75
+00:05:43.520 --> 00:05:48.600
+And just to show you what that did
+is that created this manifest file.
+
+76
+00:05:48.600 --> 00:05:53.840
+This is so we're inside of
+the course directory right now.
+
+77
+00:05:53.840 --> 00:05:57.110
+That is the course which
+is my first course.
+
+78
+00:05:57.110 --> 00:06:00.220
+And this manifest file just
+
+79
+00:06:00.220 --> 00:06:03.890
+keeps track of the order that you
+want your lessons to be displayed in.
+
+80
+00:06:03.890 --> 00:06:08.650
+And it also keeps track of what
+the lessons in the course are.
+
+81
+00:06:08.650 --> 00:06:14.690
+That way if you want to put data or
+other files inside of this course folder,
+
+82
+00:06:14.690 --> 00:06:19.050
+you can do that and
+those files won't show up
+
+83
+00:06:19.050 --> 00:06:23.340
+as a lesson that the student
+can select when they're going,
+
+84
+00:06:23.340 --> 00:06:27.520
+when they're choosing a lesson
+to work on inside of swirl.
+
+85
+00:06:27.520 --> 00:06:31.100
+So this manifest file just
+kind of keeps things organized.
+
+86
+00:06:32.630 --> 00:06:35.030
+So I've added this lesson to the manifest.
+
+87
+00:06:35.030 --> 00:06:38.540
+Now I'm, now let's test out this lesson.
+
+88
+00:06:38.540 --> 00:06:41.390
+So just to check the general
+formatting of this lesson,
+
+89
+00:06:41.390 --> 00:06:43.000
+I'm going to use the test lesson function.
+
+90
+00:06:47.060 --> 00:06:51.390
+If I didn't get any warnings or
+any messages, that means that
+
+91
+00:06:51.390 --> 00:06:57.020
+this lesson passed some formatting
+checks that come with swirlify.
+
+92
+00:06:57.020 --> 00:07:01.560
+Then I want to actually use
+this lesson inside of swirl, so
+
+93
+00:07:01.560 --> 00:07:03.120
+I'm going to use the demo lesson function.
+
+94
+00:07:04.250 --> 00:07:07.640
+And as you can see, that takes us right
+into the lesson that we're writing.
+
+95
+00:07:07.640 --> 00:07:10.110
+And I don't need to go
+through swirl's menu,
+
+96
+00:07:10.110 --> 00:07:12.440
+so Welcome to lesson 1
+is the first question.
+
+97
+00:07:12.440 --> 00:07:14.950
+Add 2 and 2 using a plus operator.
+
+98
+00:07:14.950 --> 00:07:15.450
+I'll do that.
+
+99
+00:07:18.550 --> 00:07:20.181
+And then that's the end of the lesson.

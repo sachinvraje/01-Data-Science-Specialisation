@@ -1,0 +1,49 @@
+Hi, my name is Brian Caffo, and this is the Developing Data Products
+lecture on Plotly. Plotly is a really nifty little
+web application and library for R. I had an old video on, but
+it was early in their R development, and I just went back and looked at it, and I was really astounded at how much
+development has occurred since then. And for
+creating interactive web graphics in R, Plotly is certainly something
+that you should look into. The nice part is it integrates with
+a lot of different languages, too. So what is Plotly? Plotly is a web application for
+creating and sharing visualizations. It can work with several languages. Off the top of my head,
+I know that it works with MATLAB, Python, JavaScript, and so on. And they also have a web
+interface if you like to point and click your way to victory, just uploading
+a csv file, or something like that. And you'll see, I think, in some of our
+first applications that we're going to do with code demonstrations that Plotly
+is really easy to get up and going, especially if you work in RStudio and
+in R, now. So installing Plotly I'm not going
+to do code demonstrations on this. This should be familiar to you
+at this point in the class. Install.packages("plotly") and
+then, of course, to bring it up, you can do Library or require ("plotly"),
+or something like that. Later on,
+as the last part of this lecture series, I'll talk about sharing you Plotly plot,
+which isn't specifically an R thing. It's more of a how do you share
+HTML graphics discussion. And one of the ways is
+actually on the Plotly site. And they have free options and paid
+options if you want private displays and user authentication and things like that. So, if you want to share your
+visualizations through Plotly then, of course, you can do that. But, in addition, they just make
+HTML graphics that you can create a web page and share on your own
+without involving Plotly at all, other than the Plotly R package, okay? But, also, they're web interface
+is pretty interesting. It gives you a lot of nifty tools that
+even are not that easy to do in R, for example, interactively
+changing access labels, right? So that's something that you can't really
+do in R, you have to rerun the code and that sort of thing. And at any rate, at the Plotly web
+interface you can do things like that. So we'll show that at the end, but
+for right now we're just going to work in the R console and just show
+Plotly when running things locally. Okay, so
+before I do the code demonstration, let me go through the slides a little bit. Here, the slides just go through
+creating the command, or invoking the command, plot_ly, the ntcars
+dataset, and just specify the x and the y. And then one thing I just want to show
+before we go to the code demonstration, is this is actually embedded
+into this knitter document here. Okay, so the R Markdown document that
+got then knit into an HTML document, is actually displaying
+the interactive graphic as part of the actual document in the actual slides. So, you can zoom in, for
+example, and things like that, that you can't normally
+do with a static graph. And this is all embedded in the slides. So when you look at
+the R Markdown document, the commands are very
+simple to just do that. So one interesting application of Plotly
+is embedding it in your Slidify or R Studio Presenter or
+Slidy just knitter documents, okay. So let's do some code demonstrations where we go through a couple of
+different Plotly-type plots. And then at the end,
+we'll talk about how we share them.

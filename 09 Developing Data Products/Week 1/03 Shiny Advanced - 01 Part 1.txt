@@ -1,0 +1,48 @@
+Hi, my name is Brian Caffo, and
+this is the second lecture on Shiny. In this lecture, we're going to talk a
+little bit about reactive expressions, and you're going to code a Shiny app that
+actually uses reactive expression. Up to this point, we've done a little bit
+by creating an interactive graphic, but we need to go a little bit further so
+that our server calculations are more complicated, and can do more meaningful
+calculations from our input, spit out more meaningful results, do more interesting
+graphs, and that sort of thing. And that leads us to
+the topic of reactivity. So a reactive expression is basically,
+like Sean put it here, it's like a recipe that manipulates inputs
+from Shiny and then returns a value. And it introduces some
+slightly unorthodox R coding. Of course, it's all proper R code,
+but nonetheless it introduces some slightly unorthodox R coding because of
+the specific intricacies of Shiny, itself. So if you want isolated
+expressions that respond to input from your ui.r,
+your Shiny.i function, then they need to be wrapped
+as a reactive function, here. And let me just go
+through an example here. If I have two input boxes,
+one labelled box one and one labeled box two,
+in my shiny server function, okay, suppose I just want to add
+the results from box one and box two, and
+I want to assign that to a variable. But I want that to be redone every
+time the input values change. Then this needs to be in
+a reactive statement. So here I have my output of
+the calculation, calc_sum. It's assigned, reactive. And notice there's these
+slightly unique notation here, again, where we have both
+the functional parentheses there, but then also this curly braces that
+has to contain the reactive statements. So remember to do that and then remember,
+of course, to close everything, okay. And then that,
+we put in input$box1 + input$box2. Now this calc sum, that variable,
+well, it's not a variable, it's actually a function, will actually adapt as we input
+the new values into box1 and box2. We'll go through a coding
+example in a little bit. Here, you can see that to reference
+calc_sum() later on you're going to reference it as a function. And we'll just go through
+now a little bit an example, a relatively simple example, of creating
+a reactive environment in Shiny. And at this point,
+once you go through this example, I think you'll have almost a full tool
+set to start making your own Shiny applications that'll handle just about
+anything that you would need to do. So, for example, if you created
+a machine learning algorithm, you want a user to put in a set of inputs,
+and it'll spit out your prediction and maybe, hopefully,
+a prediction error along with it. Now you'll be able to do that. It'll be able to do those
+calculations on the fly. And then, toward the end of the lecture,
+we'll show how to make it reactive in such a way that the user actually
+has to press a button. So conditionally reactive, so the user has to press the button in order
+for it to actually execute the command. So this is helpful if you have some algorithms in your server
+that really take a lot of time. Okay, now we'll go through the code demonstration where we're going to
+use a lot of reactive expressions.

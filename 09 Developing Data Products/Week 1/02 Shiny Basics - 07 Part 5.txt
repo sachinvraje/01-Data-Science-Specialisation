@@ -1,0 +1,116 @@
+So now we're starting to get to the point
+where we actually can use Shiny in a way that would be helpful for us. And one of the main ways
+in which Shiny is useful, is in creating interactive graphics. R, by default,
+doesn't have a lot of capacity for creating interactive graphics. Shiny really expands that capacity, and
+gives you a nice way to disseminate your results, because they're embedded in a Web
+page that you could put out very broadly. So in this case,
+we're going to create an interactive plot. We're going to actually have a little
+bit more code in the server.R functions. And, I think at this point,
+once you go through this example, you should hopefully be able to start
+using Shiny in a much more realistic way that would help you with your
+day to day data science needs. Okay, so let's get right to it. Okay, so I've copied the code
+from the R markdown document. And let's just run it first and see the app before we start
+digging into its internals. So what it basically does,
+is it plots two sets of random uniforms. So you input the number of uniforms, and see this is a text box that
+also has an increment and decrement operator here in the buttons
+on the right hand side, okay? And then you have these sliders
+that can change the range of the uniforms that you generate
+both on the X axis and on the Y axis. Then you have these buttons that
+say Show/Hide the X Axis Label, Show/Hide the Y Axis Label,
+Show/Hide the Title. So we have these three check boxes here,
+these two sliders, okay? And our numeric input right here, okay? And notice how the code is
+executed interactively, right? Every time I change a value it's rerun,
+the whole set of code is rerun. So that's something you're going to have
+to get used to with Shiny, is how to program with its server calculations and
+its reactive coding, which operates in my mind, a little bit differently than
+standard highly linear R programming. Okay, so now let's go through the code and
+see how we accomplish this. So I think it's usually best to start
+out going through the UI.r function, the Shiny UI function, okay? So title pane, we know about that, okay? The numeric input, okay,
+it's labeling that input numeric. And then here's the title, and
+then it gives you the starting value, and then it gives you the minimum and
+the maximum, so you don't input values above or
+below that range. And then the step sizer for
+those little buttons, when you push those little buttons,
+how much it steps, okay? Then we have the two sliders, we've
+gone through the sliders before, okay? All right, and notice these sliders there. It had the double slider,
+it had the two values, okay? So you need the two values here and
+the two values here, so that you can have the slider
+at the two points. And here's the Y slider,
+basically the same thing. And then here's our three check boxes. Okay, so just back to the sliders, notice the first one was sliderX
+the second one was sliderY. And then these have very obvious labels,
+"show_xlab", "show_ylab", "show_title", okay? Then in the main panel,
+it's just going to show the graph, and it's going to do plotOutput of plot1. So it's somewhere in our server function
+we're going to have to create something called plot1 that is going to get sent
+back to our user interface, okay? Now in our server, shinyServer,
+it looks like it always does. It has function(input, output), or
+curly braces, cause it's a function, and then output$plot1. Okay, this is good. This means that the output
+from our shinyServer is going to have something labeled plot1, so that when we display it with the user
+interface, there will be a plot1 there. And okay, because it's a plot,
+the statement is renderPlot, okay? And then all of our reactive expressions, reactive means kind of interacting
+with server calculations, okay? They're going to have this notation
+where they have the curly braces next to the parentheses from
+the renderPlot statements. So you gotta get used to writing these
+curly braces in reactive statements, okay? So just get used to that code. Okay, so here we're just
+setting a random number seed. Okay, now here we're just
+doing some regular R coding. The number of points we're just
+re-labeling the input$numeric. And that's just for convenience so
+we don't have to actually refer to the input function to make
+our code look a little bit readable. And honestly, for pedagogical purposes
+here, where I'm just showing you how you grab the numeric value from
+that numeric input, okay? So the min for X, the max for
+X are the elements of the slider. And these come out as input as a list,
+and the slider X value is a vector. And so the first element of
+the vector is that minimum value, the second element of
+the vector is the larger value. Same thing for our two Y points,
+and so we're going to do those. We're going to assign
+those all to variables, because it would be a lot to type if we
+wanted to reuse those every time, okay? And then our data,
+the list of random uniform numbers, is just going to be runif. That just generates a bunch
+of random uniform numbers. And this takes in the number of points,
+and the range between the min of the X and
+the max of the X. And then our dataY, and
+that'll just return a vector of uniforms. DataY, number of points,
+okay, minY, maxY, okay? The label, right, is,
+this is just an ifelse statement. The input$show_xlab is the check boxes,
+is either going to be true or false as to whether or not it's checked, and that's
+going to be in this label show_xlab, because remember that's what we
+labeled that check box, okay? And then it's saying if that's true,
+in other words if showing the label, then give the label "X Axis",
+if not, give it nothing. Same thing with ylab. So, these are two just R
+variables that are going to be the text that we're going to
+display in the plot, okay? And the same thing with the title, so
+the title is going to be if this is true, we're going to have
+the title labeled "Title", otherwise it's just going to
+be labeled nothing, okay? And then we give our plot. We're going to plot our X data with our
+Y data, our xlab is going to be xlab, where that is defined as
+either "X Axis" or nothing. Ylab is going to be ylab, where that's
+either going to be defined as "Y Axis" or nothing. And the main, same thing with the main,
+is either going to be "Title" or nothing. And then our x limit is going to be
+always set, fixed at those values. That's why the plot is
+always in the same space. Y limit is always this, and
+then we'll return it, okay? So that's it. Let's run it again now that we know
+what it's doing, and look at it again. So remember what it's doing
+as we change a value, okay? It's taking this value, right? This is input for the server. This is going to be input,
+slider X, value one, okay? This is going to be,
+yeah, that's the minimum. I think I said right earlier,
+but it should have been left. This is going to be slider X,
+value two, okay? This is going to be slider Y, value one, this is going to be slider Y, value two. This is going to be true or false for
+show X lab, this is going to be true or false for show Y lab, okay? And so whats going on,
+is as we put in these values, the Shiny server is always checking for
+new things. And every time it's got a new set of
+values, it's re-running everything and re-displaying it, going back and
+forth between the server and the UI, okay? So later on we'll show you how to put in
+a done button in case your calculations going on in the back-end
+are much weightier, and you don't want to run them immediately
+upon receiving new values. Right now this is such fast code,
+that doesn't matter. But later on we'll show you
+how to put a done button. That will help in these instances
+where when you click a button, it runs a gigantic Monte Carlo
+simulation or something like that, okay? But this a pretty nice,
+handy little interactive graphic. I mean, it's not doing anything very
+terribly meaningful, but I think you could extend this to your setting, where it's
+actually doing something quite meaningful. Okay, so now your homework
+is go through this example, create a plot,
+maybe use some different kinds of inputs. Don't just use sliders and numeric inputs,
+try some other kinds of inputs. And create an interactive graphic,
+a simple interactive graphic in Shiny

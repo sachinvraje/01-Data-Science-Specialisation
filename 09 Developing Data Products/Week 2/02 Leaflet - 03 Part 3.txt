@@ -1,0 +1,26 @@
+So, what if you want to
+add a lot of markers? Well, there's a pretty
+simple way to do that, you just dump the collection of markers
+that you want to add in a data frame. So, let's go through
+an example of doing that. So, let's just create a data frame that
+has some random longitude and latitudes. We'll set the seed first so that you get the same answers as
+we do when you run the same code. So then I'm just going to
+create this data frame. And then let me just show you
+what the data frame looks like. It's got more rows than this,
+20 rows exactly. So the latitude and longitudinal are just columns named
+lat and lng in the data frame. Now, what we're going to do is that
+this data frame is going to get, this is what this code means. This data frame is going to get
+passed as an argument to leaflet. That'll create our map,
+which will have nothing. So if I were to just run those two bits, well actually it's
+expecting something now. So let me get out that. So if I were just run this
+part without the pipe, it's created a blank map. Now if I were to run this code
+where it's taken the data frame, passed as an argument to leaflet, passed
+the output of the argument of leaflet evaluated at the data frame as
+the argument to the addTiles function. I would get this,
+it would have the map, but remember addTiles just
+brings in the mapping data. It doesn't actually plot anything. And now if I pass that to the addMarkers
+it should add the markers. Of course you don't have to run it the way
+I'm running it in bits and pieces, you just run the whole code all at once. Okay?
+And there you see are your multiple markers,
+right like that. So try this out. Create a data frame with some random
+longitude and latitudes in it, and create a marker. Create a map with all the markers in it.

@@ -1,0 +1,185 @@
+WEBVTT
+
+1
+00:00:00.920 --> 00:00:04.520
+Okay, so here's the slide we're at, in
+case you're keeping score, now we're just
+
+2
+00:00:04.520 --> 00:00:08.440
+going to go through and start doing this
+code demonstration of how to do this.
+
+3
+00:00:08.440 --> 00:00:11.970
+So, the next couple of slides
+actually just talk about doing this.
+
+4
+00:00:11.970 --> 00:00:16.545
+So, instead of going through the slides,
+I'm just going to show you in our studio.
+
+5
+00:00:17.920 --> 00:00:21.499
+It's worth noting that we actually
+practice what we preach, and
+
+6
+00:00:21.499 --> 00:00:25.250
+here is our slides for
+this class written in R Markdown.
+
+7
+00:00:25.250 --> 00:00:27.960
+But, so here is the RMD file for
+the class, but
+
+8
+00:00:27.960 --> 00:00:31.490
+we're going to follow through the notes
+and create a new presentation.
+
+9
+00:00:31.490 --> 00:00:34.880
+So look what it says, it says,
+File> New File> R Markdown.
+
+10
+00:00:34.880 --> 00:00:39.947
+Okay, so you could just do that by Alt+F
+
+11
+00:00:39.947 --> 00:00:45.000
+> F > R Markdown, that is M.
+
+12
+00:00:45.000 --> 00:00:48.950
+And then look here,
+I'm going to click on Presentation Title.
+
+13
+00:00:48.950 --> 00:00:56.720
+I'm going to call it My Fancy Presentation
+and the Author is me.
+
+14
+00:00:57.970 --> 00:01:01.200
+And then you have different outputs.
+
+15
+00:01:01.200 --> 00:01:07.170
+So this has a different
+presentation style.
+
+16
+00:01:07.170 --> 00:01:10.800
+I'm just going to stick with
+ioslides right now, okay?
+
+17
+00:01:10.800 --> 00:01:14.850
+And then if you want PDF this requires,
+we'll go through this later, but
+
+18
+00:01:14.850 --> 00:01:19.850
+it requires MiKTeX being setup
+on Windows which is a variant.
+
+19
+00:01:19.850 --> 00:01:25.560
+MacTeX on OS X, and then TeX Live or
+something like that on Linux.
+
+20
+00:01:25.560 --> 00:01:30.090
+So each of these is pretty easy to
+install, but they tend to be kind of big.
+
+21
+00:01:30.090 --> 00:01:31.910
+We'll cover that later on in the lecture.
+
+22
+00:01:31.910 --> 00:01:35.090
+So right now let's just stick with
+the default, which is ioslides,
+
+23
+00:01:35.090 --> 00:01:38.600
+kind of a format that
+was created I think from
+
+24
+00:01:38.600 --> 00:01:40.750
+one of these Google
+presentations at one point.
+
+25
+00:01:42.166 --> 00:01:46.251
+Okay, so there you see it's Untitled1, and
+
+26
+00:01:46.251 --> 00:01:52.240
+that's the name of the file that
+contains the R Markdown commands.
+
+27
+00:01:52.240 --> 00:01:55.410
+But right now,
+
+28
+00:01:55.410 --> 00:02:00.020
+we're just going to compile it once,
+and see what it looks like.
+
+29
+00:02:00.020 --> 00:02:05.310
+So if you click here and
+say Knit the current document, or
+
+30
+00:02:05.310 --> 00:02:09.745
+it also gives you the command
+Ctrl+Shift+K, there we go.
+
+31
+00:02:09.745 --> 00:02:13.840
+R_Markdown, let me name
+it a separate R_Markdown,
+
+32
+00:02:13.840 --> 00:02:18.160
+I'll name it briansSlides, okay?
+
+33
+00:02:18.160 --> 00:02:19.040
+There its goes.
+
+34
+00:02:20.550 --> 00:02:23.080
+It runs it, and there it is.
+
+35
+00:02:23.080 --> 00:02:24.250
+My Fancy Presentation.
+
+36
+00:02:25.470 --> 00:02:26.210
+Okay.
+
+37
+00:02:26.210 --> 00:02:31.060
+So homework number one, just go through
+this, create a new presentation,
+
+38
+00:02:31.060 --> 00:02:35.030
+a new template presentation,
+compile it once and
+
+39
+00:02:35.030 --> 00:02:38.630
+then let's move on from there and
+fill it up with some content.

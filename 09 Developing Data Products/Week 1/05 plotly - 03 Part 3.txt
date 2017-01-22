@@ -1,0 +1,61 @@
+Okay, so let's cover some options for
+scatter plotting in plot_ly. And it will do this just because scatter
+plots are such an obviously common thing you might want to do. So here is one thing you can change,
+the color of the points. Color is as.factor(cyl). So on the mtcars dataset. So we come down here head(mtcars) and
+show you. So cylinder is, where is it? Cylinder is right there, it's I think > table(mtcars$cyl). Let's see yeah, so 4 6 and 8 so is displaying the number
+of cylinders of the car, obviously it should have an impact on
+miles per gallon, which is our y variable. So we might want to display
+that as another dimension because it's effectively categorical,
+right? It's just the three values. We could do it as color, okay? Now it's not by default,
+a factor variable, it's numeric. So we are going to convert it to a factor
+variable by as.factor cylinder, and now let's run it, and then you can just
+see now the colors represent cylinder and up here is legend,
+by default it says 8, 6, and 4. OK. Now let's try something that's
+continuous to display the color. So in this case if you get displacement,
+so heading back down here. If you look at the mtcars
+dataset the displacement is kind of a continuous variable, right? So if we run that,
+plot_ly is smart enough to know that the color is a continuous variable so
+it treats it as another dimension, continuous dimension using
+a continuous color gradient. And then it displays, very nicely displays the key to
+the gradient here on the side, okay? So that's another way you can use color. Let's change the size of the points. I think when we look at this plot,
+the points to me are very small. And then as you saw maybe from the last
+lecture when I outputted it to an HTML file, the points were almost invisible. So let's change the size. Now, in this case the size we're
+going to do is horsepower. Okay?
+So, horsepower is a continuous variable so the size will be every point is just
+going to have a different horsepower. Okay, I'm sorry, every point is
+going to have a different size. Okay? So, here the cylinder is the color, right? And horsepower is the size. So another interesting way. You run out of dimensions of
+course in a 2D scatter plot so the only real dimensions
+you have are the two displayed dimensions color, size of the
+points and then the plotting point it self are the different kinds of
+dimensions you can display. So here it’s nice that we're showing
+four dimensions miles per gallon, weight, cylinders and
+horsepower all in the same plot. Okay, now. Now, next I would like to just
+briefly show a 3D scatterplot. Now, I'm going to run the code here and show you the plot and
+then we'll describe what it's doing okay. Of course this is another way you can
+add a dimension to a scatter plot. So what it's doing here is
+it's using web GL which is a web based translation of
+the open GL graphics library. Okay.
+And it's a way that you can have interactive 3D
+graphics embedded in webpages. So again this'll all just display and be interactive like this when you
+output it as a webpage as well. So here we have three variables, temperature, pressure and dtime, and in this case we create
+a very fictitious data set. So temperature was just
+100 random normals, pressure was just 100 random normals and
+dtime was just the numbers from 1 to 100. So, there's a hundred data points,
+they have three different values, okay and this just shows you plot_ly,
+same command, okay. Now we just specify three variables,
+x, y, and z, so super easy. type = "scatter3d" okay. mode = "markers". And this, the color = temp,
+just like before puts a color gradient. On the points and then, puts the actual key to the gradient
+on the side of the plot. Okay.
+So, that's all that we had to do to get
+this nice interactive 3D scatter plot. Okay. So, your Homework now. So I feel like we've covered enough
+of scatter plots to get you started on scatter plotting in plot_ly. You could of course, look at the further
+options that you can try and play around with, but so for homework what I'd like
+you to do is create a variety of different 2D scatter plots changing the plotting
+attributes, plotting other dimensions using color, plotting other dimensions
+using different plotting points and so on. And then try to do the same thing for
+a 3D scatter plot and just again, output it a a web page so you know how to look at it, you know how
+to work with these things as web pages. And if you want, publish them to rpubs or
+something like that so you have a hosting,
+a way to host it publicly. Okay, so try that out and then next
+we'll just go over some different, some even I think cooler
+applications of plot_ly

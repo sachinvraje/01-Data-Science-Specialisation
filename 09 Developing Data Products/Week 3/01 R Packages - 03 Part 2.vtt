@@ -1,0 +1,1404 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.240
+[BLANK_AUDIO]
+
+2
+00:00:04.240 --> 00:00:05.970
+So, what makes up an R package?
+
+3
+00:00:05.970 --> 00:00:07.610
+So, there are several of essential
+elements and
+
+4
+00:00:07.610 --> 00:00:10.430
+then there are a number of, optional
+elements.
+
+5
+00:00:10.430 --> 00:00:12.240
+So, the first thing you do when you create
+an R
+
+6
+00:00:12.240 --> 00:00:15.660
+package is you need to create a directory
+on your file system.
+
+7
+00:00:15.660 --> 00:00:17.700
+And so this is done in a variety of
+different ways depending
+
+8
+00:00:17.700 --> 00:00:20.780
+on what platform you're on, but it always
+starts out with, a directory.
+
+9
+00:00:20.780 --> 00:00:24.810
+And it's, and it's typical to name the
+directory to, to be
+
+10
+00:00:24.810 --> 00:00:26.910
+the same as the name of the package, so if
+you're name.
+
+11
+00:00:26.910 --> 00:00:29.430
+If your package is you know, my package,
+
+12
+00:00:29.430 --> 00:00:31.660
+then you would name the directory my
+package.
+
+13
+00:00:31.660 --> 00:00:34.230
+It's not, and so, it's, so that's
+
+14
+00:00:34.230 --> 00:00:37.230
+a convention pretty much amongst all our
+packages.
+
+15
+00:00:37.230 --> 00:00:39.010
+The next thing that you need to have in a
+package is what's
+
+16
+00:00:39.010 --> 00:00:43.200
+called a description file, and this has
+some meta data about the package.
+
+17
+00:00:43.200 --> 00:00:46.250
+Of course you need some R code in an R
+sub-directory.
+
+18
+00:00:46.250 --> 00:00:48.764
+You need to have some documentation for
+the R code.
+
+19
+00:00:48.764 --> 00:00:50.760
+This is typically in the man
+sub-directory.
+
+20
+00:00:51.930 --> 00:00:54.650
+A namespace file is optional, but it's
+very common, and
+
+21
+00:00:54.650 --> 00:00:57.530
+I, and I encourage you to have a namespace
+file.
+
+22
+00:00:57.530 --> 00:00:59.560
+And then if you want to know what all the,
+the full
+
+23
+00:00:59.560 --> 00:01:03.540
+requirements are, you can look in the
+Writing R Extensions document.
+
+24
+00:01:03.540 --> 00:01:05.440
+That's available on the R website.
+
+25
+00:01:07.940 --> 00:01:10.220
+So what does it mean, the first thing is
+the description file.
+
+26
+00:01:10.220 --> 00:01:13.710
+After you've created the R directory you
+can put in a description file in
+
+27
+00:01:13.710 --> 00:01:17.030
+there and these are the elements that you
+need to have in the description file.
+
+28
+00:01:17.030 --> 00:01:19.100
+First of course is the name of the
+package.
+
+29
+00:01:19.100 --> 00:01:21.110
+The title is a slightly longer kind of
+
+30
+00:01:21.110 --> 00:01:23.470
+description of the package beyond just the
+name.
+
+31
+00:01:23.470 --> 00:01:26.200
+And then the description field is an even
+longer description.
+
+32
+00:01:26.200 --> 00:01:26.700
+This could be a
+
+33
+00:01:29.110 --> 00:01:34.660
+a sentence, or maybe even a sentence or
+two, and then the version number, which is
+
+34
+00:01:34.660 --> 00:01:36.390
+going to usually in the format of a major
+
+35
+00:01:36.390 --> 00:01:39.200
+number dot minor number dash and then
+patch level.
+
+36
+00:01:39.200 --> 00:01:42.220
+It doesn't have to be in that format, but
+that's common.
+
+37
+00:01:42.220 --> 00:01:45.040
+The name of the author, so this can be the
+name of the person that wrote the original
+
+38
+00:01:45.040 --> 00:01:47.800
+code it may not be you if someone else
+
+39
+00:01:47.800 --> 00:01:49.470
+wrote the original code, but it could be
+you.
+
+40
+00:01:50.550 --> 00:01:53.620
+The maintainer is very important because
+this is the, this will be the name of
+
+41
+00:01:53.620 --> 00:01:55.940
+the person who, who who maintains the
+
+42
+00:01:55.940 --> 00:01:57.750
+package and the year of their email
+address.
+
+43
+00:01:57.750 --> 00:02:01.100
+So, if there are any problems with the
+package, there's an email attached
+
+44
+00:02:01.100 --> 00:02:02.980
+to the maintainer and that person
+
+45
+00:02:02.980 --> 00:02:06.020
+has taken responsibility for addressing
+any problems.
+
+46
+00:02:06.020 --> 00:02:10.430
+And then finally there just as important
+is the license for the source code.
+
+47
+00:02:10.430 --> 00:02:13.200
+And so the license describes you know,
+what are the terms that
+
+48
+00:02:13.200 --> 00:02:16.640
+the source code are being, the source code
+is being released under and
+
+49
+00:02:16.640 --> 00:02:21.530
+some common licenses for source code for R
+code are things like
+
+50
+00:02:21.530 --> 00:02:26.740
+the GNU public general license or the or
+BSD license or MIT license.
+
+51
+00:02:26.740 --> 00:02:31.526
+You typically a kind of standard open
+source license is used.
+
+52
+00:02:31.526 --> 00:02:32.026
+[BLANK_AUDIO]
+
+53
+00:02:35.015 --> 00:02:37.390
+Um,other fields that you can put into the
+description
+
+54
+00:02:37.390 --> 00:02:40.990
+file that are optional but are commonly
+use are Depends.
+
+55
+00:02:40.990 --> 00:02:44.440
+And this is a list of R packages that your
+package will depend on.
+
+56
+00:02:44.440 --> 00:02:47.200
+So often if you are writing R code you
+will use code from
+
+57
+00:02:47.200 --> 00:02:50.920
+other packages and that needs to be listed
+here in the depends field.
+
+58
+00:02:50.920 --> 00:02:56.650
+Suggests is another list of our packages
+that you may want
+
+59
+00:02:56.650 --> 00:03:02.006
+the users to have installed but aren't
+strictly essential to writing the R-code.
+
+60
+00:03:02.006 --> 00:03:07.550
+Then the date, it just indi, indicates the
+release date of the package.
+
+61
+00:03:07.550 --> 00:03:09.510
+The ur, if your package has a home page.
+
+62
+00:03:09.510 --> 00:03:11.530
+You can list the url for the home page.
+
+63
+00:03:11.530 --> 00:03:13.865
+I often list the you know, to the
+
+64
+00:03:13.865 --> 00:03:17.860
+GitHub repository, for this for each of
+the packages.
+
+65
+00:03:17.860 --> 00:03:19.390
+And then you can add other fields to
+
+66
+00:03:19.390 --> 00:03:21.700
+the description file just for your own
+benefit.
+
+67
+00:03:21.700 --> 00:03:23.499
+But these will generally be ignored by R.
+
+68
+00:03:28.230 --> 00:03:31.360
+So here's an example of description file
+from the GPC lib package.
+
+69
+00:03:31.360 --> 00:03:34.530
+So here you can see the, the name of the
+package is GPC lib.
+
+70
+00:03:34.530 --> 00:03:38.530
+The title is the, General Polygon Clipping
+Library for R.
+
+71
+00:03:38.530 --> 00:03:41.140
+The description is the general polygon
+clipping routines for
+
+72
+00:03:41.140 --> 00:03:44.740
+R based on this C library by Alan Murta.
+
+73
+00:03:44.740 --> 00:03:48.140
+The version, we're calling that 1.5-5.
+
+74
+00:03:48.140 --> 00:03:49.710
+So I am the author but there have
+
+75
+00:03:49.710 --> 00:03:52.890
+been a number of con, contributions from
+other people.
+
+76
+00:03:52.890 --> 00:03:54.010
+I'm also the maintainer.
+
+77
+00:03:55.260 --> 00:03:58.910
+And so, there's my email address there for
+the maintainer.
+
+78
+00:03:58.910 --> 00:04:01.530
+the, this package has a special license.
+
+79
+00:04:01.530 --> 00:04:04.470
+And so I, I, I, the details of which are
+found in the license files.
+
+80
+00:04:04.470 --> 00:04:07.155
+That's why I kept this file license there.
+
+81
+00:04:07.155 --> 00:04:12.130
+The it depends on r being at least version
+2.14, so that's a fairly old version.
+
+82
+00:04:12.130 --> 00:04:14.900
+Most people will have a version that's
+greater than that.
+
+83
+00:04:14.900 --> 00:04:16.440
+And it also depends on the methods
+
+84
+00:04:16.440 --> 00:04:20.220
+package, import functions from the
+graphics package.
+
+85
+00:04:20.220 --> 00:04:23.430
+I'll talk more about that when I talk
+about the name space file.
+
+86
+00:04:23.430 --> 00:04:28.040
+And then the release date for this package
+was April 1st, 2013 and then there's a
+
+87
+00:04:28.040 --> 00:04:30.270
+URL for the web, website on the kind
+
+88
+00:04:30.270 --> 00:04:33.390
+of underlying C library and the GitHub
+repository.
+
+89
+00:04:35.090 --> 00:04:38.160
+Once you've written up your description
+file, the next thing you
+
+90
+00:04:38.160 --> 00:04:42.470
+want to do, typically is copy your R code
+into the R sub-directory.
+
+91
+00:04:42.470 --> 00:04:44.560
+Now there can be any number of files in
+this directory.
+
+92
+00:04:44.560 --> 00:04:47.870
+You don't have to have all your R code in
+a single file.
+
+93
+00:04:47.870 --> 00:04:48.900
+furthermore, you don't, but you don't have
+to
+
+94
+00:04:48.900 --> 00:04:51.200
+have, like, you know, one file per every
+function.
+
+95
+00:04:51.200 --> 00:04:52.660
+So you can organize it however you want.
+
+96
+00:04:52.660 --> 00:04:55.070
+Doesn't matter what the number of files
+is.
+
+97
+00:04:55.070 --> 00:04:59.180
+But you typically want to separate, have a
+separate files, for kind of logical groups
+
+98
+00:04:59.180 --> 00:05:02.680
+of functions, so all the functions that,
+you know, read data go in one file.
+
+99
+00:05:02.680 --> 00:05:05.290
+Now all of the functions that maybe fit
+model go into a different file.
+
+100
+00:05:06.570 --> 00:05:09.270
+So all the R, your R codes should be
+included here, and
+
+101
+00:05:09.270 --> 00:05:12.080
+anything that you want to make available
+through the package it should not.
+
+102
+00:05:12.080 --> 00:05:14.550
+You should not include an R code in any
+other part of the package.
+
+103
+00:05:16.580 --> 00:05:18.490
+The name space file is useful because
+
+104
+00:05:18.490 --> 00:05:21.750
+it indicates essentially the API for your
+function.
+
+105
+00:05:21.750 --> 00:05:24.860
+It also lists all the dependencies so, you
+
+106
+00:05:24.860 --> 00:05:28.510
+know, code that your package uses from
+other packages.
+
+107
+00:05:28.510 --> 00:05:29.520
+So there's two kinds of things.
+
+108
+00:05:29.520 --> 00:05:32.950
+The first is the export, so you want to
+indicate which functions in
+
+109
+00:05:32.950 --> 00:05:36.320
+your package are exported, so these are
+available to the user; these
+
+110
+00:05:36.320 --> 00:05:38.163
+are the public functions, and so
+
+111
+00:05:38.163 --> 00:05:41.880
+non-exported functions, the functions that
+are
+
+112
+00:05:41.880 --> 00:05:46.560
+not listed in this file, cannot be called
+directly by the user.
+
+113
+00:05:46.560 --> 00:05:50.110
+There are, unless they kind of use some
+special functions to access that code.
+
+114
+00:05:50.110 --> 00:05:52.890
+So these are not available in general to
+the public.
+
+115
+00:05:52.890 --> 00:05:56.830
+And this allows you to hide the
+implementation details from users.
+
+116
+00:05:56.830 --> 00:05:58.980
+And makes for a generally cleaner package
+interface.
+
+117
+00:06:00.770 --> 00:06:03.090
+The other thing you need to indicate
+beyond, besides exports,
+
+118
+00:06:03.090 --> 00:06:07.110
+is imports, so you can import functions
+from other packages.
+
+119
+00:06:07.110 --> 00:06:09.440
+And this, so this allows your package to
+make use of
+
+120
+00:06:09.440 --> 00:06:13.260
+other packages without making other
+packages, you know visible to the user.
+
+121
+00:06:13.260 --> 00:06:17.090
+Typically if you load a package and it
+depends on a lot of other packages
+
+122
+00:06:17.090 --> 00:06:20.610
+you don't necessarily want all those other
+packages to be loaded into the search list
+
+123
+00:06:20.610 --> 00:06:24.030
+for example for the user to see and so
+this allows you to use the
+
+124
+00:06:24.030 --> 00:06:26.400
+functionality of other packages without
+having to
+
+125
+00:06:26.400 --> 00:06:28.270
+load every other package onto the search
+list.
+
+126
+00:06:30.060 --> 00:06:33.040
+And so importing a function, loads the
+package name
+
+127
+00:06:33.040 --> 00:06:35.080
+space, but it doesn't attach it to the
+search list.
+
+128
+00:06:36.750 --> 00:06:39.280
+So a couple of key directives for the name
+space
+
+129
+00:06:39.280 --> 00:06:42.540
+file or the export, for, where you can
+export a function.
+
+130
+00:06:42.540 --> 00:06:45.680
+Import is for importing a package and then
+import from is
+
+131
+00:06:45.680 --> 00:06:48.950
+for importing a function for a specific
+function from a package.
+
+132
+00:06:48.950 --> 00:06:52.300
+So this allows you to kind of very
+specifically
+
+133
+00:06:52.300 --> 00:06:57.000
+describe your dependencies, and the public
+API for your package.
+
+134
+00:06:57.000 --> 00:07:00.830
+If you're using s4 classes and methods
+some important directives
+
+135
+00:07:00.830 --> 00:07:04.880
+are the export classes directive and the
+export methods one.
+
+136
+00:07:04.880 --> 00:07:06.670
+Although these things look like R
+functions it's
+
+137
+00:07:06.670 --> 00:07:08.809
+important to realize that they aren't
+exactly R functions.
+
+138
+00:07:12.400 --> 00:07:16.540
+So here's a sample name space file from
+the mvtspolt package.
+
+139
+00:07:16.540 --> 00:07:18.270
+This package only has one function.
+
+140
+00:07:18.270 --> 00:07:20.660
+It's export it's called mvtsplot, it's a
+
+141
+00:07:20.660 --> 00:07:22.580
+plotting function for multi variate time
+series.
+
+142
+00:07:22.580 --> 00:07:26.880
+So that is the only function that the user
+can call when this function is loaded.
+
+143
+00:07:26.880 --> 00:07:29.980
+It imports the access function from the
+graphics package.
+
+144
+00:07:29.980 --> 00:07:33.390
+And it also imports this, the, all the
+functionality of the splines package.
+
+145
+00:07:33.390 --> 00:07:34.460
+So that's basically it.
+
+146
+00:07:34.460 --> 00:07:35.990
+It's a very simple name space file.
+
+147
+00:07:39.490 --> 00:07:41.770
+Here's another, slightly more complicated
+name space file
+
+148
+00:07:41.770 --> 00:07:44.080
+from the gpclib package that we just saw.
+
+149
+00:07:44.080 --> 00:07:47.799
+There are two functions exported here, the
+read polyfile and the write polyfile.
+
+150
+00:07:48.850 --> 00:07:52.980
+We import the plot function from the
+graphics package and then
+
+151
+00:07:52.980 --> 00:07:56.170
+there are two s4 classes that are exported
+to the user.
+
+152
+00:07:56.170 --> 00:08:00.510
+These are GPC.poly and GPC.poly.nohole.
+
+153
+00:08:00.510 --> 00:08:04.460
+And then there are a number of methods
+that are exported
+
+154
+00:08:04.460 --> 00:08:08.890
+to the user including the show method are
+and get.bbox et cetera.
+
+155
+00:08:08.890 --> 00:08:11.000
+So these are methods that apply to these
+
+156
+00:08:11.000 --> 00:08:14.750
+new classes that are defined, the gpc.poly
+class.
+
+157
+00:08:14.750 --> 00:08:17.430
+And these are all the methods that are
+available to the user for this class.
+
+158
+00:08:20.220 --> 00:08:22.290
+Once you've got the description file, the
+R code, and the
+
+159
+00:08:22.290 --> 00:08:25.460
+name space file and the next thing to
+d-deal with is documentation.
+
+160
+00:08:25.460 --> 00:08:28.190
+So documentation is very important because
+it allows the user to
+
+161
+00:08:28.190 --> 00:08:31.700
+kind of understand how your function is
+suppose to be used.
+
+162
+00:08:31.700 --> 00:08:35.499
+And documentation files typically have a
+capital R and then D extension.
+
+163
+00:08:36.600 --> 00:08:38.015
+And they're placed in the mend
+
+164
+00:08:38.015 --> 00:08:41.100
+sub-directory of the package directory
+structure.
+
+165
+00:08:41.100 --> 00:08:45.060
+They're written in a specific markup
+language which I'll show in just
+
+166
+00:08:45.060 --> 00:08:49.932
+a second and a documental file is required
+for every supported function.
+
+167
+00:08:49.932 --> 00:08:52.052
+And so that provides another reason to
+limit the
+
+168
+00:08:52.052 --> 00:08:54.680
+number of functions that are exported to
+the user.
+
+169
+00:08:54.680 --> 00:08:56.730
+Because for any every function that you
+export
+
+170
+00:08:56.730 --> 00:08:59.080
+you have to write a, a documentation for
+it.
+
+171
+00:08:59.080 --> 00:09:01.800
+But in, the functions that are not
+exported you don't need to have
+
+172
+00:09:01.800 --> 00:09:05.940
+any documentation for because they're not
+meant to be used by, by the user.
+
+173
+00:09:05.940 --> 00:09:07.970
+You can also document things that are not
+functions.
+
+174
+00:09:07.970 --> 00:09:09.110
+You can document data sets.
+
+175
+00:09:09.110 --> 00:09:11.620
+You can document kind of basic concepts.
+
+176
+00:09:11.620 --> 00:09:13.060
+Or you can provide a basic package
+overview.
+
+177
+00:09:13.060 --> 00:09:15.519
+So these are all things that you can
+provide as documentation.
+
+178
+00:09:17.460 --> 00:09:19.290
+So here's a simple help file.
+
+179
+00:09:19.290 --> 00:09:20.940
+This is from the Line function, this is
+just
+
+180
+00:09:20.940 --> 00:09:23.230
+part of the, kind of the base R
+installation.
+
+181
+00:09:23.230 --> 00:09:25.670
+You can see that there's a name for the
+docu, for the documentation.
+
+182
+00:09:25.670 --> 00:09:28.040
+There's an alias, see, this is something
+that will call
+
+183
+00:09:28.040 --> 00:09:30.900
+up this documentation file, even if if
+you, if you do
+
+184
+00:09:30.900 --> 00:09:33.750
+question mark line, then, you know,
+anything that's in the alias
+
+185
+00:09:33.750 --> 00:09:36.008
+will call up this documentation file, so
+you'll do question mark.
+
+186
+00:09:36.008 --> 00:09:37.220
+Your residuals [UNKNOWN] line.
+
+187
+00:09:37.220 --> 00:09:39.010
+You'll also get this help file.
+
+188
+00:09:39.010 --> 00:09:42.090
+And you can see that the title is, you
+know, robust line fitting.
+
+189
+00:09:42.090 --> 00:09:43.400
+And there's a description, which is a
+
+190
+00:09:43.400 --> 00:09:46.420
+slightly longer description than just the
+title.
+
+191
+00:09:46.420 --> 00:09:49.670
+After the description you typically have a
+usage section which describes
+
+192
+00:09:49.670 --> 00:09:52.970
+or shows how the function is called on, on
+its arguments.
+
+193
+00:09:52.970 --> 00:09:56.600
+So this function only has two arguments, x
+and y, and so that's how you call it.
+
+194
+00:09:56.600 --> 00:09:59.370
+After that you need to describe what the
+arguments are.
+
+195
+00:09:59.370 --> 00:10:01.850
+And so the two arguments are x and y and
+you can see
+
+196
+00:10:01.850 --> 00:10:05.590
+that they are, the arguments can be any
+way of specifying x,y pairs.
+
+197
+00:10:07.030 --> 00:10:10.850
+After the describing the arguments, you
+talk, there's a detailed section where
+
+198
+00:10:10.850 --> 00:10:14.370
+you typical go into more detail about
+various aspects of the function.
+
+199
+00:10:14.370 --> 00:10:18.230
+Here there's just a few kind of a notes
+that are added.
+
+200
+00:10:18.230 --> 00:10:20.190
+And then lastly there's a value section.
+
+201
+00:10:20.190 --> 00:10:22.020
+The value section determines, describes,
+you
+
+202
+00:10:22.020 --> 00:10:23.890
+know, what is returned by the function.
+
+203
+00:10:23.890 --> 00:10:25.720
+So some functions don't necessarily return
+anything
+
+204
+00:10:25.720 --> 00:10:28.110
+useful, in particular, plotting functions
+often don't
+
+205
+00:10:28.110 --> 00:10:31.388
+return anything, they just have a side
+effect of kind of creating a plot.
+
+206
+00:10:31.388 --> 00:10:37.650
+And so her,.in this case the line function
+returns an object of class tukeyline.
+
+207
+00:10:39.762 --> 00:10:41.988
+Finally at the end you might have
+something, some
+
+208
+00:10:41.988 --> 00:10:44.850
+references, for example, if we're
+implementing a method, a
+
+209
+00:10:44.850 --> 00:10:47.394
+statistical method or something along
+those lines and it
+
+210
+00:10:47.394 --> 00:10:49.200
+has a reference like a paper or a book.
+
+211
+00:10:49.200 --> 00:10:50.756
+In this case it's a book.
+
+212
+00:10:50.756 --> 00:10:53.116
+You can put those references in the help
+files,
+
+213
+00:10:53.116 --> 00:10:55.181
+so people will know if they want to
+explore
+
+214
+00:10:55.181 --> 00:10:57.305
+this thing a little bit more, if they
+want to
+
+215
+00:10:57.305 --> 00:10:59.644
+read more about it, they know where to
+look.
+
+216
+00:10:59.644 --> 00:11:02.840
+So that's your help, that's kind of how
+the help files look.
+
+217
+00:11:02.840 --> 00:11:04.710
+Once you've got your R code, your R files,
+
+218
+00:11:04.710 --> 00:11:07.980
+your description and your name space then
+you can start
+
+219
+00:11:07.980 --> 00:11:10.740
+by building the package and there's a
+command line
+
+220
+00:11:10.740 --> 00:11:13.740
+tool that comes with R, it's called R CMD
+build.
+
+221
+00:11:13.740 --> 00:11:18.330
+And it creates the package archive file,
+which simply has .tar or .gz extension.
+
+222
+00:11:18.330 --> 00:11:21.730
+Once you've built the package you can run
+a battery of tests on the package.
+
+223
+00:11:21.730 --> 00:11:23.580
+So you can do this, use this, you can
+
+224
+00:11:23.580 --> 00:11:26.470
+do this by running the R Cmd check
+command-line program.
+
+225
+00:11:26.470 --> 00:11:30.110
+And this runs a whole set of tests to make
+sure that there's some, that everything
+
+226
+00:11:30.110 --> 00:11:31.940
+is kind of consistent within the package
+structure
+
+227
+00:11:31.940 --> 00:11:34.860
+and you haven't, for example, forgotten
+any documentation.
+
+228
+00:11:35.900 --> 00:11:37.510
+Or that the, kind of the exports and
+
+229
+00:11:37.510 --> 00:11:40.300
+the imports are, are kind of appropriately
+specify.
+
+230
+00:11:41.970 --> 00:11:44.120
+You can run R Cmd build and R Cmd check
+from
+
+231
+00:11:44.120 --> 00:11:47.940
+the command line, using a terminal or
+command shell type of application.
+
+232
+00:11:47.940 --> 00:11:50.180
+You could also run them from the, from
+with
+
+233
+00:11:50.180 --> 00:11:52.320
+in R using the system function in this
+way.
+
+234
+00:11:55.418 --> 00:11:59.720
+R Cmnd check runs a, I said, I mentioned
+already runs a battery of tests.
+
+235
+00:11:59.720 --> 00:12:02.180
+Basically it checks for example, if the
+documentation
+
+236
+00:12:02.180 --> 00:12:05.530
+exists, if every, or exported function has
+documentation.
+
+237
+00:12:05.530 --> 00:12:07.650
+It checks to see whether your code can be
+loaded it
+
+238
+00:12:07.650 --> 00:12:10.820
+also checks the, kind of the coding style,
+so that there's
+
+239
+00:12:10.820 --> 00:12:13.790
+no, kind of, basic problems there's a bit
+of, there's actually
+
+240
+00:12:13.790 --> 00:12:17.110
+a code checker in the, in, in one of the
+tests.
+
+241
+00:12:17.110 --> 00:12:18.560
+It checks for any errors that may, kind
+
+242
+00:12:18.560 --> 00:12:21.430
+of, or common coding problems that may
+occur.
+
+243
+00:12:21.430 --> 00:12:23.680
+If you have any examples in your
+documentation, it will
+
+244
+00:12:23.680 --> 00:12:26.610
+run the examples to make sure that they
+actually run.
+
+245
+00:12:26.610 --> 00:12:29.500
+It will check that the documentation of
+the arguments in
+
+246
+00:12:29.500 --> 00:12:33.170
+your documentation matches the arguments
+that are in the codes so
+
+247
+00:12:33.170 --> 00:12:36.240
+for example sometimes you might modify the
+argument list, of
+
+248
+00:12:36.240 --> 00:12:39.150
+a function in your code then forget to
+modify the argument
+
+249
+00:12:39.150 --> 00:12:41.410
+list in the documentation so it will check
+for that
+
+250
+00:12:41.410 --> 00:12:46.680
+kind of mismatch And in particular, this,
+this is important because
+
+251
+00:12:46.680 --> 00:12:48.580
+if you want to put a package on CRAN, it
+has
+
+252
+00:12:48.580 --> 00:12:51.890
+to pass all of the tests in R Cmnd Check
+without
+
+253
+00:12:51.890 --> 00:12:53.505
+any warnings or any errors.
+
+254
+00:12:53.505 --> 00:12:57.615
+[BLANK_AUDIO]
+
+255
+00:12:57.615 --> 00:13:00.050
+So that's the basic idea behind R
+packages.
+
+256
+00:13:00.050 --> 00:13:04.630
+If you want to get started, a handy
+function to look at is package.skeleton.
+
+257
+00:13:04.630 --> 00:13:10.320
+And what this does is, it basically create
+the skeleton directory structure.
+
+258
+00:13:10.320 --> 00:13:13.190
+So you'll create the directory if you pass
+it the name of a function.
+
+259
+00:13:13.190 --> 00:13:15.930
+So that's usually the first argument to
+package.skeleton.
+
+260
+00:13:15.930 --> 00:13:19.570
+It'll create the directory, it'll create
+the R directory, the man directory.
+
+261
+00:13:19.570 --> 00:13:22.800
+It will create a, kind of a dummy
+description file for you to fill out.
+
+262
+00:13:22.800 --> 00:13:26.350
+It will also create a namespace file for
+then you can kind of flesh out.
+
+263
+00:13:26.350 --> 00:13:29.440
+And it will put some documentation files
+in the man directory
+
+264
+00:13:29.440 --> 00:13:32.430
+if you have any functions that are visible
+in your work space.
+
+265
+00:13:32.430 --> 00:13:35.390
+So by default it takes all the functions
+that are kind of in your
+
+266
+00:13:35.390 --> 00:13:40.400
+work space and writes them out to the R
+directory and the man directory.
+
+267
+00:13:40.400 --> 00:13:42.090
+So if you have any, if you have a lot of
+
+268
+00:13:42.090 --> 00:13:45.580
+extraneous functions in your work space
+you don't want to run this function.
+
+269
+00:13:45.580 --> 00:13:48.200
+But if you, if all the functions that you
+kind of have in your workspace,
+
+270
+00:13:48.200 --> 00:13:49.920
+okay you want to put into the package,
+then
+
+271
+00:13:49.920 --> 00:13:52.250
+it will automatically do all that for you.
+
+272
+00:13:52.250 --> 00:13:54.640
+So then all the documentation stubs are in
+the Man age.
+
+273
+00:13:54.640 --> 00:13:57.770
+You just have to edit them to kind of
+customize them to your need.
+
+274
+00:13:57.770 --> 00:13:59.419
+And so you need to fill in all this extra
+stuff.
+
+275
+00:14:00.510 --> 00:14:03.840
+So the basic summary is that, you know, R
+packages
+
+276
+00:14:03.840 --> 00:14:06.550
+are a systematic way to make R code
+available to others.
+
+277
+00:14:06.550 --> 00:14:08.630
+It's very useful and it, and it's
+
+278
+00:14:08.630 --> 00:14:11.150
+a standard way that kind of people
+understand.
+
+279
+00:14:11.150 --> 00:14:14.640
+The standards are important because they
+ensure that packages have a minimal amount
+
+280
+00:14:14.640 --> 00:14:20.230
+of, at least some documentation and will
+some robustness to kind of problems.
+
+281
+00:14:20.230 --> 00:14:22.290
+And you typically obtain our packages from
+
+282
+00:14:22.290 --> 00:14:25.450
+CRAN, Bioconductor, GitHub, or other types
+of repositories.
+
+283
+00:14:29.730 --> 00:14:31.315
+The basic check list for creating in
+
+284
+00:14:31.315 --> 00:14:33.900
+R package, is basically create a new
+directory.
+
+285
+00:14:33.900 --> 00:14:35.930
+Create the R in the main sub-directories.
+
+286
+00:14:35.930 --> 00:14:38.440
+You can also use packet skeleton for this.
+
+287
+00:14:38.440 --> 00:14:40.500
+You need to write a description file, you
+need
+
+288
+00:14:40.500 --> 00:14:42.720
+to put your R code in to the R
+sub-directory.
+
+289
+00:14:42.720 --> 00:14:47.022
+You need to write documentation files in
+to the main sub-directory.
+
+290
+00:14:47.022 --> 00:14:50.622
+Create a name space file, which defines
+your exports and imports.
+
+291
+00:14:50.622 --> 00:14:52.652
+And then, and then build it and check your
+
+292
+00:14:52.652 --> 00:14:55.250
+package to make sure it passes all the
+checks.
+
+293
+00:14:55.250 --> 00:14:57.800
+So that's your basic template for building
+an R package.

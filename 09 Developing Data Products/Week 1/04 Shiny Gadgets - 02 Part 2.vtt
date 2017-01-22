@@ -1,0 +1,325 @@
+WEBVTT
+
+1
+00:00:00.880 --> 00:00:04.850
+Okay, so
+our last example was kind of silly.
+
+2
+00:00:04.850 --> 00:00:09.210
+In that, the function really do anything,
+it just have a button that you click and
+
+3
+00:00:09.210 --> 00:00:10.710
+then it was done.
+
+4
+00:00:10.710 --> 00:00:12.210
+And it just took you back to the R prompt.
+
+5
+00:00:12.210 --> 00:00:17.830
+It also has a cancel button by
+default that will stop the gadget and
+
+6
+00:00:17.830 --> 00:00:21.070
+just return your R prompt
+to quit the server running.
+
+7
+00:00:21.070 --> 00:00:24.040
+Okay, so now let's just show you how
+you can include some arguments in your
+
+8
+00:00:24.040 --> 00:00:27.290
+Shiny Gadget, and we're going to do
+some just simple manipulations of
+
+9
+00:00:27.290 --> 00:00:30.400
+course just because we're going to try and
+show it in its simplest version, and
+
+10
+00:00:30.400 --> 00:00:32.420
+I think once you get
+the gist of how to code it,
+
+11
+00:00:32.420 --> 00:00:34.830
+then you can figure out how to
+do it with your own application.
+
+12
+00:00:36.430 --> 00:00:38.974
+So, let's go through the code.
+
+13
+00:00:38.974 --> 00:00:43.530
+The code here has two parts because it
+was just hard to fit on the screen.
+
+14
+00:00:43.530 --> 00:00:46.600
+So, here's the first part, and
+then the second page is the second part.
+
+15
+00:00:46.600 --> 00:00:50.490
+So remember, of course,
+our shiny gadget has to have the UI part,
+
+16
+00:00:50.490 --> 00:00:53.630
+in this case we're again doing mini page.
+
+17
+00:00:53.630 --> 00:00:56.614
+And then the server part, okay?
+
+18
+00:00:56.614 --> 00:01:01.265
+And of course, we have to have
+
+19
+00:01:01.265 --> 00:01:05.917
+our two libraries loaded up so
+
+20
+00:01:05.917 --> 00:01:12.070
+just make sure, you have that, okay.
+
+21
+00:01:12.070 --> 00:01:16.726
+So, our gadget title is just
+going to be multiply to numbers
+
+22
+00:01:16.726 --> 00:01:20.510
+are a content panels so
+this is new right here.
+
+23
+00:01:20.510 --> 00:01:22.320
+Mini content panels so
+
+24
+00:01:22.320 --> 00:01:27.060
+that's just going to be main body
+of the little pane there, okay.
+
+25
+00:01:27.060 --> 00:01:33.070
+And it's going to have selector input,
+which is going to be like a drag down box,
+
+26
+00:01:33.070 --> 00:01:38.610
+and it's going to have two variables, the
+variable one is going to be labeled num1,
+
+27
+00:01:38.610 --> 00:01:43.948
+and num2, so if we have to reference them
+later, they're going to have that name.
+
+28
+00:01:43.948 --> 00:01:50.400
+And then these are the displayed labels
+and the choices are right here and
+
+29
+00:01:50.400 --> 00:01:56.400
+the choices come from this two arguments
+right here in the function, okay.
+
+30
+00:01:56.400 --> 00:02:01.733
+So, that's going to display
+our user-interface.
+
+31
+00:02:01.733 --> 00:02:05.660
+And then our server, okay.
+
+32
+00:02:05.660 --> 00:02:09.000
+Again, it's going to have input,
+output, and session.
+
+33
+00:02:09.000 --> 00:02:12.350
+We're still going to have the input$done.
+
+34
+00:02:12.350 --> 00:02:19.150
+Variable in the observe event, just to let
+Shiny know that when it's done to quit.
+
+35
+00:02:19.150 --> 00:02:23.360
+And then, we're going to remember
+to have this curly braces here.
+
+36
+00:02:23.360 --> 00:02:27.021
+Remember that kind of odd
+syntax that Shiny has.
+
+37
+00:02:27.021 --> 00:02:31.043
+So just probably the number one
+mistake everyone makes in coding Shiny
+
+38
+00:02:31.043 --> 00:02:35.336
+applications is forgetting to put
+the curly braces in, in the right spot or
+
+39
+00:02:35.336 --> 00:02:38.287
+forgetting to close a brace and
+that sort of thing.
+
+40
+00:02:38.287 --> 00:02:43.727
+Okay, so we're just going to actually
+name in this environment a num1 and
+
+41
+00:02:43.727 --> 00:02:49.711
+num2 as the just input values just so
+that there are easier to work with, okay.
+
+42
+00:02:49.711 --> 00:02:52.130
+And then we're going to
+multiply them together.
+
+43
+00:02:52.130 --> 00:02:55.850
+And the stopApp function is just
+going to tell it to stop and
+
+44
+00:02:55.850 --> 00:02:59.950
+display the result of
+num1 multiply times num2.
+
+45
+00:02:59.950 --> 00:03:03.200
+And remember we have to have
+a runGadget in there and
+
+46
+00:03:03.200 --> 00:03:06.810
+it specify what is the UI and
+what is the server.
+
+47
+00:03:06.810 --> 00:03:09.730
+So technically you could name UI and
+server something else.
+
+48
+00:03:09.730 --> 00:03:13.090
+But by convention I
+think no one does that.
+
+49
+00:03:13.090 --> 00:03:15.810
+Okay, so let's go to the code
+demonstration and see how it works.
+
+50
+00:03:17.820 --> 00:03:22.040
+Okay, so I have my function that I
+copied from the R mark down document.
+
+51
+00:03:22.040 --> 00:03:25.380
+Let's just make sure I've got
+the two libraries loaded.
+
+52
+00:03:25.380 --> 00:03:28.190
+Okay, now let's run our function.
+
+53
+00:03:28.190 --> 00:03:32.730
+I've already run it before, I'm sorry,
+I already went over all the components
+
+54
+00:03:32.730 --> 00:03:36.010
+before, but now let's actually
+see what happens when we run it.
+
+55
+00:03:36.010 --> 00:03:40.940
+Okay, so, obviously nothing, because
+this is just defining the function.
+
+56
+00:03:40.940 --> 00:03:42.900
+Now let's do it, there is it, good.
+
+57
+00:03:44.080 --> 00:03:47.950
+And let's give as choices
+the numbers 1:10 and 1:10.
+
+58
+00:03:47.950 --> 00:03:52.173
+Let's say we're learning our
+multiplication tables and
+
+59
+00:03:52.173 --> 00:03:54.681
+we want this to help us check them.
+
+60
+00:03:54.681 --> 00:03:59.520
+So I want to do 4 and 7,
+hopefully it will give me 28.
+
+61
+00:03:59.520 --> 00:04:02.190
+And then when I click done.
+
+62
+00:04:02.190 --> 00:04:04.710
+Go back in the R pane, see it gave you 28.
+
+63
+00:04:04.710 --> 00:04:08.830
+Okay, so this is just a baby step
+towards some really useful things.
+
+64
+00:04:08.830 --> 00:04:13.620
+But we were able to put in some choices,
+select among them and
+
+65
+00:04:13.620 --> 00:04:16.720
+then have R do some numeric
+manipulations and spit them out.
+
+66
+00:04:16.720 --> 00:04:20.780
+And I am hoping now you can start to
+see the direction that Shiny gadgets
+
+67
+00:04:20.780 --> 00:04:24.230
+is going to go from here to
+actually be useful for you.
+
+68
+00:04:24.230 --> 00:04:26.910
+So next we'll actually do
+an interactive graphic.

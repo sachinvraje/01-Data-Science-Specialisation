@@ -1,0 +1,59 @@
+Okay, so let's talk about a different kind
+of graph that we can create, a line graph. Okay, so
+let's look at this data("airmiles"), and then let's just briefly
+talk about it quickly. If I type in airmiles after
+I've done data("airmiles"), you see that it's a time series. There's a collection of values,
+and if I do time(airmiles), it'll actually give me
+the associated times. In this case the time is years, okay? Each data point corresponds to a year. So now if I do plot_ly,
+plot_ly's main plotting command, x is the time variable, y is airmiles. So we haven't given it a data frame,
+we've just named two arguments x and y. And the variables are in our environment,
+so r knows where to find them. Okay, then we do that plot,
+we get this time series plot. And then notice,
+wherever my mouse is on the plot, it's giving me the corresponding x and
+y value. And you've probably seen a plot
+like this if you ever looked at a market index like in the S&P 500 or
+something like that. They'll often have a plot like this where
+they'll have the index value over time. So why don't we actually
+create a multi-line graph just like that using some stock market data? Okay, so
+we already have plot_ly loaded up. So we also, just for some data
+manipulation, need tidyr and dplyr, and I'll go through the commands
+that we're using from them. Okay, so there's the data EuStockMarkets. So if I do Eu,
+let me do head(EuStockMarkets). Okay, so there's the German, Swiss, French, and British market indices, okay? So this is actually a time
+series-type data set, so we need to convert it to a data frame. Okay, so this first command stocks
+assignment as.data.frame(EuStockMarkets), that's just going to convert our
+data as it is now into a data frame. Okay, then we're going to pass that into
+this gather command, gather(index, price). Let me just first show you what
+this first command does, which, this one doesn't do much. So stocks, now if I do head(stocks),
+where all I've done is converted it to a data frame, now it's just
+printing out as a data frame, okay? Notice that if I did is.data.frame,
+our original data, even though it maybe looked a little
+bit like a data frame, EuStockMarkets, notice FALSE, it is not a data frame. Okay, now when I go
+through the two commands, where I turn it into a data frame and
+then I do the gather command, let me show now what I've done,
+that second manipulation has done. Notice what it's done is,
+it's taken it from a short format and
+converted it into a long format. So there's a variable index, okay, and that index was the column name of
+the data points from before, okay? So this is maybe a little bit less
+convenient for display purposes way to have the data, but it's how plot_ly wants
+it in order to display multiple lines. It wants it as one giant,
+single data frame with the line, the things that demarc the different
+lines as a single factor variable, okay? And then this final command is just
+going to create our time variable, okay, it's going to
+create our time variable. So if I do head(stocks) now,
+there you go, you see time, you see the time variable
+having been recreated, okay? So now when we do plot_ly,
+we can do plot_ly of the stocks, x is time, y is price, and
+color is which index it is, okay? Then we do it, we see that it's plotted
+the four different index types here. It's given you a little
+key to each of the colors. And it also does the interactivity where, as your mouse hovers over a particular
+point, it gives you the specific stock market value, the index value at
+that particular point in time. Okay, so this is pretty similar
+I would say to the stock market graphs you just see a few Google for
+any of these indices, for example, just Google on the DAX and
+you'll see exactly these kinds of plots. So it's really a handy plot, and
+as you can see it's quite useful. And I can't also stress enough
+the importance of using tidyr and dplyr for
+doing some of these manipulations. Switching from short to long format
+is a very common manipulation for data, and tidyr makes that super easy. And dplyr for working with
+data frames is just essential. Okay, so give it a try. Maybe either use this data or try and find some other stock market data to
+create a multi-line stock market graph, and try and put it out on a webpage.

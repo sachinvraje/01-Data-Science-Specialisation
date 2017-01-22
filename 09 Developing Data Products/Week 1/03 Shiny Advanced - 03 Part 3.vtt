@@ -1,0 +1,234 @@
+WEBVTT
+
+1
+00:00:00.630 --> 00:00:03.480
+So, the last thing that's kind of
+an important thing to cover in Shiny,
+
+2
+00:00:03.480 --> 00:00:04.870
+is delayed reactivity.
+
+3
+00:00:04.870 --> 00:00:06.640
+So, we run into this problem a lot,
+
+4
+00:00:06.640 --> 00:00:11.730
+where we've developed an app,
+and Shiny's reactivity,
+
+5
+00:00:11.730 --> 00:00:16.720
+the way it works with reactivity, as soon
+as you're changing your slider values,
+
+6
+00:00:16.720 --> 00:00:20.309
+it's automatically re-executing
+the code in the server functions.
+
+7
+00:00:21.890 --> 00:00:26.018
+Which is fine if what's going on in
+the server functions are really small,
+
+8
+00:00:26.018 --> 00:00:27.270
+quick calculations.
+
+9
+00:00:27.270 --> 00:00:28.890
+And often, that's what you want.
+
+10
+00:00:28.890 --> 00:00:33.040
+But sometimes, your Shiny app is running
+a large Monte Carlo simulation, or
+
+11
+00:00:33.040 --> 00:00:37.290
+it's doing Bootstrap, or something
+computationally intensive, and you want
+
+12
+00:00:37.290 --> 00:00:42.430
+to have them settle the values, then click
+a submit button or something like that.
+
+13
+00:00:42.430 --> 00:00:44.080
+So, we're going to show you
+how to do this really quick.
+
+14
+00:00:44.080 --> 00:00:45.890
+It's only going to be
+one extra line of code.
+
+15
+00:00:47.127 --> 00:00:52.767
+Okay, here I have my code exactly
+from the previous example,
+
+16
+00:00:52.767 --> 00:00:55.920
+and just set in the same exact way.
+
+17
+00:00:55.920 --> 00:00:58.980
+So, if I click Run App,
+you'll recognize the app.
+
+18
+00:00:58.980 --> 00:01:04.030
+It just looks, and
+as I change the slider, it goes ahead and
+
+19
+00:01:04.030 --> 00:01:06.880
+reruns the code, okay?
+
+20
+00:01:06.880 --> 00:01:10.920
+So, what we want to change now,
+is to have a submit button.
+
+21
+00:01:10.920 --> 00:01:19.630
+So, from the slides,
+I'm going to add this one command.
+
+22
+00:01:19.630 --> 00:01:20.170
+Okay?
+
+23
+00:01:20.170 --> 00:01:21.040
+submitButton.
+
+24
+00:01:22.512 --> 00:01:26.970
+Okay, so just the command here,
+submitButton.
+
+25
+00:01:26.970 --> 00:01:29.920
+And then,
+the button value is called Submit.
+
+26
+00:01:29.920 --> 00:01:34.580
+And then, this actually receives a labeled
+input value, called Submit, that you can
+
+27
+00:01:34.580 --> 00:01:40.530
+use, for example, if the submitButton
+is true, in your server functions.
+
+28
+00:01:42.040 --> 00:01:46.160
+Now, one thing that's a very
+common mistake when you're
+
+29
+00:01:46.160 --> 00:01:50.170
+doing Shiny apps is not remembering
+that these are functional arguments.
+
+30
+00:01:50.170 --> 00:01:53.490
+So, not remembering that you have to
+have a comma after all these commands.
+
+31
+00:01:53.490 --> 00:01:54.050
+Okay.
+
+32
+00:01:54.050 --> 00:01:56.330
+So notice, RStudio is kind enough.
+
+33
+00:01:56.330 --> 00:01:57.605
+Let me see.
+
+34
+00:01:57.605 --> 00:02:00.820
+Before, it was showing me that
+there was an error there.
+
+35
+00:02:00.820 --> 00:02:01.530
+There you go.
+
+36
+00:02:01.530 --> 00:02:03.350
+See this little x there?
+
+37
+00:02:03.350 --> 00:02:04.548
+That's that error.
+
+38
+00:02:05.889 --> 00:02:08.050
+Expect a comma after the expression.
+
+39
+00:02:09.160 --> 00:02:10.510
+Right there, okay.
+
+40
+00:02:10.510 --> 00:02:12.830
+So, without that comma, it wouldn't run.
+
+41
+00:02:12.830 --> 00:02:14.370
+Okay, so now let's run the app.
+
+42
+00:02:15.840 --> 00:02:18.480
+And, okay,
+see now we have a little Submit button.
+
+43
+00:02:18.480 --> 00:02:22.340
+And as we change the value of the slider,
+notice it doesn't rerun.
+
+44
+00:02:22.340 --> 00:02:24.840
+We have to click Submit,
+and then it reruns.
+
+45
+00:02:25.990 --> 00:02:26.810
+Okay?
+
+46
+00:02:26.810 --> 00:02:28.510
+So, that's a very useful thing.
+
+47
+00:02:28.510 --> 00:02:31.310
+And, again, remember your Submit
+button is a label button that you can
+
+48
+00:02:31.310 --> 00:02:33.480
+refer back to in your server functions.
+
+49
+00:02:33.480 --> 00:02:37.500
+So if you want calculations or
+things conditional on the Submit button,
+
+50
+00:02:37.500 --> 00:02:40.530
+you can do that.
+
+51
+00:02:40.530 --> 00:02:46.280
+Okay, so that's a quick little handy thing
+that you can add into your Shiny tools.

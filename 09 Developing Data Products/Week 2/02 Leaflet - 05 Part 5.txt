@@ -1,0 +1,24 @@
+So sometimes you have enough
+points that when they all appear close together you
+can't really differentiate them. And leaflet has a pretty
+nice solution to this and that's to cluster them together and in a
+different resolution they'll break apart. So let's go through
+an example like this and I think you'll see
+immediately why it's useful. Okay, so let's just go through the code. Let's define a data frame
+with 500 latitude and longitude points that are kind of
+close together, okay? And then, I'm going to take my data frame,
+and pass it as the argument to leaflet. Then I'm going to pass the output of
+the leaflet evaluated at the data frame to the addTiles command. And then I'm going to pass the output
+of that to the add markers command and then it's just going to have
+default cluster options, okay. There we go and look at that. Now we see the cluster in it. It gives you the number of
+points in this cluster. So let's look at this big one. Actually, I want to do this 96 one
+since it's, see, there you go. It's right in the center of Baltimore. Look at that. Zowie!
+That's cool. Okay, see how they all bunch back
+together at different resolutions? There is all 500 of them,
+they're all in Baltimore. And as I zoom in,
+I could just do this forever. Okay, all right,
+now let's move onto the next thing. Since it's really quick I'm not
+going to really introduce it. Instead of adding clusters or
+standard pop-ups, you can add circles. And the way to do that is just add circles
+markers, see this command right here. Okay, so let's do the same thing. Here we're just going to do, A couple of 20 markers that we're going to add. And then we're just going to
+add circle markers. Okay, and there they are. And see now they look like little circles.

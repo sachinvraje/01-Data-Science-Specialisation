@@ -1,0 +1,78 @@
+So okay, our Shiny app is only going to be
+useful if it can take in input values, do some R calculations and then spit out the
+result of those calculations or results. And so the first thing we need to be able
+to do is actually take in some input values. And so this next code demonstration,
+all we're going to do is create a slider which has to occur in
+the user interface and then the values for those sliders that
+the user selects is going to be passed into the server function which is then
+just going to send it back as is to the user interface function
+to redisplay it, okay? So, this is just another
+building exercise. We're not going to do anything with
+the input other than spit it back, right back out at the user
+interface to display it as is. So, let's try. Okay, now let's see if we can get our Shiny app to actually take in
+values from the user, via a slider. Put them to the server, and
+then the server will return the values. Okay, so
+I have my ui.R shinyUI function here. And in my sidebar layout, on the sidebar
+panel I'm going to have a slider. So I'm going to give a user prompt
+that says move the slider, and then slider input. This function right here is going to
+create the slider and display it, and then I'm going to name,
+I have it named slider2, okay. So I've named the slider slider2,
+and then the command says Slide Me! Okay, it's going to go from 0 to 100 and it's going to have
+the starting value at 0. Okay, now let's talk about
+the main panel in a second. Okay, so I take that slider value, I input
+it, it's given a value called slider 2, the input from the slider
+displayed to the user. Okay, now my shiny server is
+a function that takes as its argument a function that takes input and
+output, okay? And then you have to
+have these curly braces, because you need to have,
+it's defining a function. So a function has to have the curly
+braces, and then down here, you have to remember to close with the curly braces
+and the shiny server parenthesis, okay? And then, what it's going to do is
+it's going to take the input, okay, input is what's input from the ui.R,
+shiny UI function. And it says take an input, and
+let's get rid of that real quick just so it's consistent with what's in our
+mark down code, from the slides. And it's going to say take in slider 2. And then what I want to
+do is just render it. In other words, display the text and
+I'm going to name that output, text1. Okay, so then when we go back to
+UI.r in the mainPanel, it says, here's the slider value,
+and textOutput is text1. So that same text that we labeled from
+the output from the server function, it's going to get displayed
+in the name panels. Let's run it and just see how it looks. Okay, move the slider part. Here's the slider. As I move it,
+the slider value is displayed over here. So, what's happening? Right, is the slider is
+receiving a value from the user, that value is given the label slider2,
+okay? In the server.R function it's
+grabbing that from the slot input $slider2, okay? And then it's spitting it back out as Output $text1 and
+then the ui.R is displaying it. Now there's nothing in particular,
+I want to emphasize, there's nothing in particular about having the slider
+in the side bar panel and the text in the main panel and that there's
+nothing particular about this order. It's not sort of running the slider and
+then displaying it because this R code happens to occur later
+on in the text than this R code, right? We could have had the slider output
+in the main panel and the slider. I'm sorry, the slider in the main panel,
+in the output, in the sidebar. So that's an important thing to think
+about with Shiny and reactive expressions. It's not kind of, you don't want to
+think about it running linearly, like a regular R program. Of course, at some level it is because,
+it is in our program but, the way which the server is going
+it's sort of running reactively and kind of constantly going back and forth. Okay, so you just want to kind of change
+your mindset about that a little bit then how it is in normal R programming. Okay, and
+now notice another thing is if I were to label this text output$text and
+re-run it, okay. It doesn't display anything because the
+label text doesn't mean anything to ui.R. It's thinking it's text1 when
+it says textOutput, okay. So let's reload it and
+then now it'll work. See, it's displaying it again. Same thing with the slider. If I were to call this slider instead
+of slider2 or call it slider1, okay. It doesn't display anything because
+the render text from the UI data or the server function is looking for
+slider2 and the UI has never put out anything called
+slider2, anything labeled slider2. Okay, so if I were to change this to
+slider1, reload it, it now works. So remember that your
+labels have to match up. The last thing I'll do is just give
+you a sense of how you can start to use these things for manipulation. Let's just add 10 to
+the input of the slider and then show how we can now display. Okay, it's not doing much, right,
+29 adds 10 and gives you 39. But you can see actually now what we've
+done is we've taken a value from the user, used R to manipulate that input value. In this case a very simple manipulation, added 10 and then sent that back to
+the user interface to be displayed. Okay and all these things
+are happening reactively, okay? So try this out, create a slider,
+or a check down box, or a button, or something like that, that
+gets an input and displays it back out. So then we'll move on to the next step of
+actually trying to create a prediction algorithm, or we'll start to create where
+we actually manipulate these numbers in the server.R function.

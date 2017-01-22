@@ -1,0 +1,30 @@
+So, the last thing that's kind of
+an important thing to cover in Shiny, is delayed reactivity. So, we run into this problem a lot, where we've developed an app,
+and Shiny's reactivity, the way it works with reactivity, as soon
+as you're changing your slider values, it's automatically re-executing
+the code in the server functions. Which is fine if what's going on in
+the server functions are really small, quick calculations. And often, that's what you want. But sometimes, your Shiny app is running
+a large Monte Carlo simulation, or it's doing Bootstrap, or something
+computationally intensive, and you want to have them settle the values, then click
+a submit button or something like that. So, we're going to show you
+how to do this really quick. It's only going to be
+one extra line of code. Okay, here I have my code exactly
+from the previous example, and just set in the same exact way. So, if I click Run App,
+you'll recognize the app. It just looks, and
+as I change the slider, it goes ahead and reruns the code, okay? So, what we want to change now,
+is to have a submit button. So, from the slides,
+I'm going to add this one command. Okay? submitButton. Okay, so just the command here,
+submitButton. And then,
+the button value is called Submit. And then, this actually receives a labeled
+input value, called Submit, that you can use, for example, if the submitButton
+is true, in your server functions. Now, one thing that's a very
+common mistake when you're doing Shiny apps is not remembering
+that these are functional arguments. So, not remembering that you have to
+have a comma after all these commands. Okay. So notice, RStudio is kind enough. Let me see. Before, it was showing me that
+there was an error there. There you go. See this little x there? That's that error. Expect a comma after the expression. Right there, okay. So, without that comma, it wouldn't run. Okay, so now let's run the app. And, okay,
+see now we have a little Submit button. And as we change the value of the slider,
+notice it doesn't rerun. We have to click Submit,
+and then it reruns. Okay? So, that's a very useful thing. And, again, remember your Submit
+button is a label button that you can refer back to in your server functions. So if you want calculations or
+things conditional on the Submit button, you can do that. Okay, so that's a quick little handy thing
+that you can add into your Shiny tools.

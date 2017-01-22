@@ -1,0 +1,79 @@
+So, googleVis is a pretty amazing package. It gives you access to most of Google's
+visualization tools that they have. So, motion charts, we already covered. Interactive maps,
+we'll go over in a minute. Interactive tables,
+line charts, bar charts. They even have things that'll make like
+a little speedometer based on a graph or metric that you want, and so on. So, just go to the documentation for
+googleVis, and it'll show you a bunch of them. It's really well documented. They both have a vignette and,
+of course, the packaged documentation. So, interactive graphs
+are a great way to use googleVis, because the mapping stuff is hard, but
+Google's done a lot of it for you already. So, if you want to create JavaScript
+maps that have little pop ups over the countries that you specify, and have it nice so that you can embed it in
+a webpage or a Slidify presentation, or a presentation or a document or
+so on, it's not so bad. So, here's an example right here. You can see in our R
+markdown presentation, it actually does the interactivity. Okay. And, of course, you can zoom in if
+you want, and do things like this, so that this is just specifying the options. Now, while we're on the topic of options,
+there's a million different options. I give you the link down here to
+show you where the options occur, what page, that you can pass as
+arguments to your googleVis chart. So, how that works is just as
+an options command, as a list. You need to name them right,
+and give them the right value. And then, you need to use this syntax
+that is, I guess it's just JSON syntax. But as long as you can, but
+you probably don't need to know any JSON. You just actually need to kind of look
+at it once or twice, and get used to it. And then I think it should be no problem. Okay, so here's an example
+of just doing a line chart. And the last thing I want to talk about is the idea that you can
+just merge multiple plots together. So, that's just using gvisMerge. And then, here is an example. After you've done it, here's
+the left-hand plot, you see our plot. You see a table. And you see a chart, all together. Okay? So, we'll go through a code
+example of all these things. Here is how you can just see,
+of course, the code, we already talked about that,
+just print, will print out the code. And then, like we mentioned, you can embed
+the results in a markdown document just like we've done in this exact document. An important thing,
+I think, there's two things. One is make sure you have the most
+current versions of everything. R, Slidify, data, or
+whatever it is you're using. And then, the second important thing is
+results equals as is in the chunk options. That, I haven't had it,
+it won't work otherwise. But then,
+you can get it to work after that. And I've done this a bunch of times
+between the last iteration of this class and the next one, and I've seen that
+this is a pretty finicky process. And you tend to have to tweak
+around with it a little bit, but you usually get it in the end. Often, I have to reinstall things. Make sure you clear the knitr cache,
+and that sort of thing. And eventually you'll get it. But it seems to be a little bit
+of a persnickety thing, but once you get it once then it'll be fine. Okay, so let's start going
+through some of the code, and generate some interesting graphs. Okay, so let's, as a first thing,
+generate this chart. So, before I show you anything, let me just show you the data
+frame that we're going to display. Okay, so there's the country names. Okay? It has a value that's
+going to go into the pop-up. And then, online true or false. I think, at this point, we're just going to use the country and
+the profit variable. Okay, now when we look up at our code, we see gvisGeoChart, okay, Exports,
+okay, that's just the data frame. locationvar = "Country". That's just the variable name, country. It's going to look for a text field
+that has the country label names. And the color variable is profit. Okay, and then the options,
+this is just formatting options. Okay, so let's do that. And then, I'm going to once
+again plot it so we can see it. Okay, and it brings up a webpage. There you go.
+Look at that, pretty cool. That is pretty fancy for almost no effort. Okay, now let's go down to
+specifying your region. Okay, gvisGeoChart, again. And then here,
+we specify region equals 150. That's going to zoom in on that region. Let's try it. G2, okay, now if we do plot G2, bam, right there, Western Europe. Okay, looks good. Okay, so now, let's just go through some
+of our options, and see how they're set. Again, this, we're just going to
+create a very simple line chart. Okay, let's create this
+data frame right here. There it is. Okay, there's our data frame. Maybe, U.S., Great Britain, Brazil. Value one, value two. Okay, now let's create our gVis chart. We'll call it Line with a capital L. And then, if we do plot line,
+now it brings it up. Hello world, it says. And then it's just got this simple plot. So, look at the way we're
+setting the options there, and connect them back to the plot. I think it'll be pretty clear to you
+the JavaScript notation is a little bit annoying if you're not used to it,
+but you're really just passing the options exactly as Google Charts
+wants you to pass them, right? There's no translation going through. So, it's good to know because,
+at some point, you might want to create a Google Chart
+using Google Docs or something like that, and have the options set in the same
+way that you have them set here. Okay, last thing we want to do is
+create multiple plots together, okay? Here, we've created our geo
+chart just like we did before. Here's a table. So, this is just an example
+of creating a table. But again, this is just taking our
+data as is, and creating a table. The motion chart that we have from before. Okay, and
+then what I'm going to do is merge the GeoChart and
+the gvisTable in one plot. And then, horizontal=FALSE means
+it's going to stack them up one on top of each other. And then, I'm going to merge this
+new plot and the other one together. Horizontal=TRUE side by side, okay? Now, if I print, I'm sorry plot DTM. There, it's going to bring it up. And there you see. Now, it looks pretty nice, right? It's got the plot up here, right? It's got the print out of the data
+frame there, and an interactive table. And it's got the motion chart over here. Okay.
+So, that's pretty. And you can see some of the options. You can set the background color and
+that sort of thing. But this is a pretty nifty little
+plot with relatively little code, and it's really just because
+Google's plotting library's going to be doing all the hard
+work in the back end. And that's why this takes so little code. So, play around with this,
+create some Google Charts. I think you'll be happy at how
+easy it makes Google Charts. And try a couple of these for homework.

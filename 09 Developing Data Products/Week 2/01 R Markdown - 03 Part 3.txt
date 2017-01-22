@@ -1,0 +1,23 @@
+Okay, so
+let's look at some of the preamble here, this YAML part is surrounded
+by three dashes here. And so for example the title
+you can change the title now, at this point what you put in in the
+dialog box you can change at this point. Change the author, change the date and
+in the output ioslides that also means you can change the format if you
+want it to be slide instead. The knitr options, by default, that's just means it's not going to
+echo code that you include by default. Okay, so
+now let's just create a new slide. New slide is two pound signs. So my new slide. Okay, now let's knit it. There it's going. There we go. My new slide. Okay, that's slide two. So remember,
+it starts with my fancy presentation. My new slide. Now let's try a slide that
+doesn't have a heading. So this one has some content on it. And then let's try A slide without. [NOISE] A slide without a title. Okay, that's three asterisks. Now there's my new slides
+with some content, and then now here's a slide without a title. Okay, so
+now let's try putting a subheading. So that's three pound signs, which is a top level subheading. Let's say actually let's
+have it like this. Two pound signs for My title. Three pound signs for
+a top level subheading. And four pound signs for
+a second level subheading. Now let's try knitting it. Remember you can also just do
+Ctrl+Shift+K and then you can see. Now let's add some more content. Let's get rid of these sub headings. A list, bullet one. Second one, bullet two. Okay, and notice those are just two
+dashes to start my bulleted list and then if i want an ordered list,
+1 is Item 1, 2 is Item 2 and so on. Okay, or let's spell it Item a and Item b. So, there's no confusion
+over what's going on and let's just call bullet one and bullet two. Okay so let's knit those and
+see, remember Ctrl+Shift+K. There we go. Okay, so now next step. Go ahead and create some slides,
+put some content in with some bullets and some ordered lists, some titles,
+some headings and subheadings.

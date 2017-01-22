@@ -1,0 +1,21 @@
+Hello, I'm Sean Cross and
+I'm going to show you how to start writing your own Swirl
+courses and Swirl lessons with Swirlify. If you're not familiar with Swirl, it's an R package that turns the R console
+into an interactive learning environment. Let me give you a short tour of Swirl
+in case you haven't used it before. So let me load the Swirl package and then I can just start up Swirl
+by using the swirl function. And as you can see,
+the R console starts talking to me and asking me some questions. So you can call me Sean. I don't want to. I was working on a lesson before. As you can see, I get a selection, I get a couple options to pick
+a Swirl course to start, so I'm going to pick R Programming, and then
+within that course I can pick a lesson. I'm going to start the,
+first lesson, Basic Building Blocks. So the R console starts displaying some
+text as I get into the Swirl lesson. The console in Swirl wants me to type in 5 + 7 and I did that correctly, so I got the question right so
+we can move on to further questions. Now Swirl wants me to assign
+the value of 5 + 7 to a variable x. So I'm going to do the wrong
+things to show you what happens. I'm going to assign 5 + 8. And as you can see, it says, nice try, I didn't get the question right,
+and it shows me a hint. So I'm going to follow that
+hint's advice and type 5 + 7. All right, so
+it's a short introduction to Swirl. There are several different
+kinds of questions that the R console can ask a student. So I'm going to exit out of
+this lesson right now, and I did that using the Escape key,
+by the way. And, I'm going to show you how you can
+start writing your own Swirl lessons with Swirlify.

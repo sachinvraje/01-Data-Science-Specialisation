@@ -1,0 +1,702 @@
+WEBVTT
+
+1
+00:00:03.900 --> 00:00:06.940
+Hey everyone this lecture is going to be
+able building R packages.
+
+2
+00:00:06.940 --> 00:00:09.650
+So this is a really a key product that,
+that you can build that
+
+3
+00:00:09.650 --> 00:00:11.790
+implemented statics, any kind of
+statistical or
+
+4
+00:00:11.790 --> 00:00:14.840
+other methodology that you develop on your
+own.
+
+5
+00:00:14.840 --> 00:00:19.510
+And it's a great way to distribute your
+approaches to other people who use R
+
+6
+00:00:19.510 --> 00:00:21.860
+because there are a lot of centralized
+platforms
+
+7
+00:00:21.860 --> 00:00:24.100
+and repositories that you can take
+advantage of.
+
+8
+00:00:24.100 --> 00:00:25.510
+So I'm going to talk about how the co, one
+of
+
+9
+00:00:25.510 --> 00:00:30.740
+the basic aspects and pieces to, for
+building an R package
+
+10
+00:00:30.740 --> 00:00:32.800
+and so that you can kind of know what
+part, what, what
+
+11
+00:00:32.800 --> 00:00:34.870
+goes into building it and what, how it can
+be done.
+
+12
+00:00:41.040 --> 00:00:42.600
+So first you know, what's an R package?
+
+13
+00:00:42.600 --> 00:00:44.200
+The basic idea is that it's an exte, it's
+
+14
+00:00:44.200 --> 00:00:47.360
+a mechanism for extending the basic
+functionality of R.
+
+15
+00:00:47.360 --> 00:00:51.560
+So, when you download R, you know, you get
+a couple of base packages.
+
+16
+00:00:51.560 --> 00:00:53.450
+Things like graphics and GR devices there
+are
+
+17
+00:00:53.450 --> 00:00:56.710
+kind of implement this kind of fundamental
+functionality.
+
+18
+00:00:56.710 --> 00:00:58.120
+But there's all kinds of functionality
+that's
+
+19
+00:00:58.120 --> 00:01:01.400
+not included in the basic R distribution.
+
+20
+00:01:01.400 --> 00:01:04.180
+and, and it's, that's because it's
+basically impossible to kind of
+
+21
+00:01:04.180 --> 00:01:08.060
+include all, everything that everyone
+might need in a single package.
+
+22
+00:01:08.060 --> 00:01:12.030
+So there's an extension mechanism called
+the package system that allows other
+
+23
+00:01:12.030 --> 00:01:16.380
+people to write functions and to write
+other kind of functionality and to
+
+24
+00:01:16.380 --> 00:01:19.180
+then, and then so then other users can
+kind of add it on
+
+25
+00:01:19.180 --> 00:01:22.750
+or tack it on to the, to the kind of base
+R installation.
+
+26
+00:01:22.750 --> 00:01:26.450
+And so typically it's a collection of R
+functions or data objects.
+
+27
+00:01:26.450 --> 00:01:27.730
+That are kind of wrapped together with
+
+28
+00:01:27.730 --> 00:01:31.870
+some other kind of elements like
+documentation.
+
+29
+00:01:31.870 --> 00:01:36.140
+The goal of the R Package System is to
+kind of organize this stuff in a
+
+30
+00:01:36.140 --> 00:01:39.600
+systematic way so that any time you get an
+R Package, there are a couple of things
+
+31
+00:01:39.600 --> 00:01:43.050
+that are kind of common to all packages
+that the same things are always in the
+
+32
+00:01:43.050 --> 00:01:44.840
+same places, and the, and you always
+access
+
+33
+00:01:44.840 --> 00:01:47.300
+certain things, like help files, in the
+same way.
+
+34
+00:01:47.300 --> 00:01:51.200
+So there's a certain amount of consistency
+that's there, so that users can
+
+35
+00:01:51.200 --> 00:01:55.290
+kind of manage their expectations, any
+time they get a new R Package.
+
+36
+00:01:55.290 --> 00:01:57.230
+There are thou, literally thousands of R
+
+37
+00:01:57.230 --> 00:01:59.379
+packages written by people all around the
+world.
+
+38
+00:01:59.379 --> 00:01:59.879
+[BLANK_AUDIO]
+
+39
+00:02:02.520 --> 00:02:05.460
+So where can you find R packages, well
+typically you might go
+
+40
+00:02:05.460 --> 00:02:09.890
+to a central repository, such as the
+comprehensive R art network or CRAN.
+
+41
+00:02:09.890 --> 00:02:11.700
+There are, another big repository is
+
+42
+00:02:11.700 --> 00:02:14.090
+called Bioconductor, which contains a lot
+of
+
+43
+00:02:14.090 --> 00:02:17.780
+tools for bioinformatics and genomics and
+those kind, and tha, those kinds of areas.
+
+44
+00:02:18.830 --> 00:02:20.270
+There are also a lot of packages that
+
+45
+00:02:20.270 --> 00:02:22.350
+are hosted on source code sharing websites
+like
+
+46
+00:02:22.350 --> 00:02:26.430
+GitHub Bitbucket, Gitorious and so you
+can, you
+
+47
+00:02:26.430 --> 00:02:30.630
+can attempt to install packages from those
+repositories also.
+
+48
+00:02:30.630 --> 00:02:33.010
+Packages from CRAN of Bioconductor can be
+installed
+
+49
+00:02:33.010 --> 00:02:36.310
+with the install.packages function that
+kind of comes with R.
+
+50
+00:02:36.310 --> 00:02:39.860
+And all you need to do is specify the the
+name of the package where the
+
+51
+00:02:39.860 --> 00:02:43.140
+repository was coming from, and it will
+get,
+
+52
+00:02:43.140 --> 00:02:45.540
+install download and install a package for
+you.
+
+53
+00:02:46.940 --> 00:02:49.715
+Packages from GitHub for example can be
+installed using the install
+
+54
+00:02:49.715 --> 00:02:52.510
+GitHub function from the devtools package,
+that's a very handy tool.
+
+55
+00:02:53.790 --> 00:02:56.580
+If you're building a package, you don't
+have to put a package
+
+56
+00:02:56.580 --> 00:02:59.810
+on a central repository in order to
+distribute it to other people.
+
+57
+00:02:59.810 --> 00:03:00.810
+But you can just kind of send them a
+
+58
+00:03:00.810 --> 00:03:04.130
+file or wh, whatever makes it, whatever's
+easier for you.
+
+59
+00:03:04.130 --> 00:03:09.220
+But putting the packages on a central
+repository, is useful because it, it
+
+60
+00:03:09.220 --> 00:03:13.439
+allows anyone to really find your package
+and install it if they want.
+
+61
+00:03:14.520 --> 00:03:16.620
+So what's the purpose of making an R
+package?
+
+62
+00:03:16.620 --> 00:03:19.750
+I mean, why would you want to go through
+the effort of, of doing this?
+
+63
+00:03:19.750 --> 00:03:23.110
+When you can just kind of send someone a
+file with your code in it?
+
+64
+00:03:23.110 --> 00:03:24.320
+And so there are a number of advantages
+
+65
+00:03:24.320 --> 00:03:26.840
+of having an R package available for other
+people.
+
+66
+00:03:26.840 --> 00:03:29.500
+First of all it's it, it's a structured
+format that
+
+67
+00:03:29.500 --> 00:03:32.500
+other people kind of understand if they
+use other R packages.
+
+68
+00:03:32.500 --> 00:03:35.730
+Second of all, documentation is required
+in an R package, so it forces you to
+
+69
+00:03:35.730 --> 00:03:38.490
+write some documentation and to explain
+how
+
+70
+00:03:38.490 --> 00:03:40.770
+your function should be used to other
+people.
+
+71
+00:03:40.770 --> 00:03:42.610
+You have, you have to document the
+arguments and
+
+72
+00:03:42.610 --> 00:03:45.350
+you have to document the kind of the
+return values.
+
+73
+00:03:45.350 --> 00:03:47.610
+Another thing is that it, it allows you to
+kind
+
+74
+00:03:47.610 --> 00:03:52.290
+of create a well-defined API or
+application programmer interface so that
+
+75
+00:03:52.290 --> 00:03:55.990
+you can specify what functions the users
+should be calling,
+
+76
+00:03:55.990 --> 00:03:58.900
+and what functions in particular the user
+should not be calling.
+
+77
+00:03:58.900 --> 00:04:01.250
+And so that way you can say, okay well
+here if I, if you're
+
+78
+00:04:01.250 --> 00:04:03.680
+going to make some functionality available
+to people,
+
+79
+00:04:03.680 --> 00:04:05.080
+and they should only, and you only want
+
+80
+00:04:05.080 --> 00:04:08.060
+them to access it through using a single
+function, then you can say in
+
+81
+00:04:08.060 --> 00:04:11.760
+your R package, this is the only function
+that you need, that you can access.
+
+82
+00:04:11.760 --> 00:04:13.530
+That way you could hide and abstract a
+
+83
+00:04:13.530 --> 00:04:16.270
+lot of the implementation details away
+from the user.
+
+84
+00:04:16.270 --> 00:04:19.400
+So that, if you need to change them in the
+future, you know, you can change them,
+
+85
+00:04:19.400 --> 00:04:22.350
+without having, without ruining the
+interface that you've given
+
+86
+00:04:22.350 --> 00:04:25.290
+to to the public and for users to use.
+
+87
+00:04:25.290 --> 00:04:28.865
+It's also, you, also typically easier to
+maintain an R package because the
+
+88
+00:04:28.865 --> 00:04:32.770
+structure and the documentation required
+if for some reason, you decide you don't
+
+89
+00:04:32.770 --> 00:04:36.840
+want to maintain your package, or you
+can't maintain it you could always kind of
+
+90
+00:04:36.840 --> 00:04:40.294
+pass it off to someone and then the
+structure's already there for them.
+
+91
+00:04:40.294 --> 00:04:44.779
+I think, one advantage, I think, is that
+there's some standards for a kind
+
+92
+00:04:44.779 --> 00:04:49.264
+of reliability and robustness that people
+will have faith in so they know that
+
+93
+00:04:49.264 --> 00:04:53.424
+at least if it's on CRAN, it passed a
+number of checks and that
+
+94
+00:04:53.424 --> 00:04:55.439
+it will load properly and kind of
+
+95
+00:04:55.439 --> 00:04:58.395
+not having a problem immediately on your
+system.
+
+96
+00:04:58.395 --> 00:05:00.908
+[BLANK_AUDIO]
+
+97
+00:05:00.908 --> 00:05:05.100
+So, the bas, the basic package development
+process kind of goes something like this.
+
+98
+00:05:05.100 --> 00:05:06.610
+It may vary across different people, but
+
+99
+00:05:06.610 --> 00:05:09.190
+there's usually some element of this
+process here.
+
+100
+00:05:09.190 --> 00:05:13.740
+So you typically write some R code in a
+script or in a .R file.
+
+101
+00:05:13.740 --> 00:05:15.450
+And that's fine and you kind of write your
+functions.
+
+102
+00:05:15.450 --> 00:05:16.890
+You kind of debug things.
+
+103
+00:05:16.890 --> 00:05:18.780
+You try things out.
+
+104
+00:05:18.780 --> 00:05:21.570
+And then you decide, maybe this code is
+very useful to you.
+
+105
+00:05:21.570 --> 00:05:22.790
+But then at some point you might decide
+
+106
+00:05:22.790 --> 00:05:24.830
+that you want to make this code available
+to others.
+
+107
+00:05:24.830 --> 00:05:26.800
+Or you might just want to kind of m, make
+
+108
+00:05:26.800 --> 00:05:29.810
+it available to yourself in a much more
+structured way.
+
+109
+00:05:29.810 --> 00:05:31.528
+Maybe you're going to kind of finish up a
+project, and
+
+110
+00:05:31.528 --> 00:05:35.150
+kind of going to want to leave it in a
+state that's kind of, maintainable.
+
+111
+00:05:35.150 --> 00:05:37.980
+And so, the idea is that you'll, you'll,
+typically you'll take,
+
+112
+00:05:37.980 --> 00:05:39.730
+you know, the R code that you've written,
+which is in
+
+113
+00:05:39.730 --> 00:05:42.440
+these R files, and you'll incorporate it
+into the R package
+
+114
+00:05:42.440 --> 00:05:45.420
+structure, which I'll talk to you, talk
+about more in a second.
+
+115
+00:05:45.420 --> 00:05:47.010
+Then the next thing you typically do is
+write
+
+116
+00:05:47.010 --> 00:05:49.760
+some documentation for the function, for
+the user functions.
+
+117
+00:05:49.760 --> 00:05:51.230
+These are the functions that are, that are
+
+118
+00:05:51.230 --> 00:05:54.510
+public and available to the user and then
+you
+
+119
+00:05:54.510 --> 00:05:56.890
+might think about including some other
+material like examples,
+
+120
+00:05:56.890 --> 00:06:00.040
+or demos, or data sets or tutorials, or
+vignettes.
+
+121
+00:06:00.040 --> 00:06:03.500
+Once all that's done you package it up and
+you've got your R package.
+
+122
+00:06:04.890 --> 00:06:07.410
+So once, once you've got your R package
+you could
+
+123
+00:06:07.410 --> 00:06:09.760
+just stop there you could have it
+installed on your system,
+
+124
+00:06:09.760 --> 00:06:11.310
+you could kind of email it to a pers, to
+
+125
+00:06:11.310 --> 00:06:12.990
+a friend or if you want, if it's not that
+big.
+
+126
+00:06:14.160 --> 00:06:16.140
+But the most logical thing to do often is
+
+127
+00:06:16.140 --> 00:06:19.260
+to submit it to a repository like CRAN or
+Bioconductor.
+
+128
+00:06:19.260 --> 00:06:22.615
+You can also push the source code to
+something like GitHub, a source code
+
+129
+00:06:22.615 --> 00:06:26.493
+sharing site, so that other people can
+look at it and modify the source code.
+
+130
+00:06:26.493 --> 00:06:29.895
+And typically the scenario, there are two
+scenarios that you will run into
+
+131
+00:06:29.895 --> 00:06:33.479
+once you make your package public to the
+or available to the public.
+
+132
+00:06:33.479 --> 00:06:35.705
+The first is that you know, other people
+will
+
+133
+00:06:35.705 --> 00:06:37.931
+use your code, they'll tell you about you
+know,
+
+134
+00:06:37.931 --> 00:06:40.475
+problems that they encounter, and they'll
+just let you
+
+135
+00:06:40.475 --> 00:06:43.290
+know and then they'll expect you to fix
+it.
+
+136
+00:06:43.290 --> 00:06:45.920
+The other possibility is that they will
+you know, look at your package,
+
+137
+00:06:45.920 --> 00:06:49.380
+they'll look at your code and they'll, if
+there's some problems maybe they'll
+
+138
+00:06:49.380 --> 00:06:51.640
+figure out what the fix is and they'll fix
+it for you, and
+
+139
+00:06:51.640 --> 00:06:54.640
+then they'll show you the changes and then
+you can incorporate their changes.
+
+140
+00:06:54.640 --> 00:06:56.570
+Either way you know, I think it's, it's,
+it's
+
+141
+00:06:56.570 --> 00:06:58.830
+useful to have other users looking at your
+code
+
+142
+00:06:58.830 --> 00:07:00.470
+and helping you improve it, so this is a
+
+143
+00:07:00.470 --> 00:07:04.020
+real benefit to making your code available
+to the public.
+
+144
+00:07:04.020 --> 00:07:06.910
+And then once you've incorporated these
+changes, these fixes into
+
+145
+00:07:06.910 --> 00:07:09.790
+your package you can kind of release a new
+version.

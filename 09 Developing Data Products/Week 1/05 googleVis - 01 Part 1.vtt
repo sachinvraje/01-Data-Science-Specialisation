@@ -1,0 +1,429 @@
+WEBVTT
+
+1
+00:00:00.990 --> 00:00:07.036
+So googleVis is an amazing R package that
+connects R to Google's visualization API.
+
+2
+00:00:07.036 --> 00:00:14.170
+And it's a extremely well developed
+R package, and very well documented.
+
+3
+00:00:14.170 --> 00:00:17.730
+So, it's certainly worth
+considering in this class.
+
+4
+00:00:17.730 --> 00:00:20.990
+So we're just going to go through a couple
+of examples of what you can do with
+
+5
+00:00:20.990 --> 00:00:22.270
+googleVis.
+
+6
+00:00:22.270 --> 00:00:25.220
+And I think from those,
+you'll get the picture, and
+
+7
+00:00:25.220 --> 00:00:27.190
+hopefully you'll be able
+to build off of it.
+
+8
+00:00:27.190 --> 00:00:31.330
+But it offers a pretty amazing way
+to create interactive graphics,
+
+9
+00:00:31.330 --> 00:00:36.600
+leveraging the existing interactive
+graphics that Google already has.
+
+10
+00:00:36.600 --> 00:00:40.570
+So, let's go ahead and
+get started with some basic uses.
+
+11
+00:00:40.570 --> 00:00:44.560
+We'll go through over some maps, we'll go
+over some plots and motion charts, and
+
+12
+00:00:44.560 --> 00:00:48.440
+things like that are really,
+that would be really difficult for
+
+13
+00:00:48.440 --> 00:00:50.480
+you to create on your own.
+
+14
+00:00:50.480 --> 00:00:54.630
+But connecting R with googleViz
+makes it really easy,
+
+15
+00:00:54.630 --> 00:00:56.940
+especially if you're familiar with R.
+
+16
+00:00:56.940 --> 00:00:58.937
+Okay, so let's just get
+started with a motion chart.
+
+17
+00:01:01.130 --> 00:01:05.050
+So, let's go ahead and
+create our first plot.
+
+18
+00:01:05.050 --> 00:01:10.440
+Now, a lot of the syntax in
+the way in which these notes,
+
+19
+00:01:10.440 --> 00:01:15.240
+the R Markdown notes, are given is
+really geared toward actually having
+
+20
+00:01:15.240 --> 00:01:18.750
+the chart embedded in
+the R Markdown slides.
+
+21
+00:01:18.750 --> 00:01:24.860
+And if you load them up, you'll see
+that the googleViz chart is actually
+
+22
+00:01:24.860 --> 00:01:30.100
+part of the HTML document that
+
+23
+00:01:30.100 --> 00:01:34.821
+gets compiled when this
+documents gets knitted.
+
+24
+00:01:34.821 --> 00:01:40.100
+Okay, but, so
+I'm just instead going to show you how to
+
+25
+00:01:40.100 --> 00:01:45.090
+get to chart by itself, and
+then get the raw HTML, for example.
+
+26
+00:01:45.090 --> 00:01:50.940
+Okay, so let's just say we're
+doing library googleViz,
+
+27
+00:01:50.940 --> 00:01:54.540
+that just suppress package
+start up messages.
+
+28
+00:01:54.540 --> 00:01:58.010
+Obviously, just suppresses
+the package start up messages.
+
+29
+00:01:58.010 --> 00:02:03.850
+So let's go ahead and create our google,
+our gVis motion chart.
+
+30
+00:02:03.850 --> 00:02:06.359
+Okay, so fruits is a data frame.
+
+31
+00:02:08.113 --> 00:02:09.250
+Okay, there you go.
+
+32
+00:02:09.250 --> 00:02:10.580
+And you can see how it's set up.
+
+33
+00:02:10.580 --> 00:02:11.478
+So, fruits.
+
+34
+00:02:11.478 --> 00:02:16.520
+It's got the different kinds of fruits.
+
+35
+00:02:16.520 --> 00:02:20.860
+Apples, oranges, bananas,
+the year, location, sales,
+
+36
+00:02:20.860 --> 00:02:23.370
+expenses, profit, date, okay?
+
+37
+00:02:24.750 --> 00:02:28.760
+And I think if you want to
+create a motion chart,
+
+38
+00:02:28.760 --> 00:02:32.270
+you want to get it set up into something
+like this, like a data frame like this.
+
+39
+00:02:32.270 --> 00:02:33.830
+Okay, so let's go ahead and run it.
+
+40
+00:02:37.130 --> 00:02:40.730
+And then, the first thing you're going to
+want to see is you're going to want to be
+
+41
+00:02:40.730 --> 00:02:44.760
+able to do is just be able to plot
+it by itself and actually see it.
+
+42
+00:02:44.760 --> 00:02:49.170
+So, what we've done is we've
+assigned the output of our
+
+43
+00:02:49.170 --> 00:02:52.478
+gvisMotionChart to a variable, M.
+
+44
+00:02:52.478 --> 00:02:58.600
+So, if you now, if you just type plot(M),
+okay, now it'll bring up a browser window.
+
+45
+00:02:58.600 --> 00:02:59.910
+And here's our plot.
+
+46
+00:02:59.910 --> 00:03:02.620
+And so,
+this a lot like the Hans Rosling, or
+
+47
+00:03:02.620 --> 00:03:04.980
+it's exactly like
+the Hans Rosling motion chart.
+
+48
+00:03:04.980 --> 00:03:13.040
+So, you can click play, and
+it shows you things over time, okay?
+
+49
+00:03:13.040 --> 00:03:17.140
+And you can set what each of
+the scales are relative to the columns
+
+50
+00:03:17.140 --> 00:03:19.390
+of your data frame, okay?
+
+51
+00:03:19.390 --> 00:03:21.820
+So, maybe we want time on there.
+
+52
+00:03:21.820 --> 00:03:22.470
+We want profit.
+
+53
+00:03:23.680 --> 00:03:27.673
+Okay, so
+let's see fruit profits over time.
+
+54
+00:03:29.467 --> 00:03:33.943
+So, you can see it going up or down, and
+
+55
+00:03:33.943 --> 00:03:38.693
+you can select whether
+you just show one or
+
+56
+00:03:38.693 --> 00:03:43.620
+multiple, or which one's highlighted.
+
+57
+00:03:43.620 --> 00:03:44.320
+See, there you go.
+
+58
+00:03:44.320 --> 00:03:45.810
+So, I select apples.
+
+59
+00:03:45.810 --> 00:03:48.035
+Okay, so
+it's a pretty clever little chart, okay?
+
+60
+00:03:48.035 --> 00:03:52.262
+And it actually also has
+different bar charts and
+
+61
+00:03:52.262 --> 00:03:56.220
+line charts all in the same graph, okay?
+
+62
+00:03:56.220 --> 00:04:02.090
+So, all of this is,
+is a collection of JavaScript that is,
+
+63
+00:04:02.090 --> 00:04:08.890
+has been organized by the gVis R package.
+
+64
+00:04:08.890 --> 00:04:13.829
+So, if you want, what you can do, Is
+
+65
+00:04:13.829 --> 00:04:18.670
+simply type print(M), okay?
+
+66
+00:04:18.670 --> 00:04:26.930
+And then, it'll act, it'll give you
+the relevant, basically, an HTML page.
+
+67
+00:04:26.930 --> 00:04:28.880
+So, here it is.
+
+68
+00:04:28.880 --> 00:04:32.150
+Here you can see it defining
+the JavaScript data,
+
+69
+00:04:32.150 --> 00:04:35.410
+describing the JavaScript header,
+and so on.
+
+70
+00:04:35.410 --> 00:04:37.310
+Okay?
+But if you go down here, you see it.
+
+71
+00:04:37.310 --> 00:04:43.930
+It actually creates the page where,
+I cant see the beginning of the HTML.
+
+72
+00:04:44.990 --> 00:04:50.290
+But there, you can see the end of
+the HTML, the end of the body, and so on.
+
+73
+00:04:50.290 --> 00:04:50.990
+Okay?
+
+74
+00:04:50.990 --> 00:04:55.710
+So, just the object M by itself,
+printing M, will print out the page.
+
+75
+00:04:55.710 --> 00:05:01.030
+Or you can say, for example,
+print(M, f File = "test.html").
+
+76
+00:05:01.030 --> 00:05:03.810
+And it'll create this page for you, okay?
+
+77
+00:05:03.810 --> 00:05:08.440
+I like to do plot, and then of course
+if you want to grab the HTML from
+
+78
+00:05:08.440 --> 00:05:12.750
+the page directly, after you've done
+plot you can, of course, do that.
+
+79
+00:05:12.750 --> 00:05:16.689
+But this is probably the way
+you're going to use gVis.
+
+80
+00:05:16.689 --> 00:05:19.898
+Either you're first going to create it,
+and use plot or
+
+81
+00:05:19.898 --> 00:05:23.535
+something like that to debug it and
+get it looking right, and
+
+82
+00:05:23.535 --> 00:05:28.314
+then you're just going to want to grab the
+relevant HTML code and JavaScript code,
+
+83
+00:05:28.314 --> 00:05:30.810
+and embed it in a different web page.
+
+84
+00:05:30.810 --> 00:05:35.500
+If you want to see how to embed it in,
+for example, slides or R markdown,
+
+85
+00:05:35.500 --> 00:05:40.580
+then just look at the actual R
+markdown document for this lecture.
+
+86
+00:05:40.580 --> 00:05:41.480
+Okay.
+
+87
+00:05:41.480 --> 00:05:48.660
+So, your homework after this first example
+is to just recreate this motion chart.
+
+88
+00:05:48.660 --> 00:05:50.010
+Make sure you can visualize it.
+
+89
+00:05:50.010 --> 00:05:53.790
+Make sure you can see
+it in a browser window.
+
+90
+00:05:53.790 --> 00:05:56.450
+Get googleVis installed.
+
+91
+00:05:56.450 --> 00:05:58.360
+And play around with a little bit.
+
+92
+00:05:58.360 --> 00:06:00.986
+And then, now we'll just work on
+to some other different types.

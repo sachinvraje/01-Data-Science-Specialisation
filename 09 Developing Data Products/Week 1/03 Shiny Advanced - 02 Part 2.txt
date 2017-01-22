@@ -1,0 +1,112 @@
+Okay so I have copied the code
+from the R Markdown document and of the next set of examples and here what
+I'm going to show you is I'm going to first go to the user interface and
+then I'll go to the server calculations. Remember what were trying to
+show is reactive expressions. Okay so again we have our library
+shiny statement right there. Okay, we have shinyUI,
+fluidPage, we've got a title and then we're going to have
+a side bar lay out with this. Okay, so that's this right here which is,
+and then that contains the side bar panel, these commands right here and
+the main panel, these commands right here. So, the sidebarPanel is
+going to contain the inputs and the mainPanel is going to
+contain the outputs. So the sidebarPanel includes
+a sliderInput, okay. And remember, what that's going to
+be labeled as, as a sliderMPG. So we're inputting the MPG from the car, and then this check box, are going to tell wether not you want to show certain model values in the output, in the mainPanel. Okay. And then you know,
+we give it the default value of 20 and a range from 10 miles per
+gallon to 35 miles per gallon. And the goal is to create something
+that then displays your prediction for the horsepower. Then in the mainPanel,
+and just by the way, the inputs are showModel1 and showModel2. The main panel then it's going
+to show the output plot1. So were going to look in our server
+function for plot label plot1 to make sure that it's there, because it's going to
+get displayed here in our mainPanel. Then we're going to have our
+output from prediction one, and that's going to be labeled pred1,
+so we need some sort of output from our server that is
+going to be labeled pred1 and another one that's labeled pred2, that
+are both going to be textOutput, okay. So that's what our user
+interface is doing. It's getting a slider input. To get in MPG,
+that slider's label is sliderMPG. It's going to have the two checkboxes for
+whether or not it's going to show that
+particular model output. So that's what it's going to
+send to the server. Those are some information that's
+going to be sent to the server as input, and what we're expecting from our server
+functions is output Is we're expecting a plot labeled plot1, we're expecting text
+labeled pred1 and text labeled pred2. Okay, now let's look at our server. So, here's our shinyServer function and then it's contains this function
+that contains input and output. First thing it looks for, or
+first thing it's going to do is it's going to take the mtcars
+dataset which is loaded by default. So if I just type mtcars then you can just
+see the data set it's loaded by default. It's one of the more common
+example data sets used in R and it's basically going to create
+this is just a spline term. So is the mpg of the car is larger
+than 20 this is going to return the mpg otherwise it's
+going to return 0 and that's useful if you want to feed a model
+that has kind of of a broken stick feeds. So it has a line and then a break
+point at 20 and then another line and the two lines meet continuously at that
+break point, so then what's going on in the code is it's fitting this
+first model that just has mpg and the second model that has mpg in this
+break point in the middle, okay? So it's fitting two models and these two models are what's going
+to be used to form the prediction. Okay, now, let's actually get
+the prediction for model one. Okay? Now, we're doing calculations based on
+inputted values from our user interface, so it needs to be in a reactive statement. So here we see this reactive statement, we see this funny notation where we
+have a parenthesis and a curly braces. Okay, and then we're going to relabel
+the input just as a regular R variable because it gets annoying to type input$ so
+often. So we have mpgInput is
+just the input$sliderMPG, and remember sliderMPG is what we names
+the slider value in our user interface. Okay? And then this predict statement is
+just going to use model1, okay? So, uses model1,
+you can see it right there. Uses model1, and it's going to predict it at the new
+value input from the slider, okay? So that's model1. And then model2 is going to do the same
+thing with the exception that we have to also create this variable
+if our input value is bigger than 20 it returns that otherwise
+it's going to return 0. So it's the same thing only now we've
+created this second variable mpgsp, right, and that's this extra spline term,
+so we have our two reactive assigned variables,
+model1 pred, and model2 pred. Okay. Now, the first output that we're
+going to create is output$plot1. Remember, that our user interface is
+looking for a plot labeled plot1. And because it's a plot,
+we're going to say it's a renderPlot. Okay and that funny notation
+where it's the parentheses and then the curly braces
+inside the parentheses. So we're grabbing our mpgInput. That's just the sliderMPG again. And then we're going to create a plot and
+the plot you're all familiar with R plotting so you can just go through and
+see how the plot's working. But then also what I would like
+you to look for first right here, if show model1,
+then it's adding the fit for the model1, and if showModel2,
+it's going to add the fit for model2. So, that's one thing it has this
+conditional values for whether or not those lines are going to be in there. It's got a nice legend. And then if you look down here I guess
+this is the most important part I want to show is we want to add some points at
+the miles per gallon that you input. That's this values right here remember
+we reassigned that from the slider value up here. So we just rename it
+from the input$sliderMPG. Okay? But then also we want the result of our
+reactive expression, model1pred, and so we're putting that in there. But remember you gotta access
+that number as a function, right? Because it was from a reactive expression
+other where in the code, okay? So it's gotta be. So this'll just return the number. If you don't actually put those
+parentheses there, it'll return the function, which points won't know
+what to plot because it's a function. So if you want it to
+put that in the number, you have to put the parentheses there. Then here is the second one. So these will add the points. So the output of this
+is going to be a plot that's going to be passed
+back to our user interface. It's going to have if the check boxes are
+checked it's going to have the two fitted lines, it's going to have the data it's
+using to fit those lines on there, but then it's also going to have specific
+points at our two prediction values. Okay, great. And then it's also,
+remember it's looking for a pred1, in other words it wants
+to see the prediction. And so we're going to do that and
+that needs to be text, so it's going to be renderText({,
+and then model1pred(). And then we're going to do pred2, okay? And that's renderText({ again,
+and model2pred(). And remember, in both cases, we're
+remembering to do the parentheses for our reactive expression. Okay, now let's go ahead and
+run it and see how it works. And there it is. Okay so here's our slider. As we change or slider, what you're
+going to see is the two points, the points where we're predicting at. And you can see the two models here. The red one, which had no spline term,
+and the blue one, which had this spline term at 20 so you
+see it looks like a little broken stick. So our two models, and then down here
+we see the prediction from model1 and the prediction for model2. So, exactly as we were
+hoping it would work. And then you can show or hide the first
+line, or show or hide the second line. So, I think now once you
+recreate this example, I think you'll be at the point where you
+can actually do some fairly complicated things in shiny and
+it's an incredibly useful tool. Next, what we're going to want to go
+through is just showing how to put conditional expressions where you'll
+operate on the code conditionally upon clicking a done button or
+something like this. But at this point, I think you should probably be able
+to make shiny pretty useful for you. So, go ahead and try this example,
+and I think after the next lecture, you'll have a pretty solid foundation for working on your shiny apps and creating
+things that are quite useful for you, and then, of course, useful for
+others when you put them on the internet.

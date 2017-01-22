@@ -1,0 +1,42 @@
+So the next couple examples are easy
+enough that I'm not going to do code demonstrations,
+I'm just going to show you the output. A histogram is easy enough,
+you just do type = "histogram" and you need one x variable. Show it, it looks like this. It'll actually show you the height of
+the bars as you move your mouse along. And you can change the colors,
+do side by side histograms, and a variety of other things in plot_ly, and
+they all kind of work in the obvious way. So for boxplot here,
+plot_ly data frame is iris in this case, y is petal length, and
+then color is species and type = "box". So this is going to create separate
+boxplots, one for each species type. Okay, and here it is, our three species. When you hover over the box it gives
+you the values for the boxplot, so this the 25th percentile,
+the 75th percentile, the median. And then the whiskers
+extend out to 1.5 times the distance between these two values. That was Tukey's idea, that references
+back to the normal distribution, the 1.5 times the inter-quartile range. So here's your boxplot. If you have an outlier like this, it'll
+actually show you the little point for the outlier, okay? So this can get a little crowded if it's
+all squashed together like that one. But still, nice plot for almost no effort. So a heatmap is basically just
+a graphical display of an image. In this case, our image is going
+to be a matrix that we create. So pretty much all images, all raster
+images, are just a matrix, right? They're rows and columns. And then they have the intensity
+value as the value for each specific row and column combination. So in this case, let's just crate a simple matrix where
+we have 100 rows and 100 columns. And we just fill it in
+with random normals, okay? And that's what plot_ly's expecting for
+a heatmap. Okay, the z is just
+going to be this matrix. And then the type is going to be heatmap. Okay, and
+then when it does that it plots an image. A heat map is ultimately just an image,
+okay, just a raster image. Okay, and the nice thing about
+the way plot_ly does it is, as you move your mouse around it
+gives you the x and the y values, and the z values, the intensity values. And then the intensity values are given
+a color key here on the right, which is quite nice so
+you don't have to set that up, okay? So that is a pretty easy way to generate a
+heat map, and an interactive one at that. So you could imagine taking that heat map,
+and what if you wanted to plot z, instead of it as just color, what if you wanted to
+plot it pulled up into a third dimension? Well, that would be plotting a surface. So why don't we create this same dataset, this time with different random normals,
+and then our z is the same thing. Our type is now surface
+instead of heatmap, okay? And so the intensity value is going to
+be the z value, and then the row and column values,
+it's just going to assign integers for those, are just going to be the x and
+y values. And then when you do that,
+you get a nice 3D surface. Now whenever you do a 3D surface like
+this, it's doing some smoothing, okay? So you need to, this is just to
+show you how the commands work, but of course if you want to do this for real, you are going to need to actually
+understand what the smoothing is doing.

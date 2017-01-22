@@ -1,0 +1,46 @@
+Okay, now let's show some r
+code that's going to get run. Okay, so, one two three,
+single quotation marks, okay. We want it to be r code, okay. And then notice, it does some nice highlighting to let you
+know that you're actually in some r code. And then, let's do head(mtcars). just showing the head
+of the dataset mtcars. You can actually run it here in rStudio
+and it will show you down here. The code being run in the environment
+that you have right now in your interactive r prompt. But then, you won't actually
+run the the whole document. It's control shift k and
+there's my new slide. Okay, so lets play around with
+our options a little bit. I;ve deleted aa couple of
+the rest of the slides just, so we can just play with this little
+extremely simple code example, right here. So i didn't like when,
+let me just show it to you again. When it put this out,
+one thing I didn't like- There we go. I didn't like these comment characters
+in front of the output, okay. So let me just try comment equals and
+then, you can put whatever character you want. But I want nothing, so
+why don't I try that. See how that looks. Great, okay and then now,
+it looks to a little bit better. I didn't want that comic character there,
+so let's see some other things. So notice by default,
+the knitr options were echo equals false. So, it didn't show you what code it ran. It just showed you
+the output from the code. And by the way when you're typing in
+your knitr options, it has a bunch. You can see once you put a comment and start to type them,
+you can see them there. So if I were for example,
+to put echo equals true and then, redo the presentation, okay so
+then, you see head MTcars. it's actually repeating the code
+that I used to generate the output. So down here is the out put and here's
+the code by default in that near option. Set up just from the auto
+completing of the template that I was using to create these slides. It set that option but by default
+you don't have to have that option. I could equivalently, another thing I could have done would
+have been exactly the same thing. Is just gotten rid of this set of
+Knitr options at the beginning. Okay, and then now,
+I don't have to say echo is equals true, because echo equals true
+is the default option. Unless you overwrite it, so there now,
+it's automatically sending the code. Sometimes might just want the code but not having run it, so,
+if I type eval = FALSE, okay. There's just the code, but
+it hasn't been evaluated, okay. And then you can just put
+in a comma here and then, start to look at all
+the different options. They're all the same options or
+it is knitr. So, it's the same options as
+in In any nknitr document but a lot of these are for figures which
+we're going to cover here in a minute. Okay? All right, so go ahead and try and create a slide with some r
+code that isn't evaluated. Some slide with some r
+code that is evaluated. Try and play around. Make sure you can set
+the comment character. And then, just play around with
+some of the Knitr options. And next, we'll move on to doing
+some figures and some other things.

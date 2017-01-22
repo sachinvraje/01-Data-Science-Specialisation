@@ -1,0 +1,61 @@
+So googleVis is an amazing R package that
+connects R to Google's visualization API. And it's a extremely well developed
+R package, and very well documented. So, it's certainly worth
+considering in this class. So we're just going to go through a couple
+of examples of what you can do with googleVis. And I think from those,
+you'll get the picture, and hopefully you'll be able
+to build off of it. But it offers a pretty amazing way
+to create interactive graphics, leveraging the existing interactive
+graphics that Google already has. So, let's go ahead and
+get started with some basic uses. We'll go through over some maps, we'll go
+over some plots and motion charts, and things like that are really,
+that would be really difficult for you to create on your own. But connecting R with googleViz
+makes it really easy, especially if you're familiar with R. Okay, so let's just get
+started with a motion chart. So, let's go ahead and
+create our first plot. Now, a lot of the syntax in
+the way in which these notes, the R Markdown notes, are given is
+really geared toward actually having the chart embedded in
+the R Markdown slides. And if you load them up, you'll see
+that the googleViz chart is actually part of the HTML document that gets compiled when this
+documents gets knitted. Okay, but, so
+I'm just instead going to show you how to get to chart by itself, and
+then get the raw HTML, for example. Okay, so let's just say we're
+doing library googleViz, that just suppress package
+start up messages. Obviously, just suppresses
+the package start up messages. So let's go ahead and create our google,
+our gVis motion chart. Okay, so fruits is a data frame. Okay, there you go. And you can see how it's set up. So, fruits. It's got the different kinds of fruits. Apples, oranges, bananas,
+the year, location, sales, expenses, profit, date, okay? And I think if you want to
+create a motion chart, you want to get it set up into something
+like this, like a data frame like this. Okay, so let's go ahead and run it. And then, the first thing you're going to
+want to see is you're going to want to be able to do is just be able to plot
+it by itself and actually see it. So, what we've done is we've
+assigned the output of our gvisMotionChart to a variable, M. So, if you now, if you just type plot(M),
+okay, now it'll bring up a browser window. And here's our plot. And so,
+this a lot like the Hans Rosling, or it's exactly like
+the Hans Rosling motion chart. So, you can click play, and
+it shows you things over time, okay? And you can set what each of
+the scales are relative to the columns of your data frame, okay? So, maybe we want time on there. We want profit. Okay, so
+let's see fruit profits over time. So, you can see it going up or down, and you can select whether
+you just show one or multiple, or which one's highlighted. See, there you go. So, I select apples. Okay, so
+it's a pretty clever little chart, okay? And it actually also has
+different bar charts and line charts all in the same graph, okay? So, all of this is,
+is a collection of JavaScript that is, has been organized by the gVis R package. So, if you want, what you can do, Is simply type print(M), okay? And then, it'll act, it'll give you
+the relevant, basically, an HTML page. So, here it is. Here you can see it defining
+the JavaScript data, describing the JavaScript header,
+and so on. Okay?
+But if you go down here, you see it. It actually creates the page where,
+I cant see the beginning of the HTML. But there, you can see the end of
+the HTML, the end of the body, and so on. Okay? So, just the object M by itself,
+printing M, will print out the page. Or you can say, for example,
+print(M, f File = "test.html"). And it'll create this page for you, okay? I like to do plot, and then of course
+if you want to grab the HTML from the page directly, after you've done
+plot you can, of course, do that. But this is probably the way
+you're going to use gVis. Either you're first going to create it,
+and use plot or something like that to debug it and
+get it looking right, and then you're just going to want to grab the
+relevant HTML code and JavaScript code, and embed it in a different web page. If you want to see how to embed it in,
+for example, slides or R markdown, then just look at the actual R
+markdown document for this lecture. Okay. So, your homework after this first example
+is to just recreate this motion chart. Make sure you can visualize it. Make sure you can see
+it in a browser window. Get googleVis installed. And play around with a little bit. And then, now we'll just work on
+to some other different types.

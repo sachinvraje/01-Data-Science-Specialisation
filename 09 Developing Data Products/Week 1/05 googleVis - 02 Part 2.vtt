@@ -1,0 +1,647 @@
+WEBVTT
+
+1
+00:00:01.130 --> 00:00:03.408
+So, googleVis is a pretty amazing package.
+
+2
+00:00:03.408 --> 00:00:10.140
+It gives you access to most of Google's
+visualization tools that they have.
+
+3
+00:00:10.140 --> 00:00:11.930
+So, motion charts, we already covered.
+
+4
+00:00:11.930 --> 00:00:15.380
+Interactive maps,
+we'll go over in a minute.
+
+5
+00:00:15.380 --> 00:00:17.640
+Interactive tables,
+line charts, bar charts.
+
+6
+00:00:17.640 --> 00:00:21.710
+They even have things that'll make like
+a little speedometer based on a graph or
+
+7
+00:00:21.710 --> 00:00:23.420
+metric that you want, and so on.
+
+8
+00:00:23.420 --> 00:00:26.270
+So, just go to the documentation for
+googleVis, and
+
+9
+00:00:26.270 --> 00:00:27.830
+it'll show you a bunch of them.
+
+10
+00:00:27.830 --> 00:00:29.290
+It's really well documented.
+
+11
+00:00:29.290 --> 00:00:32.110
+They both have a vignette and,
+of course, the packaged documentation.
+
+12
+00:00:33.850 --> 00:00:38.390
+So, interactive graphs
+are a great way to use googleVis,
+
+13
+00:00:38.390 --> 00:00:42.410
+because the mapping stuff is hard, but
+Google's done a lot of it for you already.
+
+14
+00:00:42.410 --> 00:00:45.350
+So, if you want to create JavaScript
+maps that have little pop ups over
+
+15
+00:00:45.350 --> 00:00:47.670
+the countries that you specify, and
+
+16
+00:00:47.670 --> 00:00:52.601
+have it nice so that you can embed it in
+a webpage or a Slidify presentation, or
+
+17
+00:00:52.601 --> 00:00:57.160
+a presentation or a document or
+so on, it's not so bad.
+
+18
+00:00:57.160 --> 00:00:58.798
+So, here's an example right here.
+
+19
+00:00:58.798 --> 00:01:02.366
+You can see in our R
+markdown presentation,
+
+20
+00:01:02.366 --> 00:01:06.190
+it actually does the interactivity.
+
+21
+00:01:06.190 --> 00:01:06.890
+Okay.
+
+22
+00:01:06.890 --> 00:01:10.060
+And, of course, you can zoom in if
+you want, and do things like this, so
+
+23
+00:01:10.060 --> 00:01:13.390
+that this is just specifying the options.
+
+24
+00:01:13.390 --> 00:01:17.860
+Now, while we're on the topic of options,
+there's a million different options.
+
+25
+00:01:17.860 --> 00:01:21.810
+I give you the link down here to
+show you where the options occur,
+
+26
+00:01:21.810 --> 00:01:27.390
+what page, that you can pass as
+arguments to your googleVis chart.
+
+27
+00:01:27.390 --> 00:01:31.410
+So, how that works is just as
+an options command, as a list.
+
+28
+00:01:31.410 --> 00:01:33.580
+You need to name them right,
+and give them the right value.
+
+29
+00:01:33.580 --> 00:01:41.260
+And then, you need to use this syntax
+that is, I guess it's just JSON syntax.
+
+30
+00:01:41.260 --> 00:01:45.390
+But as long as you can, but
+you probably don't need to know any JSON.
+
+31
+00:01:45.390 --> 00:01:51.800
+You just actually need to kind of look
+at it once or twice, and get used to it.
+
+32
+00:01:51.800 --> 00:01:54.556
+And then I think it should be no problem.
+
+33
+00:01:54.556 --> 00:01:58.940
+Okay, so here's an example
+of just doing a line chart.
+
+34
+00:01:58.940 --> 00:02:01.520
+And the last thing I want to
+
+35
+00:02:01.520 --> 00:02:05.100
+talk about is the idea that you can
+just merge multiple plots together.
+
+36
+00:02:05.100 --> 00:02:07.510
+So, that's just using gvisMerge.
+
+37
+00:02:07.510 --> 00:02:08.970
+And then, here is an example.
+
+38
+00:02:10.050 --> 00:02:16.020
+After you've done it, here's
+the left-hand plot, you see our plot.
+
+39
+00:02:16.020 --> 00:02:17.090
+You see a table.
+
+40
+00:02:17.090 --> 00:02:19.590
+And you see a chart, all together.
+
+41
+00:02:19.590 --> 00:02:20.580
+Okay?
+
+42
+00:02:20.580 --> 00:02:23.380
+So, we'll go through a code
+example of all these things.
+
+43
+00:02:23.380 --> 00:02:25.610
+Here is how you can just see,
+of course, the code,
+
+44
+00:02:25.610 --> 00:02:28.950
+we already talked about that,
+just print, will print out the code.
+
+45
+00:02:28.950 --> 00:02:33.760
+And then, like we mentioned, you can embed
+the results in a markdown document just
+
+46
+00:02:33.760 --> 00:02:36.280
+like we've done in this exact document.
+
+47
+00:02:36.280 --> 00:02:38.980
+An important thing,
+I think, there's two things.
+
+48
+00:02:38.980 --> 00:02:41.960
+One is make sure you have the most
+current versions of everything.
+
+49
+00:02:41.960 --> 00:02:46.230
+R, Slidify, data, or
+whatever it is you're using.
+
+50
+00:02:46.230 --> 00:02:52.954
+And then, the second important thing is
+results equals as is in the chunk options.
+
+51
+00:02:52.954 --> 00:02:56.480
+That, I haven't had it,
+it won't work otherwise.
+
+52
+00:02:56.480 --> 00:02:58.760
+But then,
+you can get it to work after that.
+
+53
+00:02:58.760 --> 00:03:03.730
+And I've done this a bunch of times
+between the last iteration of this class
+
+54
+00:03:03.730 --> 00:03:08.035
+and the next one, and I've seen that
+this is a pretty finicky process.
+
+55
+00:03:08.035 --> 00:03:13.250
+And you tend to have to tweak
+around with it a little bit,
+
+56
+00:03:13.250 --> 00:03:14.910
+but you usually get it in the end.
+
+57
+00:03:14.910 --> 00:03:16.290
+Often, I have to reinstall things.
+
+58
+00:03:16.290 --> 00:03:19.470
+Make sure you clear the knitr cache,
+and that sort of thing.
+
+59
+00:03:19.470 --> 00:03:21.600
+And eventually you'll get it.
+
+60
+00:03:21.600 --> 00:03:24.140
+But it seems to be a little bit
+of a persnickety thing, but
+
+61
+00:03:24.140 --> 00:03:26.700
+once you get it once then it'll be fine.
+
+62
+00:03:26.700 --> 00:03:30.130
+Okay, so let's start going
+through some of the code,
+
+63
+00:03:30.130 --> 00:03:32.560
+and generate some interesting graphs.
+
+64
+00:03:34.371 --> 00:03:38.870
+Okay, so let's, as a first thing,
+generate this chart.
+
+65
+00:03:38.870 --> 00:03:40.840
+So, before I show you anything,
+
+66
+00:03:40.840 --> 00:03:45.640
+let me just show you the data
+frame that we're going to display.
+
+67
+00:03:45.640 --> 00:03:48.290
+Okay, so there's the country names.
+
+68
+00:03:48.290 --> 00:03:49.320
+Okay?
+
+69
+00:03:49.320 --> 00:03:52.170
+It has a value that's
+going to go into the pop-up.
+
+70
+00:03:52.170 --> 00:03:54.590
+And then, online true or false.
+
+71
+00:03:54.590 --> 00:03:59.570
+I think, at this point, we're
+
+72
+00:03:59.570 --> 00:04:02.770
+just going to use the country and
+the profit variable.
+
+73
+00:04:02.770 --> 00:04:05.480
+Okay, now when we look up at our code,
+
+74
+00:04:05.480 --> 00:04:11.010
+we see gvisGeoChart, okay, Exports,
+okay, that's just the data frame.
+
+75
+00:04:11.010 --> 00:04:13.160
+locationvar = "Country".
+
+76
+00:04:13.160 --> 00:04:14.830
+That's just the variable name, country.
+
+77
+00:04:14.830 --> 00:04:19.090
+It's going to look for a text field
+that has the country label names.
+
+78
+00:04:19.090 --> 00:04:20.690
+And the color variable is profit.
+
+79
+00:04:20.690 --> 00:04:25.660
+Okay, and then the options,
+this is just formatting options.
+
+80
+00:04:25.660 --> 00:04:27.270
+Okay, so let's do that.
+
+81
+00:04:27.270 --> 00:04:31.730
+And then, I'm going to once
+again plot it so we can see it.
+
+82
+00:04:33.490 --> 00:04:35.030
+Okay, and it brings up a webpage.
+
+83
+00:04:35.030 --> 00:04:39.100
+There you go.
+Look at that, pretty cool.
+
+84
+00:04:39.100 --> 00:04:42.480
+That is pretty fancy for almost no effort.
+
+85
+00:04:45.071 --> 00:04:48.010
+Okay, now let's go down to
+specifying your region.
+
+86
+00:04:49.170 --> 00:04:51.176
+Okay, gvisGeoChart, again.
+
+87
+00:04:51.176 --> 00:04:54.572
+And then here,
+we specify region equals 150.
+
+88
+00:04:54.572 --> 00:04:57.350
+That's going to zoom in on that region.
+
+89
+00:04:57.350 --> 00:04:59.467
+Let's try it.
+
+90
+00:04:59.467 --> 00:05:04.339
+G2, okay, now if we do plot G2,
+
+91
+00:05:04.339 --> 00:05:09.727
+bam, right there, Western Europe.
+
+92
+00:05:12.761 --> 00:05:14.657
+Okay, looks good.
+
+93
+00:05:14.657 --> 00:05:20.540
+Okay, so now, let's just go through some
+of our options, and see how they're set.
+
+94
+00:05:20.540 --> 00:05:24.500
+Again, this, we're just going to
+create a very simple line chart.
+
+95
+00:05:24.500 --> 00:05:26.920
+Okay, let's create this
+data frame right here.
+
+96
+00:05:28.210 --> 00:05:29.380
+There it is.
+
+97
+00:05:29.380 --> 00:05:32.200
+Okay, there's our data frame.
+
+98
+00:05:32.200 --> 00:05:34.600
+Maybe, U.S., Great Britain, Brazil.
+
+99
+00:05:34.600 --> 00:05:36.640
+Value one, value two.
+
+100
+00:05:36.640 --> 00:05:40.020
+Okay, now let's create our gVis chart.
+
+101
+00:05:40.020 --> 00:05:41.910
+We'll call it Line with a capital L.
+
+102
+00:05:41.910 --> 00:05:47.270
+And then, if we do plot line,
+now it brings it up.
+
+103
+00:05:48.340 --> 00:05:49.600
+Hello world, it says.
+
+104
+00:05:49.600 --> 00:05:51.940
+And then it's just got this simple plot.
+
+105
+00:05:53.300 --> 00:05:55.940
+So, look at the way we're
+setting the options there, and
+
+106
+00:05:55.940 --> 00:05:57.490
+connect them back to the plot.
+
+107
+00:05:57.490 --> 00:06:00.970
+I think it'll be pretty clear to you
+the JavaScript notation is a little bit
+
+108
+00:06:00.970 --> 00:06:05.960
+annoying if you're not used to it,
+but you're really just passing
+
+109
+00:06:05.960 --> 00:06:11.500
+the options exactly as Google Charts
+wants you to pass them, right?
+
+110
+00:06:11.500 --> 00:06:13.130
+There's no translation going through.
+
+111
+00:06:13.130 --> 00:06:15.450
+So, it's good to know because,
+at some point,
+
+112
+00:06:15.450 --> 00:06:19.300
+you might want to create a Google Chart
+using Google Docs or something like that,
+
+113
+00:06:19.300 --> 00:06:23.820
+and have the options set in the same
+way that you have them set here.
+
+114
+00:06:23.820 --> 00:06:28.760
+Okay, last thing we want to do is
+create multiple plots together, okay?
+
+115
+00:06:28.760 --> 00:06:33.210
+Here, we've created our geo
+chart just like we did before.
+
+116
+00:06:33.210 --> 00:06:34.450
+Here's a table.
+
+117
+00:06:34.450 --> 00:06:37.010
+So, this is just an example
+of creating a table.
+
+118
+00:06:37.010 --> 00:06:42.600
+But again, this is just taking our
+data as is, and creating a table.
+
+119
+00:06:45.040 --> 00:06:47.960
+The motion chart that we have from before.
+
+120
+00:06:47.960 --> 00:06:52.550
+Okay, and
+then what I'm going to do is merge
+
+121
+00:06:52.550 --> 00:06:58.728
+the GeoChart and
+the gvisTable in one plot.
+
+122
+00:06:58.728 --> 00:07:01.890
+And then, horizontal=FALSE means
+it's going to stack them up one
+
+123
+00:07:01.890 --> 00:07:03.210
+on top of each other.
+
+124
+00:07:03.210 --> 00:07:07.185
+And then, I'm going to merge this
+new plot and the other one together.
+
+125
+00:07:07.185 --> 00:07:11.420
+Horizontal=TRUE side by side, okay?
+
+126
+00:07:11.420 --> 00:07:15.375
+Now, if I print, I'm sorry plot DTM.
+
+127
+00:07:15.375 --> 00:07:18.550
+There, it's going to bring it up.
+
+128
+00:07:18.550 --> 00:07:19.790
+And there you see.
+
+129
+00:07:19.790 --> 00:07:21.470
+Now, it looks pretty nice, right?
+
+130
+00:07:21.470 --> 00:07:24.060
+It's got the plot up here, right?
+
+131
+00:07:24.060 --> 00:07:31.470
+It's got the print out of the data
+frame there, and an interactive table.
+
+132
+00:07:31.470 --> 00:07:34.210
+And it's got the motion chart over here.
+
+133
+00:07:34.210 --> 00:07:35.380
+Okay.
+So, that's pretty.
+
+134
+00:07:35.380 --> 00:07:36.590
+And you can see some of the options.
+
+135
+00:07:36.590 --> 00:07:39.010
+You can set the background color and
+that sort of thing.
+
+136
+00:07:39.010 --> 00:07:45.080
+But this is a pretty nifty little
+plot with relatively little code,
+
+137
+00:07:45.080 --> 00:07:48.330
+and it's really just because
+Google's plotting library's
+
+138
+00:07:48.330 --> 00:07:51.380
+going to be doing all the hard
+work in the back end.
+
+139
+00:07:51.380 --> 00:07:53.390
+And that's why this takes so little code.
+
+140
+00:07:53.390 --> 00:07:55.790
+So, play around with this,
+create some Google Charts.
+
+141
+00:07:55.790 --> 00:07:59.545
+I think you'll be happy at how
+easy it makes Google Charts.
+
+142
+00:07:59.545 --> 00:08:01.980
+And try a couple of these for homework.

@@ -1,0 +1,10 @@
+So if you're a fan of ggplot, then I think you'll be happy about
+this code from the Plotly website. So here, I'm just going to
+show it to you really quick. I'm creating a ggplot from
+the diamond data set. So if I show it to you here, you see it's
+just diamond carat versus price, okay? Now, what I wanted to show you is that
+Plotly has this command, ggplotly, where you can just immediately convert a ggplot
+into a Plotly interactive HTML graphic. So up here in the top window, it's a R
+graphic in the RStudio viewer pane. I'm sorry in the RStudio plotting pane and then in the bottom one it's an HTML
+graphic in the RStudio viewer pane. So the bottom one's just displaying it
+as you would see it in a web browser

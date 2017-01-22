@@ -1,0 +1,365 @@
+WEBVTT
+
+1
+00:00:00.940 --> 00:00:03.690
+So this lecture is going to
+talk about creating
+
+2
+00:00:03.690 --> 00:00:06.880
+reproducible presentations
+using R Markdown.
+
+3
+00:00:06.880 --> 00:00:09.620
+In previous versions of
+this class we covered
+
+4
+00:00:09.620 --> 00:00:13.410
+a couple of the many different
+ways that you could do this.
+
+5
+00:00:13.410 --> 00:00:16.370
+R Studio has this thing
+called R Studio Presenter,
+
+6
+00:00:16.370 --> 00:00:18.710
+there's this thing called Slidify.
+
+7
+00:00:18.710 --> 00:00:21.740
+And in this latest
+incarnation of the class,
+
+8
+00:00:21.740 --> 00:00:24.176
+we're just focusing on straight Markdown.
+
+9
+00:00:24.176 --> 00:00:30.130
+Now, R Markdown is already
+
+10
+00:00:30.130 --> 00:00:36.070
+covered in the data science specialization
+in the class on reproducible research.
+
+11
+00:00:36.070 --> 00:00:38.880
+However, we're going to kind of
+focus here just on creating
+
+12
+00:00:38.880 --> 00:00:40.680
+reproducible presentations.
+
+13
+00:00:40.680 --> 00:00:46.180
+But we're going to recover some of
+the content that justifies why you might
+
+14
+00:00:46.180 --> 00:00:51.100
+want to do reproducible presentations,
+or do reproducible documents in general.
+
+15
+00:00:52.390 --> 00:00:57.530
+So just a little bit about R Markdown,
+is R Markdown is built into R Studio.
+
+16
+00:00:57.530 --> 00:01:00.581
+And basically it allows
+you to create documents,
+
+17
+00:01:00.581 --> 00:01:03.690
+particularly HTML documents from within R.
+
+18
+00:01:03.690 --> 00:01:09.760
+But in such a way that it embeds
+the code and the results of the code and
+
+19
+00:01:09.760 --> 00:01:14.540
+the plots and everything else that you're
+doing from your analysis Into the document
+
+20
+00:01:14.540 --> 00:01:18.750
+in one big reproducible mish mash.
+
+21
+00:01:18.750 --> 00:01:25.008
+And that's incredibly useful,
+because the changes this old workflow
+
+22
+00:01:25.008 --> 00:01:31.694
+of having some analytic R code that is
+maybe documented, but probably not.
+
+23
+00:01:31.694 --> 00:01:36.606
+And then a separate document, say a Google
+document or a Word document, or whatever,
+
+24
+00:01:36.606 --> 00:01:38.365
+a LaTeX document or whatever.
+
+25
+00:01:38.365 --> 00:01:41.953
+And the way you're combining them
+is by copying and pasting or
+
+26
+00:01:41.953 --> 00:01:45.870
+saving files manually and
+inputting them into the documents.
+
+27
+00:01:45.870 --> 00:01:49.020
+Same thing with presentation, you might
+have a PowerPoint presentation and
+
+28
+00:01:49.020 --> 00:01:52.370
+you're running your code over here and
+then pasting or
+
+29
+00:01:52.370 --> 00:01:55.110
+copying those things
+into the presentation.
+
+30
+00:01:55.110 --> 00:01:59.110
+And that leads to issues with version
+control, it also leads to the problem that
+
+31
+00:01:59.110 --> 00:02:03.820
+the person you're giving the presentation
+to if you're handing them the file
+
+32
+00:02:03.820 --> 00:02:07.300
+can't necessarily reproduce all
+the figures and graphs in it.
+
+33
+00:02:07.300 --> 00:02:12.580
+So, again, this is just in general
+a better way to do things if
+
+34
+00:02:12.580 --> 00:02:16.900
+you're concerned with having
+things like reproducibility and
+
+35
+00:02:16.900 --> 00:02:20.770
+having a nice consistent structure for
+generating your presentations.
+
+36
+00:02:20.770 --> 00:02:24.480
+I can imagine an instance
+in say a corporate setting
+
+37
+00:02:24.480 --> 00:02:28.460
+where a particular report
+has to be given routinely.
+
+38
+00:02:28.460 --> 00:02:32.730
+Say every couple of weeks or
+something like that, from data,
+
+39
+00:02:32.730 --> 00:02:35.580
+important data that's being generated for
+the company.
+
+40
+00:02:35.580 --> 00:02:40.229
+And instead of redoing that presentation
+and having the error prone process of
+
+41
+00:02:40.229 --> 00:02:44.879
+copying and pasting each time, the idea
+of having a script that would generate
+
+42
+00:02:44.879 --> 00:02:49.810
+the presentation with the latest numbers
+in a way that everything was traceable and
+
+43
+00:02:49.810 --> 00:02:53.286
+version controlled would be
+an incredibly useful thing.
+
+44
+00:02:53.286 --> 00:02:58.406
+So one way to think about R Markdown in
+creating presentations like this is as
+
+45
+00:02:58.406 --> 00:03:03.930
+a useful way for creating recurring
+presentations or automated presentations.
+
+46
+00:03:03.930 --> 00:03:09.250
+But, it has a lot of uses and I want to
+emphasis this idea of reproducibility.
+
+47
+00:03:09.250 --> 00:03:12.120
+So this has received a lot attention here,
+
+48
+00:03:12.120 --> 00:03:14.130
+we talk about it a little
+bit in the slides.
+
+49
+00:03:14.130 --> 00:03:17.720
+This has received a lot of attention
+in the academic community now,
+
+50
+00:03:17.720 --> 00:03:22.060
+because mostly, with regard to papers,
+people have put out papers and
+
+51
+00:03:22.060 --> 00:03:25.220
+then independent groups have just tried
+to reproduce the results of the papers.
+
+52
+00:03:25.220 --> 00:03:29.120
+Not redo the experiments,
+just take the same data sets and
+
+53
+00:03:29.120 --> 00:03:33.770
+try to reproduce the analysis and it turns
+out that it's often not possible and
+
+54
+00:03:33.770 --> 00:03:36.820
+it creates disputes over who's right
+the first people or the second people and
+
+55
+00:03:36.820 --> 00:03:41.630
+now a third group did it and
+they can't reproduce it, but
+
+56
+00:03:41.630 --> 00:03:44.790
+they get something different
+than both the other two people.
+
+57
+00:03:44.790 --> 00:03:49.400
+So having a document that has the code
+
+58
+00:03:49.400 --> 00:03:54.570
+embedded in it really improves the status
+of reproducibility of the document.
+
+59
+00:03:54.570 --> 00:03:58.450
+It's not perfect, because there's
+probably some external files or
+
+60
+00:03:58.450 --> 00:04:01.260
+datasets that you have to call,
+some libraries.
+
+61
+00:04:01.260 --> 00:04:04.280
+There's probably differences
+between computing architectures and
+
+62
+00:04:04.280 --> 00:04:06.630
+other things that may impact your results.
+
+63
+00:04:06.630 --> 00:04:08.900
+But by and large this goes leaps and
+
+64
+00:04:08.900 --> 00:04:13.870
+bounds towards creating more
+reproducible results in your documents.
+
+65
+00:04:13.870 --> 00:04:17.899
+Okay, so hopefully you've heard a lot of
+this before when you were talking about
+
+66
+00:04:17.899 --> 00:04:21.159
+reproducability as it pertained
+to Nitter and things like that,
+
+67
+00:04:21.159 --> 00:04:26.100
+in your reproducible research class that's
+part of the data science specialization.
+
+68
+00:04:26.100 --> 00:04:30.060
+But if you're taking this class in Ovo,
+then we're just going to walk you through
+
+69
+00:04:30.060 --> 00:04:32.970
+a couple of example,
+focusing mainly on presentations.
+
+70
+00:04:32.970 --> 00:04:36.970
+An in this class,
+we focus on presentations just because
+
+71
+00:04:36.970 --> 00:04:39.880
+we like to think of this
+class as a products class, so
+
+72
+00:04:39.880 --> 00:04:41.950
+the idea is that you're
+generating product.
+
+73
+00:04:41.950 --> 00:04:44.620
+And that your presentation will
+be your pitch for the product.
+
+74
+00:04:44.620 --> 00:04:49.520
+And we want your pitch to be created
+in one of these reproducible formats.
+
+75
+00:04:49.520 --> 00:04:52.140
+Okay, so next we're just going to
+start going through some examples.
