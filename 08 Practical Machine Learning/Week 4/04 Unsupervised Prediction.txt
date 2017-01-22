@@ -1,0 +1,69 @@
+So the examples we've talked about so far
+in this class, you often know what the labels
+are. In other words, you're trying to do
+supervised classification, you're trying to predict an outcome that you know
+what it is. But sometimes you don't know the labels
+for prediction, so you have to discover those labels in
+advance. So, one way to do that is to create
+clusters from the data that you've observed, to add names to those clusters and then build a predictor for those
+clusters. In a new data set, you're going to predict
+the cluster and apply the name that you come up with in the
+previous data set. This adds several levels of difficulty to
+the prediction problem. First of all, creating the clusters is not
+a perfectly noiseless process. Second of all, coming up with the right
+names, in other words interpreting the clusters well
+is an incredibly challenging problem. And if you've taken exploratory data
+analysis in our data science specialization, you'll
+understand why. Building a predictor for the clusters is
+basically using the algorithms that we've learned throughout the course of this
+class, as well as predicting on those clusters. So I'll just show you a quick example of
+how you could do this. So, if I load the iris data and the ggplot library, I can then create a
+training and test set for the iris data just like I have in previous examples, but I could ignore
+the species clusters. So one thing that I could do is I could
+perform actually a k-means clustering. If you remember that k-means clustering
+from the exploratory data analysis section of the
+data science specialization. If you don't, you can look it up on
+Wikipedia. And the basic idea here is to basically
+create three different clusters. So I was telling it to create three different clusters, ignoring the
+species information. So then what I can do is, I can basically
+assign to those clusters different colors. And so here I've plotted those three different clusters that are created by
+performing this k-means clustering, so there's a
+cluster here, a cluster here and a cluster here. Those clusters actually are relatively
+close to the clusters you would get if you used the species
+labels themselves, but that's not a typical
+outcome, often it's very hard to label the clusters that you
+get. So in this case, I can make a table of the
+cluster versus species, and I can see that cluster
+2 corresponds to this species. Cluster 3 corresponds to this species and
+cluster 1 corresponds to this species. So in general, I wouldn't know what those
+species names were, and I would have to come up with names for
+each of my clusters. And then I can fit a model that relates
+the cluster variable that I've just created, to all the predictor variables
+and I could do it in the training set. In this case, I am doing it with a
+classification tree. I can then do a prediction in a, a
+training set, and I can see that I do a reasonably good
+job of predicting this cluster and this
+cluster but cluster 1 and cluster 3 sometimes get mix, mixed up in
+my prediction model. That's because I have both error or
+variation in my prediction building and error and
+variation in my cluster building, so it ends up being a
+quite a challenging problem to do, unsupervised
+prediction in this way. I can then apply it on the test data set. So if I predict on the test data set, in
+general I wouldn't know what the labels are, but here I'm
+showing what the labels are. So, here I'm predicting on a new data set and making a table versus the actual known
+species. And so I can see this actually does quite
+a reasonable job here of predicting the different
+species into different clustered labels. In general, this is quite a hard problem,
+so care must be taken in the labeling the clusters, and performing the unsupervised
+analysis and understanding how that works. The cl_predict function in the clue package provides similar functionality to
+what I've just described here, but in general it
+makes a little bit more sense to sort of build your own approach if you're doing unsupervised
+prediction because you really need to think carefully about
+how you're going to define the clusters. Be very wary of over interpretation of
+this type of clusters. This is in fact an exploratory technique. And so the clusters may change depend on
+the way that you sample the data. This is actually one basic approach to building things like recommendation
+engines, where you identify clusters of people that have
+similar tastes and assign their tastes to new
+individuals. You can read more about unsupervised
+prediction in the elements of statistical learning and
+introduction to statistical learning.

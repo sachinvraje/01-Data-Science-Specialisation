@@ -1,0 +1,89 @@
+So this lecture is about data slicing, and
+you might use data slicing either for building your training and
+testing sets right at the beginning of your prediction function creation, or you might use it for performing cross
+validation or boot strapping within your training
+set, in order to evaluate your models. So again, we're going to be using the
+caret package, so I've loaded the caret package
+here, and I'll also lured, loaded the kernlab data
+set again, just so I can load the spam data. So again, this is a data set where we're
+trying to predict whether emails are spam or ham
+and we have a bunch of variables that measure how
+many times a particular word appears, or how often
+capital letters appear. So one thing that we can do right off the
+bat is use createDataPartition, to separate the
+data set into training and test sets. If I do this, what'll happen is I tell it
+which outcome I want to split on, so in this case I want a split
+based on the type. And I say, I want to create a data set
+that's 75%, is allocated to the training set, and 25% is
+allocated to the testing set. So what happens then is that the inTrain variable gets assigned an
+indicator function that I can use to sub, subset out the
+training set and the test set. So, the training set we create by
+subsampling this spam data set, the spam data frame, into only those samples
+that appear in the training set. And then, the testing set is all the
+remaining samples, which you can do in r by using
+this minus sign to indicate that they're, all
+the samples that don't appear in this index set in the
+inTrain variable. So now, that's one way to split your data into a training and test set right at the
+beginning. You might also want to do something like
+cross validation where you split your training set into a bunch of
+smaller data sets. The K-folds that you'll then use to do
+cross validation. So, one way that you can do that is with this createFolds function in the kay
+caret package. So, what you do is again, you pass it the
+outcome that you want to split on. So again, this is the spam type variable. And then we tell it the number of folds
+that we'd like to create. In this case, I say I would like to create
+10 folds. And in this case, I also tell list=TRUE,
+which means it will return each set of imbecies corresponding to a
+particular fold as a set of as a list. And, you can tell it to either return the training set or not return the
+training set. So, for example, if I do this, then I've got a bunch of different folds that I've
+created. And for each one, I want to cre, check the
+length of that fold. And so, for example, in Fold01 there are
+4141 samples. And in Fold02, there's 4140. And so forth. So it split the data set up into ten
+folds, where each fold has approximately the same
+number of samples in it. Then what I can do is if I want to look at
+which samples appear in the first fold, I take
+the first element of the fold's list, and so, when I look at that
+list, it's the first 10 elements correspond to the, actually
+the first 10 elements in the sample. In other words, this is split up in order into the first to 4100 samples in the
+first fold. The second 4140 samples in the second fold
+and so forth, so you can actually look at which of the indices corresponding to
+the training set and the test set within those
+K-folds. You can have it also return the test set, or you can have it return the training
+set. So remember I'm, here I'm splitting the
+data set about 75, 25 into training and test sets and so what I can
+do is I can say returnTrain=FALSE. And then what it'll do is it'll actually
+return just the test set samples. So here, you can see that there's much
+smaller number of samples in each fold, and that's because most of the
+samples are going to the training set. And again, you can look at, for fold 1,
+what are the samples that actually correspond to
+the testing set in that fold? You can also do resampling, so if instead
+of doing a full cross validation, you want to do something like resampling or
+bootstrapping, you can use the createResample function,
+resample function. Again, you tell it how many times you
+would like to resample the data and whether you would like a list out, or
+vector out, or matrix out. And so, what this will tell you is, again,
+which samples correspond to a particular fold, and since we're doing resampling
+now, you might get some of the same values back. So, for example, in the first fold, you
+actually get the sample three repeated three different times in that fold because you're re-sampling with replacement from
+the values. You can also use it to create time slices. So if you're analyzing data that you might
+be using for forecasting, you can use it to check what are the time slices where
+you take continuous values in time. So here, I've created a time vector that's
+1 to 1000. The integer is 1 to 1,000 and I want to
+create slices that have a window of about 20
+samples in them. And I want to say I'm going to predict the
+next 10 samples out after I take the initial
+window of 20. And so, in the first training set, I can
+see that there are 20 values. And so, there are actually 20 samples that
+have been created in the first window that we're going to be
+using to predict. And if I looked at this test set, it gets
+cut off here, but there would be 10 samples and there would
+be next 10 samples, 21 to 30. And the next subsample would be shifting
+that over and getting a next time slice, but it gets
+continuous sets of numbers all in a row so that you can use the time varying component of the sample
+in order to predict. There's a lot of information in the caret
+tutorials about how to do time slicing, and we'll show
+various examples of it when we build prediction functions
+in the rest of this class, and your homework will
+cover this as well. The paper introducing the caret package,
+again, also has a lot of information about how to do time slicing, and how to do data slicing for
+both creating training and test sets, and for
+cross validation.

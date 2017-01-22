@@ -1,0 +1,107 @@
+This lecture's about the caret package,
+which is a very useful front end package that wraps
+around a lot of the prediction algorithms and
+tools that you'll be using in the R programming
+language. So the caret package can be found here at
+this website that I linked to here at the bottom, or you can just Google caret R package, and you'll be able to find the
+package. The functionality that's built into the
+care package are some of the following. So, for example, we can use the preprocessing tools in the caret package
+to clean data and get the features set up, so that
+they can be used for prediction. We can also do, sort of cross validation
+and data splitting within the training set, using the create DataPartition and create TimeSlices
+functions. We can also create training and test sets
+with the training and predict functions. And we can use those to train data sets at train prediction functions and apply them
+to new data sets. We can also do model comparison using the
+confusion matrix function, which will give you information about how well the
+model's did on new data sets. There a large machine learning algorithms
+that are built into R, so these range from very popular statistical machine learning algorithms like linear
+discriminant analysis and regression to much more widely used algorithms in computer
+science, like support vector machines,
+classification and regression trees, or random forests or
+boosting. All of these algorithms are built by a variety of different developers, all
+coming from different backgrounds, so the interfaces
+that each of these sort of prediction algorithms is
+slightly different. As one example of this, consider this class of different prediction
+algorithms that you could have applied, so everything from linear discriminate analysis down to
+boosting. And so for each of these different
+algorithms, you can imagine creating an object called
+objnr. That object will have a different class,
+say a linear discriminate analysis or glm and
+so forth. And for each of these objects, we can try to predict, and if we apply the predict
+function, we have to put it pass slightly different
+parameters each time in order to get the prediction of the
+outcome. So, for example, from the GLM package, we
+have to say type equals response to get the prediction of
+the response from that model fit. Or, for example, if we want to use rpart,
+we want to predict with type equals probability in
+order to predict the response. In each case, they're a little bit
+different, and the caret package provides a unifying framework that
+allows you to predict using just one function and without having to specify
+all the options that you might care about in order to get the
+same prediction out. So here's a quick example, using the caret
+package. We'll go into the details of how this is
+done very specifically in later examples. So here we've loaded in the caret package,
+and we've loaded the kern lab package as well to get the
+spam data set. And so, what we can do first is partition the data setup into a training and a test
+set. Here I'm going to use the spam type, and
+I'm going to split it into the, training set and the
+test set. I'm going to say we're going to use about
+75% of our data to train the model and 25% to
+test. Then what I can do is I can actually
+subset the data into the training data using the in train,
+bit, the in train, object that comes out from create data partition,
+and I can create the testing data set by finding all those samples that
+aren't in the training set. Then this will give me a subset of that
+data that are just for training and a subset of the data
+that adjust for testing. And you can do this with sort of a simple
+interface. Next you can fit a model, so here I'm
+going to use the train command from the caret package, and
+so again I'm trying to predict type. And I use the tilde and the dot to say use
+all the other variables in this data frame in
+order to predict the type. And I tell which data set I want to build
+the training model on, and so, in this case, the training data
+set we created on the previous slide. And then I just tell which of the methods
+that I'd like to use, and so you can use GLM or you can use a bunch
+of other different models. And so what this does is it'll create a
+model fit from the train function, and as we use the
+3451 samples in a training set and the 57 predictors to
+predict which class you're belonging to based on a
+model, a GLM model. And so what it can do is it can do a bunch
+of different ways of testing whether this model will work
+well and using it to select the best model. And in this case it used resampling. And it does bootstrapping with 25
+replicates, and it corrects for the potential bias that might come
+from bootstrap sampling. So once we fit that model, we can actually
+look at the model, and so the way we can do that is look at the finalModel component of the
+modelFit object. And the way you do that is you take the
+modelFit object, and then you type dollar sign and then
+always the same finalModel. It will tell you what are the actual fitted values that you got for that GLM
+model. Then you predict on new samples by using
+the predict command. Again, it's a unified framework, so we
+just type predict. We pass it the modelFit that we got from
+the train, function in carrot, and we pass it which data we would
+like it to predict on. So in this case, the new data is the
+testing data. When you do that, it will give you a set of predictions that correspond to
+the responses, and you can use those to try to evaluate whether your model fit works very well or
+not. One way that you can do that is by
+calculating the confusion matrix, so that's using this confusion matrix
+function, and so note the capital M here. Don't miss that when you're typing
+confusion matrix. Then you pass in the predictions that you
+got from your model fit. And then the actual outcome on the testing
+samples. So in this case, it was the type or
+whether it was spam or ham message. And then it will record the confusion
+matrix. So it'll tell you a table for which of the
+cases that you predicted to be nonspam or actually nonspam, which is the cases where
+it was spam, and you predicted to be spam and so
+forth. And then it gives you a bunch of summary
+statistics. So for example, the accuracy, a 95 percent
+confidence interval for the accuracy, and then a bunch of information about how
+well they correspond in other categories. So, for example, the sensitivity and the
+specificity of that. So the confusion matrix function wraps a
+bunch of different accuracy measures that you might want to get out when you're
+evalutating the model fit. For a lot more information about caret,
+we're going to cover a lot of it in this class in terms of how do you
+actually apply the caret package. But I found that these tutorials are
+actually very nice, and they can be very useful for covering material that
+we don't cover in this class. And there's also a very nice paper in the
+journal of statistical software that introduces the
+caret package if you want further information.

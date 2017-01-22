@@ -1,0 +1,191 @@
+This lecture is about Regularized
+regression. We learned about linear regression and
+generalized linear regression previously. For the basic idea here is to fit one of
+these regression models. And then, penalize or shrink the large coefficients corresponding with some of
+the predictor variables. The reason why we might do this is because it might help with the bias
+variance tradeoff. If certain variables are highly
+coordinated with each other. For example, you might not want to include
+them both in the linear regression model as they will
+have a very high variance. Which might slightly, leaving one of them
+out, might slightly bias your model. In other words, you might lose a little
+bit of prediction capability, but you'll save a lot on the variants and therefore improve your prediction to
+error. It can also help with model selection, in certain cases for regular organization
+techniques like the lasso. It may be computationally demanding on
+large data sets. And in general, it appears that it does
+not perform as quite as well as random forests or boosting, when
+applied to prediction in the wild. For example, in cattle competitions. So as a motivating example, suppose we fit
+a very simple regression model. So there's an outcome Y. And we're trying to predict it with two
+covariants, x1 and x2. So we have an intercept terms so this is a
+constant. Plus another constant times x1 plus
+another constant times x2. >> So assume that x1 and x2 are nearly
+perfectly correlated. In other words they're almost exactly the
+same variable. The word for this in linear modeling is
+often called co-linear. You can then approximate this more
+complicated model. By saying, well, what if we just include
+only X1 and multiply it by both the coefficients
+for X1 and X2. It won't be exactly right, because X1 and
+X2 aren't exactly the same variable. But it will be very close to right, if X1
+and X2 are very similar to each other. The result may be that you still get a
+very good estimate of y. The same, almost as good as you would've got by including both predictors in the
+model. And you, it will be a little bit biased, because we chose to leave one of the
+predictors out. But we may reduce the variance if those two variables are highly correlated with
+each other. So here's an example, with, prostate
+cancer data set and the elements of statistical
+learning library. We can load the prostate data and look at that data set it has, 97 observations on
+ten variables. And so one thing that we might want to be
+able to do is make a prediction about, prostate
+cancer, PSA. Based on a large number of predictors in
+the data set. And so this is a very typical of what happens when you build these models
+in practice. So suppose we predict with all possible
+combinations of predictor variables. We go to the linear regression model. For the outcome where we build one regression model for every possible
+combination of vectors. Then we can see as the number of
+predictors increases from left to right here, the training set error
+always goes down. It has to down. As you include more predictors, the
+training set error will always decrease. But this is a typical pattern of what you
+observe with real data. That the test set data on the other hand,
+as the number of predictors increases, the test set
+error goes down, which is good. But then eventually it hits a plateau, and
+it starts to go back up again. This is because we're overfitting the data
+in the training set, and eventually, we may not want to include so
+many predictors in our model. This is an incredibly common pattern. Basically any measure of model complexity
+on the x-axis versus the expected Residual Sum of Squares of
+the predicted error. You can see that in the training set
+almost always the error goes monotonically down, in
+other words, as you build. More and more complicated models, the
+training error will always decrease. But on a testing set, the error will decrease for a while, eventual hit a
+minimum. And then, start to increase again as the model gets too complex and over fits the
+data. So, in general, what the best approach
+might be when, when you have enough data and you have enough
+computation time to split samples. So the idea is divide your data into
+training, test, and validation sets. You treat the validation set as the test data and you train every possible
+competing model. So all possible subsets on the training
+data. And pick the best, the one that works best
+on the validation data set. But now that we've used the validation set
+for training, we need to assess the error rate on a
+completely independent set. So we appropriately assess this
+performance by applying our prediction to the new data in the test
+set. Sometimes you may re, re-perform the
+splitting and analysis several times. In order to get a better average estimate
+of what the out of sample error rate will be. But there are two common problems with
+this approach, one is that there might be
+limited data. Here we're breaking the data set up into
+three different data sets. It might not be possible to get a very good model fit when we split the data that
+finely. Second, is computational complexity. If you're trying all possible subsets of
+models it can be very complicated, especially if you have a lot,
+a lot of predictor variables. So another approach is to try to decompose
+the prediction error. And see if there's another way that we can
+work directly get at including only the variable that need
+to be included in the model. So if we assume that the variable y can be predicted as a function of x, plus some
+error term,. Then the expected prediction error is the
+expected difference between the outcome and the prediction of
+the outcome squared. And so, f-hat lambda here is the estimate
+from the training set. Using a particular set of tuning
+parameters lambda. Then if we look at a new point. So we bring in a new data point and we look at the distance between our var, our
+observed outcome. And the prediction on the new data point. That can be decomposed after some algebra
+into irreducible error. This sigma squared. The bias, so this is the difference
+between our expected prediction and the truth, and the variance
+of our estimate. So the question, so whenever you're
+building a prediction model the goal is to reduce this overall
+quantity. So this is basically the expected. Mean squared error between our our outcome
+and our prediction. And so, the irreducible error can't
+usually be reduced. It's value that's just part of the data
+you're collecting. But you can trade off bias and variance. And that's what the idea behind
+regularized regression does. So another issue for high dimensional
+data, is suppose I'm just showing you a simple example of what happens when you
+have a lot of predictors. So here I'm sub setting just a small
+subset of the prostate data, so imagine that I only had five
+observations in my training set. It has more than five predictor variables. So I fit a linear model relating the outcome to all of these predictor
+variables. And there are more than five. Then some of them will get estimates. But some of them will be NA. In other words, r won't be able to
+estimate them because you have more predictors than
+you have samples. And, so you have, design matrix that
+cannot be inverted. So here we have one approach to dealing
+with this problem is we can, and the other problem of trying to
+select our model. Is we could take this model that we have, and assume that it has a linear form, like
+this. So assume that it's a linear regression
+model, like we've talked about before. And then constrain only the lambda of the
+coefficients to be non-zero. And then the question is, after we pick lambda, so suppose there are only three
+non-zero coefficients. Then we have to try all the possible
+combinations of three coefficients that are non-zero, and
+then fit the best model. So that's still computationally quite
+demanding. So another approach is to use regularized
+regression. So if the beta j, so if our coefficients that we're fitting in the linear model are
+unconstrained. In other words, we don't make, we don't
+claim that they have any particular form. They may explode if they're very, if you
+have very highly correlated variables that
+you're using for prediction. And so, they can be susceptible to high
+variance. And the high variance means that you'll
+get predictions that aren't as accurate. So to control the variance we might
+regularize, or shrink the coefficients. So, remember that, we, what we might
+want to minimize, is some kind of distance between our outcome that
+we have and our linear model. So here, this is the distance between the
+outcome and the linear model fit squared. That's the residual sum of squares. Then you might also add a penalty term
+here. That says, the penalty will basically say:
+if the beta coefficients are too big, it will shrink
+them back down. So the penalty is usually used to reduce
+complexity. It can be used to reduce variance. And it can respect some of the structure
+in the problem if you set the penalty up in the
+right way. The first approach that was used in this sort of penalized regression is to fit the
+regression model. Here again, we're penalizing a distance
+between our outcome y and our regression model
+here. And then we also have a term here. That is lambda times the sum of the beta
+j's squared. So, what does this mean? If the beta j's squares are really big
+then this term will get too big, so we'll get, we won't get a
+very good fit. This whole quantity will end up being very
+big, so it basically requires that some of the
+beta j's be small. It's actually equivalent to solving this
+problem where we're looking for the smallest sum of squared here and sum
+of squared differences here. Subject to a particular constraint that,
+the sum of squared beta j's is less than s. So the idea here is that the inclusion of this lambda coefficient may also even make
+the problem non-singular. Even when the x transpose x is not
+invertible. In other words, in that model fit where we
+have more predictors than we do observations the ridge
+regression model can still be fit. So this is what the coefficient path looks
+like. So what do I mean by coefficient path. For every different choice of lamda, that
+penalized regression problem on the previous page,
+as gambit increases. That means that we penalize the big datas
+more and more. So we start off with the betas being equal
+to a certain of values here when lambda's
+equal to 0. That's just a standard linear with
+regression values. And as you increase lambda, all of the
+coefficients get closer to 0. Because we're penalizing the coefficients,
+and make, and making them smaller. So the tuning parameter lambda controls
+the size of the control coefficients. Lambda controls the amount of
+regularization. As lambda get's closer and closer to 0, we
+basically go back to the least square solution which is what
+you get from a standard linear model. And as lambda goes to infinitely we
+basically, so in other words as lambda get's really
+big. It penalizes the coefficients a lot, and
+so all of the conditioned coefficients go toward 0 as
+the, tuning parameter gets really big. So taking that parameter can be done with
+cross-validation or other techniques to try to pick the
+optimal tuning parameter. That trades off bias for variance. A similar approach can be done with a
+slight change of penalty. So again, here we might be solving the
+problem again, this lees squares problem. This is the standard trying to identify
+the beta values that make this distance to the
+outcome smallest. And here we can constrain it subject to
+the sum of the absolute value of the beta j's being
+less than sum value. You can also write that as a penalized
+regression of this form, so we're trying to solve this
+penalized sum of squares. So for ortho normal design matrix which
+you can, see on Wikipedia or the normal design
+matrix. The idea is that this actually has a
+closed form solution. And the closed form solution is basically,
+take the absolute value of the beta j and subtract off a
+gamma value. And take only the positive part. In other words if gamma is bigger than
+your least squared beta hat j then this will be a
+negative number. And you're taking only the positive part
+so you set it equal to 0. So if it's a positive though if this
+absolute beta hat j is bigger than, the gamma
+value. Then this whole number will be a smaller
+positive number. It will be shrunk by the amount gamma. And then, we multiply it by the sign of
+the original coefficient. So what is this doing? Its basically saying the lasso shrinks all
+of the coefficients and set some of them to
+exactly 0. And some people like this approach because
+it both shrinks coefficients. And by setting something exactly to 0 it performs model selection for you in
+advance. There are really good set of lecture notes
+from Hector Corrada Bravo. That you can find here at this link. He also has a very nice list on the large
+number of penalized regression models. And in the Elements of Statistical
+Learning book covers this penalized regression idea a
+quite extensive detail. If you want to follow along there. In caret, if you want to fit these models,
+you can set the method to ridge, lasso or relaxo to fit different kinds of penalized
+regression models.

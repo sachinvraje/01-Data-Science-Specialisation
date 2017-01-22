@@ -1,0 +1,113 @@
+After defining the question of interest,
+the next most important thing is to identify the
+data set. That will allow you to create the best possible predictions, which are
+machine learning algorithms. So an example of a really successful
+predictor here in the United States is something
+called FiveThirtyEight. This was a blog that was designed to build
+an election forecasting model to predict who would win the Presidential
+and other elections in The United States. And to do that, the statistician behind
+538, one of the most famous statisticians in the world, Nate Silver, used polling
+information from a wide variety of polls and averaged them together to try to get a
+best prediction of who is going to win which votes and which states
+in order to get the best vote. A prediction of who would vote for who
+when it came time for the election. It was very successful in predicting both
+the 2008 and 2012 elections. This is an example of using like data to
+predict like. In other words, he took polling data from
+organizations like the Gallup polling agencies in the United
+States, and he took all that data that was asking people
+directly, who are you likely to vote for in the upcoming
+election? In other words, he used data where people were asked the same question they were
+going to be asked when they went into the polls the ballot and decide who they were going to
+vote for. And so, the one thing that he did, which
+is sort of clever and I think that it proves
+his predictions compared to a lot of other people, is that
+he took that data, and he recognized the actual
+quirks of the data. So, he realized that some polls were
+actually biased in one way or the other. In other words, a particular pollster
+might ask questions that led people to say that they would vote for
+one candidate more than the other, even when they might
+not necessarily vote that way when it came time to vote
+for real. So what he would do is, he would actually
+weight the polls by how close they were to being, sort of,
+unbiased polls or accurate polls. And so, this is an example where finding the right dataset and combining it with
+simple understanding of what's really going on scientifically
+can have maximum possible benefit in terms of
+making strong predictions. And the key idea here is, if you want to
+predict something about X, use data that's as closely related to X
+as you possibly can. There are a bunch of other examples of
+this. So, one example is what's called
+Moneyball, so this is actually turned into a movie that starred
+Brad Pitt, but at the beginning, it was just, there were
+some people that were trying to predict how well
+players would perform. And in particular perform, how well they
+would perform at gaining wins for a baseball team in the
+United States. And what they would do is they would
+actually use information about that player's
+performance, as well as other players that were similar to them in the
+past in order to predict, predict how well that
+player would perform. So again, like predicting like. This theme repeats itself in the Netflix
+prize, where people were trying to predict movie
+preferences or what movies people would like, and they
+did that based on the past movie preferences of
+those people. In other words, they found movie
+preference data and used it to predict movie preference
+data. It was also the background to the Heritage
+Health prize, where the goal is to try to predict which people would be hospitalized, and they used data about
+previous hospitalizations. Again using data about the exact same
+process that they were trying to predict in the
+future. So, the closer that you can be to the
+actual data about the process that you care about, the more often than not that you, the better your predictions will
+be. It's not necessarily a hard rule, so, for example, people used Google searches
+to try and predict flu outbreaks, but this has recently pointed out to have major flaws,
+in the sense that, if people's searches
+changed, or if the properties of the ways those searches were connected to the flu
+changed, their predictions would actually be quite
+far off. And some people have suggested that Google
+flu trends is not necessarily a very good way to estimate
+the prevalence of flu. The looser the prediction, the harder the
+prediction may be. So, for example, Oncotype DX is a
+prediction algorithm based on gene expression, which is a measure of a
+molecule inside of your body. And, or actually a subset of molecules in
+your body, and it, they use that to predict how long you will live or how well you'll do under different therapies in when you have
+breast cancer. And so, here, the connections are little
+bit looser, but it's still a connection that you can definitely
+make in your head. The data properties do matter, so, for
+example, if you measure the people that would have
+sort of a high prevalence of flu-like symptoms,
+you could do that using CDC data or flu near you, and algorithms like Google flu-trends might
+overestimate the number of flu case if there was something that was
+causing them to search for similar search terms
+that had nothing to do with how often they were
+flu-related symptoms. So this is an example where knowing how
+the data actually connects to the thing you're actually
+trying to predict is crucially important. This is, in fact, the most common mistake
+in machine learning. So, machine learning is often thought of
+as this black box procedure that computer
+scientists have created where they just pushed input data in one
+end and out comes a prediction in the other
+end. This is an example of a prediction that's
+a little bit silly. So, this was a, comes from a paper that
+appeared in the New England Journal of Medicine, and they plotted chocolate
+consumption in kilograms per year per capita on the X axis. And on the Y-axis, the number of Nobel
+prizes per 10 million dollar, 10 million people
+in the population. And so you can see if there's a trend here
+that, as you consume more chocolate, you tend to get
+more Nobel prizes per million people. And so they reported here an R squared and a P value suggesting this was a highly
+significant relationship, but you can think of a whole bunch of
+other variables that might relate these two
+things to each other. So, for example, you might eat more
+chocolate if you come from Europe, and these are mostly
+European nations up here. And the Nobel prize is given out by
+European organization so you might imagine that more European
+people also win Nobel prizes. This has nothing to do with the ability of
+chocolate consumption per se to predict whether you will get a Nobel
+prize or not. And so this is an example where, if you
+just naively build a prediction algorithm, you'll claim that you're being able to
+predict very well, but if the characteristics
+change, so, for example, if the Nobel committee starts
+giving out more prizes to, say, Asian nations as opposed to European nations, you'll see
+that this prediction algorithm won't work very well
+any more. So the key point to take home is that, as often as possible use like data to predict
+like, and when you're using data that isn't related,
+be very careful about interpreting why your prediction
+algorithm works or doesn't work.

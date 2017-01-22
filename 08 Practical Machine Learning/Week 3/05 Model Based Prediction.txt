@@ -1,0 +1,174 @@
+This lecture's about model based
+prediction. The basic idea here is that we're going to assume the data follow a specific
+probabilistic model. Then we're going to use base therom to identify optimal classifiers based on that
+probabilistic model. The advantage is that this approach can
+take advantage of some structure that might appear in the
+data. For example the fall of distribution. And that may lead to some computational
+conveniences. There may also be reasonable accurate on real problems, particularly the real
+problems that appear to follow the data
+distribution that under lies our whole holistic model. The cons are that they do make these additional assumptions about the
+data, and they don't have to be exactly satisfied in
+order for the prediction algorithms to work very
+well. But if they're very far off, the
+algorithms may fail. And when the model is incorrect, you do
+get reduced accuracy. So here's the model based approach. Our goal is to build a parametric model, or a model based on probability
+distributions. For the conditional distribution the
+probability that y our outcome equals some specific class k
+given a particular set of predictor variables so
+that our x variables equal the little value of
+x. A typical approach is to apply a Bayes
+theorem. In other words we want to know something
+about the probability y equals k that y comes from class k given the
+variables that we've observed. And we write that down using Bay's theorem
+as the probability X equals X given Y equals K times the probability Y equals K divided by the law of total probability
+here below. If you don't remember Bay's theorem from
+your inference class in data science specialization you can go and read
+about it was this Wikipedia page. We then assume some parametric model for
+the distribution of the features given the class, so that's
+this component here at sub k of x and we assume a prior that each particular element comes
+from a specific class. That's denoted here by this pi sub k. So then we can basically model the
+distribution, the probability that y equals k given a particular set of
+predictor variables as, this, fraction here where we
+have a model for the x variables and a model for the
+prior probability. The prior probabilities, pi k, are usually
+set in advance from the data. And then a common choice for fk of x is a
+Gaussian distribution. It may be a multivariate Gaussian distribution if there are multiple x
+variables. And then we might estimate the parameters,
+mu k and sigma squared k, from the data. Then once we have these parameters estimated, we can calculate the
+probability y belongs to any given class, as soon as we
+observe the predictor variables. And we classify the variables to the class having the highest probability in
+this sense. So, a range of models use this approach. The most popular of which is probably
+linear discriminant analysis, which assumes that 'f' 'k' of 'x' is a
+multivariate Gaussian Distribution, so the features have a multivariate Gaussian Distribution
+within each class and there is the same covariance
+matrix for every class. This ends up drawing basically lines
+through the data, the covariate space. And so that's why it's called linear discriminant analysis, we'll see that in a
+minute. Quadratic discriminant analysis is very much like linear discriminant analysis,
+although it allows different covariance matrices
+within each of the different classes. And so that ends up drawing quadratic curves through the data, as opposed to
+lines. Model base prediction basically allows for
+more complicated versions of the covariance matrix when
+building these models. And naive Bayes classifiers, which we'll
+talk about a little bit more in this lecture, basically assume
+independence between the features. So, in other words in, assume independence
+between our predictor variables through the model
+building process. This may not be true. We may not believe the features are or the
+predictors are independent, but it still might be a
+useful model for prediction purposes. So, why is this called linear discriminant
+analysis? Well, if we consider the ratio of the
+probabilities of the two classes. So, this is the probability you're in
+class K. Given our predictor variables, divided by
+the probability here in class j given the predictor
+variables. And we take the log of that quantity, so
+if we take the log of it, it's a monotone
+function which means that. As this ration increases, so will the log
+of that ratio. So we can look at this quantity, and we
+can see that that breaks down by basically writing
+these quantities out using base theorem. As on the previous page, we get log of the
+ratio of the two Gaussian densities. Plus log of the ratio of the two prior
+probabilities. Now these terms are actually require more
+writing so can write them out and we end up with this term goes
+here. We get the log of the [UNKNOWN] ratio of
+the prior probabilities. Plus a term here that depends on the
+parameters of our Gaussian distributions or are normal
+distributions for each class. Plus a linear term, so this a, an x variable here times one coefficient here
+which is a linear terms so you end up getting basically lines that are drawn
+through the data. And a variable will have a higher
+probability of one class if it's on one side of the line and a higher probability of being in
+another class if it's on the other side of the
+line. If this flew by your head a little too
+fast, don't worry about that too much but you can go
+and read about it more carefully in the elements of
+statistical learning if you'd like to know a little bit more about
+those details. So this is what the decision boundaries
+tend to look at, like, for these sort of
+prediction models. So imagine we have three different groups
+of, points. So we're trying to classify into class
+one, class two or class three. And we have two variables that we're using
+to classify and that's the x and the y axis
+here. What would end up, what we would end up doing is fitting one Gaussian
+distribution. Here's one Gaussian distribution. Here's another Gaussian distribution. And here's a third Gaussian distribution. So one to each class. And then we would basically draw lines where the probability switches over from
+being. Higher in this class to that class. So, that ends up looking like lines like
+this. So, if you're on this side of the line,
+you'll be classified as a two. If you're on this side of the line, you'll
+be classified as a three. And if you're down here, you'll be
+classified as a one. So this basically is how it works. You basically fit Gaussian distributions
+to the data and then use those Gaussian distributions to draw lines that, assign
+the prop points to the highest posterior
+probabilities. In general, the discriminate function is
+what gets used here. So the basic idea is we have a
+discriminate function that looks like this where u, uk is the mean of class K for all
+our features. Sigma inverse is the inverse of the
+co-variance matrix for that class. Actually, it's the same in co-variance
+matrix for all classes here. And then this is the term, the linear term
+in x, the predictors that we have, and our
+co-variance matrix and the mean. And so basically what we do is we plug in
+our new data value into this function. And we pick the value of k that produces the largest value of this
+particular discriminate function. And that's we how we decide on a class. You can usually estimate these parameters
+by maximum likelihood estimation. If you remember that from the inference
+that you would've taken as part of the data science
+specialization. Now e base does something a little bit
+more to more to simplify the problem. So, again, suppose now we're trying to
+model the probability that y is in a particular
+class, k. And we have a bunch of variables that we
+want to predict with. We can use Bayes' theorem to say the
+probability that the class is K given all these variables that
+we've observed is the prior probability we're in class k
+times the probability for all these features given you're in class k
+divided by some constant. So the way that this can be written is
+that this probability is proportional to. The prior probability times the
+probability of the features, given that we're in class K. In other words, if you picked the largest
+value of this quantity here, it will be the same as picking the
+largest probability here. Because the term in the denominator is just a constant for all the different
+probabilities. We can then break that down a little bit
+further. We can say the probability of the features
+and the class variable k is equal to this prior probability times the probability of
+x one given here in class k. Times the probability of the, all the
+other variables except for X1, conditional on Xi
+and YK. So this is basically just a statement
+about probability that you might remember from your inference class
+and the data science specialization. You can continue to break down in the same way until you get one term for every
+feature. But those features are always conditional
+on all the other variables that you, that have come
+before it. And so that's basically because each
+features may, or each of the predictors may be dependent on
+each other. One assumption you could make to make this
+quite a bit easier would be to just assume that all of the predictor
+variables are independent of each other. In which case they drop out of this
+conditioning argument. And you end up with the prior probability
+times the probability of each feature by itself conditional on
+being in each class. Now this is kind of a naive assumption
+because we're assuming that all the features are independent even
+though we know they're probably not. And that's why this method has the title
+Naive Bayes. And so, it still works reasonably well in
+a large number of applications. And it's particularly useful when you have
+a very large number of features that are, binary or
+are, categorical variables. This very frequently get, comes up in. Text classification and classification of
+other kind of document classification. So just to show you briefly how these two
+work we're, I'm going to show you on the Iris Data
+again and I'm going to load ggplot2 library, I've got these
+variable I'm using to predict and I again have these, three different
+species that I'm trying to predict. And I can fit them, on a training set and
+apply them to a test set. Just like I do with all of our other
+prediction algorithms. So, I again use the create data partition. Create a training set. And a test set. I can then build an lda model on the
+training set, in the following way. I just basically use the train function
+from the cara package. I pass it the training set, and I tell it
+method lda. And then I can do similarly for naive
+base, and nb is the method that we pass for, a naive
+base classification. And I can predict the values from lda and
+from a naive base on the test set and make a table of
+the predictions. And we can see that the predictions agree
+for all but one value. So even though we know that the features
+or the predictors are dependent here,. Using the naive based classification means
+very similar prediction rules to the linear
+discriminate analysis classification and so we can do a
+comparison of the results and we see that just this one value the value that appears
+right here between the two classes appears to be not classified in the same way by the two outputs but overall they perform very
+similarly. You can learn more about nieve based
+classification and other model based classification in the introduction to
+statistical learning and elements of statistical
+learning books. You can also learn about model based
+clustering in more detail in this academic paper that
+I've linked to. And the linear discriminant analysis and quadratic discriminant analysis
+Wikipedia pages. Are also quite good and useful for,
+Reference.

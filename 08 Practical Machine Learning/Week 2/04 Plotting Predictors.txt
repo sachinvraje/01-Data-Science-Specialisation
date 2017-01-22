@@ -1,0 +1,169 @@
+One of the most important components of building a machine learning algorithm or
+prediction model is understanding how the data actually
+look and how the data interact with each other. So, the best way to do that is actually by plotting the data, in particular
+plotting the predictors. So for this example we're going to be
+using this wages data. So the wages data is actually data from
+the ISLR package. Which you can find at this link. And it's from the book Introduction to
+Statistical Learning. So we're going to be looking at this data and seeing how we can use it for
+prediction. So if I load the ISLR package. Again I'm going to have to install it
+first and then I can load it. And I also load the ggplot2 package
+because we're going to be using that for some
+plotting. And the caret package, because we're going
+to be using that for model building. The wage data is actually in the ISLR
+package, and I can load it with data and a capital w
+Wage. And then I can look at a summary of that
+wage data to look at all the different
+variables that are in there. So we have the year of the data that's
+collected. The age of the person who is the data is
+collected on. In this case, it's only male people in
+this data set, the marital status of those people, their
+race, education, the region where they were, the data was collected is just
+the Mid Atlantic region, and then the different kinds of
+job classes and their health. So this gives you a little bit of
+information about what the type of data that we're going to be
+looking at. And you can already see that we've
+detected a few interesting characteristics of this data just by
+looking at a summary here. We know that they're all men. We know that they're all in the Mid
+Atlantic region, for example. So then what we do is again, just like
+always, we're going to build a training set and a
+test set. Even before we do exploration, we're
+going to set aside the testing set and we're not going to use it
+for anything until we actually look at the data at the
+end of the, model building experience, and
+apply it just one time. So we're going to do all our plotting in
+the training set. So one example is to use this feature plot, plot that comes from the caret
+package. So this plot will plot basically all of the features against each other so this
+plot looks a little bit confusing for this data
+so I thought I'd just go through it. So here I'm, using as the outcome I'm
+saying the outcome is the wage. And then I'm going to look at all these different variables, age, education,
+and job class. So, first of all I have this y variable so
+that's the outcome that we care about, and here
+the different variables. I've got age, education, you can't read it
+very clearly in this plot, but if you make it yourself you can,
+and job class here. And so, what this plot is, this is the
+plot here of the outcome y versus the job class
+here. So you can see, you can do that for every
+box, so if you want to see the plot of job class versus education, that's
+this plot here. And it's the same plot here, only with the
+axis reversed and so forth. So it shows you all of the variables that
+you have here, plotted against each other. And in particular, what you are looking
+for, here are all the plots corresponding to each of the
+variables plotted versus the y variable. And you're looking for any variable that
+seems to show a relationship with the y
+variable. So, for example, you can see that there
+seems to be a trend here between education and
+salary, for example. So this is one way that you can look at
+all the data. Another thing that you're going to use is
+either Qplot, function in the ggplot2 package or just the plot
+function base R. So here I'm plotting age versus wage, and
+so you can see again it appears that there seems to be some kind
+of trend with age and wages. But you also see, one thing that you notice frequently from making plots
+like this. Here's some very strange patterns. So you see there's this big chunk up here
+of observations that appear to be very different than the
+relationship down here for these chunks. So one thing that we might want to do is
+try to figure out why there, there's that strange relation
+between ages and wages before we build our, our model. So, one thing that we could do is, for
+example, using the ggplot2 package, color that plot
+by different variables. So again, I plotted age versus wage, so on
+the x axis is age, on the y axis is wage. But now I've colored it by the job class. And so you can do that with, by passing the parameter color to the two
+plot function. And so what you see now is that most of
+the individuals that are up in this other chunk, come from the
+information based jobs as opposed to the industrial
+jobs. So that might explain a lot of the difference here between, these two big
+classes of observations. So this gives you a way to sort of detect variables that might be important
+in your model. Because they show, variation in the data. So you can also add regression smoothers. So, for example, now, what I've done is,
+I've again made a plot of age versus wage, but now I've
+colored it by education. And so then what I can do is I can use the geom_smooth function to apply a linear
+smoother to the data. You would've learned about this in
+Exploratory Data Analysis, but if not, you can just see the function
+right here. And so what that does is for every
+different education class, it fits a linear model, so you can see
+there's a purple line here. And that corresponds to people with
+advanced degrees and then you can see for example a green line here, that
+corresponds to people with some college and so forth. And so you can see if there's a different
+relationship for different age groups. The other thing that you might that is often very useful is to break up things
+like the wage variable into different
+categories cause sometimes it's clear that specific categories seem to
+have different relationships. The way I tend to do that is with the cut2
+function, that's in the Hmisc package. So if you load the Hmisc package and then
+use cut2, you can tell it with the g parameter how many groups to
+break the data set into. And it'll break the data set up into
+factors based on quantile groups. So all of the observations that land
+between 20.1 and 91.7 on the wage variable will get
+assigned to this factor level and then all the values
+between 91.7 and 118.9 will get assigned to this group and
+so forth. And so, what you can do now is you can
+actually use that to, in order to make different
+kinds of plots. So now, suppose I wanted to plot wage
+versus, oh sorry, wage groups versus age, I can now, use qplot again but now I
+can pass it the box plot geometry. And then I can say okay, I want to see the
+plot of these different wage groups versus age and sometimes that can make it easier to see different trends that are
+emerging. For example, you can see here a little bit more clearly the relationship between
+age and wage. The other thing you might want to do is
+you might want to add on top of the box plots, actually
+the points themselves. The reason why you might want to do this is because sometimes box plots can
+obscure how many points are being shown here and so
+one thing that you can do is you can say, pass it both box plot and jitter and
+you can have it, arrange the plot so you can see both the box plot itself and you
+can see the box plot with points overlaid. So that's what grid arrange is doing, it's
+actually generating the two plots. So p1 was the plot that we made on the
+previous slide. And p2 is the plot we made here with
+points overlaid. And grid arrange makes two plots side by
+side. So you can see here from the dots that
+there's a large number of dots in each of the different boxes and so that suggest
+that this trend, any trend a user may actually be
+real. If you observe just one of a few dots in
+the boxes it means maybe that that particular box isn't very well representative of what the data actually
+looked like. Another thing that's very useful is you
+can use the cut variable, the factorized version of the continuous
+variable to look at tables of data. So here I'm making a table comparing this
+factor version of wages to the job class and so I can see for example that there are more
+industrial jobs in the lower wage variable than there are
+information jobs. And that trend reverses itself for the
+highway jobs. There are fewer industrial people and more
+information people. You can also use prop table to actually
+get the proportions in each group. So here it's the proportion, by passing it
+one, I say I want to get the proportion in each
+row. So if I passed it at two here, it would
+give me the proportion in each column. So here I see that 62% of the low wage jobs go, correspond to industrial, and
+37%, 38% correspond to information. And so you can use that to get an idea of how those proportions change
+across different wage levels. Finally you can use density plots to plot
+the values of continuous predictors. So here again I'm using the qplot
+function. I'm plotting the wage variable, and I'm
+plotting a density plot, versus education. So this basically shows where the bulk of
+the data is. So on the x axis is the wage. And on the y axis is sort of the
+proportion of the variable that falls into that bin of
+the x axis. And so you can see, for example, the high
+school grads tend to have more values that are down here in the lower part of the range, and the advanced degree folks
+tend to be a little bit higher, and there's also a
+group, outgroup over here that tends to be very high for both the advanced degree as
+well as the college grads which is shown in
+blue. So sometimes density plots can show things
+that box plots can't necessarily do. It's also easier to overlay multiple distributions when you're doing density
+plots. In other words, if you break things up
+into a bunch of different groups, and you want to see how all the distributions
+change by group, density plots can be very
+useful. So, one thing to keep in mind is to make
+your plots only in the training data. The test set, again, can't be used for
+exploration. That would be similar to training your
+model on the test set, which, as we should, talked about
+previously, will lead to overfitting. Things that you should be looking for in
+these plots is imbalance in the outcomes of the
+predictors. If you see all of the predictors tend to
+be one value in the one outcome group, and not
+another outcome group. Then you see that's a good predictor. But if you see that, you only have three
+of one outcome and 150 of the other outcome, that means it's going to be very
+hard to build an accurate classifier between
+those two classes. You're looking for outliers or weird
+groups outlying the data that might suggest that there are some
+variables you're missing. And groups of points that are not
+explained by any of the predictors. Skewed variables which you're going to
+want to transform and make look better, more sort of nicely
+normally distributed if you're using things like regression models but
+that may not matter as much as if you're using more of machine
+learning methods. For more information on plotting in
+general you can look at the ggplot2 tutorial. You could also take the exploratory data
+analysis class in this data science specialization or you
+can look at the caret visualization tutorial, because
+that'll give you a little bit more information about prediction specific
+plots that might be useful.

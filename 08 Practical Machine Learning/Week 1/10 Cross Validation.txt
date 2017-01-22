@@ -1,0 +1,139 @@
+This lecture is about cross validation. Which is one of the most widely used tools, for detecting relevant features,
+and for building models. And estimating their parameters when doing
+machine learning. So remember the study design that people
+frequently use when building machine learning
+algorithms, and evaluating them. They take a data set. In this case, it's the Netflix [INAUDIBLE]
+study design. So this is the. 1,000,000, 100,000,000 user item pairs,
+where its movies that were rated by specific users. And they break that up into a training
+data set, and then a test data set. And remember that all of the model
+building and evaluation by that. People building the model will happen on
+the training data, and then once, at the very end of the competition, they
+would apply it to the test data set. So one problem that comes up that very
+quickly, is that accuracy on the training set is what's called resubstitution accuracy is often
+optimistic. In other words, we're always picking,
+we're trying a bunch of different models, and we're picking the best one on
+the training set, and that will always be tuned a little bit to
+the quirks of that data set, and may not be the accurate
+representation of what that. Prediction accuracy would be a, a new
+sample. So, a better estimate comes from an
+independent data set. So in this case say the test set accuracy. But there's a problem that, if we keep
+using the test set to evaluate the out of sample
+accuracy. Then, in a sense, the test set has become
+part of the training set, and we don't, still don't have an outside measure, independent evaluation of the
+test set error. So to estimate the test set accuracy, what
+we would like to use is, use something about the training set, to get a
+good estimate of what the test set accuracy will be, so then we can build our
+models entirely using the training set, and only evaluate them once on the test
+set, just like the study design calls for. So the way that people do that is cross
+validation. So, the idea is, you take your training
+set, just the training samples. And we split that train, we sub split that training set into a training, and a test
+set. Then we build a model on the training set that's a subset of our original
+training set. And evaluate on the test set, that's a subset, again, of our original training
+set. We repeat this over and over and average
+the estimated errors. And that's something like. Estimating what's going to happen in, when
+we get a new test set. So again, the idea is we take the training
+set, and we split the training set itself up, into training
+and test sets over and over again. Keep rebuilding our models, and picking
+the one that works best on the test set. This is useful for picking variables to
+include in the model. So, again, we can. Now, fit a bunch of different models, with
+various different variables included, and use the one that fits best on these
+cross validated test sets. And then we can also pick the type of
+prediction function to use, so we can try a bunch of different
+algorithms. Again, pick the one that does best on the
+cross validation sets. Or we can pick the parameters in the
+prediction function and estimate them. Again, we can do all of this because,
+eventually, even though we're, we're tr, sub splitting
+the training set into a training set and a test set, we actually leave the original test set
+completely alone. Where it's never used in this process. And so when we apply our ultimate
+prediction algorithm to the test set, it'll still be an
+unbiased measurement. Of what the auto sample accuracy will be. So, the different ways that people can use
+training and test sets. One example is they do random subsampling. So, imagine that, every observation we're
+trying to predict is arrayed out along the, this
+axis here. And the color represents whether we
+include it in the training set or testing set, so again,
+this is only the training samples, and what we might do
+is just take a subsample of them, and call them
+the testing sample. So in this case, it's the light gray bars
+here, are all the samples in this particular
+iteration that we call test samples. Then we would build our predictor on all
+the dark gray samples. And so, again, this is only within the
+training set. We take the dark gray samples and build a
+model, and then apply it to predict the light gray
+samples, and evaluate their accuracy. We can do this, for several different
+random subsamples. So this is a ra, one random sampling. And then this second row is the second
+random sampling. And this third row is the third random
+sampling. Do that over and over again, and then
+average what the errors will be. Another approach that's commonly used is
+what's called K-fold cross validation. So the idea here is we break our data set
+up into k equal size data sets. So, for example, for three fold cross validation, this is what it would look
+like. So here's. The first data set, right here, then
+there's a middle data set right here, and the last third
+data set right here, and so what we would do is on the
+first fold, we would build a prediction model on
+this training data. And we would apply it to this test data. Then we would build a training our model
+on the, just the dark gray components of this second fold, and apply
+it to the middle fold for evaluation. Then finally, we would do the same thing
+down here. We would build our model on this dark gray
+part, and apply it to the light gray part. And again, we would average the errors
+that we got across all of those experiments, and
+we would get an estimate of [COUGH] the average error
+rate that we would get in an out of sample
+estimation procedure. So again, all of these model building and
+evaluation are happening in, within the training set, which we've
+been subs divided into a. Sub training set and a sub testing set to
+evaluate models. Another very common approach is called the
+leave one off, out cross validation, and so
+here, we just leave out exactly one sample, and we build the predictive function on all the
+remaining samples. And then we predict the value on the one
+sample that we left out. Then we leave out the next sample, and
+build on all the remaining values. And then predict the sample that we left
+out, and so forth until we've done that for every single
+sample in our data set. So again, this is another way to estimate
+the out of sample accuracy rate. So some consideration is, first of all,
+for time series data, this doesn't work if you just randomly subsample the population, you actually have to use
+chunks. You have to get blocks of time that are all contiguous, and that's because, one
+time point might depend on all the time points that came
+previously, and you're ignoring a huge, rich structure
+in the data. If you just randomly take samples. For k-fold cross validation, the larger
+the k that you take, you'll get less bias, but more
+variance. And the smaller k that you take, you'll
+get more bias, but less variance. In other words, if you took a very large
+k, say for example a ten-fold cross validation or a 20-fold cross validation,
+that means you'll get a very accurate estimate of
+the. Of the bias between your predicted values,
+and your true values. But it'll be highly variable. In other words, it'll depend a lot on
+which random subsets that you take. For smaller ks, we won't necessarily get
+as good an estimate of the out of sample error
+rate. And that's because, you're only leaving
+one sample out. And so you're using most of your data to
+train your model. But there'll be less variance. In other words, if you do in the extreme
+case. If you have for exampleonly two cross,
+two-fold cross validation, there are only a very
+small. Number of subsets that can make up a
+two-fold cross validation. And so you get less variance. Here, the randomless sampling must be done
+without replacement. In other words, we're subsampling our data
+sets. That's, of course a disadvantage, because,
+it means that we have to break our training setup even
+further to smaller samples. If you do random sampling with
+replacement, this is called the Bootstrap. That's something that you've learned about
+in your early. Inference classes, if you've taken those. The bootstrap, in this particular example, will in general, underestimate the error
+rate. And the reason why is because if you do
+the bootstraps, you sample with replacement from some of your
+samples, some samples will appear more than once. And so, in more, samples appear more than
+once, that means that if you get one right, you'll
+definitely get the other right. And so, you actually get underestimates of
+the error rate, and this can be corrected but its rather complicated, the way to do
+that, is with something called the 0.632
+Bootstap, which is not exactly a great name for a method,
+but it explains, it sort of explains how you can account for the fact that you
+have this underestimate in the error rate. You can do any of these approaches when
+you go models with the care package like we'll be
+learning in this class. If you cross validate to pick predictors,
+you again must estimate the errors on an independent data set, in order to get a
+true out of sample value. So in other words, if you do cross
+validation to predict your model, or to pick your model, the
+cross validated error rates. Since you always picked the best model,
+will not necessarily be a good representation of what the real out
+of sample error rate is. And the best way to do that, is again, by
+applying your prediction function, just one time,
+to an independent test set. [SOUND]

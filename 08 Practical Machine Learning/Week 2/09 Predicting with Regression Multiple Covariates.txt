@@ -1,0 +1,174 @@
+This lecture's about two things. First it's about predicting with
+regression and using multiple covariates, but more importantly
+it's about exploring a data set and trying to identify which
+predictors are the most important to include in our
+prediction model. So we're again going to be using the wages
+data to try to predict the wages of a group of men that
+come from the mid Atlantic. This data set is available at the ISLR
+package which you can find here. And it comes from the book Introduction to
+statistical learning. So the first thing that we do is that we
+load the data set in, and so here is the ISLR
+data set. We're also loading the ggplot2 package for
+some exploratory analysis, and we're loading
+the caret package. We're doing prediction, and we're going to subset the data set for exploration
+purposes to just the part of the data set that isn't
+the variable we're trying to predict. So we select out the log wage variable,
+which is the variable that we're going to be
+predicting in this analysis. Then we can look at a summary of the data
+set and so we can already see some features, for
+example, we saw before, that this data set has only males included
+in the data set and that for example the region is
+entirely peopled from the mid Atlantic. So to do a little bit more exploration, we
+first need to train subset things into the
+training and test sets. So we use that with the Create Data
+Partition function. And we subset into a training and test
+set. And so we're going to do all of our
+exploration again on the training set. Because when we're building models, we're
+not going to use any of the test set. We're only going to apply it once. So the first thing that you can do is a
+feature plot. So this feature plot says, shows a little
+bit about how the variables are related to
+each other. Sometimes this plot is useful and
+sometimes it isn't. In this particular plot it's a little bit
+hard to see because everything is so squished
+together but if you make it on your own, by using this
+function you'll see that it's a little bit easier
+to see. So, for example, you can see that there
+appears for the job class there appears to be this
+group, appears to be a little bit higher than
+that group for the job class in terms of the
+outcome. And you can see that there is, at least for this age variable the relationship to
+the outcome. Again there seems to be some outlier
+group, two separate groups here that gives us some indication that we might be able
+to use that variable to predict. So the first thing that we can do is plot
+the variables versus weight age. So this is plotting the wage variable
+versus the age variable and you can see that there
+appears to be some kind of trend which we saw in the
+previous lectures, but there also is this set of
+points that's outlined up here, and so the idea is that
+that set of points that's outlined up there
+might be, something that we can predict, but we would have to
+figure out what variable it is that, is
+representing that chunk. So, one way that you can do that is, you plot one variable, one predictor, age
+versus the outcome, wage. And then you color the points by another
+variable, in this case job class. And you can see for example that it
+appears that most of these points up here are blue instead of pink and so that means they come from the information
+group. So, this gives us some indication that the information variable might be able to
+predict at least some fraction of the variability that's in
+that top class up at the top of the plot. You can also color it by education. So, here I'm just doing a q plot again. So I'm plotting age versus wage. And I'm telling it to color the plot by
+education. And, again, I'm only using the training
+set because we're trying to, only look at training set for our
+development of our model. And you can see that the advance degree,
+also explains, a lot of the variation up here in the top
+group. And so, some combination of, degree, and, class of job, could explain why, the
+relationship between age and wage isn't just a perfect
+relationship down here, in one big cloud. So the next thing that we can do is fit a
+linear model with multiple variables in it and so the idea here is, again, we're just fitting lines, but now we're fitting more
+than one line. And so the idea is, we have some intercept
+terms, so that's just the baseline level of, wage that we
+might have, and then we might have a, a relationship with the
+age of the person, and then we might have relationship with
+what job class you're in. So one way that we typically do that is,
+by fitting an indicator variable. So an indicator variable is a variable that's denoted like this in mathematical
+notation. It just says, if the job class for the ith person is equal to information, this
+variable's equal to one. If the job class for the ith person is not
+equal to information, then this information is equal to zero, and so
+this represents the difference in the wages between the people with job class equal to information versus job class
+equal to not information, when you, fix all the
+other variables in the regression model. You can also do this for education it's a
+little bit more complicated road because there
+are multiple education levels. So we create an indicator variable for,
+each of the different education levels and so, here this is the sum of
+four indicator variables. And so the, the variable's equal to one,
+if the education for person I is equal to level K, that
+variables equal to one and zero otherwise. So then we can fit the model just like we
+did before so we have, we're using the train function
+in the caret package. And we again use wage as the outcome and
+then tilde represents the formula on the right, it's going to be used to
+predict the variable on the left. So we use age, job class, and education. So job class and education are both factor
+variables in r and so by default it does, you know, it creates these indicator variables like I've shown
+here. So, that when it fits the model it takes
+that into account by automatically. Again we're fitting the model on the
+training set and we can look at the final model and you can see now that the final model has ten predictors even though we only put
+three variable names into the formula and the reason is
+because this, variable right here, got, actually
+received more than one, predictor in the data set because of
+the way that we had to create these indicator
+functions. So then we can look at some diagnostic
+plots. So this is very typical for when you're
+building these regression models. The idea here is you can plot the fitted values, so this is the predictions from
+our model on the training set versus the residuals,
+that's the amount of variation that's left over after you
+fit your model. And so what you'd like to see is that. This line would be centered at zero on
+this, axis because the residuals is the, difference between our model prediction
+and our, actual real values that we're trying to
+predict. And here, you can see there's still a
+couple of outliers up here that have been labeled for you in
+this plot. And so, those variables might be variables
+that we want to try to explore a little bit
+further and see if we can identify any other
+predictors in our data set that might be able to explain
+them. The other thing that we can do is color by
+variables not just used in the model. So for example here I'm plotting again the fitted values from our model versus the
+residuals. And so again, we like to see this laying
+on the zero line because it's the difference between
+our fitted values and our real values. And so, what we can do is plot on this
+plot, we can again plot it by different variables, in this case,
+we can plot it by for example, race. And so you can see that it seems like some
+of these outliers up here may be explained by the
+race variable in the data set and so these another exploratory
+technique plotting the fitted model versus the residuals then coloring it by different variables to identify
+potential trends. Another thing that can be really useful is plotting the fitted residuals versus
+the index. And what do I mean by the index? So the data set comes in a set of rows
+that you got in a particular order. And so the index is just which row of the
+data set you're looking at. And the y axis here is the residuals. And so you can see that all the residuals
+seems to be happening, high residuals seem to be happening down here at the right end
+of the high, the highest row numbers. And you can also see a trend with respect
+to row numbers and so whenever you can see a trend or a outlier
+like that with respect to the row numbers, it suggests that there's a variable missing from your model because
+you're plotting the residuals here, so that's the difference between the true values and the
+fitted. And that shouldn't have any relationship
+to the order in which the variables appear in your data
+set. Unless, and this is what's typically you
+discover when you see a trend like this, or outliers like this
+at one end of this plot, that there's a relationship
+with respect to time, or age, or some other continuous variable
+that the rows are ordered by. So the other thing that you can do is plot
+the wage variable. So this is the wage variable in the test set versus the predicted values in the
+test set. So ideally these two things would be very
+close to each other. Ideally you'd have essentially a straight
+line on the 45 degree line where wage was exactly equal
+to our predictions. Of course that isn't how it always works
+out. And then in the test set, you can explore and try to identify trends that you might
+have missed. So, for example, here we're looking at the
+year that the data was collected in the test
+set. As a way of exploring how our model might
+have broken down. Now something to keep in mind is that if
+you do this sort of exploration in the test set,
+you can't then go back and re-update your model in the
+training set because that would be using the test set to
+rebuild your predictors. This is more like a post-mortem on your
+analysis or a way to try to determine whether your
+analysis worked or not. If you want all of the covariants in your
+model building, one thing that you can do is use this again in
+the training function. You can pass it an outcome and then tilde
+and then if you put a dot here instead of putting a set of
+variables separated by plus signs. It says predict with all of the variables
+in the data set. So, this is model fit with all of the
+variables and so this is the wage variable and the
+predictions here and so you can actually see that it does a
+little bit better when you include all of the
+variables in the data set. This is By default if you don't want to try to do some sort of model selection in
+advance. So linear regression is often useful in
+combination with other models. It's a quite a simple model in the sense that it always fits lines through
+the data. And so it can be, capture a lot of
+variability if the relationship between the predictors
+and the outcome is linear. If it's not linear, then you can often
+miss things, and it can be better blended with
+other models. We'll talk about model blending later in
+the class. Exploratory data analysis can be very
+useful with regression models because, like, the plots we made
+with residuals and so forth colored by different
+features, you can try to identify the patterns in the data
+set. There's more information in these three
+books, if you want to go and find a lot more about regression
+modeling for prediction.

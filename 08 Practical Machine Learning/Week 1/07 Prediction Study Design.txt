@@ -1,0 +1,155 @@
+In the last lecture we learned about in
+sample and out of sample errors as well as over
+fitting. In this lecture we'll talk about
+prediction study design or how to minimize the problems that can be caused by in
+sample verses out of sample errors. So in prediction study design the first
+thing that we need to do is to find our error rate. So in this lecture we're just going to use
+a generic error rate, but in the next lecture we'll talk about what are the different possible error rates you can
+choose. Then you need to split your data, the data
+that you're going to be using to build and validate your model into
+three components, well, two components and one
+optional component. So there's a training set that must be
+created in order to build your model, a testing
+set to evaluate your model, and optionally a
+validation set as well, which is also going to be used to validate
+your model. So what you do is on the training set, you pick features using
+cross-validation, for example. We'll talk about what cross-validation is
+later in the course, but the idea is basically to use that training set to pick which of the features that are most important in
+your model. Then use that same technique to actually
+pick the prediction function and estimate all the parameters that you
+might be interested in. We build a model using the training set. If there's no validation set, then we
+apply the best model that we have to our test set exactly
+one time. And so the, why do we only apply it one
+time? If we applied multiple models to our
+testing set, then, and pick the best one, then we're using the test set, in
+some sense, to train the model. In other words, we're still getting an
+optimistic view of what the data error would be on a
+completely new dataset. So you should apply the prediction model
+to the test set exactly one time. If there's a validation set and a test set
+then you might apply your best prediction models all to your test
+set and refine them a little bit. So what you might find is that some
+features don't work so well when you're doing out of sample prediction and you
+might refine and adjust your model a little bit. But now, again, like I said, your test set
+error is going to be a little bit optimistic error for what
+your actual out of sample error will be. And so what we do is we again, apply our
+model to exactly one time to the validation set, only the
+best one to get our prediction. So in other words, the idea is that there
+is one dataset that's held out from the very start, that you
+only apply exactly one model to, and you never do any training or
+tuning or testing to, and that will give you a good estimate of your
+out of sample error rates. So an important point to keep in mind when you doing this is to know what the
+benchmarks are. So this is an example of a leaderboard
+from a [UNKNOWN] competition. And so they often give you benchmarks,
+marking grey here on this plot that shows what happens if you say make
+all the values equal to 0. And it's a good idea to know what the prediction benchmark are because
+sometimes if you prediction algorithm is performing way
+better than it should be or way worse than it should be, the benchmarks will give you
+some idea of what you should be doing wrong, and they'll tell you if your prediction algorithm is kind of going
+astray. So this is the studied design that was
+used in the Netflix prize, so they had a 100 million ident-user-ident pairs, in
+other words, movies that people had given their
+preference on. They split that into a training data set,
+which they were going to give to, users that we're going to
+build models for prediction. Then, they held out, a bunch of ratings
+that we're not going to be shown at all to the people that are
+building the models. And so, what they provided for people who
+were building motels, was a training set, and what they called a
+probe data set. So, you would train your model on the
+training data set and then you would apply it to the
+probe data set to get some idea of what the out of sample error would be, before
+submitting it to Netflix. Then what Netflix would do is they would
+take your predictions and they would apply it only
+to a quiz set. So this quiz set you didn't get at get to
+actually see, and you couldn't build your model on, but if we give you some better idea of how well your model would perform
+at a sample, but in general people could
+submit multiple submissions to this quiz set and so they
+might actually tune their models a little bit
+and get a little bit better performance on the
+quiz set. And so what they did ultimately was for
+the final evaluation of all the different
+teams, they applied the model just one time to this test set that was held out to the very end of the
+competition. And so at the very end of the competition they got an unbiased estimate of how well
+this model would work on a completely new set of data
+that the participants in the competition never
+had a look at. So this idea was actually very important
+in their study design and it actually turned out that some teams that
+did better on the quiz set, actually didn't do quite as well on the test set
+and that was because they were tuning in their models or over
+fitting their models to the quiz set. So this is an important take home message
+for you, in the sense that if you're building
+prediction models, you always have to hold one data
+set, and leave it completely aside while you're
+building your models. This is now used by group professionals so Kaggle is a company that actually runs
+lots of co, competitions for prediction
+competitions for a whole bunch of different data sets
+provided by companies. And they always do a similar model in the
+sense that they always have a leader board that consists of the predictions that
+people have submitted for a validation data set that
+they have. But it's not necessarily the data set that
+they'll use to validate their methods at the very
+end. That data set is held out until the very
+end, and each person gets to apply their algorithm to
+that data set only one time. Something to keep in mind is that when
+you're splitting your data sets up into training, testing and
+validation sets, they can get a little bit small, but you need to
+avoid small sample sizes, particularly if you're
+dealing with the test set size. And the reason why is, suppose you were
+predicting a binary outcome, so in my case, a very common thing to try to do is
+to predict diseased versus healthy. And in general, it might be something
+like, whether people will click on an ad, or whether they won't
+click on an ad. Then one classifier is just flipping a
+coin. You could always just flip a coin, and
+say, they'll be diseased if the coin is heads, and not diseased if the
+coin comes out tails. And so the probability of a perfect
+classification, using this really silly algorithm is one half raised
+to the sample size. In other words, half the time you'll be right, just by chance by flipping the
+coin. And each time, supposing each prediction
+is independent, then each time that you flip a coin, then you'll get one half times that, a number
+will be the decrease in accuracy that you would
+get. So if you were pr-, test set has only one
+sample in it, then you have about a 50/50 chance of
+getting that sample right. So, even if you got prediction accuracy of
+100% on the test set, you would have a 50% chance of that, even
+with a coin flip. With n equals 2, you only have a, you still only have a 25% chance of 100%
+accuracy. And with n equals 10 in your test set, now you have, only about a .1% chance of
+getting 100% accuracy. So if you see that 100% accuracy you'll
+feel a little bit more confident that it's actually true and
+it's not something that's just random. So this suggests that we should make sure that especially our test sizes are of
+relatively large size so we can be sure that we're not just getting good prediction
+accuracy by chance. So some rules of thumb, these are by no means set in stone, but they are
+reasonable rules of thumb that I've used and I think
+a lot of people have used similar ones. So you set, when you get a new data set, if it's large enough, you'll set 60% of
+your data set to be training, 20% of your data set to be test, and 20% of your valid, data set to
+be validation. This is again assuming that your test and
+validation data sets won't be too small if you do
+that. If you have a medium sample size what you
+might do is you might take 60% of your data set to be training and 40% of
+your data set to be testing. This means you don't get to refine your
+models in a test set and then apply them to a
+validation set. But it might insure that your testing site
+is of sufficient size. Finally, if you have a very small sample
+size. First of all, you might reconsider whether
+you have enough samples to be able to build a prediction algorithm
+in the first place. But suppose your dead set on building a
+prediction or machine learning algorithm, then the idea might be to do
+cross validation and report the caveat of the small sample size and the
+fact that you never got to predict this in an out of sample or a
+testing data set. So some principles to remember are the test
+set or the validation set should be set aside and never looked at
+when building your model. In other words, you would need to have one data set which you apply only one model
+to, only one time, and that data set should be
+completely independent of anything you use to build
+the prediction model. In general you want to randomly sample the
+training and test set and random might depend on the type of
+sampling that you want to do. So for example, if you have, time fit time
+force data, in other words you have, data
+collected over time, you might want to build your, training set in
+chunks of time, but again, random chunks of time and build
+them on random predictions. Your data set much reflect the structure
+of the problem. In other words, if you want to sample any
+data set that might have sources of dependence over time or across space,
+you need to sample your data in chunks. This is called backtesting in finance. And it's basically the idea that you want
+to be able to use chunks of data that consist of
+observations over time. All subsets should re, reflect as much
+diversity as possible. If you do random assignment, it does this. You might also try balancing by features. This can be a little bit tricky, but it
+often is a useful idea.

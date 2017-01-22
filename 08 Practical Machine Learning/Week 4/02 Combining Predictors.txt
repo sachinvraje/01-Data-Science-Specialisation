@@ -1,0 +1,107 @@
+This lecture is about combining
+predictors, it's sometimes called ensembling methods
+in learning. And so the key idea here is that you can
+combine classifiers by averaging or voting and these can be
+classifiers that are very different. So for example you can combine a boosting
+classifier with a random forest with a linear
+regression model. In general combining classifiers together
+improves accuracy and it can also reduce interpretive
+abilities you have to be really careful the gain that you get is worth the loss on
+interperatibility. Boosting, bagging and random floor,
+they're all basically variance on this theme that you can average
+different classifiers together. But those are all examples where it's the same kind of classifiers being averaged in
+every case. So as an example of how successful this
+can be, the Netflix prize was a million dollar prize that was basically major prediction competition
+that was run. And so the team that ended up wining was actually a blended combination of 107
+different. Machine learning algorithms combined
+together in order to get the best score in this example. The Heritage Health prize was also won by
+methods that were ensembling for multiple different regression models and machine learning
+methods. And so this was these are both of the
+links to the first progress prizes for the two teams
+that were in the lead. The Heritage Health prize was a $3 million
+prize. It was designed to try to predict whether
+people would go back to the hospital based on their
+hospitalization record. So the basic intuition here, you can think
+of as a majority vote. So suppose we have five completely
+independent classifiers. If the accuracy at 70% for each
+classifier, then we can think that, the accuracy for majority
+vote would be. 10 times the majority vote being right for
+three out of the five classifiers, for four out of the five classifiers, or
+for all five classifiers. And so it turns out that would be 83.7%
+majority vote accuracy. With 101 independent classifiers you get
+99.9% majority vote accuracy. So some approaches for combining
+classifiers basically use, one approach is using
+similar classifiers and combining them together
+using something like bagging, boosting, or
+random forests. Another approach is to combine different classifiers using model stacking or model
+ensembling, and we're going to talk a little bit about
+model stacking in this lecture. So, here's an example with the wage data. So, where going to, build the wage data
+set and we're going to leave out the log wage
+variable. Since we're trying to predict wage, log
+wage would be a very good predictor. And, we build the, validation set here. And, we also build a training set and a
+test set. So, I've separated it into three different
+data sets here. And that, you'll see the importance of
+that in just a minute. So the training set is the largest of the
+data sets. It has a 100, 1,474 examples. The test set has 628 and the validation
+set has 898 samples in it. We, then, in the training set, build. In this case, I'm using a GLM. So this is a linear model. And I'm building it in the, training data. And I'm basically predicting wage using
+all the other variables. I'm also going to build a separate model,
+also in the training data. And I'm going to, here, use method equals
+random forest. And so I'm fitting two different
+prediction models to the same data set. I can then plot those predictions versus each other so this is the predictions
+here. Pred1 is the predictions from the linear
+model, and pred2 are the predictions from the
+random forest. And you can see that they, they're close
+to each other, but they don't actually agree
+with each other. And, neither of them perfectly correlates
+with the wage variable, which is the color of the dots in this
+particular picture. So then what we can do is fit a model that
+combines the predictors. So, I basically build a new data set
+consisting of the predictions from model one and the
+predictions from model two. And then what I can do is I can create a
+wage variable, which is the, the, on the test
+data set, the wage variable. Then I can fit a new model, which relates this wage variable, to the two
+predictions. So now, instead of just fitting a model
+that relates the co-variants to the outcome, I've fit two separate
+prediction models for the outcome. And now now I'm fitting a regression model
+ratin, relating the outcome to the predictions
+for those two models. And then I can predict from the combined
+data set on new samples. So, I can look at the how well I do on the
+test set and so I can see that for example on the
+test set the first predictor. Has an error of 827.1 and the second
+predictor has an error of 866, whereas the combined predictor has an
+error that's lower, 813.9. And I also want to try it out on the
+validation set because remember I use the test set to try to blend the two
+models together. So, I fit a model on the test set, so that's not a good representation of the
+out of sample error. So, now I basically create a prediction of
+my first model on the validation set and a prediction of my
+second model on the validation set. I then create a data frame that contains
+those two predictions. And now I predict using my model, my
+combined model, on the predictions in the
+validation data set. So the covariance being passed in the
+model are the predictions from the two different
+models. So here I can see the error from model one
+if I used it by itself would be 1003. The error for my second model would be
+1068. And the combined model has a lower error
+even on the validation data set. So stacking models in this way can re,
+improve accuracy by blending different models, the
+strengths of different models together. Even simple blending like I've talked
+about here can be really useful and can improve
+accuracy. The typical model blending for mul, binary
+multiclass data involves building an odd number of models, predicting the
+outcome with each model. And then, assigning the ultimate class
+label based on majority vote. This can get dramatically more
+complicated, I, I found a caret package ensemble that, ensembles
+some of the caret models together, but it's a little
+bit in development, so I'd say use at your own
+risk. You can also read more about ensemble
+learning here at the Wikipedia page that I've linked to
+here. One important point to keep in mind when
+doing model ensembling is that this can lead to
+increases in computational complexity. So it turns out that even though Netflix
+paid a million dollars to the team that won the
+prize. The solution, the Netflix millionaire dollar solution was never actually
+implemented. Because it was too computational intensive
+to apply to specific data sets. So, recall from the earliest lectures in
+this class that there are trade offs in scalability versus accuracy that you have
+to pay attention to when building these
+prediction models.

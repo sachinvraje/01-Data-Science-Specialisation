@@ -1,0 +1,177 @@
+This lecture is about the types of errors
+and the ways that you will evaluate the prediction functions
+that you generate during this class. So, first of all we're going to focus on,
+the types of errors that you can make when you're doing
+a binary prediction problem. In other words, you were trying to predict
+things into one of two groups. In general, we're going to be talking
+about langauge in terms of true positives and true negatives, and
+false positives and false negatives. So the first thing to keep in mind is
+that, when we talk about positive versus negative, we're actually talking about what the algorithm
+decided. Whether it decided that you're in a class,
+or not in a class. Then true and false, refer to the true
+state of the world. So, true means that you actually belong to
+the class we're trying to identify, and false means that you
+actually don't belong to that class. So as an example, true positive mean, the
+true part of true positive, means that you were correctly, so in other words that,
+the truth is that there actually was something
+to identify. A positive. In other words, we actually identified you
+as being belonging to that class. Similarly for a false positive, the
+positive part again refers to the fact that we
+identified you as being part of the positive class, and false refers to the fact that you were
+wrong. We didn't actually corr, classify you to
+the correct class. To make this a little more concrete,
+consider a medical testing example. So in this case, we're trying to identify people that are sick using say a screening
+test, a very common example would be, say
+mammograms to try to identify if women have breast
+cancer. In this case, the true part will be the
+status as to whether you're sick or not. So if we say that we truly identified you,
+then you were truly sick. And if we falsely identified you, then you
+were actually healthy. You were not truly sick. So in this case, a true positive, is
+truly, somebody who is truly sick. And it's positive, in other words, we
+actually diagnosed those people as correctly as
+being sick. If you're a false positive it means that, false, in other words you are a healthy
+person, but positive, means that we were still
+somebody that we identified as being sick, even though
+you weren't. Similarly with a true negative. This is somebody true, who is truly
+negative, truly healthy, and we identified them as
+being negative. And a false negative would be somebody who
+is sick, so we incorrectly identified them as healthy, and the negative part of
+is we identified them as healthy. You can learn more about sensitivity and specificity by going to this Wikipedia
+link below. You can also see them in this 2 by 2
+table. So it's called a 2 by 2 table, because it
+has two rows, here, and two columns, here. So, the columns correspond to what your
+disease status is. So, in this, in this particular example,
+positive means that you have the disease, and negative means that
+you don't have the disease. That's the real truth about your disease
+status. And the test is our prediction, our
+machine learning algorithm. A positive means we predict that you have
+a disease and a negative means that we predict that you
+don't have the disease. So some of the key quantities that people
+talk about, are the sensitivity. This is the probability that we give you a, predict that you are diseased, given
+that you really are diseased, so, if you're
+really diseased, what's the probability we get
+that, right? And then the specificity is if you are really healthy, what's the probability we
+get it right? The positive predictive value is the
+probability that we call you diseased, or the probability that you are diseased,
+given that we call you diseased. So it's a little bit different, than the
+sensitivity in the sense that, now it's looking at all the people we called po diseased, and saying, what fraction of
+them. Actually are diseased. Similarly for the negative predictive
+value. And the accuracy is just a probability that we classified you to the correct
+outcome. So in this table, it's the terms on the
+diagonal. It's the true positives, and the true
+negatives, just added up. So you can write these as fractions. So for example, the sensitivity. That's the probability, given that you are
+diseased, that we called you diseased. So we look at this first column. This is all the people that are diseased. And we look, what fraction of them, did we
+actually get right. So that's, the true positives, divided by
+the true positives, plus the false negatives, that
+gives you the sensitivity. You can similarly make the same sort of
+fractions for the specificity, the positive predictive
+value, the negative predictive value, and so forth. When looking at the positive predictive
+value. We basically look at the, in this case
+it's the true positives, divided by the true
+positives plus the false positives, because we're looking at only the positive
+tests, and we say what fraction of the positive tests
+did we get right? So the true positives were the ones that
+we got right, and the true positives plus the false positives,
+is the total of the positive tests. So this is kind of important because, many
+prediction problems, one of the classes will be more rare than
+the other. So, for example in, in medical studies,
+it's very common that only a very small percentage of
+people will be sick. In this case, suppose that there's a
+disease where only one, 0.1% of the people are sick in the
+population. And suppose we have a really good machine
+learning algorithm. A really good testing kit, that is 99%
+sensitive, and 99% specific. In other words, the probability that we'll
+get it right, if you're diseased is 99%, and the probability we'll get it
+right if you're healthy is 99%. So in this case, suppose that you get a
+positive test. What's the probability, that we'll, that
+you actually have the disease? You can consider two different cases. One, in a general population. In other words, in a population where
+there's a very small chance that you have the
+disease. Another one you can consider, is a case
+where 10% of people have the disease, so the disease is
+much more prevalent. Let's look at how that changes your
+positive predictive value. So the general population, remember, we
+only have about 1% of the people that have the
+disease. So there are only 100 people in this
+column, that have the disease, sim, but there are a lot more
+people that are healthy. Similarly, we have a 99% accuracy, if you
+have the disease. So, 99 out of 100 people. And 99 out of these 100, are correctly
+called diseased. Similarly, at, among the people that are
+healthy, we get 99% right, so 98,901 we call healthy, when
+they really are healthy. That's 99% of the time. But suppose that we wanted to know, if you
+got a positive test, what's the probability that
+you actually have the disease? So, let's look at this for a second. So you say. Suppose you actually got a positive test,
+that's this first row right here. What's the probability that you actually
+have the disease? So that's, the number of people that
+actually have the disease, among the total number of people who had a
+positive test, so that's 99. Divided by 99 plus 999, so it's only a 9%
+positive predictive value. In other words, if you got a positive te,
+test, it's only about a 9% chance that you actually
+have the disease. What's the reason for that? The reason is 99% of a small number, so 99
+out of 100. Is still smaller than 1% out of a much
+bigger number. So 999 out of a much larger fraction that
+are actually healthy people. If instead we consider the case where 10%
+of people are actually sick, then you have a much larger number of
+people that are actually sick. And 99% of the time, we'll get it right,
+so 99, 9,900 of people, that actually are sick, we'll call sick, and only 900 of the people that are healthy will be called
+sick. And so then, things work out how you'd
+expect them to. In other words, 9,900 out of 9,900 plus
+900, so that's. This number on the top left-hand corner. Divided by this total row. Is 92%, and so you have a high positive
+predictive value. What does this mean? If you're predicting a rare event. You have to be aware of, how rare that
+event is. This goes back to the idea of knowing what
+population you're sampling from. When you're building the a predictive
+model. This is actually a key public health
+issue, so you've probably seen it in the news that there's been
+questions about how, what's the value of mammograms in
+detecting disease, and detecting the value of disease versus detecting cases
+that aren't necessarily life threatening. Similarly, you've probably heard about it
+for prostate cancer screening, and in both of these
+cases. You have a fairly rare disease, and even
+though the screening mechanisms are relatively good,
+it's very hard to know whether you're getting a lot of false positives
+that are, as a fraction of the total number of
+positives that you're getting. For continuous data, you actually don't
+have quite so simple a scenario, where you only have one of two cases, and one of two types of
+errors that you can possibly make. The goal here is to see how close you are
+to the truth. And so, one common way to do that, is with
+something called mean squared error. And so the idea is, you have a prediction
+that you have from your model or your machine
+learning algorithm. And so, you have a prediction for every single sample that you're trying to
+predict. And you also maybe know the truth for
+those samples, say in a test set. So what you do is, you calculate the difference between the prediction and
+the truth. And you square it, so the numbers are all
+positive. And then you average the total number of,
+sort of total distance between the pre,
+prediction and the tree. The one thing that's a little bit
+difficult about interpreting this number is that you
+squared this distance, and so, it's a little bit hard to
+interpret on the same scale as the predictions or
+the truth. And so what people often do is they take
+the square root of that quantity. So here, underneath the square root sign,
+is the same number, it's just the average distance between the prediction and the
+truth, and you just sum it and square it. And then you take the square root in that
+number, and that gives you the root, root mean
+squared error. And this is probably the most common error
+measure that's used for continuous data. So for continuous data, people often use
+either the mean squared error, or the mean
+squared error. But if often doesn't work when there are a
+lot of outliers. Or the values of the variables can have
+very different scales. Because, it will be sensitive to those
+outliers. So, for example, if you have one really,
+really large value. It might really raise the mean. Instead, what we could use is often the
+median absolute deviation. So in that case, they take the median of the diff, distance between the observed
+value, and the predicted value, and they do the absolute value instead of doing the
+squared value. And so again, that requires all of the
+distances to be positive, but it's a little bit more robust to the
+size of those errors. And then sensitivity and spe specificity
+are very commonly used when talking about particularly
+medical tests, but they also are particularly widely used if you care
+about one type of error more than the other type of
+error. And then, accuracy which weights false
+positives and false positives equally. This is an important point if again you
+have a very large. Discrepancy in number of times that you're
+a positive or a negative. For multiclass cases, you might have
+something like concordance, and here I've linked to one particular
+distance measure, kappa. But there are a whole large class of
+distance measures, and they all have different properties, that can be
+used when you have multiclass data. So, those are some of the common error measures that are used when doing
+prediction algorithms.

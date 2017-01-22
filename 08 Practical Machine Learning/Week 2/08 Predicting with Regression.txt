@@ -1,0 +1,186 @@
+This lecture's about one of the most
+direct and simple ways to perform machine learning
+using regression modeling. If you've taken the regression modeling
+class in the data science specialization, then a lot of this
+material will be familiar to you. We're just using it in the service of
+performing prediction. So the key idea here is that we're just
+going to fit a simple regression model. If you don't know what that is, don't
+worry about it, I'll explain it briefly in the rest of
+the lecture. But the idea is that basically we're
+going to fit a line to a set of data. So that line will consist of basically
+multiplying a set of coefficients by each of the
+different predictors. And so then we get new predictors or new covariance and we multiply them by the
+coefficients that we estimated with our prediction
+model and then we get a new prediction for a new value. This is useful when that linear model is
+nearly correct, in other words. When the relationship between the
+variables can be modeled in a linear way, in other words as a function of lines, then
+this is a useful way to predict. It's very easy to implement, and it's also
+quite easy to interpret compared to many machine
+learning algorithms in the sense that, it's, you're fitting a set of
+lines to a data set and the lines are relatively
+easy to interpret. It can have poor performance in nonlinear
+settings. So it's usually used in combination with other machine learning algorithms on
+complicated examples. So we're going to be using data on
+eruptions of geysers. And so, they're, geysers are have a
+waiting time in between their different eruptions and there's an amount of time
+that they actually erupt for, so there's a data set that we can load in
+very easily that contains some information on eruptions for a
+particular geyser, Old Faithful in the United States. Famous geyser. So we can load the caret package and load
+the data for this eruptions. And I'm going to set the seed so that all
+the analysis that I'm going to perform after
+this can be reproduced. Then I create a training set and a test
+set just like usual. I create a training set because we're
+going to be building models. Only in the training set and then applying
+them in the test set. And so, if you look at the data set, if
+you look in the training set, you can see that we have just two
+variables, so it's a very easy example. We have an eruption time and a waiting
+time. So the waiting time is the time between
+eruptions and the eruptions is the length of time that the
+geyser was erupting. If I make a plot of these two variables, I
+see waiting time here on the x axis. And duration here on the y axis. You can see that there's roughly a linear
+relationship. Or you can imagine drawing a line through
+this that predicts relatively well, the duration
+time from the waiting time. So we can do that by basically fitting a
+formula that's just a, a line so remember the formula for a line
+is going to be the eruption duration here is equal to a
+constant or an inter, what people call an intercept term, plus another constant
+times the waiting time plus the error term. So. As you saw in the previous slide, even if
+a line fit through the middle of the data
+looks like it's sort of a reasonable approximation to
+the relationship, there's obviously not, the points don't exactly
+fall in a line. And that's why we allow for some error in
+our model. The error models, everything that we
+didn't have, we didn't measure, we didn't understand
+about the relationship. And so we can use the lm command in r to
+fill linear model. So lm, relates the eruptions, that's
+going to be the outcome variable that you're trying to
+predict, the tilde says we're going to predict it
+as a function of everything on this side of
+the. The code right here, we're going to use
+the waiting data. We're going to build that model using the
+data from the training set, so if we do that, if we do that, we get a summary of the output
+and the point, the part to look at, assumes
+the prediction here. Are these estimates so the estimate here
+is just the intercept that's the constant. So that's B0, in this formula, and the
+waiting time estimate here is B1 in this formula, and so if we get a new
+prediction, we just add minus 1.79. Plus 0.073 times whatever our new waiting
+time is and that produces our new prediction for
+the expected duration. So this is what the model fit looks like
+and so I'm basically again, I'm plotting the train set, the
+waiting times versus the eruptions and then I plot the fitted values and the way
+I do that is, I can extract that from the linear model
+object nar with an LM1$fitted. Fitted will give me the fitted values and
+then I plot that versus the, the predictor variable that I
+used to predict the values. So here this is the waiting time plotted
+versus duration. The points come from this first plot
+command and then the line that is fit right here, the black
+line. Speaker 1: Comes from this lines command
+that's adding a line of faded values. So you can see just like we saw previously
+there's a line that's a reasonably good representation of the relationship between these two
+variables. Obviously it's not perfect, the points
+don't lie exactly on the line, but it's a reasonably good capture
+of the main data set. So, to predict a new variable, we just
+again, like I said, take the estimated value for b0 and the
+estimated value for b1. We usually denote those with little hats
+above the values. And then we just multiply them together
+using the formula from the previous page. Remember we don't have, in this formula,
+we don't have an error term. Because we don't know what the error term
+is for this particular value, so we just use the parts
+that we can estimate. So to get those values extract those
+values from the linear model object you can use the
+coef. Command that gives you the coefficients
+which is the name that we use for those two variables, the
+estimates for those two variables, and so coeflm11 will give you the
+intercept, a value beta hat zero, and put lm2 will give you beta hat 1
+a value. Fit for, the waiting time. And then, suppose we have a new waiting
+time that's 80. Then the prediction that we get out is 4.119 as the time for the eruption
+duration. So, another thing that we can do is we can
+actually predict using that LM object. You don't actually have to, every time, extract the coefficients and multiply them
+together. So if we create a new data set. Which is a data frame that has one new
+value that we want to predict, so we say we have waiting time
+equal to just 80, then if I type predict and I pass it the
+fitted model from the training set, and the new data set,
+new data frame we created. It'll give me the prediction for the new
+value. And it matches, so it's using the same
+formula in this predict command, that you would use if you actually
+calculated out the prediction by hand. So another thing to look at, is. So, remember, we built this model on the
+training set, just like we always do. And we want to see how it does on the test
+set. So here, I have, separated the data into,
+Two separate sets the training and test sets and I made
+two plots. On the left there's a plot of the training
+data and on the right there's a plot of the test data
+and so the training data I plot the waiting time
+versus the duration and then I put the model fit in and it's a
+reasonably good model fit. That's to be expected because it. Is the exact data that we use to build the
+model. Then I also plot the test data set and so
+over here, this is the line that you get, the predictions that you get
+from the model built on the training set. So you can see that it doesn't quiet
+perfectly fit the data anymore like it did in the
+training set. It's a little tilted underneath over hear,
+but that's to be expected because, the test set is a slightly
+different set of data, but as you can see it still captures the
+overall trend or the overall part of the variation that can be
+explained by the waiting time. The next thing to do is to get the
+training and test set errors. So, to get the training set error, we get
+the fitted values, lm1$fitted, remember lm1 was the object we
+actually fit to fit the model. And the fitted values were the predictions
+that we get on the training set. Then we can subtract the actual values of
+the eruption duration on the training set. Square them, sum them up and take the
+square root and that gives us the root mean
+squared error. If you remember that from our lecture on
+the types of errors we could have. So it basically measures how close the
+fitted values are. To the, real values. And we get a value of 5.752. We can also calculate the root mean square
+error on the test set. And so, the way that we do that, is, we
+calculate, we predict again now, using this LM fo, LM object that we
+can fit on the training set. But now we pass it the new data set, the
+test data set. So now this is predicting values on the
+test data set and we subtract off our actual values since we know what
+they are on the test data set. Square them and sum them up. And since we didn't use the test set at
+all when we built are algorithm. This is a more realistic estimate of the
+root mean square error that you would get on a new data set compared to the value
+that we got on the training set. And just like always, the test data set
+error is almost always larger than the training
+set error, because. Again we're moving to a new set of values
+that weren't used to calculate the model, so
+that's represents the added error, or error and variability you
+get when you move to a new data set out of sample
+error. The other thing that you can do that a
+nice component of using linear modeling for prediction is that you can calculate prediction
+intervals. So, again, here I'm just calculating on,
+on, calculating a new set of predictions. For the test data set from using our
+linear model that we've built on the training
+data set. And I say that I also want a prediction
+interval out and so that's just an argument that
+I've passed to the predict function and then if I
+order the values for the test data set and plot the
+test. Waiting times versus eruption times. I can also add lines that show not only my
+predictions, that's what I've got here in this black line that
+shows the predictive values. But I can also show an interval that is
+the interval that captures. Percent of where we the region where we
+expect the predicted values to land, so we expect
+most of the predicted values to land in between
+these two red lines if our linear model is
+correct. And so this. Shows you a little bit about the range of
+possible values we could predict. Not just a single prediction, which can be
+useful for giving you an idea of how well your model is likely to
+do on new, predictions. It'll tell you what are the range of possible predictions that you might get
+out. You can do the same thing in the caret
+package. Again the caret package, I've shown you
+how to do it now by hand but you can also very easily do it
+with a caret package. I use the train function in the caret
+package to build the model. And so again I, the eruptions is the
+output, outcome, waiting time is the predictor and they're
+separated by this tilde. And then I say which data set I want to
+build the model on and for the method, I tell
+it, Linear Modeling. So if you do a summary of that final model
+fit so the final model is the part of the modFit objects that was created by
+Train that tells you the exact final model that's being
+used for prediction. And again, it looks very similar to the
+model that we fit by hand, it's minus 1.79 for the intercept
+and 0.07 for the waiting time. So regression modelling can be done with
+multiple covariants as well, and we'll have a lecture on that. But you can also combine it with all other prediction and machine learning
+methodology. Again, it's sort of a good quick and dirty
+method for use. It does miss. Getting a higher mis-classification error when the relationship isn't necessarily
+linear. A lot of prediction is covered with,
+regression modeling is covered in these books, and would be a good place to go if
+you want more information. [SOUND]

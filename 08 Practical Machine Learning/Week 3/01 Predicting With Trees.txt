@@ -1,0 +1,193 @@
+This lecture is about predicting with
+trees. The basic idea is that if you have a bunch of variables that you want to use to
+predict an outcome, you can take each of those
+variables, and use it to split the outcome into
+different groups. And, so as you split the outcomes into
+different groups, then you can evaluate the homogeneity of the
+outcome within each group. And continue to split again if necessary,
+and then, until you get outcomes that are
+separated into groups that are homogeneous enough,
+or that they are small enough that you need to
+stop. The pros of this approach are that it's
+easy to interpret right, and you tend to get
+better performance in non-linear settings than
+you do with the linear regression models we talked about
+in the previous lectures. The cons are that without precluding or
+some kind of cross-validation, this can lead to
+overfitting. And they can be harder to estimate
+uncertainty than it can be for the linear regression model
+setting. In general the results may be variable
+depending on exact values of the parameters, or the variables
+that you collected. So here's an example of what a decision tree looks like after it has already been
+built. So this is a decision tree that appeared
+in the New York Times during the 2008 elections, when Bar, Barack Obama was
+running against Hillary Clinton for the Democratic
+nomination for President. And they were trying to decide what would
+be a prediction rule for whether a county would vote for Obama
+or for Hillary Clinton. And, so the way that happened was that
+they would, build a prediction model that would ask questions of each of the
+different variables that they had in their data set. So the best split happened to be this
+variable. So if the county was more than 20% African
+American, then the county was much more likely to vote
+for, Barack Obama. If it was less than 20% African American,
+then it became more likely that the county would
+vote for Hilary Clinton. Then within each of these two subgroups,
+they went and looked for other variables that might
+split those subgroups out. So, on this branch here, the next question
+was, is the high school graduation rate greater
+than 78%? If it wasn't, then the county was more
+likely to vote for Hillary Clinton, and if it was, then it's more
+likely to vote for Barack Obama. And the algorithm continues in that manner
+until you've split out into smallest, the smallest subgroups that
+you are willing to consider. And, so you see that within each of these leaves of the tree, the predictions were
+quite homogeneous. In other words. Obama was 383 out of about 450 counties in
+this case. And Hilary Clinton won 704 out of about
+790 or 800 counties in this ca, case. In other words, these questions split the counties into groups that were homogenous
+within each leaf their prediction was likely to come
+true that, that candidate would win in the
+election. So the basic algorithm behind building one
+of these trees is, start with all the variables of one
+big group. And then, you find the first variable that best splits the outcomes into two
+different homogenous groups. You then divided the data into two groups
+which we call leaves, and on, and the split that you just
+performed is called a node. Within each split, we then search through
+all the variables, again. Including the variable we just split on. And try to find within that group if
+there's another variable or split that separates the outcome, into
+even more homogeneous groups. You continue until the groups are too
+small, or they're sufficiently pure. In other words, sufficiently homogeneous. To, stop the algorithm. So there are different measures of
+impurity. And they're all based on basically this
+probability that you can estimate. So, within a particular group. So, in the le, m, m leaf then you have n
+total objects that you might consider, and you can count the number of times that
+a particular class appears in that leaf. So this is the number of times that class
+k appears in leaf m. So that's this probability. So it's p hat for the mth leaf and the kth
+class. The misclassification error is 1 minus the
+probability that you're equal to the most common class in that
+particular leaf. So for example, if you're if it's a leaf
+where. Almost all of the counties would vote for Barack Obama, then 1 minus the
+misclassification error is 1 minus the er the misclassification error
+is 1 minus the probability that you'd vote for
+Barack Obama. So zero means perfect purity. In other words, there's no
+misclassification error and all of the counties would go for Barack
+Obama. 0.5 means no purity because, it, it's not
+one, because in any particular leaf if the,
+counties was overwhelming, the counties where overwhelming likely to
+vote for Hilary Clinton then you would get perfect purity in the
+other direction. So it's actually when the leaf is
+perfectly balanced between the two different outcomes, that's when you don't have homogeneity within that particular
+leaf. Similarly there's something called the
+Gini index which is not to be confused with the Gini
+coefficient in economics,. And it's basically 1 minus the sum of the
+squared probabilities that you belong to any of
+the different classes. So again zero means perfect purity. In other words the class has one
+particular class has probability equal to 1 and all the other classes have
+probability equal to 0. 0.5 means no purity. In other words, all of the classes are
+perfectly balanced within each leaf. Deviance and information gain is another
+measure that can be used, and so, it's called deviance if you use log with base e
+here, and log base 2 is information gain. And it's basically minus the sum of the
+probability. Of being assigned to class k and leaf m
+times the log base 2 or base e, of that same
+probability. Value of zero means there is perfect
+purity within the leaf, and value of one means there's
+no purity. If you go to this link from Wikipedia,
+you'll have a lot more information about how these measures of impurity are used to
+separate the, the values within each leaf. So here's what they look like for a
+couple, for an s, for a specific example. So suppose we had a variable that was
+trying to split the dots into the blue and the red
+dots. If the variable splitting in the following
+way were 15 of the dots were blue in a particular leaf and only one was red,
+that would be a relatively pure situation. And so, misclassification rate would be
+one out of 16, so that's just this one dot here. And so it's relatively low value the GinI
+coefficient would also be low, because it's one minus 1 divided
+by 16 squared plus 15 divided 16 squared which is a
+relatively small number and then the information gained is
+similarly would be, in this case. &Uh, smaller towards 0, because it's 1
+over 16 times log base 2, 1 over 16 plus 15 divided by 16 times log
+base 2 15 over 16. So that's the case where there is
+relatively pure outcome in the two groups. We can also look at the case where it's
+not. So suppose this variable split the
+outcomes into a leaf where half of the values were blue, and half of the
+values were red. So that wouldn't be a very good split,
+because it's basically a coin flip whether you're from one class to
+the other in that leaf. And so then this classification right here
+is .5, it's very large. The Gini index is also maximized, it's .5, and the information is also large, it's
+one. So, this would be a split that wouldn't be
+made, because it wouldn't separate the two groups very
+well on that particular leaf. So I'm just going to show you an example
+with the iris data. This is a very old data set, but it shows
+you the idea of how this works. So, this, I'm loading the data with the
+command data iris. And then I'm loading the ggplot2 library
+for making plots. So the names of this data set are the different variables that we're going to be
+using to predict with. Here it's sepal length, Sepal.Width,
+Petal.Length and Petal.Width and what we're trying to predict is the
+Species. So there's 50 of these three different
+species that we're trying to predict with those
+variables. So again I always separate the data into
+the training and the test set, and in this case I have 45 examples in my training set that I can use to build a prediction
+model. And the first thing that I do is, I'm going to plot the petal width versus the
+sepal width. So that's petal width on the x axis, the
+sepal width on the y axis, and then I'm going to color it by the different
+species, and you can see there are three very distinct
+clusters here. So, it's a relatively easy classification
+problem. It might be a little bit challenging for a
+linear model, but not necessarily challenging for this more advanced model with classification
+trace. So you can fit the model using the train
+function in caret. So again, I'm training the model. The outcome is species. I'm predicting with all the remaining
+variables, which is why I have this tilde and then a dot. And I'm telling it the method is rpart
+which is [UNKNOWN] package for doing regression and
+classification trees, one of the packages. And I'm telling you to use the training
+data. If I look at the final model, it tells me
+what all the nodes are and how they're split and in order to, and what the the probability of being in each class is for
+each split. So, here for example, there's a split that
+says petal.length is less than 2.45, and if that happens then you in
+that case all of the examples that have pedal length less than
+2.45 belong to this bc setosa. So, you can read those model splits to tell you, what the classification tree is
+doing. You can also make a plot of the
+classification tree. And so if you just, plot the final model
+that's produce what it will do is it will produce what's
+called a dandergram, like this. And so it's a little hard to read, it's
+cut off here, but you can see petal length
+less than 2.45. Then you're assigned a setosa. And so you can follow to the left what
+happens if the petal length is less than 2.45, and to the right what happens if petal length isn't less than
+2.45. And then follow the next split here at
+this node down to the, see the total classification
+for any particular example. A prettier version of that plot can be
+made with the rattle package. So, you use the function fancyRpartPlot,
+and you pass it the final model that was fit using
+caret. And it makes again dentigram, but now it's
+a little bit easier to see, so here we see. That if the petal length is less than 2.5,
+we move over here to the left, and if it's greater than 2.5 then we
+go over here to the right. And then, within that split, so once
+you've already made that decision about those samples, and if the
+petal length is less that 4.8 you go down here to the left, and
+if the petal length is greater you go over
+here to the right. And so this makes it a little bit easier
+to see what's going on. You can predict new values using the
+predict function, just like you can with the other linear
+regression models. Here the prediction is going to be a
+particular class label, because the classification tree was built
+to predict a particular class. And, so when I pass the new data, testing
+data, to the model. It'll actually write out the different
+categories of species, because it's actually predicting the class
+for each variable. So notes and further resources,
+classification trees are non-linear models, so they immediately
+use interactions between variables, this is
+important to keep in mind, because it's always a model that's built on the relationship
+between multiple variables and if you have a large number of classes for a particular variable for example that you're
+predicting with. The models can over-fit a little bit. The data transformations may be a little
+bit less important. If you do any monotone transformation of a continuous variable, in other words, any
+transformation that doesn't change the order of the values, but maybe makes them bigger or
+smaller. Then you will get the same data splits, with the classification or
+regression trees. This can make the transformations a little
+bit less important. They can also be used for regression
+problems. So, I showed measures of misclassifcation
+impurity, you can also use root mean squared error as a measure
+of impurity. And do a similar classification tree
+building procedure for building models for
+regression as well. There are multiple tree building options
+in RR, both in the caret package, using the party
+package, the rpart package. Or you can even use this package tree which doesn't appear in the caret package,
+but I also has a lot of use, useful functions that can be used when building
+these models. For more information you can read in, in
+these two books, where there's a lot of good information
+about classification and regression trees. Or, in this book about, that's more specifically targeted to this particular
+prediction algorithm.

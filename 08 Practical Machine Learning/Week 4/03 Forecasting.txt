@@ -1,0 +1,119 @@
+This lecture is about forecasting, which
+is a very specific kind of prediction
+problem. And it's typically applied to things like
+time series data. So, for example, this is the stock of
+information for Google on the NASDAQ, and so is this
+symbol GOOG. And you can see over time that there's a price for this stock and it goes up and
+down. So this introduces some very specific
+kinds of dependent structure and some additional challenges that must be taken into account when performing
+prediction. And so, first of all, the data are
+dependent over time, and so, that alone makes prediction a little bit more
+challenging than it is when you have independent
+examples. There's also some specific pattern types
+that should be paid attention to. Trends, such as long term increases or
+decreases, seasonal patterns are very common in this kind of
+data. For example, seasonal patterns over weeks,
+months, years, etc. Cycles, patterns that rise and fall
+periodically over a period that's longer than a year, for
+example. Here, the subsampling and the training and
+test can be a little bit more complicated because you can't just randomly assign samples into training and
+test. You have to take advantage of the fact
+that there's actually specific times that are being sampled and that
+points are dependent in time. Similar issues arise in predictions of
+spatial den, spatial data. For example, there's dependency between
+nearby observations and there may be location-specific effects that have to
+be modeled when doing prediction. Typically, the goal here is to predict one
+or more observations into the future and all
+standard prediction algorithms can be used, but you have to be a little bit cautious about how you use
+them. So, one thing to be aware of is that you have to be careful of spurious
+correlations. So, time series can often be correlate for
+reasons that do not make them good for predicting one
+from the other. So, if you look at, you can go to Google
+Correlate to correlate different words over time, the
+frequency of different words over time. And so, for example, here you can see a
+correlation between the Google stock price, shown in blue, and
+solitaire network, which is in red. And so, those don't necessarily have
+anything to do with each other at all, but they have a very high
+correlation, and you might think you might be able to predict one from the other,
+even though in the future, they might diverge substantially because
+they aren't necessarily related to each other at all. It's also very common in geographic
+analysis. This is actually a cartoon from xkcd that shows that heat maps particularly
+population-based heat maps had very similar shapes because
+of the place where many people live. So for example, the users of a particular
+site or the subscribers to a particular magazine or the consume,
+consumers of a particular type of website may all appear in the very similar
+places because the highest density in population in the United States is over
+here on the Eastern seaboard. And so, you see very similar heat maps of
+a large number of individuals at all of
+those different places. You should also beware of extrapolation. So this is a kind of a funny example that
+shows what happens if you extrapolate time series out without
+being careful about what could happen. So this shows on a long scale the winning
+time of a large number of oh sorry, of races that
+occurred at the Olympics. The blue times are men and the red times
+are women, and these authors of this paper
+extrapolated out into the future and said that in 2156 that
+would be when women would run faster than men in
+the sprint. And while we don't know when that, when or
+when that may or may not occur, one thing that was pointed out is that this kind of extrapolation is very
+dangerous. Eventually at some time in the future,
+both men and women will be predicted to run negative times
+for the 100 meters. And so, you have to be very careful about how far out you extrapolate from
+your data. So, I'm going to show a quick example of
+some forecasting using the quantmod package and
+some Google data. So, if I load this quantmod package and I
+can, I can load in a bunch of data from the
+Google stock symbol. And I can get it from the Google finance
+data set. And so if I look at this Google variable,
+I get the open, high, low, close, and volume information for a
+particular Google stock from the 1st of January, 2008 to December 31st,
+2013. So I can summarize this monthly and store
+it as a time series. So I can use the two monthly variable or function to convert that to a monthly time
+series. And I can just take the opening
+information, and then I can create a time series object using the
+ts function in R. And if I plot that, I can see here's the monthly opening prices for Google over a
+period of seven years. So, an example time series decomposition
+would decompose this time series into a trend, any kind of
+consistent pattern, a seasonal pattern over time, and
+cyclic patterns where the data rises and falls over non
+fixed periods. And so, one way that we can do this is
+with the decompose function in R. So if I decompose this in an additive way,
+then I can see that there's a trend variable that appears to be an
+upward trend of the Google stock price. There also appears to be a seasonal
+pattern, as well as a more of a random cyclical pattern in the
+data set. So this is decomposing this series here
+into a series of different types of patterns in
+the data. So here for training and test sets, I have
+to build training and test sets that have
+consecutive time points. So here I am building a training set that
+starts at time point 1 and ends at time point 5. And then a test set that is the next
+consecutive sets of points after that. So that way, I can always build a training
+set and apply it to a test set that have consecutive time points that
+show the same sort of trends that I've observed in my
+data. So there's a couple different ways for
+doing forecasting. One is to do a simple moving average,
+which in another words, it basically averages up all of the values
+of, for a particular time point. And the prediction will be the average of the previous time points out to a
+particular time. You can also do exponential smoothing. In other words, basically we weight
+near-by time points as higher values or by more heavily than time points
+that are farther away. So there's a large number of different classes of smoothing models that you can
+choose. And for exponential smoothing, you can get
+an, you can fit a model where you have a different choices for the different types
+of trends that you might want to fit. And then when you forecast, you can get a prediction that comes out of your
+forecasting model. And you can also get sort of a prediction
+bounds for what are the possible values that you
+could get from that prediction. And you can get the accuracy using this
+accuracy function, so you can basically get the accuracy of
+your forecast using your test set, and it will give you root
+mean square to error and other metrics that are more
+appropriate for forecasting. I've obviously gone through this very fast
+and so, if you want more information, there's actually an entire
+field dedicated to forecasting and time series
+prediction. And I would highly recommend Rob Hyndman's
+Forecasting: principles and practice. This is a free book that's online and it's
+really, really good, and has a lot of information about how to get
+started at, in forecasting. So the cautions are to be wary of spurious
+correlations. Be very careful about how far you predic,
+predict out into the future with express, extrapolation, and be wary of dependencies like seasonal effects over
+time. If you would like information on you, for
+financial prediction and financial forecasting, the quantmod and quandl
+packages are also very useful in that area.

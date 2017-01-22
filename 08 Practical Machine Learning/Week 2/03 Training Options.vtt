@@ -1,0 +1,636 @@
+WEBVTT
+
+1
+00:00:00.340 --> 00:00:03.430
+This is a brief lecture about some of
+the training control options that you
+
+2
+00:00:03.430 --> 00:00:05.730
+have when training while
+using the caret package.
+
+3
+00:00:05.730 --> 00:00:09.710
+For this lecture, we're going to be using
+the spam example again just to illustrate
+
+4
+00:00:09.710 --> 00:00:10.870
+how these ideas work.
+
+5
+00:00:10.870 --> 00:00:14.060
+So we load the caret package,
+the kernlab package, and
+
+6
+00:00:14.060 --> 00:00:16.700
+then we attach the spam dataset.
+
+7
+00:00:16.700 --> 00:00:19.180
+Then we use the createDataPartition
+function to
+
+8
+00:00:19.180 --> 00:00:21.470
+create a set of endices
+corresponding to the training set.
+
+9
+00:00:21.470 --> 00:00:25.100
+And we set about 75% of the data
+to be in the training set.
+
+10
+00:00:25.100 --> 00:00:29.170
+Then we define training and testing
+sets using those indicator functions.
+
+11
+00:00:29.170 --> 00:00:32.500
+So usually what you would do when you
+fit a model is basically just use
+
+12
+00:00:32.500 --> 00:00:36.230
+the train function, like this, where you
+basically set all of the defaults to be
+
+13
+00:00:36.230 --> 00:00:39.650
+whatever defaults that the train
+function chooses for you.
+
+14
+00:00:39.650 --> 00:00:42.710
+Other than maybe the method that
+you're going to be using to fit and
+
+15
+00:00:42.710 --> 00:00:44.239
+which data set you're going to be using.
+
+16
+00:00:45.260 --> 00:00:47.270
+You can go a little bit further than this,
+though.
+
+17
+00:00:47.270 --> 00:00:51.330
+For example, you can use a large
+set of options for training.
+
+18
+00:00:51.330 --> 00:00:52.340
+So, here are a couple of them.
+
+19
+00:00:52.340 --> 00:00:57.260
+One, you can use this preProcess parameter
+to set a bunch of preprocessing options.
+
+20
+00:00:57.260 --> 00:00:58.840
+We'll talk about that in a future lecture.
+
+21
+00:00:58.840 --> 00:01:00.830
+You can also set weights.
+
+22
+00:01:00.830 --> 00:01:03.870
+In other words, you can upweight or
+downweight certain observations.
+
+23
+00:01:03.870 --> 00:01:07.290
+These are particularly useful if you have
+very unbalanced training set where you
+
+24
+00:01:07.290 --> 00:01:10.170
+have a lot more examples
+of one type than another.
+
+25
+00:01:10.170 --> 00:01:13.770
+You can set the metric, so by default for
+factor variable, in other words for
+
+26
+00:01:13.770 --> 00:01:19.020
+categorical variables the default metric
+is accuracy that it's trying to maximize.
+
+27
+00:01:19.020 --> 00:01:21.720
+For continuous variables it's
+the root mean squared error,
+
+28
+00:01:21.720 --> 00:01:23.290
+like we talked about
+in a previous lecture.
+
+29
+00:01:24.540 --> 00:01:28.920
+So, you can also set a large number of
+other control parameters using this
+
+30
+00:01:28.920 --> 00:01:34.690
+trControl parameter here and
+you have to pass it a call to this
+
+31
+00:01:34.690 --> 00:01:38.310
+particular function, trainControl, which
+we'll talk about in a couple of slides.
+
+32
+00:01:40.460 --> 00:01:45.010
+So the Metric options are built-in to the
+train function for continuous outcomes.
+
+33
+00:01:45.010 --> 00:01:47.030
+Our RMSE, or root mean squared error.
+
+34
+00:01:47.030 --> 00:01:48.990
+You can also use RSquared.
+
+35
+00:01:48.990 --> 00:01:52.230
+This is the RSquared that you
+get from a regression model if
+
+36
+00:01:52.230 --> 00:01:54.420
+you remember that from
+the inference class.
+
+37
+00:01:54.420 --> 00:01:57.850
+RSquared is a measure of linear agreement
+between the variables that you're
+
+38
+00:01:57.850 --> 00:02:00.870
+predicting and
+the variables that you predict with.
+
+39
+00:02:02.530 --> 00:02:05.570
+Linear agreement is very useful if
+you're using linear regression and
+
+40
+00:02:05.570 --> 00:02:06.170
+things like that.
+
+41
+00:02:06.170 --> 00:02:07.020
+It may not be so
+
+42
+00:02:07.020 --> 00:02:10.210
+useful if you're doing more non-linear
+things like random forests and so forth.
+
+43
+00:02:11.450 --> 00:02:13.290
+Accuracy is the fraction correct.
+
+44
+00:02:13.290 --> 00:02:15.254
+So that's just the number
+that you get correct.
+
+45
+00:02:15.254 --> 00:02:21.130
+And that's the default measure of
+accuracy for categorical outcomes.
+
+46
+00:02:21.130 --> 00:02:24.440
+You can also tell it to use Kappa,
+which is a measure of concordance.
+
+47
+00:02:24.440 --> 00:02:27.120
+I've linked here to
+a definition of that measure.
+
+48
+00:02:27.120 --> 00:02:31.740
+It's a more in-depth, more complicated
+measure that's frequently used in some
+
+49
+00:02:31.740 --> 00:02:33.190
+competitions like and other competitions.
+
+50
+00:02:35.600 --> 00:02:38.930
+The trainControl argument allows
+you to be much more precise about
+
+51
+00:02:38.930 --> 00:02:40.840
+the way that you train models.
+
+52
+00:02:40.840 --> 00:02:45.230
+You can tell it which method to use for
+resampling the data whether it's
+
+53
+00:02:45.230 --> 00:02:48.070
+bootstrapping or cross validation
+which we'll talk about in a minute.
+
+54
+00:02:48.070 --> 00:02:53.650
+You can tell it the number of times to
+do bootstrapping or cross validation.
+
+55
+00:02:53.650 --> 00:02:57.290
+You could also tell it how many times to
+repeat that whole process if you want to
+
+56
+00:02:57.290 --> 00:03:02.120
+be careful about repeated
+cross-validation.
+
+57
+00:03:02.120 --> 00:03:05.730
+You can tell it the size of the training
+set with this p parameter, and
+
+58
+00:03:05.730 --> 00:03:09.940
+then you can tell it a bunch of other
+parameters that depend on the specific
+
+59
+00:03:09.940 --> 00:03:10.920
+problems you're working on.
+
+60
+00:03:10.920 --> 00:03:11.700
+So for example, for
+
+61
+00:03:11.700 --> 00:03:15.880
+time course data, initial window tells
+you the size of the training dataset,
+
+62
+00:03:15.880 --> 00:03:19.490
+the size of the number of time points
+that will be in the training data.
+
+63
+00:03:19.490 --> 00:03:22.950
+And horizon is the number of time
+points that you'll be predicting.
+
+64
+00:03:22.950 --> 00:03:27.130
+You can also have it return the actual
+predictions themselves from each of
+
+65
+00:03:27.130 --> 00:03:29.200
+the iterations when it's
+building the model.
+
+66
+00:03:29.200 --> 00:03:32.230
+You can also have it return
+a different summary,
+
+67
+00:03:32.230 --> 00:03:35.930
+use a different summary function than
+the default summary if you'd like it to.
+
+68
+00:03:35.930 --> 00:03:41.400
+And then you can set preprocessing options
+as well as things like prediction bounds,
+
+69
+00:03:41.400 --> 00:03:45.200
+and you can set the seeds for
+all the different resampling layers.
+
+70
+00:03:45.200 --> 00:03:48.120
+This is particularly useful if you're
+going to be parallelizing your
+
+71
+00:03:48.120 --> 00:03:51.840
+computations across multiple cores.
+
+72
+00:03:51.840 --> 00:03:55.040
+We're not going to cover that too
+extensively here, but if you're training
+
+73
+00:03:55.040 --> 00:04:00.350
+models on large numbers of samples
+with a high number of predictors,
+
+74
+00:04:00.350 --> 00:04:03.140
+using parallel processing
+can be highly useful for
+
+75
+00:04:03.140 --> 00:04:06.060
+proving the computational
+efficiency of your analysis.
+
+76
+00:04:06.060 --> 00:04:09.760
+For resampling, there are a bunch
+of methods that are offered,
+
+77
+00:04:09.760 --> 00:04:12.730
+so this is again passed to
+the trainControl function.
+
+78
+00:04:12.730 --> 00:04:16.580
+You can use standard bootstrapping,
+you can use bootstrapping that adjusts for
+
+79
+00:04:16.580 --> 00:04:19.490
+the fact that multiple
+samples are repeatedly
+
+80
+00:04:19.490 --> 00:04:22.380
+resampled when you're
+doing that subsampling.
+
+81
+00:04:22.380 --> 00:04:25.590
+This will reduce some of
+the bias due to bootstrapping.
+
+82
+00:04:25.590 --> 00:04:28.500
+You can use cross validation which is
+a method that we've talked about in
+
+83
+00:04:28.500 --> 00:04:29.850
+previous lectures.
+
+84
+00:04:29.850 --> 00:04:33.470
+You could also use repeated cross
+validation if you want to do
+
+85
+00:04:33.470 --> 00:04:36.640
+sub cross validation with
+different random draws.
+
+86
+00:04:36.640 --> 00:04:39.500
+You could use leave one
+out cross validation and
+
+87
+00:04:39.500 --> 00:04:42.560
+remember there's a bias during
+its trade off between using
+
+88
+00:04:42.560 --> 00:04:48.510
+large number of folds and smaller number
+of folds when doing cross validation.
+
+89
+00:04:48.510 --> 00:04:50.850
+You can also tell it the number
+of bootstrap samples or
+
+90
+00:04:50.850 --> 00:04:54.880
+the number of subsamples to take and the
+number of times to repeat that subsampling
+
+91
+00:04:54.880 --> 00:04:57.840
+if you're doing something like
+repeated cross validation.
+
+92
+00:04:57.840 --> 00:04:59.880
+All of these parameters can be set.
+
+93
+00:04:59.880 --> 00:05:01.660
+In general the defaults work pretty well,
+
+94
+00:05:01.660 --> 00:05:06.250
+but if you have large numbers of samples
+or you have a model that requires
+
+95
+00:05:06.250 --> 00:05:09.740
+fine tuning across a large number of
+parameters, you may want to increase for
+
+96
+00:05:09.740 --> 00:05:13.440
+example the number of cross-validation or
+bootstrap samples that you take.
+
+97
+00:05:15.440 --> 00:05:19.550
+Finally, an important component of
+training these models is setting the seed.
+
+98
+00:05:19.550 --> 00:05:23.480
+So what I mean by that is most of
+these procedures rely on random
+
+99
+00:05:23.480 --> 00:05:24.980
+resampling of the data.
+
+100
+00:05:24.980 --> 00:05:28.210
+And if you rerun the protocol over again,
+or
+
+101
+00:05:28.210 --> 00:05:32.270
+rerun the code over again, you will get
+a slightly different answer because there
+
+102
+00:05:32.270 --> 00:05:36.010
+was a random draw that was created
+when you were doing cross-validation.
+
+103
+00:05:36.010 --> 00:05:39.570
+If you set a seed, a random number seed,
+what that'll do is that'll ensure that
+
+104
+00:05:39.570 --> 00:05:42.700
+the same random numbers
+get generated each time.
+
+105
+00:05:42.700 --> 00:05:45.480
+It's a little bit of a difficult
+concept to get your head around but
+
+106
+00:05:45.480 --> 00:05:49.230
+the idea is that the computer is
+generating pseudo random numbers.
+
+107
+00:05:49.230 --> 00:05:52.410
+And if you set the seed it will generate
+the same sequence of pseudo random
+
+108
+00:05:52.410 --> 00:05:52.980
+numbers again.
+
+109
+00:05:54.730 --> 00:05:57.220
+It's very useful often
+to set the overall seed.
+
+110
+00:05:57.220 --> 00:06:00.860
+This is a seed for the entire procedure so
+you get repeatable results.
+
+111
+00:06:00.860 --> 00:06:04.570
+If you're doing parallel computation you
+can also set the seed for each resample.
+
+112
+00:06:04.570 --> 00:06:09.180
+You can do that with a seed argument
+to the train control function.
+
+113
+00:06:09.180 --> 00:06:12.510
+Seeding each resamples is particularly
+useful for parallel fits but
+
+114
+00:06:12.510 --> 00:06:15.260
+it's often not necessary when
+you're doing all your processing
+
+115
+00:06:16.500 --> 00:06:18.040
+that in way that isn't parallel.
+
+116
+00:06:19.550 --> 00:06:20.550
+So, here's an example of that.
+
+117
+00:06:20.550 --> 00:06:23.971
+If I set the seed using
+the set.seed function in R, and
+
+118
+00:06:23.971 --> 00:06:26.950
+then I give it a number,
+an integer number,
+
+119
+00:06:26.950 --> 00:06:30.990
+it will set a seed that's consistent
+with performance analysis.
+
+120
+00:06:30.990 --> 00:06:34.370
+So it will generate a set of
+random numbers that is consistent.
+
+121
+00:06:34.370 --> 00:06:40.010
+So then if I fit my model, like this,
+then when it generates bootstrap samples.
+
+122
+00:06:40.010 --> 00:06:43.290
+It will generate those bootstrap samples
+according to the random numbers that come
+
+123
+00:06:43.290 --> 00:06:44.640
+from this seed.
+
+124
+00:06:44.640 --> 00:06:49.560
+If I then reset the seed again, and
+fit the model again, now with a different
+
+125
+00:06:49.560 --> 00:06:54.170
+number, modelFit3 instead of modelFit2,
+then I will get exactly the same
+
+126
+00:06:54.170 --> 00:06:58.490
+bootstrap samples and exactly the same
+measures of accuracy back out again.
+
+127
+00:06:58.490 --> 00:07:00.901
+This is important when
+you're training models and
+
+128
+00:07:00.901 --> 00:07:03.983
+then you want to share your training
+data set with someone else and
+
+129
+00:07:03.983 --> 00:07:06.970
+ensure that you get the same answer
+when they run the same code.
+
+130
+00:07:06.970 --> 00:07:11.290
+There's more information about this in the
+caret tutorial which I think is very good.
+
+131
+00:07:11.290 --> 00:07:13.430
+And also in this document
+about model training and
+
+132
+00:07:13.430 --> 00:07:14.770
+tuning with the caret package.

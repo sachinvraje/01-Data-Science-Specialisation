@@ -1,0 +1,120 @@
+This lecture is about in sample and out of
+sample errors. This is one of the most fundamental
+concepts that we deal with in machine learning and prediction, and so it's worth understanding the concept with a very
+simple example. So in sample errors, the error you get on the same data you used to train your
+predictor. This is sometimes called resubstitution
+error in the machine learning literature. And in sample error is always going to be
+a little bit optimistic, from what the error is that you would get
+from a new sample. And the reason why is, in your specific sample, sometimes your prediction
+algorithm will tune itself a little bit to the noise that you
+collected in that particular data set. And so when you get a new data set,
+there'll be different noise, and so the accuracy will
+go down a little bit. So what we do is we look at this out of
+sample error rate, this is sometimes called the
+generalization error in machine learning. And so the idea is that once we build a model on a sample of data that we have
+collected. We might want to test it on a new sample,
+on a sample collected by a different person or
+in a different time, in order to be able to see what the sort of
+realistic expectation of how well that machine running algorithm
+will perform on new data. So almost always, out of sample errors is
+what you care about. So if you see a reported error rate for
+date. The error rate reported only on the data where the machine-learning algorithm was
+built, you know that's very optimistic, and it probably
+won't reflect how the model will perform in real
+practice. In sample error is always less than out of sample error, so that's something to keep
+in mind. And the reason is overfitting. Basically, again, you're matching your
+algorithm to the data that you have at hand, and you're matching it a
+little bit too well. So sometimes you want to be able to give
+up a little bit of accuracy in the sample you have, to be able to get
+accuracy on new data sets. In other words, when the noise is a little bit different, your algorithm will
+be robust. So just to show you a really simple
+example, I thought I'd show you in sample versus out of sample error's
+with a kind of a trivial example. So here's what I've done, I've taken this
+again I've gone to the kernlab package and I looked at the
+spam data set. Remember that was the data set where we collected information about spam
+messages, or messages from robot and things like that, and HAM messages, messages we actually
+care about. And what I do is I actually take a very
+small sample of that Spam data set. I just take ten messages and what I do is
+I basically look at whether you see a lot of
+capital letters. So I'm basically looking at the average
+number of capital letters that you observes in a
+particular email. And so I've plotted the first ten examples
+here versus their index. And so in red are all the spam messages,
+in black are all the ham messages. And so you can see, for example, that some
+of the spam messages like this one up here, have a lot more capital letters than the ones that are ham
+messages. That sort of makes sense intuitively. So we might want to build a predictor,
+based on the average number of capital letters, as to whether you are a
+spam message or you're a ham message. So one thing that we could do is build a
+predictor that says if you have a lot of capitals than you're a spam
+message, and if you don't then you're a non spam
+message. And here's what this rule could look like,
+you could say if you're above 2.7, per capital average we're going to call you
+spam, if you're below 2.40 you're classified as
+non-spam. And then one more, one thing we can do is
+we can actually try to train this algorithm very, very well to
+predict perfectly on this data set. So if we go back to these, this plot of
+the different values, you can see there's one
+spam message right down here in the lower right hand corner, that is a
+little bit lower than the highest non-spam value in
+terms of this capital average. So we could build a prediction algorithm that would capture that spam value as
+well. And so what we would do then is, we would
+make a rule here that just picks out that one
+value in the training set. It says if you're between 2.4 and 2.45,
+you're called spam as well. And that's designed to basically make the
+training set accuracy perfect. And you can see if we apply this rule to the training set, we actually do get
+perfect accuracy. So if you're nonspam, we perfectly
+classify you as nonspam, and if you are spam, we perfectly classify
+you as spam. An alternative rule would not train quite
+so tightly to the training set, but would still use the
+basic principle of if you have a high number of capital
+letters then your spam message, and so this rule might look
+something like this. If you're above 2.40, your cap, your spam
+message, if you're less than or equal to 2.40, then
+you're nonspam message. So this rule on the training set would
+then miss that one value. In other words, you could have a
+prediction of nonspam for that one spam message that was just a little bit
+lower in our training set. So overall, this looks like in that
+training set that the accuracy is a little bit lower for this rule, and it's
+a little bit more simplistic. So then we can apply it to all the spam
+data. In other words apply it to all the values,
+not just the values that we had in the small training set, and these
+are the results that you would get. So this is a table of our predictions on
+the the rows here, and in the columns that's
+the actual values. And so you can see the number of errors
+that we make are the errors here that are on the off-diagonal elements of this little matrix that we
+created. So those are the number of errors that we
+made, made. And so what we can look at is that we can
+actually look at the average number of times that were
+right using our more complicated rules. So this is just the sum of the times that
+our prediction is equal to the actual value in
+the spam data set. And so that happens 3,366 times in this
+data set. And then we could also look at the more simplified rule, the rule where we
+just used a threshold, and also look at the number
+of times that that's equal to the real spam
+type. And you can see about 30 more times, we
+actually get the right answer when we use this more
+simplified rule. So, what's the reason that the simplified
+rule actually does better than the more
+complicated rule? And the reason why is over fitting. So, in every data set we have two parts,
+we have the signal component, that's the part
+we're trying to use to predict. And then we have noise, so that's just
+random variation in the dataset that we get, because the data
+are measured noisily. And so the goal of a predictor is to find
+a signal and ignore the noise. And in any small dataset, you can always
+build a perfect in-sample predictor just like we
+did with that spam dataset. You can always carve up the prediction
+space in this, in this small data set, to capture every single
+quirk of that data set. But when you do that, you capture both the
+signal and the noise. So for example, in that training set there
+was one stem value that has slightly lower capital average
+than some of the non-span values. But that was just because we randomly
+picked a data set where that was true, where that value
+was low. So that predictor won't necessarily
+perform as well on new samples, because we've tuned it too tightly to the
+observed training set. So, this lecture has two purposed. One is to introduce you to the idea of in
+sample and out of sample errors. In-sample errors are errors on the
+trainings that we actually built with, and out of sample errors are the errors on the data set that wasn't used to build the training
+predictor. And also we introduced to you this idea of
+over fitting. In that we want to build models that are
+simple and robust enough that they don't actually capture the noise,
+while they do capture all of the signal.

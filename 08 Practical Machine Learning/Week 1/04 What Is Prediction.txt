@@ -1,0 +1,145 @@
+A lot of the action in machine learning
+has focused on what algorithms are the best algorithms for extracting information and using it to
+predict. But it's important to step back and look
+at the entire prediction problem. This is a little diagram that I made to
+illustrate some of the key each, issues in building a
+predictor. So you start of with, suppose I want to predict for these dots whether they're red
+or blue. Well, what you might do is have a big
+group of dots that you want to predict about, and then you use probability and sampling to pick a
+training set. The training set will consist of some red
+dots and some blue dots, and you'll measure a whole bunch of
+characteristics of those dots. Then you'll use those characteristics to
+build what's called a prediction function, and the prediction
+function will take a new dot, whose color you don't know, but using
+those characteristics that you measured will predict whether it's red
+or whether it's blue. Then you can go off and try to evaluate whether that prediction function
+works well or not. One thing that I think is very important and often underappreciated about building
+a machine learning algorithm is to look at probability and
+sampling step of building the training and test
+stats. This is always a required component of
+building every machine learning algorithm is deciding which samples you're going to
+use to build that algorithm. But sometimes it's over-looked, because
+all of the action that you hear about for machine learning happens down here when
+you're building the actual machine learning
+function itself. One very high profile example of the ways
+that this can cause problems is the recent
+discussion about Google Flu trends. Google Flu trend is tried to use the terms
+that people were typing into Google, terms like, I have a cough, to
+predict how often people would get flu. In other words, what was the rate of flu
+that was going on in a particular part of the United
+States at a particular time? And they compared their algorithm to
+approach taken by the United States government, where
+they went out and they actually measured how many people
+were getting the flu, in different places in
+the US. And they found in their original paper
+that the Google Flu trends algorithm was able to
+very accurately represent the number of flu cases that would appear
+in various different places in the US at any
+given time. But it was quite a bit faster and quite a bit less expensive to measure using search
+terms at Google. The problem that they didn't realize at
+the time, was that the search terms that people would use
+would change over time. They might use different terms when they
+were searching, and so that would affect the
+algorithm's performance. And also, the way that those terms were
+actually being used in the algorithm wasn't very
+well understood. And so when the function of a particular
+search term changed in their algorithm, it can
+cause problems. And this lead to highly inaccurate results
+for the Google Flu trends algorithm half over time as
+people's internet usage changes. So this gives you an idea that choosing the right dataset and that knowing what
+the specific question is are again paramount, just like
+they have been in other classes of the data science
+specialization. So here are the components of a predictor. You need to start off as always in all,
+any problem with data science with a very specific and
+well defined question. What are you trying to predict and what
+are you trying to predict it with? Then you go out and you collect the best input data that you can to be able to
+predict. And from that data you might either use
+measured characteristics that you have or you might
+use computations to build features that we'd think you
+might be useful for predicting the outcome that you
+care about. At this stage then you can actually start
+to use the machine learning algorithms you may have read about, such
+as Random Forest or Decision Trees. And then what you can do is estimate the parameters of those algorithms, and use
+those parameters to apply the algorithm to a new data set and then finally evaluate that algorithm on
+that new data. So I'm going to just show you one quick
+little example, to show you how this little
+process works. So this is obviously a trivialized version
+of what would happen in a real machine running algorithm, but it
+gives you a flavor of what's going on. So you start off with asking something
+about the question. So you start with a in general people usually start with a quite general
+questions. So here is, can I automatically detect
+emails that are SPAM from those that are not? So SPAM emails are emails that you got that you, come from companies that get
+sent out to thousands of people at the same time and that you might not be interested in
+it. So you might want to make your question a
+little bit more concrete. You often need to when doing machine
+learning. So, the question might be, can I use quantitative characteristics of those
+emails to classify them as SPAM, or what we're going to call HAM
+which is the email that people would like to
+receive? So once you have your question, then you
+need to find input data. In this case, there's actually a bunch of
+data that's available and already pre-processed
+for us in R. So it's actually in the current lab package K-E-R-N-L-A-B and it's the SPAM
+dataset. So we can actually load that data set into
+R directly, and it has some information that's been collected about SPAM and HAM
+emails already available to us. Now we might want to keep in mind that
+that might not necessarily be the perfect data, in
+fact, we don't have all of the emails that have been collected
+over time, or we don't have all the emails that are being
+sent to you personally. So we need to be aware of the potential
+limitations of this data, when we're using it to build an
+algorithm, a prediction algorithm. Then we want to calculate something about
+features. So, imagine that you have a bunch of
+emails. And here's an example email that's been
+sent to me. Dear Jeff, can you send me the address, so
+I can send you the invitation. Thanks, Ben. If we want to build a prediction
+algorithm, we need to calculate some characteristics
+of these emails that we can use to be able to
+build a predictive algorithm. And so one example might be, we can calculate the frequency with which a
+particular word appears. So here, we're looking for the frequency
+that the word you appears. And so in this case, it appears twice in
+this email so 2 out of 17 words or about 11% of the words in
+this email are you. We could calculate that same percentage
+for every single email that we have and now we have a qualitative characteristic
+that we can try to use to predict. So if the data in the current lab package
+that I've shown here are actually, information just like that, for every
+email we have the frequency with which certain
+words appear. And so, for example if credit appears very
+often in the email or money appears very often in the email, you might imagine
+that that email might be a SPAM email. So, as one example of that, we looked at
+the frequency of the word, your, and how often it
+appears in the email. And so, I've got a plot here that's a
+density plot of the, that data. And so, on the x-axis is the frequency that with which, your, appeared in the
+email. And on the y-axis is the density, or the number of times the that frequency appears
+amongst the emails. And so what you can see is that most of
+the emails that are SPAM, those are the ones that are in red, you can see that they tend to have more appearances of the
+word, your. Where as all of the emails that are HAM,
+the ones that we actually want to receive have
+a much higher peak right over here down near 0, so there's
+very few emails that have a large number of viewers
+that are HAM. So, we can build an algorithm in this case
+let's build a very very simple algorithm. We can estimate an algorithm where we want
+to just find a cut off a constant C, where if the frequency of your is above C then we predict spam and otherwise we predict
+that it's ham. So going back to our data we can fig, try
+to figure out what that best cut off is, and here's an
+example of a cutoff that you could choose, so choose a cut off here that if
+it's above 0.5 then we say that it's SPAM, and if it's below 0.5
+we can say that it's HAM. And so we think this might work because
+you can see that the large spike of blue HAM messages are
+below that cut off. Whereas the big, one of the big spikes of
+the SPAM messages is above that cut off. So you might imagine that wil cache quite
+a bit of that SPAM. So then what we do is we evaluate that. So what we would do is calculate for example predictions for each of the
+different emails. We take a prediction in that says, if the
+frequency of yours above 0.5, then you're spam and if it's
+below then you're nonspam. And then we make a table of those
+predictions and divide it by the length of the, all the
+observations that we have. And so we can say is that, when you're
+nonspam about 45% of the time, 46% of the time, we get
+you right. When you're spam about 29% of the time, we
+get you right. So, total we get you write about 45% plus
+29% is about 75% of the time. So our prediction algorithm is about 75%
+accurate in this particular case. So that's how we would evaluate the
+algorithm. This is of course any same dataset where
+we actually calculated it, the prediction function, and as we
+will see in later lectures. This will be an optimistic estimate of the
+overall error rate. So that's an overview of, the basic steps
+in building a predictive algorithm.

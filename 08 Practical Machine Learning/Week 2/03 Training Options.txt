@@ -1,0 +1,108 @@
+This is a brief lecture about some of
+the training control options that you have when training while
+using the caret package. For this lecture, we're going to be using
+the spam example again just to illustrate how these ideas work. So we load the caret package,
+the kernlab package, and then we attach the spam dataset. Then we use the createDataPartition
+function to create a set of endices
+corresponding to the training set. And we set about 75% of the data
+to be in the training set. Then we define training and testing
+sets using those indicator functions. So usually what you would do when you
+fit a model is basically just use the train function, like this, where you
+basically set all of the defaults to be whatever defaults that the train
+function chooses for you. Other than maybe the method that
+you're going to be using to fit and which data set you're going to be using. You can go a little bit further than this,
+though. For example, you can use a large
+set of options for training. So, here are a couple of them. One, you can use this preProcess parameter
+to set a bunch of preprocessing options. We'll talk about that in a future lecture. You can also set weights. In other words, you can upweight or
+downweight certain observations. These are particularly useful if you have
+very unbalanced training set where you have a lot more examples
+of one type than another. You can set the metric, so by default for
+factor variable, in other words for categorical variables the default metric
+is accuracy that it's trying to maximize. For continuous variables it's
+the root mean squared error, like we talked about
+in a previous lecture. So, you can also set a large number of
+other control parameters using this trControl parameter here and
+you have to pass it a call to this particular function, trainControl, which
+we'll talk about in a couple of slides. So the Metric options are built-in to the
+train function for continuous outcomes. Our RMSE, or root mean squared error. You can also use RSquared. This is the RSquared that you
+get from a regression model if you remember that from
+the inference class. RSquared is a measure of linear agreement
+between the variables that you're predicting and
+the variables that you predict with. Linear agreement is very useful if
+you're using linear regression and things like that. It may not be so useful if you're doing more non-linear
+things like random forests and so forth. Accuracy is the fraction correct. So that's just the number
+that you get correct. And that's the default measure of
+accuracy for categorical outcomes. You can also tell it to use Kappa,
+which is a measure of concordance. I've linked here to
+a definition of that measure. It's a more in-depth, more complicated
+measure that's frequently used in some competitions like and other competitions. The trainControl argument allows
+you to be much more precise about the way that you train models. You can tell it which method to use for
+resampling the data whether it's bootstrapping or cross validation
+which we'll talk about in a minute. You can tell it the number of times to
+do bootstrapping or cross validation. You could also tell it how many times to
+repeat that whole process if you want to be careful about repeated
+cross-validation. You can tell it the size of the training
+set with this p parameter, and then you can tell it a bunch of other
+parameters that depend on the specific problems you're working on. So for example, for time course data, initial window tells
+you the size of the training dataset, the size of the number of time points
+that will be in the training data. And horizon is the number of time
+points that you'll be predicting. You can also have it return the actual
+predictions themselves from each of the iterations when it's
+building the model. You can also have it return
+a different summary, use a different summary function than
+the default summary if you'd like it to. And then you can set preprocessing options
+as well as things like prediction bounds, and you can set the seeds for
+all the different resampling layers. This is particularly useful if you're
+going to be parallelizing your computations across multiple cores. We're not going to cover that too
+extensively here, but if you're training models on large numbers of samples
+with a high number of predictors, using parallel processing
+can be highly useful for proving the computational
+efficiency of your analysis. For resampling, there are a bunch
+of methods that are offered, so this is again passed to
+the trainControl function. You can use standard bootstrapping,
+you can use bootstrapping that adjusts for the fact that multiple
+samples are repeatedly resampled when you're
+doing that subsampling. This will reduce some of
+the bias due to bootstrapping. You can use cross validation which is
+a method that we've talked about in previous lectures. You could also use repeated cross
+validation if you want to do sub cross validation with
+different random draws. You could use leave one
+out cross validation and remember there's a bias during
+its trade off between using large number of folds and smaller number
+of folds when doing cross validation. You can also tell it the number
+of bootstrap samples or the number of subsamples to take and the
+number of times to repeat that subsampling if you're doing something like
+repeated cross validation. All of these parameters can be set. In general the defaults work pretty well, but if you have large numbers of samples
+or you have a model that requires fine tuning across a large number of
+parameters, you may want to increase for example the number of cross-validation or
+bootstrap samples that you take. Finally, an important component of
+training these models is setting the seed. So what I mean by that is most of
+these procedures rely on random resampling of the data. And if you rerun the protocol over again,
+or rerun the code over again, you will get
+a slightly different answer because there was a random draw that was created
+when you were doing cross-validation. If you set a seed, a random number seed,
+what that'll do is that'll ensure that the same random numbers
+get generated each time. It's a little bit of a difficult
+concept to get your head around but the idea is that the computer is
+generating pseudo random numbers. And if you set the seed it will generate
+the same sequence of pseudo random numbers again. It's very useful often
+to set the overall seed. This is a seed for the entire procedure so
+you get repeatable results. If you're doing parallel computation you
+can also set the seed for each resample. You can do that with a seed argument
+to the train control function. Seeding each resamples is particularly
+useful for parallel fits but it's often not necessary when
+you're doing all your processing that in way that isn't parallel. So, here's an example of that. If I set the seed using
+the set.seed function in R, and then I give it a number,
+an integer number, it will set a seed that's consistent
+with performance analysis. So it will generate a set of
+random numbers that is consistent. So then if I fit my model, like this,
+then when it generates bootstrap samples. It will generate those bootstrap samples
+according to the random numbers that come from this seed. If I then reset the seed again, and
+fit the model again, now with a different number, modelFit3 instead of modelFit2,
+then I will get exactly the same bootstrap samples and exactly the same
+measures of accuracy back out again. This is important when
+you're training models and then you want to share your training
+data set with someone else and ensure that you get the same answer
+when they run the same code. There's more information about this in the
+caret tutorial which I think is very good. And also in this document
+about model training and tuning with the caret package.

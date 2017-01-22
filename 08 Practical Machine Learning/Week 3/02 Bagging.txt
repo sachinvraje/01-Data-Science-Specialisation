@@ -1,0 +1,141 @@
+This lecture is about bagging, which is
+short for bootstrap aggregating. The basic idea is that when you fit
+complicated models, sometimes if you average those models
+together, you get a smoother model fit, that gives you a
+better balance between potential bias in your fit and variance in
+your fit. So bootstrap aggregating has a very simple
+idea. The basic idea is take your data and take
+resamples of the data set. So, this is the similar to the idea of
+bootstrapping, which you would have learned about in the inference class that is part of the data science
+specialization. After you resample the cases with
+replacement, then you recalculate your prediction function
+on that resampled data. And then you either average the predictions from all these repeated
+predictors that you built or you majority vote or something like that when you're doing
+classification. The thing is that you get a similar bias
+that you would get from fitting any one of those models individually, but a
+reduced variability because you've averaged a bunch of
+different predictors together. This is most useful for non-linear
+functions. So, we'll show an example with smoothing,
+but it's also very useful for things like
+predicting with trees. So I'm going to go back to the ozone data,
+so it's in the ElemStatLearn package. And I load the the ozone data set. I then order for the purposes of showing
+you how this works, I'm going to order the data set by the
+outcome, the ozone variable here. And then I look at the data set and I can see it has four variables, ozone,
+radiation, temperature, and wind. So the idea is that I'm going to try to predict temperature as a function of
+ozone. [BLANK_AUDIO] So the first thing that we can do is just
+show you an example of how this works. So the basic idea is, I'm going to create
+a matrix here and it's going to have 10 rows and a
+155 columns. Then what I'm going to do is, I'm going to
+resample the data set. In for ten different times, so then a loop over ten different samples of the
+data set. Each time I'm going to sample width
+replacement from the entire data set. Then I'm going to create a new data set,
+ozone0, which is the resample data set for that particular
+element of the loop. And that's just the subset of the data set
+corresponding to our random sample. Then I'm going to reorder the data set
+every time by the ozone variable, and you'll see why in
+just a minute. Then I fit a loess curve each time, so a
+loess is kind of a smooth curve that you can fit
+through the data. It's very similar to the sublime model
+fits that we saw in a previous example with modeling
+with linear regression. And so the basic idea is we're fitting a smooth curve relating temperature, to
+the ozone variables. So temperature is the outcome, and ozone
+is the predictor, and each time I use the resample data set as the data set
+I'm building that predictor on. And I use a common span for each time, the span being a measure of how smooth that
+fit will be. I then predict for every single loess
+curve the outcome for a new data set for the exact same
+values. I always predict for ozone values 1 to
+155. So the ith row of this ll object is now
+the prediction from the loess curve, from the ith resample of
+the date ozone. So what I've done here? I've resampled my data set ten different
+times, fit a smooth curve through it those ten different times, and then what I'm going to do is I'm going to average those
+values. So, here's what it looks like in this
+plot. So, here I've plotted ozone on the x axis, these are the observed ozone values
+versus temperature on the y axis, those are the observed temperature values, and each black dot
+represents an observation. Each gray line here represents the fit
+with one resampled data set. So you can see the gray lines that have a
+lot of curviness to them. They capture a lot of the variability in
+the data set. But they also maybe over-capture some of
+the variability. They're little bit too curvy. Once I've averaged those lines together I
+get something that's a little bit smoother and is closer to the middle
+of the data set. That's the red line. So the red line is the bagged loess curve. It's basically the average of multiple
+fitted loess curves, the same data set where I've resampled it
+every time. There's a proof that shows that the
+bagging estimate will always have lower variability but similar bias to the
+individual model fits that you do. In the caret package there's some models
+that already perform bagging for you. So if you're using the train function you could set method to be bagEarth, treebag,
+or bagFDA. And those are specific bagged models that
+the the model that the caret package will fit for
+you. Alternatively, you can actually build your
+own bagging function in caret. This is a bit of an advanced use and so I
+recommend that you read the documentation carefully if you're
+going to be trying to do that yourself. The idea here though is you basically are
+going to take your predictor variable and put it
+into one data frame. So I'm going to make the predictors be a
+data frame that contains the ozone data. Then you have your outcome variable. Here's it's going to be just a temperature
+variable from the data set. And I pass this to the bag function in
+caret package. So I tell it, I want to use the predictors from that data frame, this is my outcome,
+this is the number of replications with the
+number of sub samples I'd like to take from the data
+set. And then bagControl tells me something
+about how I'm going to fit the model. So fit is the function that's going to be
+applied to fit the model every time. This could be a call to the train function
+in the caret package. Predict is a the way that given a
+particular model fit, that we'll be able to predict
+new values. So this could be, for example, a call to
+the predict function from a trained model. And then aggregate is the way that we'll
+put the var, the predictions together. So for example it could average the predictions across all the different
+replicated samples. You can see that if you look at this custom bag version of the conditional
+regression trees, you can see that it gets some of the benefit that
+I was showing you in the previous slide with
+bag loess. So the idea here is I'm plotting ozone again on the x-axis versus temperature on
+the y-axis. The little grey dots represent actual
+observed values. The red dots represent the fit from a
+single conditional regression tree. And so you can see that for example, it
+capture, it doesn't capture the trend that's going on down here very well,
+the red line is just flat. Even though there appears to be a trend
+upward in the data points here. But when I average over ten different
+bagged model model fits with these conditional
+regression trees. I see that there's an increase here in the
+values in the blue fit, which is the fit from the
+bagged regression. So we're going to look a little bit at those different parts of the bagging
+function. So in this particular case I'm using the
+ctreeBag function, which you can look at in, if you've loaded the caret
+package in R. So, for the fit part it takes the data
+frame that we've passed and the predict, and the
+outcome that we've passed, and it basically uses the
+ctree function to train a tree, conditional regression tree
+on the data set. This is the last command that's called the
+ctree command. So it returns this model fit from the
+ctree function. The prediction takes in the object. So this is going to be an object from the
+ctree model fit. And a new data set x, and it's going to
+get a new prediction. So what you can see here is it basically
+calculates each time the tree response or the outcome from the
+object and the new data. It then calculates this probability matrix
+and returns either the actually the observed
+levels that it predicts or it actually re, just
+returns the response, the predicted response from
+the variable. The aggregation then takes those values
+and averages them together or puts them together in
+some way. So here what this is doing is it's basically getting the prediction from
+every single one of these model fits, so that' s
+across a large number of observations. And then it binds them together into one
+data matrix by with each row being equal to the prediction
+from one of the model predictions. And then it takes the median at every
+value. So in other words it takes the median
+prediction from each of the different model fits across
+all the bootstrap samples. So bagging is very useful for nonlinear
+models, and it's widely used. It's often used with trees. And you can think of an extension to this
+as being random forest, which we'll talk
+about in a future lecture. Several models use bagging and caret's
+main train function, like I told you about in
+previous slide. And you can also build your own specific
+bagging functions, for any classification or prediction algorithm
+that you'd like to take a look at. For further resources, I've linked to a
+couple of different tutorials on bagging and
+boosting, as well as the Elements of Statistical
+Learning which has a lot more details about how bagging
+works. But remember that the basic idea is to
+basically resample your data, refit your nonlinear model,
+then average those model fits together over resamples to get a
+smoother model fit, than you would've got from any individual
+fit on its own
