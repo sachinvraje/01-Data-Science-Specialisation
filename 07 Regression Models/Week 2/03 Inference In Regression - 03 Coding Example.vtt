@@ -1,0 +1,521 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.328
+Okay.
+
+2
+00:00:01.328 --> 00:00:05.983
+Let's go through and just demonstrate
+that the formulas I'm giving are exactly
+
+3
+00:00:05.983 --> 00:00:09.687
+the formulas that r is using when
+it performs its calculations.
+
+4
+00:00:09.687 --> 00:00:13.768
+So, I'm going to use the data
+diamond diamond dataset and
+
+5
+00:00:13.768 --> 00:00:18.420
+that's in the UsingR library,
+so I'm going to load those.
+
+6
+00:00:18.420 --> 00:00:22.250
+Define y, x and
+n like I always do with this dataset, so
+
+7
+00:00:22.250 --> 00:00:23.468
+I don't have to type so much.
+
+8
+00:00:23.468 --> 00:00:27.040
+My beta one is the correlation
+between the y and
+
+9
+00:00:27.040 --> 00:00:31.680
+the x times the standard deviation of y
+divided by the standard deviation of x.
+
+10
+00:00:31.680 --> 00:00:36.450
+And my beta nojught is the mean of the y's
+minus beta1 times the mean of the x.
+
+11
+00:00:39.870 --> 00:00:46.372
+My residuals, oop, my residuals are my
+response y minus the predicted values,
+
+12
+00:00:46.372 --> 00:00:53.710
+beta nought plus beta1 x, so here I've
+just carried the subtraction through.
+
+13
+00:00:53.710 --> 00:00:55.172
+There's my residuals.
+
+14
+00:00:55.172 --> 00:00:57.417
+My estimate of the standard
+deviate of the,
+
+15
+00:00:57.417 --> 00:00:59.968
+standard deviation around
+the regression line,
+
+16
+00:00:59.968 --> 00:01:03.672
+the variability around the regression
+is the average of the residuals,
+
+17
+00:01:03.672 --> 00:01:07.553
+except remember, we're dividing by n
+minus 2 instead of n and to get it to be
+
+18
+00:01:07.553 --> 00:01:11.472
+a standard deviation rather than
+a variance, I'm going to square root it.
+
+19
+00:01:11.472 --> 00:01:12.331
+There's my sigma.
+
+20
+00:01:12.331 --> 00:01:18.299
+That's my estimate of sigma from
+the previous several pages.
+
+21
+00:01:18.299 --> 00:01:23.639
+My sums of my squares of x's is just
+the numerator of the variance calculation,
+
+22
+00:01:23.639 --> 00:01:25.683
+but let's just do it directly.
+
+23
+00:01:25.683 --> 00:01:30.002
+It's x minus its mean squared and
+sum of the, adding those up.
+
+24
+00:01:30.002 --> 00:01:31.645
+So let me get that and
+
+25
+00:01:31.645 --> 00:01:36.689
+then my standard error from my
+beta nought from my intercept.
+
+26
+00:01:36.689 --> 00:01:40.961
+If I just simply plug into the formula,
+there, I've written it out.
+
+27
+00:01:40.961 --> 00:01:45.674
+And my standard error for my beta1,
+which is I think the more useful and,
+
+28
+00:01:45.674 --> 00:01:49.857
+and mentally important formula to
+commit to memory is the sigma,
+
+29
+00:01:49.857 --> 00:01:53.813
+the variance, the standard
+deviation around the regression
+
+30
+00:01:53.813 --> 00:01:57.029
+line divided by the sum of
+the squares of the x's.
+
+31
+00:01:57.029 --> 00:01:59.815
+The sum of the square deviations
+of the x's around their mean.
+
+32
+00:01:59.815 --> 00:02:01.115
+Okay.
+
+33
+00:02:01.115 --> 00:02:01.626
+There we go.
+
+34
+00:02:01.626 --> 00:02:07.384
+There's the standard error for beta1,
+I'm going to create the two t statistics.
+
+35
+00:02:07.384 --> 00:02:11.323
+Which if you're testing
+a hypothesis that beta1 is zero or
+
+36
+00:02:11.323 --> 00:02:15.674
+beta nought is zero,
+then that's just going to be the estimate.
+
+37
+00:02:15.674 --> 00:02:19.087
+Here's my estimate divided
+by its standard error.
+
+38
+00:02:19.087 --> 00:02:22.198
+And so we don't have to
+subtract off the true value,
+
+39
+00:02:22.198 --> 00:02:25.960
+because the true value is assumed
+to be zero under this hypothesis.
+
+40
+00:02:25.960 --> 00:02:30.181
+And so for my beta1 hypothesis,
+it's going to be beta1 divided
+
+41
+00:02:30.181 --> 00:02:34.736
+by its standard error and then I'm
+going to calculate my two p values.
+
+42
+00:02:34.736 --> 00:02:37.256
+Again, if you've taken
+the inference class,
+
+43
+00:02:37.256 --> 00:02:40.982
+then how you go from a t statistic to
+a p value should not be a great leap.
+
+44
+00:02:40.982 --> 00:02:46.048
+But in this case, it's going to
+be twice my t probability where
+
+45
+00:02:46.048 --> 00:02:51.020
+in both these cases,
+the estimates are larger than zero so the,
+
+46
+00:02:51.020 --> 00:02:56.085
+so I'm going to look at the probability
+of being this statistic or
+
+47
+00:02:56.085 --> 00:03:01.244
+larger and I'm going to double those
+two t probabilities [SOUND] and
+
+48
+00:03:01.244 --> 00:03:06.403
+them I'm going to create my
+coefficient table created manually by
+
+49
+00:03:06.403 --> 00:03:12.148
+me without having done any lm or
+any built in higher level R function.
+
+50
+00:03:12.148 --> 00:03:16.614
+And I'm going to give it,
+its rownames and its column names, so
+
+51
+00:03:16.614 --> 00:03:18.858
+that it looks like R's output.
+
+52
+00:03:18.858 --> 00:03:21.575
+And then I'm, now I'm going to
+show you the easy way to do it.
+
+53
+00:03:21.575 --> 00:03:22.411
+Okay.
+
+54
+00:03:22.411 --> 00:03:23.967
+So here let me print it out.
+
+55
+00:03:23.967 --> 00:03:29.199
+There it is printed out and then now,
+I'm just going to do fit, lm,
+
+56
+00:03:29.199 --> 00:03:34.053
+my response y is a linear
+relationship with my predictor x and
+
+57
+00:03:34.053 --> 00:03:38.548
+then I'm going to get
+the summary of the coefficients.
+
+58
+00:03:38.548 --> 00:03:40.545
+You'll see everything is exactly the same.
+
+59
+00:03:40.545 --> 00:03:44.492
+So, if you didn't follow all this,
+it's, it's not too big of a deal.
+
+60
+00:03:44.492 --> 00:03:45.987
+I just wanted to show you for
+
+61
+00:03:45.987 --> 00:03:50.212
+once that the formulas that I'm giving
+you are exactly the right formulas and
+
+62
+00:03:50.212 --> 00:03:53.989
+we verified them computationally
+by checking them out on a dataset.
+
+63
+00:03:53.989 --> 00:03:57.682
+Maybe check them out on another
+dataset just to verify for yourself.
+
+64
+00:03:57.682 --> 00:04:01.327
+Let's go through getting
+a confidence interval.
+
+65
+00:04:01.327 --> 00:04:05.646
+So my fit,
+the variable fit was the output of lm.
+
+66
+00:04:05.646 --> 00:04:08.572
+Let's see what happens
+if I type summary fit.
+
+67
+00:04:08.572 --> 00:04:12.124
+You get the full output from lm.
+
+68
+00:04:12.124 --> 00:04:16.173
+So it gives you facts about the residuals,
+it give you the coefficients,
+
+69
+00:04:16.173 --> 00:04:17.882
+the estimated coefficients.
+
+70
+00:04:17.882 --> 00:04:20.831
+The Standard Errors, the t values and
+the associated p values.
+
+71
+00:04:20.831 --> 00:04:24.871
+These are all for test of whether or
+not the intercept is 0 or the slope is 0.
+
+72
+00:04:24.871 --> 00:04:28.380
+Now of course 0 intercept
+may not be of interest, but
+
+73
+00:04:28.380 --> 00:04:31.678
+almost always a test of
+a 0 slope is of interest.
+
+74
+00:04:31.678 --> 00:04:35.817
+But it also gives you
+the residual standard deviation,
+
+75
+00:04:35.817 --> 00:04:40.836
+the degrees of freedom The r-squared,
+the adjusted r-squared,
+
+76
+00:04:40.836 --> 00:04:44.282
+which we'll talk about
+later on in the class.
+
+77
+00:04:44.282 --> 00:04:49.525
+Let's go ahead and
+generate our confidence intervals for
+
+78
+00:04:49.525 --> 00:04:52.525
+our intercept and for our slope.
+
+79
+00:04:52.525 --> 00:04:57.424
+So now I've assigned that summary.
+
+80
+00:04:57.424 --> 00:05:00.446
+The summary from the lm
+statement to an object in R, but
+
+81
+00:05:00.446 --> 00:05:04.669
+I just wanted the table part, so
+I'm grabbing the, just the coefficient.
+
+82
+00:05:04.669 --> 00:05:05.690
+So, it's right here.
+
+83
+00:05:05.690 --> 00:05:07.409
+See, I'm just grabbing
+the coefficient table.
+
+84
+00:05:07.409 --> 00:05:10.729
+So let me just print out that variable,
+just to show you what it looks like.
+
+85
+00:05:10.729 --> 00:05:14.455
+It's just that table part,
+just the estimates, the standard errors,
+
+86
+00:05:14.455 --> 00:05:16.116
+the t values, and the p values.
+
+87
+00:05:16.116 --> 00:05:16.905
+Okay.
+
+88
+00:05:16.905 --> 00:05:20.550
+So, our confidence interval
+is just going to be estimate.
+
+89
+00:05:20.550 --> 00:05:25.193
+So here's for the intercept,
+estimate plus or minus
+
+90
+00:05:25.193 --> 00:05:30.800
+the 97.5 t quantile degrees of freedom,
+just to make
+
+91
+00:05:30.800 --> 00:05:33.360
+sure I get the degrees of freedom right,
+so I don't even have to think at all,
+
+92
+00:05:33.360 --> 00:05:38.370
+I'm grabbing fit$ degrees of freedom and
+then times the standard error.
+
+93
+00:05:38.370 --> 00:05:39.570
+There, I'm grabbing the standard error.
+
+94
+00:05:40.650 --> 00:05:49.300
+And then I'm doing it for the slope, which
+is in the second row of the first column.
+
+95
+00:05:49.300 --> 00:05:52.242
+So the slope estimate plus or
+
+96
+00:05:52.242 --> 00:05:58.128
+minus the releventy quantile
+times its standard error,
+
+97
+00:05:58.128 --> 00:06:02.916
+which is in the two two
+cell of this table here.
+
+98
+00:06:02.916 --> 00:06:09.890
+And then the, slope is going to be
+interpreted in change in Singatore,
+
+99
+00:06:09.890 --> 00:06:15.472
+Singapore dollar price per
+one mass increase in carats,
+
+100
+00:06:15.472 --> 00:06:20.957
+in carat, the unit for the x,
+the predictor variable.
+
+101
+00:06:20.957 --> 00:06:26.393
+But I, I might want it for a 0.1 increase,
+because as we mentioned earlier or
+
+102
+00:06:26.393 --> 00:06:30.848
+looking at the data, a one carat
+increase was kind of a big increase.
+
+103
+00:06:30.848 --> 00:06:33.704
+So why don't I divide my whole intervil,
+interval by ten.
+
+104
+00:06:33.704 --> 00:06:36.189
+So let's run both of them.
+
+105
+00:06:36.189 --> 00:06:39.619
+And particularly,
+focus in on this later one,
+
+106
+00:06:39.619 --> 00:06:42.551
+the confidence interval for the slope.
+
+107
+00:06:42.551 --> 00:06:46.199
+So, it's saying, with 95% confidence,
+
+108
+00:06:46.199 --> 00:06:51.249
+we estimate that a 0.1 carat
+increase in diamond size is going
+
+109
+00:06:51.249 --> 00:06:57.250
+to result in a 356 to 389 increase
+in price in, in Singapore dollars.

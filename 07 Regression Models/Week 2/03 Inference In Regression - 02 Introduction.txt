@@ -1,0 +1,64 @@
+Hi, and welcome to the lecture
+on inference in regression. Before we begin talking about inference,
+let's just revisit our model so that it's fresh in our mind. Our model was that the response,
+Yi, is the intercept, beta naught, plus the slope, beta 1, times
+the predictor, X1, plus an error term. The error term, epsilon i,
+is what we're labeling it. We're going to to assume is
+normally distributed mean 0 with the variant sigma squared. For the time being, we're going to
+assume that the true model is known, and this will be the basis for
+most of this class. I, I'm going to assume that you've seen
+some amounts of statistical imprints previously, so you know what a confidence
+interval is and what a hypothesis test is. Let's also remind ourselves that the intercept is estimated at
+Y bar minus beta 1 hat X bar. And our beta 1 hat is the correlation
+between the predictor and the response multiplied times
+the standard deviation of the response over the standard
+deviation of the predictor. So let's talk about how we can
+perform statistical hypothesis tests about our parameters. Let's review a couple of concepts
+from statistical inference. First, statistics of the form, theta hat
+minus theta divided by the standard error, often have the following properties. First of all,
+they're often normally distributed. And for finite samples, if we replace
+the variance with the estimated variance, they often have a T distribution. And we'll see this is true in regression
+contexts under the assumptions we've made. This statistic can be used to create
+hypothesis tests of theta being a particular null value versus one of
+the logical alternatives of it being less than, or greater than, or
+not equal to this null value. Or we can create confidence intervals
+of the form, estimate plus or minus a relevant quantile times the
+standard error, where q is the relevant quantile, and we always take the 1 over,
+the 1 minus alpha over 2 quantile. For example, if our alpha is 5%, so we want a 95% confidence interval,
+we take the 97.5th quantile. And this is, this is either going to
+come from a normal contribution or T distribution. So hopefully, none of these facts
+are news to you after having had the statistical inference class. In the regression case,
+with IID sampling assumptions for our normally distributed errors,
+inference will follow along these lines very similarly
+to what you saw in that class. And we're not going to cover at all
+asymptotics for regression analysis, but suffice it to say, it's not mandatory for
+the errors to be Gaussian for our statistical inferences
+in regression to hold. You can appeal to large sample theory,
+though it's a little bit more complicated. So the variance of our regression slope
+is actually a highly informative formula. This is variance of beta one hat,
+and it involves two things, how variable the points are around
+the true regression line, sigma squared, and
+how variable my X's are. Now, I think the numerator, how variable
+the points are around the regression line, I think it's somewhat understandable
+as to why that would de, that we would get better estimates of our
+regression slope if that were smaller. However, it's maybe less intuitive
+to understand why we want more variance in our predictor in order to get
+lower variance in our regression slope. But let's draw some pictures. If our regressors, our predictors,
+are all packed in very tightly, closely together, then it's clear we're
+not going to estimate a very good line. It could sort of bend around that cloud
+of points very easily and get equivalent, inequivalent fits. On the other hand, if we spread our axis out, then we'll
+get a better fitted regression line. We'll get a lower variance for the slope. Now, it turns out the lowest you can
+make that variance is to push half the observations to one end and the other
+half of the observations to another end. However, you're banking quite a bit then
+on having a line in between those two because you haven't collected any
+data to evaluate that property. Here I also give you
+the variance of the intercept. It's maybe a little less informative because intercepts are often a little
+less of interest than the slopes. But nonetheless, it, it has this form
+right here that we can calculate and write down. In both these cases, we replace sigma
+squared by its logical estimate, the 1 over n minus 2 times
+the sum of the squared residuals. We covered that in the last lecture. It's probably not surprising that our
+slope or intercept estimate minus the true value divided by their standard
+error follows a T distribution, and it has n minus 2 degrees of freedom. And so this can be used to create
+confidence intervals and hypothesis tests. And we'll go through some examples
+here in a couple of slides, but first I'm just going to show you that
+all these results exactly hold, and it's what R is reporting.

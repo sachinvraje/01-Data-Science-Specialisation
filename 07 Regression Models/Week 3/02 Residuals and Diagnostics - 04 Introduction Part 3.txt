@@ -1,0 +1,104 @@
+Okay, so let's go through
+some simulation experiments to understand how some of these
+diagnostic measures work. In this first case, I'm looking at an instance where there's
+a big cloud of uncorrelated data and I did this by just generating a bunch
+of pairs of independent random normals. Then I added random standard then
+I added the point at ten,ten which clearly does not fit the rest
+of the trend of data. What we can see in this case is
+that there's a strong correlation estimated by the data merely because
+of the existence of this point otherwise the correlation
+would be estimated to be zero. So you can see the code right here that
+I use to generate and plot the data. So let's look at a couple of
+the diagnostic values and the first thing, why we look at
+the DF datas, so here's the dfbetas, the round statement here just rounds
+into the third decimal place when I put the three there and notice this first
+point which is the ten, ten point is or as the magnitude larger of a dfbeta then,
+the remaining point. Let's look at the hat values. The hat value for this point is
+much larger than the hat values for the remaining points. The hat values have to be between zero and
+one. So and it's of course much
+larger than the other points. So if we are looking at these,
+we would obviously single this point out. Now let's look at another point,
+another instance where there's a clear regression relationship, here I just
+generated the data along a line, and then I generated another outlier that's
+similarly distant from the cloud of data. However it adheres very nicely
+to the regression line. So let's see how our diagnostic
+values look in this specific case. Okay, so here's my dfbetas and
+if you look this first point, which was that outlying point. It's still large but nowhere near as distinctively
+large as in the other case. So it still does appear to have
+some influence in the fit, but nothing like in the other case. However if you look at
+the hat values right. If you look at the hat values,
+this has a much larger hat value than and the remaining all the other points. A factor of ten than
+most of the other points. Why? Well, if we go back what
+we see is that this point is outside of the range of the X values. It's outside of the range of the X values. But it does adhere to
+the direction relationship. So it's going to have
+a large leverage value but not a large DF beta or DFS or
+some of these other things. Let's look at this example by Stefanski
+that to me shows why we do residual plots. Basically, the reason we look at
+residual plots is because they zoom on potential problems with our model. In this case you can download
+the data from their website. The pair Y scatter plots
+are given here they show kind of nothing interesting other
+than a lot of over plotting. Here I show my linear model fit and
+if you look every single P values highly significant for
+every single coefficient here. I set all of the data points but,
+for this to work for this model, you have to try to intercept in the way
+that he generate with the data. Okay, should we be done, is this fine,
+well here's the problem. So the residual plot that you intend to
+do when you have multi variable examples because you can't plop
+the residuals versus the only acts as you can in linear regression
+is you need to pick a number of the X with the most common ways to plot
+the residuals versus the fitted values but residuals which are e vs y hat, okay. So what happens in this
+particular instance when we plot the residuals versus y hat. Now you can see you get this very
+clever little picture that comes out. So what's happened? Without looking at the residuals
+we wouldn't have seen anything. But looking at the residuals has
+zoomed in on this very clear aspect of poor model fit and is a very clear systematic pattern
+in our residuals that we've missed. And remember in most cases in regression
+we want to model the systematic things and everything that we can explain,
+we want to leave to, we want to model this as if we're
+noise but the systematic things like obviously this picture is systematic
+we want to actually be able to model. So in this case without having
+to look at the residual plot, we would have missed this pattern. It is really just created by
+Stephansky and his co-authors to described for
+us why it is that we do residual plots and that is that they zoom in ,so finally
+on aspects of poor model fair. So let's go back to the swiss data and
+just look at the different examples of diagnostic plots that
+can spit out by default by art. Remember at the beginning of
+the lecture we started out with this so let's see if now we can
+interpret these things. Well, for
+the residual plot versus the fitted values that's the same plot as we just saw
+with the oriliow just a slide ago. So what you're looking at in that plot is
+trying to find anything that's systematic. For example, if you saw the data
+look something like that. That would suggest heteroscedasticity that the variance is either increasing or
+decreasing. In a way that you wouldn't like and so on. So we in this plot it doesn't look so bad. There doesn't seem to be
+too many aspects of absence of model departures there. The Q-Q plot is specifically
+designed to test normality or not to test to evaluate normality
+of the error terms, okay? This scale location plot is plotting
+the standardized residuals, remember we talked about standardized residuals
+they're the ordinary residuals but standardize, so they have a more kind
+of comparable scale across subject, across experiments and the scale to try
+and make them to be like a TY statistic. So again, this is a lot like the residual
+plot, you're applying them against the fitted values but, now you just
+mostly, you've change the scale. So that's potentially useful for looking
+at these across different experiments. The final is plot of
+the Residuals vs Leverage. So here's the standardized
+Residuals on this scale and then here's the Leverage on that scale and
+in this plot again you're trying to look at any sort of
+systematic pattern any reason why points with higher leverage are having higher or
+particularly small residual values. If you had an instance like where
+you have plots like this and you have one very high leverage point and
+you get something like that. That point might have
+a very small residual but unnecessarily while it has happened
+to have very large leverage or you might have an instance like this
+where even though it's really impacted the regression line, it still has high
+leverage and also has a high residual. So at any rate these are many, these are
+just a couple of examples of the kind of plots you might want to look at in
+this data set none of them seem to look too inherently bad but when you
+go through these things ideally you would have something where you could click
+on the individual points and it would It would describe the aspects of the point
+when you hover over it with your mouse. Some of the other software
+systems can do that. R can do that now,
+we'll talk in the data products class how you can actually
+create those kinds of plots. So that's the end of the lecture and I look forward to seeing you next time,
+but I hope now that you know a little bit about diagnostic measures, and influence
+diagnostics, and leverage diagnostics that you can incorporate them into
+your analysis in the future. All right.
+See you next time.

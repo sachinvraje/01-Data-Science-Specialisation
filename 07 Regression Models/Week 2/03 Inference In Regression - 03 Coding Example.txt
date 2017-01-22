@@ -1,0 +1,85 @@
+Okay. Let's go through and just demonstrate
+that the formulas I'm giving are exactly the formulas that r is using when
+it performs its calculations. So, I'm going to use the data
+diamond diamond dataset and that's in the UsingR library,
+so I'm going to load those. Define y, x and
+n like I always do with this dataset, so I don't have to type so much. My beta one is the correlation
+between the y and the x times the standard deviation of y
+divided by the standard deviation of x. And my beta nojught is the mean of the y's
+minus beta1 times the mean of the x. My residuals, oop, my residuals are my
+response y minus the predicted values, beta nought plus beta1 x, so here I've
+just carried the subtraction through. There's my residuals. My estimate of the standard
+deviate of the, standard deviation around
+the regression line, the variability around the regression
+is the average of the residuals, except remember, we're dividing by n
+minus 2 instead of n and to get it to be a standard deviation rather than
+a variance, I'm going to square root it. There's my sigma. That's my estimate of sigma from
+the previous several pages. My sums of my squares of x's is just
+the numerator of the variance calculation, but let's just do it directly. It's x minus its mean squared and
+sum of the, adding those up. So let me get that and then my standard error from my
+beta nought from my intercept. If I just simply plug into the formula,
+there, I've written it out. And my standard error for my beta1,
+which is I think the more useful and, and mentally important formula to
+commit to memory is the sigma, the variance, the standard
+deviation around the regression line divided by the sum of
+the squares of the x's. The sum of the square deviations
+of the x's around their mean. Okay. There we go. There's the standard error for beta1,
+I'm going to create the two t statistics. Which if you're testing
+a hypothesis that beta1 is zero or beta nought is zero,
+then that's just going to be the estimate. Here's my estimate divided
+by its standard error. And so we don't have to
+subtract off the true value, because the true value is assumed
+to be zero under this hypothesis. And so for my beta1 hypothesis,
+it's going to be beta1 divided by its standard error and then I'm
+going to calculate my two p values. Again, if you've taken
+the inference class, then how you go from a t statistic to
+a p value should not be a great leap. But in this case, it's going to
+be twice my t probability where in both these cases,
+the estimates are larger than zero so the, so I'm going to look at the probability
+of being this statistic or larger and I'm going to double those
+two t probabilities [SOUND] and them I'm going to create my
+coefficient table created manually by me without having done any lm or
+any built in higher level R function. And I'm going to give it,
+its rownames and its column names, so that it looks like R's output. And then I'm, now I'm going to
+show you the easy way to do it. Okay. So here let me print it out. There it is printed out and then now,
+I'm just going to do fit, lm, my response y is a linear
+relationship with my predictor x and then I'm going to get
+the summary of the coefficients. You'll see everything is exactly the same. So, if you didn't follow all this,
+it's, it's not too big of a deal. I just wanted to show you for once that the formulas that I'm giving
+you are exactly the right formulas and we verified them computationally
+by checking them out on a dataset. Maybe check them out on another
+dataset just to verify for yourself. Let's go through getting
+a confidence interval. So my fit,
+the variable fit was the output of lm. Let's see what happens
+if I type summary fit. You get the full output from lm. So it gives you facts about the residuals,
+it give you the coefficients, the estimated coefficients. The Standard Errors, the t values and
+the associated p values. These are all for test of whether or
+not the intercept is 0 or the slope is 0. Now of course 0 intercept
+may not be of interest, but almost always a test of
+a 0 slope is of interest. But it also gives you
+the residual standard deviation, the degrees of freedom The r-squared,
+the adjusted r-squared, which we'll talk about
+later on in the class. Let's go ahead and
+generate our confidence intervals for our intercept and for our slope. So now I've assigned that summary. The summary from the lm
+statement to an object in R, but I just wanted the table part, so
+I'm grabbing the, just the coefficient. So, it's right here. See, I'm just grabbing
+the coefficient table. So let me just print out that variable,
+just to show you what it looks like. It's just that table part,
+just the estimates, the standard errors, the t values, and the p values. Okay. So, our confidence interval
+is just going to be estimate. So here's for the intercept,
+estimate plus or minus the 97.5 t quantile degrees of freedom,
+just to make sure I get the degrees of freedom right,
+so I don't even have to think at all, I'm grabbing fit$ degrees of freedom and
+then times the standard error. There, I'm grabbing the standard error. And then I'm doing it for the slope, which
+is in the second row of the first column. So the slope estimate plus or minus the releventy quantile
+times its standard error, which is in the two two
+cell of this table here. And then the, slope is going to be
+interpreted in change in Singatore, Singapore dollar price per
+one mass increase in carats, in carat, the unit for the x,
+the predictor variable. But I, I might want it for a 0.1 increase,
+because as we mentioned earlier or looking at the data, a one carat
+increase was kind of a big increase. So why don't I divide my whole intervil,
+interval by ten. So let's run both of them. And particularly,
+focus in on this later one, the confidence interval for the slope. So, it's saying, with 95% confidence, we estimate that a 0.1 carat
+increase in diamond size is going to result in a 356 to 389 increase
+in price in, in Singapore dollars.

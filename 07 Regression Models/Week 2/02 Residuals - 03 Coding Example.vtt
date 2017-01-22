@@ -1,0 +1,1009 @@
+WEBVTT
+
+1
+00:00:01.129 --> 00:00:05.586
+Let's go through calculating residuals and
+we're going to use the diamond dataset.
+
+2
+00:00:05.586 --> 00:00:09.087
+Let's see.
+So, our data is the diamond dataset.
+
+3
+00:00:09.087 --> 00:00:11.378
+So let's do that.
+
+4
+00:00:11.378 --> 00:00:17.514
+I'm going to redefine price as y,
+x as carat and n as, as the length of the,
+
+5
+00:00:17.514 --> 00:00:22.462
+the number of pairs, just so
+I don't have to type so much.
+
+6
+00:00:22.462 --> 00:00:25.336
+Now, I'm going to assign
+to a variable named fit.
+
+7
+00:00:25.336 --> 00:00:32.420
+I'm going to assign my linear regression
+object that gets created from lm.
+
+8
+00:00:32.420 --> 00:00:35.420
+So let me do that.
+
+9
+00:00:35.420 --> 00:00:40.178
+Now the easiest way to get
+the residuals is just do
+
+10
+00:00:40.178 --> 00:00:44.712
+resid of fit, so
+I'm going to define those as e.
+
+11
+00:00:44.712 --> 00:00:48.230
+Let me show you another way to get
+the residuals that of course has to do
+
+12
+00:00:48.230 --> 00:00:49.086
+the same thing.
+
+13
+00:00:49.086 --> 00:00:54.124
+If I were to get my predicted fitted
+values and remember, if I don't give
+
+14
+00:00:54.124 --> 00:00:59.243
+the predict function new data,
+if I just give it the output from lm, the,
+
+15
+00:00:59.243 --> 00:01:04.545
+the assignment from ln, then it will
+just predict at the observed x values.
+
+16
+00:01:04.545 --> 00:01:11.295
+So yhat now is a vector of predictions
+at the observed carat values.
+
+17
+00:01:11.295 --> 00:01:15.863
+Now, I just want to show you that my
+residual's calculated via the red,
+
+18
+00:01:15.863 --> 00:01:20.967
+resid functions are the same as the
+residuals that I'm calculating manually,
+
+19
+00:01:20.967 --> 00:01:23.420
+which is just subtracting y and yhat.
+
+20
+00:01:23.420 --> 00:01:28.042
+So the way to do that is just take the
+difference, the absolute differences and
+
+21
+00:01:28.042 --> 00:01:29.379
+find the largest one.
+
+22
+00:01:29.379 --> 00:01:33.086
+And I see that the largest one is on
+the scale of 10 to the minus 13th.
+
+23
+00:01:33.086 --> 00:01:36.046
+So, up to numerical precision,
+it's the same thing.
+
+24
+00:01:36.046 --> 00:01:41.098
+Then lastly, I just want to show
+that if I manually even calculate
+
+25
+00:01:41.098 --> 00:01:45.777
+the fitted values, coef fit 1 and
+then coef fit 2 times x,
+
+26
+00:01:45.777 --> 00:01:50.753
+that I of course will get very,
+I get exactly the same numbers.
+
+27
+00:01:50.753 --> 00:01:53.254
+So, up to numeric precision,
+exactly the same.
+
+28
+00:01:53.254 --> 00:01:56.805
+So the way you want to do it to
+get the residuals is resid, but
+
+29
+00:01:56.805 --> 00:02:01.158
+hopefully showing you this other
+code will illustrate what's going on
+
+30
+00:02:01.158 --> 00:02:05.969
+in the background with what res, the
+actual calculation that resid is doing.
+
+31
+00:02:05.969 --> 00:02:10.753
+Finally, let me show you that
+the sum of my residuals is zero.
+
+32
+00:02:10.753 --> 00:02:14.961
+Well, it's 10 to the minus 14th,
+which is close enough to zero for me.
+
+33
+00:02:14.961 --> 00:02:20.717
+And then also the sum of my residuals
+times the price variable x,
+
+34
+00:02:20.717 --> 00:02:22.961
+that also has to be zero.
+
+35
+00:02:22.961 --> 00:02:24.378
+Well, 10 to the minus 15th.
+
+36
+00:02:24.378 --> 00:02:29.586
+So, up to numerical position
+is zero in both cases.
+
+37
+00:02:29.586 --> 00:02:34.300
+So the residuals are the sign lengths
+of the red line that undershown
+
+38
+00:02:34.300 --> 00:02:35.795
+the following plot.
+
+39
+00:02:35.795 --> 00:02:39.039
+And I'm going to do this using
+base R graphics, just so
+
+40
+00:02:39.039 --> 00:02:42.003
+I mix a little base R with
+some ggplot graphics.
+
+41
+00:02:42.003 --> 00:02:48.797
+So, I'm going to create my plot here,
+there's my plot.
+
+42
+00:02:48.797 --> 00:02:53.725
+I'm going to add the fitted line and in
+base R, if you want to add the fitted line
+
+43
+00:02:53.725 --> 00:02:58.807
+and you fit a regression line, you can
+just do abline and put the object that you
+
+44
+00:02:58.807 --> 00:03:03.670
+assign to the lm fit just as an argument
+and it will add the regression line.
+
+45
+00:03:03.670 --> 00:03:07.336
+Here I want the line width to be two,
+so it shows up a little bit better.
+
+46
+00:03:07.336 --> 00:03:10.909
+And then I'm just going to for loop over,
+
+47
+00:03:10.909 --> 00:03:14.925
+over the data values to
+add in the red lines.
+
+48
+00:03:14.925 --> 00:03:17.336
+Let me zoom in and show you that plot.
+
+49
+00:03:17.336 --> 00:03:19.378
+There's my plot.
+
+50
+00:03:19.378 --> 00:03:26.795
+Now my residuals are these red lines.
+
+51
+00:03:26.795 --> 00:03:30.725
+These distances,
+where if the point is above the line,
+
+52
+00:03:30.725 --> 00:03:32.994
+the residual will be positive.
+
+53
+00:03:32.994 --> 00:03:37.253
+And if the point is below the line,
+the residual will be negative.
+
+54
+00:03:37.253 --> 00:03:43.586
+This scatter plot isn't particularly
+useful for assessing residual variation.
+
+55
+00:03:43.586 --> 00:03:46.385
+Notice all of the blank
+space in this part and
+
+56
+00:03:46.385 --> 00:03:51.086
+this part of the graph, making the plot
+kind of useless for that purpose.
+
+57
+00:03:51.086 --> 00:03:55.006
+So, instead,
+why don't we plot the residuals
+
+58
+00:03:55.006 --> 00:03:59.713
+on the vertical axis versus
+mass on the horizontal axis?
+
+59
+00:03:59.713 --> 00:04:06.920
+Let's go ahead and
+run the code and here's the plot.
+
+60
+00:04:06.920 --> 00:04:11.711
+Now we can see the residual
+variation much more clearly.
+
+61
+00:04:11.711 --> 00:04:15.632
+When you look at a residual plot,
+you're looking at,
+
+62
+00:04:15.632 --> 00:04:18.628
+you're looking for any form of pattern.
+
+63
+00:04:18.628 --> 00:04:21.378
+The residuals should
+be mostly patternless.
+
+64
+00:04:21.378 --> 00:04:27.586
+Also, remember that if we've included an
+intercept, residuals have to sum to zero.
+
+65
+00:04:27.586 --> 00:04:32.050
+So they have to lie above and
+below this horizontal line at zero,
+
+66
+00:04:32.050 --> 00:04:36.100
+and you'd like them to be sort
+of nicely in a random looking
+
+67
+00:04:36.100 --> 00:04:39.503
+fashion distributed both above and
+below zero.
+
+68
+00:04:39.503 --> 00:04:43.503
+We can see some interesting patterns
+by honing in on the residual plot here.
+
+69
+00:04:43.503 --> 00:04:48.357
+For example, we can see that
+there were lots of diamonds of
+
+70
+00:04:48.357 --> 00:04:51.626
+exactly the same mass measured in the,
+
+71
+00:04:51.626 --> 00:04:57.172
+in this sort of gets lost in the scatter
+plot by zooming in this way,
+
+72
+00:04:57.172 --> 00:05:00.671
+we, we notice that particular feature.
+
+73
+00:05:00.671 --> 00:05:06.467
+Next, what we're going to go through
+some pathological residual plots,
+
+74
+00:05:06.467 --> 00:05:10.753
+just to highlight what
+residual plots can do for you.
+
+75
+00:05:10.753 --> 00:05:13.595
+So, I've concocted some examples that will
+
+76
+00:05:13.595 --> 00:05:17.795
+help us to understand how residuals
+can highlight in on model fit.
+
+77
+00:05:17.795 --> 00:05:22.390
+So let's look in the R mark down file and
+I'm going to show it again at the console
+
+78
+00:05:22.390 --> 00:05:27.003
+rather than going through the slides,
+so you can actually watch me doing it.
+
+79
+00:05:27.003 --> 00:05:31.628
+X here is just going to be
+uniform from minus 3 to plus 3.
+
+80
+00:05:31.628 --> 00:05:36.361
+So, I've created a x variable
+that's just a kind of a random
+
+81
+00:05:36.361 --> 00:05:40.503
+smattering of points between
+the values 3 and minus 3.
+
+82
+00:05:40.503 --> 00:05:43.870
+My y is equal to x, so
+it's an identity line, but
+
+83
+00:05:43.870 --> 00:05:47.170
+then I'm going to add
+another term that's sin x.
+
+84
+00:05:47.170 --> 00:05:51.998
+So, it should look like an identity line,
+but kind of oscillating around it a little
+
+85
+00:05:51.998 --> 00:05:55.133
+bit and then I'm adding some
+normal noise on top of it.
+
+86
+00:05:55.133 --> 00:06:01.295
+So let me add my y and I'm going to switch
+back to ggplot, because I like it better.
+
+87
+00:06:01.295 --> 00:06:04.836
+So then base graphics now.
+
+88
+00:06:04.836 --> 00:06:07.628
+So you, I've created my gg plot.
+
+89
+00:06:07.628 --> 00:06:11.829
+I'm going to, I'm going to go ahead and
+add the smooth first,
+
+90
+00:06:11.829 --> 00:06:16.800
+because I want it as the bottom most layer
+and then I'm going to add my two sets
+
+91
+00:06:16.800 --> 00:06:21.128
+of points and there's my,
+there's my scatter plot.
+
+92
+00:06:21.128 --> 00:06:26.097
+And so let me zoom in and it's a little
+difficult to see the non-linearity,
+
+93
+00:06:26.097 --> 00:06:30.134
+that sin x term is very,
+it's a little apparent, but it's,
+
+94
+00:06:30.134 --> 00:06:32.170
+it's kind of very hard to see.
+
+95
+00:06:32.170 --> 00:06:34.235
+I think if I was looking at this,
+
+96
+00:06:34.235 --> 00:06:38.836
+I would immediately notice something
+pattern asking the for fit here.
+
+97
+00:06:38.836 --> 00:06:42.170
+But nonetheless,
+it's maybe a little bit hard to see.
+
+98
+00:06:42.170 --> 00:06:45.648
+Before I move on to the residual plot,
+let me make a comment.
+
+99
+00:06:45.648 --> 00:06:50.099
+This model is actually the not, is, is,
+is actually not the correct model for
+
+100
+00:06:50.099 --> 00:06:52.670
+this data and
+this might happen in practice.
+
+101
+00:06:52.670 --> 00:06:55.461
+This doesn't mean that this
+model is unimportant, right?
+
+102
+00:06:55.461 --> 00:06:58.759
+There is a linear trend and
+the model is accounting for it,
+
+103
+00:06:58.759 --> 00:07:02.879
+it's just not accounting for
+the secondary variation in the sign term.
+
+104
+00:07:02.879 --> 00:07:06.945
+So, I just want to emphasize this in
+regression modelling is just because you
+
+105
+00:07:06.945 --> 00:07:09.424
+aren't fitting the actually correct model,
+
+106
+00:07:09.424 --> 00:07:12.045
+that doesn't mean the model
+is itself useless.
+
+107
+00:07:12.045 --> 00:07:16.760
+You have about, you know, an average
+identity line here that represents
+
+108
+00:07:16.760 --> 00:07:21.336
+the relationship between y and x and
+it explains a lot of the variation.
+
+109
+00:07:21.336 --> 00:07:24.338
+So, I just want to remind
+you that in regression,
+
+110
+00:07:24.338 --> 00:07:28.086
+having the exact right model is
+not always the primary goal.
+
+111
+00:07:28.086 --> 00:07:32.253
+You can get meaningful information
+about trends from incorrect models.
+
+112
+00:07:32.253 --> 00:07:36.129
+So, I just want to get that
+statement out of the way, but
+
+113
+00:07:36.129 --> 00:07:38.753
+now let's hone in on the residuals.
+
+114
+00:07:38.753 --> 00:07:41.413
+So plot the residuals versus x and
+
+115
+00:07:41.413 --> 00:07:46.836
+see if it makes this component of
+the fifth sin x term more apparent.
+
+116
+00:07:46.836 --> 00:07:47.994
+Okay.
+
+117
+00:07:47.994 --> 00:07:49.878
+So let me plot the residual.
+
+118
+00:07:49.878 --> 00:07:52.086
+The residual's versus the x variable.
+
+119
+00:07:52.086 --> 00:07:56.130
+So just to describe what I have,
+I'm going to assign g as my ggplot.
+
+120
+00:07:56.130 --> 00:07:58.670
+My x is in this case, x.
+
+121
+00:07:58.670 --> 00:08:02.086
+I have defined the x variable
+as the variable named x.
+
+122
+00:08:02.086 --> 00:08:03.875
+But now, my y is not the y variable, but
+
+123
+00:08:03.875 --> 00:08:06.379
+it's going to be the residual
+from the linear model fit.
+
+124
+00:08:06.379 --> 00:08:10.915
+In here, I just grab it in that R command
+right there, then my aesthetic for
+
+125
+00:08:10.915 --> 00:08:15.379
+my ggplot, just has x and y as the names
+of variables for the horizontal and
+
+126
+00:08:15.379 --> 00:08:17.045
+vertical axis variables.
+
+127
+00:08:17.045 --> 00:08:19.528
+So let me run that command and
+
+128
+00:08:19.528 --> 00:08:24.806
+then I want to put a horizontal
+line reference line at zero and
+
+129
+00:08:24.806 --> 00:08:29.874
+then I want to add my points and
+set the axes how I'd like and
+
+130
+00:08:29.874 --> 00:08:34.045
+then let's see the plot and
+there's the plot.
+
+131
+00:08:34.045 --> 00:08:35.961
+Let me zoom in.
+
+132
+00:08:35.961 --> 00:08:37.551
+And here is the plot and
+
+133
+00:08:37.551 --> 00:08:42.670
+I think what you can see is that this
+sign term is now extremely apparent.
+
+134
+00:08:42.670 --> 00:08:46.446
+That what the residual plot has done is,
+it's zoomed in,
+
+135
+00:08:46.446 --> 00:08:50.687
+on this part of the model inadequacy and
+really highlighted it and
+
+136
+00:08:50.687 --> 00:08:54.795
+that's one thing that residual
+plots are especially good at.
+
+137
+00:08:54.795 --> 00:08:58.279
+I'm going to show you another
+one where by all appearances,
+
+138
+00:08:58.279 --> 00:09:00.420
+the plot falls perfectly on a line.
+
+139
+00:09:00.420 --> 00:09:04.003
+But when you highlight in, at
+the residuals, it looks quite different.
+
+140
+00:09:04.003 --> 00:09:11.586
+So let me run the commands and
+then I'll show you.
+
+141
+00:09:11.586 --> 00:09:16.192
+So there's the plot and
+then now, so look at that and
+
+142
+00:09:16.192 --> 00:09:21.336
+it seems like the points fall
+exactly on an identity line.
+
+143
+00:09:21.336 --> 00:09:26.371
+Now let me highlight in on
+the residuals and you see this
+
+144
+00:09:26.371 --> 00:09:32.628
+trend toward greater variability
+as you head along the x variable.
+
+145
+00:09:32.628 --> 00:09:37.009
+That property,
+where the variability increases with the x
+
+146
+00:09:37.009 --> 00:09:40.086
+variables called heteroscedasticity.
+
+147
+00:09:40.086 --> 00:09:44.141
+Heteroscedasticity is one of those things
+that residual plots are quite good at
+
+148
+00:09:44.141 --> 00:09:46.086
+diagnosing and you couldn't see it.
+
+149
+00:09:46.086 --> 00:09:49.256
+If I go back to this earlier plot,
+you can't see it at all here.
+
+150
+00:09:49.256 --> 00:09:51.878
+Zoom in on the residuals and
+there you see it there.
+
+151
+00:09:51.878 --> 00:09:55.464
+Let me just zoom back here
+to how I generated the data,
+
+152
+00:09:55.464 --> 00:09:57.545
+just to illustrate it for you.
+
+153
+00:09:57.545 --> 00:10:02.795
+My x variable is a bunch of
+uniform random variables.
+
+154
+00:10:02.795 --> 00:10:06.920
+My y variable is my x variable,
+so an identity line.
+
+155
+00:10:06.920 --> 00:10:13.081
+But then when I added the errors,
+the standard deviation of the errors,
+
+156
+00:10:13.081 --> 00:10:17.020
+look right here has the x
+term involved in it and
+
+157
+00:10:17.020 --> 00:10:21.878
+that's how I generated data
+with heteroscedasticity.
+
+158
+00:10:21.878 --> 00:10:25.753
+So let's run the residual plot for
+the diamond data.
+
+159
+00:10:25.753 --> 00:10:31.505
+So here, I'm just going to add a column
+for the diamond data that is the residuals
+
+160
+00:10:31.505 --> 00:10:37.795
+from regression model fit where price is
+the outcome and carat is the predictor.
+
+161
+00:10:37.795 --> 00:10:44.920
+So, I run that and now my data frame.
+
+162
+00:10:44.920 --> 00:10:50.461
+My data frame has carat price and
+now the residuals.
+
+163
+00:10:50.461 --> 00:10:54.462
+So, I'm going to create my ggplot.
+
+164
+00:10:54.462 --> 00:10:58.754
+My x label is going to be Mass in carats.
+
+165
+00:10:58.754 --> 00:11:01.249
+My y label is going to
+be Residual price and
+
+166
+00:11:01.249 --> 00:11:05.545
+I just want to emphasize that the
+residuals have the same units as the ys.
+
+167
+00:11:05.545 --> 00:11:08.795
+So the residual price is
+in Singapore dollars.
+
+168
+00:11:08.795 --> 00:11:11.170
+I'm going to add my horizontal line.
+
+169
+00:11:11.170 --> 00:11:17.086
+I'm going to add my points and
+then there's the plot.
+
+170
+00:11:17.086 --> 00:11:20.475
+So there doesn't appear to be
+a lot of pattern in the plot, so
+
+171
+00:11:20.475 --> 00:11:23.670
+this, this is good it seems
+like it's a pretty good fit.
+
+172
+00:11:23.670 --> 00:11:28.120
+Let me illustrate something
+about variability in a diamond
+
+173
+00:11:28.120 --> 00:11:31.235
+dataset that will help
+us set the stage for
+
+174
+00:11:31.235 --> 00:11:35.961
+defining some new properties
+about our regression model fit.
+
+175
+00:11:35.961 --> 00:11:41.170
+So I'm going to create
+now two residual vectors.
+
+176
+00:11:41.170 --> 00:11:45.878
+The first residual vector is the one
+where I just fit an intercept.
+
+177
+00:11:45.878 --> 00:11:53.095
+So the residuals are just the deviations
+around the average price,
+
+178
+00:11:53.095 --> 00:11:58.421
+then I'm going to find
+the residuals where I add in.
+
+179
+00:11:58.421 --> 00:12:01.586
+Our variation around the regression line.
+
+180
+00:12:01.586 --> 00:12:05.474
+So the first one is variation
+around the average price.
+
+181
+00:12:05.474 --> 00:12:09.878
+The second is the variation around
+the regression line with carats
+
+182
+00:12:09.878 --> 00:12:13.504
+as the explanatory variable and
+price as the outcome.
+
+183
+00:12:13.504 --> 00:12:18.586
+So, I'm going to run that and
+then I want to create
+
+184
+00:12:18.586 --> 00:12:23.920
+a factor variable that
+labels the set of residuals.
+
+185
+00:12:23.920 --> 00:12:28.888
+The first one is just going to be labeled
+as a bunch of intercept only model
+
+186
+00:12:28.888 --> 00:12:34.019
+residuals and the second set are going to
+be labeled as a bunch of intercept and
+
+187
+00:12:34.019 --> 00:12:37.378
+slope residuals,
+then I want to create a ggplot.
+
+188
+00:12:37.378 --> 00:12:44.128
+My, with this data frame, my y
+variable is going to be the residuals.
+
+189
+00:12:44.128 --> 00:12:47.753
+My x variable is going to be the fit,
+which is the two fits it is.
+
+190
+00:12:47.753 --> 00:12:51.276
+Linear model or
+linear model with just an intercept or
+
+191
+00:12:51.276 --> 00:12:55.045
+the linear model with carat,
+the mass as the predictor.
+
+192
+00:12:55.045 --> 00:13:01.836
+And I want to fill in my points based on
+the color, based on the which fit it was.
+
+193
+00:13:01.836 --> 00:13:07.004
+So, I'm going to do that and then
+the kind of plot I want is a dot plot and
+
+194
+00:13:07.004 --> 00:13:10.753
+then I want to put my axes
+labels the way I'd like.
+
+195
+00:13:10.753 --> 00:13:13.211
+Now let's see the plot.
+
+196
+00:13:13.211 --> 00:13:14.712
+There it is.
+
+197
+00:13:14.712 --> 00:13:20.308
+So what we see on this left-hand
+plot with just the intercept
+
+198
+00:13:20.308 --> 00:13:26.795
+is the variation in diamond prices
+around the average diamond price.
+
+199
+00:13:26.795 --> 00:13:31.336
+So just the, basically the variation
+in diamond prices from the sample.
+
+200
+00:13:31.336 --> 00:13:33.718
+What we're seeing in the rightmost plot,
+
+201
+00:13:33.718 --> 00:13:37.503
+this is displaying the variation
+around the regression line Mind.
+
+202
+00:13:37.503 --> 00:13:42.340
+So what we've done is we've
+explained a lot of this
+
+203
+00:13:42.340 --> 00:13:46.628
+variation with the relationship with mass.
+
+204
+00:13:46.628 --> 00:13:51.547
+And what we're going to talk about next is
+r squared, which basically says, we can
+
+205
+00:13:51.547 --> 00:13:56.468
+decompose this total variation, this
+variation in the y's by themselves leaving
+
+206
+00:13:56.468 --> 00:14:01.109
+you with just the mean into the variation
+explained by the regression model and
+
+207
+00:14:01.109 --> 00:14:05.711
+the variation that's left over after
+accounting for the regression model.
+
+208
+00:14:05.711 --> 00:14:09.472
+So this is the variation that's left over
+after counting for the regression, but
+
+209
+00:14:09.472 --> 00:14:13.288
+also this sort of subtraction of these two
+would be the variation that was explained
+
+210
+00:14:13.288 --> 00:14:14.503
+by the regression model.
+
+211
+00:14:14.503 --> 00:14:19.711
+But there's a formula for that and
+we're going to dive into that next.

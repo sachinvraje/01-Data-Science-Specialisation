@@ -1,0 +1,856 @@
+WEBVTT
+
+1
+00:00:00.510 --> 00:00:03.970
+Up to this point, we haven't used
+the parent's heights at all.
+
+2
+00:00:05.700 --> 00:00:09.069
+The first thing in this kind of data we
+would want to do is create a scatter plot
+
+3
+00:00:09.069 --> 00:00:11.295
+of the child's heights
+by the parent's height.
+
+4
+00:00:11.295 --> 00:00:13.540
+Here, I use a ggplot.
+
+5
+00:00:13.540 --> 00:00:16.711
+There is numerous failings in this plot.
+
+6
+00:00:16.711 --> 00:00:20.700
+One of the primary failings is that
+these points are over-plotted.
+
+7
+00:00:20.700 --> 00:00:28.095
+There's lots of different paired,
+paired parent child x,
+
+8
+00:00:28.095 --> 00:00:33.753
+y values at each one of
+these specific points.
+
+9
+00:00:33.753 --> 00:00:38.862
+Here I give a better plot, where the size
+of the point represents the number
+
+10
+00:00:38.862 --> 00:00:43.339
+of parent child combinations at
+that particular x, y location.
+
+11
+00:00:44.620 --> 00:00:50.060
+Here the color, a very light color,
+represents the frequency near 40 and
+
+12
+00:00:50.060 --> 00:00:53.375
+a very bluish or
+darker relatively speaking,
+
+13
+00:00:53.375 --> 00:00:58.220
+bluish color represents a frequency
+of number toward that of, of,
+
+14
+00:00:58.220 --> 00:01:01.712
+toward ten or
+down to one at specific locations.
+
+15
+00:01:01.712 --> 00:01:06.284
+So the size of the point and the color
+of the point are representative of
+
+16
+00:01:06.284 --> 00:01:10.782
+the frequency of parent-child
+combinations that that specific x,
+
+17
+00:01:10.782 --> 00:01:15.431
+y player pair and this is a much
+better plot, because it, it gives you,
+
+18
+00:01:15.431 --> 00:01:17.860
+it doesn't lose that information.
+
+19
+00:01:18.980 --> 00:01:20.795
+I would say,
+there is another failing of this plot.
+
+20
+00:01:20.795 --> 00:01:25.486
+For example, I don't put the units
+inches on the either of the two axes and
+
+21
+00:01:25.486 --> 00:01:29.182
+I think that's good practice to
+have the units on the axes, so
+
+22
+00:01:29.182 --> 00:01:32.045
+that's a little bit of a failing for
+this plot.
+
+23
+00:01:32.045 --> 00:01:34.860
+If you want to see the code,
+it's in the r mark down file.
+
+24
+00:01:38.150 --> 00:01:43.609
+Now let's suppose we want to dis,
+explain the children's heights
+
+25
+00:01:43.609 --> 00:01:49.753
+using the parent's heights and let's
+assume we wanted to do it with a line.
+
+26
+00:01:49.753 --> 00:01:54.812
+Well, in order to make things easy for
+right now,
+
+27
+00:01:54.812 --> 00:01:59.640
+let's force the line to
+go through the origin.
+
+28
+00:02:01.130 --> 00:02:03.086
+Specifically, it has to go
+through the point zero, zero.
+
+29
+00:02:03.086 --> 00:02:05.490
+So, in other words,
+it has a y intercepted zero.
+
+30
+00:02:07.030 --> 00:02:10.086
+Well, then,
+the line is just X beta, right.
+
+31
+00:02:10.086 --> 00:02:13.660
+Y equal X beta defines a line through
+an origin, through the origin.
+
+32
+00:02:14.970 --> 00:02:20.879
+In order to find the best line,
+all we have to find is the slope.
+
+33
+00:02:20.879 --> 00:02:23.170
+Well, here's how we could
+potentially do that.
+
+34
+00:02:23.170 --> 00:02:28.367
+We would want to find
+the slope beta that minimizes
+
+35
+00:02:28.367 --> 00:02:36.349
+the sum of the squared distances between
+the observed data points the Yi and
+
+36
+00:02:36.349 --> 00:02:41.190
+the fitted data points on the line,
+Xi beta.
+
+37
+00:02:41.190 --> 00:02:46.059
+We'll square that distance and add them
+up and this is directly analogous to
+
+38
+00:02:46.059 --> 00:02:50.711
+finding the least squares mean,
+that we did just a couple of slides ago.
+
+39
+00:02:50.711 --> 00:02:54.332
+So this is exactly sort of using
+the origin as a pivot point and
+
+40
+00:02:54.332 --> 00:02:58.095
+picking the line that minimizes
+the sum of the squared vertical
+
+41
+00:02:58.095 --> 00:03:01.398
+distances between the points and the line.
+
+42
+00:03:01.398 --> 00:03:06.246
+So we're going to use our
+studio's function manipulate to
+
+43
+00:03:06.246 --> 00:03:10.796
+experiment with this and
+see if we can find that line.
+
+44
+00:03:10.796 --> 00:03:13.995
+Now there, there is a point in
+regression to the origin is useful for
+
+45
+00:03:13.995 --> 00:03:17.365
+explaining things, because we only
+have one parameter, the slope and
+
+46
+00:03:17.365 --> 00:03:20.718
+we don't have two parameters,
+the slope and the intercept.
+
+47
+00:03:20.718 --> 00:03:25.280
+But it's generally bad practice to force
+regression lines through the point
+
+48
+00:03:25.280 --> 00:03:26.130
+zero, zero.
+
+49
+00:03:26.130 --> 00:03:31.339
+So, an easy way around this is to subtract
+the mean from the parent's heights and
+
+50
+00:03:31.339 --> 00:03:36.240
+the mean from the child's heights, so
+that the zero, zero point is right in
+
+51
+00:03:36.240 --> 00:03:41.680
+the middle of the data and that will make
+this solution a little bit more palatable.
+
+52
+00:03:41.680 --> 00:03:46.097
+And we'll discuss it later on how
+this relates to real regression,
+
+53
+00:03:46.097 --> 00:03:49.129
+where you fit both the slope and
+an intercept.
+
+54
+00:03:49.129 --> 00:03:53.100
+Let me just show a picture to
+illustrate some of these concepts.
+
+55
+00:03:53.100 --> 00:03:57.301
+So here, I have a scatter plot where
+I have some data on the y-axis and
+
+56
+00:03:57.301 --> 00:04:02.170
+some data on the x-axis and I want to use
+my x variable to predict my y variables.
+
+57
+00:04:02.170 --> 00:04:07.249
+So this is my x-axis and
+this is my y-axis.
+
+58
+00:04:08.590 --> 00:04:12.503
+My red crosshairs are my data points.
+
+59
+00:04:12.503 --> 00:04:15.320
+Progression through the origin,
+the way that we're doing it,
+
+60
+00:04:15.320 --> 00:04:18.240
+takes the point zero, zero and
+treats it as a pivot point.
+
+61
+00:04:18.240 --> 00:04:23.532
+It then tries to find
+the best line going through
+
+62
+00:04:23.532 --> 00:04:28.837
+the points,
+where the best line is as follows.
+
+63
+00:04:28.837 --> 00:04:31.719
+I take this line here,
+
+64
+00:04:31.719 --> 00:04:37.182
+it's going to take each observed point y,
+
+65
+00:04:37.182 --> 00:04:43.255
+it's going to calculate
+the vertical distance,
+
+66
+00:04:43.255 --> 00:04:48.586
+so this is that's Yi, that height is Yi.
+
+67
+00:04:48.586 --> 00:04:49.711
+Okay?
+
+68
+00:04:49.711 --> 00:04:52.748
+This length Xi and
+
+69
+00:04:52.748 --> 00:04:58.420
+that point is Xi beta on the line.
+
+70
+00:04:58.420 --> 00:05:03.187
+So this distance right here
+is Yi minus Xi beta and
+
+71
+00:05:03.187 --> 00:05:08.670
+then if we square it,
+we'll get the squared distance.
+
+72
+00:05:08.670 --> 00:05:13.202
+So what regression to the origin
+is trying to find is,
+
+73
+00:05:13.202 --> 00:05:17.837
+it's trying to take all these
+vertical distances like
+
+74
+00:05:17.837 --> 00:05:22.586
+this between the fitted line and
+the observed heights.
+
+75
+00:05:22.586 --> 00:05:24.836
+Square all those distances,
+add them all up.
+
+76
+00:05:24.836 --> 00:05:29.352
+so that each one contributes to
+the error rate that it's calculating and
+
+77
+00:05:29.352 --> 00:05:31.211
+tries to find the best slope.
+
+78
+00:05:31.211 --> 00:05:36.474
+Because remember, this line is defined
+by a simple equation y equal to x beta,
+
+79
+00:05:36.474 --> 00:05:41.419
+when you have a line going through
+the origin you only need one parameter,
+
+80
+00:05:41.419 --> 00:05:42.795
+that's the slope.
+
+81
+00:05:42.795 --> 00:05:43.712
+Now.
+
+82
+00:05:48.378 --> 00:05:53.297
+That line's not going to be very good.
+
+83
+00:05:53.297 --> 00:05:59.378
+If you look, the line really
+should hit somewhere along here.
+
+84
+00:05:59.378 --> 00:06:03.503
+So regression to the origin
+kind of doesn't make sense.
+
+85
+00:06:03.503 --> 00:06:08.815
+What we're doing by centering the data is
+we're setting the origin to be right in
+
+86
+00:06:08.815 --> 00:06:14.378
+the middle of the data, so that point now
+is zero, zero by subtracting off the mean.
+
+87
+00:06:14.378 --> 00:06:18.573
+So, it's basically reorienting the axis,
+so that the zero,
+
+88
+00:06:18.573 --> 00:06:22.210
+zero point lies right in
+the middle of the data.
+
+89
+00:06:22.210 --> 00:06:27.530
+Now, it seems a little more
+reasonable to find the regression
+
+90
+00:06:27.530 --> 00:06:32.962
+line that goes through the data
+where we just consider a slope.
+
+91
+00:06:32.962 --> 00:06:36.295
+So regression the origin seems
+to make a little bit more
+
+92
+00:06:36.295 --> 00:06:40.714
+sense if you subtract the means and
+we'll find out later that this yields
+
+93
+00:06:40.714 --> 00:06:45.440
+an equivalent to the solution if we were
+both fit the intercept and the slope.
+
+94
+00:06:47.100 --> 00:06:51.142
+So let's try and do this with R studio's
+manipulate function and I think,
+
+95
+00:06:51.142 --> 00:06:54.990
+because this is one of the central
+themes of the next several lectures,
+
+96
+00:06:54.990 --> 00:06:57.963
+we're going to go over these
+points over and over again.
+
+97
+00:06:57.963 --> 00:06:59.280
+They're very fundamental.
+
+98
+00:07:01.460 --> 00:07:05.628
+So, I won't show running the code, because
+you can grab it from the R markdown file.
+
+99
+00:07:05.628 --> 00:07:09.280
+And I'm hoping at this point in
+the specialization you'll be familiar with
+
+100
+00:07:09.280 --> 00:07:10.086
+running R code.
+
+101
+00:07:10.086 --> 00:07:13.257
+But here's my plot and over it,
+
+102
+00:07:13.257 --> 00:07:18.440
+I have a specific value
+of the regression line.
+
+103
+00:07:18.440 --> 00:07:20.803
+Notice that my child's heights if you,
+
+104
+00:07:20.803 --> 00:07:25.666
+if the indexes get down sampled a little
+in the, in the video compression, but
+
+105
+00:07:25.666 --> 00:07:29.903
+what, what you can see the center of
+the child's height here is at zero,
+
+106
+00:07:29.903 --> 00:07:34.795
+because I have subtracted the mean, the
+center of the parent's height is at zero.
+
+107
+00:07:34.795 --> 00:07:41.924
+So, I have a pivot point right
+in the middle at zero, zero.
+
+108
+00:07:41.924 --> 00:07:48.045
+I also want to point out that up here I
+give the slope data equals point six.
+
+109
+00:07:48.045 --> 00:07:53.121
+And the mean squared error,
+where the mean squared
+
+110
+00:07:53.121 --> 00:08:00.558
+error is again the sum of the y data
+points subtracting off the x data point,
+
+111
+00:08:00.558 --> 00:08:06.836
+the parent's height multiplied
+times this factor, 0.6.
+
+112
+00:08:06.836 --> 00:08:09.720
+So, it's taking each one of these points,
+let's take this one or
+
+113
+00:08:09.720 --> 00:08:11.950
+let's take one that's more centered.
+
+114
+00:08:11.950 --> 00:08:14.754
+This one right here,
+it's calculating this distance.
+
+115
+00:08:14.754 --> 00:08:19.695
+The vertical distance between the child's
+heights and the parent's heights multiply
+
+116
+00:08:19.695 --> 00:08:24.070
+it times the slope, calculating that,
+squaring it and adding them up.
+
+117
+00:08:24.070 --> 00:08:28.711
+But here again, because there's multiple
+points at any, at any x, y combination.
+
+118
+00:08:28.711 --> 00:08:33.443
+You can think of maybe multiplying this
+distance by the square distance by
+
+119
+00:08:33.443 --> 00:08:37.793
+the appropriate number of points
+with that specific combination,
+
+120
+00:08:37.793 --> 00:08:39.790
+because of the overplot.
+
+121
+00:08:41.310 --> 00:08:45.339
+At the point zero, zero, our line is going
+to pivot around that point zero, zero,
+
+122
+00:08:45.339 --> 00:08:48.736
+because we're only fitting lines
+that have to go through the origin,
+
+123
+00:08:48.736 --> 00:08:50.711
+because we're only considering the slope.
+
+124
+00:08:50.711 --> 00:08:51.337
+Okay.
+
+125
+00:08:51.337 --> 00:08:52.660
+So let's do it and
+
+126
+00:08:52.660 --> 00:08:57.170
+see how our mean squared R changes
+as a function of our slope.
+
+127
+00:08:57.170 --> 00:09:01.540
+0.6 doesn't look so bad,
+let's move it to one that's not so good.
+
+128
+00:09:01.540 --> 00:09:03.899
+Okay.
+The mean squared error has gotten a lot
+
+129
+00:09:03.899 --> 00:09:04.810
+worse, right?
+
+130
+00:09:04.810 --> 00:09:08.422
+So, it went from 5.004, say at .68.
+
+131
+00:09:08.422 --> 00:09:11.833
+Now let's move it all
+the way up now to 5.8 and
+
+132
+00:09:11.833 --> 00:09:15.420
+you can see the mean squared
+error getting lower.
+
+133
+00:09:20.212 --> 00:09:22.628
+Right?
+
+134
+00:09:22.628 --> 00:09:25.336
+As you get down to a slope.
+
+135
+00:09:25.336 --> 00:09:31.586
+Looks, looks like 0.6 something is,
+is doing pretty well.
+
+136
+00:09:31.586 --> 00:09:36.656
+0.64 has 5 and then 0.62 has 5.0,
+
+137
+00:09:36.656 --> 00:09:40.173
+5.002, so it's gone up.
+
+138
+00:09:40.173 --> 00:09:42.795
+So, it looks like about 0.64.
+
+139
+00:09:42.795 --> 00:09:49.296
+What's interesting is
+the slope of one is not good.
+
+140
+00:09:49.296 --> 00:09:51.211
+There's the slope of one.
+
+141
+00:09:51.211 --> 00:09:54.088
+That's saying,
+you want to predict your child's height,
+
+142
+00:09:54.088 --> 00:09:56.210
+just try the parent's height.
+
+143
+00:09:56.210 --> 00:10:00.078
+Apparently, we have to multiply by a
+factor to get the child's, to get a better
+
+144
+00:10:00.078 --> 00:10:03.922
+prediction of the child's height than
+just the parent's heights by itself.
+
+145
+00:10:03.922 --> 00:10:06.423
+We have to multiply it by
+a factor of 0.6 in this case,
+
+146
+00:10:06.423 --> 00:10:08.200
+that's what the slope is doing for us.
+
+147
+00:10:09.360 --> 00:10:11.336
+Here, I give the manipulate code.
+
+148
+00:10:11.336 --> 00:10:14.211
+And again, all of this code
+is in the R markdown file.
+
+149
+00:10:14.211 --> 00:10:18.082
+So don't retype it in from the slides,
+actually grab it,
+
+150
+00:10:18.082 --> 00:10:21.170
+grab the actual text
+from the R markdown file.
+
+151
+00:10:26.390 --> 00:10:29.592
+Now that we've used
+manipulate to find the slope,
+
+152
+00:10:29.592 --> 00:10:32.878
+I'm going to show how you can
+do this very quickly in R.
+
+153
+00:10:32.878 --> 00:10:37.275
+The function lm fits the linear model and
+
+154
+00:10:37.275 --> 00:10:41.295
+if you, here I have the code where I.
+
+155
+00:10:44.040 --> 00:10:48.003
+Here I have the code, where I use lm.
+
+156
+00:10:48.003 --> 00:10:52.560
+My outcome, my y value is
+the centered child's heights.
+
+157
+00:10:52.560 --> 00:10:54.850
+So, I've subtracted off the mean.
+
+158
+00:10:54.850 --> 00:10:59.255
+And here is the centered parent's heights,
+where I subtracted off the means for
+
+159
+00:10:59.255 --> 00:11:00.045
+the parents.
+
+160
+00:11:00.045 --> 00:11:02.373
+This minus 1 says,
+get rid of the intercept,
+
+161
+00:11:02.373 --> 00:11:05.310
+because we're talking about
+regression through the origin.
+
+162
+00:11:06.370 --> 00:11:11.866
+Where we forget about a y intercept and
+then telling them that the data
+
+163
+00:11:11.866 --> 00:11:17.003
+set I want to fit is galton and
+it gives me the slope, 0.646.
+
+164
+00:11:17.003 --> 00:11:19.211
+So we're going to talk about this a lot.
+
+165
+00:11:19.211 --> 00:11:22.730
+We'll go through this in great detail
+throughout the rest of the class.
+
+166
+00:11:24.760 --> 00:11:29.920
+Here I, in the final slide of this
+lecture, I just give the fitted line.
+
+167
+00:11:29.920 --> 00:11:36.104
+Now because of how we've forced the model,
+it has to go through the point zero,
+
+168
+00:11:36.104 --> 00:11:41.660
+zero for the center child's heights and
+the center parent's height.
+
+169
+00:11:41.660 --> 00:11:44.039
+So, it has to go through the mean
+of the child's height to the mean
+
+170
+00:11:44.039 --> 00:11:45.004
+of the parent's height.
+
+171
+00:11:45.004 --> 00:11:48.574
+So, I've reshifted the plot so
+that, that zero, zero is,
+
+172
+00:11:48.574 --> 00:11:51.940
+is back at the original,
+at the, at the original point.
+
+173
+00:11:53.700 --> 00:12:00.545
+And so
+here is our line that has slope of 0.646.
+
+174
+00:12:00.545 --> 00:12:05.333
+And now what we're going to do in
+subsequent lectures is talk about
+
+175
+00:12:05.333 --> 00:12:06.671
+how we get these?
+
+176
+00:12:06.671 --> 00:12:11.454
+How the motivation behind it and all the
+things we can do with this fitted line,
+
+177
+00:12:11.454 --> 00:12:15.899
+we're going to spend maybe the next
+several lectures talking about this.
+
+178
+00:12:17.380 --> 00:12:19.961
+So welcome to Introduction to Regression.
+
+179
+00:12:19.961 --> 00:12:23.836
+We've actually covered a lot of
+material in this very first lecture and
+
+180
+00:12:23.836 --> 00:12:27.530
+I really look forward to working
+with you for the next couple weeks.

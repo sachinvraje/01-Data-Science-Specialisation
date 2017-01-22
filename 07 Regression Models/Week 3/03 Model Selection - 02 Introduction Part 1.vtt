@@ -1,0 +1,540 @@
+WEBVTT
+
+1
+00:00:01.060 --> 00:00:04.530
+So hi, and welcome to the lecture
+on multiple variables.
+
+2
+00:00:04.530 --> 00:00:08.410
+In this lecture, we're going to talk about
+the process of model fitting when you have
+
+3
+00:00:08.410 --> 00:00:11.390
+lots of variables in a regression context.
+
+4
+00:00:13.360 --> 00:00:17.550
+I'd like to distinguish between
+multivariable regression and
+
+5
+00:00:17.550 --> 00:00:21.530
+the kind of things that you'll learn in In
+your prediction class as part of the data
+
+6
+00:00:21.530 --> 00:00:22.620
+science specialization.
+
+7
+00:00:23.750 --> 00:00:27.350
+In prediction, we're less
+concerned with interpretability so
+
+8
+00:00:27.350 --> 00:00:30.350
+we're far more intolerant for
+complex models,
+
+9
+00:00:30.350 --> 00:00:34.030
+lots of interactions, and
+automated search algorithms and
+
+10
+00:00:34.030 --> 00:00:39.090
+rules to come up with the best prediction
+with respect to a specific loss function.
+
+11
+00:00:39.090 --> 00:00:41.270
+In contrast,
+in a lot of regression examples,
+
+12
+00:00:41.270 --> 00:00:43.630
+we want simple interpretable models.
+
+13
+00:00:43.630 --> 00:00:47.960
+That means we're going to place a heavy
+emphasis on the idea of parsimony.
+
+14
+00:00:47.960 --> 00:00:52.520
+Finding the simplest model to
+explain what we're looking at, so
+
+15
+00:00:52.520 --> 00:00:54.580
+as simple as possible, but no simpler.
+
+16
+00:00:54.580 --> 00:00:59.740
+That's the idea of parsimony, it has
+kind of the flavor of Occam's razor,
+
+17
+00:00:59.740 --> 00:01:01.750
+which states that all else being equal,
+
+18
+00:01:01.750 --> 00:01:04.870
+the simplest solution is
+probably the right one.
+
+19
+00:01:04.870 --> 00:01:06.560
+Well here, all else being equal,
+
+20
+00:01:06.560 --> 00:01:10.070
+we're going to prefer a simple
+model rather than a complex one.
+
+21
+00:01:11.580 --> 00:01:13.150
+And that has broad consequences.
+
+22
+00:01:13.150 --> 00:01:17.050
+So if a variable in
+a regression model explains
+
+23
+00:01:17.050 --> 00:01:18.780
+a tiny bit extra about a variation but
+
+24
+00:01:18.780 --> 00:01:23.000
+really harms the interpretability,
+we're going to omit that variable,
+
+25
+00:01:23.000 --> 00:01:27.890
+even if it really does explain a little
+bit of positive amount of variability.
+
+26
+00:01:30.910 --> 00:01:37.320
+So I also like to bring up
+this quote by Scott Zeger
+
+27
+00:01:38.920 --> 00:01:43.480
+who really helps me think about what
+I'm going for when I look at models.
+
+28
+00:01:43.480 --> 00:01:48.990
+So he likes to think of a model as a lens
+to which you're looking at the data.
+
+29
+00:01:48.990 --> 00:01:53.950
+So in that context,
+your model is neither right nor wrong.
+
+30
+00:01:53.950 --> 00:01:58.040
+Any model that teaches you something
+valuable about your data is right,
+
+31
+00:01:58.040 --> 00:01:59.590
+as long as it teaches you something true.
+
+32
+00:02:00.790 --> 00:02:05.590
+And the idea of a lense is
+just in the same vein that
+
+33
+00:02:05.590 --> 00:02:09.550
+in some cases when you're looking
+at the world through a lense
+
+34
+00:02:09.550 --> 00:02:13.420
+to find a super fine detail,
+you might need a microscope.
+
+35
+00:02:13.420 --> 00:02:18.130
+To find out super high level detail,
+you might need a telescope.
+
+36
+00:02:18.130 --> 00:02:22.230
+And so the idea of a model
+being something like that
+
+37
+00:02:22.230 --> 00:02:24.740
+where you're looking at the same thing,
+but
+
+38
+00:02:24.740 --> 00:02:28.780
+the right model might highlight the right
+feature that teaches you something true.
+
+39
+00:02:28.780 --> 00:02:31.162
+So I think that's a very useful
+way to think about models.
+
+40
+00:02:34.529 --> 00:02:38.548
+For a specific instance where we're
+interested in a treatment of factors,
+
+41
+00:02:38.548 --> 00:02:42.378
+something like that, where there
+really is either a treatment of factor
+
+42
+00:02:42.378 --> 00:02:46.630
+not averaged across the population
+that we're interested in.
+
+43
+00:02:46.630 --> 00:02:52.340
+There are uncountably many ways that our
+model can be wrong and lead us astray.
+
+44
+00:02:52.340 --> 00:02:56.608
+Lead us to conclude that there's a
+treatment of fact when there's not one or
+
+45
+00:02:56.608 --> 00:03:01.290
+lead us to conclude that there's not
+a treatment of fact when there is one.
+
+46
+00:03:01.290 --> 00:03:06.470
+And in this particular lecture,
+we're going to go through some basics
+
+47
+00:03:06.470 --> 00:03:11.450
+of what happens when we either
+include unnecessary regressors or
+
+48
+00:03:11.450 --> 00:03:14.630
+exclude the important regressors.
+
+49
+00:03:15.640 --> 00:03:18.420
+I'd like to bring up this
+quote by Donald Rumsfeld.
+
+50
+00:03:18.420 --> 00:03:21.850
+He was the sort of embattled
+Secretary of Defense for
+
+51
+00:03:21.850 --> 00:03:24.350
+the US and he was widely derided for
+
+52
+00:03:24.350 --> 00:03:28.670
+this specific quote, however it is very
+pertinent to the idea of regression.
+
+53
+00:03:28.670 --> 00:03:30.520
+And it goes something like this.
+
+54
+00:03:30.520 --> 00:03:31.550
+There are known knowns.
+
+55
+00:03:31.550 --> 00:03:34.080
+These are things we know that we know.
+
+56
+00:03:34.080 --> 00:03:36.300
+Then there are known unknowns.
+
+57
+00:03:36.300 --> 00:03:39.140
+That is to say, there are things
+that we know we don't know.
+
+58
+00:03:39.140 --> 00:03:42.010
+But there are also unknown unknowns.
+
+59
+00:03:42.010 --> 00:03:44.890
+There are things we don't
+know we don't know.
+
+60
+00:03:44.890 --> 00:03:49.210
+And so this quote was,
+again, heavily criticized.
+
+61
+00:03:49.210 --> 00:03:51.620
+But for
+regression it makes a lot of sense.
+
+62
+00:03:51.620 --> 00:03:55.800
+Known knowns are regressors that we
+know we should include in our model and
+
+63
+00:03:55.800 --> 00:03:58.380
+we have recorded so we just put them in.
+
+64
+00:03:58.380 --> 00:04:03.110
+There are known unknowns, and these are
+the things that we know we should include
+
+65
+00:04:03.110 --> 00:04:05.449
+in our regression model, but
+unfortunately we didn't collect them.
+
+66
+00:04:06.680 --> 00:04:10.660
+And there are unknown unknowns and
+these are things that we
+
+67
+00:04:10.660 --> 00:04:14.400
+should include in our regression model for
+example, but we didn't collect them or
+
+68
+00:04:14.400 --> 00:04:18.080
+don't have or don't know whether or
+not they're important.
+
+69
+00:04:18.080 --> 00:04:24.929
+So I think this is a funny little quote,
+but it gives us an idea of the various
+
+70
+00:04:26.280 --> 00:04:30.170
+lines of thinking that you have to go
+through when building a regression model.
+
+71
+00:04:30.170 --> 00:04:34.030
+So let's talk about some general rules for
+our known knowns,
+
+72
+00:04:34.030 --> 00:04:37.740
+unknown unknowns, and known unknowns.
+
+73
+00:04:37.740 --> 00:04:42.520
+So what happens if we omit a variable
+that we should have included?
+
+74
+00:04:42.520 --> 00:04:46.320
+And the general result
+is that results in bias.
+
+75
+00:04:46.320 --> 00:04:49.760
+In other words, you get, if you're
+interested in a treatment effect or
+
+76
+00:04:49.760 --> 00:04:53.990
+an effective interest for a particular
+regressor, and you've omitted something
+
+77
+00:04:53.990 --> 00:04:57.620
+that's correlated with that regressor,
+then you're potentially going to get bias.
+
+78
+00:04:57.620 --> 00:05:00.840
+You're not going to get an accurate
+estimate of what you want to estimate
+
+79
+00:05:00.840 --> 00:05:03.420
+because of this other variable.
+
+80
+00:05:03.420 --> 00:05:08.500
+Now, one way to prevent that is to try and
+randomize.
+
+81
+00:05:08.500 --> 00:05:11.825
+Because if this other variable
+that you're omitting is
+
+82
+00:05:11.825 --> 00:05:14.890
+uncorrelated with the variable
+that you're interested in,
+
+83
+00:05:14.890 --> 00:05:17.510
+then it doesn't matter usually
+whether you include it or not.
+
+84
+00:05:17.510 --> 00:05:21.340
+So randomization is a strategy to try and
+prevent that from happening.
+
+85
+00:05:21.340 --> 00:05:27.670
+That's why AB testing is so powerful in
+clinical trials that are so powerful.
+
+86
+00:05:27.670 --> 00:05:31.490
+But then I would remind you,
+if there's too many confounded things,
+
+87
+00:05:31.490 --> 00:05:33.740
+then even randomization
+is not going to help you.
+
+88
+00:05:35.860 --> 00:05:39.550
+So that means that omitting
+variables that are important,
+
+89
+00:05:39.550 --> 00:05:43.940
+obviously has a negative impact
+on our regression model fit.
+
+90
+00:05:43.940 --> 00:05:47.290
+What about including variables
+that are unimportant?
+
+91
+00:05:47.290 --> 00:05:48.440
+Is that a bad thing?
+
+92
+00:05:48.440 --> 00:05:49.840
+Well, we eliminate bias,
+
+93
+00:05:49.840 --> 00:05:54.370
+there's no consequence to bias if
+we include unnecessary variables.
+
+94
+00:05:54.370 --> 00:05:56.540
+So if you just generate a bunch
+of standard normals and
+
+95
+00:05:56.540 --> 00:05:58.500
+throw them into your regression model,
+
+96
+00:05:58.500 --> 00:06:02.330
+they have nothing to do with anything,
+they are not going to introduce bias.
+
+97
+00:06:02.330 --> 00:06:06.240
+However, they are going to
+inflate standard error.
+
+98
+00:06:06.240 --> 00:06:11.200
+So introducing unnecessary
+variables into your regression
+
+99
+00:06:11.200 --> 00:06:12.960
+model inflates the standard errors.
+
+100
+00:06:12.960 --> 00:06:15.410
+And we can actually
+measure how much it would
+
+101
+00:06:16.490 --> 00:06:20.970
+increase the actual standards errors,
+not just the estimated standard errors.
+
+102
+00:06:20.970 --> 00:06:27.580
+So the other thing is some
+of these model terms,
+
+103
+00:06:27.580 --> 00:06:33.010
+like, R squared, they're not necessarily
+good ways to adjudicate between
+
+104
+00:06:33.010 --> 00:06:35.540
+looking at different models
+with different regressors in.
+
+105
+00:06:35.540 --> 00:06:39.330
+And the reason with R squared is as
+you put in a bunch of new regressors,
+
+106
+00:06:39.330 --> 00:06:41.509
+it's guaranteed to go up no matter what.
+
+107
+00:06:42.560 --> 00:06:46.330
+In the sum of the squared errors, the mean
+squared error is guaranteed to go down in
+
+108
+00:06:46.330 --> 00:06:48.500
+regression as you include more regressors.
+
+109
+00:06:48.500 --> 00:06:51.910
+So here is an example where I
+just simulated a bunch of data.
+
+110
+00:06:51.910 --> 00:06:56.080
+And I redid the simulation for
+every number of regressors and
+
+111
+00:06:56.080 --> 00:06:59.820
+just included them into a model, and
+it just shows the R squared just going up
+
+112
+00:06:59.820 --> 00:07:04.010
+even though all I'm doing is generating
+a bunch of random normal vectors and
+
+113
+00:07:04.010 --> 00:07:05.290
+putting them into a regression model.

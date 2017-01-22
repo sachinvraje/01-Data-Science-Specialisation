@@ -1,0 +1,56 @@
+Hi, and welcome to the class on Residuals,
+diagnostics, and variation. Remember we started out
+with our linear model. We're also going to assume here through
+out the lecture that our errors are normally distribute. Some of our results require that and
+some of them don't. Remember how we defined our residuals and
+that our estimate of residual variation is the sum of the squared,
+the average of the squared residuals. Where remember we divide
+by n-p rather than n, for an biasness sake. So it's very easy in r to get
+a plot of your residuals and several plots that measure aspects
+of model fit and lack of model fit. So let's load up the data set swiss and let's go ahead and fit the linear
+model that includes all the terms and the easy way to do that is to put
+a period after the little tilde symbol. So that, then it just includes
+all the terms in the data frame except the outcome of corps. Then the generic command plot actually
+will just plot the fit, it will plot and co-create a series of residual and
+diagnostic plots for you. I did par ama for all equals two two so
+that it all it on one page. So in this class we're going to go over
+what the basics of these plots are. So to do that we need to
+discuss influential points and outlier points and
+that there's a distinction. So here I've created a plot where there's
+a clear linear relationship between most of the data between the predictor and
+the response. So there's these four points that I'd like
+to discuss that are colored in orange. The first point let's look
+at the lower left hand one, is right in the middle
+of the cloud of data. It doesn't really have much influence or
+leverage, okay? So, to describe more on what influence
+means, or what leverage means, let's look at this point that
+is in the upper right most plot. Remember that our data has to go
+through the average of the y's and the average of the axis. In that sense we can think of the average,
+the two averages as a mid point of fulcrum and that the bar namely the regression line has to move
+through that fulcrum and you could think just like a regular physical fulcrum,
+as you move further out, right? That point will have
+more leverage just like, I think it's probably
+easier if I draw a picture. Here's my fulcrum. Here's my heavy weight right here,
+let's say it's one ton. Okay, if I need to lift up this weight, if I push down right here on my bar,
+it's going to be a lot harder, than if I push down over there. Well that is the same thing that
+happens in regression models. For if you have a bunch of data,
+a datapoint that is, here is the natural arrange of the axis, a datapoint that's far outside of
+the natural range of the axis. This is would have high leverage. A data point that's right in the middle
+of the x's will have low leverage. So the concept of leverage
+is merely a concept of how far away from the center
+of the axis the data point is. So influence on the other
+hand is whether or not that point chooses
+to exert that leverage. So this point that is far
+along the regression line. But still adheres very well to the regression relationship that
+would be observed if it was removed. That point has high leverage but
+it opts not to execute that leverage. On the other hand look at
+this lower right hand point. If that point were included
+in the regression line we would probably a larger fact on it. Why? Because it's outside of the clouded
+points and it also doesn't adhere to what the rest of the date is saying now point
+both has high leverage and high influence. In this lecture we're going to go over
+both the concepts of leverage and the concepts of influence and
+how you diagnose them using your data. One final point to discuss is upper left
+hand point that is right in the middle of the cloud or the X values. So it has low leverage. However, it doesn't adhere
+at all to the relationship. So, this upper left hand point,
+while being an outlier, is not going to exert the same influence on the model that
+this lower right hand point is going to.

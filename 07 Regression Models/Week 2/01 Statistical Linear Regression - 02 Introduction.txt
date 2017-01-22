@@ -1,0 +1,36 @@
+Hi, and welcome to the lecture on
+statistical linear regression models, as part of the regression
+modeling Coursera course, which is part of our
+Data Science Specialization. My name is Brian Caffo, and
+I'm a professor in the Department of Biostatistics of the Johns Hopkins
+Bloomberg School of Public Health. The class is toe,
+co-taught by my co-instructors and colleagues Jeff Leek and Roger Peng. Finding a good regression line using least
+squares is really simply a mathematical procedure. However, we'd like to do statistics. We'd like to draw emphasis
+based on our data. In other words we'd like to generalize from our data to a population
+using statistical models. And that's what we're going to talk about
+in the statistical in your regression lecture today. So let's consider our probabilistic
+model for linear regression, and we're going to start with,
+one of the most simple ones. A response y-i is our line
+beta one plus beta one x-i, where we don't know beta naught or
+beta one, these are the population parameters
+that we would like to estimate. X i is a collection of explanatory
+variables that we do know. And then to make it a statistical model,
+we're going to add Gaussian, iid Gaussian errors,
+which I'm going to denote epsilon i. So the epsilon i's are going to be
+assumed to be normal mu sigma squared. There's a lot of different ways to
+interpret these Independent errors. Perhaps one of the easier ones is
+to think they're the accumulation of a lot of variables that you didn't
+model that maybe you should have, that act together on the response in a way
+that can be modeled as if independent and identically distributed Gaussian errors. However, let's put these kind of
+difficult interpretation issues aside for the time being, and simply talk about how we mechanically work
+with statistical inference for regression. I would note that the expected value of
+the response given a particular value of the regressor, is simple the line at
+that regressor, beta 0 plus beta 1 xi. And the variants of the response at any particular value of
+the regressor is sigma squared. This latter point, let me elaborate
+just a little bit, this is the variants around the regression line,
+this is not the variants of the response. So it will be lower than the variants
+of the response by itself because you explained away some of the variation
+with X by conditioning on X. I would also note that both
+this expected value and the variance are population quantities. They have sample analogues that
+will estimate, but right now, these are population quantities, these are the estimands that
+we would really like to know.

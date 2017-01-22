@@ -1,0 +1,232 @@
+WEBVTT
+
+1
+00:00:01.030 --> 00:00:05.040
+Okay, so let's look at
+logistic regression curves and
+
+2
+00:00:05.040 --> 00:00:09.740
+think about how r is fitting the data.
+
+3
+00:00:09.740 --> 00:00:14.708
+So here I'm going to use
+the package manipulate.
+
+4
+00:00:16.712 --> 00:00:20.860
+And i have my beta2 and
+my beta1, set here.
+
+5
+00:00:20.860 --> 00:00:24.344
+And so
+here's my logistic regression curve,
+
+6
+00:00:24.344 --> 00:00:27.900
+looks like an s kind of, and here's beta1.
+
+7
+00:00:27.900 --> 00:00:32.296
+So let's see what happens as I render it.
+
+8
+00:00:34.254 --> 00:00:35.970
+Or as I change it.
+
+9
+00:00:35.970 --> 00:00:42.886
+Notice as I get it closer up to higher
+values, it becomes more peaked, okay?
+
+10
+00:00:42.886 --> 00:00:48.050
+And then if I go negative,
+it actually flips around, okay?
+
+11
+00:00:49.500 --> 00:00:52.590
+And then my beta0 curve,
+what happens to this?
+
+12
+00:00:52.590 --> 00:00:53.680
+It just shifts it along.
+
+13
+00:00:54.700 --> 00:00:59.170
+It's hard to tell because
+I'm keeping the don't.
+
+14
+00:01:01.520 --> 00:01:03.930
+The x-axis here is always the same, but
+
+15
+00:01:03.930 --> 00:01:08.470
+it's just shifting the s-curve
+to the left or to the right.
+
+16
+00:01:08.470 --> 00:01:13.055
+Let's think about what r is
+doing when it's trying to fit
+
+17
+00:01:13.055 --> 00:01:15.546
+logistic regression curves.
+
+18
+00:01:18.711 --> 00:01:23.497
+Imagine I have a bunch of zeros and
+ones, on my x-axis one is up here, and
+
+19
+00:01:23.497 --> 00:01:25.490
+zero is down there.
+
+20
+00:01:25.490 --> 00:01:30.260
+So imagine for this regressor,
+this x-regressor here, I have a bunch of
+
+21
+00:01:31.610 --> 00:01:36.480
+zeros down there, but maybe and
+an occasional one, some, but
+
+22
+00:01:36.480 --> 00:01:42.040
+then over here, I have a lot more ones,
+
+23
+00:01:42.040 --> 00:01:46.590
+and then right here I have some zeros,
+okay?
+
+24
+00:01:46.590 --> 00:01:50.190
+So what r is trying to do, okay?
+
+25
+00:01:50.190 --> 00:01:57.150
+So it knows as I head,
+we can see as I head to larger x values,
+
+26
+00:01:57.150 --> 00:02:01.420
+it become increasingly likely
+that my outcome is a one.
+
+27
+00:02:01.420 --> 00:02:03.420
+As I head towards smaller x values,
+
+28
+00:02:03.420 --> 00:02:07.220
+it becomes increasingly likely
+that my outcome is a zero.
+
+29
+00:02:07.220 --> 00:02:15.220
+So what r is trying to do is
+trying to move the s-curve.
+
+30
+00:02:15.220 --> 00:02:19.070
+It's trying all different
+sorts of s-curves, right?
+
+31
+00:02:19.070 --> 00:02:24.360
+All different sorts of logistic
+curves to find the one that best
+
+32
+00:02:24.360 --> 00:02:28.430
+matches up with the associated
+probabilities, okay?
+
+33
+00:02:28.430 --> 00:02:31.450
+And that's all that logistic
+regression is trying to do.
+
+34
+00:02:32.650 --> 00:02:36.350
+And it does it with the principle
+of so-called maximum likelihood.
+
+35
+00:02:36.350 --> 00:02:40.760
+Which again is something if
+you take the inference class
+
+36
+00:02:40.760 --> 00:02:44.800
+from the data science specialization,
+you'll know a little bit more about.
+
+37
+00:02:44.800 --> 00:02:49.380
+So just imagine these
+points staying there, and
+
+38
+00:02:49.380 --> 00:02:51.050
+I'm going to get rid of them, okay?
+
+39
+00:02:51.050 --> 00:02:56.280
+And then just see what r
+has under its disposal
+
+40
+00:02:56.280 --> 00:02:59.280
+is to be able to move these two sliders,
+and
+
+41
+00:02:59.280 --> 00:03:05.140
+then define the s-curve that
+fits that data the best, okay?
+
+42
+00:03:05.140 --> 00:03:07.790
+And so that's all that
+logistic regression is doing.
+
+43
+00:03:07.790 --> 00:03:10.920
+And this function,
+this the fitted function out, right?
+
+44
+00:03:10.920 --> 00:03:12.961
+This is the function.
+
+45
+00:03:15.754 --> 00:03:21.945
+E to the Beta not, plus beta 1x over one,
+plus e to the beta not,
+
+46
+00:03:21.945 --> 00:03:27.568
+plus beta 1x,
+that's the logistic regression model but
+
+47
+00:03:27.568 --> 00:03:32.770
+converted back to the probability scale,
+okay?
+
+48
+00:03:32.770 --> 00:03:36.420
+So, I hope this helps you understand
+a little bit of behind the scenes,
+
+49
+00:03:36.420 --> 00:03:39.000
+what logistic regression is trying to do.

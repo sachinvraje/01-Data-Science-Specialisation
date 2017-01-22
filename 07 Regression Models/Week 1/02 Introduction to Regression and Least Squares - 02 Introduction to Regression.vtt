@@ -1,0 +1,468 @@
+WEBVTT
+
+1
+00:00:01.050 --> 00:00:06.150
+Hi, my name is Brian Caffo, and
+welcome to the introduction to regression
+
+2
+00:00:06.150 --> 00:00:09.880
+lecture as part of
+the regression Coursera class.
+
+3
+00:00:09.880 --> 00:00:12.130
+This is part of our data
+science specialization,
+
+4
+00:00:12.130 --> 00:00:16.540
+and this class is co-taught by my
+co-instructors Jeff Leek and Roger Peng.
+
+5
+00:00:16.540 --> 00:00:17.600
+We're all in the department
+
+6
+00:00:17.600 --> 00:00:20.779
+of biostatistics at the Johns Hopkins
+Bloomberg School of Public Health.
+
+7
+00:00:21.820 --> 00:00:26.500
+Regression is probably the most
+fundamental topic for the data scientist.
+
+8
+00:00:26.500 --> 00:00:32.450
+Before you do any fancy machine learning
+or anything like that, your go to
+
+9
+00:00:32.450 --> 00:00:37.240
+procedure is going to be linear regression
+or its generalization, linear models.
+
+10
+00:00:38.700 --> 00:00:43.520
+Regression has a rich history and it goes
+back to this fellow here, Francis Galton,
+
+11
+00:00:43.520 --> 00:00:47.370
+who invented the, the term and
+the concept regression, and the term and
+
+12
+00:00:47.370 --> 00:00:50.870
+the concept correlation, which is
+intimately tied to linear regression.
+
+13
+00:00:52.360 --> 00:00:55.340
+And he did many things,
+
+14
+00:00:55.340 --> 00:01:00.150
+one of which was predicting a child's
+height from a parent's height is a dataset
+
+15
+00:01:00.150 --> 00:01:04.870
+that we will investigate a lot just
+because of its historical significance.
+
+16
+00:01:04.870 --> 00:01:09.100
+And my friend and
+co instructor Jeff Leek noted that this
+
+17
+00:01:09.100 --> 00:01:12.130
+example is actually
+surprisingly still relevant.
+
+18
+00:01:12.130 --> 00:01:16.160
+And here's an article from
+the American Journal of Human Genetics.
+
+19
+00:01:16.160 --> 00:01:22.350
+Where they compare modern genetic data
+using high throughput bioinformatics
+
+20
+00:01:22.350 --> 00:01:28.190
+to old, to the old Victorian Era
+measurements created by Francis Galton,
+
+21
+00:01:28.190 --> 00:01:30.570
+and see that it doesn't
+do too much better.
+
+22
+00:01:30.570 --> 00:01:31.720
+So anyway, I give you the links there.
+
+23
+00:01:31.720 --> 00:01:32.662
+You can read them over.
+
+24
+00:01:32.662 --> 00:01:37.156
+It's a very interesting, and
+kind of quirky take on modern genetics and
+
+25
+00:01:37.156 --> 00:01:42.019
+genetic analysis, but it also goes back
+and reminds us about the importance of
+
+26
+00:01:42.019 --> 00:01:45.939
+what Francis Galton did and
+how ahead of his time he really was.
+
+27
+00:01:45.939 --> 00:01:49.758
+Let's go through a more modern example
+that's a little bit more similar to what
+
+28
+00:01:49.758 --> 00:01:52.494
+a data scientist would be doing
+in their day to day lives.
+
+29
+00:01:53.850 --> 00:01:56.730
+So, if you don't read the blog
+Simply Statistics you really should.
+
+30
+00:01:56.730 --> 00:02:00.670
+It's written by Jeff Leek, Roger Peng,
+both of who are co-instructors
+
+31
+00:02:00.670 --> 00:02:05.210
+in the data science specialization and
+Rafael Irazarry, who has a couple classes
+
+32
+00:02:05.210 --> 00:02:10.150
+on add X that you should check out
+who's at Harvard Biostatistics.
+
+33
+00:02:10.150 --> 00:02:17.481
+And Rafa wrote this post was talking
+about ball hogging and players.
+
+34
+00:02:17.481 --> 00:02:21.880
+And he basically, you know,
+here has a plot of the percentage of
+
+35
+00:02:21.880 --> 00:02:25.610
+the shots that were taken by Kobe Bryant,
+and the point differential.
+
+36
+00:02:25.610 --> 00:02:27.100
+The game specific point differential.
+
+37
+00:02:28.680 --> 00:02:31.890
+And he fit a linear regression to it, and
+
+38
+00:02:31.890 --> 00:02:34.260
+he made some of the claims in this,
+in the blog post.
+
+39
+00:02:34.260 --> 00:02:37.100
+And you can find it and,
+and read the full post.
+
+40
+00:02:37.100 --> 00:02:40.200
+But, for example, one of the claims
+is data supports the claim that if
+
+41
+00:02:40.200 --> 00:02:42.520
+Kobe stops ball hogging
+the Lakers will win more.
+
+42
+00:02:44.650 --> 00:02:49.270
+But, probably more relevant to this class
+is he makes this specific work, statement.
+
+43
+00:02:49.270 --> 00:02:54.266
+Linear regression suggests an increase
+of 1% in percent of shots taken by Ko,
+
+44
+00:02:54.266 --> 00:02:57.172
+Kobe results in a drop of 1.16 points, and
+
+45
+00:02:57.172 --> 00:03:00.960
+he gives a standard error
+in score differential.
+
+46
+00:03:00.960 --> 00:03:06.020
+So creating this sentence is what a large
+part of this class will be about.
+
+47
+00:03:06.020 --> 00:03:09.972
+How do you create this sentence,
+how do you interpret it, how do, you know,
+
+48
+00:03:09.972 --> 00:03:14.049
+Rafa's adhering to good statistical
+practice in giving a standard error.
+
+49
+00:03:15.120 --> 00:03:18.090
+And these are the sorts of things we're
+going to talk about in this class.
+
+50
+00:03:18.090 --> 00:03:21.330
+But I'd also like, just for
+this example to think about, you know,
+
+51
+00:03:21.330 --> 00:03:24.350
+not only how it was done, but
+do you agree with the analysis?
+
+52
+00:03:24.350 --> 00:03:27.690
+What are things that maybe Rafa
+should've thought about or what,
+
+53
+00:03:27.690 --> 00:03:29.820
+is this a complete analysis.
+
+54
+00:03:29.820 --> 00:03:32.480
+And maybe read the blog post and
+some of the comments.
+
+55
+00:03:32.480 --> 00:03:35.924
+Where some of the topics that
+the germane digression anals,
+
+56
+00:03:35.924 --> 00:03:38.299
+regression analysis are covered there.
+
+57
+00:03:40.830 --> 00:03:43.535
+Let's go back to our example,
+where Francis Galton was using
+
+58
+00:03:43.535 --> 00:03:45.620
+the parent's heights to predict
+the children's heights, and
+
+59
+00:03:45.620 --> 00:03:47.530
+talk about the kinds of
+questions we can answer.
+
+60
+00:03:48.630 --> 00:03:51.660
+So, we might want to use
+a parent's height, and try and
+
+61
+00:03:51.660 --> 00:03:53.170
+predict their children's heights.
+
+62
+00:03:55.050 --> 00:03:57.100
+We might want to find a parsimonious and
+
+63
+00:03:57.100 --> 00:04:01.180
+easily described mean relationships
+between the parent's and child's height.
+
+64
+00:04:01.180 --> 00:04:02.920
+So we don't want anything complicated.
+
+65
+00:04:02.920 --> 00:04:05.240
+We want the simplest
+possible relationship, and
+
+66
+00:04:05.240 --> 00:04:08.260
+that is what regression is best at.
+
+67
+00:04:08.260 --> 00:04:12.530
+While machine learning and other
+techniques generate highly elaborate,
+
+68
+00:04:12.530 --> 00:04:16.790
+in many cases, accurate prediction models,
+they tend to not be parsimonious.
+
+69
+00:04:16.790 --> 00:04:20.200
+They tend not to explain the data,
+and they tend not to generate new
+
+70
+00:04:20.200 --> 00:04:23.400
+parsimonious knowledge, whereas
+this is what regression is good at.
+
+71
+00:04:23.400 --> 00:04:25.590
+This is what regression
+is in fact best at.
+
+72
+00:04:28.210 --> 00:04:33.370
+We can talk about variation that's
+unexplained by the regression model.
+
+73
+00:04:33.370 --> 00:04:35.290
+The so called residual variation.
+
+74
+00:04:36.760 --> 00:04:41.800
+We can quantify the impact that
+things like genotype information has
+
+75
+00:04:41.800 --> 00:04:45.740
+beyond parent, parental height explained
+child's height and that's related to this
+
+76
+00:04:45.740 --> 00:04:49.510
+American Journal of Human, European
+Journal of Human Genetics paper that
+
+77
+00:04:49.510 --> 00:04:54.630
+looked at what re, residual variation
+was left after using parental height,
+
+78
+00:04:54.630 --> 00:04:59.326
+or what residual variation was
+left after using genetics.
+
+79
+00:04:59.326 --> 00:05:01.330
+And then,
+
+80
+00:05:01.330 --> 00:05:05.390
+very importantly, we're going to connect
+this back to the subject of inference.
+
+81
+00:05:05.390 --> 00:05:09.170
+How do we take our data,
+which is just a sample,
+
+82
+00:05:09.170 --> 00:05:12.320
+it only talks about that data set,
+and try to
+
+83
+00:05:12.320 --> 00:05:17.610
+figure out what assumptions are needed to
+extrapolate it to a larger population.
+
+84
+00:05:17.610 --> 00:05:20.050
+This is a deep subject called
+statistical inference.
+
+85
+00:05:20.050 --> 00:05:23.330
+We have a whole another class on it
+in the course area of data science
+
+86
+00:05:23.330 --> 00:05:24.970
+specialization.
+
+87
+00:05:24.970 --> 00:05:26.990
+But we're going to apply
+the tools of inference,
+
+88
+00:05:26.990 --> 00:05:30.280
+which I'm hoping most of you
+will have had as a prerequisite.
+
+89
+00:05:30.280 --> 00:05:32.780
+We're going to apply
+the tools of inference
+
+90
+00:05:32.780 --> 00:05:34.990
+to this new subject of regression.
+
+91
+00:05:36.670 --> 00:05:40.870
+And then here's a final question
+that Galton answered and
+
+92
+00:05:40.870 --> 00:05:45.360
+I, it's called regression to the mean or
+regression to mediocrity.
+
+93
+00:05:45.360 --> 00:05:48.480
+And the basic question is why do
+children's of very tall, why do children
+
+94
+00:05:48.480 --> 00:05:52.926
+of very tall parents tend to be tall, but
+a little bit shorter than their parents.
+
+95
+00:05:52.926 --> 00:05:57.080
+And why do the children of very
+short parents tend to be short, but
+
+96
+00:05:57.080 --> 00:06:00.610
+a little bit taller than their parents,
+and this is the famous idea of so
+
+97
+00:06:00.610 --> 00:06:01.970
+called regression to the mean.

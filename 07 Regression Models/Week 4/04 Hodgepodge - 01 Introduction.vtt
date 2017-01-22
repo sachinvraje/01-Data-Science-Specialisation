@@ -1,0 +1,1361 @@
+WEBVTT
+
+1
+00:00:00.380 --> 00:00:05.330
+Hi, and welcome to our last lecture in
+regression models for data science.
+
+2
+00:00:05.330 --> 00:00:07.150
+Part of our data science specialization.
+
+3
+00:00:08.230 --> 00:00:09.050
+In this lecture,
+
+4
+00:00:09.050 --> 00:00:14.260
+I just hope to motivate you to continue to
+learn regression models and linear models,
+
+5
+00:00:14.260 --> 00:00:19.540
+generalize linear models because of their
+extreme importance for data analysis.
+
+6
+00:00:19.540 --> 00:00:23.273
+and I just wanted to show you a couple of
+things that at least I find interesting of
+
+7
+00:00:23.273 --> 00:00:26.408
+ways in which we can extend and
+even further than maybe we thought.
+
+8
+00:00:33.958 --> 00:00:38.082
+So the first thing that came to my mind
+when thinking about extending linear
+
+9
+00:00:38.082 --> 00:00:43.350
+models was how that we can fit complicated
+functions using regression models.
+
+10
+00:00:43.350 --> 00:00:48.590
+So we've seen a little bit in how to
+do this by adding squared and cubic or
+
+11
+00:00:48.590 --> 00:00:55.710
+polynomial terms into our regression model
+so that we can fit lower order functions.
+
+12
+00:00:55.710 --> 00:00:59.800
+However imagine if you have a complicated
+function like a sine curve or
+
+13
+00:00:59.800 --> 00:01:01.980
+something that looks
+maybe like a sine curve.
+
+14
+00:01:01.980 --> 00:01:05.740
+How would you fit that
+non-parametrically using a linear model?
+
+15
+00:01:05.740 --> 00:01:10.524
+So we might specify our model
+as Y is now equal to f of x
+
+16
+00:01:10.524 --> 00:01:15.658
+plus epsilon where f might
+be a complicated function.
+
+17
+00:01:15.658 --> 00:01:19.408
+Well it turns out that there is
+a pretty easy way to do this and
+
+18
+00:01:19.408 --> 00:01:22.410
+what I'm going to show you
+is a simple first step.
+
+19
+00:01:22.410 --> 00:01:25.227
+There is entire literature
+in how to do this and
+
+20
+00:01:25.227 --> 00:01:27.984
+were just going to go over
+in some of the basics.
+
+21
+00:01:27.984 --> 00:01:31.745
+So, first step would be the use
+something called regression spawns.
+
+22
+00:01:31.745 --> 00:01:36.727
+So we're going to, our model for
+Y = f(X) + epsilon
+
+23
+00:01:36.727 --> 00:01:41.707
+is going to be Y equal to an intercept,
+beta naught,
+
+24
+00:01:41.707 --> 00:01:46.010
+plus a line term called
+a regular slope term,
+
+25
+00:01:46.010 --> 00:01:50.992
+beta1 times X1, but
+then a bunch of terms like this
+
+26
+00:01:50.992 --> 00:01:56.199
+where it's the sum of a bunch
+of terms of x minus a naught
+
+27
+00:01:56.199 --> 00:02:01.110
+point with a little plus
+at the bottom times gamma.
+
+28
+00:02:01.110 --> 00:02:05.280
+And I'll show you in a second
+what these actually mean.
+
+29
+00:02:05.280 --> 00:02:10.510
+So the function with a little plus,
+that just returns
+
+30
+00:02:10.510 --> 00:02:16.020
+the argument if that argument's
+positive and it returns zero otherwise.
+
+31
+00:02:16.020 --> 00:02:21.670
+And these little terms, 1 up to d,
+those are naught points.
+
+32
+00:02:21.670 --> 00:02:24.410
+So what we're going to do
+is we're going to take,
+
+33
+00:02:24.410 --> 00:02:30.400
+imagine a stick that if you break
+it it just created a kink in it.
+
+34
+00:02:30.400 --> 00:02:33.790
+Okay, rather that breaking it apart,
+you create a kink in it.
+
+35
+00:02:33.790 --> 00:02:37.746
+So what we're going to do is imagine
+we want to fit our function.
+
+36
+00:02:45.005 --> 00:02:50.358
+So imagine if our data would
+something like that and
+
+37
+00:02:50.358 --> 00:02:55.580
+we have a stick, and
+want to fit this function.
+
+38
+00:02:55.580 --> 00:02:59.900
+We might break it at
+a couple points like that.
+
+39
+00:02:59.900 --> 00:03:01.986
+So this is the idea.
+
+40
+00:03:04.858 --> 00:03:08.320
+We're going to actually
+mathematically model those breaks.
+
+41
+00:03:08.320 --> 00:03:11.690
+And that's what these little
+plus functions do and
+
+42
+00:03:11.690 --> 00:03:15.940
+so I argue down here that
+if you're interested,
+
+43
+00:03:15.940 --> 00:03:19.420
+you can just prove yourself that
+this function is continuous.
+
+44
+00:03:19.420 --> 00:03:21.930
+It doesn't have split,
+
+45
+00:03:21.930 --> 00:03:25.120
+you can draw this without ever
+lifting up your piece of chalk.
+
+46
+00:03:25.120 --> 00:03:26.090
+Okay?
+
+47
+00:03:26.090 --> 00:03:30.280
+And so, I think the easiest way to show
+this would be to go through an example.
+
+48
+00:03:30.280 --> 00:03:35.800
+And in this example I just simulate
+data that's a sine curve plus noise,
+
+49
+00:03:35.800 --> 00:03:38.510
+and you can see that in
+the blue points on the plot.
+
+50
+00:03:39.850 --> 00:03:42.940
+So what I'm going to do is
+grab a bunch of naughts, so
+
+51
+00:03:42.940 --> 00:03:46.900
+that's a bunch of the break
+points where the line will be
+
+52
+00:03:48.420 --> 00:03:52.590
+continuous but not smooth at those points.
+
+53
+00:03:52.590 --> 00:03:55.960
+So I calculate 20 of those points and
+
+54
+00:03:55.960 --> 00:04:00.350
+I just equally space them along
+the range of data that I've collected.
+
+55
+00:04:02.100 --> 00:04:06.180
+And then I show exactly here
+how to create my naught terms,
+
+56
+00:04:06.180 --> 00:04:09.350
+just executing that function
+that I had on the previous page.
+
+57
+00:04:09.350 --> 00:04:13.330
+You can replicate this function and
+you can see there it's pretty easy.
+
+58
+00:04:13.330 --> 00:04:17.000
+So now I have a matrix
+of these naught terms.
+
+59
+00:04:17.000 --> 00:04:23.330
+And I then create my x matrix by adding an
+intercept term that's just a constant, my
+
+60
+00:04:23.330 --> 00:04:28.800
+slope coefficient term, which is just the
+x by itself, and then these spline terms.
+
+61
+00:04:28.800 --> 00:04:30.630
+Then I just fiddle in your model.
+
+62
+00:04:30.630 --> 00:04:32.550
+Y is this collection of predictors.
+
+63
+00:04:32.550 --> 00:04:37.540
+I took out the intercept because I
+included the intercept in my x matrix.
+
+64
+00:04:37.540 --> 00:04:40.300
+Okay?
+And then I show my fitted plot.
+
+65
+00:04:40.300 --> 00:04:45.920
+And you can see, it looks pretty good,
+it actually fits the sine curve very well.
+
+66
+00:04:45.920 --> 00:04:50.455
+The only thing that's a little bothersome
+is that we know the sine curve that
+
+67
+00:04:50.455 --> 00:04:53.740
+we're trying to fit is likely smooth and
+this is very
+
+68
+00:04:56.080 --> 00:04:59.850
+sharp at these at this naught points.
+
+69
+00:04:59.850 --> 00:05:03.720
+And the way that that happens
+mathematically is the function that we've
+
+70
+00:05:03.720 --> 00:05:09.030
+used is continuous but
+it's not continuously differentiable.
+
+71
+00:05:09.030 --> 00:05:12.910
+If we took the derogative,
+it's the derivative is not continuous.
+
+72
+00:05:12.910 --> 00:05:18.420
+And so we can actually do a pretty
+simple trick and get a continuous
+
+73
+00:05:18.420 --> 00:05:21.520
+derivative of the naught points and
+make them nice and smooth looking, so
+
+74
+00:05:21.520 --> 00:05:24.870
+it doesn't look like we're breaking
+the stick at each one of these points.
+
+75
+00:05:24.870 --> 00:05:27.650
+Instead it looks like we're
+drawing a smooth curve.
+
+76
+00:05:27.650 --> 00:05:30.850
+It's very easy to just add square terms,
+is all we have to do.
+
+77
+00:05:31.850 --> 00:05:36.150
+So now our function is y equals
+beta naught plus beta 1 x,
+
+78
+00:05:36.150 --> 00:05:38.730
+plus we add a square term,
+beta 2 x squared, and
+
+79
+00:05:38.730 --> 00:05:43.360
+then you see we're using our same function
+as before, only we're squaring it.
+
+80
+00:05:43.360 --> 00:05:48.300
+Okay, so instead of having x minus the
+naught points with a little plus symbol,
+
+81
+00:05:48.300 --> 00:05:53.070
+instead of just using that, we're squaring
+it, which just means If the axis is
+
+82
+00:05:53.070 --> 00:05:59.220
+further along than the naught point,
+then return that difference and square it.
+
+83
+00:05:59.220 --> 00:06:01.890
+Okay if it's naught then just return zero.
+
+84
+00:06:01.890 --> 00:06:03.430
+So that's what that function is.
+
+85
+00:06:03.430 --> 00:06:05.740
+I give you the term here and
+
+86
+00:06:05.740 --> 00:06:10.590
+you can see our code is identical with
+the exception of, I'm just squaring
+
+87
+00:06:10.590 --> 00:06:15.070
+the eventuality that our x is further
+along than each of the naught points.
+
+88
+00:06:16.360 --> 00:06:18.690
+And I've added an x squared term.
+
+89
+00:06:18.690 --> 00:06:20.540
+Okay?
+And then now when I fit it,
+
+90
+00:06:20.540 --> 00:06:23.250
+you can see now the curve is nice and
+smooth.
+
+91
+00:06:23.250 --> 00:06:29.220
+And notice all we've done in this
+process is just ordinary regression.
+
+92
+00:06:29.220 --> 00:06:31.642
+So, we fit a pretty complicated function,
+
+93
+00:06:31.642 --> 00:06:35.378
+with just ordinary regression in
+putting a bunch of naught points.
+
+94
+00:06:35.378 --> 00:06:39.262
+Now this is a pretty basic version of
+regression spines or basic version of
+
+95
+00:06:39.262 --> 00:06:43.462
+spines called regression spines and there
+some problems we have to know exactly
+
+96
+00:06:43.462 --> 00:06:47.558
+where the naught points, we have to know
+what where we put the naught points.
+
+97
+00:06:47.558 --> 00:06:50.486
+There's potentially a problem if
+we put too many naught points.
+
+98
+00:06:50.486 --> 00:06:55.430
+There's potentially a problem
+if we put too few naught points.
+
+99
+00:06:55.430 --> 00:06:57.390
+And so there are some solutions for
+that, and
+
+100
+00:06:57.390 --> 00:07:00.440
+in fact i have some notes on
+the next page that cover this.
+
+101
+00:07:00.440 --> 00:07:05.243
+So the first thing I'd like to
+point out in these notes is that,
+
+102
+00:07:05.243 --> 00:07:09.426
+this collection of sine terms,
+it's called a basis.
+
+103
+00:07:09.426 --> 00:07:13.518
+It means it's the collection of
+building blocks for functions and
+
+104
+00:07:13.518 --> 00:07:17.768
+this is just one way to create a set
+of building blocks for functions.
+
+105
+00:07:17.768 --> 00:07:22.808
+There's a lot of other ways and in fact
+we're going to cover another way here in
+
+106
+00:07:22.808 --> 00:07:28.005
+a minute but, this is one of the more
+popular ones, these regressors lines and
+
+107
+00:07:28.005 --> 00:07:32.298
+there's ways you can extend this
+to make them even more useful.
+
+108
+00:07:32.298 --> 00:07:35.650
+But I would just say, people spend a lot
+of time thinking about these things.
+
+109
+00:07:35.650 --> 00:07:39.337
+And there's a lot of different kinds
+of basis that you can look at, and
+
+110
+00:07:39.337 --> 00:07:41.788
+each basis has its strengths and
+weaknesses.
+
+111
+00:07:41.788 --> 00:07:45.137
+Some of the most notable
+bases are the Fourier basis,
+
+112
+00:07:45.137 --> 00:07:49.379
+that we'll talk about a little bit
+in a slide, the wavelet basis and
+
+113
+00:07:49.379 --> 00:07:53.921
+then spline basis like the ones that
+we're just considering there, and
+
+114
+00:07:53.921 --> 00:07:57.136
+there's a lot of different
+kinds of spline basis.
+
+115
+00:07:57.136 --> 00:08:04.520
+Another thing is, if you want to
+fit data that looks like that,
+
+116
+00:08:04.520 --> 00:08:08.780
+you can just have one naught point.
+
+117
+00:08:08.780 --> 00:08:12.280
+If you know where that naught point is
+exactly, you can just have the one naught
+
+118
+00:08:12.280 --> 00:08:16.740
+point, add it in and you can get
+a hockey stick like model out of this.
+
+119
+00:08:16.740 --> 00:08:19.220
+Now, that might be controversial if,
+
+120
+00:08:19.220 --> 00:08:23.920
+you have to know that it's really a hockey
+stick and an abrupt change like that.
+
+121
+00:08:23.920 --> 00:08:25.330
+But if you really know that and
+
+122
+00:08:25.330 --> 00:08:29.759
+you want to do that, you could fit
+a hockey stick model with this approach.
+
+123
+00:08:31.160 --> 00:08:35.890
+There's nothing particular to
+doing these in just linear models.
+
+124
+00:08:35.890 --> 00:08:39.250
+We could do them in generalized linear
+models as well and just specify
+
+125
+00:08:39.250 --> 00:08:43.880
+the regression's in the linear predictor,
+and that's all that it takes.
+
+126
+00:08:43.880 --> 00:08:48.350
+So in addition to showing you how to fit
+non linear functions in linear models,
+
+127
+00:08:48.350 --> 00:08:51.550
+we've basically just showed you how to
+do it in generalized linear models too.
+
+128
+00:08:52.600 --> 00:08:56.830
+So, like I said a very consistent problem
+with this is that we don't know where
+
+129
+00:08:56.830 --> 00:09:01.060
+the naught points are, there's a problem
+of putting in too few, there's a problem
+
+130
+00:09:01.060 --> 00:09:05.430
+of putting in too many so, the modern
+solution to this problem is to put in lots
+
+131
+00:09:05.430 --> 00:09:10.950
+and lots and lots of naught points,
+add a so called regularization term.
+
+132
+00:09:10.950 --> 00:09:17.230
+The rationalization term will penalize
+the coefficients from the spline terms,
+
+133
+00:09:17.230 --> 00:09:20.625
+will penalize larger coefficients, so
+
+134
+00:09:20.625 --> 00:09:25.500
+it keeps the number of
+parameters in check and
+
+135
+00:09:25.500 --> 00:09:29.720
+so that's in more advance topic but if you
+take some more advance linear models or
+
+136
+00:09:29.720 --> 00:09:31.860
+regression modeling classes
+they'll cover that.
+
+137
+00:09:33.290 --> 00:09:38.730
+So anyway, now you have some basics
+to how you could fit an interesting
+
+138
+00:09:38.730 --> 00:09:42.020
+nonlinear function using linear
+models in generalized linear models.
+
+139
+00:09:42.020 --> 00:09:43.380
+And for the time being,
+
+140
+00:09:43.380 --> 00:09:47.510
+you'll have to play around with the naught
+placement and how many naughts you put in.
+
+141
+00:09:47.510 --> 00:09:53.660
+And then I would suggest taking some other
+classes in linear models to extend this.
+
+142
+00:09:53.660 --> 00:09:59.820
+So let's move on to the next example,
+the final example for the class.
+
+143
+00:09:59.820 --> 00:10:03.990
+I wanted to talk about how you can make
+another basis, the Fourier basis and
+
+144
+00:10:03.990 --> 00:10:08.370
+how you could try to model
+harmonics using the Fourier basis.
+
+145
+00:10:09.430 --> 00:10:13.528
+So I thought of this simple exercise.
+
+146
+00:10:13.528 --> 00:10:20.376
+Imagine a scale, a major scale is just
+kind of thing that you've heard of.
+
+147
+00:10:20.376 --> 00:10:22.850
+Do re mi fa so la ti do.
+
+148
+00:10:22.850 --> 00:10:23.610
+Just like that.
+
+149
+00:10:23.610 --> 00:10:24.530
+The standard.
+
+150
+00:10:24.530 --> 00:10:30.230
+That's a octave eight notes and a chord is
+
+151
+00:10:30.230 --> 00:10:36.180
+three notes played together so,
+any play any chord is if you hear
+
+152
+00:10:36.180 --> 00:10:40.620
+someone strum a guitar or play three notes
+in the piano, they're playing a chord.
+
+153
+00:10:42.180 --> 00:10:48.070
+So, I wondered if someone
+play a chord continuously.
+
+154
+00:10:48.070 --> 00:10:52.320
+For well, a little bit of time and
+we had it digitized and recorded and
+
+155
+00:10:52.320 --> 00:10:53.840
+brought in to R.
+
+156
+00:10:53.840 --> 00:10:57.700
+Would R be able to figure out what
+chord it, what the notes were?
+
+157
+00:10:57.700 --> 00:10:59.690
+So that would tell
+exactly what chord it is.
+
+158
+00:10:59.690 --> 00:11:01.230
+All it got was a sound.
+
+159
+00:11:01.230 --> 00:11:04.050
+It couldn't tell us what chord it was.
+
+160
+00:11:04.050 --> 00:11:08.240
+So here, I took this data,
+or I generated the data, but
+
+161
+00:11:08.240 --> 00:11:14.420
+I got the frequencies for
+the various notes off a webpage,
+
+162
+00:11:14.420 --> 00:11:20.450
+and this is the frequencies if you start
+on the middle C key on a piano and
+
+163
+00:11:20.450 --> 00:11:23.530
+go up one octave to the C key again.
+
+164
+00:11:23.530 --> 00:11:24.130
+Okay.
+
+165
+00:11:24.130 --> 00:11:25.830
+So that's probably the, I don't know,
+
+166
+00:11:25.830 --> 00:11:27.250
+maybe the most important
+part of the piano.
+
+167
+00:11:27.250 --> 00:11:28.562
+I don't know.
+
+168
+00:11:28.562 --> 00:11:34.110
+And, so, what I've done is
+that I've taken this notes and
+
+169
+00:11:34.110 --> 00:11:37.670
+then I've created a digitally
+sampled time points.
+
+170
+00:11:37.670 --> 00:11:41.990
+So, here I did,
+the time goes from zero to two.
+
+171
+00:11:41.990 --> 00:11:45.380
+And it and it,
+I'm saying sampled every .001.
+
+172
+00:11:45.380 --> 00:11:46.388
+So let's say it's two seconds.
+
+173
+00:11:46.388 --> 00:11:52.226
+So if two seconds of data,
+and, I created three notes.
+
+174
+00:11:52.226 --> 00:11:55.240
+A C, an E, and a G.
+
+175
+00:11:55.240 --> 00:12:00.130
+I created those notes by just creating
+a sine wave at that frequency.
+
+176
+00:12:00.130 --> 00:12:02.720
+And you could, R doesn't really
+have the capability of doing this,
+
+177
+00:12:02.720 --> 00:12:05.590
+but it's actually pretty
+easy to do in Map Lab.
+
+178
+00:12:05.590 --> 00:12:07.949
+You could,
+if you were to take these frequencies.
+
+179
+00:12:07.949 --> 00:12:15.280
+And save them in a file and
+you know, wave file and play them.
+
+180
+00:12:15.280 --> 00:12:19.901
+It would you know,
+sound like a very digital sound at
+
+181
+00:12:19.901 --> 00:12:25.168
+the right note of that key would
+sound like [SOUND] like that.
+
+182
+00:12:25.168 --> 00:12:26.470
+Okay?
+
+183
+00:12:26.470 --> 00:12:31.190
+And so to build our chord,
+you just add these three notes together.
+
+184
+00:12:31.190 --> 00:12:35.500
+So there I build my cord by adding my c,
+e, and my g notes together.
+
+185
+00:12:35.500 --> 00:12:37.480
+That's a c major chord.
+
+186
+00:12:37.480 --> 00:12:40.150
+And now what I want to know is,
+here I have a chord, and
+
+187
+00:12:40.150 --> 00:12:43.815
+if I could save it as a wave file and
+play it, it would sound like a chord.
+
+188
+00:12:45.110 --> 00:12:50.760
+And what I want to know is,
+can R detect what chord it is?
+
+189
+00:12:50.760 --> 00:12:55.630
+Okay, so what I did, is I created a basis
+that was all the sine functions for
+
+190
+00:12:55.630 --> 00:12:56.540
+every note.
+
+191
+00:12:56.540 --> 00:12:58.620
+So, eight sine functions, okay?
+
+192
+00:12:58.620 --> 00:13:03.499
+And then, I fit a linear model with
+my chord, my chord as an outcome.
+
+193
+00:13:05.280 --> 00:13:08.250
+The sine functions as my predictors,
+and I got rid of the intercept because
+
+194
+00:13:08.250 --> 00:13:10.890
+everything is centered to have means here,
+okay.
+
+195
+00:13:10.890 --> 00:13:13.590
+So let's see what happens
+when I plot the coefficients.
+
+196
+00:13:13.590 --> 00:13:17.050
+So here I've plotted the coefficients and
+I've connected them with a line, and
+
+197
+00:13:17.050 --> 00:13:22.270
+you see that R does it correctly and
+it estimates the c, the e and
+
+198
+00:13:22.270 --> 00:13:25.190
+the g chord as having very
+large coefficients and
+
+199
+00:13:25.190 --> 00:13:28.380
+all the rest of of them are kind of small,
+relatively speaking.
+
+200
+00:13:28.380 --> 00:13:34.230
+So if you were to do this,
+you would be able to guess the chord.
+
+201
+00:13:35.320 --> 00:13:37.810
+Now this only covers the sine part, but
+
+202
+00:13:37.810 --> 00:13:41.700
+there could also be a cosine
+component to the note as well.
+
+203
+00:13:41.700 --> 00:13:46.930
+And so there is an automated way.
+
+204
+00:13:46.930 --> 00:13:51.990
+Let's do a fairly automatic way
+to fit all the possible sins and
+
+205
+00:13:51.990 --> 00:13:57.840
+cosine terms for a you know two
+seconds of digitally sampled music and
+
+206
+00:13:57.840 --> 00:14:01.000
+that's called the discrete
+Fourier transform.
+
+207
+00:14:01.000 --> 00:14:04.718
+All the Discrete Fourier Transform is
+doing is exactly what we're doing here.
+
+208
+00:14:04.718 --> 00:14:07.581
+It's fitting a linear model,
+but it has all,
+
+209
+00:14:07.581 --> 00:14:12.574
+not just the sine terms, but all of the
+cosine terms, but all of the possible ones
+
+210
+00:14:12.574 --> 00:14:17.076
+that that time series will allow at
+the rate at which it's been sampled.
+
+211
+00:14:17.076 --> 00:14:23.640
+So it has a so-called
+completely saturated model.
+
+212
+00:14:23.640 --> 00:14:28.120
+So, it has,
+if you have a thousand time points sample,
+
+213
+00:14:28.120 --> 00:14:31.140
+it has a thousand
+coefficients in the model.
+
+214
+00:14:32.710 --> 00:14:36.960
+And so, the discreet Fourier transform
+really just fits this linear model,
+
+215
+00:14:36.960 --> 00:14:40.690
+it does and kind of interesting way with
+complex numbers and that sort of thing.
+
+216
+00:14:40.690 --> 00:14:43.750
+But that's all that the discrete
+Fourier transform is doing.
+
+217
+00:14:43.750 --> 00:14:47.940
+And so it would fit both the sine
+terms and the cosine terms.
+
+218
+00:14:47.940 --> 00:14:52.100
+But if you were to plot the output
+of the discrete Fourier transform,
+
+219
+00:14:52.100 --> 00:14:54.150
+I'll just show you how
+to do it right here.
+
+220
+00:14:54.150 --> 00:14:57.080
+A is just my FFT of my court, and
+
+221
+00:14:57.080 --> 00:15:02.720
+here I'm plotting because the FFT does
+this calculation with imaginary numbers.
+
+222
+00:15:02.720 --> 00:15:06.210
+I'm just plotting the square
+real components of the magic,
+
+223
+00:15:06.210 --> 00:15:09.980
+of the,
+of the discreet variance transform.
+
+224
+00:15:09.980 --> 00:15:14.180
+And you can see it loads on
+three very specific frequencies.
+
+225
+00:15:14.180 --> 00:15:16.360
+You could back calculate
+what those frequencies are,
+
+226
+00:15:16.360 --> 00:15:20.050
+and those are the frequencies of C,
+E, and G.
+
+227
+00:15:20.050 --> 00:15:21.320
+So the C major chord.
+
+228
+00:15:21.320 --> 00:15:26.660
+So and that's actually a very common thing
+to do in music and sound processing.
+
+229
+00:15:26.660 --> 00:15:30.610
+So if you were to take a sound signal
+a section of a sound signal and
+
+230
+00:15:30.610 --> 00:15:33.780
+do a discrete fourier transform and
+plot the so called spectrum which is what
+
+231
+00:15:33.780 --> 00:15:38.240
+this is, that is what sound
+engineers do all the time.
+
+232
+00:15:38.240 --> 00:15:42.850
+And ultimately underneath the hood
+what they're doing is a linear model
+
+233
+00:15:42.850 --> 00:15:47.260
+with a lot of sin and
+cosine terms in the, as regressors.
+
+234
+00:15:48.720 --> 00:15:52.950
+I should say that the discovery of the
+Discrete Fourier Transform was a larger
+
+235
+00:15:52.950 --> 00:15:58.930
+advance, and that the fact that
+the reason people do the calculation
+
+236
+00:15:58.930 --> 00:16:03.390
+with the Fourier Transform rather than
+the linear model is because there was
+
+237
+00:16:03.390 --> 00:16:09.060
+a discovery by a very famous statistician
+named Tucci who discovered a way
+
+238
+00:16:09.060 --> 00:16:13.180
+to do the Fourier transform very quickly,
+the so-called fast way Fourier transform.
+
+239
+00:16:14.480 --> 00:16:16.080
+That's what everyone uses.
+
+240
+00:16:16.080 --> 00:16:17.570
+It's I think, you can prove,
+
+241
+00:16:17.570 --> 00:16:20.940
+it's about as fast as you can
+take the Fourier transform.
+
+242
+00:16:20.940 --> 00:16:25.080
+It's much faster than doing the linear
+model, and that's why, if you were a sound
+
+243
+00:16:25.080 --> 00:16:28.630
+engineer, you wouldn't think of it as
+a linear model problem, you would think of
+
+244
+00:16:28.630 --> 00:16:33.640
+this as a Fourier transform problem, and
+you would take fast Fourier transforms.
+
+245
+00:16:33.640 --> 00:16:36.530
+So, that's in the end of the class,
+but I hope in this lecture,
+
+246
+00:16:36.530 --> 00:16:41.520
+what you've seen is, one, a case where
+we can fit pretty complicated functions
+
+247
+00:16:41.520 --> 00:16:46.730
+with a couple of lines of code of a couple
+of lines of our code very easily.
+
+248
+00:16:46.730 --> 00:16:50.430
+Secondly, an instance where we can do
+something that maybe at first blush,
+
+249
+00:16:50.430 --> 00:16:54.430
+we would've thought maybe that's not
+really in the scope of what linear models
+
+250
+00:16:54.430 --> 00:17:00.150
+can do in diagnosing what
+are the various notes of a chord.
+
+251
+00:17:00.150 --> 00:17:04.600
+That's something we just wouldn't
+naturally think a linear model could do.
+
+252
+00:17:04.600 --> 00:17:07.780
+We showed that not only are both of those
+things possible with linear models,
+
+253
+00:17:07.780 --> 00:17:11.110
+they're actually kind of easy
+with linear models, it's not
+
+254
+00:17:11.110 --> 00:17:15.823
+reams of code we had to do, there was, you
+know six or seven lines at the most for
+
+255
+00:17:15.823 --> 00:17:18.980
+each of these examples which
+includes generating the data.
+
+256
+00:17:18.980 --> 00:17:23.290
+So that just goes to show how
+powerful these techniques are and so
+
+257
+00:17:23.290 --> 00:17:25.460
+I hope you've enjoyed the class and
+
+258
+00:17:25.460 --> 00:17:29.300
+I especially hope that you take the
+knowledge from this class and build on it.
+
+259
+00:17:29.300 --> 00:17:32.510
+If you were to build on it
+my suggestion would be to
+
+260
+00:17:32.510 --> 00:17:35.295
+learn a little bit more about
+generalizing your models.
+
+261
+00:17:35.295 --> 00:17:37.580
+because we only touched
+on them in this class.
+
+262
+00:17:37.580 --> 00:17:42.200
+And the second thing would be to approach
+correlated data and longitudinal data.
+
+263
+00:17:42.200 --> 00:17:45.750
+Another divergent aspect of linear
+models that's quite important.
+
+264
+00:17:45.750 --> 00:17:48.625
+Everything we've done is
+independent errors and
+
+265
+00:17:48.625 --> 00:17:52.350
+data that were exchangeable at some level.
+
+266
+00:17:52.350 --> 00:17:55.300
+A very important subset is
+when that doesn't happen.
+
+267
+00:17:55.300 --> 00:17:57.840
+If we measure, take measurements,
+
+268
+00:17:57.840 --> 00:18:02.290
+on a large collection of siblings,
+the measurements between the siblings
+
+269
+00:18:02.290 --> 00:18:05.190
+are going to be closer together
+than a different pair of siblings.
+
+270
+00:18:05.190 --> 00:18:10.010
+So handling that correlation
+is a big part of generalizing
+
+271
+00:18:10.010 --> 00:18:14.340
+linear models to a broad
+collection of important topics.
+
+272
+00:18:14.340 --> 00:18:18.270
+So if I were to suggest two ways to go
+further with this stuff, that would be it,
+
+273
+00:18:18.270 --> 00:18:22.150
+generalized linear models, and
+longitudinal multi-level data.
+
+274
+00:18:23.490 --> 00:18:27.680
+So thanks again for taking the class,
+and make sure to look for
+
+275
+00:18:27.680 --> 00:18:30.690
+us, me, Jeff Leak, and
+Roger Pang on Twitter.
+
+276
+00:18:30.690 --> 00:18:36.460
+For any interesting new stuff that's
+coming out of the data science lab here,
+
+277
+00:18:36.460 --> 00:18:37.520
+our data science program.
+
+278
+00:18:37.520 --> 00:18:40.160
+We have some other programs
+coming out along the way.
+
+279
+00:18:40.160 --> 00:18:44.960
+And so, we'll post them all on twitter and
+other social media stuff.
+
+280
+00:18:44.960 --> 00:18:48.890
+If you like what we've done in
+the data science specialization,
+
+281
+00:18:48.890 --> 00:18:50.240
+we've got a lot more coming.
+
+282
+00:18:50.240 --> 00:18:50.940
+So thanks again.

@@ -1,0 +1,855 @@
+WEBVTT
+
+1
+00:00:01.220 --> 00:00:04.590
+So let's start about Linear
+vs Poisson regression.
+
+2
+00:00:04.590 --> 00:00:09.390
+So remember in GLMs,
+we don't love the outcome itself, or
+
+3
+00:00:09.390 --> 00:00:11.800
+we don't take a transformation
+of the outcome itself,
+
+4
+00:00:11.800 --> 00:00:14.185
+we take transformation of
+the mean of the outcome.
+
+5
+00:00:14.185 --> 00:00:15.943
+So linear models,
+
+6
+00:00:15.943 --> 00:00:21.140
+our outcome is the linear component
+plus the error, or we could
+
+7
+00:00:21.140 --> 00:00:25.300
+just write that as the expected value
+of the outcome is the linear compnent.
+
+8
+00:00:25.300 --> 00:00:27.000
+In a Poisson log-linear model,
+
+9
+00:00:27.000 --> 00:00:30.860
+it's the log of the expected
+outcome that is the linear part.
+
+10
+00:00:30.860 --> 00:00:37.470
+Log of the expected number of web hits
+per day is b0 + b1 times the Julian date.
+
+11
+00:00:37.470 --> 00:00:41.740
+We could reverse that process by
+exponentiating both sides of that equation
+
+12
+00:00:41.740 --> 00:00:46.119
+and just say the mean web hits
+per day now, depends on E to
+
+13
+00:00:46.119 --> 00:00:50.780
+the linear regression model, okay?
+
+14
+00:00:50.780 --> 00:00:52.850
+So, that's the main difference,
+
+15
+00:00:52.850 --> 00:00:57.650
+is that we're going to assume our data
+is Poisson distributed with a mean.
+
+16
+00:00:57.650 --> 00:01:03.679
+And that mean takes this form,
+E to the b0 + b1 times the regressor.
+
+17
+00:01:03.679 --> 00:01:05.315
+Okay, and that's the main difference,
+
+18
+00:01:05.315 --> 00:01:07.101
+though it changes
+the interpretation a lot.
+
+19
+00:01:07.101 --> 00:01:11.565
+We get a distribution that's
+much more believable for
+
+20
+00:01:11.565 --> 00:01:14.192
+our observed outcomes, okay.
+
+21
+00:01:14.192 --> 00:01:18.300
+And we get relative interpretations
+because everything's logged.
+
+22
+00:01:18.300 --> 00:01:21.090
+Our coefficients are going to be
+interpreted in a relative sense,
+
+23
+00:01:21.090 --> 00:01:22.928
+just like when we logged the outcome.
+
+24
+00:01:22.928 --> 00:01:25.820
+Though we're going to avoid
+problems like taking logs of 0,
+
+25
+00:01:25.820 --> 00:01:28.950
+like we had on the previous slide, okay.
+
+26
+00:01:28.950 --> 00:01:31.380
+Now, I want to reiterate,
+taking logs of your outcomes is actually,
+
+27
+00:01:31.380 --> 00:01:32.665
+often, a very good thing to do.
+
+28
+00:01:32.665 --> 00:01:36.530
+That's a trick that you should apply,
+not just for count data, but
+
+29
+00:01:36.530 --> 00:01:37.630
+in general on regression.
+
+30
+00:01:37.630 --> 00:01:41.642
+If you have positive data, log is one
+of the best transformations you can do,
+
+31
+00:01:41.642 --> 00:01:43.077
+it's extremely helpful.
+
+32
+00:01:43.077 --> 00:01:48.660
+The coefficients remain as, if not more,
+interpretable on the log scale.
+
+33
+00:01:48.660 --> 00:01:51.130
+So that's a great transformation to do.
+
+34
+00:01:51.130 --> 00:01:54.586
+Some of the other transformations,
+could be square root or cube root data,
+
+35
+00:01:54.586 --> 00:01:55.450
+then it gets hard.
+
+36
+00:01:58.731 --> 00:02:03.338
+Okay, so let's just remind ourselves
+that the differences that we're
+
+37
+00:02:03.338 --> 00:02:08.413
+looking at are now multiplicative when
+we transform back to the natural scale.
+
+38
+00:02:17.851 --> 00:02:22.792
+So if we've look at our model,
+it's the expected value of the outcome
+
+39
+00:02:22.792 --> 00:02:27.350
+is E to the beta naught plus
+beta one times the Julian date.
+
+40
+00:02:27.350 --> 00:02:29.440
+Well, by the properties of expected value,
+
+41
+00:02:29.440 --> 00:02:34.330
+we can factor out beta naught in
+beta one times the Julian date.
+
+42
+00:02:34.330 --> 00:02:41.052
+Now, if we looked at what
+would be the expected mean for
+
+43
+00:02:41.052 --> 00:02:47.043
+the next day,
+the Julian date plus one, right,
+
+44
+00:02:47.043 --> 00:02:53.379
+that would be e to the b0 + b1 (JD + 1),
+okay?
+
+45
+00:02:53.379 --> 00:02:59.418
+So divide this by that,
+and you get e to the B1.
+
+46
+00:03:03.260 --> 00:03:08.114
+So our coefficient E to
+our slope coefficient is
+
+47
+00:03:08.114 --> 00:03:12.240
+interpreted as the relative increase or
+
+48
+00:03:12.240 --> 00:03:18.930
+decrease in the mean per one unit
+change in the regressor, okay?
+
+49
+00:03:18.930 --> 00:03:23.550
+And so if we exponentiate our coefficient,
+we're going to be looking at whether or
+
+50
+00:03:23.550 --> 00:03:24.560
+not they're close to 1.
+
+51
+00:03:24.560 --> 00:03:27.870
+If we leave them on the log scale,
+we're going to be looking at whether or
+
+52
+00:03:27.870 --> 00:03:29.336
+not they're close to 0.
+
+53
+00:03:29.336 --> 00:03:32.480
+And, again, all of these interpretations,
+
+54
+00:03:32.480 --> 00:03:35.785
+when we extend them to
+the mutivariant setting,
+
+55
+00:03:35.785 --> 00:03:41.105
+E to the beta one is the expected relative
+increase or decrease in web traffic,
+
+56
+00:03:41.105 --> 00:03:46.207
+holding the other coefficient,
+holding the other regressors constant.
+
+57
+00:03:46.207 --> 00:03:47.368
+Okay?
+
+58
+00:03:47.368 --> 00:03:51.292
+So I'm hoping at this point that most of
+this stuff is kind of old hat for you.
+
+59
+00:03:54.844 --> 00:03:59.673
+Okay, so here is our fitted Poisson
+regression model overlayed onto our data.
+
+60
+00:03:59.673 --> 00:04:03.386
+And you can see it actually fits
+pretty closely to the linear model,
+
+61
+00:04:03.386 --> 00:04:06.990
+though it has some nice curvature to it,
+which is what we wanted.
+
+62
+00:04:06.990 --> 00:04:10.859
+We could have accomplished that in our
+linear model by adding a squared term,
+
+63
+00:04:10.859 --> 00:04:13.537
+of course, but
+it's nice to note that a simpler model
+
+64
+00:04:13.537 --> 00:04:16.296
+with fewer coefficients seems
+to fit the data better.
+
+65
+00:04:16.296 --> 00:04:21.640
+A concern, often, is that
+the variance has to equal the mean.
+
+66
+00:04:21.640 --> 00:04:27.210
+So the variance, in this case,
+needs to go up as the mean goes up.
+
+67
+00:04:27.210 --> 00:04:30.867
+But here if we plot the fitted
+values versus the residuals,
+
+68
+00:04:30.867 --> 00:04:35.050
+it's very clear that the variance
+is higher for lower mean values.
+
+69
+00:04:35.050 --> 00:04:36.763
+That's the problem, okay.
+
+70
+00:04:36.763 --> 00:04:40.051
+So we need at least
+some way to account for
+
+71
+00:04:40.051 --> 00:04:44.713
+the fact that the variance
+is not necessarily constant.
+
+72
+00:04:44.713 --> 00:04:48.316
+There's a lot of ways to do that,
+and if you read in the book,
+
+73
+00:04:48.316 --> 00:04:51.934
+one thing that we talk about
+are the quasi-Poisson models.
+
+74
+00:04:51.934 --> 00:04:57.743
+This model would look at the variance
+being a constant multiple of the mean,
+
+75
+00:04:57.743 --> 00:05:00.571
+rather than being equal to the mean.
+
+76
+00:05:00.571 --> 00:05:04.959
+But, in this case, that doesn't appear to
+be the case in this case because it looks
+
+77
+00:05:04.959 --> 00:05:08.033
+like we have this issue where
+there's larger variance for
+
+78
+00:05:08.033 --> 00:05:11.690
+lower fitted values, when the Poisson
+model assumes the opposite.
+
+79
+00:05:11.690 --> 00:05:16.591
+So Jeff actually had this code
+from this model, the sandwich,
+
+80
+00:05:16.591 --> 00:05:20.020
+which seems like a funny name for
+a package.
+
+81
+00:05:20.020 --> 00:05:23.196
+But it comes from the sandwich
+variance estimator,
+
+82
+00:05:23.196 --> 00:05:27.525
+made famous by generalized estimating
+equations, which by the way was
+
+83
+00:05:27.525 --> 00:05:32.217
+a technique that was invented here at
+Johns Hopkins Biostatistics by two very
+
+84
+00:05:32.217 --> 00:05:36.279
+well-known professors here,
+Scott Zeger and Kung-Yee Liang.
+
+85
+00:05:36.279 --> 00:05:40.910
+At any rate, Jeff did some code here for
+getting model agnostic standard errors.
+
+86
+00:05:40.910 --> 00:05:45.570
+And if you read in the book, there's
+a little bit more discussion about this.
+
+87
+00:05:45.570 --> 00:05:50.650
+This is kind of a more advanced topic than
+we would like to delve into in this class.
+
+88
+00:05:50.650 --> 00:05:53.440
+However, it's a very important
+applied topic, as well.
+
+89
+00:05:53.440 --> 00:05:55.700
+It's not just a theoretical exercise.
+
+90
+00:05:55.700 --> 00:05:59.994
+So, the main point is to do some
+residual plots, to understand whether or
+
+91
+00:05:59.994 --> 00:06:02.781
+not you think your
+model's assumptions hold.
+
+92
+00:06:02.781 --> 00:06:07.092
+Try quasi-Poisson model because
+that's a very easy thing to do in R,
+
+93
+00:06:07.092 --> 00:06:11.618
+if you think at least it holds at some
+level, but maybe not just in the sense
+
+94
+00:06:11.618 --> 00:06:15.300
+of the variance being a constant
+multiple of the mean.
+
+95
+00:06:15.300 --> 00:06:17.050
+But if it really fails, like in this case,
+
+96
+00:06:17.050 --> 00:06:18.950
+then you have to dig in
+to some other solutions.
+
+97
+00:06:20.110 --> 00:06:21.090
+So, in this case,
+
+98
+00:06:21.090 --> 00:06:26.840
+you see here's the confidence interval
+on the top if we don't do anything.
+
+99
+00:06:26.840 --> 00:06:30.140
+If we do the model agnostic confidence
+interval, you get on the bottom.
+
+100
+00:06:30.140 --> 00:06:38.730
+In this case, it doesn't actually make
+that big of a difference between the two.
+
+101
+00:06:38.730 --> 00:06:42.620
+And, again, these are both,
+of course, non-exponentiated.
+
+102
+00:06:42.620 --> 00:06:48.300
+If you want to exponentiate them,
+which by the way, I should also mention,
+
+103
+00:06:48.300 --> 00:06:53.290
+exponentiating for a small coefficient
+like this it basically just adds 1.
+
+104
+00:06:53.290 --> 00:06:58.160
+So, probably, if I were to enter this
+into R, this would be about 1.002.
+
+105
+00:06:58.160 --> 00:07:04.015
+Just like before, about a 2% increase
+on the low end being estimated,
+
+106
+00:07:04.015 --> 00:07:09.709
+0.21% increase estimated on the low end.
+
+107
+00:07:11.460 --> 00:07:18.345
+Maybe, at the highest possible,
+0.3% increase per day on the high end.
+
+108
+00:07:20.553 --> 00:07:22.968
+So how do you handle rates?
+
+109
+00:07:22.968 --> 00:07:24.190
+So I should say rates and
+
+110
+00:07:24.190 --> 00:07:28.260
+proportions because I like to distinguish
+between rates and proportions.
+
+111
+00:07:28.260 --> 00:07:31.710
+So this is an instance where you have
+a count, and then you have some offset
+
+112
+00:07:31.710 --> 00:07:35.620
+that should tell you how large or
+small the count should be.
+
+113
+00:07:35.620 --> 00:07:39.400
+So, for example, if I'm counting failures
+of my nuclear pumps that I mentioned
+
+114
+00:07:39.400 --> 00:07:44.300
+before, I should have more failures if
+I monitored them for a longer time.
+
+115
+00:07:44.300 --> 00:07:47.800
+If I'm counting the number of flu cases,
+
+116
+00:07:47.800 --> 00:07:51.396
+I should have more flu cases if I'm
+looking at a larger population, right.
+
+117
+00:07:51.396 --> 00:07:55.310
+So I should have more flu cases in
+a bigger city than I would have
+
+118
+00:07:55.310 --> 00:07:56.580
+in a smaller city.
+
+119
+00:07:56.580 --> 00:08:02.460
+So in all these cases, if the counts
+that we're interested in have some
+
+120
+00:08:02.460 --> 00:08:07.850
+term that we really want to interpret
+our count relative to that,
+
+121
+00:08:07.850 --> 00:08:13.926
+whether it's a unit of time, person,
+time at risk, total sample size,
+
+122
+00:08:13.926 --> 00:08:19.339
+then what we want to do, and
+it's quite simple how to do this in R.
+
+123
+00:08:19.339 --> 00:08:25.153
+The first thing we note is that we want to
+actually interpret not the expected value
+
+124
+00:08:25.153 --> 00:08:31.220
+of the outcome, but the expected value of
+the outcome divided by this relative term,
+
+125
+00:08:31.220 --> 00:08:36.380
+whether it's monitoring time,
+person, time at risk or whatever.
+
+126
+00:08:36.380 --> 00:08:41.020
+So, in this case, Jeff is looking at
+the number of web hits originating from
+
+127
+00:08:41.020 --> 00:08:45.460
+Simply Statistic, relative to
+the total number of web hits, okay?
+
+128
+00:08:45.460 --> 00:08:51.880
+And he wants to model that as E to
+the b0 + b1 times the Julian date,
+
+129
+00:08:51.880 --> 00:08:58.260
+so he want to model that proportion
+as being this log-linear model.
+
+130
+00:08:58.260 --> 00:09:03.541
+Well, if you take the log of both sides,
+and we mess around a little bit,
+
+131
+00:09:03.541 --> 00:09:08.068
+we see that we get kind of a similar
+model to what we had before.
+
+132
+00:09:08.068 --> 00:09:12.770
+We get the log the outcome is
+the linear regression part, but
+
+133
+00:09:12.770 --> 00:09:17.380
+that also it has this log
+offset with no coefficient.
+
+134
+00:09:17.380 --> 00:09:22.336
+And that, it turns out,
+is all you have to do to
+
+135
+00:09:22.336 --> 00:09:27.180
+add a regular proportion
+into a Poisson GLM.
+
+136
+00:09:27.180 --> 00:09:33.140
+You just take whatever this relative
+denominator count or time or whatever
+
+137
+00:09:33.140 --> 00:09:39.420
+it is that you want to consider, and add
+it as a log offset in your linear model.
+
+138
+00:09:39.420 --> 00:09:43.650
+Okay, so the easy way to add this
+offset into our linear model
+
+139
+00:09:43.650 --> 00:09:47.930
+is just to use of the term
+offset equals log visits plus 1.
+
+140
+00:09:47.930 --> 00:09:52.190
+Remember, we have to add the plus 1
+because we can't take the log of 0.
+
+141
+00:09:52.190 --> 00:09:56.960
+Remember, we have to have family equals
+Poisson in the model statement here,
+
+142
+00:09:56.960 --> 00:09:59.720
+and by default it assumes a log
+link which is what we want,
+
+143
+00:09:59.720 --> 00:10:01.220
+we haven't really covered any other kinds.
+
+144
+00:10:02.330 --> 00:10:04.083
+So, there's another way
+you can add the offset.
+
+145
+00:10:04.083 --> 00:10:08.855
+I think you can add a plus 0 variable name
+in the actual model specification part on
+
+146
+00:10:08.855 --> 00:10:10.444
+the right of the tilde, but
+
+147
+00:10:10.444 --> 00:10:14.060
+this is just as easy to do it as
+an argument in the GLM function.
+
+148
+00:10:15.120 --> 00:10:22.180
+Here, Jeff gives the, the difference
+between the GLM1 fitted rates,
+
+149
+00:10:22.180 --> 00:10:26.248
+which was, remember,
+to the number of web hits,
+
+150
+00:10:26.248 --> 00:10:32.660
+versus the GLM2 fitted rates,
+the assigned variable GLM2 fitted rates,
+
+151
+00:10:32.660 --> 00:10:38.140
+which was the relative number of web
+hits originating from Simply Statistics.
+
+152
+00:10:38.140 --> 00:10:43.520
+So, these blue points are adjusted for
+the red points in a sense.
+
+153
+00:10:47.370 --> 00:10:51.309
+And this actually shows the fitted
+model relative to the data,
+
+154
+00:10:51.309 --> 00:10:55.760
+there are a lot of zeros early on,
+and then it took off quite a bit.
+
+155
+00:10:55.760 --> 00:11:00.570
+But this is the fitted model,
+the blue line is the fitted model,
+
+156
+00:11:00.570 --> 00:11:02.900
+and the gray points
+are the actual data points.
+
+157
+00:11:04.360 --> 00:11:08.388
+So you can get more information on
+log-linear models and multiway tables.
+
+158
+00:11:08.388 --> 00:11:13.545
+And another very common problem
+that occurs in Poisson data is when
+
+159
+00:11:13.545 --> 00:11:19.410
+the particular number, zero,
+occurs way more often that it should.
+
+160
+00:11:19.410 --> 00:11:21.030
+This is called zero inflation.
+
+161
+00:11:22.100 --> 00:11:27.780
+Then the Poisson model would allow it to,
+if it wants to fit the other counts.
+
+162
+00:11:27.780 --> 00:11:30.042
+And so this is called zero inflation.
+
+163
+00:11:30.042 --> 00:11:33.504
+And so there's a lot of different ways to
+handle zero inflation in Poisson data, but
+
+164
+00:11:33.504 --> 00:11:35.600
+you need to think about that.
+
+165
+00:11:35.600 --> 00:11:41.490
+In this case, yeah, we might be concerned
+with handling all of those zeros early on,
+
+166
+00:11:41.490 --> 00:11:45.190
+though there's a temporal component
+to zero inflation in this case,
+
+167
+00:11:45.190 --> 00:11:48.726
+which makes it even a little bit
+more challenging to model it well.
+
+168
+00:11:48.726 --> 00:11:55.610
+But Jeff used a package here that actually
+helps assist with modeling zero inflation.
+
+169
+00:11:57.150 --> 00:11:58.900
+So I hope you enjoyed the lecture.
+
+170
+00:11:58.900 --> 00:12:01.650
+That's the end of the lecture on
+Poisson data to get you started.
+
+171
+00:12:01.650 --> 00:12:06.020
+I'm hoping you can use a lot of your
+skills from binary logistic regression
+
+172
+00:12:06.020 --> 00:12:11.330
+analysis and your skills from linear
+regression and multi-variant regression,
+
+173
+00:12:11.330 --> 00:12:15.710
+and just apply them directly
+in our Poisson examples here.
+
+174
+00:12:17.440 --> 00:12:20.010
+Next lecture is the final
+lecture of the series.
+
+175
+00:12:20.010 --> 00:12:22.700
+It's kind of fun little
+lecture with just some kind of
+
+176
+00:12:22.700 --> 00:12:25.995
+a bonus content of a smattering
+of things you can do with later
+
+177
+00:12:25.995 --> 00:12:28.210
+models that I think are kind of cool.
+
+178
+00:12:28.210 --> 00:12:31.750
+So look forward to seeing you next time,
+and thanks for taking the class.

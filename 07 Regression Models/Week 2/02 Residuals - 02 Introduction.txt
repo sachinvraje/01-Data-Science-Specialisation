@@ -1,0 +1,65 @@
+Welcome to the lecture on residuals and
+residual variation. My name is Brian Caffo,
+and I'm the instructor for the regression class as part of
+the Data Science Coursera Specialization. Let's start by talking about
+our motivating example using the diamond data set. Remember, in this data set the diamonds
+were diamond prices in Singapore dollars. And, the diamond, the explanatory variable
+is the weight of the diamond in carats. We'd like to talk about how we can
+explain variation in diamond prices using their mass. Let me generate a plot. Last time, I showed, went through
+the commands for generating the plot, so I won't do this again. But, here's my ggplot,
+and let me zoom out. So, what we're interested
+now Is explaining price on the vertical axis by
+mass on the horizontal axis. If we had disregarded mass,
+we would have all these points. We would look at their sort of
+projection onto the vertical axis. And there would be a lot of variation. Dis, if you were to disregard mass,
+there would be a lot of variation. When we consider mass,
+there's much less variation. because, now we are talking about this
+variation around the regression line. The variation around the regression line,
+is residual variation. That variation that was left unexplained
+by having accounted for mass. So, we start out with a lot of variation. We've explained a substantial fraction of
+it by the linear relationship with mass, but there's some left over variation. We'll call that residual variation. These distances that make up the residual
+variation are called the residuals, and that's the topic of today's lecture. The residuals are quite useful for
+diagnosing many things, including poor model fit. Let's remind ourselves of
+the model that we're considering. Our outcome and our example,
+which would be price, is Yi, which we're assuming is a line. Beta nought plus Beta Xi, where Xi,
+in this case, is mass in our example. We're adding on some gaussian error,
+epsolon i, which we're assuming to be normally distributed with a mean of
+zero and a variance of sigma squared. We haven't explicitly used
+this normal assumption yet, and that'll be coming later,
+later on in some subsequent lectures. Remember, the outcome is Yi for predictor
+value, Xi at that specific index i. So, Yi is a price, Xi is a mass. The point on the line
+corresponding to Xi is Yi hat. We can figure out Yi hat just by plugging
+in Beta0 hat plus Beta1 hat times Xi. Well, our residual is nothing other
+than the vertical distance between the observed data point, observed outcome,
+Yi, and the fitted value, Yi hat. So, ei is equal to Yi minus Yi hat. Remember, our least square's criteria
+tried to minimize the sum of the squared vertical distances. So in essence, it was minimizing
+the sum of the squared residual, summation ei squared. One way to think about the residuals
+are as an estimate of epsilon i. Though, you have to be careful with that,
+because as we'll see later on, we can decrease the residuals just by adding
+irrelevant regressors into the equation. Let's talk about some aspects of residuals
+that will help us interpret them. First of all, their population
+is expected value is zero. But also, their sum, their empirical sum,
+hence the empirical mean also, is zero if you include an intercept. If you don't include an intercept,
+this property doesn't have to hold. Well, the generalization of this property
+is, if you include any regression term in, in linear regression,
+in our generalization in linear models, the sum of the residuals times that
+regression variable has to be zero. Residuals are very useful for
+diagnosing poor model fit. And, we can create plots
+that sort of highlight and zone in on the aspects of poor model fit. Another common use of residuals is to
+think of them as the outcome Y with the linear influence of
+the predictor X having been removed. So, for example, if we wanted
+to in some subsequent model or some subsequent analysis diamond prices, but in a way that has already
+been adjusted for their weight. So, calibrating all the diamond
+prices to sort of be on the same scale regardless of their weight. We would take those
+residuals from the model fit that has diamond prices as
+the outcome, and weight as the predictor. So, it's very common to take residuals and carry them forward in a later analysis
+where you want to think of them as the, the new outcome, having removed
+the predictor at that point. But, of course, remember,
+you're only if you do linear regression, you're only only removing the linear
+component of the predictor. So, one should differentiate
+between residual variation, which is variation that is left over
+after the explanatory variable has been accounted for in a linear fashion,
+from systematic variation, which is variation explained
+by the regression model. So again, residual plots can
+highlight poor model fit. And, we are going to go through
+some residual plots here in just a couple of slides

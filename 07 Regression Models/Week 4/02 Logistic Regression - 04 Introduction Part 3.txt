@@ -1,0 +1,100 @@
+Okay now that we've looked at
+feeding logistics regression curves why don't we go ahead and see the output
+when we feed our Ravens data. So you feed the Ravens data
+with the GLM function. Here it operates just like
+the LN function the outcome is on the left hand side of a tilde and then
+the predictors on the right hand side. In this case the only difference is now we
+have to specify family equals binomial, and that's telling the GLM
+function that we have 01 data. If we had count data
+the bounded count data, real binomial data, then we would
+also have to give it a sample size. Also by default for
+the binomial and binary case, it's going to assume that
+the link function that you have is the logistical link function,
+which is what we want so that's fine. You see, the output when you do summary,
+summary works just like it did for Ellen. You see the output below. You ge the coefficients,
+in this case, -1.68 and for the Ravens coefficient you use 0.1. In this case on the Logit scale
+you want to look, for example, with the score variable, the Ravens score
+variable you want to see whether or not the coefficient is close to zero or
+not on the Logit scale. On the exponentiated scale you want to
+see whether or not it's close to one. That it'll give us the standard error and
+a Z value and the P value, we're going to interpret those just
+like we would in our linear model to acknowledging that this
+are drive in a different way. So here's the fitted curve,
+so this are the predictive, responses put back on
+the probability scale. So what R did is it plugged in the x
+values associated with the coefficient. So it took the scores, multiplied them
+times the coefficient of the scores, added the estimated intercept, and then took e
+to that value over 1 plus e to that value. And that gives us the probabilities. Now this is only part of the fitted S curve because the component of the S curve where the data actually
+are observed was restricted. So the S curve up here is one so
+the S curve looks something like this and then it would go down so you'll notice
+that this ends at 0.4 not zero. So that's the actual curve that's fitting, though here on the fitted values
+we're only showing part of it. If we were to exponentiate the ravens
+coefficients we get 0.1864 for the intercept and 1.1125 for the score. So that suggests an 11% increase in the probability of winning for every
+additional points that the Ravens score. Okay, that's how you would interpret
+this logistic regression coefficient. You can get confidence intervals for these two coefficients very
+easily with a confint operator. So on the output from the fitted model, we
+do confint, and then because most people, myself included, would prefer to look at
+these things on the exponentiated scale, you just exponentiate two
+endpoints with the x function. So what we see now is that our
+interval does contain one, it goes from 0.99 to 1.3. So it's saying that even though we for sure know that scoring points is what
+causes the Ravens to win the game, this coefficient turns out
+to not be significant, okay. The ANOVA function works just like
+it does in LM you put the output of the fitted model and
+you can put multiple models in there. For example nested models and ANOVA will
+give you a series of sequential tests. And so here, in this case,
+the variable is for the score, just the one variable that
+we're kind of interested in. So it just has a one
+Degree of Freedom test. This isn't that useful in this particular
+example, but if you had several models that you were interested in
+you'd put them into the ANOVA function. Or I think also it is especially
+useful if you have a factor variable, because sometimes you want
+the factor variable included or the factor variable,
+all levels of the factor variable removed. Then you might want to test whether or
+not that all levels of them are in total
+are necessary in the model. Notice that when you do summary and
+just get the coefficient table out from R, that test each one of the levels
+of the factor independently and doesn't test them all as a whole. So something like the ANOVA
+function is useful for putting a factor in and out of the model. So for interpreting our odds ratios
+remember that our odds ratios are not probabilities they're
+functions of probabilities but they're not probabilities. An odds ratio of one means no difference,
+okay? But on the Logit scale of the log
+odds ratio zero means no difference. In odds, [NOISE] often if we
+have an odds ratio below 0.5 or above two, that's considered, I would consider it
+a kind of strong effect. It depends very context dependent so
+if your working in the field of epidemiology or something like that,
+you often get very small odds ratios. 1.01 might be significant. You're looking at giant studies and the reason that these small odds ratios
+are important is because they're studying rather noisy things, like nutrition or
+something like that. How nutrition impacts health or
+something like that. And you wind up with because of all
+the various factors that incorporate, influence this study, you end up with
+very small odds ratios that are still meaningful, even if significant. On the other hand, you might run a very tightly controlled
+experimental clinical trial, or something like that, and then the odds
+ratios that you would want In order to declare something kind of meaningful,
+it would have to be much larger. So again, this is just less than 0.5 or bigger than two is a little
+bit of a benchmark. But remember, like all benchmarks,
+we only have a certain amount of utility. Really, how strong an odds ratio is
+relative to the scientific setting is incredibly dependent on the context
+that you're looking at in. So the relative risk is another
+entity that's often thought of in the same vein as the odds ratio,
+and many people like it. So the relative risk is just
+the ratio of the two probabilities. And many people like it because they tend
+to instinctively think a little bit better in terms of probabilities
+rather than odds. And relative probability seems
+like a reasonable thing to do. The problem with the Relative
+risk unlike the Odds is, it puts in some model constraints
+there quite hard, so we don't see relative risk regression for binary
+variable it's a very common thing to do. There are some software languages I
+know are has some packages to do it. It says has some packages to do it. One thing that is pretty
+common if you happen to have small probabilities then the relative
+risk approximates the odds ratios, this is an old very classic result. So that people go ahead and
+fit the Odds Ratios but then interpret them as if
+they're relative risks. So if you've seen that before then
+that's where that's coming from. So I give you couple more references
+here on Odds Ratios, but I think that's enough to get you started on generalizing
+your models for binomial data. I'm hoping that you can use all of your
+knowledge you got from linear models and help you work that into your use for
+generalized linear models. Next lecture,
+we're going to consider Poisson data. That's sort of the last
+real lecture of the series. Then we have kind of a some bonus
+fun content it's the last lecture, the very last lecture. So I look forward to seeing you next week. We're going to talk about
+poison random variables.

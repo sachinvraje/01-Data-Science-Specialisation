@@ -1,0 +1,119 @@
+Hi, and welcome to the class
+on multivariable regression, as part of our course here at
+Data Science Specialization. In this lecture, we're gonna talk about instances where
+we have lots of potential predictors for an outcome, rather than just a single
+predictor in linear regression. In any instance, where you're using
+a predictor X to predict a response Y, and you find a nice relationship,
+if that predictor hasn't been randomized to the subjects or
+units, whatever you're looking at, then there's always a concern that there's
+another variable that you either know about or don't know about that
+might explain the relationship. And let me give you an example. Imagine if you had a friend that
+downloaded some data, where they had all sorts of health information from people
+and also their dietary information. And this person said, hey,
+I found something interesting. Breath mint usage has a significant
+regression relationship with forced expiratory volume, a measure of
+lung function, pulmonary function. If you've ever gotten an asthma test,
+they'll measure your FEV. Well, you would be skeptical. I mean, there's very little basis for
+a biological relationship there. Breath mints are just sugar. It doesn't seem reasonable that
+they would impact lung function. But maybe, but
+what you've really be thinking is, well, what other variables might
+be explaining this relationship? And you might come up with two hypotheses. One is, this person dug through lots and
+lots and lots of variables and just found the one that was significant,
+and it's just a chance of association. And that's the problem of multiplicity. Okay, so we'll talk about that in other
+aspects of this course in the inference course, but let's just assume that this
+person didn't do that, they looked only at a couple of variables, and
+the multiplicity concerns weren't so bad. Then what would you think? Well, likely, you would think, well, probably the real problem is smokers
+tend to use more breath mints, and smoking has this long relationship
+with lung function, so it's well-established that
+chronic exposure to a smoker, even second-hand smoke has
+negative impacts on lung function. So it's probably that, it probably has
+nothing to do with the breath mints, it's a indirect effect of
+breath mints through smoking, not a direct effect of breath
+mints on lung function. That would be your likely hypothesis. Well, how would you establish that there's
+a breath mint effect beyond smoking? Well, likely,
+what you would ask your friend to do is, well ,consider smokers by themselves,
+and see whether their lung function differs by their breath mint usage, and
+consider non-smokers by themselves, and see whether their lung function
+differs by breath mint usage, where you've conditioned on smoking status
+so that you're comparing like with like. Well, multi-rate regression
+is sort of automated way to do that in a linear fashion. It make assumptions, which is fair enough,
+but it does that sort in automated way, and we'll explain in this lecture
+in what way is it trying to sort of hold smoking status constant while
+looking at breath mint usage, and how it adjusts, and we'll also talk
+a little bit about its limitations. But that's the fundamental idea of what
+multivariable regression is trying to do. It's trying to look at
+the relationship of a predictor and a response, while having, at some level,
+accounted for other variables. So in addition to the use of multivariable
+regression that I talked about in the previous slide, I wanted to also talk about another use of
+multivariable regression for prediction. It's actually a very
+good prediction model. So, as an example, several of us
+engaged around here engaged in this so called CAGO competition, to predict
+the number of days that a person would be in the hospital in subsequent
+years given their claims history and number of days they were in
+the hospital in previous years. And this is of major
+importance to hospitals and insurance companies and healthcare
+providers for a variety of reasons. It's one of the main
+questions in that field. So, in this competition,
+they gave you historic claims data, a lot of it, actually, which had lots and
+lots of predictors, and the number of days that several
+people of the insured people from this company were in the hospital for
+[NOISE] three consecutive years or so. And simple linear regression certainly
+wouldn't have been too much use here. It's good for looking at variables
+at a time really quickly, but if you wanted to get good prediction you
+needed to do something more complicated. So there's multiple parts about this, so
+one of the main things is model search. How do we pick which
+predictors to include? That's an important component of this. And the other is to avoid overfittings. We'll learn that, as you put enough
+variables into a multivariable progression model, you'll get zero
+residuals just by virtue of having included even random vectors
+into your regression model. So certainly there's consequences
+to throwing lots of garbagey predictors into a model. And certainly there must
+be consequences to omitting important predictors in a model. And in the practical
+machine learning class, which is also part of the specialization,
+you will learn a lot about model selection strategies as they
+relate to the idea of prediction. In this class, we're gonna focus more on
+the problems from the previous slide, where we want to generate
+parsimonious models, where we're deeply interested in interpreting
+the coefficients from the linear model. And so the prediction problems,
+like this one, are a little bit more geared toward
+our practical machine learning class. But I just wanted to mention
+that multivariable regression is a pretty good starting
+point in any prediction, anytime where you're developing
+a prediction algorithm. What we found in that competition is that
+multivariable regression got you very close to the winning entry, and lots of machine learning, and
+random forest, and boosting, and all these other things, those only
+got you minor bumps on top of that. And so,
+to get huge drops in prediction error, well-thought out linear models sufficed,
+and then to get really minor increments beyond
+that, you had to throw a lot of computing. And to be fair, those did improve
+your chances, and we moved up a little bit in the leaderboard by adding
+some of these more complicated things. But it was remarkable how far you could
+get with just well done linear models. So, our linear model looks an awful
+lot like our simple linear model. It's just that we have more variables. So our outcome, Y,
+it might be insurance claims or forced expiratory volume,
+is equal to a bunch of coefficients. These are the beta terms, they're like the
+slope terms in simple linear regression. Just, now there's more predictor terms,
+more X values. So, for example, one of these might,
+X1 might be breath mint usage of binary or variable, and X2 might be number of
+pack years or how much a person smoked. And in the insurance case,
+X1 might be the number of insurance claims in the previous year,
+and X2 might be whether or not this person had a particular
+cardiac problem, something like that, that might lead toward information about
+hospitalization in the successive year. So here,
+we just write out the linear model. And it just looks like the outcome
+is equal to a bunch of coefficients times predictors. Now, it's linear because it's
+linear in the coefficient. So I'll reiterate that point in a minute. I would also add that the first variable
+is typically just a constant one, so there's an intercept that's included,
+a term that's just beta by itself. Beta zero usually or Beta one. So our least squares, I think everyone could probably guess
+what the least squares is going to do. It's just gonna look at the differences
+between the outcome and the prediction from the linear models, summation of
+the predictors times their coefficients. Because that's not necessarily positive, we're gonna square it and we're going
+to add it up so this difference for every observation equally weights into
+this loss function that we created. So least squares simply wants
+to minimize this equation. And it's a direct extension of
+the equation we wanted to minimize when we had simple linear regression. And I would notice that the important
+linearity is linearity in the coefficient. So for example, if I take one of
+my X's and just square it, meaning if I have a vector in R that I've just
+squared every element of that vector and put that in as part of my model, then that
+will still be linear in the coefficient. The coefficient won't be squared,
+it will just be the X term. And so, the important version of linearity
+is linearity in the coefficient. That's what defines a linear model.

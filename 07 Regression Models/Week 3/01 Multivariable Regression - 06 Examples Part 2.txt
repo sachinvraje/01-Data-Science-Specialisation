@@ -1,0 +1,262 @@
+So you might be surprised to find out how
+flexible linear regression models are. For example, you can fit factor
+variables as regressors and come up with things like
+analysis of variance, if you've heard of that before,
+as a special case of linear models. Let's go through an example where we
+have one covariant, X equal to zero or one, and let's see what happens when we
+put that into a linear regression model. So here I have my model, Y,
+my outcome, is beta-naught, an intercept,
+plus X times beta one plus an error term. Where here now my X only takes
+the value zero for, let's say, people in a control group and one for,
+say, people who received a treatment. Then, for the people who will receive
+the treatment, the group of people where their X value is one,
+their mean is beta-naught plus beta one. For the people who are in
+the control group, those people where their covariant X
+is zero, their mean is beta-naught. If you were to fit this, as you
+would expect, the estimated mean for the treated group is just the mean
+of the people who are treated. So that beta one hat plus beta not
+hat works out to just be the mean for the treated group. Similarly, beta not hat, by itself, works
+out to be the mean for the control group. Beta one, now, is interpreted as the
+increase, or decrease if it's negative, in the mean response for those that had the X
+value of one, for those that were treated. So that's just a nice
+way to be able to fit, factor a two-level factor variable
+as a linear regression variable. And it gives you, not only the fitted
+values tell you about the means for both of the groups, but it gives you an inference for
+comparing the two groups automatically. That T test, by the way, the T test for beta one, is exactly identical
+to a two-group T test where you assume a common variance if you happen
+to have taken the inference class. We can extend this to
+more than two levels. For example,
+imagine if you had a three-level variable. For example, you have some outcome but
+you wanna compare it to U.S. political party affiliation. In this case, let's say you were only
+considering those that were Democrats, Republicans, or registered Independents. Well, you can do that by having
+a variable X1, that's one for Republicans and zero for otherwise,
+a variable X2 that's one for Democrats and zero for otherwise, and
+then, I'll tell you here in a minute why we omit the X3 that would be one for
+Independents and zero otherwise. That one, it would happen to be redundant. Okay, so if a person is a Republican, then their mean is gonna be beta-naught,
+plus this first X term is gonna be one. So plus beta one and
+the second X term is gonna be zero and so their main will be
+beta not plus beta one. If the person is a Democrat, then it's
+gonna beta-naught, then X1 will be zero, so that term will drop out, then X2 will
+be one and so it'll be plus beta two. So for the Democrat, their mean from the regression model
+would be beta-naught plus beta two. And then if they're an independent,
+both these S terms will be zero and it'll just be beta-naught. And that's why we can't
+include a third time, right? Because if we know that you're Republican,
+in the way that we've set up the variable, if we know that you're not Republican and
+not a Democrat, then you must be an Independent in our
+data set the way we've set things up. And so it would be redundant to
+have a third variable in there, it wouldn't have any new information. Here we have three means, Republican,
+Democrat, and Independent, and three parameters, Beta-naught,
+Beta one, and Beta two. If we were to add an extra parameter,
+it would kind of break the model. And I'll show you in R what happens
+when you do that in a minute. So if we look at our means here,
+if we compare beta-naught and the mean for the Independents versus
+the mean for the Republicans, so we subtract those two, we get beta one. So beta one compares
+Republicans to Independents. And beta two, similarly,
+compares Democrats to Independents. Then, of course, beta one minus beta
+two compares Democrats to Republicans. So what happens is by omitting the
+regression variable for the Independents, then the intercept became the value for
+the Independents, and all of the other coefficients have become
+interpreted relative to Independents. The beta one, in fact, the one in front
+of the Republican covariant is now interpreted as the change between
+Republicans and Independents. The beta two,
+the one in front of the Democrat covariant is now interpreted as the change
+between Democrats and Independents. And this was all a consequence of
+having omitted the one regressor for Independents. If we had included the regressor for
+Independents and excluded the one for Republicans, then the intercept
+would be for Republicans, and the coefficient in front of the Democratic
+one would be Democrats versus Republicans. The coefficient in front
+of the Independent one, would be Independent versus Republican, and we'll go through some more examples
+just to illustrate how this works. And R kinda does this on purpose, or
+R kinda does this automatically for you, if you include it as a factor value. It picks one of the levels
+to be the reference level. And so, let's go through some examples,
+hopefully, that'll shore this up, but the main point I'd like to get across
+is, whenever you're dealing with factor variables in linear models, what you set
+at your reference level has a big effect. These coefficient are interpreted
+quite differently, depending on how you sent them up and
+what you set up as your reference level. Okay, so let's go through an example in R,
+where we look at a factor variable and see how R is treating it. So, I want to make sure I
+require the data sets package. We've already loaded that
+in in this lecture but let's just do it again
+just to remind ourselves. And then I have this data InsectSprays,
+and then I'm requiring the stats package. I don't know if that's technically
+necessary for what I'm doing, but if you do help InsectSprays, InsectSprays, here, it gives you the help file for
+this data set, and the outcome is a count is
+a numeric insect count. So, presumably,
+number left after applying the spray, and the spray factor is the type of spray,
+okay? And then it gives some examples
+of working with this data, but we don't need that cuz we're
+gonna build our own examples. So let's first plot some of the data. So I want to do a ggplot and
+I've already loaded ggplot2, but just to remind you, in case you're
+restarting your R session from earlier, you want to make sure
+that you acquire ggplot2. There, it's loaded. And then I have my ggplot and
+then my data is InsectSprays. And then for my aesthetic,
+my Y is the count, the number of insects. My X is the spray. They don't give you too much
+information about the sprays, but there's a couple of different
+sprays that they use. And then I want to fill the objects I'm
+creating with the factor variable spray. So there I've created my ggplot. And then I wanna do a violin plot. A violin plot is kind of like a histogram
+but sort of tilted on its side. And then they repeat it on both sides so
+it looks a little like a violin. Well, it looks like a violin
+if you're data cooperates. Otherwise, it looks like a blob. Okay, there's our violin plot. And then I wanna set my labels. And then if you wanna actually see
+the plot, you gotta bring it up. Okay, so, here's my violin plot. So you see there's sprays eight
+labeled spray A, B, C, D, E, and F? Okay.
+And you can see the insect counts, so I presume they applied the spray
+to numerous batches of insects and they,
+>> It's unfortunate they're not telling me whether or not the count is the count of
+the number of alive or the number dead. So we don't know if this is
+a better spray, a better, let's say it's a mosquito spray or something like
+that, cuz no one likes mosquitoes. We don't know if this is a better spray or
+a worse spray. But let's talk about how we can
+test the difference between different factor levels in
+this case using linear models. And then, at the end I'll talk about some
+shortcomings of the approach that I'm proposing here. But here's a violin plot. And let me just do head Insect sprays to just show you the data, what it looks
+like, to see we have a bunch of counts. And then,
+the spray label's a very simple data set. And so, let's look at what happens when we
+include insect spray as a linear model and y as an outcome. So, let's fit our model. And now, what we're fitting is, our outcome is the count,
+the number of insects. Our predictor is the spray,
+which spray was used as a factor variable. It's already a factor variable. And then, I give it the data-set. And then, here, I just want
+the summary of the output from lm. Again, normally you wanna
+assign your lm to a variable so you can keep it for later. And then, I just wanna, for, to keep
+the printing a little bit self-contained, I'm grabbing the coefficient table. And so, there you see, the Intercept,
+spray B, spray C, spray D, spray E, and spray F. And spray A is conspicuously missing. And the idea is that everything here
+is now in comparison with spray A. So, this 0.833 is the change in the mean between spray B and spray A. In this case, 14.5,
+the intercept is the mean for spray A. And if you look over here at our plot,
+that seems about right. Look at our violin plot. 14.5 seems about right for spray A. And spray B, it seems reasonable
+that it would be off by, it would be changed just by
+a little bit from spray A. Now, spray C looks like it
+has a much lower count, okay? And look, it's coefficient is minus 12. Okay?
+And that looks like about right. So this one's at 14.5. And somewhere around two seems
+about right for this one, spray C. And so, that's exactly what
+this coefficient is saying. This negative 12 here is the different
+between spray C minus spray A. Now, if we wanted to compare,
+for example, spray B and spray C, we would have to subtract this,
+0.833, and this negative12. Now, we wouldn't have a standard error for
+that comparison immediately. However, that would give us the estimate. If I were to take the average count for
+the sprays, for those with spray A, I would get 14.5. If I were to take the average count for spray B, I would get 14.5 plus 0.833. So, I'd like now to show you how I
+can hard code the same model and not rely on r to actually
+pick the reference level. So, remember what I did last time
+is I did count was my outcome and my factor variable spray was my predictor. And what r does is it picks the spray
+level that's the lowest alphanumerically. So, in this case, spray level A,
+to set as the reference level. So let me show how you can hard
+code that myself manually. So, here count is my outcome. And then, I'm gonna create a variable
+using the I function which in lm actually performs the operation inside the
+regression, inside the model statement. So, here I just wanna look at the
+instances where the spray is equal to B. And then, I multiply that times 1 to
+change it from Boolean to numeric. And then, here's a variable that's
+1 when spray is C, and 0 otherwise. And here's a variable that's 1 when
+the spray is D, and 0 otherwise. And here's one for E,
+and here's one for F. So, I've included all of them except A. So, I've forced A to
+be my reference level. And I'm going to run this model. And it should give me the same
+result as with r did. It's just now I've shown you exactly how
+r is creating the regression variables. So, let me just remind ourselves
+what r gives us when we run, and let it handle the factor
+variable by itself. And then, let me do the same thing where
+I've created my own factor variables. And then, you can see 14.5, 14.5, 0.833, 0.833, you can see that it's identical. So this is what r is
+doing behind the scenes. And let's keep exploring this because
+this is kind of an important point. If you mess this up with factor variables,
+you get very incorrect conclusions. Now, let me show you what happens
+if I do include spray A here. So, I've done the same model I did before
+where I include all the variables, but now I'm also including
+an extra variable for spray A. And let me just do the lm part. And notice it gives an NA in
+front of the spray A coefficient. And the reason for
+that is because it's redundant. We have six means, right? For six sprays. And we have seven parameters in intercept. And then, now I've tried to put
+in six regression parameters. I have six means to fit seven parameters. It can't do that, so
+it's gonna drop one of them. Now, what if I do want my coefficients, instead of being interpreted as
+levels referenced to a control level, what if I want my coefficients to
+be the mean for each of the groups? Well, you can do that, but
+you have to remove the intercept. So, watch what happen when I say count is
+my outcome, and spray is my predictor, but I remove the intercept. Then notice what happens is that now I get a different set of
+coefficients, one for each spray level. So, it includes A, B, C, D, E and F. It hasn't dropped any levels. And it can do that now because it has six
+parameters, and six means to work with. And these are exactly equal to
+the means for each spray in the data. So, if I were to just go ahead and
+calculate the means for each spray, right? It works out to be the same numbers. 14.5, 15.3, 2.08 in both, and so on. Now, I want to emphasize this model is no different than my model
+that included an intercept. Why don't I go back to my model with
+my intercept just to illustrate this. So, now it's just that the coefficients
+have a different interpretation. Now, the intercept from the model,
+when I fit count as spray but included the intercept,
+my intercept now is interpreted, 14.5, as the mean for spray A. And you can see that it's
+exactly the empirical mean for spray A when I calculate the mean. It works out that way. And then, spray B,
+we talked about earlier, was the comparison between the reference
+level spray A and spray B. Okay?
+So, if I add these together, 14.5 and 0.833,
+I should get the mean for spray B. Okay, and that's what you see, 14.5 plus
+0.833, that gets me 15.33, and so on. So, If I add 14.5 and
+minus 12, I'm gonna get 2.08. If I add 14.5 and negative 9,
+I get 4.9, and so on. So, this model,
+where I've included an intercept, has all the same information as
+the model where I omitted the intercept, the only difference is how
+the coefficients are interpreted. In the model with the intercept now
+the intercept is interpreted as the sprayA mean and
+all the coefficients are interpreted as relative to sprayA
+differences from sprayA. And then if I would have fit it without
+the intercept then I get the mean for each spray. And if I want differences then I
+have to subtract the coefficients. And you usually want one of them to
+be a reference level because then you can do test. So now my p values are testing whether or
+not, for the t test whether or not A is different from B, and A is
+different from C, and A is different from D, and so on, whereas the p values from
+this test are just testing whether or not those means are different from 0,
+which is a very different test. Did sprayA kill any insects is what
+this is testing, where in this one, the sprayB row is testing whether
+sprayA is different from sprayB. So, what I'm trying to illustrate is that,
+how you play around with factor variables in LM is very important
+in terms of how you interpret it. It's not just a conceptual or
+theoretical thing to worry about it. It's a very practical
+thing to worry about. What your intercept means changes
+dramatically depending on what your reference level is or whether or
+not you include an intercept. Let me do one last thing. Where now I show you how
+you can re-level and in this case sprayA was my reference
+level you can very easily re-level it. So say sprayC is your reference level. So now here I just use
+the re level command so now inspect spray,
+the reference level is sprayC but now I've just created a new
+variable where that spray2. And now I'm gonna do my linear
+model where my outcome is my count. And spray2 is my predictor
+now instead of spray. And this is the one that has
+C as the reference level. And then R knows not to do the one that
+has the lowest alphanumeric letter, but instead has the reference
+level that I set. And there when I do it
+notice sprayA is present, sprayC is gone cuz now
+it's the reference level. My intercept is interpreted
+as the mean for sprayC, and you can see 2.0833 that's
+exactly the mean for group C. And then this coefficient 12.41 here is interpreted as the comparison
+of sprayA to sprayC. This 13.25 is the comparison
+of sprayB to sprayC, and so if I want to test sprayA versus
+sprayC I've got to look at this P value. If I wanted to test sprayB versus sprayC,
+I would look at this p value. So let me just recap,
+since this is a very important point. If we include a factor of that level,
+factor variable like spray in R, then R automatically
+includes an intercept, and treats the first level of
+the factor as the reference level. So the intercept now is interpreted
+as the mean for that reference level, in our example, the intercept is
+interpreted as the mean for sprayA. Then each spray, other effects,
+so sprayB effect, sprayC effects, sprayD effect, sprayE effect, and so on, is the comparison of that spray level
+versus the reference level which is A. If we want the means for those, it has to be the intercept plus
+their specific coefficients. So the intercept plus the sprayB
+coefficient will be the mean for sprayB. All of the tests then, the test for the
+intercept will be a test for whether or not the mean for sprayA is zero. The test of all the other levels,
+the sprayB, sprayC, and other coefficients, will be a test for
+the comparison versus sprayA. If, on the other hand, we omit an
+intercept, then we're gonna get a mean for each level, including sprayA. And then all the test would be for whether
+or not the sprayA coefficient is different from zero, the on for
+b would be whether or not the sprayB coefficient was zero, and
+so on, which may or may not be relevant. Usually you want the comparisons and
+that's why r's default is to pick one of the levels and
+treat it as the reference level. However, if you want a different one. If you want B to be the reference level,
+you just need to use the re-level command. Or if you wanna get involved
+a little bit more in linear models, then you need to go into how you calculate
+standard errors in more general settings. But that's a little bit more advanced. For right now if you want to do the
+comparisons say between B and C then my current suggestion is just to re-level so
+that now B is the reference level and the coefficient for C will now be
+comparing spray B and spray C. I wanna give some caveats about this
+data analysis that I presented, it's not exactly a complete data
+analysis I think the modeling the data as if they are normally distributed is
+perhaps problematic they're count data so they're bounded from below by zero. I think it would probably be a little more
+natural to model this data as if it was Poisson or
+at least over dispersed Poisson or something like that which we're going to
+cover In our GLM version of the class. In addition the variance,
+it's clearly not constant. So what I mean by the variance is I
+mean the variance around the mean. And it's clearly not constant as
+our regression models would assume. So this is a potential problem. And so our means are probably correct. Our estimates are probably correct. But our inferences assuredly not. So that creates an issue that
+needs to be handled at some level. And later on in the class we'll talk
+about some things for handling this and some of the rest you may
+have to take some further statistical inferences classes to deal
+with some of the more advanced topics. Like when the variances are unequal
+they call that heteroscedasticity.

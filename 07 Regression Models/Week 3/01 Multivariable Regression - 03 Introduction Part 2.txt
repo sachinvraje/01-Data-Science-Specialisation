@@ -1,0 +1,124 @@
+So let's talk about how you
+actually get the estimates, or how R or
+whatever figures these things out. And I'm gonna go through a derivation,
+and again, if this is not your thing, then feel free to skip over
+this part of the lecture. Remember if you have
+regression to the origin, you want a line that's forced to
+the origin that has no intercepts. You have the single predictor x and
+a single predictor of y and you want no intercept. The slope estimate was just this
+sum of the product x times y divided by the sum of the x is squared. That, we talked about that
+earlier on in the class. Now let's just consider,
+let's see if we can use that result to derive the least squares estimate
+when we have two regressors. And then I think if you've got the gist
+of this you can see how it would work for three and how it would work for
+four and so on. Okay, so derive is maybe a bit of
+an ambitious term as to what I intend to do here. What I guess I mean is develop,
+and I'm gonna ask for those that are interested to fill
+in the details on their own. But what I'm gonna do is simply
+develop the estimator a little bit. And the reason I'm gonna go through
+this development is I think it illustrates what multivariable
+regression is doing. If you're not too interested in this sort
+of development, then I think you could reasonably skip over this slide or
+this set of notes and not worry about it. But if you're interested, and
+you kinda wanna understand how multi-variable regression works,
+I'm gonna give a development that's more intuitive than what you would get
+with something like linear algebra. In addition I have some videos on YouTube
+where I go through the linear algebra development if you'd like to watch those. But I don't think that that's actually
+necessary to sort of understand what's going on. So let's consider two regressors. We have summation of the outcome yi, minus the first regressor
+Xi1 times Beta 1, minus the second regressor,
+Xi2, X2i times Beta 2 squared. That's the least squares criteria
+that we would like to minimize. So for example,
+X1i might just be an intercept and X2i might be a covariant of interest,
+blood pressure or something like that. Okay, so here's the trick. Imagine if I were to just know beta 1 or
+fix beta 1. Then I get yi~ let's say is equal to yi minus- x1i times beta 1. And this equation becomes summation yi~ minus X2i beta 2 squared. Well, then this is exactly regression through the origin
+with just the single regressor, X2y but the outcome y~i. So we know what the estimate for
+beta 2 would have to be. It would have to be summation yi~. x2i over summation x2i squared. Now, what you can do, this,
+and remember, yi~, see, remember its definition over here. If we were to plug it in,
+that's a function of beta 1. So what I could do is now that I know that
+my beta 2 has to satisfy this equation. I can take this and
+plug it back in here, right. Or equivalently back in here. And then what that yields
+is an equation for that only involves beta 1 and
+a regression through the origin for beta 1 and if you want to you can
+fill in the rest of the details. What it works out to be, and
+this is the interesting part, is that the regression slope for beta one, is exactly what you would obtain if
+you took the residual of x2 out of x1, and x2 out of y and
+then just did regression to the origin. So kind of what multi-variable regression
+is doing is it's the coefficient for x1, say beta 1,
+is the coefficient having removed x2, the other covariant, from both
+the response and that first predictor, x1. Similarly, the regression coefficient for x2 beta 2 is going to be
+what you get if you were to remove x1 out of both the response y and
+out of the second predictor, x2. We're gonna go over this point a lot and I know it's probably
+confusing to begin with. But it explains what multi-variable
+regression is doing. A coefficient from
+a multi-variable regression is the coefficient where all
+the other variables have been. Their linear effect on that predictor and
+their response has been removed. And this is a very useful fact. And we'll exploit it in a variety of ways. So in case you skipped over that previous
+slide I wanted to go through the result. Because it's important for your understanding of
+multi-variable regression. So remember, we have two covariants
+in this case, an X1 and an X2. And of course, one outcome Y. And we're interested in a model that
+has only the two covariants and a regression slope Beta 1 and then
+regression slope Beta 2 for the second. The result is that the fitted coefficient
+for beta 1 is what you would get with regression through the origin if I
+had removed the second coefficient X2. If I had removed its linear effect
+from both the response Y and the first regression variable X1. So that's the sense in which multivariable
+regression, the sense in which the coefficient for X1 has been adjusted
+for the effect of X2 because the linear fact of X2 has been removed from both
+the response Y and the first predictor X1. Similarly, the same thing could be said
+about the coefficient for X2 beta 2. Once we get its estimate, beta 2 hat, it is what you would get
+if you were to remove the effect, the linear effect of X1 out of both the
+response Y, and the second predictor, X2. And this is why multivariable regression
+relationships are sort of thought of as having been adjusted for
+all the other variables. We'll go on in the next slide and
+talk about how this relates to a full multivariable regression,
+where you have lots of predictors. So let's go through the case that we
+already know, of simple linear regression. Where one of our co-variances
+is an intercept term and the other is some co-variant of interest. So here we have Yi equals Beta 1 X1i, plus
+Beta 2, X2i, where in this case I'm just gonna assume that the second one is the
+intercept term whereas we usually assume that the first one is the intercept
+term but that of course doesn't matter. So if we adhere to my rule that the beta
+one co, the estimated beta one coefficient is gonna be the one that's obtained by
+getting rid of X2 out of the both Y term and the X1 term, let's think about what
+we would get if we fitted X2 on Y. Well X2 is just an intercept. So as we know in intercept only regression
+the fitted value is just Y bar. And so the residuals are just
+the observations Yi minus Y bar. In other words the centered
+version of the Ys. And then if we were to fit X2 on X1,
+again, X2 is just a constant. If we were to do the fit,
+the fitted values, the coefficient would just be X1 bar,
+the mean of that covariant. And so the residuals would
+just be X1i minus X bar, the centered version of that covariant. So, getting rid of this intercept term
+from the Y is just centering that variable and getting rid of this intercept term
+from X1 is just centering that covariant. And then my fitted regression
+estimate is given down here, is just the product of the centered
+Ys times the centered Xs, added up, divided by the sum
+of the centered Xs squared. I give you that formula here and you can
+work with it and it just works out to be the standard regression slope,
+the correlation between the Xs and the Ys, times the ratio of
+the standard deviations. So now let's extend this to
+more than two variables, so that we can start dipping into
+the idea of multivariable regression. So hopefully you see where we're
+going with multivariable regression. Our least squares criteria is now the
+distance between our observed outcome, Yi, and X1 times its coefficient all
+the way up to Xp times its coefficient, the squared distances between those. If we only have two regressors,
+an intercept and a slope, this amounts to minimizing
+the sum of the squared vertical distances between the outcomes Ys and the predictors
+and the prediction on the line. If it's three regressors, an intercept and
+two regression variables, then the fitted line or
+the fitted construct is no longer a line, it's a plane and
+the least squares criteria is minimizing the sum of the squared vertical distances
+between the outcomes in the plane. If we take more than three variables and
+intercept and then let's say three covariants then,
+we can't visualize it any more. So but it's sort of the generalized
+idea of the distance, the vertical distance between the Ys and
+some generalized version of a plane. And what we've seen is the idea that
+multi variable regression adjusts for the other variables in
+a sense by taking residuals. So, for example, if we take this
+coefficient in front of X1, beta 1, the way in which we interpret Beta 1, is
+that the remaining regression variables, X2 up to Xp,
+have been linearly removed from both Y and X1 and then the relationship between those
+residuals investigated by themselves. So in a sense, Y has been adjusted for the remaining variables, X1 has been
+adjusted for the remaining variables, and we look at those two together so that beta
+1 can be thought of as an adjusted effect, having adjusted for a linear
+relationship with the other variables. So what we're gonna do now is go through
+some computer experiments just illustrate that this is how LM works, and then in
+the next lecture we're going to through some examples and how we interpret
+the coefficients in a context.

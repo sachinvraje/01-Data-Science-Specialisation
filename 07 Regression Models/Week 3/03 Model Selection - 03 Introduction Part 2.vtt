@@ -1,0 +1,1606 @@
+WEBVTT
+
+1
+00:00:01.070 --> 00:00:01.850
+Okay.
+
+2
+00:00:01.850 --> 00:00:05.830
+So we talked a little about the impact of
+
+3
+00:00:05.830 --> 00:00:10.630
+excluding important aggressors right,
+that results and bias.
+
+4
+00:00:10.630 --> 00:00:15.640
+And now let's deep down a little bit
+further in this other phenomenon, that if
+
+5
+00:00:15.640 --> 00:00:20.860
+we include an important aggressors,
+that causes so called variance inflation.
+
+6
+00:00:20.860 --> 00:00:23.480
+So I'm going to show this
+with a little simulation.
+
+7
+00:00:24.590 --> 00:00:27.959
+Okay, so in this case I have
+a sample of size 100, and
+
+8
+00:00:27.959 --> 00:00:31.846
+I'm going to do 1,000 simulations,
+so let me define those.
+
+9
+00:00:34.238 --> 00:00:40.500
+Get some space down here, so we're just
+looking at this new set of code, okay.
+
+10
+00:00:40.500 --> 00:00:44.390
+So I'm going to define those, and then
+we're going to define three regressors,
+
+11
+00:00:44.390 --> 00:00:46.840
+they're all just three independent
+random normal vectors.
+
+12
+00:00:48.240 --> 00:00:51.590
+And then what I'm going to
+do is simulate data,
+
+13
+00:00:51.590 --> 00:00:55.365
+where the outcome y only depends on x1.
+
+14
+00:00:55.365 --> 00:00:58.870
+An error, and then doesn't depend
+on the other two variables.
+
+15
+00:00:58.870 --> 00:01:04.610
+And then I'm going to look at the standard
+error for the x1 variable for
+
+16
+00:01:04.610 --> 00:01:09.910
+the model that just includes x1,
+that's this one.
+
+17
+00:01:09.910 --> 00:01:11.360
+The model that includes x1 and
+
+18
+00:01:11.360 --> 00:01:16.360
+x2, that's this one, and
+the model that includes x1 and x3.
+
+19
+00:01:16.360 --> 00:01:18.820
+And I'm going to do that over and
+over again.
+
+20
+00:01:18.820 --> 00:01:23.760
+And I'm going to look at the standard
+deviation of the simulated estimated
+
+21
+00:01:23.760 --> 00:01:24.800
+coefficients.
+
+22
+00:01:24.800 --> 00:01:29.040
+Now the reason I'm doing this by
+simulation, is because the variance
+
+23
+00:01:29.040 --> 00:01:33.280
+inflation occurs on the actual standard
+errors, not the estimated standard errors.
+
+24
+00:01:33.280 --> 00:01:39.020
+It's actually a little complicated,
+in that if I put another variable into
+
+25
+00:01:39.020 --> 00:01:43.840
+a regression model, it doesn't necessarily
+inflate the observed standard error.
+
+26
+00:01:43.840 --> 00:01:49.330
+And the reason is because the variance is
+estimated rather than the actual variance.
+
+27
+00:01:49.330 --> 00:01:52.620
+And that has a kind of
+conflicting property.
+
+28
+00:01:52.620 --> 00:01:57.860
+So you don't necessarily see the variance
+
+29
+00:01:57.860 --> 00:02:00.930
+go up when you include
+a regressor in an regression,
+
+30
+00:02:00.930 --> 00:02:06.410
+an unnecessary regressor
+into a regression model.
+
+31
+00:02:06.410 --> 00:02:08.590
+You have to look at it through simulation.
+
+32
+00:02:08.590 --> 00:02:10.180
+Let's go ahead and do this.
+
+33
+00:02:13.900 --> 00:02:16.510
+This is sort of the ideal setting,
+
+34
+00:02:16.510 --> 00:02:21.890
+where the three regressors don't have
+anything to do with one another.
+
+35
+00:02:21.890 --> 00:02:23.980
+Now what you see is in fact.
+
+36
+00:02:23.980 --> 00:02:29.040
+So the first model this is the standard
+error, the standard deviation
+
+37
+00:02:29.040 --> 00:02:31.230
+of the beta coefficients I got
+crossed across all simulations.
+
+38
+00:02:31.230 --> 00:02:32.490
+Here's the second one.
+
+39
+00:02:32.490 --> 00:02:34.960
+It actually went down a little
+bit with the second one.
+
+40
+00:02:34.960 --> 00:02:37.270
+Now we know theoretically
+that can't happen.
+
+41
+00:02:37.270 --> 00:02:39.810
+But there is some Monte Carlo
+error when I do my simulation.
+
+42
+00:02:39.810 --> 00:02:42.610
+So let;'s just say,
+these two are about the same.
+
+43
+00:02:42.610 --> 00:02:47.030
+And, the third one is also about the same,
+0.032 as opposed to 0.031.
+
+44
+00:02:47.030 --> 00:02:48.320
+So nothing that bad.
+
+45
+00:02:48.320 --> 00:02:53.050
+The variance inflation by including
+the extra variables did almost,
+
+46
+00:02:53.050 --> 00:02:54.760
+was negligible.
+
+47
+00:02:54.760 --> 00:02:58.860
+And the reason that is the case, is
+because these other to variables, x2 and
+
+48
+00:02:58.860 --> 00:03:00.870
+x3, have nothing to do x1.
+
+49
+00:03:00.870 --> 00:03:03.340
+I simulated them independently.
+
+50
+00:03:03.340 --> 00:03:04.786
+Let's look at a case now,
+
+51
+00:03:04.786 --> 00:03:10.600
+where I've simulated them in such
+a way that they depend heavily on x1.
+
+52
+00:03:10.600 --> 00:03:14.440
+So I'm going to generate my
+x1 as I did the last time,
+
+53
+00:03:14.440 --> 00:03:16.150
+just as a random normal vector.
+
+54
+00:03:16.150 --> 00:03:19.950
+But my x2 depends on x1,
+but also some noise.
+
+55
+00:03:20.980 --> 00:03:26.910
+And my x3 is heavily dependent on x1,
+very dependent on x1, okay?
+
+56
+00:03:26.910 --> 00:03:30.650
+So now, let's repeat the simulation.
+
+57
+00:03:30.650 --> 00:03:35.510
+And see what happens to the variability
+and the estimated coefficients.
+
+58
+00:03:35.510 --> 00:03:39.290
+Okay, now we see huge amounts of
+variance inflation, especially for
+
+59
+00:03:39.290 --> 00:03:43.100
+this third model where we include x2 and
+x3, right.
+
+60
+00:03:43.100 --> 00:03:47.800
+We see the standard air has gone
+up by a factor of five, okay.
+
+61
+00:03:47.800 --> 00:03:52.870
+And that goes to the general rule,
+If the variable that you
+
+62
+00:03:52.870 --> 00:03:58.090
+include is highly correlated to the thing
+that you're interested in, right?
+
+63
+00:03:58.090 --> 00:04:00.970
+You are going to inflate
+the variance more.
+
+64
+00:04:00.970 --> 00:04:05.060
+And so,
+you need to concern yourself with putting
+
+65
+00:04:05.060 --> 00:04:09.850
+highly correlated variables into your
+regression model, unnecessarily, okay?
+
+66
+00:04:09.850 --> 00:04:13.290
+So if I have diastolic blood
+pressure in my model, and
+
+67
+00:04:13.290 --> 00:04:18.140
+I put systolic blood pressure on my model,
+which is basically the same,
+
+68
+00:04:18.140 --> 00:04:21.130
+relatively the same thing,
+they're very correlated.
+
+69
+00:04:21.130 --> 00:04:25.920
+If I did that unnecessarily, that's going
+to make my diastolic blood pressure,
+
+70
+00:04:25.920 --> 00:04:28.760
+standard air, it's going to increase it.
+
+71
+00:04:30.360 --> 00:04:34.040
+So yeah, imagine for
+example another example is if you
+
+72
+00:04:34.040 --> 00:04:37.770
+had height in a model and then you also
+included weight or something like that.
+
+73
+00:04:37.770 --> 00:04:38.990
+Something that's highly related.
+
+74
+00:04:38.990 --> 00:04:42.010
+Height and weight tend to track
+pretty well with one another.
+
+75
+00:04:42.010 --> 00:04:47.900
+And so if that was necessary to include,
+then you just have to bite the bullet and
+
+76
+00:04:47.900 --> 00:04:51.530
+deal with the extra standard deviation,
+the extra standard error that you get.
+
+77
+00:04:51.530 --> 00:04:54.030
+However, if it's unnecessary,
+then you don't want to include it.
+
+78
+00:04:54.030 --> 00:05:00.180
+So again, the main point is, is the more
+correlated the covariants are to
+
+79
+00:05:00.180 --> 00:05:05.210
+the regressors that you're interested in,
+the worse off you're going to be in terms
+
+80
+00:05:05.210 --> 00:05:10.149
+of paying a penalty for
+increased standard deviation.
+
+81
+00:05:12.000 --> 00:05:14.290
+So that goes to show
+there's no free launch.
+
+82
+00:05:14.290 --> 00:05:18.590
+If we omit variables that are important,
+we get bias.
+
+83
+00:05:18.590 --> 00:05:22.630
+If we include variables that are
+unnecessary, we inflate standard errors.
+
+84
+00:05:22.630 --> 00:05:27.480
+Especially if we include variables that
+are unnecessary that are uncorrelated
+
+85
+00:05:27.480 --> 00:05:30.600
+with our variable of interest.
+
+86
+00:05:30.600 --> 00:05:34.710
+And this again reiterates why
+randomization is so important, right.
+
+87
+00:05:34.710 --> 00:05:41.440
+So it randomizes across these
+other variables, the known and
+
+88
+00:05:41.440 --> 00:05:46.530
+unknown knowns that we would otherwise
+need to include in the model,
+
+89
+00:05:46.530 --> 00:05:50.709
+so that we can only include
+the treatment of fact of interest.
+
+90
+00:05:52.210 --> 00:05:57.190
+And things that we include even if,
+if we feel like we have to,
+
+91
+00:05:57.190 --> 00:05:58.840
+they should be relatively balanced, or
+
+92
+00:05:58.840 --> 00:06:02.970
+relatively uncorrelated with the treatment
+affect because it's been randomized.
+
+93
+00:06:02.970 --> 00:06:06.920
+And so we won't get this kind of variance
+inflation that we would get otherwise.
+
+94
+00:06:06.920 --> 00:06:09.920
+So again, that's why randomization
+is such an important quality.
+
+95
+00:06:12.120 --> 00:06:14.560
+Now lets talk about
+variance inflation factors.
+
+96
+00:06:14.560 --> 00:06:18.800
+So we don't know the actual sigma, so
+
+97
+00:06:18.800 --> 00:06:24.580
+when we include, so we can't actually
+calculate the exact variance inflation.
+
+98
+00:06:24.580 --> 00:06:27.980
+That depends on the actual
+true residual variance.
+
+99
+00:06:27.980 --> 00:06:32.570
+However, if we can compare ratios of them,
+the sigma will dropout and
+
+100
+00:06:32.570 --> 00:06:37.950
+then we can create things like ratios and
+variance inflation that
+
+101
+00:06:37.950 --> 00:06:42.050
+accurately represent how much the standard
+deviation is inflated or not.
+
+102
+00:06:43.710 --> 00:06:49.190
+So, there's a particular measure that is
+
+103
+00:06:49.190 --> 00:06:52.980
+very commonly used in regression, called
+the variance inflation factor or VIF.
+
+104
+00:06:54.030 --> 00:06:58.700
+And all this is,
+is the comparison, this ratio,
+
+105
+00:06:58.700 --> 00:07:03.970
+the variance inflation that occurs
+from what you actually have.
+
+106
+00:07:03.970 --> 00:07:08.890
+So looking at the standard error for
+the data that you have, versus the ideal
+
+107
+00:07:08.890 --> 00:07:13.630
+setting where all the other covariates
+that you're interested in are orthogonal.
+
+108
+00:07:13.630 --> 00:07:17.510
+To the covariant or
+let's just say uncorrelated.
+
+109
+00:07:17.510 --> 00:07:20.372
+So remember,
+that was the ideal case, right?
+
+110
+00:07:20.372 --> 00:07:23.290
+So if everything else was uncorrelated
+to what you were interested in
+
+111
+00:07:23.290 --> 00:07:25.050
+we didn't see much variance inflation.
+
+112
+00:07:26.380 --> 00:07:30.980
+This looks at the case that you're in,
+versus the ideal case
+
+113
+00:07:30.980 --> 00:07:35.540
+where what you're interested in is
+uncorrelated with all the other variables.
+
+114
+00:07:35.540 --> 00:07:38.670
+That's the so
+called variance inflation factor.
+
+115
+00:07:38.670 --> 00:07:40.050
+And here I give a little simulation.
+
+116
+00:07:40.050 --> 00:07:40.960
+I'm not going to show it.
+
+117
+00:07:40.960 --> 00:07:44.146
+Where I just show you that
+the ratios can get estimated, and
+
+118
+00:07:44.146 --> 00:07:45.879
+I show you a little simulation.
+
+119
+00:07:45.879 --> 00:07:50.774
+That they can get estimated pretty
+well so, let's actually look
+
+120
+00:07:50.774 --> 00:07:55.758
+with this Swiss data,
+let's look at the variance inflation you,
+
+121
+00:07:55.758 --> 00:08:00.831
+so what I'm going to do is fit
+the model What happens if there's some
+
+122
+00:08:00.831 --> 00:08:05.836
+residual effect of the first aspirin
+when you give the second one?
+
+123
+00:08:05.836 --> 00:08:10.190
+I'm going to fit the model with
+all the variables included, so
+
+124
+00:08:10.190 --> 00:08:14.250
+when you do a ~.,
+it includes all the variables.
+
+125
+00:08:14.250 --> 00:08:17.940
+And then I'm going to do vif(fit), that
+gives me my variance inflation factors.
+
+126
+00:08:17.940 --> 00:08:22.560
+Oh, but, you have to remember to
+load this library, c, a, r., okay?
+
+127
+00:08:22.560 --> 00:08:26.560
+Let's load that, and
+then now let's try it again.
+
+128
+00:08:26.560 --> 00:08:31.390
+I would rather than the variance
+inflation factors, I would look at
+
+129
+00:08:31.390 --> 00:08:35.750
+the inflation factors for the standard
+deviations, which is the square root.
+
+130
+00:08:35.750 --> 00:08:36.850
+So let's look down here.
+
+131
+00:08:36.850 --> 00:08:41.770
+So on the first line I have the variance
+inflation factor by itself and
+
+132
+00:08:41.770 --> 00:08:45.600
+then in the line below it, I have the
+square root of it which I tend to prefer.
+
+133
+00:08:45.600 --> 00:08:49.790
+So let's look at the first line just
+because it's the more normal thing,
+
+134
+00:08:49.790 --> 00:08:53.280
+the variance inflation, so
+for the agriculture 1 is 2.
+
+135
+00:08:53.280 --> 00:08:54.630
+What does that mean?
+
+136
+00:08:54.630 --> 00:09:00.460
+It means the standard error for
+the agriculture effect is double
+
+137
+00:09:00.460 --> 00:09:04.940
+of what it would be if it were orthogonal
+to all the other regressors, okay?
+
+138
+00:09:04.940 --> 00:09:09.275
+And we see that some of them are quite
+high, examination is quite high,
+
+139
+00:09:09.275 --> 00:09:12.760
+3.67, so almost 4 times
+
+140
+00:09:12.760 --> 00:09:17.560
+than the instance when if it were
+orthogonal to all the other regressors.
+
+141
+00:09:17.560 --> 00:09:20.730
+And we know that education,
+I'm sorry, examination and
+
+142
+00:09:20.730 --> 00:09:24.800
+education are highly related, so
+that's why these two have very high
+
+143
+00:09:26.080 --> 00:09:29.790
+variance inflation factors relative
+to some of the other ones.
+
+144
+00:09:29.790 --> 00:09:33.840
+And that, and you can see,
+take a variable like infant mortality,
+
+145
+00:09:34.930 --> 00:09:37.640
+which has a very low
+variance inflation factor.
+
+146
+00:09:37.640 --> 00:09:42.697
+Infant mortality is largely going to be
+unrelated to any of these other variables,
+
+147
+00:09:42.697 --> 00:09:47.537
+by and large, and so you can see that it
+doesn't have a large variance inflation
+
+148
+00:09:47.537 --> 00:09:52.541
+factor because it is pretty much unrelated
+to the other variables anyway, okay?
+
+149
+00:09:52.541 --> 00:09:57.254
+So that's gets you a little bit of
+headway into the world of looking at
+
+150
+00:09:57.254 --> 00:10:01.319
+what happens when you include
+unnecessary variables, and
+
+151
+00:10:01.319 --> 00:10:06.358
+one of the ways to look at that is
+so-called variance inflation factors,
+
+152
+00:10:06.358 --> 00:10:12.082
+and they're incredibly useful little tools
+and I hope you get a chance to use them.
+
+153
+00:10:15.124 --> 00:10:20.758
+So up to this point all that we've talked
+about is the impact of unnecessary or
+
+154
+00:10:20.758 --> 00:10:26.320
+necessary included variables on
+our regression coefficients.
+
+155
+00:10:26.320 --> 00:10:29.640
+But there's one other parameter that
+we estimate in a regression model,
+
+156
+00:10:29.640 --> 00:10:32.550
+the residual variant, sigma squared.
+
+157
+00:10:32.550 --> 00:10:37.710
+So what happens if we
+have assuming iid errors
+
+158
+00:10:37.710 --> 00:10:43.800
+in our linear model is additive, and
+that that part of the model is correct,
+
+159
+00:10:43.800 --> 00:10:48.030
+then we can mathematically describe the
+impact of omitting unnecessary variables
+
+160
+00:10:48.030 --> 00:10:50.740
+or including unnecessary variables.
+
+161
+00:10:52.410 --> 00:10:56.820
+And it follows along the same
+lines as what we discussed before,
+
+162
+00:10:56.820 --> 00:10:59.758
+if we underfit the model, in other words,
+
+163
+00:10:59.758 --> 00:11:04.598
+we omit important variables,
+then the variance estimate is biased.
+
+164
+00:11:04.598 --> 00:11:05.771
+Why is that?
+
+165
+00:11:05.771 --> 00:11:10.013
+Because we've attributed to variation
+things that are actually systematically
+
+166
+00:11:10.013 --> 00:11:12.910
+explained by these co-variants
+that we've omitted.
+
+167
+00:11:14.480 --> 00:11:17.510
+On the other hand,
+if we either correctly fit the model,
+
+168
+00:11:17.510 --> 00:11:23.500
+we include all the right terms,
+or if we overfit the model,
+
+169
+00:11:23.500 --> 00:11:29.840
+then the variance estimates in
+unbiased; however, the variance
+
+170
+00:11:29.840 --> 00:11:34.950
+of the variance estimate gets inflated
+if we include unnecessary variables.
+
+171
+00:11:34.950 --> 00:11:39.510
+So it's actually kind of the same rule,
+if we omit, as we've discussed before with
+
+172
+00:11:39.510 --> 00:11:45.650
+coefficients, if we omit variables then
+we get biased, if we include variables,
+
+173
+00:11:45.650 --> 00:11:50.970
+then we get a less reliable estimate, so
+it's roughly the same impact going on.
+
+174
+00:11:53.750 --> 00:11:57.900
+So let's talk about model selection in
+general, automated model selection.
+
+175
+00:11:57.900 --> 00:12:01.099
+I'm going to fit the model with
+all the variables included, so
+
+176
+00:12:01.099 --> 00:12:03.810
+when you do a ~.,
+it includes all the variables.
+
+177
+00:12:03.810 --> 00:12:07.534
+It really, I think,
+in one point was a statistical topic but
+
+178
+00:12:07.534 --> 00:12:12.380
+it's really moved in to the realm of
+machine learning for the most part.
+
+179
+00:12:12.380 --> 00:12:17.260
+And I would say, though,
+even for relatively simple
+
+180
+00:12:17.260 --> 00:12:21.590
+linear regression models, the space of
+model terms that you have to search among
+
+181
+00:12:21.590 --> 00:12:24.800
+explodes really quickly when you
+start including interactions and
+
+182
+00:12:24.800 --> 00:12:30.660
+polynomial terms like the square
+of a regressor and so on.
+
+183
+00:12:30.660 --> 00:12:37.150
+If you have a lot of regressors and you're
+interested in how do I reduce this space,
+
+184
+00:12:37.150 --> 00:12:41.220
+then there's a lot of factor analytic and
+things like principal components,
+
+185
+00:12:41.220 --> 00:12:43.758
+those kind of techniques
+that are available to you,
+
+186
+00:12:43.758 --> 00:12:47.110
+to reduce your co-variant
+space down to size.
+
+187
+00:12:47.110 --> 00:12:50.350
+Now however, those come with consequences.
+
+188
+00:12:50.350 --> 00:12:54.890
+Your principal components or factors that
+you obtain might be less interpretable
+
+189
+00:12:54.890 --> 00:12:57.930
+than the original data that
+you're interested in again.
+
+190
+00:12:57.930 --> 00:13:01.683
+Again, this is probably better
+served in a multivariable class,
+
+191
+00:13:01.683 --> 00:13:05.840
+a multivariate class, or
+a class on machine learning.
+
+192
+00:13:05.840 --> 00:13:10.400
+But for us we're going to mostly consider
+the case where we have a relatively
+
+193
+00:13:10.400 --> 00:13:14.720
+small number of regressors, and we're
+going to pick through them with a highly
+
+194
+00:13:14.720 --> 00:13:21.609
+interactive process between the analysts,
+the data, and the scientific context.
+
+195
+00:13:23.310 --> 00:13:27.290
+Another thing I would mention is that good
+design can often eliminate the need for
+
+196
+00:13:27.290 --> 00:13:29.030
+a lot of this model discussion.
+
+197
+00:13:29.030 --> 00:13:33.480
+We've talked a lot about how
+randomization can really prevent a lot of
+
+198
+00:13:33.480 --> 00:13:38.710
+the problems that we're
+talking about with making our
+
+199
+00:13:38.710 --> 00:13:43.506
+variable of interest unrelated to nuisance
+variables that we're not interested in, or
+
+200
+00:13:43.506 --> 00:13:46.730
+in nuisance variables that we
+don't even know about; however,
+
+201
+00:13:46.730 --> 00:13:51.130
+there's other aspects of design
+that can serve the same purpose.
+
+202
+00:13:51.130 --> 00:13:56.000
+For example, if we stratify and
+randomize within strata.
+
+203
+00:13:56.000 --> 00:13:58.976
+The classic example of this,
+when this was developed, was R.A.
+
+204
+00:13:58.976 --> 00:14:02.990
+Fisher was working in field crop
+experiments and they needed,
+
+205
+00:14:02.990 --> 00:14:07.520
+let's say you were trying
+a different kind of seed,
+
+206
+00:14:07.520 --> 00:14:12.220
+you might block on different areas of the
+field that you were going to plant in and
+
+207
+00:14:12.220 --> 00:14:14.930
+randomize the different
+seeds to those areas.
+
+208
+00:14:14.930 --> 00:14:19.660
+So you might have two different kinds of
+seeds, but they will have been distributed
+
+209
+00:14:19.660 --> 00:14:24.540
+in a systematic way that is
+fair across the field, but
+
+210
+00:14:24.540 --> 00:14:28.290
+also then, within that design,
+there will also be some randomization.
+
+211
+00:14:28.290 --> 00:14:33.440
+This topic of experimental
+design is a pretty broad topic.
+
+212
+00:14:33.440 --> 00:14:39.200
+Another great example is in biostatistics,
+the field that I work in the most,
+
+213
+00:14:39.200 --> 00:14:43.389
+a very common kind of design
+is a cross-over design, and
+
+214
+00:14:43.389 --> 00:14:48.124
+in that case, you try to use every
+subject as their own control.
+
+215
+00:14:48.124 --> 00:14:49.749
+So let's say, for example,
+
+216
+00:14:49.749 --> 00:14:53.584
+you're interested at looking at two
+different kinds of aspirin, and
+
+217
+00:14:53.584 --> 00:14:57.549
+you might give the aspirin to one group
+of people, and then the aspirin to
+
+218
+00:14:57.549 --> 00:15:01.917
+another group of people, and the other
+aspirin to a different group of people.
+
+219
+00:15:01.917 --> 00:15:06.444
+Let's say they have different gels or
+whatever that determine how much it,
+
+220
+00:15:06.444 --> 00:15:09.580
+how it gets absorbed in your stomach.
+
+221
+00:15:09.580 --> 00:15:15.970
+So if those two groups aren't the same,
+either the randomization wasn't
+
+222
+00:15:15.970 --> 00:15:20.350
+very good and there was some certain
+imbalance that you just got unlucky about,
+
+223
+00:15:20.350 --> 00:15:25.220
+or if the study was just observational,
+then the comparison of those two groups
+
+224
+00:15:25.220 --> 00:15:29.670
+might be biased by whatever differentiates
+the groups rather than group one receiving
+
+225
+00:15:29.670 --> 00:15:32.330
+one kind of aspirin and group two
+receiving a different kind of aspirin.
+
+226
+00:15:34.130 --> 00:15:38.050
+On the other hand, if you can give
+a person one kind of aspirin and
+
+227
+00:15:38.050 --> 00:15:40.990
+then later on give them a different
+kind of aspirin when they have another
+
+228
+00:15:40.990 --> 00:15:45.890
+headache, that would compare each
+person to themselves, right?
+
+229
+00:15:45.890 --> 00:15:48.490
+Control block on the person so to speak.
+
+230
+00:15:48.490 --> 00:15:50.087
+So that's a design strategy.
+
+231
+00:15:50.087 --> 00:15:54.504
+Now there's some nuance with
+this design strategy as well.
+
+232
+00:15:54.504 --> 00:15:57.767
+What happens if there's some residual
+effect of the first aspirin when you
+
+233
+00:15:57.767 --> 00:15:58.712
+give the second one?
+
+234
+00:15:58.712 --> 00:16:01.992
+So maybe you could handle that
+with some sort of wash out period,
+
+235
+00:16:01.992 --> 00:16:04.311
+long wash out period or
+something like that.
+
+236
+00:16:04.311 --> 00:16:09.369
+But anyway, the point of that design is to
+make it, so that you're comparing people
+
+237
+00:16:09.369 --> 00:16:14.016
+with themselves to control and
+everything that's intrinsic to the person.
+
+238
+00:16:14.016 --> 00:16:19.532
+These across time periods control for that
+by giving both aspects to each person.
+
+239
+00:16:19.532 --> 00:16:22.232
+Maybe you would randomize the order
+in which they received them that's
+
+240
+00:16:22.232 --> 00:16:23.316
+called a crossword design.
+
+241
+00:16:23.316 --> 00:16:28.092
+At any rate, the broader point that I'm
+trying to make is, it's often the case
+
+242
+00:16:28.092 --> 00:16:32.659
+that good thoughtful experimental design
+can really eliminate the need for
+
+243
+00:16:32.659 --> 00:16:37.009
+some of the main considerations that
+you would have to go through in model
+
+244
+00:16:37.009 --> 00:16:41.333
+building if you were to just collect
+data in an observational fashion.
+
+245
+00:16:41.333 --> 00:16:46.020
+[SOUND] The last thing I would say is
+there's one automated search model
+
+246
+00:16:46.020 --> 00:16:49.992
+technique that I like quite a bit and
+I find it very useful and
+
+247
+00:16:49.992 --> 00:16:52.953
+it's the idea of looking at nested models.
+
+248
+00:16:52.953 --> 00:16:57.920
+So, I'm often interested in
+a particular variable and I'm very
+
+249
+00:16:57.920 --> 00:17:03.714
+interested in how the other variables
+that I've collected will impact it.
+
+250
+00:17:03.714 --> 00:17:06.605
+So, I'm interested in a treatment or
+something like that.
+
+251
+00:17:06.605 --> 00:17:10.856
+Some important variable, but
+I'm worried that my treatment groups and
+
+252
+00:17:10.856 --> 00:17:15.115
+imbalanced with respect to potentially
+some of these other variables.
+
+253
+00:17:15.115 --> 00:17:19.615
+So what I'd like to look at is the model
+that just includes the treatment by itself
+
+254
+00:17:19.615 --> 00:17:23.207
+and the model that includes
+the treatment and let's say, age.
+
+255
+00:17:23.207 --> 00:17:26.566
+If the ages weren't really balanced
+between the two treatment groups and
+
+256
+00:17:26.566 --> 00:17:29.923
+then one that looks at age and gender,
+if maybe the genders between the two
+
+257
+00:17:29.923 --> 00:17:32.169
+groups weren't really balanced and
+then so on.
+
+258
+00:17:32.169 --> 00:17:35.824
+And this idea of creating
+models that are nested,
+
+259
+00:17:35.824 --> 00:17:40.786
+every successive model contains all
+the terms of the previous model
+
+260
+00:17:40.786 --> 00:17:45.066
+leads to a very easy way of
+testing each successive model.
+
+261
+00:17:45.066 --> 00:17:50.221
+And these nested model examples
+are very easy to do, so I'm just
+
+262
+00:17:50.221 --> 00:17:56.246
+going to show you some code right here on
+how you do nest and model testing in R.
+
+263
+00:17:56.246 --> 00:17:59.823
+So I fit three linear
+models to our SWF dataset,
+
+264
+00:17:59.823 --> 00:18:03.048
+the first one just includes agriculture.
+
+265
+00:18:03.048 --> 00:18:07.390
+Let's pretend that, that's the variable
+that we're interested in and
+
+266
+00:18:07.390 --> 00:18:11.605
+then the next one includes agriculture and
+examination in education.
+
+267
+00:18:11.605 --> 00:18:12.688
+I put both of those in,
+
+268
+00:18:12.688 --> 00:18:15.887
+because I'm thinking they're kind
+of measuring the same thing.
+
+269
+00:18:15.887 --> 00:18:20.759
+But now after this lecture, I'm concerned
+over the possibility that they're too
+
+270
+00:18:20.759 --> 00:18:25.501
+much of measuring the same thing, but
+let's put that aside for this time being.
+
+271
+00:18:25.501 --> 00:18:29.876
+And then the third model includes
+Examination + Education + Catholic +
+
+272
+00:18:29.876 --> 00:18:31.224
+Infant.Mortality.
+
+273
+00:18:31.224 --> 00:18:32.420
+So, all the terms.
+
+274
+00:18:32.420 --> 00:18:37.419
+So now, I have three nested models and
+I'm interested in seeing what happens to
+
+275
+00:18:37.419 --> 00:18:40.267
+my effect as I go through
+those three models.
+
+276
+00:18:40.267 --> 00:18:45.324
+The point being, in this case, you can
+test whether or not the inclusion of
+
+277
+00:18:45.324 --> 00:18:50.240
+the additional set of extra terms is
+necessary with the ANOVA function.
+
+278
+00:18:50.240 --> 00:18:54.825
+So I do anova fit1, fit1 and fit5.
+
+279
+00:18:54.825 --> 00:18:57.983
+That's what I named them,
+one, three, five.
+
+280
+00:18:57.983 --> 00:19:02.196
+And then you see down here,
+what you get is a listing of the models.
+
+281
+00:19:02.196 --> 00:19:07.632
+Model 1, model 2, model 3 and
+then it gives you the degrees of freedom.
+
+282
+00:19:07.632 --> 00:19:14.476
+That's the number of data points minus the
+number of parameters that it had to fit.
+
+283
+00:19:14.476 --> 00:19:16.559
+The residual sums of squares and
+
+284
+00:19:16.559 --> 00:19:21.417
+the excess degrees of freedom of going
+Df is the excess degrees of freedom of
+
+285
+00:19:21.417 --> 00:19:25.294
+going from model 1 to model 2 and
+then model 2 to model 3.
+
+286
+00:19:25.294 --> 00:19:29.959
+So we added two parameters going from
+model 1 to model 2, that's why that Df is
+
+287
+00:19:29.959 --> 00:19:34.571
+2 and then we added two additional
+parameters going from model 2 to model 3.
+
+288
+00:19:34.571 --> 00:19:39.423
+So the two parameters we added from going
+from model 1 to model 2 is we added
+
+289
+00:19:39.423 --> 00:19:44.056
+examination and education,
+they're two regression coefficients.
+
+290
+00:19:44.056 --> 00:19:47.483
+Going from model 2 to model 3,
+we added Catholic and
+
+291
+00:19:47.483 --> 00:19:51.148
+Infant.Mortality there to
+regression coefficients.
+
+292
+00:19:51.148 --> 00:19:54.919
+With this residual sum to squares and
+the degrees of freedom,
+
+293
+00:19:54.919 --> 00:19:57.614
+you can calculate so-called S statistic.
+
+294
+00:19:57.614 --> 00:19:59.368
+And thus, get a P value.
+
+295
+00:19:59.368 --> 00:20:03.591
+This gives you the S statistic and
+the P value associated with each of them,
+
+296
+00:20:03.591 --> 00:20:08.218
+then here it shows that yes, the inclusion
+of education examination Information
+
+297
+00:20:08.218 --> 00:20:12.532
+appears to be necessary when we're
+just looking at agriculture by itself.
+
+298
+00:20:12.532 --> 00:20:17.767
+Then I look at the next one it say,
+yes, the inclusion of Catholic and
+
+299
+00:20:17.767 --> 00:20:22.012
+Infant.Mortality appears
+to be necessary beyond just
+
+300
+00:20:22.012 --> 00:20:26.276
+including examination,
+education and agriculture.
+
+301
+00:20:26.276 --> 00:20:31.092
+So if the way in which you're interested
+in looking at your data naturally
+
+302
+00:20:31.092 --> 00:20:34.197
+falls into a nest model
+search as it often does,
+
+303
+00:20:34.197 --> 00:20:38.256
+I think when you're interested
+in one variable in specific.
+
+304
+00:20:38.256 --> 00:20:39.334
+As in this case,
+
+305
+00:20:39.334 --> 00:20:44.724
+I think this would be a pretty natural way
+of thinking about the series of analyses,
+
+306
+00:20:44.724 --> 00:20:48.972
+then some kind of nested model
+searches a reasonable thing to do.
+
+307
+00:20:48.972 --> 00:20:53.291
+It doesn't work if the models that
+you're looking at aren't nested.
+
+308
+00:20:53.291 --> 00:20:57.822
+For example, if I had the first model or
+model 2 had an examination, but
+
+309
+00:20:57.822 --> 00:21:02.368
+not education and the third model
+had education, but not examination.
+
+310
+00:21:02.368 --> 00:21:06.130
+This wouldn't apply,
+you'd have to do something else.
+
+311
+00:21:06.130 --> 00:21:10.495
+And there, I think you get into the harder
+world of automated model selection with
+
+312
+00:21:10.495 --> 00:21:12.469
+things like information criteria.
+
+313
+00:21:12.469 --> 00:21:16.223
+So I would put all that stuff
+off to our prediction class and
+
+314
+00:21:16.223 --> 00:21:21.204
+just leave you this one technique that's
+useful in the one specific instance
+
+315
+00:21:21.204 --> 00:21:25.264
+where you've decided to kind of
+look along a series of models,
+
+316
+00:21:25.264 --> 00:21:30.349
+each get increasingly more uncomplicated,
+but including the previous one.
+
+317
+00:21:30.349 --> 00:21:33.667
+So, I hope in this lecture that you've
+gotten a couple of model selection
+
+318
+00:21:33.667 --> 00:21:35.016
+techniques that you can use.
+
+319
+00:21:35.016 --> 00:21:39.457
+I hope you've also learned that there are
+some basic consequences that occur, if you
+
+320
+00:21:39.457 --> 00:21:44.036
+include variables that you shouldn't have
+or exclude variables that you should have.
+
+321
+00:21:44.036 --> 00:21:47.198
+These has consequences to your
+coefficients that you're interested in,
+
+322
+00:21:47.198 --> 00:21:49.817
+they have consequences to your
+residual variance estimate.
+
+323
+00:21:49.817 --> 00:21:54.336
+We didn't even touch on some other aspects
+of [INAUDIBLE] model that could occur,
+
+324
+00:21:54.336 --> 00:21:59.070
+such as absence of linearity and other
+things like that, non-normality and so on.
+
+325
+00:21:59.070 --> 00:22:05.270
+So again, it's generally necessary to take
+your model that's the a grain of salt,
+
+326
+00:22:05.270 --> 00:22:09.656
+because more than likely one
+aspect of your model is wrong.
+
+327
+00:22:09.656 --> 00:22:13.908
+And I'll leave you then with this
+famous quote by George Box who vary
+
+328
+00:22:13.908 --> 00:22:17.946
+famously said, all models are wrong,
+some models are useful.
+
+329
+00:22:17.946 --> 00:22:21.602
+And I think that's a very credo
+to go along with that yes, for
+
+330
+00:22:21.602 --> 00:22:25.689
+sure your model is wrong, but
+it might be useful in the sense of being
+
+331
+00:22:25.689 --> 00:22:29.650
+a lens to teach you something useful and
+true about your data set.
+
+332
+00:22:30.880 --> 00:22:34.170
+So that ends today's lecture and I look
+forward to seeing you for the next one.

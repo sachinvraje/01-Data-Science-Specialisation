@@ -1,0 +1,189 @@
+WEBVTT
+
+1
+00:00:01.430 --> 00:00:06.130
+Now I'm going to go through the proof
+that Y bar is the minimizer
+
+2
+00:00:08.110 --> 00:00:10.710
+for this equation here
+as a function of mu.
+
+3
+00:00:11.950 --> 00:00:14.220
+If these kinds of proofs
+aren't your thing,
+
+4
+00:00:14.220 --> 00:00:18.460
+then just skip it and in the subsequent
+lectures the same thing though,
+
+5
+00:00:18.460 --> 00:00:21.299
+I'll give the same caveat before
+each time I do something like this.
+
+6
+00:00:22.620 --> 00:00:24.610
+If you do intend to pay
+attention to the proof,
+
+7
+00:00:25.760 --> 00:00:29.160
+you don't need to know either calculus or
+linear algebra, but
+
+8
+00:00:29.160 --> 00:00:32.380
+ideally you'll be very comfortable
+with mathematical notation.
+
+9
+00:00:32.380 --> 00:00:36.780
+So, for example, if you've had calculus in
+your past, you've forgotten the specifics
+
+10
+00:00:36.780 --> 00:00:41.080
+of the calculus, but you're pretty
+familiar with mathematical notation and
+
+11
+00:00:41.080 --> 00:00:44.290
+working with mathematical notation,
+then that's all you need.
+
+12
+00:00:44.290 --> 00:00:45.780
+Okay, so let's go ahead and do it.
+
+13
+00:00:48.330 --> 00:00:52.690
+This is the quantity I'd like
+to minimize as a function of mu.
+
+14
+00:00:52.690 --> 00:00:55.910
+My Y i's are my observed data points.
+
+15
+00:00:55.910 --> 00:00:59.220
+I'm going to subtract and then add Y bar.
+
+16
+00:00:59.220 --> 00:01:02.890
+So I've just added 0, changes nothing.
+
+17
+00:01:02.890 --> 00:01:04.679
+So I can have an equal sign there.
+
+18
+00:01:05.740 --> 00:01:09.015
+I can expand this square out and
+I get this term,
+
+19
+00:01:09.015 --> 00:01:16.010
+twice the cross-product term,
+and then this term right here.
+
+20
+00:01:16.010 --> 00:01:18.000
+Let's look at this term right here.
+
+21
+00:01:19.770 --> 00:01:27.058
+Notice this doesn't depend on i, so I can
+pull it outside of the sum, out here.
+
+22
+00:01:27.058 --> 00:01:33.570
+Then notice this guy right here,
+I can distribute the sum across it.
+
+23
+00:01:33.570 --> 00:01:39.760
+So I get summation Y i, and then if I
+add up Y bar, which doesn't depend on i,
+
+24
+00:01:39.760 --> 00:01:44.190
+if I add it up n times i, I get n Y bar.
+
+25
+00:01:45.260 --> 00:01:53.160
+But notice, I would define Y bar as
+1 over n times the summation Y i.
+
+26
+00:01:54.350 --> 00:01:57.930
+Add up my observations and
+divide by n is the average.
+
+27
+00:01:57.930 --> 00:02:01.926
+So in other words,
+n Y bar is equal to the summation of Y i.
+
+28
+00:02:01.926 --> 00:02:05.530
+So this is 0.
+
+29
+00:02:05.530 --> 00:02:07.350
+That whole term then is 0.
+
+30
+00:02:08.660 --> 00:02:14.440
+Moving on to the next line,
+I have summation Y i minus Y bar squared,
+
+31
+00:02:14.440 --> 00:02:18.800
+adding those up, and
+summation Y bar minus mu squared.
+
+32
+00:02:20.030 --> 00:02:24.310
+This quantity is the sum of
+a bunch of squared things.
+
+33
+00:02:24.310 --> 00:02:25.810
+Has to be positive.
+
+34
+00:02:25.810 --> 00:02:30.250
+So if I throw it out, my equal sign
+gets turned into a greater than or
+
+35
+00:02:30.250 --> 00:02:31.280
+equal to sign.
+
+36
+00:02:31.280 --> 00:02:35.141
+I've only gotten smaller by throwing out a
+bunch of positive things that I'm adding.
+
+37
+00:02:40.928 --> 00:02:42.923
+Let's summarize.
+
+38
+00:02:42.923 --> 00:02:48.053
+This function, for
+any value of mu, is larger than or
+
+39
+00:02:48.053 --> 00:02:53.190
+equal to the specific case
+when we plug in Y bar.
+
+40
+00:02:53.190 --> 00:02:58.320
+Therefore, Y bar has to be the unique
+minimizer of that equation.

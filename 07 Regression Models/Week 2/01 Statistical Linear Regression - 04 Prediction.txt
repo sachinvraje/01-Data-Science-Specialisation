@@ -1,0 +1,122 @@
+Also, I'd like to remind everyone
+that we can get a prediction for Y by taking beta not hat
+plus beta nought hat and multiplying it by the X
+that we want to predict at. Now if we plug in the observed X's,
+then we get the fitted values. The ones who were trying to make as close
+as possible to the observed data, but that doesn't mean that we can only
+predict at the fitted values. We can predict at any value of X,
+we'd like to plug into the equation. However, we're going to have more
+reasonable predictions if the value of x that we plugin is in the cloud of data
+that we're, we used to build the model. Later on,
+we'll also talk about how to account for that kind of uncertainty
+with prediction intervals. But for the time being, let's just
+talk about how we get a prediction. And in the next couple slides, we'll
+go through an example of interpreting the intercept, interpreting the slope and generating predictions from a specific
+regression model and setting. All right.
+Let's go through some code now to interpret our regression
+coefficients and show you running of the regression
+coefficient sort of in real time. The dataset is the diamond
+dataset from the UsingR package. The data is diamond prices in Singapore
+dollars and diamond weight in carats, which is a standard
+measure of diamond mass. To get the data,
+you need to start out by using library UsingR to get
+the UsingR package and data diamond and then we want,
+I want to do ggplot2, because I'm going to do a ggplot first. So here,
+let me go through my ggplot commands. So, I would like to assign to the variable
+g my ggplot, the dataset is diamond. My aesthetic has the horizontal
+axis variable as carat and the y-axis variable as price. I'd like to label, I'd like to get
+in the practice of labeling my axes, so my plot, I add a layer where
+the xlab isM ass and carats. And where the y label, ylab is pr,
+price in Singapore dollars. So let me run those, [SOUND] let me
+run those lines and then I'd like to add the points, I'd like to add
+the points of the black background and then a,
+a light alpha blending color on top and then it quite easy to
+add the regression line. So, I'm going to add a layer that
+is geom_smooth and method equals, method equals lm will
+add the regression line. And if you omit any arguments, it's just going to assume the regression
+line with y's the outcome and x is the predictor and that I want my
+regression line color to be black. So let me run that line and
+then call my plot. [SOUND] There's my plot,
+you can see on my x-axis, I have mass, on my y-axis I have price. And now what I'm plotting is the fitted
+line, the line that minimizes the sum of the squared vertical distances
+between these points and the lines. Now let's actually go through and
+get our fitted line. Just to remind us, the function lm
+is r is linear model procedure, so it includes regression
+as a special case. Y on the left-hand side of our
+tilde is the outcome price, then tilde, think of that as sort
+of the equal sign in the model. Our x variable carat. By default, lm includes an intercept. So, if you don't want an intercept, you
+have to explicitly force it in the model. Then the comma, we want the dataset that we're
+looking at to be the diamond dataset. So, in other words,
+we have to give it the data frame. Otherwise, it looks in the regular r
+environment for variables in the model and we're going to assign that to,
+to the variable named fit. So let's see what that output
+looks like after we run it. So there I've run the model and now I'm going to type fit just
+to see what it prints out. It basically just prints out
+the coefficients beta nought and beta one. I would note that you can get
+a much more detailed printout by doing summary of the outputted
+variable from the l, lm fit and
+you get this more elaborate printout. And we're going to go through and detail
+all of the numbers on this printout, you'll be able to interpret
+everything on this printout at some point after the class. But for the time being,
+lets just talk about the coefficients. If you just want to grab the coefficients
+as a vector, lets do coef fit and then we get the intercept and labels it as
+Intercept and the regression variable for the carat, the slope for
+the carat regression variable. So let's look at this 3,721 variable and
+try to interpret it. It's saying that we have
+an expected 3,721 Singapore dollar increase in price for every carat
+increase in mass of the diamond. The intercept, negative 259 is
+the expected price of a 0 carat diamond. So not very interested, interesting, because we're not interested
+in zero carat diamonds. Now let's mean center our x variable, so that the intercept is on
+a more interpretable scale. The first thing I'd like to do is
+assign it to a different variable, fit2 instead of fit, because I don't
+want to overwrite the original fit. Lm is again, my linear model procedure. My outcome stays the same and now I want to main center my
+predictor variable, carat. So carat minus mean carat. If you want to do arithmetic operations
+inside equation statements in lm, you actually have to surround
+them by this I function and then we still want our dataset
+to be the diamond dataset. So let's run that code. [NOISE] So, I've run fit2 [NOISE] and there are my new coefficients. Notice of course,
+the slope stays the same, 3,721, but
+my intercept has changed to 500. So $500, Singapore dollars is the expected
+price of the average sized diamond. In this case,
+the average diamond is about 0.2 carats. A one carat increase is
+actually kind of big. What about changing the units
+to one-tenth of a carat? We can do this just by dividing
+the coefficient by ten. So we know that we would expect to
+see a $372 increase in price for every one-tenth of a carat
+increase in the mass of a diamond. But let's actually show in
+r how this works, as well. Here I am, now assigning to the ver,
+to the variable fit3. The linear model fit,
+where now instead of putting in carat, I'm putting in carat times 10. So the units of this new
+variable is one-tenth of a carat. The data is of course,
+still the diamond dataset. So let me run that and
+then let me find the coefficient. And you get, of course, that it is now 372 rather than 3,721. So, imagine if someone came to you
+with three new diamonds that they had. 0.16 carats, 0.27 carats and 0.35 carats, so here they are right here and
+let me assign those. And they wanted to know what you
+would estimate the price would be. Well, you could do it manually by grabbing
+the two coefficients in multiplying the intercept or adding the intercept
+plus the slope times these new values. Let's do that. And so you would predict 336, 745 and
+$1,006 for these three diamonds, respectively based on your
+fitted linear regression model. Which by the way, from the scatter
+plot seems to fit pretty well. Often, you don't want to do even that much
+coding, you want to more general method, especially when you get lots
+of regression variables. So there's this general method called
+predict that will take the output from several different kinds of model fits. Linear models are one example, but predict
+is a generic function, you know, or, and it applies to several
+different prediction models. So we predict from
+the output of our lm fit and then you need to give it some
+new data to predict that. So new data is a data.frame that has the
+new values of x for the carat variable. Then when we do that, what you'll see is
+of course, it gives you the same answer. The, now in a way that scales up
+when we have lots of regressors in much more complicated settings. So you generally, want to predict
+using the predict function. If you omit this new data statement,
+if you just do predict fit, I'll show it to you. [SOUND] It predicts at
+the observed x values, so it gives you the y hat values. If you want it at new x values, you
+have to give it this new data argument. I just wanted to briefly illustrate
+what the prediction was accomplishing. Here's our observe data points in blue. The fitted values when we do the predict
+command, the fitted values in red all of the observed x values and their
+associated fitted points on the line. These are if we were to draw vertical
+lines from the observed data points on to the fitted line,
+they would occur on these red points. When we predicted a new value of x, what we're doing is we're finding
+a point along this horizontal axis. That here, I'm giving the three values
+that we want, 0.16, 0.27 and 0.34. We're drawing a line up to
+the fitted regression line and then over to dollars and
+those are our predicted dollar amounts.

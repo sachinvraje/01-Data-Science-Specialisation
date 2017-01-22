@@ -1,0 +1,74 @@
+The last thing I'd like to do is
+to demonstrate that the linear regression slope estimate is beta 1 hat
+equal to the correlation between y and x times the standard deviation of y
+divided by the standard deviation of x. I'd like to demonstrate that. It's going to take some doing and if you don't want to get this
+involved in the mathematics, now would be the good time to stop
+the lecture and move on to the next one. However, if you are interested, again, I'm going to do this in a way that
+doesn't require advanced mathematics, but you have to be familiar with mathematical
+notation and pretty comfortable with it. So before I do full regression,
+let me do regression through the origin. Let me draw this line here. So, I want to fit the best line y
+equal to x Beta through my data. My data is y1 up to yn and X one up to xn. I would like then to
+minimize the criteria. Summation, yi minus xi beta squared. Where the sum is from i equal 1 to n. Let me let beta hat be the solution and
+we'll see what has to happen about that solution to make,
+to make it work. So this equation here is equal
+to the summation i equal 1 to n, yi minus xi beta hat plus xi beta hat. Simply, because I've just added zero. Minus xi beta squared. All I've done is add zero. I can expand this square,
+summation i equal 1 to n, yi minus xi beta hat squared and
+then I'm going to distribute my sum. Minus twice summation i equal one to n, yi, y i minus x i beta hat times xi beta hat minus x i beta plus the summation xi beta hat minus xi beta squared. Now, if I get rid of this term,
+it's adding up a bunch of positive things. I'll only get smaller, because I'll have thrown away something that's positive. So, if I take 6, which is 4 plus 2 and throw away the 2, I've gotten smaller. Okay. Let's look at this term right here. If beta hat fForces this term to be zero,
+then let me just rewrite this, if it's zero,
+I will get the following. [SOUND] I'll get that my
+least square's criteria for any beta is larger than what I get when I plugin beta hat specifically. So that beta hat would have to be
+the minimizer, because every other beta is at least, creates a, a least squares
+criteria at least as large or larger. So, if we can make this term zero,
+then we've found our estimate. So, I want to solve
+summation i equal 1 to n, yi minus xi beta hat. Xi times beta hat minus beta. I would like to solve that equal to zero. This term does not depend on i, so I could divide from both sides of
+the equation and it would simply go away. Solving this equation for beta hat yields the solution
+summation i equal 1 to n, yi xi divided by summation xi squared,
+i equal 1 to n. So that yields our beta hat for
+regression through the origin. Let's consider an example, that we've already shown otherwise. So, imagine if x1 all the way
+up to xn are all equal to one. Then my equation where I want to
+minimize summation yi minus xi beta, my regression to the origin
+equation works out to be summation yi minus beta quantity squared. It's mean only regression. Our result says that beta hat for
+regression to the origin in this case is summation yi xi
+divided by summation xi squared. Which in this case is summation yi
+divided by summation xi squared. Xi is 1so, 1 squared is 1. And if I add them up, I get n. So, it's y bar. Simply, reiterating our proof
+earlier that y bar is the solution to the least squares criteria for
+mean only regression. So let's consider general
+linear regression. Here is our equation for our line and here is the least squares criteria
+that we would like to obtain. We would like to find a beta nought in
+beta one that minimize that equation. Our work already is going to
+make this very easy. Imagine for the, for the moment
+that beta one is fixed and known. Then I'm simply going to rewrite this
+equation as summation i equal 1 to n, yi minus beta 1xi minus beta
+nought quantity squared. And then I'm going to write that as summation i equal one to n, y star minus beta nought squared, where y star is equal to yi minus beta1xi. We know the least squares
+solution to this equation. It has to be, the solution has to be beta
+nought has to be equal to the average. I forgot my i subscript there, so
+why don't I put it right there and right there. Has to be average of the y i stars. Let's plug back in what yi star is. It's summation yi minus
+beta 1xi divided by n. If I distribute out that sum, I get y bar minus beta 1x bar. So my least squares criteria
+is only going to get smaller if I plugin a beta nought that
+satisfies y bar minus beta 1x bar. So why don't I do that? And I get summation i equal 1 to n, yi. And now, I'm simply going to
+plugin my new beta nought. Because I know that whatever solution
+beta nought and beta one are, they have to follow this relationship. Which is again, saying that the fitted
+regression line has to go through the average of the y's and
+the average of the x's. So, it's yi minus the beta
+nought that I just solved for. Y bar minus beta 1. X bar minus beta 1xi. So we know our solution has to do that. Now this is equal to
+summation i equal 1 to n, yi minus y bar minus xi minus
+x bar times beta 1 squared and I forgot my square right there. Now, and
+I'm going to put some parentheses here. I'm going to rewrite this. Again, this is summation i equal 1 to n, y tilde minus x tilde i in both
+cases times beta 1 squared. This is exactly regression to the origin. Where now my outcome is y tilde and
+my predictor is x tilde, where yi tilde is equal to the centered y,
+yi minus y bar and my Xi tilde is equal to the centered xs,
+xi minus x bar. Well, we know what the least squares
+estimate for this equation is. The beta 1 hat has to
+be summation yi tilde times xi tilde divided by
+summation xi tilde squared. Let's just plugin what yi tilde and
+xi tilde are. That summation yi minus
+y bar times xi minus x bar divided by summation
+xi minus x bar squared. Thus, I can divide both sides
+by n minus 1, the numerator, both both the numerator and
+the denominator by n minus 1. And this works out to be
+the covariance between y and x divided by the variance of x, which I
+can write as the correlation between y and x times the standard deviation of y
+over the standard deviation of x. So my beta one hat has to be this,
+the formula that we gave. Then my beta nought hat is given above
+as y bar minus beta 1 hat x bar.

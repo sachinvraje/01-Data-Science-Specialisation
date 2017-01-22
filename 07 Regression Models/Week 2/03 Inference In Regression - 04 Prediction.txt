@@ -1,0 +1,124 @@
+Prediction is a central concept for
+the data scientist. In fact, we have an entire course, Practical Machine Learning on
+advanced prediction techniques. However, regression and generalized
+linear models which we're going to cover later on in the class are some
+of the most core techniques for performing prediction they're. they often produce very good predictions,
+they're parsimonious and interpretable, and as an added bonus
+you can get inference on top of your predictions without
+doing any sort of data re sampling. What I mean by inference is we can
+get predictions, and then say for example confidence intervals around our
+predictions to evaluate the uncertainty in those predictions, so that's very easy in
+regression and pretty easy in generalized linear models and quite difficult in some
+more advanced machine learning algorithms, you may have to do data resampling or
+something like that. So let's just talk about prediction,
+we might want to predict a response, which might be the price of a diamond. At a particular mass, in carats. Or we might want to predict
+a child's height for a particular value of the parent's height. The obvious estimate in both
+cases is just take our x not, our predictor value that we want to
+predict at, either mass or parents height. Multiply it times the relevant
+estimated slope, beta one half and then add the intercept. But, if we want to be good statisticians,
+we need to evaluate some uncertainty in that prediction, so, it would be
+nice to have a prediction interval. There's a small intricacy in that there's
+a distinction between trying to predict at the line. Predict a regression line
+at a particular point, and trying to predict a future
+Y at that same point. Those are two different ideas. I'll describe that picture in a slide,
+but let me describe the formula first. What we have here, and it makes
+sense that our prediction variance first relates around how variable. The points are around our regression line,
+sigma hat. And it makes sense that, that will
+be involved in our prediction error. However here we have this term 1 over n. Okay that, that also kind of makes sense. Typically our,
+our standard errors decrease at some rate, 1 over square root n. So a 1 over n in a square root
+seems kind of reasonable. If we're predicting a new Y,
+then we have this added 1 out front, so we get a wider interval. If we want to predict a new
+value at a specific point versus trying to predict what the regression
+line is at that point. So we'll talk more about that later, but let me also focus on this very end
+term that is on both equations. X not minus X bar divided by the, sort of
+variant, top of the variance of the Xs. Consider the numerator of
+this statistic our prediction error is going to be the lowest
+when X not is equal to X bar. So our prediction variance
+is going to be smallest when we're predicting at
+the average price of a diamond. Or at the av, I'm sorry, at the average mass of a diamond or
+at the average height of the parents. So that's one thing to notice. The second is this summation X i minus
+X bar squared in the denominator. That's basically how variable my Xs are. The more variable my Xs are,
+the smaller this term becomes and the lower my prediction error is. So again, not unlike our slope estimate
+where the more variable our reg, regressors were,
+the less variable our slope estimate is. The same thing happens in
+our prediction error here. Okay, so let's go through some pictures so
+we can try to solidify these concepts. But this is an essential
+part of using regression for prediction, that you get easy,
+and convenient prediction on certainty associated
+with your parsimonious predictors. So let's generate some prediction
+intervals for the diamond data set, and I'm going to go through the code here,
+and actually most of the code is just a little bit of data wrangling to get
+it in a format that's friendly for 'GG Plot', at least in so
+far as I know 'GG Plot'. So I'm not going to go
+through this too carefully, because after having had Roger's class
+you're all better at this than I am. So let me go through just the most
+relevant part of this code and that is the predict function. Right here. So here's my predict function, and I am going to give to my predict function,
+the output of LM. For a lot of prediction algorithms,
+especially linear models and generalized linear models, but
+other things, random forests and other things in R, the predict function
+is a generic method that applies to them, so I'm going to give it the output,
+in this case, my LM, and then I want a nice denser grid
+of x values to predict at for my plot than the observed data, so I'm
+going to give it some new x values, and then here I tell you I want a confidence
+interval, not a prediction interval, that's R's Code for
+saying I want the interval around the estimated line at that
+particular value of x not for a potential new y at that particular
+value of x, if I want an interval for potential new Y at that
+particular value of X, I change the interval = ("confidence")
+to interval = ("prediction"). Which I do in this line below. So here I'm going to run all of
+the sort of data wrangling code. And then let me go through my ggplot. I like to do this just because I find
+ggplot a little bit confusing at first. But once I've gotten used to it,
+I like it quite a bit. And once I've done this data wrangling, then notice this some kind of complicated
+plot only takes a couple of lines. So I'm going to start my ggplot. I'm going to add a ribbon, and the ribbon
+is going to have two parts because it's going to be filled by the interval type. So the blue one will be
+a prediction interval, and the kind of salmon colored one
+will be a confidence interval. And then I want my fitted line added, and then I want to add
+the observed data points. Now my observed data points aren't in
+the data frame that I used to create the ggplot, so I have to give it a new
+data frame and a new aesthetic command for this particular layer. And then let me do my plot, and then I'm going to switch windows
+to a large window with a plot. So here is my plot, and again, the blue
+is the prediction arrow, this is for predicting a new line, and
+the salmon color is for prediction of the line at
+those particular values of x. And so what you'll see is
+the prediction for a line, a so called confidence interval. It, for the R command predict is much
+narrower than the prediction interval. And here's how I like to think of this. Because if you're confused, and we know
+this to be the case from the math, right. There's that 1 plus. For the prediction interval. And there, that one is missing for
+the confidence interval for the line. So here's the way I like
+to think about this. Imagine if I collected
+an infinite amount of data at all different values
+of x along this line. Well, then, I would pretty much
+know the regression line exactly. And if that were the case,
+I would be extremely confident about predictions on the line, where
+the line was at a particular x value. So as I collected more and more data, that salmon colored confidence
+interval will get narrower and narrower around the line to the point
+where it was just the line itself. And that's good, that's what we
+would expect to ha, to happen. That's just the idea of
+statistical sampling working. On the other hand, the prediction
+interval, there's variability in the Ys, that has nothing to do with how well I
+estimated beta naught, or beta one, and in fact, imagine if I were to just give
+you the correct beta naught and beta ones. There would still be
+variability in the Ys, because they're, there's that error term,
+and so if I wanted to predict a new y, there's some uncertainty that just
+doesn't go away with better estimation, it's sort of inherent in the,
+in that I have a, there's leftover residual
+variation from my regression line. So that variability will be ever
+present in the prediction interval and that's why it's one plus, that's why
+that one shows up in the equation. It doesn't go away with N. It doesn't go away as I collect
+more X's or anything like that. It's inherent, and
+that's why the prediction interval has a certain amount of width
+that's never going to go away. The last thing I'd say is you can see it
+probably I think a little bit more in the confidence interval here than in the
+prediction interval but that both of these get narrower toward the center of the data
+cloud and then get wider as you head, head out into the tails and that's just
+simply saying that we're more confident In our predictions, close,
+the closer we are to the mean of the X's. Now because of that one plus it means
+maybe less in the, for the blue color than it does for the salmon color and you can
+see it more clearly with the salmon color. So that's why the, the, it pinches in
+a little bit and, and that makes sense. If we were to go well beyond where we
+collected data, then these intervals would really become a lot wider which
+is what we'd want, because we're, we would be extrapolating, we want to
+predict where we did not collect data. So on the next slide I just
+summarized those points, but I think that's enough to get you
+started on inference from regression. And now we'll move on to some more
+complex topics in regression and generalize to where we have
+more predictor variables

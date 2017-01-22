@@ -1,0 +1,63 @@
+So let's move on to another example
+of multi variable regression. A very important example that underlies
+the topic of so called ANCOVA. I'd like to through an example to illustrate fitting multiple lines with
+different intercepts and different slopes. So I'm going to use the swiss dataset
+that we've looked at previously. And recall we're trying
+to model fertilities and outcome as a linear function
+of agriculture, which is the percent of that province that was
+working in agriculture as the predictor. Remember that examination and education really including those modified
+the effect of agriculture and fertility. For the time being, let's ignore that, and I just want to show you how to fit
+different lines, one for each group. So let's take the Catholic variable. So if I were, for example,
+to do hist(swiss$Catholic), notice that it's very bimodal. And that's because most provinces
+are either majority Catholic or majority Protestant,
+from this time period. So now I'm going to create using dplyr,
+a catholic, binary catholic variable, which is one
+if the province is majority catholic, and zero if it's majority protestant. CatholicBin variable, and
+then now let me plot the data. And what you see now is these
+two variables, the CatholicBin factor variable, that's zero for majority
+Protestant and one for majority Catholic. And you can see the data there, there
+are some potential issues with the data. And what I'm going to be describing
+which is to fit lines to the data. Particularly these outlyingish
+looking observations. But I'm going to ignore this now,
+because later on in another lecture, we are going to be talking about
+outliers and influence points. And then also, there's the impact
+of these other variables, how they would relate to these model fits. So let's ignore all that for
+the time being, and simply work on fitting a line where
+here now we want two separate lines. One for the majority Catholic provinces, and one for
+the majority Protestant provinces. Okay, so let's see if we can do that. Let me describe some
+models that we could fit. So here I have given some notation. Y is fertility, X1 is the percent of
+the province working in agriculture, and X2 is a binary variable, where it's
+one if the province is over 50% catholic, and zero if the province is
+over Is majority Protestant. So consider model one, where we modeled
+that our expected y, given x1 and x2, is an intercept plus a slope times x1. So that would just be a line,
+and it would disregard the religion of the province entirely. Let's consider a second model. Here we have expected of y given x1 and
+x2 is beta not plus beta 1 x1 plus beta 2 x2. Now Let's think about this. In the event that X two is equal to zero,
+if the province is majority protestant. Then this works out to be beta
+knot plus beta one X one. In the event that X two is equal to one. In the event that the province is
+majority Catholic, this works out to be beta not plus beta2,
+because this term right here is now one, plus beta1 X1. So fitting this model,
+the model that includes X1 and X2, but no interaction Fits two models
+that have the same slope. These two models have the same slope,
+but they have different intercepts, beta not and then beta one plus
+beta two for the second intercept. Okay, let's consider one third model. I want now my expected outcome, given my predictors to be beta not, plus beta 1 X1, plus beta 2 X2, plus beta 3 X1 times X2. Now, lets look at what
+happens when X2 is zero, this works out to be Beta0
+the Beta1 is still there, Beta1X1 is still there
+Beta2X2 this term go to zero. And beta 3 X1 times X2 is also zero,
+because X2 is zero in both those cases. Okay? Now let's work on the case when X2 is 1, which is the case when
+the province is majority Catholic. So we get beta not, plus beta 1 X1, plus now beta 2 is this term is present, because X2 is 1, and
+this term is now beta 3 times X1, because remember X2 is equal to one
+in this case that we're considering. Okay, now let's reorganize terms,
+and that' s beta not plus beta two, there plus beta one plus beta three X one. Okay, so what we've seen is if
+we include in interaction term, then we fit two lines, but
+now those two lines have different slopes. If we omitted that interaction term, we
+fit two lines but they had the same slope. If we include the interaction term,
+two lines different slopes and different intercepts. And the coefficient in front of
+the Catholic term by itself, Is going to be the change in the intercept
+going from Protestant to Catholic, right? Here is the intercept for Protestant and
+here is the intercept for Catholic. And the beta three term,
+the term in front of the interaction, is going to be the change from the slope
+going from Protestant to Catholic, right? So the slope for the, When X2 equals one,
+is beta one plus beta three. It's going to have that
+extra term in there. Okay, so let's try it with some code and
+I hope it will make sense. And I think it's a little bit easier
+to see when you actually do the code.

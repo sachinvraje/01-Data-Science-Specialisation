@@ -1,0 +1,217 @@
+Hi and welcome to the class on
+multivariable regression examples. Let's start this discussion
+with a famous dataset from a well known statistics text book,
+which is this Swiss Fertility Data. And it's in the data sets package so
+I want to do require(datasets). And then I wanna do data(swiss), and then if you do ?swiss,
+it'll bring up the help file. I have kind of a better formatted
+version of this on the slide. And so what's in this data set is
+a standardized fertility measure and some socio-economic status indicators for 47
+French speaking provinces of Switzerland. And this is from 1888. So the variables are fertility,
+agriculture, which is the percentage of the males involved in agriculture as an
+occupation, and examination the percentage of draftees that scored a particular mark
+on a military examination in the province. Education is the percent of the population
+that made it beyond primary school, Catholic is, in this region at this time, is just the percent Catholic
+as opposed to Protestant. And infant mortality is the percentage of
+live births who live less than one year from the province. So that's the data set, and we're interested in looking into what
+explains fertility in this province. So, before we go any further, let's do
+some basic scatter plots of the data. So let me load the Swiss data set and do a Paris plot of all
+the variables in the data set. Oops, I forgot my r, there we go. And this library here,
+GGally or G-G-Ally I think is probably how it's pronounced, is
+a collection of add-on tools for ggplot. In particular they have a ggpairs
+command that does an equivalent of the rpairs plot, and
+I think you'll see it here. In a second,
+you'll understand what it does. It's a little bit of a slow plot. Let me zoom in on the plot here, and
+now, what you see is, for example, fertility is on the x-axis for
+all the plots in this first column. Agriculture is on the x-axis,
+or the horizontal axis, for all of the plots in this column, and
+it's on the vertical y-axis on this plot. So hopefully, you see how it works. So examination, for example,
+is on the y-axis for these two plots, and then on the x-axis for
+these three plots, and so on. The corresponding upper
+triangular part of this matrix gives the correlation
+between those two variables. So let's take, for example,
+fertility and agriculture. Here's the scatter plot,
+you see it right here. Here is the which turns out to
+be fairly linear in this case. And a confidence prediction,
+confidence band around it. And it suggests that
+the correlation between the two, the empirical correlation, is 0.35. So let's, in the next subsequent slides, investigate the relationship
+where agriculture, the percent of the province that works in
+the agricultural industry, with fertility. Let's fit our fertility as an outcome, and the first model I want to fit includes
+all of the variables as predictors, and I'm doing this more for illustration,
+than I am to mimic a real data analysis. I would say in a real data analysis, your first model would probably be
+fertility with agriculture by itself. Or the marginal relationship of interest
+without considering the other variables. But I just wanna show you how to
+fit all of the variables at once. So if you do fertility tilde period,
+this period then adds all of the other variables in linearly,
+no square terms or anything like that, no interaction terms, all of the remaining
+variables in the data frame all at once. Saying data equals Swiss tells it that the data set that
+I want is the Swiss data set. So that's the run of my LM, and notice, you often want to assign the output
+of your LM to a variable so you can save it later, but this runs quick
+enough that I'm just printing the output. Now, summary of the output from LM
+gives a much more interesting output, and then in particular, it gives you
+this table of all the coefficients. Their standard errors, their t values,
+and their p values, but it also gives you a lot
+of other information. If you just wanna grab
+that coefficient table, you can do $ coefficient on
+the output of the summary statement. And there's just the table by itself. So for example, if you want to
+use that in some subsequent code. So let's focus on this number, -0.17. This number is interpreted
+as the following. We expect a 0.17 decrease,
+now decrease because it's negative, right? Okay, so we expect a 0.17 decrease
+in standardized fertility for every 1% increase in the percentage
+of males involved in agriculture, holding the other variables constant. So that is interpreted as
+we hold examination and education, percent Catholic and
+infant mortality constant. This next column, the standard error 0.07,
+talks about how precise that variable is. Oh, and before I move on, I should also mention it's
+important to note that the percent agriculture is expressed as a percentage
+rather than a proportion, right? Because a percentage is the proportion
+times 100, so it would change the scale of the coefficient by a factor
+of 100 so it's important to note whether or not these numbers
+are percentages or proportions, that would make a big difference
+in the scale of the coefficient. Okay, so the standard error talks
+about how precise this coefficient is. It talks about the statistical variability
+of that coefficient, and we get a 0.07. If we wanted to perform a hypothesis test,
+that the coefficient for agriculture, beta Agri is what
+I have here on the slide. If we want to test whether not that's
+zero, then we would take the estimate, subtract off the hypothesized value, which in this case is zero, and divide it
+by the standard error of the estimate. So the t statistic is nothing
+other than the estimate divided by the standard error. We can do that of course, but
+r very conveniently goes ahead and gives it to us. It's -2.448, but that's simply obtained
+by dividing -0.17 divided by 0.07. That t statistic, we can calculate the probability of
+getting a t statistic as extreme as that. As small as negative 2.448 or smaller, and because we're doing a two-sided test,
+we would double that p value. So you can go through that t
+calculation if you'd like. The degrees of freedom are n
+minus the number of coefficients, including the intercept. But again, r does that on our behalf,
+and that works out to be 0.018. So by standard thresholding rules,
+type one error rate of say 5%, that would be statistically significant. But let's go through some other models and look at how the process of model
+selection changes our estimates. So now let's contrast the model with
+a model having just agriculture in as a predictor. So the previous model had all of our other
+variables in this predictor, let's look at one that just looks at this association
+between fertility and agriculture. So, I'm running it and I'm just
+grabbing the coefficient tables so we're not looking at
+the rest of the r's output. But when you do this on your own, you'll look at the rest of
+this summary output from LM. What's interesting is that the agriculture
+variable is about the same magnitude, 0.19 instead of 0.17. However, it's changed signs. Instead of agriculture having
+a negative effect on fertility, it has a positive effect on fertility. So, adjusting for
+these other variables changes the actual direction of the effect
+of agriculture on fertility. And this is the impact of something
+so-called Simpson's Paradox. Or I just think it should be called
+Simpson's Perceived Paradox, because there's nothing paradoxical about
+the possibility that accounting for other variables should change
+the nature of the relationship between a predictor and a response. It actually makes quite a bit of
+sense that that would be the case. Notice of course, in both cases the agriculture coefficient
+is strongly statistically significant. So what I'd like to do in the next
+slide is just create via simulation, an example where an effect
+can reverse itself. So that maybe it'll get us thinking
+about how this could happen. In the end,
+regression is gonna be a dynamic process, where you're going to have to think
+about what variables to include. And you're going to have to make the kind
+of scientific arguments, if you want. If there hasn't been randomization to
+protect you from confounding, you're gonna have to go through a scientific dynamic
+process of putting confounders in and out and thinking about what they're
+doing to your effective interest in order to evaluate it. So let's invent a little simulation,
+just to illustrate how this can happen. But there's a variety of ways it
+can happen, and this is just one. But let's just, so you can see it
+happen as we code it from a real generating process where
+you can control everything. So I'm gonna assume that I have
+100 data points, n is 100, and then my second regressor, x2,
+is just gonna be the values 1 to n. So if you look at x2, it's just 1 to 100. So think of x2 as something that we
+might measure regularly, like days, so we measured 100 consecutive days. And then x1 is a variable that depends
+on x2 and it depends on random noise. So let's just make something up. So x1 depends linearly on x2,
+so it grows linearly with time. So let's say, maybe,
+hopefully x1 is your bank account. It's your money,
+it goes up with time linearly. And then there's all these random
+fluctuations that impact your spending, so your money doesn't necessarily
+always just go up. It goes up and down sporadically, but
+there's this linear trend of it going up. Okay so there's my x1 and
+it's gonna look different, right? So if I were to, for example, plot x1, it goes up but it's got all this
+random noise around the line. Okay now y, let's say y is happiness. So measure of happiness. So what happens with y? The true generating model is y is
+negatively associated with x1. Uh-oh, so you're happiness is
+negatively associated with your money. I guess mo' money,
+mo' problems is what that's suggesting. But then it's positively associated
+with x2, so it goes up with time and down with excellent. And this is the, and
+then there's some random normal noise. And this the correct model because
+we're using it for simulation. So we know that it's the actual truth. Y, our outcome that we're simulating, depends negatively on x1 with
+a coefficient of minus 1, and depends positively on x2 with
+a coefficient of plus 1. Okay, so let's simulate our y. And now let's see what happens
+if we fit x1 by itself. And what we see is we get this enormous
+coefficient, 95, which is clearly wrong. It's nothing near to the negative
+1 that it's supposed to be or that we would hope it would be. It's in fact quite the opposite. And what's happening, it's sort of
+picking up this residual effect of x2, this big line, this big component
+of x2 that's a big driver of y, is getting picked up in x1. Okay, but now what happens if we fit
+the correct model, x1 and x2, together. Well, there we get
+the correct coefficients, about minus 1 for x1, and
+about minus 1 for x2. So there you can see, if you do the correct sort of adjustment,
+then it should work out. And you can imagine why this would happen. What is regression doing? It's taking x1 and
+removing the linear effect of x2. So this part right here,
+this 0.01 x2 should get removed and that uniform noise, that's the correct
+part of x1 that's unrelated to x2, will get related to the part of y
+that's unrelated to x2 as well. So, let's do some plots to highlight this,
+just to show us how it works a little bit. So I'm gonna create a data frame,
+because ggplot likes data frames, and I can't remember if I loaded ggplots,
+so let me reload it. And then my plot is gonna have this data,
+dat. And the aesthetic,
+I named my variables conveniently y. And then my x variable is gonna be x1. So the kind of important variable, x1. And then my color is gonna be x2, okay? And then I want my points and
+I want the line. I didn't highlight the whole thing. There we go. And then I actually need to
+plot my plot so there's my g. So there it is. So you can see the color gradient. Here is x1 as it relates to y. And you can see the line that
+it's fitting is not incorrect. There is a clear linear relationship,
+positive linear relationship, between the x1 and y. However, you can see,
+with x2, which is the color, that there's also this
+clear positive gradient. As y goes up, so does x2. And also you can see as x1 goes up,
+so does x2. So you can see the sort of
+confounding that's happening here. So why don't we now see what happens
+if we plot the residuals, okay. So I created in my data frame, I created
+the residuals where I fit x2 on y. And then I took the residual
+where I removed x2 from x1. So let's see what happens
+when we do the residual plot. So this should be a plot that would
+give the slope of this line will be the coefficient from our linear model
+fit where we include both x1 and x2. Okay, so I'm gonna run that. I'm not gonna go through the ggplot
+commands, cuz they're basically the same. And here's the plot. Now you can see that for
+the residual y and the residual x1, there's a clear negative
+linear relationship, and if you stare at it enough, you realize that the slope of
+this line should be around negative 1. And, you can see that the x2 variable is clearly not related to
+the residual x1 variable. Okay, and so
+that's what linear models is doing. It's removing the x2 from both x1 and y. And that's why you get this sorta correct
+relationship when you fit both variables. Now this doesn't mean that throwing every
+variable into your regression model is the right thing to do. There's consequences to
+throwing in extra variables, unnecessary variables,
+into your regression relationship. Let's go back to our data set now
+that we've thought about the idea of multi-variable regression
+a little bit more. Remember our agriculture effect reversed
+itself after we included the other variables in the model. And particularly you'll find that this
+happens quite a bit when education and examination are included. So educational attainment is negatively
+correlated with the percent working in agriculture, a correlation of -0.64. And you would kind of expect that,
+given where the data was collected and the time period in which it was collected. And in addition,
+as I mentioned earlier, education and examination are kind of
+measuring the same thing. Their correlation,
+those two variables is 0.7. They're sort of measuring the same thing. So the question arises, is this a positive
+association between agriculture and fertility by itself when done
+via ordinary linear regression? Is that artifactual for not having
+accounted for these other variables? Education, by the way,
+does have a stronger effect on fertility. So at the bare minimum, anyone claiming
+that they did a linear regression with percent of the province working on
+agriculture, and fertility is the outcome. And claimed a causal relationship
+between agriculture and fertility, causal positive relationship, that
+conclusion would definitely be suspect. First of all because from observational
+data like this, it's always suspect to make strong causal conclusions without
+putting a lot of extra work in and thought about your assumptions. But even if you were just willing to claim
+an association between agriculture and fertility, that also would be suspect,
+because you can so easily break that association and
+reverse it by the inclusion of other, very reasonable variables. I also wanted to show you really
+quickly what happens if you include a completely unnecessary
+variable in the model. And what I mean by completely
+unnecessary is that, what if you include a variable that is
+simply a linear combination of the other variables that you've already included. So you might include a variable
+that's unnecessary but is random noise, for example. And that's a different issue,
+we'll talk about that later. But right now, why don't we see what
+happens if we include a variable, that in what I am describing,
+is completely unnecessary. So, for example,
+if I create this variable z, that's nothing other than agriculture
+plus education, added together. Well that has no added value. We've already included education and we've already included
+agriculture in our joint model. So why don't I show you what happens
+when you fit all of the variables plus this additional variable z. And what you see is our agriculture
+coefficient hasn't changed, it's -0.17 just like before. And our z variable is giving a NA. And so, whatever it does, whatever r does,
+is it takes the last sort of completely unnecessary variable included in the model
+and gives that one an NA coefficient. So that's an important thing to remember
+if you see an NA in r after you fit a linear model, then probably
+the most likely culprit is you've included a variable that
+is either numerically or exactly a linear combination
+of the other variables.

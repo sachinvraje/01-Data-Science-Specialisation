@@ -1,0 +1,427 @@
+WEBVTT
+
+1
+00:00:00.820 --> 00:00:04.090
+So let's move on to another example
+of multi variable regression.
+
+2
+00:00:04.090 --> 00:00:08.840
+A very important example that underlies
+the topic of so called ANCOVA.
+
+3
+00:00:08.840 --> 00:00:12.070
+I'd like to through an example to
+
+4
+00:00:12.070 --> 00:00:16.620
+illustrate fitting multiple lines with
+different intercepts and different slopes.
+
+5
+00:00:16.620 --> 00:00:19.640
+So I'm going to use the swiss dataset
+that we've looked at previously.
+
+6
+00:00:19.640 --> 00:00:22.260
+And recall we're trying
+to model fertilities and
+
+7
+00:00:22.260 --> 00:00:27.180
+outcome as a linear function
+of agriculture, which is
+
+8
+00:00:27.180 --> 00:00:30.960
+the percent of that province that was
+working in agriculture as the predictor.
+
+9
+00:00:32.490 --> 00:00:34.840
+Remember that examination and
+
+10
+00:00:34.840 --> 00:00:40.350
+education really including those modified
+the effect of agriculture and fertility.
+
+11
+00:00:40.350 --> 00:00:43.140
+For the time being, let's ignore that, and
+
+12
+00:00:43.140 --> 00:00:48.810
+I just want to show you how to fit
+different lines, one for each group.
+
+13
+00:00:48.810 --> 00:00:51.120
+So let's take the Catholic variable.
+
+14
+00:00:51.120 --> 00:00:57.950
+So if I were, for example,
+to do hist(swiss$Catholic),
+
+15
+00:00:57.950 --> 00:01:02.270
+notice that it's very bimodal.
+
+16
+00:01:02.270 --> 00:01:05.420
+And that's because most provinces
+are either majority Catholic or
+
+17
+00:01:05.420 --> 00:01:09.160
+majority Protestant,
+from this time period.
+
+18
+00:01:09.160 --> 00:01:14.620
+So now I'm going to create using dplyr,
+a catholic,
+
+19
+00:01:14.620 --> 00:01:20.140
+binary catholic variable, which is one
+if the province is majority catholic,
+
+20
+00:01:20.140 --> 00:01:26.249
+and zero if it's majority
+
+21
+00:01:26.249 --> 00:01:30.140
+protestant.
+
+22
+00:01:30.140 --> 00:01:34.140
+CatholicBin variable, and
+then now let me plot the data.
+
+23
+00:01:36.230 --> 00:01:41.640
+And what you see now is these
+two variables, the CatholicBin
+
+24
+00:01:41.640 --> 00:01:48.030
+factor variable, that's zero for majority
+Protestant and one for majority Catholic.
+
+25
+00:01:48.030 --> 00:01:52.250
+And you can see the data there, there
+are some potential issues with the data.
+
+26
+00:01:52.250 --> 00:01:55.190
+And what I'm going to be describing
+which is to fit lines to the data.
+
+27
+00:01:57.880 --> 00:02:01.700
+Particularly these outlyingish
+looking observations.
+
+28
+00:02:01.700 --> 00:02:04.790
+But I'm going to ignore this now,
+because later on in another lecture,
+
+29
+00:02:04.790 --> 00:02:07.470
+we are going to be talking about
+outliers and influence points.
+
+30
+00:02:07.470 --> 00:02:10.490
+And then also, there's the impact
+of these other variables,
+
+31
+00:02:10.490 --> 00:02:12.470
+how they would relate to these model fits.
+
+32
+00:02:12.470 --> 00:02:15.310
+So let's ignore all that for
+the time being, and
+
+33
+00:02:15.310 --> 00:02:19.845
+simply work on fitting a line where
+here now we want two separate lines.
+
+34
+00:02:19.845 --> 00:02:23.697
+One for the majority
+
+35
+00:02:23.697 --> 00:02:29.360
+Catholic provinces, and one for
+the majority Protestant provinces.
+
+36
+00:02:29.360 --> 00:02:30.760
+Okay, so let's see if we can do that.
+
+37
+00:02:32.120 --> 00:02:34.260
+Let me describe some
+models that we could fit.
+
+38
+00:02:34.260 --> 00:02:37.920
+So here I have given some notation.
+
+39
+00:02:37.920 --> 00:02:43.450
+Y is fertility, X1 is the percent of
+the province working in agriculture,
+
+40
+00:02:43.450 --> 00:02:48.930
+and X2 is a binary variable, where it's
+one if the province is over 50% catholic,
+
+41
+00:02:48.930 --> 00:02:53.370
+and zero if the province is
+over Is majority Protestant.
+
+42
+00:02:54.890 --> 00:03:01.280
+So consider model one, where we modeled
+that our expected y, given x1 and x2,
+
+43
+00:03:02.360 --> 00:03:07.460
+is an intercept plus a slope times x1.
+
+44
+00:03:07.460 --> 00:03:12.820
+So that would just be a line,
+and it would disregard
+
+45
+00:03:12.820 --> 00:03:18.030
+the religion of the province entirely.
+
+46
+00:03:18.030 --> 00:03:19.200
+Let's consider a second model.
+
+47
+00:03:20.620 --> 00:03:26.300
+Here we have expected of y given x1 and
+x2 is
+
+48
+00:03:26.300 --> 00:03:31.950
+beta not plus beta 1 x1 plus beta 2 x2.
+
+49
+00:03:31.950 --> 00:03:34.470
+Now Let's think about this.
+
+50
+00:03:34.470 --> 00:03:41.010
+In the event that X two is equal to zero,
+if the province is majority protestant.
+
+51
+00:03:41.010 --> 00:03:46.180
+Then this works out to be beta
+knot plus beta one X one.
+
+52
+00:03:47.180 --> 00:03:50.780
+In the event that X two is equal to one.
+
+53
+00:03:50.780 --> 00:03:55.870
+In the event that the province is
+majority Catholic, this works out to be
+
+54
+00:03:55.870 --> 00:04:00.668
+beta not plus beta2,
+because this term right here is now one,
+
+55
+00:04:00.668 --> 00:04:04.870
+plus beta1 X1.
+
+56
+00:04:04.870 --> 00:04:09.890
+So fitting this model,
+the model that includes X1 and X2, but
+
+57
+00:04:09.890 --> 00:04:15.610
+no interaction Fits two models
+that have the same slope.
+
+58
+00:04:17.910 --> 00:04:23.290
+These two models have the same slope,
+but they have different intercepts,
+
+59
+00:04:23.290 --> 00:04:28.100
+beta not and then beta one plus
+beta two for the second intercept.
+
+60
+00:04:28.100 --> 00:04:30.480
+Okay, let's consider one third model.
+
+61
+00:04:35.147 --> 00:04:39.691
+I want now my expected outcome,
+
+62
+00:04:39.691 --> 00:04:44.739
+given my predictors to be beta not,
+
+63
+00:04:44.739 --> 00:04:49.785
+plus beta 1 X1, plus beta 2 X2,
+
+64
+00:04:49.785 --> 00:04:53.680
+plus beta 3 X1 times X2.
+
+65
+00:04:55.840 --> 00:05:00.060
+Now, lets look at what
+happens when X2 is zero,
+
+66
+00:05:00.060 --> 00:05:05.780
+this works out to be Beta0
+the Beta1 is still there,
+
+67
+00:05:05.780 --> 00:05:11.310
+Beta1X1 is still there
+Beta2X2 this term go to zero.
+
+68
+00:05:11.310 --> 00:05:16.080
+And beta 3 X1 times X2 is also zero,
+because X2 is zero in both those cases.
+
+69
+00:05:16.080 --> 00:05:17.360
+Okay?
+
+70
+00:05:17.360 --> 00:05:23.240
+Now let's work on the case when X2 is 1,
+
+71
+00:05:23.240 --> 00:05:29.040
+which is the case when
+the province is majority Catholic.
+
+72
+00:05:29.040 --> 00:05:32.740
+So we get beta not, plus beta 1 X1,
+
+73
+00:05:32.740 --> 00:05:37.380
+plus now beta 2 is this term is present,
+
+74
+00:05:37.380 --> 00:05:42.940
+because X2 is 1, and
+this term is now beta 3 times X1,
+
+75
+00:05:42.940 --> 00:05:47.459
+because remember X2 is equal to one
+in this case that we're considering.
+
+76
+00:05:49.410 --> 00:05:55.100
+Okay, now let's reorganize terms,
+and that' s beta not plus beta two,
+
+77
+00:05:55.100 --> 00:06:01.780
+there plus beta one plus beta three X one.
+
+78
+00:06:01.780 --> 00:06:05.840
+Okay, so what we've seen is if
+we include in interaction term,
+
+79
+00:06:07.040 --> 00:06:10.760
+then we fit two lines, but
+now those two lines have different slopes.
+
+80
+00:06:10.760 --> 00:06:15.640
+If we omitted that interaction term, we
+fit two lines but they had the same slope.
+
+81
+00:06:15.640 --> 00:06:18.910
+If we include the interaction term,
+two lines different slopes and
+
+82
+00:06:18.910 --> 00:06:20.220
+different intercepts.
+
+83
+00:06:20.220 --> 00:06:26.949
+And the coefficient in front of
+the Catholic term by itself,
+
+84
+00:06:28.290 --> 00:06:32.190
+Is going to be the change in the intercept
+going from Protestant to Catholic, right?
+
+85
+00:06:32.190 --> 00:06:36.030
+Here is the intercept for Protestant and
+here is the intercept for Catholic.
+
+86
+00:06:37.210 --> 00:06:40.510
+And the beta three term,
+the term in front of the interaction,
+
+87
+00:06:41.920 --> 00:06:47.570
+is going to be the change from the slope
+going from Protestant to Catholic, right?
+
+88
+00:06:47.570 --> 00:06:52.610
+So the slope for the, When X2 equals one,
+is beta one plus beta three.
+
+89
+00:06:52.610 --> 00:06:54.860
+It's going to have that
+extra term in there.
+
+90
+00:06:54.860 --> 00:06:59.320
+Okay, so let's try it with some code and
+I hope it will make sense.
+
+91
+00:06:59.320 --> 00:07:02.370
+And I think it's a little bit easier
+to see when you actually do the code.

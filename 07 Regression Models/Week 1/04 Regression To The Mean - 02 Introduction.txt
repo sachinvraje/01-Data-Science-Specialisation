@@ -1,0 +1,139 @@
+Hi, my name is Brian Caffo and this is
+a lecture on regression to the mean, as part of the Coursera regression class
+in the data science specialization. This class is co-taught with my
+co-instructors, Jeff Leek and Roger Peng. We're all in the department
+of biostatistics at the Johns Hopkins Bloomberg School
+of Public Health. Regression to the mean was an important
+milestone in the discovery of regression. So we're going to talk about it. It was discovered by Francis Galton. Regression to mean ask
+questions like this. Why is that the children of very tall
+parents also tend to be tall, but not quite as tall as their parents? And also, why are the children with very
+short parents tend also to be very short, but not quite as short as their parents. We can also reverse whether we're talking
+about the parents and the children. Why do the parents of very short
+children tend to also be short, but not quite as short as their children? And why do the parents of very tall
+children tend also to, to be tall, but not quite as tall as their children? This often come, often comes up
+when talking about athletes. Athletes who are the best performing
+one year tend to do a little bit worse the next year and athletes who
+are the worst performing one year tend to do a little bit
+better the next year. Often people talk about
+stocks in the same way. Some of the best performing
+stocks tend to go down. We'll talk about why this is and
+whether or not something is intrinsic or whether it's a regression to the mean
+effect, which is the important question. These phenomena are all examples of so
+called regression to the mean. Regression to the mean,
+as I mentioned in the previous slide, was invented by Francis Galton
+in this famous paper, regression towards mediocrity in hered,
+hereditary stature. I like to think of regression to the mean by thinking of the case where it's
+a 100% regression to the mean. So imagine if I were to simulate
+pairs of standard normals. So they have nothing to
+do with one another, they're independent standard normals. Well, in this first vector of
+standard normals that I generate. If I were to take the largest one, the chance that its pair in the second
+vector is smaller will be high. And this is simply saying that
+the probability that Y is less than X, given X is going to get bigger
+as X heads to very large values. The same thing in other words,
+is that probability Y is greater than X. Given that X equals X is going to get
+bigger as X heads to smaller values. This extreme version of
+regression in the mean where there's 100% regression to the mean
+is what I like to think about. However, in most cases
+there's some blend of some, some intrinsic component, and a noise. Take, for example, if I were to give
+every student in this class two quizzes. Two very hard quizzes. While the top performers likely
+do know the material very better, do know the, the, the material better. However, quizzes
+are imperfect instruments. And heaven knows if I gave the quiz, there's going to be a lot of error in
+that, in the quiz as an instrument. So there's some noise. So the top performer might
+either is probably a little knows the material a little
+bit better than everyone else. But also may have
+benefitted from some noise. So in the second quiz,
+they might perform a little bit worse. Probably still well,
+but a little bit worse. The same thing for the worst performers. It's often kind of fun to think about,
+how much of the discussion of sports is really just talking
+about regression to the mean. A person who has a phenomenal year in
+baseball in their batting average one year has a slightly lower one the next year. Is that just regression to the mean? It would be nice to figure
+out how to quantify it. This is what Francis Galton did with
+regression in the first treatment of regression in the mean. We want to talk about how Francis Galton
+used the idea of regression, and particularly correlation, which we knows
+intimately related to linear regression. So particularly correlation,
+to quantify regression to the mean, and we're going to basically
+do it with a picture, but I want to set up the picture first
+before I go through the r code. In this case,
+my X is going to be the child's height and Y is going to be the parent's height. I'm going to use a dataset where
+the parent is a single parent, the father in this case. These data have all been normalized,
+the Y and the X, so they have 0 mean and unit variance. And we should be very familiar with
+this by now, being able to do that. So recall if I've done that then
+my regression line is going to pass through the point 0, 0. And also the slope, regardless of whether
+the child's height is the outcome or the parent's height is the outcome,
+is now simply the correlation. I want to also mention just a quick kind
+of quirk of, of creating the plot is if X is the outcome and you happen to plot
+the outcome on the horizontal axis, the slope of the line that you plot, needs
+to have the slope 1 over the correlation. And that's just simply because
+I plotted it on the X, I plotted the outcome on the X axis. So just to remind you of that if you
+get a little confused with a code. So let's go through the code and then once we get the plot that I'm going
+to show you, we'll go through the, the different parts of the plot to talk
+about how looking at the correlation quantified regression of the me,
+regression of the mediocrity. [SOUND] So let's go through the code and
+how I'm creating my plot. So the dataset is in the usingR library,
+the data's father.son. I'm going to define my y
+as the son's heights, but I'm going to subtract of the mean and
+divide by the standard deviation. I'm going to defi,
+define my x as the father's heights and I'm going to do the same. Now x and y should both have mean 0 and
+variance 1, and you can check that yourself. Rho is the standard Greek letter that
+we use to represent correlations. So I'm going to define rho as my
+correlation between my x and my y. I need to load ggplot 2. And before I show you the plot,
+let's check a couple of things. Let's see what rho works out to be. It works out to be about 0.5. So the correlation between the father's
+height and the son's height was 0.5. So now let's go back up here and
+I'll create my plot. I'm going to do create assign
+to the variable g, my ggplot. I'm going to add the points. But I'm going to do it in a way that
+I have black in the background and a salmon color on the foreground. And that alpha blending makes
+the points kind of transparent. I want my x limits to be minus
+4 to plus 4 on both axis. I want my axis to be the same. I also know that minus 4 to plus 4
+should be pretty much all encompassing, all encompassing of the data. The probability of that, for example,
+standard-normal, is below minus 4 or above plus 4 is extremely low. And Chebyshev's theorem also helps, so if you've had the inference class,
+you'll know that a standardized random variable minus 4 to
+plus 4 is pretty far out into the tail. I'm going to, and, and let me show you
+this plot before I add anything more, any more layers to it. So there's my plot. Now, I'm going to add a layer
+that is the identity line. Okay.
+Let's show that. Then I'm going to add the axes,
+the horizontal and vertical axes. Let's show that. Oh, and there's a slight mistake
+that this should be h line. [SOUND] Now, let's show that so
+that now I actually have my two axis. Okay, and now I'm going to create
+the line where I treat the son's height as the outcome and
+the father's height as the predictor. I'm going to add the line now
+where I treat the son's height as the predictor and
+the father's height as the outcome. Of course, the axes are rotated as I
+discussed on the previous slide, and so I need the slope to be 1 over rho. Now let me get the plot I've created for
+the two fitted lines. I've doubled the width
+of the fitted lines. So next let's just talk about regression
+to the mean as it relates to this plot. Let's look at this plot, and describe,
+use it to describe regression of the mean. If the observations fell perfectly on
+a line it would have to be, in this case, the identity line because we've
+normalized both the X and the Y. So they would fall exactly
+on this identity line here. Just as a reminder,
+the father's height is plotted, plotted as the X variable and the son's
+height is plotted as the Y variable. So if we have a father's height of 2 and
+there were no noise, we would predict the son's
+height to also be 2. Here, the 2 representing 2 standard
+deviations above the mean for the fathers and 2 standard deviations
+above the mean for the sons. However, there is lots of noise
+when we look at the data, there's quite a bit of noise. So the prediction is now, not 2, but
+it's on the regression line, right here. And because of how we set things
+up this is simply multiplying 2 times the slope which
+is the correlation. And now the prediction comes over here,
+which is between 2 and 0. And in fact that is exactly 2
+multiplied times the correlation. That is the regression of the mean. That multiplication is how Francis Galton
+measured regression of the mean. How shrunken this correlation is towards horizontal line gives you
+the extent of the regression to the mean. If there, we, we talked about the case
+where there was no noise, and this line would fall perfectly on the identity line
+consider the case where it's all noise. The father's height had no
+information about the son's height. Then this line,
+the correlation would be 0. This line would be right
+on the horizontal axis. Then if you had to predict the father's,
+the son's height from the father's height, you would always wind up
+with a prediction of 0. So this phenomenon is regression
+to the mean, and of course, we can do the same thing with it flipped,
+if we consider the son's height as the predictor, and
+the father's height as the outcome. Then you can visualize this on this
+plot because I've shown, basically, that plot with this line right here, and the regression to the mean is how
+shrunken it is toward the vertical axis. It's a pretty clever idea and
+I, I think this, this was one of the fundamental ideas that led to what
+we now think of as modern regression. However, the idea of
+regression to the mean still has an important place in statistics. For example,
+when you study longitudinal data, it's important to think about
+the idea of regression to the mean.

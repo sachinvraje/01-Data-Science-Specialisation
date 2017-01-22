@@ -1,0 +1,36 @@
+Okay, so let's look at
+logistic regression curves and think about how r is fitting the data. So here I'm going to use
+the package manipulate. And i have my beta2 and
+my beta1, set here. And so
+here's my logistic regression curve, looks like an s kind of, and here's beta1. So let's see what happens as I render it. Or as I change it. Notice as I get it closer up to higher
+values, it becomes more peaked, okay? And then if I go negative,
+it actually flips around, okay? And then my beta0 curve,
+what happens to this? It just shifts it along. It's hard to tell because
+I'm keeping the don't. The x-axis here is always the same, but it's just shifting the s-curve
+to the left or to the right. Let's think about what r is
+doing when it's trying to fit logistic regression curves. Imagine I have a bunch of zeros and
+ones, on my x-axis one is up here, and zero is down there. So imagine for this regressor,
+this x-regressor here, I have a bunch of zeros down there, but maybe and
+an occasional one, some, but then over here, I have a lot more ones, and then right here I have some zeros,
+okay? So what r is trying to do, okay? So it knows as I head,
+we can see as I head to larger x values, it become increasingly likely
+that my outcome is a one. As I head towards smaller x values, it becomes increasingly likely
+that my outcome is a zero. So what r is trying to do is
+trying to move the s-curve. It's trying all different
+sorts of s-curves, right? All different sorts of logistic
+curves to find the one that best matches up with the associated
+probabilities, okay? And that's all that logistic
+regression is trying to do. And it does it with the principle
+of so-called maximum likelihood. Which again is something if
+you take the inference class from the data science specialization,
+you'll know a little bit more about. So just imagine these
+points staying there, and I'm going to get rid of them, okay? And then just see what r
+has under its disposal is to be able to move these two sliders,
+and then define the s-curve that
+fits that data the best, okay? And so that's all that
+logistic regression is doing. And this function,
+this the fitted function out, right? This is the function. E to the Beta not, plus beta 1x over one,
+plus e to the beta not, plus beta 1x,
+that's the logistic regression model but converted back to the probability scale,
+okay? So, I hope this helps you understand
+a little bit of behind the scenes, what logistic regression is trying to do.

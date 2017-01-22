@@ -1,0 +1,88 @@
+So hi, and welcome to the lecture
+on multiple variables. In this lecture, we're going to talk about
+the process of model fitting when you have lots of variables in a regression context. I'd like to distinguish between
+multivariable regression and the kind of things that you'll learn in In
+your prediction class as part of the data science specialization. In prediction, we're less
+concerned with interpretability so we're far more intolerant for
+complex models, lots of interactions, and
+automated search algorithms and rules to come up with the best prediction
+with respect to a specific loss function. In contrast,
+in a lot of regression examples, we want simple interpretable models. That means we're going to place a heavy
+emphasis on the idea of parsimony. Finding the simplest model to
+explain what we're looking at, so as simple as possible, but no simpler. That's the idea of parsimony, it has
+kind of the flavor of Occam's razor, which states that all else being equal, the simplest solution is
+probably the right one. Well here, all else being equal, we're going to prefer a simple
+model rather than a complex one. And that has broad consequences. So if a variable in
+a regression model explains a tiny bit extra about a variation but really harms the interpretability,
+we're going to omit that variable, even if it really does explain a little
+bit of positive amount of variability. So I also like to bring up
+this quote by Scott Zeger who really helps me think about what
+I'm going for when I look at models. So he likes to think of a model as a lens
+to which you're looking at the data. So in that context,
+your model is neither right nor wrong. Any model that teaches you something
+valuable about your data is right, as long as it teaches you something true. And the idea of a lense is
+just in the same vein that in some cases when you're looking
+at the world through a lense to find a super fine detail,
+you might need a microscope. To find out super high level detail,
+you might need a telescope. And so the idea of a model
+being something like that where you're looking at the same thing,
+but the right model might highlight the right
+feature that teaches you something true. So I think that's a very useful
+way to think about models. For a specific instance where we're
+interested in a treatment of factors, something like that, where there
+really is either a treatment of factor not averaged across the population
+that we're interested in. There are uncountably many ways that our
+model can be wrong and lead us astray. Lead us to conclude that there's a
+treatment of fact when there's not one or lead us to conclude that there's not
+a treatment of fact when there is one. And in this particular lecture,
+we're going to go through some basics of what happens when we either
+include unnecessary regressors or exclude the important regressors. I'd like to bring up this
+quote by Donald Rumsfeld. He was the sort of embattled
+Secretary of Defense for the US and he was widely derided for this specific quote, however it is very
+pertinent to the idea of regression. And it goes something like this. There are known knowns. These are things we know that we know. Then there are known unknowns. That is to say, there are things
+that we know we don't know. But there are also unknown unknowns. There are things we don't
+know we don't know. And so this quote was,
+again, heavily criticized. But for
+regression it makes a lot of sense. Known knowns are regressors that we
+know we should include in our model and we have recorded so we just put them in. There are known unknowns, and these are
+the things that we know we should include in our regression model, but
+unfortunately we didn't collect them. And there are unknown unknowns and
+these are things that we should include in our regression model for
+example, but we didn't collect them or don't have or don't know whether or
+not they're important. So I think this is a funny little quote,
+but it gives us an idea of the various lines of thinking that you have to go
+through when building a regression model. So let's talk about some general rules for
+our known knowns, unknown unknowns, and known unknowns. So what happens if we omit a variable
+that we should have included? And the general result
+is that results in bias. In other words, you get, if you're
+interested in a treatment effect or an effective interest for a particular
+regressor, and you've omitted something that's correlated with that regressor,
+then you're potentially going to get bias. You're not going to get an accurate
+estimate of what you want to estimate because of this other variable. Now, one way to prevent that is to try and
+randomize. Because if this other variable
+that you're omitting is uncorrelated with the variable
+that you're interested in, then it doesn't matter usually
+whether you include it or not. So randomization is a strategy to try and
+prevent that from happening. That's why AB testing is so powerful in
+clinical trials that are so powerful. But then I would remind you,
+if there's too many confounded things, then even randomization
+is not going to help you. So that means that omitting
+variables that are important, obviously has a negative impact
+on our regression model fit. What about including variables
+that are unimportant? Is that a bad thing? Well, we eliminate bias, there's no consequence to bias if
+we include unnecessary variables. So if you just generate a bunch
+of standard normals and throw them into your regression model, they have nothing to do with anything,
+they are not going to introduce bias. However, they are going to
+inflate standard error. So introducing unnecessary
+variables into your regression model inflates the standard errors. And we can actually
+measure how much it would increase the actual standards errors,
+not just the estimated standard errors. So the other thing is some
+of these model terms, like, R squared, they're not necessarily
+good ways to adjudicate between looking at different models
+with different regressors in. And the reason with R squared is as
+you put in a bunch of new regressors, it's guaranteed to go up no matter what. In the sum of the squared errors, the mean
+squared error is guaranteed to go down in regression as you include more regressors. So here is an example where I
+just simulated a bunch of data. And I redid the simulation for
+every number of regressors and just included them into a model, and
+it just shows the R squared just going up even though all I'm doing is generating
+a bunch of random normal vectors and putting them into a regression model.

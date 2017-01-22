@@ -1,0 +1,1405 @@
+WEBVTT
+
+1
+00:00:00.370 --> 00:00:05.420
+Hi and welcome to the class on
+multivariable regression examples.
+
+2
+00:00:05.420 --> 00:00:08.810
+Let's start this discussion
+with a famous dataset
+
+3
+00:00:08.810 --> 00:00:13.580
+from a well known statistics text book,
+which is this Swiss Fertility Data.
+
+4
+00:00:13.580 --> 00:00:22.000
+And it's in the data sets package so
+I want to do require(datasets).
+
+5
+00:00:22.000 --> 00:00:25.600
+And then I wanna do data(swiss), and
+
+6
+00:00:25.600 --> 00:00:30.140
+then if you do ?swiss,
+it'll bring up the help file.
+
+7
+00:00:30.140 --> 00:00:33.880
+I have kind of a better formatted
+version of this on the slide.
+
+8
+00:00:33.880 --> 00:00:37.875
+And so what's in this data set is
+a standardized fertility measure and some
+
+9
+00:00:37.875 --> 00:00:43.040
+socio-economic status indicators for 47
+French speaking provinces of Switzerland.
+
+10
+00:00:43.040 --> 00:00:44.440
+And this is from 1888.
+
+11
+00:00:44.440 --> 00:00:49.260
+So the variables are fertility,
+agriculture, which is the percentage of
+
+12
+00:00:49.260 --> 00:00:53.520
+the males involved in agriculture as an
+occupation, and examination the percentage
+
+13
+00:00:53.520 --> 00:00:59.320
+of draftees that scored a particular mark
+on a military examination in the province.
+
+14
+00:00:59.320 --> 00:01:04.670
+Education is the percent of the population
+that made it beyond primary school,
+
+15
+00:01:04.670 --> 00:01:08.600
+Catholic is, in this region at this time,
+
+16
+00:01:08.600 --> 00:01:11.255
+is just the percent Catholic
+as opposed to Protestant.
+
+17
+00:01:11.255 --> 00:01:15.970
+And infant mortality is the percentage of
+live births who live less than one year
+
+18
+00:01:15.970 --> 00:01:17.190
+from the province.
+
+19
+00:01:17.190 --> 00:01:18.680
+So that's the data set, and
+
+20
+00:01:18.680 --> 00:01:23.680
+we're interested in looking into what
+explains fertility in this province.
+
+21
+00:01:23.680 --> 00:01:27.980
+So, before we go any further, let's do
+some basic scatter plots of the data.
+
+22
+00:01:29.470 --> 00:01:34.120
+So let me load the Swiss data set and
+
+23
+00:01:34.120 --> 00:01:37.260
+do a Paris plot of all
+the variables in the data set.
+
+24
+00:01:37.260 --> 00:01:41.200
+Oops, I forgot my r, there we go.
+
+25
+00:01:42.470 --> 00:01:47.330
+And this library here,
+GGally or G-G-Ally I
+
+26
+00:01:47.330 --> 00:01:52.240
+think is probably how it's pronounced, is
+a collection of add-on tools for ggplot.
+
+27
+00:01:52.240 --> 00:01:57.200
+In particular they have a ggpairs
+command that does an equivalent
+
+28
+00:01:57.200 --> 00:02:00.000
+of the rpairs plot, and
+I think you'll see it here.
+
+29
+00:02:00.000 --> 00:02:03.550
+In a second,
+you'll understand what it does.
+
+30
+00:02:03.550 --> 00:02:04.990
+It's a little bit of a slow plot.
+
+31
+00:02:07.260 --> 00:02:12.480
+Let me zoom in on the plot here, and
+now, what you see is, for example,
+
+32
+00:02:12.480 --> 00:02:18.400
+fertility is on the x-axis for
+all the plots in this first column.
+
+33
+00:02:18.400 --> 00:02:22.990
+Agriculture is on the x-axis,
+or the horizontal axis, for
+
+34
+00:02:22.990 --> 00:02:29.940
+all of the plots in this column, and
+it's on the vertical y-axis on this plot.
+
+35
+00:02:29.940 --> 00:02:31.280
+So hopefully, you see how it works.
+
+36
+00:02:31.280 --> 00:02:35.710
+So examination, for example,
+is on the y-axis for these two plots, and
+
+37
+00:02:35.710 --> 00:02:39.330
+then on the x-axis for
+these three plots, and so on.
+
+38
+00:02:39.330 --> 00:02:43.520
+The corresponding upper
+triangular part of this matrix
+
+39
+00:02:43.520 --> 00:02:46.320
+gives the correlation
+between those two variables.
+
+40
+00:02:46.320 --> 00:02:50.430
+So let's take, for example,
+fertility and agriculture.
+
+41
+00:02:50.430 --> 00:02:52.670
+Here's the scatter plot,
+you see it right here.
+
+42
+00:02:53.840 --> 00:02:59.010
+Here is the which turns out to
+be fairly linear in this case.
+
+43
+00:02:59.010 --> 00:03:03.030
+And a confidence prediction,
+confidence band around it.
+
+44
+00:03:03.030 --> 00:03:06.864
+And it suggests that
+the correlation between the two,
+
+45
+00:03:06.864 --> 00:03:09.959
+the empirical correlation, is 0.35.
+
+46
+00:03:09.959 --> 00:03:13.326
+So let's, in the next subsequent slides,
+
+47
+00:03:13.326 --> 00:03:17.330
+investigate the relationship
+where agriculture,
+
+48
+00:03:17.330 --> 00:03:24.070
+the percent of the province that works in
+the agricultural industry, with fertility.
+
+49
+00:03:26.990 --> 00:03:31.490
+Let's fit our fertility as an outcome, and
+
+50
+00:03:31.490 --> 00:03:35.980
+the first model I want to fit includes
+all of the variables as predictors, and
+
+51
+00:03:35.980 --> 00:03:42.320
+I'm doing this more for illustration,
+than I am to mimic a real data analysis.
+
+52
+00:03:42.320 --> 00:03:43.930
+I would say in a real data analysis,
+
+53
+00:03:43.930 --> 00:03:47.920
+your first model would probably be
+fertility with agriculture by itself.
+
+54
+00:03:47.920 --> 00:03:53.040
+Or the marginal relationship of interest
+without considering the other variables.
+
+55
+00:03:53.040 --> 00:03:56.510
+But I just wanna show you how to
+fit all of the variables at once.
+
+56
+00:03:56.510 --> 00:04:02.320
+So if you do fertility tilde period,
+this period then adds
+
+57
+00:04:02.320 --> 00:04:07.200
+all of the other variables in linearly,
+no square terms or anything like that,
+
+58
+00:04:07.200 --> 00:04:12.396
+no interaction terms, all of the remaining
+variables in the data frame all at once.
+
+59
+00:04:12.396 --> 00:04:15.930
+Saying data equals Swiss
+
+60
+00:04:15.930 --> 00:04:18.540
+tells it that the data set that
+I want is the Swiss data set.
+
+61
+00:04:20.070 --> 00:04:22.880
+So that's the run of my LM, and notice,
+
+62
+00:04:22.880 --> 00:04:26.620
+you often want to assign the output
+of your LM to a variable so
+
+63
+00:04:26.620 --> 00:04:31.930
+you can save it later, but this runs quick
+enough that I'm just printing the output.
+
+64
+00:04:31.930 --> 00:04:38.780
+Now, summary of the output from LM
+gives a much more interesting output,
+
+65
+00:04:38.780 --> 00:04:43.490
+and then in particular, it gives you
+this table of all the coefficients.
+
+66
+00:04:43.490 --> 00:04:46.720
+Their standard errors, their t values,
+and their p values, but
+
+67
+00:04:46.720 --> 00:04:48.720
+it also gives you a lot
+of other information.
+
+68
+00:04:48.720 --> 00:04:51.320
+If you just wanna grab
+that coefficient table,
+
+69
+00:04:51.320 --> 00:04:55.050
+you can do $ coefficient on
+the output of the summary statement.
+
+70
+00:04:55.050 --> 00:04:57.020
+And there's just the table by itself.
+
+71
+00:04:57.020 --> 00:05:00.750
+So for example, if you want to
+use that in some subsequent code.
+
+72
+00:05:03.630 --> 00:05:05.889
+So let's focus on this number, -0.17.
+
+73
+00:05:05.889 --> 00:05:10.360
+This number is interpreted
+as the following.
+
+74
+00:05:10.360 --> 00:05:15.940
+We expect a 0.17 decrease,
+now decrease because it's negative, right?
+
+75
+00:05:15.940 --> 00:05:20.700
+Okay, so we expect a 0.17 decrease
+in standardized fertility for
+
+76
+00:05:20.700 --> 00:05:24.890
+every 1% increase in the percentage
+of males involved in agriculture,
+
+77
+00:05:25.930 --> 00:05:27.610
+holding the other variables constant.
+
+78
+00:05:27.610 --> 00:05:32.210
+So that is interpreted as
+we hold examination and
+
+79
+00:05:32.210 --> 00:05:34.619
+education, percent Catholic and
+infant mortality constant.
+
+80
+00:05:36.100 --> 00:05:41.080
+This next column, the standard error 0.07,
+talks about how precise that variable is.
+
+81
+00:05:41.080 --> 00:05:42.350
+Oh, and before I move on,
+
+82
+00:05:42.350 --> 00:05:46.760
+I should also mention it's
+important to note that the percent
+
+83
+00:05:46.760 --> 00:05:50.520
+agriculture is expressed as a percentage
+rather than a proportion, right?
+
+84
+00:05:50.520 --> 00:05:55.470
+Because a percentage is the proportion
+times 100, so it would change
+
+85
+00:05:55.470 --> 00:06:00.230
+the scale of the coefficient by a factor
+of 100 so it's important to note
+
+86
+00:06:00.230 --> 00:06:05.360
+whether or not these numbers
+are percentages or proportions,
+
+87
+00:06:05.360 --> 00:06:09.400
+that would make a big difference
+in the scale of the coefficient.
+
+88
+00:06:09.400 --> 00:06:15.000
+Okay, so the standard error talks
+about how precise this coefficient is.
+
+89
+00:06:15.000 --> 00:06:19.570
+It talks about the statistical variability
+of that coefficient, and we get a 0.07.
+
+90
+00:06:19.570 --> 00:06:23.350
+If we wanted to perform a hypothesis test,
+that the coefficient for
+
+91
+00:06:23.350 --> 00:06:27.840
+agriculture, beta Agri is what
+I have here on the slide.
+
+92
+00:06:27.840 --> 00:06:33.230
+If we want to test whether not that's
+zero, then we would take the estimate,
+
+93
+00:06:33.230 --> 00:06:35.380
+subtract off the hypothesized value,
+
+94
+00:06:35.380 --> 00:06:38.930
+which in this case is zero, and divide it
+by the standard error of the estimate.
+
+95
+00:06:38.930 --> 00:06:41.920
+So the t statistic is nothing
+other than the estimate divided by
+
+96
+00:06:41.920 --> 00:06:43.290
+the standard error.
+
+97
+00:06:43.290 --> 00:06:46.550
+We can do that of course, but
+r very conveniently goes ahead and
+
+98
+00:06:46.550 --> 00:06:47.690
+gives it to us.
+
+99
+00:06:47.690 --> 00:06:55.450
+It's -2.448, but that's simply obtained
+by dividing -0.17 divided by 0.07.
+
+100
+00:06:55.450 --> 00:06:57.370
+That t statistic,
+
+101
+00:06:57.370 --> 00:07:02.320
+we can calculate the probability of
+getting a t statistic as extreme as that.
+
+102
+00:07:02.320 --> 00:07:06.740
+As small as negative 2.448 or smaller, and
+
+103
+00:07:06.740 --> 00:07:09.870
+because we're doing a two-sided test,
+we would double that p value.
+
+104
+00:07:09.870 --> 00:07:12.300
+So you can go through that t
+calculation if you'd like.
+
+105
+00:07:14.180 --> 00:07:18.550
+The degrees of freedom are n
+minus the number of coefficients,
+
+106
+00:07:18.550 --> 00:07:21.290
+including the intercept.
+
+107
+00:07:21.290 --> 00:07:26.569
+But again, r does that on our behalf,
+and that works out to be 0.018.
+
+108
+00:07:26.569 --> 00:07:31.513
+So by standard thresholding rules,
+type one error rate of say 5%,
+
+109
+00:07:31.513 --> 00:07:34.680
+that would be statistically significant.
+
+110
+00:07:36.140 --> 00:07:39.960
+But let's go through some other models and
+
+111
+00:07:39.960 --> 00:07:43.494
+look at how the process of model
+selection changes our estimates.
+
+112
+00:07:46.230 --> 00:07:51.160
+So now let's contrast the model with
+a model having just agriculture
+
+113
+00:07:51.160 --> 00:07:52.850
+in as a predictor.
+
+114
+00:07:52.850 --> 00:07:56.930
+So the previous model had all of our other
+variables in this predictor, let's look
+
+115
+00:07:56.930 --> 00:08:01.890
+at one that just looks at this association
+between fertility and agriculture.
+
+116
+00:08:01.890 --> 00:08:05.110
+So, I'm running it and I'm just
+grabbing the coefficient tables so
+
+117
+00:08:05.110 --> 00:08:07.320
+we're not looking at
+the rest of the r's output.
+
+118
+00:08:07.320 --> 00:08:08.650
+But when you do this on your own,
+
+119
+00:08:08.650 --> 00:08:12.470
+you'll look at the rest of
+this summary output from LM.
+
+120
+00:08:12.470 --> 00:08:18.576
+What's interesting is that the agriculture
+variable is about the same magnitude,
+
+121
+00:08:18.576 --> 00:08:19.710
+0.19 instead of 0.17.
+
+122
+00:08:19.710 --> 00:08:21.850
+However, it's changed signs.
+
+123
+00:08:21.850 --> 00:08:26.000
+Instead of agriculture having
+a negative effect on fertility,
+
+124
+00:08:26.000 --> 00:08:28.750
+it has a positive effect on fertility.
+
+125
+00:08:28.750 --> 00:08:32.154
+So, adjusting for
+these other variables changes
+
+126
+00:08:32.154 --> 00:08:36.618
+the actual direction of the effect
+of agriculture on fertility.
+
+127
+00:08:36.618 --> 00:08:41.420
+And this is the impact of something
+so-called Simpson's Paradox.
+
+128
+00:08:41.420 --> 00:08:44.040
+Or I just think it should be called
+Simpson's Perceived Paradox,
+
+129
+00:08:44.040 --> 00:08:48.470
+because there's nothing paradoxical about
+the possibility that accounting for
+
+130
+00:08:48.470 --> 00:08:52.120
+other variables should change
+the nature of the relationship
+
+131
+00:08:52.120 --> 00:08:54.440
+between a predictor and a response.
+
+132
+00:08:54.440 --> 00:08:57.750
+It actually makes quite a bit of
+sense that that would be the case.
+
+133
+00:08:58.910 --> 00:09:00.820
+Notice of course,
+
+134
+00:09:00.820 --> 00:09:06.740
+in both cases the agriculture coefficient
+is strongly statistically significant.
+
+135
+00:09:06.740 --> 00:09:11.210
+So what I'd like to do in the next
+slide is just create via simulation,
+
+136
+00:09:11.210 --> 00:09:14.530
+an example where an effect
+can reverse itself.
+
+137
+00:09:14.530 --> 00:09:17.600
+So that maybe it'll get us thinking
+about how this could happen.
+
+138
+00:09:17.600 --> 00:09:20.250
+In the end,
+regression is gonna be a dynamic process,
+
+139
+00:09:20.250 --> 00:09:23.480
+where you're going to have to think
+about what variables to include.
+
+140
+00:09:23.480 --> 00:09:27.570
+And you're going to have to make the kind
+of scientific arguments, if you want.
+
+141
+00:09:27.570 --> 00:09:32.010
+If there hasn't been randomization to
+protect you from confounding, you're gonna
+
+142
+00:09:32.010 --> 00:09:37.170
+have to go through a scientific dynamic
+process of putting confounders in and
+
+143
+00:09:37.170 --> 00:09:40.570
+out and thinking about what they're
+doing to your effective interest
+
+144
+00:09:40.570 --> 00:09:42.360
+in order to evaluate it.
+
+145
+00:09:42.360 --> 00:09:46.308
+So let's invent a little simulation,
+just to illustrate how this can happen.
+
+146
+00:09:46.308 --> 00:09:50.140
+But there's a variety of ways it
+can happen, and this is just one.
+
+147
+00:09:50.140 --> 00:09:53.515
+But let's just, so you can see it
+happen as we code it from a real
+
+148
+00:09:53.515 --> 00:09:56.539
+generating process where
+you can control everything.
+
+149
+00:09:56.539 --> 00:10:01.845
+So I'm gonna assume that I have
+100 data points, n is 100,
+
+150
+00:10:01.845 --> 00:10:07.639
+and then my second regressor, x2,
+is just gonna be the values 1 to n.
+
+151
+00:10:07.639 --> 00:10:11.920
+So if you look at x2, it's just 1 to 100.
+
+152
+00:10:11.920 --> 00:10:16.313
+So think of x2 as something that we
+might measure regularly, like days, so
+
+153
+00:10:16.313 --> 00:10:18.590
+we measured 100 consecutive days.
+
+154
+00:10:18.590 --> 00:10:25.390
+And then x1 is a variable that depends
+on x2 and it depends on random noise.
+
+155
+00:10:25.390 --> 00:10:27.090
+So let's just make something up.
+
+156
+00:10:27.090 --> 00:10:32.270
+So x1 depends linearly on x2,
+so it grows linearly with time.
+
+157
+00:10:32.270 --> 00:10:35.320
+So let's say, maybe,
+hopefully x1 is your bank account.
+
+158
+00:10:35.320 --> 00:10:38.000
+It's your money,
+it goes up with time linearly.
+
+159
+00:10:38.000 --> 00:10:42.380
+And then there's all these random
+fluctuations that impact your spending, so
+
+160
+00:10:42.380 --> 00:10:45.060
+your money doesn't necessarily
+always just go up.
+
+161
+00:10:45.060 --> 00:10:49.236
+It goes up and down sporadically, but
+there's this linear trend of it going up.
+
+162
+00:10:50.970 --> 00:10:55.180
+Okay so there's my x1 and
+it's gonna look different, right?
+
+163
+00:10:55.180 --> 00:10:58.510
+So if I were to, for example, plot x1,
+
+164
+00:10:58.510 --> 00:11:03.090
+it goes up but it's got all this
+random noise around the line.
+
+165
+00:11:03.090 --> 00:11:06.280
+Okay now y, let's say y is happiness.
+
+166
+00:11:06.280 --> 00:11:08.080
+So measure of happiness.
+
+167
+00:11:08.080 --> 00:11:09.770
+So what happens with y?
+
+168
+00:11:09.770 --> 00:11:14.235
+The true generating model is y is
+negatively associated with x1.
+
+169
+00:11:14.235 --> 00:11:18.470
+Uh-oh, so you're happiness is
+negatively associated with your money.
+
+170
+00:11:18.470 --> 00:11:22.250
+I guess mo' money,
+mo' problems is what that's suggesting.
+
+171
+00:11:22.250 --> 00:11:26.930
+But then it's positively associated
+with x2, so it goes up with time and
+
+172
+00:11:26.930 --> 00:11:27.960
+down with excellent.
+
+173
+00:11:27.960 --> 00:11:31.070
+And this is the, and
+then there's some random normal noise.
+
+174
+00:11:31.070 --> 00:11:33.790
+And this the correct model because
+we're using it for simulation.
+
+175
+00:11:33.790 --> 00:11:35.765
+So we know that it's the actual truth.
+
+176
+00:11:35.765 --> 00:11:38.896
+Y, our outcome that we're simulating,
+
+177
+00:11:38.896 --> 00:11:43.547
+depends negatively on x1 with
+a coefficient of minus 1, and
+
+178
+00:11:43.547 --> 00:11:47.860
+depends positively on x2 with
+a coefficient of plus 1.
+
+179
+00:11:47.860 --> 00:11:49.920
+Okay, so let's simulate our y.
+
+180
+00:11:51.100 --> 00:11:53.950
+And now let's see what happens
+if we fit x1 by itself.
+
+181
+00:11:55.150 --> 00:11:59.370
+And what we see is we get this enormous
+coefficient, 95, which is clearly wrong.
+
+182
+00:11:59.370 --> 00:12:02.810
+It's nothing near to the negative
+1 that it's supposed to be or
+
+183
+00:12:02.810 --> 00:12:04.460
+that we would hope it would be.
+
+184
+00:12:04.460 --> 00:12:06.068
+It's in fact quite the opposite.
+
+185
+00:12:06.068 --> 00:12:12.302
+And what's happening, it's sort of
+picking up this residual effect of x2,
+
+186
+00:12:12.302 --> 00:12:17.590
+this big line, this big component
+of x2 that's a big driver of y,
+
+187
+00:12:17.590 --> 00:12:19.870
+is getting picked up in x1.
+
+188
+00:12:20.950 --> 00:12:27.200
+Okay, but now what happens if we fit
+the correct model, x1 and x2, together.
+
+189
+00:12:27.200 --> 00:12:30.591
+Well, there we get
+the correct coefficients,
+
+190
+00:12:30.591 --> 00:12:34.260
+about minus 1 for x1, and
+about minus 1 for x2.
+
+191
+00:12:34.260 --> 00:12:35.110
+So there you can see,
+
+192
+00:12:35.110 --> 00:12:38.160
+if you do the correct sort of adjustment,
+then it should work out.
+
+193
+00:12:38.160 --> 00:12:40.540
+And you can imagine why this would happen.
+
+194
+00:12:40.540 --> 00:12:42.500
+What is regression doing?
+
+195
+00:12:42.500 --> 00:12:46.650
+It's taking x1 and
+removing the linear effect of x2.
+
+196
+00:12:46.650 --> 00:12:51.390
+So this part right here,
+this 0.01 x2 should get removed and
+
+197
+00:12:51.390 --> 00:12:55.610
+that uniform noise, that's the correct
+part of x1 that's unrelated to x2,
+
+198
+00:12:55.610 --> 00:13:00.370
+will get related to the part of y
+that's unrelated to x2 as well.
+
+199
+00:13:00.370 --> 00:13:05.150
+So, let's do some plots to highlight this,
+just to show us how it works a little bit.
+
+200
+00:13:06.510 --> 00:13:11.060
+So I'm gonna create a data frame,
+because ggplot likes data frames,
+
+201
+00:13:11.060 --> 00:13:15.050
+and I can't remember if I loaded ggplots,
+so let me reload it.
+
+202
+00:13:15.050 --> 00:13:20.100
+And then my plot is gonna have this data,
+dat.
+
+203
+00:13:20.100 --> 00:13:23.500
+And the aesthetic,
+I named my variables conveniently y.
+
+204
+00:13:23.500 --> 00:13:26.600
+And then my x variable is gonna be x1.
+
+205
+00:13:26.600 --> 00:13:28.110
+So the kind of important variable, x1.
+
+206
+00:13:28.110 --> 00:13:32.040
+And then my color is gonna be x2, okay?
+
+207
+00:13:33.400 --> 00:13:38.897
+And then I want my points and
+I want the line.
+
+208
+00:13:42.309 --> 00:13:44.160
+I didn't highlight the whole thing.
+
+209
+00:13:45.720 --> 00:13:46.220
+There we go.
+
+210
+00:13:47.620 --> 00:13:51.750
+And then I actually need to
+plot my plot so there's my g.
+
+211
+00:13:51.750 --> 00:13:52.710
+So there it is.
+
+212
+00:13:52.710 --> 00:13:54.400
+So you can see the color gradient.
+
+213
+00:13:54.400 --> 00:13:57.449
+Here is x1 as it relates to y.
+
+214
+00:13:58.810 --> 00:14:02.640
+And you can see the line that
+it's fitting is not incorrect.
+
+215
+00:14:02.640 --> 00:14:06.510
+There is a clear linear relationship,
+positive linear relationship,
+
+216
+00:14:06.510 --> 00:14:08.720
+between the x1 and y.
+
+217
+00:14:08.720 --> 00:14:11.565
+However, you can see,
+with x2, which is the color,
+
+218
+00:14:11.565 --> 00:14:15.190
+that there's also this
+clear positive gradient.
+
+219
+00:14:15.190 --> 00:14:17.750
+As y goes up, so does x2.
+
+220
+00:14:17.750 --> 00:14:21.790
+And also you can see as x1 goes up,
+so does x2.
+
+221
+00:14:21.790 --> 00:14:25.950
+So you can see the sort of
+confounding that's happening here.
+
+222
+00:14:25.950 --> 00:14:31.750
+So why don't we now see what happens
+if we plot the residuals, okay.
+
+223
+00:14:31.750 --> 00:14:38.354
+So I created in my data frame, I created
+the residuals where I fit x2 on y.
+
+224
+00:14:38.354 --> 00:14:42.670
+And then I took the residual
+where I removed x2 from x1.
+
+225
+00:14:42.670 --> 00:14:46.480
+So let's see what happens
+when we do the residual plot.
+
+226
+00:14:46.480 --> 00:14:50.140
+So this should be a plot that would
+give the slope of this line will be
+
+227
+00:14:50.140 --> 00:14:54.835
+the coefficient from our linear model
+fit where we include both x1 and x2.
+
+228
+00:14:56.500 --> 00:14:57.600
+Okay, so I'm gonna run that.
+
+229
+00:14:57.600 --> 00:15:00.590
+I'm not gonna go through the ggplot
+commands, cuz they're basically the same.
+
+230
+00:15:01.820 --> 00:15:03.270
+And here's the plot.
+
+231
+00:15:03.270 --> 00:15:06.620
+Now you can see that for
+the residual y and
+
+232
+00:15:06.620 --> 00:15:11.050
+the residual x1, there's a clear negative
+linear relationship, and if you stare at
+
+233
+00:15:11.050 --> 00:15:15.001
+it enough, you realize that the slope of
+this line should be around negative 1.
+
+234
+00:15:16.820 --> 00:15:20.830
+And, you can see that the x2 variable
+
+235
+00:15:20.830 --> 00:15:25.030
+is clearly not related to
+the residual x1 variable.
+
+236
+00:15:26.130 --> 00:15:29.100
+Okay, and so
+that's what linear models is doing.
+
+237
+00:15:29.100 --> 00:15:32.590
+It's removing the x2 from both x1 and y.
+
+238
+00:15:32.590 --> 00:15:37.080
+And that's why you get this sorta correct
+relationship when you fit both variables.
+
+239
+00:15:37.080 --> 00:15:41.720
+Now this doesn't mean that throwing every
+variable into your regression model is
+
+240
+00:15:41.720 --> 00:15:43.060
+the right thing to do.
+
+241
+00:15:43.060 --> 00:15:46.680
+There's consequences to
+throwing in extra variables,
+
+242
+00:15:46.680 --> 00:15:50.100
+unnecessary variables,
+into your regression relationship.
+
+243
+00:15:51.160 --> 00:15:54.675
+Let's go back to our data set now
+that we've thought about the idea of
+
+244
+00:15:54.675 --> 00:15:56.780
+multi-variable regression
+a little bit more.
+
+245
+00:15:57.870 --> 00:16:02.750
+Remember our agriculture effect reversed
+itself after we included the other
+
+246
+00:16:02.750 --> 00:16:04.690
+variables in the model.
+
+247
+00:16:04.690 --> 00:16:09.130
+And particularly you'll find that this
+happens quite a bit when education and
+
+248
+00:16:09.130 --> 00:16:11.610
+examination are included.
+
+249
+00:16:11.610 --> 00:16:15.741
+So educational attainment is negatively
+correlated with the percent working
+
+250
+00:16:15.741 --> 00:16:18.318
+in agriculture, a correlation of -0.64.
+
+251
+00:16:18.318 --> 00:16:21.780
+And you would kind of expect that,
+given where the data was collected and
+
+252
+00:16:21.780 --> 00:16:24.610
+the time period in which it was collected.
+
+253
+00:16:24.610 --> 00:16:27.420
+And in addition,
+as I mentioned earlier, education and
+
+254
+00:16:27.420 --> 00:16:29.700
+examination are kind of
+measuring the same thing.
+
+255
+00:16:29.700 --> 00:16:32.420
+Their correlation,
+those two variables is 0.7.
+
+256
+00:16:32.420 --> 00:16:35.420
+They're sort of measuring the same thing.
+
+257
+00:16:36.820 --> 00:16:41.850
+So the question arises, is this a positive
+association between agriculture and
+
+258
+00:16:41.850 --> 00:16:46.950
+fertility by itself when done
+via ordinary linear regression?
+
+259
+00:16:46.950 --> 00:16:51.370
+Is that artifactual for not having
+accounted for these other variables?
+
+260
+00:16:51.370 --> 00:16:54.940
+Education, by the way,
+does have a stronger effect on fertility.
+
+261
+00:16:56.070 --> 00:17:00.767
+So at the bare minimum, anyone claiming
+that they did a linear regression with
+
+262
+00:17:00.767 --> 00:17:05.618
+percent of the province working on
+agriculture, and fertility is the outcome.
+
+263
+00:17:05.618 --> 00:17:09.949
+And claimed a causal relationship
+between agriculture and fertility,
+
+264
+00:17:09.949 --> 00:17:14.780
+causal positive relationship, that
+conclusion would definitely be suspect.
+
+265
+00:17:14.780 --> 00:17:19.497
+First of all because from observational
+data like this, it's always suspect
+
+266
+00:17:19.497 --> 00:17:23.998
+to make strong causal conclusions without
+putting a lot of extra work in and
+
+267
+00:17:23.998 --> 00:17:26.084
+thought about your assumptions.
+
+268
+00:17:26.084 --> 00:17:30.868
+But even if you were just willing to claim
+an association between agriculture and
+
+269
+00:17:30.868 --> 00:17:34.384
+fertility, that also would be suspect,
+because you can so
+
+270
+00:17:34.384 --> 00:17:38.675
+easily break that association and
+reverse it by the inclusion of other,
+
+271
+00:17:38.675 --> 00:17:40.460
+very reasonable variables.
+
+272
+00:17:42.470 --> 00:17:45.840
+I also wanted to show you really
+quickly what happens if you include
+
+273
+00:17:45.840 --> 00:17:49.120
+a completely unnecessary
+variable in the model.
+
+274
+00:17:49.120 --> 00:17:52.260
+And what I mean by completely
+unnecessary is that,
+
+275
+00:17:52.260 --> 00:17:56.320
+what if you include a variable that is
+simply a linear combination of the other
+
+276
+00:17:56.320 --> 00:17:58.280
+variables that you've already included.
+
+277
+00:17:59.320 --> 00:18:03.180
+So you might include a variable
+that's unnecessary but
+
+278
+00:18:04.200 --> 00:18:06.470
+is random noise, for example.
+
+279
+00:18:06.470 --> 00:18:08.798
+And that's a different issue,
+we'll talk about that later.
+
+280
+00:18:08.798 --> 00:18:12.347
+But right now, why don't we see what
+happens if we include a variable,
+
+281
+00:18:12.347 --> 00:18:15.690
+that in what I am describing,
+is completely unnecessary.
+
+282
+00:18:15.690 --> 00:18:18.380
+So, for example,
+if I create this variable z,
+
+283
+00:18:18.380 --> 00:18:23.110
+that's nothing other than agriculture
+plus education, added together.
+
+284
+00:18:23.110 --> 00:18:25.640
+Well that has no added value.
+
+285
+00:18:25.640 --> 00:18:27.290
+We've already included education and
+
+286
+00:18:27.290 --> 00:18:30.320
+we've already included
+agriculture in our joint model.
+
+287
+00:18:30.320 --> 00:18:33.815
+So why don't I show you what happens
+when you fit all of the variables
+
+288
+00:18:33.815 --> 00:18:35.608
+plus this additional variable z.
+
+289
+00:18:35.608 --> 00:18:39.759
+And what you see is our agriculture
+coefficient hasn't changed,
+
+290
+00:18:39.759 --> 00:18:42.990
+it's -0.17 just like before.
+
+291
+00:18:42.990 --> 00:18:46.300
+And our z variable is giving a NA.
+
+292
+00:18:46.300 --> 00:18:51.760
+And so, whatever it does, whatever r does,
+is it takes the last sort of completely
+
+293
+00:18:51.760 --> 00:18:56.100
+unnecessary variable included in the model
+and gives that one an NA coefficient.
+
+294
+00:18:57.760 --> 00:19:02.420
+So that's an important thing to remember
+if you see an NA in r after you
+
+295
+00:19:02.420 --> 00:19:07.312
+fit a linear model, then probably
+the most likely culprit is you've
+
+296
+00:19:07.312 --> 00:19:10.849
+included a variable that
+is either numerically or
+
+297
+00:19:10.849 --> 00:19:14.260
+exactly a linear combination
+of the other variables.

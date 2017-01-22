@@ -1,0 +1,160 @@
+So up to this point, all that we've talked
+about is the impact of unnecessary or necessary included variables on
+our regression coefficients. But there's one other parameter that
+we estimate in our regression model, the residual variance, sigma square. So what happens if we have,
+assuming IID area, errors then our linear model is additive and
+that, that part of the model's correct. Then we can mathematically describe the
+impact of omitting unnecessary variables or including unnecessary variables. And it falls along the same lines
+as what we discussed before. If we underfit the model, in other words, we omit important variables then
+the variance estimate is biased. Why is that? Because we've attributed to variation
+things that are actually systematically explained by these covariance
+that we've omitted. On the other hand, if we either correctly
+fit the model, include all the right terms, or if we over-fit the model,
+then the variance estimate is unbiased. However, the variance of
+the variance estimate, gets inflated if we include
+unnecessary variables. So it's actually kind of the same rule. If we omit that as we discussed
+before with coefficiency. If we omit variables, then we get bias. If we include variables,
+then we get a less reliable estimate. So it's roughly the same impact going on. So let's talk about model
+selection in general. Automated model selection, and I just want
+to briefly mention again that automated model selection is something that we
+cover in the machine learning class. We really I think at one point
+it was a statistical topic but it's really moved into the realm of
+machine learning for the most part. I would say though, even for relatively
+simple linear regression models, the space of model terms that you
+have to search among explodes really quickly when you start
+including interactions and polynomial terms like the square
+of a regressor and so on. If you have a lot of regressors and you're
+interested in how do I reduce this space? Then there's a lot of factor analytic and
+things like principal components. Those kinds of techniques
+that are available to you to reduce your covariate
+space down to size. Now however, those come with consequences. Your principal components or factors that
+you obtained might be less interpretable than the original data that
+you're interested in again. Again, this is probably better
+served in a multivariable class, a multivariate class, or
+a class on machine learning. But for us we're going to mostly consider
+the case where we have a relatively small number of aggressors and we're
+going to pick through them with a highly interactive process between the analyst,
+the data, and the scientific context. Another thing I would mention is that good
+design can often eliminate the need for a lot of this model discussion. We've talked a lot about how
+randomization can really prevent a lot of the problems that we're
+talking about with making our variable of interest unrelated to nuisance
+variables that we're not interested in or nuisance variables that
+we don't even know about. However, there's other aspects of
+design that can serve the same purpose. For example if we stratify and
+randomized within strata. The classic example of this when
+this was developed was R.A. Fisher was working in field crop
+experiments and they needed. Let's say you're trying
+a different kind of seed, you might block on different areas of
+the field that you were going to plant in, and randomize the different
+seeds to those areas. So you might have two different kinds of
+seeds, but they will have been distributed in a systematic way that is
+fair across the field, but also that within that design there
+will also be some randomization. This topic of experimental
+design is a pretty broad topic. Another great example is,
+in biostatistics, the field I work in most, a very common
+kind of design is a crossover design. And in that case, you try to use
+every subject as their own control. So let's say for example you're interested in looking
+at two different kinds of aspirin. And you might give the aspirin
+to one group of people and then the other aspirin to
+another group of people. Let's say they have different gels or whatever that determine how it
+gets absorbed in your stomach. So if those two groups aren't the same,
+either the randomization wasn't very good and there was some sort of
+imbalance that you just got unlucky about, or if the study was just observational,
+then the comparison of those two groups might be biased by whatever differentiates
+the groups rather than group one receiving one kind of aspirin and group
+two receiving a different kind of aspirin. On the other hand if you can give
+a person one kind of aspirin and later on give them a different kind of
+aspirin when they have another headache that would compare each
+person to themselves right? Control block on the person so to speak. So that's a design strategy. Now, there's some nuance with
+this design strategy as well. What happens if there's some residual
+effect of the first aspirin when you give the second one, right? So maybe you could handle that
+with some sort of wash-out period, a long wash-out period,
+something like that. But at any rate,
+the point of that design is to make it so that you're comparing people
+with themselves to control and everything that's intrinsic to
+the person at least across time periods. A control for that by giving
+both aspirins to each person. Maybe you would randomize the order
+in which they received them. That's called a crossover design. At any rate, the broader point that I'm
+trying to make Is it's often the case that good, thoughtful, experimental design
+can really eliminate the need for some of the main considerations that you'd
+have to go through in model building. If you were to just collect data
+in an observational fashion. The last thing I'd say is there's
+one automated model search technique that I like quite a bit,
+and I find it very useful. And it's the idea of
+looking at nested models. So I'm often interested
+in a particular variable. And I'm very interested in how the other variables that I've
+collected will impact it. So I'm interested in a treatment,
+or something like that, some important variable, but I'm worried
+that my treatment groups are imbalanced or That it, with respect to potentially
+some of these other variables. So, I might look, what I'd like to look
+at is, the model that just includes the treatment by itself than the model
+that includes the treatment and let's say age, if the ages weren't really
+balanced between the two treatment groups. And then one that looks at age and gender, if maybe the genders between the groups
+weren't really balanced, and then so on. And this idea,
+creating models that are nested, every successive model contains all
+the terms of the previous model, leads to a very easy way of
+testing each successive model. And these nested model examples
+are very easy to do, so I'm just going to show
+you some code right here. On how you do nested model testing in R. So, I've hit, I fit three linear
+models to our Swiss dataset. The first one just includes agriculture. Let's pretend that that's the variable
+that we're interested in, okay? And then the next one includes
+agriculture and examination in education. I've put both of those in because. I'm thinking they're kind of
+measuring the same thing. But now, after this lecture,
+I'm concerned over the possibility that they're too much so
+measuring the same thing. But let's put that aside for
+this time being. And then the third model
+includes examination, education, plus catholic
+plus infant mortality. So all the terms. So now I have three nested models and
+I'm interested in seeing what happens to my effect as I go
+through those three models. The point being in this case you can
+test whether or not the inclusion of the additional set of extra terms
+is necessary with the Nova functions. So I do a Nova fit 1. Fit three and fit five. Okay, that's what I named them. One, three, five. And, then you see down here what
+you get is a listing of the models. Model one, model two, model three. And then it gives you
+the degrees of freedom. That's the number of data points minus the
+number of parameters that it had to fit. The residual sums of squares and then the excess degrees of freedom of
+going Df is the excess degrees of freedom going from model one to model two,
+and then model two to model three. So, we added two parameters in
+going from model one to model two. That's why that Df is two. And, then we added two additional
+parameters going from model two to model three. So the 2 parameters we added from
+going from model one to model two is we added examination and education
+their two regression coefficients. Going from model two to model
+three we added catholic and infant mortality there too
+were crashing coefficients. Okay so with this residual sums
+of squares and the degrees of freedom you can calculate so called
+F statistic, and thus get a P value. This gives you the F statistic and
+the P value associated with each of them. And then here it shows that yes,
+the inclusion of education examination appears to be necessary over
+just looking at agriculture by itself. Then when I look at the next one,
+it says yes. The inclusion of Catholic and
+infant mortality appears to be necessary beyond just including examination,
+education, and agriculture. So if the way in which you're
+interested in looking at your data naturally falls into a nested
+model search, as it often does I think, when you're interested in one variable in
+specific, as in this case I think this would be a pretty natural way of
+thinking about the series of analyses. Then some kind of nested model
+search is a reasonable thing to do. It doesn't work if the models that
+you're looking at aren't nested. For example, if I had the first model or model two had examination but
+not education. And the third model had education,
+but not examination. This wouldn't apply. You'd have to do something else. And there I think you get into
+the harder world of automated model selection with things
+like information criteria. So, I would put all that stuff
+off to our prediction class and then just leave you this one technique
+that's useful in the one Specific instance where you've decided to kind of
+look along a series of models each getting increasingly more complicated
+but including the previous one. Okay so I hope in this lecture
+that you've gotten a couple of model selection techniques
+that you can use. I hope you've also learned that there are
+some basic consequences that occur if you include variables that you shouldn't have
+or exclude variables that you should have. These has consequences to your
+coefficients that you're interested in, they have consequences to your
+residual variance estimate. We didn't even touch on some other
+aspects of poor model fit that can occur such as absence of linearity and other
+things like that, non-normality and so on. So again, it's generally necessary to take
+your model fits with a grain of salt, because more than likely,
+one aspect of your model is wrong. And I'll leave you then with
+this famous quote by George Box, who very famously said, all models
+are wrong, some models are useful. And I think that's a very good credo
+to go along with, that yes, for sure your model is wrong but it might
+be useful in the sense of being a lens to teach you something useful and
+true about your data set. Ok so that ends today's lecture and I look
+forward to seeing you for the next one.

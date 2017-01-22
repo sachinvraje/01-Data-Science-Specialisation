@@ -1,0 +1,687 @@
+WEBVTT
+
+1
+00:00:00.280 --> 00:00:03.550
+Hi, and welcome to the class
+on multivariable regression,
+
+2
+00:00:03.550 --> 00:00:06.520
+as part of our course here at
+Data Science Specialization.
+
+3
+00:00:06.520 --> 00:00:07.160
+In this lecture,
+
+4
+00:00:07.160 --> 00:00:10.560
+we're gonna talk about instances where
+we have lots of potential predictors for
+
+5
+00:00:10.560 --> 00:00:14.880
+an outcome, rather than just a single
+predictor in linear regression.
+
+6
+00:00:14.880 --> 00:00:21.370
+In any instance, where you're using
+a predictor X to predict a response Y,
+
+7
+00:00:21.370 --> 00:00:26.030
+and you find a nice relationship,
+if that predictor
+
+8
+00:00:26.030 --> 00:00:30.660
+hasn't been randomized to the subjects or
+units, whatever you're looking at,
+
+9
+00:00:31.840 --> 00:00:34.990
+then there's always a concern that there's
+another variable that you either know
+
+10
+00:00:34.990 --> 00:00:38.200
+about or don't know about that
+might explain the relationship.
+
+11
+00:00:38.200 --> 00:00:39.119
+And let me give you an example.
+
+12
+00:00:40.260 --> 00:00:45.332
+Imagine if you had a friend that
+downloaded some data, where they had all
+
+13
+00:00:45.332 --> 00:00:50.837
+sorts of health information from people
+and also their dietary information.
+
+14
+00:00:50.837 --> 00:00:53.723
+And this person said, hey,
+I found something interesting.
+
+15
+00:00:53.723 --> 00:00:57.946
+Breath mint usage has a significant
+regression relationship with forced
+
+16
+00:00:57.946 --> 00:01:02.110
+expiratory volume, a measure of
+lung function, pulmonary function.
+
+17
+00:01:03.210 --> 00:01:05.970
+If you've ever gotten an asthma test,
+they'll measure your FEV.
+
+18
+00:01:05.970 --> 00:01:10.390
+Well, you would be skeptical.
+
+19
+00:01:10.390 --> 00:01:13.860
+I mean, there's very little basis for
+a biological relationship there.
+
+20
+00:01:13.860 --> 00:01:15.020
+Breath mints are just sugar.
+
+21
+00:01:15.020 --> 00:01:18.880
+It doesn't seem reasonable that
+they would impact lung function.
+
+22
+00:01:18.880 --> 00:01:21.884
+But maybe, but
+what you've really be thinking is,
+
+23
+00:01:21.884 --> 00:01:25.928
+well, what other variables might
+be explaining this relationship?
+
+24
+00:01:25.928 --> 00:01:27.840
+And you might come up with two hypotheses.
+
+25
+00:01:27.840 --> 00:01:31.380
+One is, this person dug through lots and
+lots and lots of variables and
+
+26
+00:01:31.380 --> 00:01:35.120
+just found the one that was significant,
+and it's just a chance of association.
+
+27
+00:01:35.120 --> 00:01:37.700
+And that's the problem of multiplicity.
+
+28
+00:01:37.700 --> 00:01:42.020
+Okay, so we'll talk about that in other
+aspects of this course in the inference
+
+29
+00:01:42.020 --> 00:01:45.980
+course, but let's just assume that this
+person didn't do that, they looked only
+
+30
+00:01:45.980 --> 00:01:49.185
+at a couple of variables, and
+the multiplicity concerns weren't so bad.
+
+31
+00:01:49.185 --> 00:01:51.090
+Then what would you think?
+
+32
+00:01:51.090 --> 00:01:52.440
+Well, likely, you would think,
+
+33
+00:01:52.440 --> 00:01:57.450
+well, probably the real problem is smokers
+tend to use more breath mints, and
+
+34
+00:01:57.450 --> 00:02:02.490
+smoking has this long relationship
+with lung function, so
+
+35
+00:02:02.490 --> 00:02:06.250
+it's well-established that
+chronic exposure to a smoker,
+
+36
+00:02:06.250 --> 00:02:10.440
+even second-hand smoke has
+negative impacts on lung function.
+
+37
+00:02:10.440 --> 00:02:13.162
+So it's probably that, it probably has
+nothing to do with the breath mints,
+
+38
+00:02:13.162 --> 00:02:15.990
+it's a indirect effect of
+breath mints through smoking,
+
+39
+00:02:15.990 --> 00:02:19.060
+not a direct effect of breath
+mints on lung function.
+
+40
+00:02:19.060 --> 00:02:21.020
+That would be your likely hypothesis.
+
+41
+00:02:22.480 --> 00:02:27.450
+Well, how would you establish that there's
+a breath mint effect beyond smoking?
+
+42
+00:02:27.450 --> 00:02:30.400
+Well, likely,
+what you would ask your friend to do is,
+
+43
+00:02:30.400 --> 00:02:35.620
+well ,consider smokers by themselves,
+and see whether their lung function
+
+44
+00:02:35.620 --> 00:02:39.970
+differs by their breath mint usage, and
+consider non-smokers by themselves, and
+
+45
+00:02:39.970 --> 00:02:44.610
+see whether their lung function
+differs by breath mint usage,
+
+46
+00:02:44.610 --> 00:02:48.780
+where you've conditioned on smoking status
+so that you're comparing like with like.
+
+47
+00:02:50.210 --> 00:02:53.660
+Well, multi-rate regression
+is sort of automated way to
+
+48
+00:02:53.660 --> 00:02:55.200
+do that in a linear fashion.
+
+49
+00:02:55.200 --> 00:02:59.480
+It make assumptions, which is fair enough,
+but it does that sort in automated way,
+
+50
+00:02:59.480 --> 00:03:03.160
+and we'll explain in this lecture
+in what way is it trying to sort of
+
+51
+00:03:03.160 --> 00:03:07.610
+hold smoking status constant while
+looking at breath mint usage,
+
+52
+00:03:07.610 --> 00:03:11.820
+and how it adjusts, and we'll also talk
+a little bit about its limitations.
+
+53
+00:03:11.820 --> 00:03:16.330
+But that's the fundamental idea of what
+multivariable regression is trying to do.
+
+54
+00:03:16.330 --> 00:03:18.840
+It's trying to look at
+the relationship of a predictor and
+
+55
+00:03:18.840 --> 00:03:22.930
+a response, while having, at some level,
+accounted for other variables.
+
+56
+00:03:24.100 --> 00:03:27.910
+So in addition to the use of multivariable
+regression that I talked about in
+
+57
+00:03:27.910 --> 00:03:28.829
+the previous slide,
+
+58
+00:03:29.840 --> 00:03:34.010
+I wanted to also talk about another use of
+multivariable regression for prediction.
+
+59
+00:03:34.010 --> 00:03:37.200
+It's actually a very
+good prediction model.
+
+60
+00:03:37.200 --> 00:03:42.640
+So, as an example, several of us
+engaged around here engaged in this so
+
+61
+00:03:42.640 --> 00:03:48.490
+called CAGO competition, to predict
+the number of days that a person
+
+62
+00:03:48.490 --> 00:03:53.620
+would be in the hospital in subsequent
+years given their claims history and
+
+63
+00:03:53.620 --> 00:03:56.800
+number of days they were in
+the hospital in previous years.
+
+64
+00:03:56.800 --> 00:04:00.550
+And this is of major
+importance to hospitals and
+
+65
+00:04:00.550 --> 00:04:05.910
+insurance companies and healthcare
+providers for a variety of reasons.
+
+66
+00:04:05.910 --> 00:04:09.380
+It's one of the main
+questions in that field.
+
+67
+00:04:09.380 --> 00:04:14.443
+So, in this competition,
+they gave you historic claims data,
+
+68
+00:04:14.443 --> 00:04:19.691
+a lot of it, actually, which had lots and
+lots of predictors, and
+
+69
+00:04:19.691 --> 00:04:24.755
+the number of days that several
+people of the insured people from
+
+70
+00:04:24.755 --> 00:04:30.709
+this company were in the hospital for
+[NOISE] three consecutive years or so.
+
+71
+00:04:32.504 --> 00:04:37.260
+And simple linear regression certainly
+wouldn't have been too much use here.
+
+72
+00:04:37.260 --> 00:04:41.560
+It's good for looking at variables
+at a time really quickly, but
+
+73
+00:04:41.560 --> 00:04:44.960
+if you wanted to get good prediction you
+needed to do something more complicated.
+
+74
+00:04:46.050 --> 00:04:51.670
+So there's multiple parts about this, so
+one of the main things is model search.
+
+75
+00:04:51.670 --> 00:04:54.370
+How do we pick which
+predictors to include?
+
+76
+00:04:54.370 --> 00:04:56.009
+That's an important component of this.
+
+77
+00:04:57.840 --> 00:05:01.094
+And the other is to avoid overfittings.
+
+78
+00:05:01.094 --> 00:05:05.462
+We'll learn that, as you put enough
+variables into a multivariable
+
+79
+00:05:05.462 --> 00:05:10.056
+progression model, you'll get zero
+residuals just by virtue of having
+
+80
+00:05:10.056 --> 00:05:13.844
+included even random vectors
+into your regression model.
+
+81
+00:05:13.844 --> 00:05:16.787
+So certainly there's consequences
+to throwing lots of garbagey
+
+82
+00:05:16.787 --> 00:05:18.500
+predictors into a model.
+
+83
+00:05:18.500 --> 00:05:21.310
+And certainly there must
+be consequences to omitting
+
+84
+00:05:21.310 --> 00:05:22.540
+important predictors in a model.
+
+85
+00:05:23.940 --> 00:05:26.270
+And in the practical
+machine learning class,
+
+86
+00:05:26.270 --> 00:05:30.480
+which is also part of the specialization,
+you will learn a lot about model
+
+87
+00:05:30.480 --> 00:05:35.230
+selection strategies as they
+relate to the idea of prediction.
+
+88
+00:05:35.230 --> 00:05:38.510
+In this class, we're gonna focus more on
+the problems from the previous slide,
+
+89
+00:05:38.510 --> 00:05:41.890
+where we want to generate
+parsimonious models, where we're
+
+90
+00:05:41.890 --> 00:05:46.860
+deeply interested in interpreting
+the coefficients from the linear model.
+
+91
+00:05:46.860 --> 00:05:49.430
+And so the prediction problems,
+like this one,
+
+92
+00:05:49.430 --> 00:05:52.590
+are a little bit more geared toward
+our practical machine learning class.
+
+93
+00:05:52.590 --> 00:05:56.800
+But I just wanted to mention
+that multivariable regression is
+
+94
+00:05:56.800 --> 00:06:00.040
+a pretty good starting
+point in any prediction,
+
+95
+00:06:00.040 --> 00:06:01.940
+anytime where you're developing
+a prediction algorithm.
+
+96
+00:06:01.940 --> 00:06:06.280
+What we found in that competition is that
+multivariable regression got you very
+
+97
+00:06:06.280 --> 00:06:11.690
+close to the winning entry, and
+
+98
+00:06:11.690 --> 00:06:15.160
+lots of machine learning, and
+random forest, and boosting, and
+
+99
+00:06:15.160 --> 00:06:21.340
+all these other things, those only
+got you minor bumps on top of that.
+
+100
+00:06:21.340 --> 00:06:25.477
+And so,
+to get huge drops in prediction error,
+
+101
+00:06:25.477 --> 00:06:28.580
+well-thought out linear models sufficed,
+and
+
+102
+00:06:28.580 --> 00:06:32.960
+then to get really minor increments beyond
+that, you had to throw a lot of computing.
+
+103
+00:06:32.960 --> 00:06:37.380
+And to be fair, those did improve
+your chances, and we moved up
+
+104
+00:06:37.380 --> 00:06:41.210
+a little bit in the leaderboard by adding
+some of these more complicated things.
+
+105
+00:06:41.210 --> 00:06:46.010
+But it was remarkable how far you could
+get with just well done linear models.
+
+106
+00:06:47.360 --> 00:06:51.990
+So, our linear model looks an awful
+lot like our simple linear model.
+
+107
+00:06:51.990 --> 00:06:53.690
+It's just that we have more variables.
+
+108
+00:06:53.690 --> 00:06:58.780
+So our outcome, Y,
+it might be insurance claims or
+
+109
+00:06:58.780 --> 00:07:03.310
+forced expiratory volume,
+is equal to a bunch of coefficients.
+
+110
+00:07:03.310 --> 00:07:08.030
+These are the beta terms, they're like the
+slope terms in simple linear regression.
+
+111
+00:07:08.030 --> 00:07:11.110
+Just, now there's more predictor terms,
+more X values.
+
+112
+00:07:11.110 --> 00:07:16.090
+So, for example, one of these might,
+X1 might be breath mint usage of binary or
+
+113
+00:07:16.090 --> 00:07:23.240
+variable, and X2 might be number of
+pack years or how much a person smoked.
+
+114
+00:07:23.240 --> 00:07:28.250
+And in the insurance case,
+X1 might be the number of
+
+115
+00:07:28.250 --> 00:07:34.100
+insurance claims in the previous year,
+and X2 might be whether or
+
+116
+00:07:34.100 --> 00:07:37.860
+not this person had a particular
+cardiac problem, something like that,
+
+117
+00:07:37.860 --> 00:07:42.260
+that might lead toward information about
+hospitalization in the successive year.
+
+118
+00:07:42.260 --> 00:07:44.640
+So here,
+we just write out the linear model.
+
+119
+00:07:44.640 --> 00:07:49.320
+And it just looks like the outcome
+is equal to a bunch of coefficients
+
+120
+00:07:49.320 --> 00:07:50.740
+times predictors.
+
+121
+00:07:52.930 --> 00:07:56.010
+Now, it's linear because it's
+linear in the coefficient.
+
+122
+00:07:56.010 --> 00:07:58.800
+So I'll reiterate that point in a minute.
+
+123
+00:07:58.800 --> 00:08:03.950
+I would also add that the first variable
+is typically just a constant one,
+
+124
+00:08:03.950 --> 00:08:08.620
+so there's an intercept that's included,
+a term that's just beta by itself.
+
+125
+00:08:08.620 --> 00:08:10.070
+Beta zero usually or Beta one.
+
+126
+00:08:12.300 --> 00:08:13.500
+So our least squares,
+
+127
+00:08:13.500 --> 00:08:16.718
+I think everyone could probably guess
+what the least squares is going to do.
+
+128
+00:08:16.718 --> 00:08:22.280
+It's just gonna look at the differences
+between the outcome and the prediction
+
+129
+00:08:22.280 --> 00:08:27.680
+from the linear models, summation of
+the predictors times their coefficients.
+
+130
+00:08:27.680 --> 00:08:29.510
+Because that's not necessarily positive,
+
+131
+00:08:29.510 --> 00:08:32.610
+we're gonna square it and we're going
+to add it up so this difference for
+
+132
+00:08:32.610 --> 00:08:36.575
+every observation equally weights into
+this loss function that we created.
+
+133
+00:08:36.575 --> 00:08:40.270
+So least squares simply wants
+to minimize this equation.
+
+134
+00:08:40.270 --> 00:08:44.280
+And it's a direct extension of
+the equation we wanted to minimize
+
+135
+00:08:44.280 --> 00:08:45.760
+when we had simple linear regression.
+
+136
+00:08:47.350 --> 00:08:51.595
+And I would notice that the important
+linearity is linearity in the coefficient.
+
+137
+00:08:51.595 --> 00:08:56.590
+So for example, if I take one of
+my X's and just square it, meaning
+
+138
+00:08:56.590 --> 00:09:00.820
+if I have a vector in R that I've just
+squared every element of that vector and
+
+139
+00:09:00.820 --> 00:09:05.650
+put that in as part of my model, then that
+will still be linear in the coefficient.
+
+140
+00:09:05.650 --> 00:09:09.130
+The coefficient won't be squared,
+it will just be the X term.
+
+141
+00:09:09.130 --> 00:09:14.740
+And so, the important version of linearity
+is linearity in the coefficient.
+
+142
+00:09:14.740 --> 00:09:16.300
+That's what defines a linear model.

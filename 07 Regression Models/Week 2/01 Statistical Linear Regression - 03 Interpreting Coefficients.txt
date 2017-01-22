@@ -1,0 +1,47 @@
+Now that we have a formal statistical
+framework, we can interpret our regression coefficients with respect
+to that framework. Take for example, the intercept. It's the expected value Y
+given that the regressor is 0. And here I'm simply
+plugging into the formula. Note that the regressor
+being equal to zero is often not of interest in the study. For example, if the regression
+variable is blood pressure, probably you're not interested in the response for
+among people with blood pressure of zero. However, there is an easy fix for this. Consider just shifting our
+regression variable by a constant a. And here in this equation,
+I've just subtracted off an a here. Which means I have to add an a beta
+1 over here to have done nothing, to have simply added 0. Well this is exactly rewriting
+the aggression equation as beta not tilde plus
+beta 1 times x minus a. A new regression line with a new
+intercept, the same slope, and my regressor now shifted by a constant a. So this goes to show you that if you
+shift your regressor by a constant,, it doesn't change the slope,
+however it does change the intercept. Now the intercept is inter,
+interpreted not when x is zero, but when x is this value
+that you shifted it by a. A very common constant
+to due is the average. Set a equal to the average
+of the X variable. Then your intercept will be
+interpreted as the expected value of the response when the regressor
+is at the average value of the Xs. Let's see if we can figure out
+a model-based interpretation of our regression coefficient. Now, it's a slope so it must have
+an interpretation that is of the form, the change in Y per unit change in X. So let's see if we can work with that. Take the expected value of Y, given that X takes the value x plus 1,
+a one unit increase in X. And subtract off from the expected value
+of Y, given that X takes the value x. Well, that works out to be beta
+naught plus beta 1 times x plus1, minus beta naught plus beta 1 times x. Do the arithmetic and
+that works out to be beta 1. So, beta 1 is the expected
+change in the response per unit change in the regression variable. And that, so it has a nice interpretation,
+it's not that different from the regular interpretation of a line,
+just now with the expected value, the conditional expected
+value of the response. Now, remember, if we shift the X variable,
+it doesn't change the slope, we discussed that on the previous slide. What if we scaled the regression variable? And it usually only we're usually scaling
+by number, say a, that's positive. So, what we can do is simply multiply and
+divide by a, and we can rewrite our progression equation as beta naught plus
+beta 1 tilde times X times a plus epsilon. So, we've multiplied X by a and our regression slope has
+now been divided by a. So in other words, multiple,
+multiplication of a regression variable by a factor a results in dividing
+the coefficient by a factor of a. Let me give you a simple example, so
+to hopefully solidify these points. Imagine if X's height
+measured in meters and Y's weight measured in kilograms,
+a pretty simple regression problem. Then beta 1 is interpreted
+in kilograms per meter. Converting X to centimeters
+implies multiplying X by 100 centimeters per meter. To get beta 1 in the right units,
+now we simply divide it by 100 centimeters per meter to get it,
+to, to, to get it back on the right scale. And here I just wrote a,
+a little equation to remind us.

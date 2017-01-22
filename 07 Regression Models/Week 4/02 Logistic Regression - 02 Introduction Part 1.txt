@@ -1,0 +1,190 @@
+Hi, and welcome to the lecture on
+generalized linear models for binary data. In this lecture, we're going to focus on
+instances where the outcome is a zero, one random variable. So it can only take two levels. And this occurs very
+frequently in most analyses. For example,
+in biostatistics we're all for doing things like survival analysis
+where people are either alive or dead at the end of the study,
+for example, a cancer study. We can look at wins versus losses, like
+we're going to do today, or success or failures of any kind. And our model is going to be, we're going to model the data as if it's
+a bunch of coin flips, where a success probability potentially depends
+on a collection of covariates. Now if you have any
+collection of zeros and ones where the success probability is
+constant and they're independent, then the total number of successes or failures
+is a so-called binomial random variable. Okay, so binomial random
+variables are handled by binary logistic regression in the special case
+where the covariate is just constant. Okay, so we're going to cover two cases,
+binary and binomial, by covering the binary case. So, as a motivating example, let's look at
+this data set that Jeff Leak organized. Jeff Leak is another one of
+the instructors in our data science specialization. He teaches the practical machine learning,
+getting and cleaning data and data scientist toolbox. So in this case,
+you can get the data here, but it's also in the GitHub repository. The data set here has the Ravens'
+win number at ones versus zeros, whether or not the Ravens won
+coded as a factor variable, wins versus loss, the score,
+Ravens' score, and the opponents score. Now on this case,
+we're just going to look at to what extent the Ravens' score
+predicts whether or not they won. Okay, so you can imagine, if you're in the
+front office for the Ravens, who, I forgot to mention this, the Ravens are a U.S.
+American football and a National Football League team and
+based in Baltimore. So we all love the Ravens around here. So you can imagine, if you were in the
+front office for the Ravens, wanting to predict wins with a lot of covariates,
+score would be one of them, opponent's score would obviously be one of them, and
+so on, but you'd want home versus away. And I think you can understand
+the principles of binary logistic regression just by looking
+at this example and, I hope, extending it, given everything that we've
+learned about multivariate linear models will carry over very easily for you. So I just want to remind ourselves, we probably don't want to fit
+this data with linear regression. If we were to model the probability
+of a Ravens win, the event of a Ravens win one versus zero as a linear
+progression we wouldn't be honoring, this equation here wouldn't
+actually hold true for sure, right? Because usually we assume the errors
+are Gaussian, just would not hold. Now that isn't to say that occasionally
+fitting binary data with a linear model is the worst thing in the world to do. But it's usually only a quick first thing
+that you do before you then move on to fit something like a logistic
+regression model. So here we fit the linear regression in R,
+and you get the output, and you see what the model
+is trying to get at, the model is the slope, is trying to
+get at probability of a Raven's win. However, you can get slope
+estimates that are negative or above one if you fit
+a linear regression model. Again, it's not the worst
+thing in the world to do. Sometimes, if you're doing something
+quick, you have to do it, but probably preferable would
+be to model the odds. So just to remind ourselves what the odds
+are, if we have a binary outcome, which in this case is whether or not the Ravens win, we want to model
+the probability that the Ravens win. So I'm going to get me pen here. The probability that the Ravens win, but we're going to model it like
+it's a bunch of coin flips. However, the success probability
+will differ from game to game depending on how many
+points the Ravens score, okay? So, that's the probability we
+want to model so, the odds. The odds are defined as the probability
+over one minus the probability, and in a couple of slides, I'll describe more about the history of
+the odds and how people think about it. You can go backwards, by the way,
+from the odds to the probability. In that the probability is equal
+to the odds over 1 plus the odds. Okay, you go forwards from the probability
+to the odds by taking the probability over 1 minus the probability. You can go backwards from
+the odds to get the probability by taking the odds over 1 plus the odds. So the two things are exchangeable. The log odds then is
+just the log of the odds. And we use that so commonly that we gave
+it a name and it's called the logit. So the logit is simply
+the log of the odds. So what we're going to do is put
+the model on the log of the odds. So, I think we've talked a lot about
+linear versus logistic regression, both in the last lecture and in this
+lecture, describing what are some of the considerations for why we want to
+probably do this with logistic regression. But the main thing is that the model
+assumptions clearly don't hold for linear regression. They're obviously, the inferences
+probably are not anywhere near correct. Or we have no faith in them. But let's just draw the connection
+between the two so that we can relate what we're doing in logistic regression
+back to what we did in linear regression. So for linear regression we built
+models like this, where the outcome was the intercept plus a slope
+parameter times the predictor plus an error term, which is a nice way
+to write out the model and convenient. But another way to right out this same
+model is just to say that the expected value of the outcome was
+this linear relationship. So the expected value of the outcome, in this case, the expected value is of a zero, one random variable. The expected value of a zero,
+one random variable is the probability. So the expected value
+of a fair coin is 0.5. So instead of doing what
+we do in linear regression, which is to model the expected value
+of the outcome directly on that scale, why don't we model the expected
+value of the outcome, which is the probability, why don't we
+model that with something like this, e to the linear regression over
+1 + e to the linear regression. Well this, right here,
+this equation, if we invert it and if we work with it a little bit, we get that it says that the log of the odds
+is the linear regression relationship. So what we're doing in binary
+generalized linear models is, in this particular logistic regression,
+we're modeling our data as if it was a bunch of coin flips where
+the success probability changes with i. And we're relating the coin,
+that success probability, to our regressors by taking the log of
+odds associated with that probability. So you can go backwards. This is the log of the odds, okay? You could go backwards to the probability
+using this equation up here. And I like to call e to
+the a over 1 + e to the a, this function that inverts the log
+of the odds back to the probability, I like to call it the xbit. So the log of the odds
+is called the logit. I like to call the function
+that goes backwards the xbit. Okay, so that's all we're doing. That's all we're doing. But that's the clever bit of
+generalizing your models. We're not actually putting
+the model on the scale. We're not actually putting
+the linear regressions parameters defining inequality between the outcomes
+and the linear regression parameters. Instead we're saying that the outcome
+depends on a probability distribution. That probability distribution
+depends on the success probability. That success probability then
+depends on the regressors. Okay? So interpreting logistic regression
+is pretty straight forward, and I should mention all the logs
+that we do in these notes, these are natural log, l-o-g,
+meaning natural log in this case. Most mathematicians, when they
+write l-o-g they mean natural log. So in this case what happens? So if I were to plug in a zero for
+the Ravens score I would just get b0. So b0 is the log odds of a Ravens
+win if they score 0 points. Then e to the b0 over 1 + e to the b0 would be the probability
+that the Ravens won. That's the model based probability that
+the Ravens win if they score zero points. Now in this case, this is maybe a not perfect component of this model, because
+it gets estimated to be non-zero, and we know that the team can't
+win if they score zero points. They could tie, but they can't win. So b1, okay, so remember, let me get, Remember how we interpreted our
+slope coefficient from before. We have b0 + b1 and let me put in the (RSi + 1)- b0 + b1 (RSi). Okay, then let me put
+brackets around that. Okay, then that equation, if you work it
+out, that equation works out be b1, okay? So what is this? This is the logit of the probability
+that the Ravens win given the score + 1, and this is the logit of the probability
+the Ravens win given the score itself. So what is b1? It's the increase or decrease depending
+on whether it's positive or negative in the log odds of the probability that
+the Ravens win associated with a one unit increase in the regression variable, or in
+this case, a one point increase in score. Okay?
+And if we exponetiate this, remember that if this is
+a difference on the log scale, so if we exponentate it,
+we get a ratio back on the original scale. So if we exponentiate this,
+we get that e to the b1 is then the ratio of the odds comparing a one
+point increase in score, the ratio of the odds of the Ravens
+winning for one point score increase. Okay? And we don't have multiple regressors like
+we studied a lot in linear regression. We don't have that for this particular example, but
+the extension is pretty direct. Everything, just like in linear
+regression, multi variable regression, everything is just interpreted presuming
+the other regressors are held fixed. So remember our interpretation in
+multivariable regression was that the increase associated with a one
+unit change in the regressor, holding the other
+regression variables fixed. That same interpretation carries over
+in logistic regression, e to the b1. If we had a bunch of covariates
+added in this, let's say whether or not it was a home or away game,
+if we had that one extra covariates added, then e to the b1 would be the odds ratio of a Ravens win for a one unit increase
+in the score holding whether or not it was an away or a home game fixed. Okay, so the logistic regression coefficients
+are pretty easily interpretable. The log is a nice function
+that allows us to sort of invert additive things and
+turn them into ratios. And people like to talk in terms or
+ratios, so it's a very nice interpretation. I want to talk a minute
+about the history of odds. So it goes back to this
+idea of a fair game. So imagine if you're playing a game
+where if you flip a coin with success probability p, and
+if it comes up heads you win X dollars. If it comes up tails, the person you're
+playing against wins Y dollars, and you lose Y dollars. Okay? So what should we set X and
+Y in order for the game to be fair? Okay.
+In this case, the coin isn't necessarily a fair coin. p is not necessarily 0.5. So what is your expected earnings? Well if you took the inference class you
+would you know that your expected earnings is how much you would win given the coin came up heads,
+minus how much you would lose given the coin came up tails, okay? And if we want it to be a fair game, we want our expected earnings
+to be equal to zero. Well if we solve that,
+we get Y / X = p / 1- p. So, in other words,
+the odds can be said as how much would you be willing to pay for
+a p probability of winning a dollar. In other words, setting X equal to 1. And then if p is bigger than 0.5
+you'll have to pay more than you lose, and p is less than 0.5 you'd have to pay
+less than if you lose than if you win. And so this is why,
+if you go to the horse track like Pimlico here in Baltimore, they'll
+give you the odds against a horse winning. So they'll say 10 to 1. Why would they do that? Because, if you bet a dollar, that would
+mean if the horse won you got $10. So you can do the calculation
+very quickly in your head because they're giving you fair game. It's an interesting side note about
+the horse betting analogy in that the way in which they set
+the probabilities for horse betting is they do it in a way
+adaptively as the bets come in. The more people bet on a horse
+the probability that their odds that they say that
+it's going to win goes up. The odds that they says it's going to
+lose goes down as more people bet on it. And they do it that way, not because that
+they think it's an accurate reflection of whether or not the horse will win, but just to balance the actual
+money coming in and out. So that if that horse wins or loses, they know exactly how much
+they would win or lose. And they can balance it out that way, so they're guaranteed to neither win nor
+lose money. But what's interesting about that is
+over a long period of looking at horses, that aggregate odds that
+winds up from the betting, that winds up being a fairly accurate
+representation of the percentage of times the horse wins,
+which is interesting. That just says that people
+are somehow wise as a collective, and they create an efficient, fair market for gambling by virtue of betting
+correctly in aggregate. And then also you might wonder how
+the casino or how the track makes money. They make money by taking a little
+bit of a fee for every bet. So they are basically guaranteed to win,
+so when the phrase, the house wins, is literally true. It means that the house is
+basically guaranteed to win. They set up the odds so that,
+whether the horse wins or loses, they're monetarily neutral, and
+they take a little money off of each bet. That's an interesting fact. And of course, it's more complicated
+than that because you've got a big complex organization,
+thousands of people running it. So of course it's far more complicated
+than that, but that's the gist of it. So if you want a good risk-free position,
+become a bookie. So next up I'm going to show us how to
+visualize fitting logistic regression curves using a computer experiment. So I look forward to seeing
+you in that lecture.

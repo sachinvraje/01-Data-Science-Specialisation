@@ -1,0 +1,561 @@
+WEBVTT
+
+1
+00:00:02.685 --> 00:00:06.410
+Okay so
+let's actually run some of these fits.
+
+2
+00:00:06.410 --> 00:00:09.970
+Lets first just fit the model that
+doesn't include religion at all.
+
+3
+00:00:09.970 --> 00:00:15.600
+Okay so it's just fertility,
+is a linear regression with agriculture.
+
+4
+00:00:15.600 --> 00:00:18.730
+Now I've already created my plot and
+labeled it G, but
+
+5
+00:00:18.730 --> 00:00:21.990
+I want to save that plot so
+I can keep adding different things to it.
+
+6
+00:00:21.990 --> 00:00:24.680
+So I'm going to assign that to G1.
+
+7
+00:00:24.680 --> 00:00:29.610
+And then I'm going to add to it
+a line that grabs the intercept and
+
+8
+00:00:29.610 --> 00:00:35.620
+the slope from my new fitted,
+from my new fit and then let me plot it.
+
+9
+00:00:35.620 --> 00:00:39.166
+Okay, so there's my fitted line, and
+let me show you my coefficients summaries.
+
+10
+00:00:39.166 --> 00:00:42.409
+So I'm going to do summary of
+my fitted linear aggression and
+
+11
+00:00:42.409 --> 00:00:44.936
+I'm just going to grab
+the coefficient table.
+
+12
+00:00:44.936 --> 00:00:49.334
+So here's my intercept, it hits around 60,
+you can see that right there,
+
+13
+00:00:49.334 --> 00:00:53.080
+and then there's my agriculture
+slope which is about 0.19.
+
+14
+00:00:53.080 --> 00:00:56.780
+Okay, so this just disregards
+the color of the dots.
+
+15
+00:00:56.780 --> 00:00:59.410
+Let's do one now that
+fits two parallel lines.
+
+16
+00:01:01.730 --> 00:01:07.428
+Okay, so now here my fit my
+linear model fit is fertility
+
+17
+00:01:07.428 --> 00:01:12.170
+as agriculture but
+now my Catholic variable.
+
+18
+00:01:12.170 --> 00:01:15.050
+My percent of the province that's
+Catholic that I've binarized.
+
+19
+00:01:15.050 --> 00:01:16.970
+I'm going to include it
+as a factor variable.
+
+20
+00:01:16.970 --> 00:01:21.610
+Because this variable CatholicBin is 01,
+remember back from the dummy variables
+
+21
+00:01:21.610 --> 00:01:24.860
+part of the lecture, I don't actually
+have to have this factor statement.
+
+22
+00:01:24.860 --> 00:01:29.070
+Because coding a variable of 0
+versus 1 treats it as a factor.
+
+23
+00:01:29.070 --> 00:01:32.050
+However I like to always call things
+factor variables and the reason for
+
+24
+00:01:32.050 --> 00:01:37.370
+this is sometimes I have a variable that
+012 for example for a 3 level variable.
+
+25
+00:01:37.370 --> 00:01:39.310
+And if I don't then call that a factor,
+
+26
+00:01:39.310 --> 00:01:42.280
+R is going to treat that
+as a continuous regressor.
+
+27
+00:01:42.280 --> 00:01:47.130
+It's going to say 2 is twice 1,
+even if 2 is just my numeric coding for
+
+28
+00:01:47.130 --> 00:01:51.010
+representing red hair color and
+1 is for brown hair color.
+
+29
+00:01:51.010 --> 00:01:52.070
+Something like that,
+
+30
+00:01:52.070 --> 00:01:57.200
+where 2 really has nothing to do
+with being twice 1 in that case.
+
+31
+00:01:57.200 --> 00:02:00.690
+So I like to get in the habit of
+calling factor variables always
+
+32
+00:02:00.690 --> 00:02:03.270
+factor in my models just so
+I don't make that mistake.
+
+33
+00:02:03.270 --> 00:02:04.670
+Now when you print out your summary,
+
+34
+00:02:04.670 --> 00:02:07.610
+you would hopefully notice that
+there's only one coefficient.
+
+35
+00:02:07.610 --> 00:02:10.530
+And so you would hopefully notice
+that you've made that mistake.
+
+36
+00:02:10.530 --> 00:02:12.620
+But this is an easy way to avoid it.
+
+37
+00:02:12.620 --> 00:02:15.620
+I don't maybe always live
+up to this standard of
+
+38
+00:02:15.620 --> 00:02:18.980
+treating my factor variables
+always with the factor statement.
+
+39
+00:02:18.980 --> 00:02:20.830
+But I try.
+
+40
+00:02:20.830 --> 00:02:21.630
+Okay.
+
+41
+00:02:21.630 --> 00:02:22.890
+So there I fit it.
+
+42
+00:02:22.890 --> 00:02:25.010
+And let's first look at the coefficients.
+
+43
+00:02:27.850 --> 00:02:29.067
+So here's the intercept.
+
+44
+00:02:29.067 --> 00:02:33.743
+Here is the slope and the slope is
+the same regardless of the religion
+
+45
+00:02:33.743 --> 00:02:38.174
+of the province, and then here is
+the change in the intercept for
+
+46
+00:02:38.174 --> 00:02:43.350
+those that are Catholic, for
+those provinces that are Catholic.
+
+47
+00:02:43.350 --> 00:02:44.458
+So let's go ahead and plot these.
+
+48
+00:02:44.458 --> 00:02:49.958
+And what I'm going to do is I'm going to
+copy my old plot that's just the scatter
+
+49
+00:02:49.958 --> 00:02:54.845
+plot and then I'm going to add two
+lines to it, one that is the line for
+
+50
+00:02:54.845 --> 00:03:00.720
+Protestants which is just the intercept
+plus this Agriculture slope.
+
+51
+00:03:00.720 --> 00:03:04.740
+And then I'm going to add
+one that is the line for
+
+52
+00:03:04.740 --> 00:03:06.570
+those provinces that
+are majority Catholic.
+
+53
+00:03:06.570 --> 00:03:11.610
+So my intercept changes by adding the
+first coefficient, which is the intercept
+
+54
+00:03:11.610 --> 00:03:17.000
+and the third coefficient which is this
+7.88, but my slope stays the same.
+
+55
+00:03:17.000 --> 00:03:22.550
+It's just the same slope, so let me put
+that in, and then now let me plot that.
+
+56
+00:03:22.550 --> 00:03:24.480
+And there you see what that looks like.
+
+57
+00:03:24.480 --> 00:03:26.980
+It's two fitted lines, where now I've
+
+58
+00:03:26.980 --> 00:03:31.689
+forced the fits to have different
+intercepts but they have the same slope.
+
+59
+00:03:32.710 --> 00:03:36.240
+Now let's do some lines where they
+have different intercepts and
+
+60
+00:03:36.240 --> 00:03:42.120
+different slopes depending on the percent
+of the province that is Catholic.
+
+61
+00:03:43.790 --> 00:03:46.440
+So this one now, I put an asterisk and
+
+62
+00:03:46.440 --> 00:03:49.850
+I'll describe in a second
+what this asterisk does.
+
+63
+00:03:49.850 --> 00:03:51.840
+So I did the fit.
+
+64
+00:03:51.840 --> 00:03:56.670
+Now I'm going to do the summary(fit)$coef,
+maybe it's not the best practice
+
+65
+00:03:56.670 --> 00:04:00.040
+to keep naming your model fits the same
+exact variable and overwriting it,
+
+66
+00:04:00.040 --> 00:04:01.970
+you probably want to save them.
+
+67
+00:04:01.970 --> 00:04:04.368
+So now look what happens.
+
+68
+00:04:04.368 --> 00:04:08.990
+I have an intercept,
+I have my slope, okay?
+
+69
+00:04:08.990 --> 00:04:14.074
+So this intercept is the intercept for
+mostly Protestant provinces,
+
+70
+00:04:14.074 --> 00:04:18.222
+the slope is the slope for
+mostly Protestant provinces.
+
+71
+00:04:18.222 --> 00:04:24.903
+This 2.86 plus 62,
+that's going to be the intercept for
+
+72
+00:04:24.903 --> 00:04:28.578
+the mostly Catholic provinces.
+
+73
+00:04:28.578 --> 00:04:32.885
+And this slope plus this slope,
+
+74
+00:04:32.885 --> 00:04:37.519
+0.1 basically, plus 0.9.
+
+75
+00:04:37.519 --> 00:04:42.930
+That's going to be the slope for
+the mostly Catholic provinces.
+
+76
+00:04:42.930 --> 00:04:45.480
+Because remember our coefficients added.
+
+77
+00:04:47.130 --> 00:04:51.719
+What happens when you add an asterisks
+in between two variables in R?
+
+78
+00:04:51.719 --> 00:04:54.288
+Is it automatically fits the interaction?
+
+79
+00:04:54.288 --> 00:04:55.834
+So here's my interaction term.
+
+80
+00:04:55.834 --> 00:04:59.677
+Here's my interaction term
+plus all the main effects.
+
+81
+00:04:59.677 --> 00:05:03.486
+And here's the main effect for Catholic,
+here's the main effect for Agriculture and
+
+82
+00:05:03.486 --> 00:05:04.227
+the intercept.
+
+83
+00:05:04.227 --> 00:05:06.883
+I'll show you in a minute how you
+can avoid doing that in R though,
+
+84
+00:05:06.883 --> 00:05:08.640
+you want to be very
+careful with doing that.
+
+85
+00:05:08.640 --> 00:05:11.920
+In general you want to include the main
+effects, if you include the interaction.
+
+86
+00:05:12.930 --> 00:05:16.110
+Okay, so now let's plot those two lines.
+
+87
+00:05:16.110 --> 00:05:21.103
+So, here I'm going to assign
+
+88
+00:05:21.103 --> 00:05:24.930
+my plot to be this original scatter
+plot that I keep overriding.
+
+89
+00:05:24.930 --> 00:05:27.090
+Then I'm going to add two lines to it.
+
+90
+00:05:27.090 --> 00:05:31.685
+The first is the line for
+the mostly Protestant provinces.
+
+91
+00:05:31.685 --> 00:05:34.740
+They're my first coefficient
+is the intercept and
+
+92
+00:05:34.740 --> 00:05:37.160
+my second coefficient is the slope.
+
+93
+00:05:37.160 --> 00:05:44.830
+Now I'm going to add a line that is the
+line for the mostly Catholic provinces.
+
+94
+00:05:44.830 --> 00:05:50.980
+So here, Here is my Intercept.
+
+95
+00:05:50.980 --> 00:05:53.180
+Which is the first coefficient.
+
+96
+00:05:53.180 --> 00:05:55.640
+Right.
+The first coefficient 62 here.
+
+97
+00:05:55.640 --> 00:05:56.840
+Plus the third coefficient.
+
+98
+00:05:56.840 --> 00:05:58.240
+Right.
+The one,
+
+99
+00:05:58.240 --> 00:06:01.160
+this ones that's the Catholic main effect.
+
+100
+00:06:02.260 --> 00:06:04.370
+Okay.
+And then the slope is going to be
+
+101
+00:06:04.370 --> 00:06:05.830
+the second coefficient.
+
+102
+00:06:05.830 --> 00:06:07.689
+Right.
+This one right here.
+
+103
+00:06:07.689 --> 00:06:10.600
+0.96 plus the fourth coefficient,
+
+104
+00:06:10.600 --> 00:06:17.400
+the interaction term that is the slope and
+the province being mostly Catholic.
+
+105
+00:06:17.400 --> 00:06:19.400
+And let me plot it, there you see it.
+
+106
+00:06:20.500 --> 00:06:25.220
+And so now what we have is two different
+intercepts and two different slopes.
+
+107
+00:06:25.220 --> 00:06:27.289
+You can see, of course,
+that these lines are not parallel.
+
+108
+00:06:29.680 --> 00:06:33.100
+And you can see, so
+you might not know which line is which but
+
+109
+00:06:33.100 --> 00:06:35.577
+we can guess from the coefficients right?
+
+110
+00:06:35.577 --> 00:06:39.064
+So all the interaction terms,
+
+111
+00:06:39.064 --> 00:06:43.495
+all the Catholic terms were positive.
+
+112
+00:06:43.495 --> 00:06:48.009
+So this line with the slightly higher
+intercept is going to be the Catholic line
+
+113
+00:06:48.009 --> 00:06:51.957
+and this line for the slighty lower
+intercept is going to be the mostly
+
+114
+00:06:51.957 --> 00:06:54.513
+Protestant, so the salmon colored dots.
+
+115
+00:06:54.513 --> 00:06:57.455
+Okay, now I think you can
+probably see that well for
+
+116
+00:06:57.455 --> 00:07:01.151
+the blue dots it's not clear what
+these two blue dots over here,
+
+117
+00:07:01.151 --> 00:07:05.209
+how they're impacting the fit, so
+we might want to investigate that.
+
+118
+00:07:06.360 --> 00:07:10.790
+But that's for the next lecture
+where we talk about residuals and
+
+119
+00:07:10.790 --> 00:07:12.990
+influence diagnostics and
+that sort of thing.
+
+120
+00:07:12.990 --> 00:07:13.847
+The last thing I want to do.

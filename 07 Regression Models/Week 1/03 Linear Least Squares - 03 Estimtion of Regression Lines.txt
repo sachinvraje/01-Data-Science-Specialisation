@@ -1,0 +1,80 @@
+Hi, and welcome to the least squares
+estimation lecture as part of the regression course in
+the data science specialization. My name is Brian Caffo and the course
+is co-taught by myself, Jeff Leek and Roger Peng and
+run the department of Biostatistics in the Johns Hopkins Bloomberg School
+of Public Health. Consider again,
+when we're looking at the scatter plot of the parent's heights by the child's
+heights from the Galton data. Here remember, the size of
+the circle represents the frequency of that particular x, y combination. We'd like to use the parent's heights
+to explain the child's heights and we're going to do it
+using linear regression. We're going to use our notation that
+we developed in our last lecture. So let's let Y be the ith child's height
+and Xi be the ith's parents height. Now we want to find the best line, where
+we want the line to look like child's height is an intercept, which let's
+label beta nought plus the parent's height times a slope,
+which we're going to label beta one. So beta nought and beta one are parameters that we would
+like to know that we don't know. Well, we need a criteria for
+the term best. We need to figure out what we mean
+by the best line that fits the data. Well, one criteria is the famous
+least squares criteria. And the basic gist of the equation is we
+want to minimize the sum of the squared vertical distances between the data
+points, the height of the data points, the child's heights and the points
+on the line, on the fitted line. And we can write this as summation Yi, the child's heights minus
+beta nought plus beta 1Xi, where that particular parent's heights
+would put them on the fitted line. We'll go through this a lot and
+hopefully, you'll get the hang of it. And then later on at the end of
+the lecture, I'll actually show you the math of how we can come up with the
+solution for those that are interested. Let's talk about what our
+equations mean with a picture. Here's a dataset. What our least squares
+criteria to find the best re, regression line is going to do is,
+it's going to take each point. So for example,
+take this point right here. That's the point x1, y1 and
+this might be the point x2, y2 and this might be the point xn, y,n. It's going to take all these points and
+fit a line through the data. Let's draw our line right here, it's
+going to fit a line through the data and the way it's going to pick this line is,
+it's going to take, for example, our x1, y1 point. It's going to calculate that distance and that distance is y1, the height, that height, minus the point on the line. So this line,
+let's assume has intercept beta nought. So beta nought is the height
+on along the vertical axis has intercept beta nought and
+slope beta one. So that's the line that
+we're interested in, so this point right there is
+beta nought plus beta 1X1. This distance,
+then is subtracting the two. And because that can either be positive or
+negative, it would be negative in this case we square it and then we do that for
+every point on the line and add them up. So, each point on the line
+contributes equally to the error between the line and
+the fitted points. Then we try to minimize that error and that's what the least squares
+criteria is doing for us. So let's discuss what the answer is
+when you perform this model fit. So just to reiterate, we want the line
+y equal to beta nought plus beta 1X. And we're going to fit it through
+a scatter plot of points Xi, Yi, where Yi is the outcome. We put little hats over beta nought and
+beta one to indicate the estimated values. The solution works out to be beta one
+hat is the correlation between Y and X times the standard deviation of Y
+divided by the standard deviation of X. The estimated intercept beta nought hat
+is Y bar minus beta 1 hat times X bar. So let's go through a couple of
+consequences of this being the result. First of all, beta 1 hat has the units of Y divided
+by the units of X, that's it's units. We can see this because the correlation
+is a unitless quantity. Standard deviation of Y
+has the units of Y and standard deviation of
+X has the units of X. So because the line, remember is, so because the slope of a line is
+change in Y divided by change in X, it has to have units of Y
+divided by units of X units. Another important point is that the line
+always passes through the point, X bar, Y bar. We can see that for
+the equation for the intercept. If we rearrange it, we simply get Y bar equals beta
+nought hat plus beta 1 hat X bar. So, if we plug in X bar into our equation
+for our fitted line, we get Y bar out, which means that the line has to
+pass through the point X bar, Y bar. If we reverse the roll of Y and
+X and treat X as the outcome and Y as the predictor, then we simply get the answer that
+the slope of this line is the correlation times the standard deviation of X
+divided by the standard deviation of Y. So you get a different answer, of course,
+when you fit X as the outcome and Y as the predictor than if you fit Y
+as the outcome and X as the predictor. The slope is the same if you
+were to center the data first. In other words, take each Xi and
+subtract off its average, take each Yi and subtract off its average, so that now the
+origin is exactly the mean of the data. And if you were to do regression
+forcing the line through the origin, you get the same answer. I would also note that if you normalize
+the data, don't just center it, but center it and scale it. The slope is exactly the correlation, because the standard deviation
+of the X variable is one. The standard deviation of
+the y variable is one. And so we can see,
+just from the equation for the slope,
+that it will just be correlation.

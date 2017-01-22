@@ -1,0 +1,592 @@
+WEBVTT
+
+1
+00:00:00.260 --> 00:00:04.210
+Hi, and welcome to the lecture on
+some basic notation and background
+
+2
+00:00:04.210 --> 00:00:08.530
+as part of the regression class in
+the Coursera Data Science Specialization.
+
+3
+00:00:09.550 --> 00:00:10.970
+My name is Brian Caffo.
+
+4
+00:00:10.970 --> 00:00:13.620
+I'm a professor in the Department
+of Biostatistics at
+
+5
+00:00:13.620 --> 00:00:16.750
+the Bloomberg School of
+Public Health here at Johns Hopkins.
+
+6
+00:00:16.750 --> 00:00:20.200
+The class is taught with my co-instructors
+and colleagues here, Jeff Leek and
+
+7
+00:00:20.200 --> 00:00:21.680
+Roger Peng.
+
+8
+00:00:21.680 --> 00:00:25.500
+In this lecture, we're just going to
+cover some basic definitions.
+
+9
+00:00:25.500 --> 00:00:29.200
+These are things you probably already saw
+in the prerequisite for this class in
+
+10
+00:00:29.200 --> 00:00:33.970
+a statistical inference, part of the
+Coursera spe, Data Science Specialization.
+
+11
+00:00:33.970 --> 00:00:36.980
+However, because they're so
+fundamental to regression,
+
+12
+00:00:36.980 --> 00:00:39.720
+we're going to cover them again anyway,
+so they're fresh in our minds.
+
+13
+00:00:40.840 --> 00:00:43.610
+I'm going to try and minimize the amount
+of mathematics that's required for
+
+14
+00:00:43.610 --> 00:00:44.880
+this class.
+
+15
+00:00:44.880 --> 00:00:48.590
+However, for those that are interested
+with the appropriate caveats before
+
+16
+00:00:48.590 --> 00:00:51.825
+starting to go through them, I'm
+going to cover some of the mathematics.
+
+17
+00:00:51.825 --> 00:00:55.600
+I'll also have some more advanced lectures
+that I'll put on YouTube and some other
+
+18
+00:00:55.600 --> 00:00:59.100
+outlets for people who are interested in
+the very high level treatment of this.
+
+19
+00:01:00.210 --> 00:01:03.689
+Throughout the lectures, we'll,
+we will neither require calculus nor
+
+20
+00:01:03.689 --> 00:01:05.040
+linear algebra.
+
+21
+00:01:05.040 --> 00:01:07.810
+And when it does get a little
+bit more mathematical,
+
+22
+00:01:07.810 --> 00:01:10.670
+I'll let you know when you can
+skip over those sections, and
+
+23
+00:01:10.670 --> 00:01:14.740
+I'll try to be clear about what
+would be needed for the evaluations.
+
+24
+00:01:14.740 --> 00:01:17.650
+Okay, so let's go over some of
+the important notation relevant for
+
+25
+00:01:17.650 --> 00:01:18.240
+this class.
+
+26
+00:01:19.300 --> 00:01:23.230
+So, the biggest bit of notation that
+you're going to have to get used to index
+
+27
+00:01:23.230 --> 00:01:27.700
+a variable with a set of subscripts
+to denote an ordered collection.
+
+28
+00:01:27.700 --> 00:01:31.840
+So, we might write X1,
+X2 up to Xn to describe n data points.
+
+29
+00:01:33.950 --> 00:01:37.226
+So, as an example,
+consider the data set 1, 2, 5.
+
+30
+00:01:37.226 --> 00:01:43.927
+Then, X1 is 1, X2 is 2, X3 is 5,
+and n in this case is 3.
+
+31
+00:01:46.424 --> 00:01:48.670
+There's nothing in particular
+about the letter X.
+
+32
+00:01:48.670 --> 00:01:53.802
+We could have just as
+easily described Y1 to Yn.
+
+33
+00:01:53.802 --> 00:01:55.957
+The last bit of notation that's important,
+
+34
+00:01:55.957 --> 00:01:59.470
+is we're typically going to use Greek
+letters for things we don't know,
+
+35
+00:01:59.470 --> 00:02:02.775
+population things we don't know,
+such as mu for a population mean.
+
+36
+00:02:03.810 --> 00:02:05.620
+And then we'll use non Greek letters or
+
+37
+00:02:05.620 --> 00:02:08.510
+regular letters to denote
+things that we can observe.
+
+38
+00:02:08.510 --> 00:02:11.130
+So, x-bar is something we can observe.
+
+39
+00:02:11.130 --> 00:02:14.720
+Mu is something we can't observe and
+would like to estimate.
+
+40
+00:02:14.720 --> 00:02:16.730
+So, let's make use of our new notation.
+
+41
+00:02:17.890 --> 00:02:21.140
+Let's try to find the sample
+mean of a data set.
+
+42
+00:02:21.140 --> 00:02:23.040
+Well, we all know what the sample mean is.
+
+43
+00:02:23.040 --> 00:02:27.160
+We take our data, add them up, and
+divide by the number of observations.
+
+44
+00:02:28.240 --> 00:02:31.996
+So, we usually denote a sample mean
+by the, a letter with a bar over it.
+
+45
+00:02:31.996 --> 00:02:34.570
+So, x-bar is the sample mean
+in my collection of X's.
+
+46
+00:02:35.600 --> 00:02:39.360
+So, that's just 1 over n,
+times adding up all the X's.
+
+47
+00:02:39.360 --> 00:02:43.869
+Notationally, we write this as the sum and
+symbol, where we index it from i equal 1
+
+48
+00:02:43.869 --> 00:02:49.050
+to n of the Xis, and this is just simply
+notation for saying, add up all the Xis.
+
+49
+00:02:51.960 --> 00:02:57.190
+Notice, if we subtract a mean
+from every data point,
+
+50
+00:02:58.730 --> 00:03:02.360
+then we wind up with a new
+data set with n observations.
+
+51
+00:03:02.360 --> 00:03:07.470
+However, this new obser,
+this new data set has mean 0.
+
+52
+00:03:07.470 --> 00:03:13.080
+So notationally,
+if I define Xi tilde as each Xi point,
+
+53
+00:03:13.080 --> 00:03:17.590
+subtracting off the mean,
+then this new data set,
+
+54
+00:03:17.590 --> 00:03:21.740
+the Xi tildes, have mean 0.
+
+55
+00:03:21.740 --> 00:03:24.670
+This process is called
+centering the random variables.
+
+56
+00:03:24.670 --> 00:03:29.760
+And you can check it, empirically by
+simply generating a bunch of vectors,
+
+57
+00:03:29.760 --> 00:03:32.610
+subtracting the mean from each
+element of the vector, and
+
+58
+00:03:32.610 --> 00:03:34.380
+taking the mean of the vector.
+
+59
+00:03:34.380 --> 00:03:35.855
+And you'll see that it's always 0.
+
+60
+00:03:37.490 --> 00:03:40.680
+Also, recall from the previous
+lecture that the sample mean
+
+61
+00:03:40.680 --> 00:03:42.820
+Is the least squared solution.
+
+62
+00:03:42.820 --> 00:03:45.110
+So if we want to find the value of mu,
+
+63
+00:03:45.110 --> 00:03:49.470
+that minimizes summation
+Xi minus mu squared.
+
+64
+00:03:49.470 --> 00:03:52.820
+Then that mu works out to be x-bar.
+
+65
+00:03:52.820 --> 00:03:56.380
+Since we talked about means,
+let's talk about variances.
+
+66
+00:03:56.380 --> 00:03:59.000
+The variances is usually
+denoted by s squared.
+
+67
+00:03:59.000 --> 00:04:00.490
+And I give the formula right here.
+
+68
+00:04:01.620 --> 00:04:04.060
+1 over n minus 1, summation.
+
+69
+00:04:04.060 --> 00:04:06.300
+Xi minus x-bar quantity squared.
+
+70
+00:04:07.840 --> 00:04:12.790
+This is nothing other than basically
+the average squared deviation
+
+71
+00:04:12.790 --> 00:04:14.620
+of the observations around the mean.
+
+72
+00:04:16.340 --> 00:04:18.750
+There's a shortcut formula
+which I give over here.
+
+73
+00:04:20.950 --> 00:04:26.200
+The empirical standard deviation is
+simply the square root of the variance.
+
+74
+00:04:26.200 --> 00:04:29.080
+And it's nice to work with
+standard deviations because
+
+75
+00:04:29.080 --> 00:04:33.530
+the variance is expressed in
+whatever units X has squared,
+
+76
+00:04:33.530 --> 00:04:36.820
+whereas the standard deviation is just
+expressed in the normal units of X.
+
+77
+00:04:40.240 --> 00:04:45.500
+Another interesting fact kind of related
+to send, not unlike sendering is scaling,
+
+78
+00:04:46.670 --> 00:04:49.310
+so if we subtract a mean
+off from every observation,
+
+79
+00:04:49.310 --> 00:04:52.140
+we get a resulting data
+set that has mean 0.
+
+80
+00:04:52.140 --> 00:04:55.390
+If we divide every observation
+by the standard deviation,
+
+81
+00:04:55.390 --> 00:04:59.590
+the resulting data set will
+have standard deviation 1.
+
+82
+00:04:59.590 --> 00:05:01.140
+This is called scaling the data.
+
+83
+00:05:03.170 --> 00:05:07.120
+If we take our original data now and
+subtract off x-bar,
+
+84
+00:05:07.120 --> 00:05:12.090
+then take the resulting centered data and
+scale it by s.
+
+85
+00:05:12.090 --> 00:05:15.810
+We get a new data set, let's call them Zi.
+
+86
+00:05:15.810 --> 00:05:22.490
+And these have empirical mean 0 and
+empirical standard deviation 1.
+
+87
+00:05:22.490 --> 00:05:26.280
+This process of centering and then
+scaling is called normalizing the data.
+
+88
+00:05:28.210 --> 00:05:30.610
+So, normalized data are centered at 0 and
+
+89
+00:05:30.610 --> 00:05:34.470
+have units equal to standard
+deviations away from the mean.
+
+90
+00:05:36.530 --> 00:05:41.072
+So as an example, if something has
+a value 2 from normalized data,
+
+91
+00:05:41.072 --> 00:05:46.429
+that means that the data point was 2
+standard deviations larger than the mean.
+
+92
+00:05:46.429 --> 00:05:51.107
+As its name would suggest,
+normalization is an attempt to make
+
+93
+00:05:51.107 --> 00:05:55.004
+otherwise non-comparable
+data sets comparable.
+
+94
+00:05:55.004 --> 00:05:58.314
+Now, let's talk about the most
+central quantity in regression,
+
+95
+00:05:58.314 --> 00:06:01.389
+the empirical covariance and,
+and really the correlation,
+
+96
+00:06:01.389 --> 00:06:03.890
+which is maybe a little
+bit better to think about.
+
+97
+00:06:06.380 --> 00:06:10.640
+So, imagine I have two ve, two vectors,
+x and y, and they're lined up.
+
+98
+00:06:10.640 --> 00:06:15.521
+So X1 might be the BMI for subject 1 and
+Y1 might be the blood pressure for
+
+99
+00:06:15.521 --> 00:06:16.400
+subject 1.
+
+100
+00:06:16.400 --> 00:06:19.622
+And X2 would be the BMI for subject 2.
+
+101
+00:06:19.622 --> 00:06:22.510
+And Y2 would be the blood pressure for
+subject 2, and so on.
+
+102
+00:06:22.510 --> 00:06:24.380
+So, you could meaningfully
+do a scatter plot.
+
+103
+00:06:26.020 --> 00:06:32.300
+Then we just define the covariance between
+X and Y as 1 over n minus 1, summation of
+
+104
+00:06:32.300 --> 00:06:38.190
+the X's, X deviations around their mean,
+times the Y deviations around their mean.
+
+105
+00:06:38.190 --> 00:06:39.630
+I give a shortcut formula over there.
+
+106
+00:06:41.760 --> 00:06:45.330
+The correlation is simply
+the covariance then
+
+107
+00:06:45.330 --> 00:06:48.250
+standardized into a unitless quantity.
+
+108
+00:06:48.250 --> 00:06:50.990
+So, the correlation is
+the covariance of X and
+
+109
+00:06:50.990 --> 00:06:55.060
+Y, which has units,
+basically units of X times units of Y.
+
+110
+00:06:55.060 --> 00:06:58.860
+And then, we divide by a standard
+deviation, standard deviation of X and
+
+111
+00:06:58.860 --> 00:07:01.820
+standard deviation of Y, and
+we get a unit-free quantity.
+
+112
+00:07:03.690 --> 00:07:07.524
+And we'll end our whirlwind tour
+of notation with some basic
+
+113
+00:07:07.524 --> 00:07:09.261
+facts about correlation.
+
+114
+00:07:09.261 --> 00:07:14.472
+So, the correlation has to between,
+be between minus 1 and plus 1.
+
+115
+00:07:14.472 --> 00:07:19.292
+And it's only going to achieve these
+bounds, minus 1 or plus 1, when the X and
+
+116
+00:07:19.292 --> 00:07:22.335
+Y observations fall
+perfectly on a positively or
+
+117
+00:07:22.335 --> 00:07:24.878
+negatively sloped line respectively.
+
+118
+00:07:24.878 --> 00:07:29.324
+In other words, a positive line for
+a correlation of 1 and
+
+119
+00:07:29.324 --> 00:07:32.882
+a negative line for
+a correlation of minus 1.
+
+120
+00:07:32.882 --> 00:07:37.189
+The correlation measures the strength of
+the linear relationship between X and Y,
+
+121
+00:07:37.189 --> 00:07:39.910
+and we'll see it's central
+in linear regression.
+
+122
+00:07:42.160 --> 00:07:45.776
+The stronger, we're,
+we're estimating a stronger relationship
+
+123
+00:07:45.776 --> 00:07:49.930
+the closer the correlation is toward
+the extremes minus 1 or plus 1.
+
+124
+00:07:49.930 --> 00:07:52.800
+And a correlation of 0 implies
+no linear relationship.

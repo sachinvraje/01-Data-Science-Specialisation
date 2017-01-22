@@ -1,0 +1,579 @@
+WEBVTT
+
+1
+00:00:00.700 --> 00:00:04.040
+Let's talk about residual
+variation really quickly before we
+
+2
+00:00:04.040 --> 00:00:05.660
+finish talking about our squared.
+
+3
+00:00:07.650 --> 00:00:11.880
+Residual variation is the variation
+around the regression line.
+
+4
+00:00:13.760 --> 00:00:18.230
+So remember our residuals
+are the vertical distances between
+
+5
+00:00:18.230 --> 00:00:22.700
+the outcomes and
+the fitted regression line.
+
+6
+00:00:24.920 --> 00:00:28.140
+Remember if we include an intercept,
+the residuals have to sum to zero,
+
+7
+00:00:28.140 --> 00:00:30.400
+which means their mean is zero.
+
+8
+00:00:30.400 --> 00:00:32.970
+So if we want to take
+the variance of the residuals,
+
+9
+00:00:32.970 --> 00:00:36.400
+it's just the average of the squares.
+
+10
+00:00:36.400 --> 00:00:39.050
+So the sum of the squared residuals,
+
+11
+00:00:39.050 --> 00:00:41.940
+times one over n,
+is an estimate of sigma squared.
+
+12
+00:00:41.940 --> 00:00:44.620
+The variation around the regression line.
+
+13
+00:00:44.620 --> 00:00:47.410
+The true population variation
+around the regression line.
+
+14
+00:00:48.560 --> 00:00:52.100
+Now most people use n minus two,
+instead of n.
+
+15
+00:00:52.100 --> 00:00:54.330
+So it's not the average squared residual,
+
+16
+00:00:54.330 --> 00:00:57.620
+it's kind of like the average
+squared residual.
+
+17
+00:00:57.620 --> 00:01:00.690
+And, and for large n, the difference
+between one over n minus two, and
+
+18
+00:01:00.690 --> 00:01:02.080
+one over n is irrelevant.
+
+19
+00:01:02.080 --> 00:01:04.620
+But for small n, it can make a difference.
+
+20
+00:01:04.620 --> 00:01:06.641
+The way to think about that is, remember,
+
+21
+00:01:06.641 --> 00:01:09.570
+if we include the intercept
+the residuals have to sum to zero.
+
+22
+00:01:09.570 --> 00:01:11.390
+So, that puts a constraint.
+
+23
+00:01:11.390 --> 00:01:14.220
+If you know n minus one of them,
+then, you know the nth.
+
+24
+00:01:14.220 --> 00:01:17.460
+Well, if you have a line term in there,
+if you have a co-variant in there, then,
+
+25
+00:01:17.460 --> 00:01:19.790
+that puts a second
+constrain on the residuals.
+
+26
+00:01:19.790 --> 00:01:21.470
+So, you lose two degrees of freedom.
+
+27
+00:01:21.470 --> 00:01:24.720
+If you put another regression variable
+in there, you have another constraint,
+
+28
+00:01:24.720 --> 00:01:26.440
+you lose three degrees of freedom.
+
+29
+00:01:26.440 --> 00:01:30.170
+So in that sense it's sort of like saying
+you really don't have n residuals,
+
+30
+00:01:30.170 --> 00:01:31.370
+you have n minus two of them,
+
+31
+00:01:31.370 --> 00:01:35.130
+because if you knew n minus two of them
+you could figure out the last two.
+
+32
+00:01:35.130 --> 00:01:37.170
+And that's why it's one over n minus 2.
+
+33
+00:01:37.170 --> 00:01:42.300
+So let me show you how you can
+grab the residual variation
+
+34
+00:01:42.300 --> 00:01:48.280
+out of your l m fit and
+assign it to a variable.
+
+35
+00:01:48.280 --> 00:01:52.270
+This way if you needed, if you need to
+work with it in an R program you can
+
+36
+00:01:52.270 --> 00:01:55.340
+actually grab the number,
+not just see it on the printout.
+
+37
+00:01:55.340 --> 00:01:59.220
+So here I've defined my y and
+my x, and I've defined my
+
+38
+00:01:59.220 --> 00:02:03.270
+fit as the regression model with y as
+the outcome and x as the predictor.
+
+39
+00:02:03.270 --> 00:02:06.170
+Well if you just do summary of fit and
+you don't do anything else,
+
+40
+00:02:06.170 --> 00:02:10.160
+you just hit return, it'll print out
+the summary of the regression model.
+
+41
+00:02:10.160 --> 00:02:14.960
+Intercepts, slopes, estimated values,
+and so on, and you'll see the residual
+
+42
+00:02:14.960 --> 00:02:18.860
+standard deviation estimate among
+the elements in the printout.
+
+43
+00:02:18.860 --> 00:02:21.730
+However, if you want to grab it as an
+object that you can assign to something,
+
+44
+00:02:21.730 --> 00:02:23.290
+just put dollar sign sigma.
+
+45
+00:02:23.290 --> 00:02:26.210
+Then you can assign sigma
+to any other variable.
+
+46
+00:02:26.210 --> 00:02:29.420
+So if you're using it in
+a program in some other way.
+
+47
+00:02:29.420 --> 00:02:33.240
+This works out in this particular
+example to be 31.84 dollars.
+
+48
+00:02:34.490 --> 00:02:40.250
+So here, let's just confirm that I'm not
+lying to you and that the formula works.
+
+49
+00:02:40.250 --> 00:02:43.860
+So if I do resid fit,
+that grabs the residuals.
+
+50
+00:02:43.860 --> 00:02:45.820
+If I square it, it squares them.
+
+51
+00:02:45.820 --> 00:02:48.550
+If I sum it,
+it adds up the squared values.
+
+52
+00:02:48.550 --> 00:02:53.300
+If I divide by n minus two, it takes
+the average of the unique residuals.
+
+53
+00:02:53.300 --> 00:02:57.430
+And then if I square root it,
+we get 31.84 so I wasn't lying.
+
+54
+00:02:58.530 --> 00:03:02.270
+Now let's go back to this plot where we
+look at the total variability in diamond
+
+55
+00:03:02.270 --> 00:03:03.660
+prices.
+
+56
+00:03:03.660 --> 00:03:07.200
+And then compare what happens to
+the variability when we explain
+
+57
+00:03:07.200 --> 00:03:10.740
+some of that variability
+with a regression line.
+
+58
+00:03:10.740 --> 00:03:14.380
+So the total variability is
+just the deviations of my data.
+
+59
+00:03:14.380 --> 00:03:19.010
+The average squared deviation
+of my data around its mean.
+
+60
+00:03:19.010 --> 00:03:20.250
+Around the center.
+
+61
+00:03:20.250 --> 00:03:23.440
+And just to make things easy,
+let's forget about the denominator and
+
+62
+00:03:23.440 --> 00:03:25.790
+just talk about the sum of
+the squared deviations.
+
+63
+00:03:27.660 --> 00:03:31.590
+We might call the regression variability
+as the component of that variability
+
+64
+00:03:31.590 --> 00:03:34.550
+that then gets explained
+away by the regression line.
+
+65
+00:03:34.550 --> 00:03:38.230
+So we would take the points on
+the regression line, the heights.
+
+66
+00:03:40.170 --> 00:03:44.530
+And that's the variability in the response
+that's simply explained by the regression,
+
+67
+00:03:44.530 --> 00:03:45.810
+by the regression line.
+
+68
+00:03:45.810 --> 00:03:50.000
+Let's take how that,
+how much that deviates around the average.
+
+69
+00:03:50.000 --> 00:03:52.460
+So that's the regression variability.
+
+70
+00:03:52.460 --> 00:03:57.030
+Then everything that's left over is that
+variation around the regression line, and
+
+71
+00:03:57.030 --> 00:03:59.440
+that's the residual variability.
+
+72
+00:03:59.440 --> 00:04:00.740
+And the interesting identity, and
+
+73
+00:04:00.740 --> 00:04:04.850
+it kind of makes sense that this would be
+the case, is that this total variability.
+
+74
+00:04:04.850 --> 00:04:07.970
+The variability in diamond prices
+disregarding everything except for
+
+75
+00:04:07.970 --> 00:04:09.500
+where they're centered at.
+
+76
+00:04:09.500 --> 00:04:11.990
+Is equal to the regression variability,
+
+77
+00:04:11.990 --> 00:04:14.250
+that is the variability
+explained by the model.
+
+78
+00:04:15.300 --> 00:04:16.950
+Plus the residual variability,
+
+79
+00:04:16.950 --> 00:04:19.470
+the variability left over
+not explained by the model.
+
+80
+00:04:23.570 --> 00:04:26.580
+Because the residual variation and
+
+81
+00:04:26.580 --> 00:04:30.070
+the regression model variation
+add up to the total variation.
+
+82
+00:04:30.070 --> 00:04:34.590
+We can define a quantity that represents
+the percentage of the total variation
+
+83
+00:04:34.590 --> 00:04:36.390
+that's represented by the model.
+
+84
+00:04:36.390 --> 00:04:40.650
+Simply take the regression variation and
+divide it by the total variation.
+
+85
+00:04:40.650 --> 00:04:43.040
+That quantity is called R squared.
+
+86
+00:04:43.040 --> 00:04:48.450
+So R squared for our diamond example,
+is the percentage of the variation
+
+87
+00:04:48.450 --> 00:04:52.970
+in diamond price, that is explained by
+the regression relationship with mass.
+
+88
+00:04:54.070 --> 00:04:56.350
+Some facts about R squared
+that you need to keep in mind.
+
+89
+00:04:57.660 --> 00:05:00.590
+Just remind you, R squared is
+the percentage of the variation in
+
+90
+00:05:00.590 --> 00:05:04.720
+the response explained by the linear
+relationship with the predictor.
+
+91
+00:05:04.720 --> 00:05:06.610
+R squared has to be between zero and
+
+92
+00:05:06.610 --> 00:05:12.490
+one because the regression variability and
+the error variability and the sums
+
+93
+00:05:12.490 --> 00:05:16.000
+of the squares add up to the total sums
+of squares, and they're all positive.
+
+94
+00:05:16.000 --> 00:05:19.330
+So that forces our square
+to be between zero and one.
+
+95
+00:05:19.330 --> 00:05:25.070
+If we define R as the sample correlation
+between the predictor and the outcome,
+
+96
+00:05:25.070 --> 00:05:29.260
+then R squared is literally that
+sample correlation R, squared.
+
+97
+00:05:31.380 --> 00:05:34.030
+R squared can be a misleading
+summary of model fit.
+
+98
+00:05:34.030 --> 00:05:37.380
+For example, if you have somewhat
+noisy data and delete all the,
+
+99
+00:05:37.380 --> 00:05:41.210
+a lot of the points in the middle,
+you can get a much higher R squared.
+
+100
+00:05:41.210 --> 00:05:45.360
+Or if you just add arbitrary regression
+variables into a linear model fit,
+
+101
+00:05:45.360 --> 00:05:46.960
+you increase R squared and
+
+102
+00:05:46.960 --> 00:05:52.130
+you de, decrease mean squared error where
+the average squared residual variation.
+
+103
+00:05:52.130 --> 00:05:54.180
+So these things have to
+be taken into a mind,
+
+104
+00:05:54.180 --> 00:05:57.200
+into mind if you're using
+them to assess model fit.
+
+105
+00:05:58.940 --> 00:06:04.290
+Anscombe created a particularly stark
+example of a bunch of data sets with
+
+106
+00:06:04.290 --> 00:06:08.750
+an equivalent R squared, equivalent mean,
+and variances in the x's and the y's.
+
+107
+00:06:08.750 --> 00:06:12.300
+And identical regression relationships,
+but when you look at the scatter clouds,
+
+108
+00:06:12.300 --> 00:06:16.120
+you can see that the fit has very
+different meanings in each of the cases.
+
+109
+00:06:16.120 --> 00:06:21.440
+So, let's look at the outcome from that
+example Anscombe, and see what it shows.
+
+110
+00:06:21.440 --> 00:06:23.760
+And here it is, the four data sets.
+
+111
+00:06:23.760 --> 00:06:28.960
+The first is a nice regression line,
+exactly sort of along the lines
+
+112
+00:06:28.960 --> 00:06:32.660
+of what we think of, when we think of
+just a slightly noisy x y relationship.
+
+113
+00:06:32.660 --> 00:06:36.780
+The second one,
+clearly there's a missing term.
+
+114
+00:06:36.780 --> 00:06:39.740
+In order to address some of
+this curvature in the data.
+
+115
+00:06:41.290 --> 00:06:43.100
+The third one, there's an outlier.
+
+116
+00:06:44.370 --> 00:06:49.470
+And in the fourth one, all the data
+stacked up at one particular location.
+
+117
+00:06:49.470 --> 00:06:51.300
+And then there's one
+point way out at the end.
+
+118
+00:06:51.300 --> 00:06:54.430
+So you could imagine getting this
+if you had the first example and
+
+119
+00:06:54.430 --> 00:06:56.340
+you deleted a lot of
+the points in the middle.
+
+120
+00:06:57.360 --> 00:06:59.800
+So in all these cases you
+have an equivalent R squared.
+
+121
+00:06:59.800 --> 00:07:03.610
+But the summary to the single
+number certainly has thrown out
+
+122
+00:07:03.610 --> 00:07:06.980
+a lot of the important information that
+you get from a simple scatter plot.

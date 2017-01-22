@@ -1,0 +1,619 @@
+WEBVTT
+
+1
+00:00:00.610 --> 00:00:02.570
+So let's demonstrate how this works.
+
+2
+00:00:02.570 --> 00:00:07.471
+So I'm going to do a simulation,
+where I have a 100 observations and
+
+3
+00:00:07.471 --> 00:00:11.732
+I'm going to generate three predictors,
+x, x2, and x3.
+
+4
+00:00:11.732 --> 00:00:13.010
+And they are all just standard normals.
+
+5
+00:00:14.680 --> 00:00:22.110
+And my y is going to be an intercept,
+which I'm setting to 1 + x + x2 + x3.
+
+6
+00:00:22.110 --> 00:00:24.960
+So all my coefficients
+are theoretically 1.
+
+7
+00:00:24.960 --> 00:00:30.722
+So the population model used for
+simulation, they're all 1.
+
+8
+00:00:30.722 --> 00:00:33.300
+And then I'm gonna add some random noise,
+that's the error term.
+
+9
+00:00:34.320 --> 00:00:37.780
+So let me get my residual for y.
+
+10
+00:00:37.780 --> 00:00:39.480
+Having regressed out x2 and x3.
+
+11
+00:00:39.480 --> 00:00:42.690
+And remember, lm, by default,
+contains an intercept.
+
+12
+00:00:44.420 --> 00:00:46.500
+So, resid takes the residual.
+
+13
+00:00:46.500 --> 00:00:47.940
+And then, let's do the same thing for x.
+
+14
+00:00:47.940 --> 00:00:51.380
+And remember, lm takes an intercept.
+
+15
+00:00:51.380 --> 00:00:56.870
+So this is the regression of x with x2 and
+x3, and an intercept removed.
+
+16
+00:00:56.870 --> 00:00:59.700
+And then I'm gonna get
+the regression through the origin
+
+17
+00:01:01.180 --> 00:01:05.130
+estimate with these two residuals.
+
+18
+00:01:05.130 --> 00:01:05.740
+And that's 0.11053.
+
+19
+00:01:05.740 --> 00:01:11.082
+And I can also show this with lm,
+because I can do lm,
+
+20
+00:01:11.082 --> 00:01:16.079
+the residual y is the residual x, but
+I have to take out the intercept.
+
+21
+00:01:18.880 --> 00:01:23.450
+And, let me get the coef, the coefficient,
+should just be the one number now,
+
+22
+00:01:24.510 --> 00:01:28.330
+and show you that it,
+is it exactly the same thing.
+
+23
+00:01:28.330 --> 00:01:32.290
+But now, what I wanted to point out,
+is that this coefficient is the same
+
+24
+00:01:32.290 --> 00:01:39.309
+coefficient as if I regress y on x,
+x2 and x3, and an intercept.
+
+25
+00:01:41.280 --> 00:01:41.820
+There you go.
+
+26
+00:01:41.820 --> 00:01:46.330
+And you see the x term right
+here is exactly the same as
+
+27
+00:01:46.330 --> 00:01:49.090
+the regression through the origin
+estimate with the residuals.
+
+28
+00:01:49.090 --> 00:01:52.550
+So again, that just goes to show
+you the way we interpret, or
+
+29
+00:01:52.550 --> 00:01:57.170
+the way in which linear models
+adjust the regression estimate
+
+30
+00:01:57.170 --> 00:01:58.420
+with respect to the other variable.
+
+31
+00:01:58.420 --> 00:02:02.016
+It's sort of like the effect of the other
+variable has been removed from both
+
+32
+00:02:02.016 --> 00:02:03.601
+the predictor and the response.
+
+33
+00:02:06.860 --> 00:02:10.813
+So let's go through how you interpret
+regression coefficients with respect to
+
+34
+00:02:10.813 --> 00:02:12.270
+the model right now.
+
+35
+00:02:12.270 --> 00:02:13.830
+And then again in the next lecture,
+
+36
+00:02:13.830 --> 00:02:16.149
+we're gonna go over specific
+contextual examples.
+
+37
+00:02:17.600 --> 00:02:21.800
+So, our regression predictor, given
+that our collection of covariants take
+
+38
+00:02:21.800 --> 00:02:28.320
+a specific value, x1 to xp, is just the
+sum of the x's times their coefficients.
+
+39
+00:02:28.320 --> 00:02:30.430
+Right?
+That's our linear model.
+
+40
+00:02:30.430 --> 00:02:33.140
+Well, just think if one of
+those regression coefficients,
+
+41
+00:02:33.140 --> 00:02:37.130
+let's just take in specific,
+the first one, is incremented by 1.
+
+42
+00:02:37.130 --> 00:02:38.720
+Right?
+So, instead of taking the value x1,
+
+43
+00:02:38.720 --> 00:02:40.832
+it takes the value x1 + 1.
+
+44
+00:02:43.000 --> 00:02:45.290
+Well then that's just
+the same equation but
+
+45
+00:02:45.290 --> 00:02:49.496
+that first one is now
+X1 + 1 rather than X1.
+
+46
+00:02:49.496 --> 00:02:54.200
+So if I were to subtract these
+two terms they expective value of
+
+47
+00:02:54.200 --> 00:02:57.380
+the response where the first co efficient
+
+48
+00:02:57.380 --> 00:03:01.400
+takes the value of x1 +1 minus
+the expectant value of the response.
+
+49
+00:03:01.400 --> 00:03:06.240
+Where the collection of coefficients
+are just the x1 to xp values.
+
+50
+00:03:06.240 --> 00:03:08.890
+Then you'll see that that
+works out to be beta1.
+
+51
+00:03:10.810 --> 00:03:16.400
+So, notice all these other x2 to xp
+were held fixed in all my discussion.
+
+52
+00:03:16.400 --> 00:03:18.180
+So x2 to xp were held fixed, and
+
+53
+00:03:18.180 --> 00:03:22.039
+x1 was incremented by one unit,
+whatever the units of x1 is.
+
+54
+00:03:23.520 --> 00:03:26.940
+So the interpretation of
+a multi-variable regression coefficient
+
+55
+00:03:26.940 --> 00:03:30.210
+is it's the expected
+change in the response for
+
+56
+00:03:30.210 --> 00:03:35.880
+a unit change in a regressor but
+holding all the other ones constant.
+
+57
+00:03:35.880 --> 00:03:39.700
+That's the essential part of
+interpreting a multi-variable regression
+
+58
+00:03:39.700 --> 00:03:41.980
+relationship is it's holding
+the other ones constant.
+
+59
+00:03:41.980 --> 00:03:46.450
+And that way it also, the interpretation
+you can think of as being adjusting for
+
+60
+00:03:46.450 --> 00:03:49.820
+the other variables, because we have
+to hold the other variables constant.
+
+61
+00:03:49.820 --> 00:03:50.910
+So again, in the next lecture,
+
+62
+00:03:50.910 --> 00:03:53.440
+we're gonna go over a bunch of
+different contextual examples.
+
+63
+00:03:53.440 --> 00:03:56.470
+But that's the mathematics behind
+the interpretation right there.
+
+64
+00:03:58.460 --> 00:04:01.930
+And then I'm just gonna go right
+now through a laundry list of
+
+65
+00:04:01.930 --> 00:04:05.290
+the basic components of the linear model.
+
+66
+00:04:05.290 --> 00:04:08.160
+Because they're just exactly the same
+as in simple linear regression.
+
+67
+00:04:08.160 --> 00:04:12.430
+And so remember,
+if our linear model is our outcome line,
+
+68
+00:04:12.430 --> 00:04:16.140
+it's just now instead of a simple linear
+regression, it's the sum of a bunch of
+
+69
+00:04:16.140 --> 00:04:20.020
+predictors times their coefficients plus
+an error term, and we're gonna assume that
+
+70
+00:04:20.020 --> 00:04:23.600
+error term is normally distributed,
+we get a bunch of properties.
+
+71
+00:04:23.600 --> 00:04:26.810
+And so we're gonna just ripple
+through these properties and then I
+
+72
+00:04:26.810 --> 00:04:30.470
+think when you go to the examples you'll
+internalize them a little bit better.
+
+73
+00:04:30.470 --> 00:04:33.710
+But these should all be pretty familiar
+cuz they're basically the same as what we
+
+74
+00:04:33.710 --> 00:04:38.390
+did for linear aggression just now we're
+plugging in some more coefficients.
+
+75
+00:04:38.390 --> 00:04:42.720
+So our fitted response for
+example y had any of these specific value,
+
+76
+00:04:42.720 --> 00:04:46.430
+is just plugging the fitted
+coefficients times
+
+77
+00:04:46.430 --> 00:04:50.340
+those specific regressers whether that's
+a new value or one of the observed values.
+
+78
+00:04:51.490 --> 00:04:54.090
+The residuals is just the fitted value Y
+
+79
+00:04:54.090 --> 00:04:56.710
+had being subtracted
+from the observed value.
+
+80
+00:04:56.710 --> 00:04:57.670
+We're trying to minimize.
+
+81
+00:04:57.670 --> 00:04:59.190
+Is the sum of the squared residuals.
+
+82
+00:05:00.590 --> 00:05:04.220
+The variance estimate is just
+the average squared residuals.
+
+83
+00:05:04.220 --> 00:05:07.170
+We're just like, remember,
+in our linear regression case,
+
+84
+00:05:07.170 --> 00:05:09.340
+we divide it by n- 2,
+now we divide by n- p.
+
+85
+00:05:09.340 --> 00:05:15.380
+And that's kind of a technical
+point because if you know
+
+86
+00:05:15.380 --> 00:05:20.500
+n- p of the residuals the last p of
+them due to some linear constraints.
+
+87
+00:05:20.500 --> 00:05:24.730
+So that's why we divide by N- P we don't
+really have N residuals we have SPM,
+
+88
+00:05:24.730 --> 00:05:29.280
+but that's a minor point you can think
+of the residuals variants estimate
+
+89
+00:05:29.280 --> 00:05:33.870
+is nothing other than
+the average square residuals for
+
+90
+00:05:33.870 --> 00:05:39.920
+the most part that N- P
+part not withstanding.
+
+91
+00:05:39.920 --> 00:05:42.300
+A predicted response and
+some new values just,
+
+92
+00:05:42.300 --> 00:05:44.280
+we're plugging them into the linear model.
+
+93
+00:05:44.280 --> 00:05:48.880
+If we have a new x1 to xp,
+we multiply them each by their
+
+94
+00:05:48.880 --> 00:05:52.250
+respective coefficients and add them up
+and that's our new predicted response.
+
+95
+00:05:54.780 --> 00:05:58.930
+Our coefficients have standard errors,
+sigma beta hat, let's say, for
+
+96
+00:05:58.930 --> 00:06:04.800
+sigma beta 1 hat, for beta 1 sigma beta
+2 hat through beta 2 and we can test for
+
+97
+00:06:04.800 --> 00:06:10.170
+whether or not specific coefficients are
+a 0 with a T test because those, the beta
+
+98
+00:06:10.170 --> 00:06:15.050
+hat minus its true value divided by the
+standard error follows the T distribution.
+
+99
+00:06:15.050 --> 00:06:18.340
+So all the things we knew about
+from linear regression carryover
+
+100
+00:06:18.340 --> 00:06:19.539
+to multi variable regression.
+
+101
+00:06:21.890 --> 00:06:26.360
+In addition, predicted responses have
+standard errors and we can calculate
+
+102
+00:06:26.360 --> 00:06:30.740
+prediction and prediction intervals just
+like we did in linear regression again.
+
+103
+00:06:32.460 --> 00:06:34.970
+So again, I'm hoping that none of these.
+
+104
+00:06:34.970 --> 00:06:39.930
+Facts are kinda news to you it's almost
+identical to what we did in simple
+
+105
+00:06:39.930 --> 00:06:42.340
+linear aggression we
+just have more terms now.
+
+106
+00:06:42.340 --> 00:06:46.240
+And remember in linear aggression we
+had two terms, we had an intercept and
+
+107
+00:06:46.240 --> 00:06:48.840
+a covariant now we're just adding
+more covariants potentially.
+
+108
+00:06:48.840 --> 00:06:53.940
+I wanna add this this lecture before
+we move onto some specific examples.
+
+109
+00:06:53.940 --> 00:06:57.010
+I wanna end this lecture
+with just a general
+
+110
+00:06:57.010 --> 00:07:01.590
+discussion of how important linear
+models are to the data scientist.
+
+111
+00:07:03.080 --> 00:07:07.390
+Before you do any machine learning or
+any complex algorithm,
+
+112
+00:07:07.390 --> 00:07:11.790
+linear models should
+be your first attempt.
+
+113
+00:07:11.790 --> 00:07:16.450
+They offer parsimonious and well
+
+114
+00:07:16.450 --> 00:07:21.400
+understood easily describe relationships
+between predictors and response.
+
+115
+00:07:21.400 --> 00:07:26.250
+Now, to be fair some modern
+machine learning algorithms
+
+116
+00:07:26.250 --> 00:07:29.850
+can beat some of the things,
+like the imposed linearity.
+
+117
+00:07:29.850 --> 00:07:33.850
+Nonetheless, linear models should
+always be your starting point.
+
+118
+00:07:35.250 --> 00:07:38.630
+And there's some amazing things you can
+do with linear models that you may not.
+
+119
+00:07:38.630 --> 00:07:41.600
+Just from this first treatment
+of them from this one lecture,
+
+120
+00:07:41.600 --> 00:07:44.810
+think about the things
+that will be possible.
+
+121
+00:07:44.810 --> 00:07:48.750
+For example, you can take a time
+series like a music sound or
+
+122
+00:07:48.750 --> 00:07:53.190
+something like that, and decompose
+it into its harmonics, the so-called
+
+123
+00:07:53.190 --> 00:07:57.750
+discrete Fourier transform can be thought
+of the as the fit from a linear model.
+
+124
+00:07:57.750 --> 00:08:01.590
+You can flexibly fit rather
+complicated functions and curves and
+
+125
+00:08:01.590 --> 00:08:02.920
+things like that using linear models.
+
+126
+00:08:04.140 --> 00:08:07.700
+You can fit factor variables as
+predictors, anova is a special case of
+
+127
+00:08:07.700 --> 00:08:10.450
+linear models, and
+kova is a special case of linear models.
+
+128
+00:08:11.540 --> 00:08:16.150
+You can uncover complex multivariate
+relationships within a response and
+
+129
+00:08:16.150 --> 00:08:18.560
+you can build fairly
+accurate prediction models.

@@ -1,0 +1,233 @@
+Hi, and welcome to our last lecture in
+regression models for data science. Part of our data science specialization. In this lecture, I just hope to motivate you to continue to
+learn regression models and linear models, generalize linear models because of their
+extreme importance for data analysis. and I just wanted to show you a couple of
+things that at least I find interesting of ways in which we can extend and
+even further than maybe we thought. So the first thing that came to my mind
+when thinking about extending linear models was how that we can fit complicated
+functions using regression models. So we've seen a little bit in how to
+do this by adding squared and cubic or polynomial terms into our regression model
+so that we can fit lower order functions. However imagine if you have a complicated
+function like a sine curve or something that looks
+maybe like a sine curve. How would you fit that
+non-parametrically using a linear model? So we might specify our model
+as Y is now equal to f of x plus epsilon where f might
+be a complicated function. Well it turns out that there is
+a pretty easy way to do this and what I'm going to show you
+is a simple first step. There is entire literature
+in how to do this and were just going to go over
+in some of the basics. So, first step would be the use
+something called regression spawns. So we're going to, our model for
+Y = f(X) + epsilon is going to be Y equal to an intercept,
+beta naught, plus a line term called
+a regular slope term, beta1 times X1, but
+then a bunch of terms like this where it's the sum of a bunch
+of terms of x minus a naught point with a little plus
+at the bottom times gamma. And I'll show you in a second
+what these actually mean. So the function with a little plus,
+that just returns the argument if that argument's
+positive and it returns zero otherwise. And these little terms, 1 up to d,
+those are naught points. So what we're going to do
+is we're going to take, imagine a stick that if you break
+it it just created a kink in it. Okay, rather that breaking it apart,
+you create a kink in it. So what we're going to do is imagine
+we want to fit our function. So imagine if our data would
+something like that and we have a stick, and
+want to fit this function. We might break it at
+a couple points like that. So this is the idea. We're going to actually
+mathematically model those breaks. And that's what these little
+plus functions do and so I argue down here that
+if you're interested, you can just prove yourself that
+this function is continuous. It doesn't have split, you can draw this without ever
+lifting up your piece of chalk. Okay? And so, I think the easiest way to show
+this would be to go through an example. And in this example I just simulate
+data that's a sine curve plus noise, and you can see that in
+the blue points on the plot. So what I'm going to do is
+grab a bunch of naughts, so that's a bunch of the break
+points where the line will be continuous but not smooth at those points. So I calculate 20 of those points and I just equally space them along
+the range of data that I've collected. And then I show exactly here
+how to create my naught terms, just executing that function
+that I had on the previous page. You can replicate this function and
+you can see there it's pretty easy. So now I have a matrix
+of these naught terms. And I then create my x matrix by adding an
+intercept term that's just a constant, my slope coefficient term, which is just the
+x by itself, and then these spline terms. Then I just fiddle in your model. Y is this collection of predictors. I took out the intercept because I
+included the intercept in my x matrix. Okay?
+And then I show my fitted plot. And you can see, it looks pretty good,
+it actually fits the sine curve very well. The only thing that's a little bothersome
+is that we know the sine curve that we're trying to fit is likely smooth and
+this is very sharp at these at this naught points. And the way that that happens
+mathematically is the function that we've used is continuous but
+it's not continuously differentiable. If we took the derogative,
+it's the derivative is not continuous. And so we can actually do a pretty
+simple trick and get a continuous derivative of the naught points and
+make them nice and smooth looking, so it doesn't look like we're breaking
+the stick at each one of these points. Instead it looks like we're
+drawing a smooth curve. It's very easy to just add square terms,
+is all we have to do. So now our function is y equals
+beta naught plus beta 1 x, plus we add a square term,
+beta 2 x squared, and then you see we're using our same function
+as before, only we're squaring it. Okay, so instead of having x minus the
+naught points with a little plus symbol, instead of just using that, we're squaring
+it, which just means If the axis is further along than the naught point,
+then return that difference and square it. Okay if it's naught then just return zero. So that's what that function is. I give you the term here and you can see our code is identical with
+the exception of, I'm just squaring the eventuality that our x is further
+along than each of the naught points. And I've added an x squared term. Okay?
+And then now when I fit it, you can see now the curve is nice and
+smooth. And notice all we've done in this
+process is just ordinary regression. So, we fit a pretty complicated function, with just ordinary regression in
+putting a bunch of naught points. Now this is a pretty basic version of
+regression spines or basic version of spines called regression spines and there
+some problems we have to know exactly where the naught points, we have to know
+what where we put the naught points. There's potentially a problem if
+we put too many naught points. There's potentially a problem
+if we put too few naught points. And so there are some solutions for
+that, and in fact i have some notes on
+the next page that cover this. So the first thing I'd like to
+point out in these notes is that, this collection of sine terms,
+it's called a basis. It means it's the collection of
+building blocks for functions and this is just one way to create a set
+of building blocks for functions. There's a lot of other ways and in fact
+we're going to cover another way here in a minute but, this is one of the more
+popular ones, these regressors lines and there's ways you can extend this
+to make them even more useful. But I would just say, people spend a lot
+of time thinking about these things. And there's a lot of different kinds
+of basis that you can look at, and each basis has its strengths and
+weaknesses. Some of the most notable
+bases are the Fourier basis, that we'll talk about a little bit
+in a slide, the wavelet basis and then spline basis like the ones that
+we're just considering there, and there's a lot of different
+kinds of spline basis. Another thing is, if you want to
+fit data that looks like that, you can just have one naught point. If you know where that naught point is
+exactly, you can just have the one naught point, add it in and you can get
+a hockey stick like model out of this. Now, that might be controversial if, you have to know that it's really a hockey
+stick and an abrupt change like that. But if you really know that and you want to do that, you could fit
+a hockey stick model with this approach. There's nothing particular to
+doing these in just linear models. We could do them in generalized linear
+models as well and just specify the regression's in the linear predictor,
+and that's all that it takes. So in addition to showing you how to fit
+non linear functions in linear models, we've basically just showed you how to
+do it in generalized linear models too. So, like I said a very consistent problem
+with this is that we don't know where the naught points are, there's a problem
+of putting in too few, there's a problem of putting in too many so, the modern
+solution to this problem is to put in lots and lots and lots of naught points,
+add a so called regularization term. The rationalization term will penalize
+the coefficients from the spline terms, will penalize larger coefficients, so it keeps the number of
+parameters in check and so that's in more advance topic but if you
+take some more advance linear models or regression modeling classes
+they'll cover that. So anyway, now you have some basics
+to how you could fit an interesting nonlinear function using linear
+models in generalized linear models. And for the time being, you'll have to play around with the naught
+placement and how many naughts you put in. And then I would suggest taking some other
+classes in linear models to extend this. So let's move on to the next example,
+the final example for the class. I wanted to talk about how you can make
+another basis, the Fourier basis and how you could try to model
+harmonics using the Fourier basis. So I thought of this simple exercise. Imagine a scale, a major scale is just
+kind of thing that you've heard of. Do re mi fa so la ti do. Just like that. The standard. That's a octave eight notes and a chord is three notes played together so,
+any play any chord is if you hear someone strum a guitar or play three notes
+in the piano, they're playing a chord. So, I wondered if someone
+play a chord continuously. For well, a little bit of time and
+we had it digitized and recorded and brought in to R. Would R be able to figure out what
+chord it, what the notes were? So that would tell
+exactly what chord it is. All it got was a sound. It couldn't tell us what chord it was. So here, I took this data,
+or I generated the data, but I got the frequencies for
+the various notes off a webpage, and this is the frequencies if you start
+on the middle C key on a piano and go up one octave to the C key again. Okay. So that's probably the, I don't know, maybe the most important
+part of the piano. I don't know. And, so, what I've done is
+that I've taken this notes and then I've created a digitally
+sampled time points. So, here I did,
+the time goes from zero to two. And it and it,
+I'm saying sampled every .001. So let's say it's two seconds. So if two seconds of data,
+and, I created three notes. A C, an E, and a G. I created those notes by just creating
+a sine wave at that frequency. And you could, R doesn't really
+have the capability of doing this, but it's actually pretty
+easy to do in Map Lab. You could,
+if you were to take these frequencies. And save them in a file and
+you know, wave file and play them. It would you know,
+sound like a very digital sound at the right note of that key would
+sound like [SOUND] like that. Okay? And so to build our chord,
+you just add these three notes together. So there I build my cord by adding my c,
+e, and my g notes together. That's a c major chord. And now what I want to know is,
+here I have a chord, and if I could save it as a wave file and
+play it, it would sound like a chord. And what I want to know is,
+can R detect what chord it is? Okay, so what I did, is I created a basis
+that was all the sine functions for every note. So, eight sine functions, okay? And then, I fit a linear model with
+my chord, my chord as an outcome. The sine functions as my predictors,
+and I got rid of the intercept because everything is centered to have means here,
+okay. So let's see what happens
+when I plot the coefficients. So here I've plotted the coefficients and
+I've connected them with a line, and you see that R does it correctly and
+it estimates the c, the e and the g chord as having very
+large coefficients and all the rest of of them are kind of small,
+relatively speaking. So if you were to do this,
+you would be able to guess the chord. Now this only covers the sine part, but there could also be a cosine
+component to the note as well. And so there is an automated way. Let's do a fairly automatic way
+to fit all the possible sins and cosine terms for a you know two
+seconds of digitally sampled music and that's called the discrete
+Fourier transform. All the Discrete Fourier Transform is
+doing is exactly what we're doing here. It's fitting a linear model,
+but it has all, not just the sine terms, but all of the
+cosine terms, but all of the possible ones that that time series will allow at
+the rate at which it's been sampled. So it has a so-called
+completely saturated model. So, it has,
+if you have a thousand time points sample, it has a thousand
+coefficients in the model. And so, the discreet Fourier transform
+really just fits this linear model, it does and kind of interesting way with
+complex numbers and that sort of thing. But that's all that the discrete
+Fourier transform is doing. And so it would fit both the sine
+terms and the cosine terms. But if you were to plot the output
+of the discrete Fourier transform, I'll just show you how
+to do it right here. A is just my FFT of my court, and here I'm plotting because the FFT does
+this calculation with imaginary numbers. I'm just plotting the square
+real components of the magic, of the,
+of the discreet variance transform. And you can see it loads on
+three very specific frequencies. You could back calculate
+what those frequencies are, and those are the frequencies of C,
+E, and G. So the C major chord. So and that's actually a very common thing
+to do in music and sound processing. So if you were to take a sound signal
+a section of a sound signal and do a discrete fourier transform and
+plot the so called spectrum which is what this is, that is what sound
+engineers do all the time. And ultimately underneath the hood
+what they're doing is a linear model with a lot of sin and
+cosine terms in the, as regressors. I should say that the discovery of the
+Discrete Fourier Transform was a larger advance, and that the fact that
+the reason people do the calculation with the Fourier Transform rather than
+the linear model is because there was a discovery by a very famous statistician
+named Tucci who discovered a way to do the Fourier transform very quickly,
+the so-called fast way Fourier transform. That's what everyone uses. It's I think, you can prove, it's about as fast as you can
+take the Fourier transform. It's much faster than doing the linear
+model, and that's why, if you were a sound engineer, you wouldn't think of it as
+a linear model problem, you would think of this as a Fourier transform problem, and
+you would take fast Fourier transforms. So, that's in the end of the class,
+but I hope in this lecture, what you've seen is, one, a case where
+we can fit pretty complicated functions with a couple of lines of code of a couple
+of lines of our code very easily. Secondly, an instance where we can do
+something that maybe at first blush, we would've thought maybe that's not
+really in the scope of what linear models can do in diagnosing what
+are the various notes of a chord. That's something we just wouldn't
+naturally think a linear model could do. We showed that not only are both of those
+things possible with linear models, they're actually kind of easy
+with linear models, it's not reams of code we had to do, there was, you
+know six or seven lines at the most for each of these examples which
+includes generating the data. So that just goes to show how
+powerful these techniques are and so I hope you've enjoyed the class and I especially hope that you take the
+knowledge from this class and build on it. If you were to build on it
+my suggestion would be to learn a little bit more about
+generalizing your models. because we only touched
+on them in this class. And the second thing would be to approach
+correlated data and longitudinal data. Another divergent aspect of linear
+models that's quite important. Everything we've done is
+independent errors and data that were exchangeable at some level. A very important subset is
+when that doesn't happen. If we measure, take measurements, on a large collection of siblings,
+the measurements between the siblings are going to be closer together
+than a different pair of siblings. So handling that correlation
+is a big part of generalizing linear models to a broad
+collection of important topics. So if I were to suggest two ways to go
+further with this stuff, that would be it, generalized linear models, and
+longitudinal multi-level data. So thanks again for taking the class,
+and make sure to look for us, me, Jeff Leak, and
+Roger Pang on Twitter. For any interesting new stuff that's
+coming out of the data science lab here, our data science program. We have some other programs
+coming out along the way. And so, we'll post them all on twitter and
+other social media stuff. If you like what we've done in
+the data science specialization, we've got a lot more coming. So thanks again.

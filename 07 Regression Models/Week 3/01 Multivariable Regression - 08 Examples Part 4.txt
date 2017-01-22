@@ -1,0 +1,81 @@
+Okay so
+let's actually run some of these fits. Lets first just fit the model that
+doesn't include religion at all. Okay so it's just fertility,
+is a linear regression with agriculture. Now I've already created my plot and
+labeled it G, but I want to save that plot so
+I can keep adding different things to it. So I'm going to assign that to G1. And then I'm going to add to it
+a line that grabs the intercept and the slope from my new fitted,
+from my new fit and then let me plot it. Okay, so there's my fitted line, and
+let me show you my coefficients summaries. So I'm going to do summary of
+my fitted linear aggression and I'm just going to grab
+the coefficient table. So here's my intercept, it hits around 60,
+you can see that right there, and then there's my agriculture
+slope which is about 0.19. Okay, so this just disregards
+the color of the dots. Let's do one now that
+fits two parallel lines. Okay, so now here my fit my
+linear model fit is fertility as agriculture but
+now my Catholic variable. My percent of the province that's
+Catholic that I've binarized. I'm going to include it
+as a factor variable. Because this variable CatholicBin is 01,
+remember back from the dummy variables part of the lecture, I don't actually
+have to have this factor statement. Because coding a variable of 0
+versus 1 treats it as a factor. However I like to always call things
+factor variables and the reason for this is sometimes I have a variable that
+012 for example for a 3 level variable. And if I don't then call that a factor, R is going to treat that
+as a continuous regressor. It's going to say 2 is twice 1,
+even if 2 is just my numeric coding for representing red hair color and
+1 is for brown hair color. Something like that, where 2 really has nothing to do
+with being twice 1 in that case. So I like to get in the habit of
+calling factor variables always factor in my models just so
+I don't make that mistake. Now when you print out your summary, you would hopefully notice that
+there's only one coefficient. And so you would hopefully notice
+that you've made that mistake. But this is an easy way to avoid it. I don't maybe always live
+up to this standard of treating my factor variables
+always with the factor statement. But I try. Okay. So there I fit it. And let's first look at the coefficients. So here's the intercept. Here is the slope and the slope is
+the same regardless of the religion of the province, and then here is
+the change in the intercept for those that are Catholic, for
+those provinces that are Catholic. So let's go ahead and plot these. And what I'm going to do is I'm going to
+copy my old plot that's just the scatter plot and then I'm going to add two
+lines to it, one that is the line for Protestants which is just the intercept
+plus this Agriculture slope. And then I'm going to add
+one that is the line for those provinces that
+are majority Catholic. So my intercept changes by adding the
+first coefficient, which is the intercept and the third coefficient which is this
+7.88, but my slope stays the same. It's just the same slope, so let me put
+that in, and then now let me plot that. And there you see what that looks like. It's two fitted lines, where now I've forced the fits to have different
+intercepts but they have the same slope. Now let's do some lines where they
+have different intercepts and different slopes depending on the percent
+of the province that is Catholic. So this one now, I put an asterisk and I'll describe in a second
+what this asterisk does. So I did the fit. Now I'm going to do the summary(fit)$coef,
+maybe it's not the best practice to keep naming your model fits the same
+exact variable and overwriting it, you probably want to save them. So now look what happens. I have an intercept,
+I have my slope, okay? So this intercept is the intercept for
+mostly Protestant provinces, the slope is the slope for
+mostly Protestant provinces. This 2.86 plus 62,
+that's going to be the intercept for the mostly Catholic provinces. And this slope plus this slope, 0.1 basically, plus 0.9. That's going to be the slope for
+the mostly Catholic provinces. Because remember our coefficients added. What happens when you add an asterisks
+in between two variables in R? Is it automatically fits the interaction? So here's my interaction term. Here's my interaction term
+plus all the main effects. And here's the main effect for Catholic,
+here's the main effect for Agriculture and the intercept. I'll show you in a minute how you
+can avoid doing that in R though, you want to be very
+careful with doing that. In general you want to include the main
+effects, if you include the interaction. Okay, so now let's plot those two lines. So, here I'm going to assign my plot to be this original scatter
+plot that I keep overriding. Then I'm going to add two lines to it. The first is the line for
+the mostly Protestant provinces. They're my first coefficient
+is the intercept and my second coefficient is the slope. Now I'm going to add a line that is the
+line for the mostly Catholic provinces. So here, Here is my Intercept. Which is the first coefficient. Right.
+The first coefficient 62 here. Plus the third coefficient. Right.
+The one, this ones that's the Catholic main effect. Okay.
+And then the slope is going to be the second coefficient. Right.
+This one right here. 0.96 plus the fourth coefficient, the interaction term that is the slope and
+the province being mostly Catholic. And let me plot it, there you see it. And so now what we have is two different
+intercepts and two different slopes. You can see, of course,
+that these lines are not parallel. And you can see, so
+you might not know which line is which but we can guess from the coefficients right? So all the interaction terms, all the Catholic terms were positive. So this line with the slightly higher
+intercept is going to be the Catholic line and this line for the slighty lower
+intercept is going to be the mostly Protestant, so the salmon colored dots. Okay, now I think you can
+probably see that well for the blue dots it's not clear what
+these two blue dots over here, how they're impacting the fit, so
+we might want to investigate that. But that's for the next lecture
+where we talk about residuals and influence diagnostics and
+that sort of thing. The last thing I want to do.

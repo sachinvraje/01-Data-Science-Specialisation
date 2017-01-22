@@ -1,0 +1,1456 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:03.590
+Hi and welcome to the lecture
+on generalized linear models.
+
+2
+00:00:03.590 --> 00:00:06.690
+In this lecture we're going to
+change gears quite a bit and
+
+3
+00:00:06.690 --> 00:00:10.140
+switch from linear additive
+response models to
+
+4
+00:00:10.140 --> 00:00:12.850
+the much broader class of
+generalized linear models.
+
+5
+00:00:13.970 --> 00:00:18.720
+These models take care of some instances
+that linear models might struggle with.
+
+6
+00:00:18.720 --> 00:00:21.770
+But maybe at the expense
+of some of the nicety and
+
+7
+00:00:21.770 --> 00:00:27.770
+the mathematical neatness that exists for
+linear models.
+
+8
+00:00:27.770 --> 00:00:31.780
+Before I begin talking about generalized
+linear models, I'd like to review a little
+
+9
+00:00:31.780 --> 00:00:37.530
+bit about linear models and maybe some
+of their benefits and bad tough spots.
+
+10
+00:00:37.530 --> 00:00:43.800
+So to me, the linear model is the single
+most useful applied statistical technique.
+
+11
+00:00:45.240 --> 00:00:47.940
+But again,
+they're not without their limitations.
+
+12
+00:00:47.940 --> 00:00:53.530
+The assumption of additivity is one that
+is kind of hard to apply when you have,
+
+13
+00:00:53.530 --> 00:00:58.090
+for example, binary data, it's weird to
+think of binary data as being additive,
+
+14
+00:00:58.090 --> 00:01:00.749
+the error structure would have to
+be kind of weird in that case.
+
+15
+00:01:02.700 --> 00:01:05.940
+In addition if your data
+is strictly positive,
+
+16
+00:01:05.940 --> 00:01:10.570
+then having additive Gaussian errors
+presents a problem because that
+
+17
+00:01:10.570 --> 00:01:15.590
+allows for
+positive mass on negative values.
+
+18
+00:01:15.590 --> 00:01:20.220
+Now that may not be a problem and I often
+say that it's not a problem to have.
+
+19
+00:01:20.220 --> 00:01:23.530
+Strictly positive data where
+the arrows look out seen and
+
+20
+00:01:23.530 --> 00:01:26.640
+there's just very low probability
+down towards the negative values.
+
+21
+00:01:26.640 --> 00:01:30.340
+That's often okay.
+
+22
+00:01:30.340 --> 00:01:35.151
+But, on the other hand, if the normal
+distribution is putting a lot positive
+
+23
+00:01:35.151 --> 00:01:39.814
+probability on negative values even
+though you know your response has to be
+
+24
+00:01:39.814 --> 00:01:43.088
+positive then that's problematic for
+your model.
+
+25
+00:01:45.671 --> 00:01:48.610
+On the other hand,
+you might try transformation.
+
+26
+00:01:48.610 --> 00:01:51.760
+A common transformation
+when your outcome has
+
+27
+00:01:51.760 --> 00:01:54.880
+to be strictly positive is to
+take the natural log of it.
+
+28
+00:01:54.880 --> 00:01:56.710
+A natural log, in my mind,
+
+29
+00:01:56.710 --> 00:02:00.630
+is perhaps the most interpretable
+transformation possible.
+
+30
+00:02:00.630 --> 00:02:02.420
+Putting that one to the side.
+
+31
+00:02:02.420 --> 00:02:05.510
+Lots of other transformations that
+are available to try to make our data
+
+32
+00:02:05.510 --> 00:02:07.180
+more normal.
+
+33
+00:02:07.180 --> 00:02:10.585
+Such as for binomial data,
+people often will take a so
+
+34
+00:02:10.585 --> 00:02:13.270
+called arc sine square
+root transformation.
+
+35
+00:02:13.270 --> 00:02:16.670
+That often destroys a large
+amount of interpretability
+
+36
+00:02:16.670 --> 00:02:19.450
+of our model coefficients,
+which is a real problem.
+
+37
+00:02:21.050 --> 00:02:24.500
+The log transformation I would
+say is in a class of its own, and
+
+38
+00:02:24.500 --> 00:02:29.730
+in many ways can make
+the coefficients more interpretable.
+
+39
+00:02:29.730 --> 00:02:33.930
+So we'll discuss that in it separately.
+
+40
+00:02:36.740 --> 00:02:41.040
+There's another reason to perhaps
+approach generalized linear models
+
+41
+00:02:41.040 --> 00:02:45.270
+rather than doing a transformation
+of the outcome or to do
+
+42
+00:02:45.270 --> 00:02:50.560
+approximate things with a linear model
+is just nice and pleasant to have.
+
+43
+00:02:50.560 --> 00:02:54.210
+A model on the scale in which the date
+it was recorded without having
+
+44
+00:02:54.210 --> 00:02:59.500
+a transformation and that really honors
+the known assumptions about the data.
+
+45
+00:02:59.500 --> 00:03:04.450
+So, if we have binary data, a model that
+really honors the fact that the data is
+
+46
+00:03:04.450 --> 00:03:09.610
+binary and
+really doesn't require us to transform it.
+
+47
+00:03:09.610 --> 00:03:15.712
+It has a lot of pleasantness to it and
+it makes a lot of internal sense.
+
+48
+00:03:20.712 --> 00:03:23.645
+And then I mentioned
+here on this last point,
+
+49
+00:03:23.645 --> 00:03:27.889
+the natural log transformation
+which is probably the most common
+
+50
+00:03:27.889 --> 00:03:31.840
+transformation is applicable for
+negative or zero values.
+
+51
+00:03:31.840 --> 00:03:35.820
+Now there's some fixes to that, but
+then that then harms some of the nice
+
+52
+00:03:35.820 --> 00:03:40.250
+properties of that transformation, some of
+the really nice interpretable properties.
+
+53
+00:03:40.250 --> 00:03:45.870
+So generalized linear models were from
+a 1972 paper by Nelder and Wedderburn,
+
+54
+00:03:45.870 --> 00:03:52.450
+a kind of famous paper that a few are PhD
+statistician you've for certain read.
+
+55
+00:03:52.450 --> 00:03:56.660
+A generalized linear model
+has three components.
+
+56
+00:03:56.660 --> 00:04:03.090
+First of all, the distribution that
+describes the randomness has to come
+
+57
+00:04:03.090 --> 00:04:06.330
+from a particular family of distributions
+called an exponential family.
+
+58
+00:04:06.330 --> 00:04:10.140
+This is a large family of distributions
+that includes things like the normal and
+
+59
+00:04:10.140 --> 00:04:11.949
+the binomial and the poisson.
+
+60
+00:04:14.650 --> 00:04:17.140
+So that's the random component right,
+
+61
+00:04:17.140 --> 00:04:20.230
+that's the exponential family
+is the random component.
+
+62
+00:04:20.230 --> 00:04:25.460
+Then the systematic component is the so
+called linear predictor.
+
+63
+00:04:25.460 --> 00:04:27.010
+That's the part that we're modeling.
+
+64
+00:04:27.010 --> 00:04:30.710
+And we've done this very much so
+in linear models already.
+
+65
+00:04:30.710 --> 00:04:35.000
+The random component was the errors,
+the systematic component was the linear.
+
+66
+00:04:35.000 --> 00:04:41.520
+Component with the co variance,
+coefficients and
+
+67
+00:04:41.520 --> 00:04:46.700
+then we need some way to connected to and
+the link function it
+
+68
+00:04:46.700 --> 00:04:51.860
+connects some important meaning
+from the exponential family
+
+69
+00:04:51.860 --> 00:04:55.660
+distribution to the linear predictors so
+there's three things we need.
+
+70
+00:04:55.660 --> 00:04:57.420
+We need the distribution.
+
+71
+00:04:57.420 --> 00:05:00.650
+Which is going to be an exponential
+family for generalizing your model.
+
+72
+00:05:00.650 --> 00:05:05.940
+We need the systematic component which
+think of this as the linear predictor,
+
+73
+00:05:05.940 --> 00:05:09.880
+think of this as the set of regression
+code or regression variables and
+
+74
+00:05:09.880 --> 00:05:14.280
+coefficients and then we need
+a link function that links it to.
+
+75
+00:05:14.280 --> 00:05:16.279
+Okay, so let's try an example.
+
+76
+00:05:17.570 --> 00:05:21.780
+And we'll go to our familiar
+example which is linear models.
+
+77
+00:05:21.780 --> 00:05:25.140
+The subject that we've been covering
+the entire class up to this point.
+
+78
+00:05:25.140 --> 00:05:31.417
+So, in this case we are assuming that
+our Y is normal with the mean Mu and
+
+79
+00:05:31.417 --> 00:05:36.490
+this happens to be an exponential
+family distribution and
+
+80
+00:05:36.490 --> 00:05:41.970
+then we're going to define the linear
+predictor, this a to i, okay,
+
+81
+00:05:41.970 --> 00:05:47.770
+to be the collection of co variant axis,
+times their coefficients, beta, okay?
+
+82
+00:05:47.770 --> 00:05:48.940
+And in this case,
+
+83
+00:05:48.940 --> 00:05:51.990
+our link function is just going to
+be the identity link function.
+
+84
+00:05:51.990 --> 00:05:57.100
+It just says that the mu from the normal
+distribution is exactly this collection,
+
+85
+00:05:57.100 --> 00:06:03.380
+this sum of co variants and coefficients.
+
+86
+00:06:03.380 --> 00:06:06.670
+And so this just leads to the same model
+that we've been talking about along.
+
+87
+00:06:06.670 --> 00:06:11.060
+We could just write it again as Y,
+Yi is equal to
+
+88
+00:06:11.060 --> 00:06:15.520
+the Mu component which is summation
+xi beta plus the error component.
+
+89
+00:06:15.520 --> 00:06:18.880
+So, we've simply written out
+the linear model in a separate way.
+
+90
+00:06:18.880 --> 00:06:19.990
+We've talked about.
+
+91
+00:06:19.990 --> 00:06:23.370
+The fact instead of saying,
+the error is normally distributed we say,
+
+92
+00:06:23.370 --> 00:06:27.780
+the why is normally distributed, which is
+a consequence of our other specification.
+
+93
+00:06:27.780 --> 00:06:31.250
+We specify a linear predictor
+kind of separately.
+
+94
+00:06:31.250 --> 00:06:33.170
+Okay.
+And then we just connect
+
+95
+00:06:33.170 --> 00:06:36.160
+the mean from the normal distribution
+to the linear predictor.
+
+96
+00:06:36.160 --> 00:06:39.060
+And you might think this seems
+like a crazy thing to do
+
+97
+00:06:39.060 --> 00:06:42.640
+when just righting it out as
+an additive sum with additive errors.
+
+98
+00:06:42.640 --> 00:06:44.800
+Seems like such an easy thing to do but
+
+99
+00:06:44.800 --> 00:06:50.300
+as we move over to different settings like
+the plus sign and the binomial setting
+
+100
+00:06:50.300 --> 00:06:55.760
+it'll be quite a bit more
+apparent why we're doing this.
+
+101
+00:06:55.760 --> 00:07:00.410
+So let's take in my mind perhaps
+the most useful variation
+
+102
+00:07:00.410 --> 00:07:04.180
+of generalized models logistic regression.
+
+103
+00:07:04.180 --> 00:07:09.840
+So in this setting we have data
+that are zero one so binary.
+
+104
+00:07:09.840 --> 00:07:13.960
+And so it doesn't make a lot of sense to
+assume it come from a normal distribution.
+
+105
+00:07:13.960 --> 00:07:19.030
+So the natural, the only distribution
+available to us for coin flips for
+
+106
+00:07:19.030 --> 00:07:23.750
+zero one outcomes is a so
+called Bernoulli distribution so we're
+
+107
+00:07:23.750 --> 00:07:29.350
+going to assume that our data, our outcome
+Ys, follow a Bernoulli distribution,
+
+108
+00:07:29.350 --> 00:07:35.080
+where the probability of a head, or a so
+called expected value of the y, is mu y.
+
+109
+00:07:35.080 --> 00:07:40.700
+Okay, so we're modeling our data
+as if it's a bunch of coin flips.
+
+110
+00:07:40.700 --> 00:07:45.030
+Only the probability of a head
+may switch from flip to flip,
+
+111
+00:07:45.030 --> 00:07:46.670
+and it's necessarily .5.
+
+112
+00:07:46.670 --> 00:07:49.980
+Okay, so the probability is given
+by this parameter Mu sub i.
+
+113
+00:07:49.980 --> 00:07:53.699
+The linear predictor is still the same.
+
+114
+00:07:53.699 --> 00:08:02.212
+It's just the sum of the covariance
+times the coefficients.
+
+115
+00:08:02.212 --> 00:08:07.503
+Now the link function in this case,
+the most famous and most common one,
+
+116
+00:08:07.503 --> 00:08:12.080
+is the so called logistic link function,
+or the log odds.
+
+117
+00:08:12.080 --> 00:08:16.120
+So in this case the way in which
+we're going to get from the mean from
+
+118
+00:08:16.120 --> 00:08:21.730
+the probability of the head to the linear
+predictor is to take the log of the odds.
+
+119
+00:08:21.730 --> 00:08:26.430
+So the odds are, the probability
+over one minus the probability, so
+
+120
+00:08:26.430 --> 00:08:29.060
+in this case we have written
+it is mu over one minus mu.
+
+121
+00:08:29.060 --> 00:08:31.780
+We're going to take
+the natural logarithm of it.
+
+122
+00:08:33.350 --> 00:08:37.880
+So the logarithm,
+what that basically means,
+
+123
+00:08:37.880 --> 00:08:43.830
+is that we're going to transform our mean,
+our probability of getting ahead.
+
+124
+00:08:43.830 --> 00:08:48.290
+We're going to transform it, and
+then on that transform scale is where
+
+125
+00:08:48.290 --> 00:08:51.328
+the co-variance and their coefficients,
+
+126
+00:08:51.328 --> 00:08:56.170
+the kind of standard part of our
+linear model is going to appear.
+
+127
+00:08:57.940 --> 00:09:01.190
+So notice, we're transforming
+the mean of the distribution.
+
+128
+00:09:01.190 --> 00:09:05.910
+We're not transforming the Ys themselves,
+okay, right?
+
+129
+00:09:05.910 --> 00:09:07.430
+That's a big distinction and
+
+130
+00:09:07.430 --> 00:09:10.130
+that's the neat part of
+generalization in your models.
+
+131
+00:09:10.130 --> 00:09:14.600
+What we're transform, we're assuming that
+the coin has a probability the head,
+
+132
+00:09:14.600 --> 00:09:16.690
+if we're modeling our data, is coin.
+
+133
+00:09:16.690 --> 00:09:21.700
+That coin has a probability of getting a
+head and that probability, if we transform
+
+134
+00:09:21.700 --> 00:09:27.410
+it in a specific way, then, it relates to
+our co-variance and coefficients, okay?
+
+135
+00:09:27.410 --> 00:09:32.880
+So we can go backwards from the log odds
+
+136
+00:09:32.880 --> 00:09:38.810
+to get back to the mean itself, okay?
+
+137
+00:09:38.810 --> 00:09:40.630
+And so the inverse logic,
+
+138
+00:09:40.630 --> 00:09:45.520
+I guess I often call it the X pit,
+though I don't know how standard that is.
+
+139
+00:09:45.520 --> 00:09:50.880
+Is e to the eta i over 1 plus e to the eta
+i, and that gets you back to mu, okay?
+
+140
+00:09:50.880 --> 00:09:56.420
+So going forward, you take log of mu
+over 1 minus mu, that gives us eta.
+
+141
+00:09:56.420 --> 00:10:00.510
+If we take e to the eta over 1 plus e
+to the eta, that gets us back to mu.
+
+142
+00:10:00.510 --> 00:10:01.280
+And by the way,
+
+143
+00:10:01.280 --> 00:10:05.310
+1 minus mu, the probability of the tail,
+is 1 over e to the eta.
+
+144
+00:10:06.430 --> 00:10:11.860
+So we could write out our likelihood
+as the binomial likelihood
+
+145
+00:10:11.860 --> 00:10:13.040
+right there like this.
+
+146
+00:10:13.040 --> 00:10:16.230
+And I think you can see then,
+
+147
+00:10:16.230 --> 00:10:20.900
+it's through this likelihood, like we have
+talked about in our stat inference class,
+
+148
+00:10:20.900 --> 00:10:23.161
+it's through that likelihood
+that we're going to optimize,
+
+149
+00:10:23.161 --> 00:10:27.200
+we're going to maximize that likelihood
+to obtain our parameter estimates.
+
+150
+00:10:27.200 --> 00:10:33.086
+[NOISE] Okay let's go through another
+example Poisson regression or
+
+151
+00:10:33.086 --> 00:10:36.091
+I like to say Poisson regression.
+
+152
+00:10:36.091 --> 00:10:40.030
+I know I'm not pronouncing it correctly
+but I like to say it that way.
+
+153
+00:10:40.030 --> 00:10:44.917
+So assume that Y is Poisson mu i
+where the mu i is the expected value
+
+154
+00:10:44.917 --> 00:10:48.860
+of each of the Poisson random variables.
+
+155
+00:10:48.860 --> 00:10:50.940
+In this case the mu has
+to be larger than zero.
+
+156
+00:10:50.940 --> 00:10:53.580
+So Poisson is extremely useful for
+
+157
+00:10:53.580 --> 00:10:57.350
+modelling count data, or that's really
+what it is for, for modelling counts.
+
+158
+00:10:57.350 --> 00:11:01.210
+So if you have a bunch of positive
+counts that are unbounded, right?
+
+159
+00:11:01.210 --> 00:11:06.261
+So not like binomial counts where they're
+bounded by the number of coin flips
+
+160
+00:11:06.261 --> 00:11:11.170
+we take, Poisson counts are unbounded,
+and so it's a very useful model.
+
+161
+00:11:11.170 --> 00:11:15.300
+Let's suppose you want to count the number
+of people that show up at a bus stop,
+
+162
+00:11:15.300 --> 00:11:19.010
+you don't have an upper limit on that,
+or sure, there is some upper limit, but
+
+163
+00:11:19.010 --> 00:11:25.020
+you don't really know what it is, so
+you might want to model that as Poisson.
+
+164
+00:11:25.020 --> 00:11:30.140
+Our linear predictor is again,
+the same as it was in every case,
+
+165
+00:11:30.140 --> 00:11:35.120
+it's just the sum of the co-variance
+times their coefficients.
+
+166
+00:11:36.200 --> 00:11:38.610
+The link function in this
+case is the log link.
+
+167
+00:11:38.610 --> 00:11:43.420
+The most common link function for
+the Poisson case is the log, the log link.
+
+168
+00:11:43.420 --> 00:11:47.140
+And remember, we go from the mean,
+
+169
+00:11:47.140 --> 00:11:52.050
+mu, to the linear predictor, eta,
+by taking the log of the mean.
+
+170
+00:11:52.050 --> 00:11:56.420
+Okay so again we're not logging the data,
+we're logging the mean
+
+171
+00:11:56.420 --> 00:11:58.820
+from the distribution that
+the data is assumed to come from.
+
+172
+00:11:58.820 --> 00:12:03.730
+And then remember the inverse of
+the natural logarithm is e to that thing.
+
+173
+00:12:03.730 --> 00:12:11.590
+So we can go backwards from eta
+back to mew by taking e to the eta.
+
+174
+00:12:11.590 --> 00:12:16.540
+So, by doing that we can just simply
+write out what our likelihood is,
+
+175
+00:12:16.540 --> 00:12:18.350
+and again the way GLMs work,
+
+176
+00:12:18.350 --> 00:12:21.730
+is they obtain the parameter estimates
+by maximizing the likelihood.
+
+177
+00:12:24.570 --> 00:12:27.260
+So, I give some technical facts here and
+
+178
+00:12:27.260 --> 00:12:32.410
+basically we're just saying that
+the likelihood simplifies quite
+
+179
+00:12:32.410 --> 00:12:36.880
+a bit in all these cases because of the
+particular link function that we've shown.
+
+180
+00:12:36.880 --> 00:12:40.990
+But I want to point out this
+final point here which says that,
+
+181
+00:12:40.990 --> 00:12:49.540
+the maximum likelihood looks like sort of
+an equation that we would want to solve,
+
+182
+00:12:49.540 --> 00:12:54.700
+not unlike least squares.
+
+183
+00:12:54.700 --> 00:12:58.510
+So think way back to our initial
+lectures on least squares.
+
+184
+00:12:58.510 --> 00:13:03.410
+We found our estimates by
+minimizing the sum of the squared
+
+185
+00:13:03.410 --> 00:13:08.210
+vertical distances between
+the fitted line and the outcome.
+
+186
+00:13:08.210 --> 00:13:12.690
+Well if you wanted to opt to minimize that
+
+187
+00:13:12.690 --> 00:13:17.070
+function in a sort of automated way,
+you might take a derivative, so
+
+188
+00:13:17.070 --> 00:13:20.430
+then that function will no longer be
+squared, the two would come down.
+
+189
+00:13:20.430 --> 00:13:24.110
+And so you get to try to find
+the root of that derivative,
+
+190
+00:13:24.110 --> 00:13:26.070
+you just get a linear equation.
+
+191
+00:13:26.070 --> 00:13:31.230
+Well this generalization in generalizing
+your models by solving the likelihood,
+
+192
+00:13:31.230 --> 00:13:34.870
+trying to maximize the likelihood you get
+a very similar equation that you want to
+
+193
+00:13:34.870 --> 00:13:39.300
+set equal to zero and solve that gives you
+your estimate, and I give it right here.
+
+194
+00:13:39.300 --> 00:13:43.840
+And it's basically not very
+similar to the linear model
+
+195
+00:13:43.840 --> 00:13:47.890
+case only there's a set of weights and
+a variance in the denominator,
+
+196
+00:13:47.890 --> 00:13:51.830
+that doesn't go away like it
+does in the least squares case.
+
+197
+00:13:51.830 --> 00:13:54.200
+So again this is not for this class,
+
+198
+00:13:54.200 --> 00:13:57.640
+it's just if you're interested in
+some of the details of the fitting.
+
+199
+00:13:58.680 --> 00:14:03.160
+Basically the point of this slide
+is to say that it's very similar
+
+200
+00:14:03.160 --> 00:14:05.190
+to what's going on in least squares,
+
+201
+00:14:05.190 --> 00:14:10.100
+just how we get to that point
+is a little bit more circuitous.
+
+202
+00:14:10.100 --> 00:14:16.230
+For most people, in most settings, this is
+all going to be very transparent to you.
+
+203
+00:14:16.230 --> 00:14:20.450
+You're going to mostly concern
+yourself with the interpretation
+
+204
+00:14:20.450 --> 00:14:23.560
+of your generalizing of your model, you're
+not going to concern yourself too much
+
+205
+00:14:23.560 --> 00:14:25.910
+with how the specifics of how it was fit.
+
+206
+00:14:28.040 --> 00:14:33.630
+There is an important point I'd like
+to note about generalized linear models
+
+207
+00:14:33.630 --> 00:14:37.270
+especially for the some of the cases like
+the Poisson case and the binomial case.
+
+208
+00:14:38.420 --> 00:14:43.219
+For the linear model, remember we have
+this assumption of a constant variance.
+
+209
+00:14:45.010 --> 00:14:49.970
+However, for the Bernoulli case,
+the variance of a coin flip is p*(1-p),
+
+210
+00:14:49.970 --> 00:14:53.839
+and in the notation we're
+given here it's mu(1- mu).
+
+211
+00:14:53.839 --> 00:14:57.451
+But remember, our mu depends on i,
+so what we're saying is,
+
+212
+00:14:57.451 --> 00:15:02.330
+the variance actually depends on
+which observation you're looking at.
+
+213
+00:15:02.330 --> 00:15:06.070
+Unlike the linear model case where
+the variance is constant across I.
+
+214
+00:15:06.070 --> 00:15:08.710
+Same thing in the Poisson case.
+
+215
+00:15:08.710 --> 00:15:12.700
+Variance of a Poisson is it's mean,
+so in this case,
+
+216
+00:15:12.700 --> 00:15:17.120
+the Poisson has variance
+that differs by I.
+
+217
+00:15:17.120 --> 00:15:19.840
+This is a modeling assumption
+that you can check, right?
+
+218
+00:15:19.840 --> 00:15:24.390
+So if you have Poisson data,
+you can, let's say you have several
+
+219
+00:15:24.390 --> 00:15:27.130
+Poisson observations at the same
+level of co-variance so
+
+220
+00:15:27.130 --> 00:15:28.520
+the mean should be the same.
+
+221
+00:15:28.520 --> 00:15:31.540
+Then the variance of those should
+be roughly equal to the mean.
+
+222
+00:15:31.540 --> 00:15:35.081
+If your data doesn't exhibit that,
+then that's a problem.
+
+223
+00:15:35.081 --> 00:15:39.307
+So this is a highly consistent,
+an important,
+
+224
+00:15:39.307 --> 00:15:44.487
+practical consideration in
+generalized linear models,
+
+225
+00:15:44.487 --> 00:15:49.560
+is that the modeling assumptions
+often put a restriction
+
+226
+00:15:49.560 --> 00:15:54.633
+on a relationship between the mean and
+the variance, and
+
+227
+00:15:54.633 --> 00:16:00.258
+that relationship may not hold
+in your specific data set, so.
+
+228
+00:16:00.258 --> 00:16:01.342
+What can you do?
+
+229
+00:16:01.342 --> 00:16:06.172
+Well there was a way to address this by
+having a more flexible variance model
+
+230
+00:16:06.172 --> 00:16:11.770
+even though you lose some of the
+assumptions of generalized linear models.
+
+231
+00:16:11.770 --> 00:16:17.160
+And these are all standard options and
+are and so all you look at our so
+
+232
+00:16:17.160 --> 00:16:23.870
+called quasi blank options in the family,
+in the distribution.
+
+233
+00:16:23.870 --> 00:16:27.530
+So we're going to go through lots of
+examples, but the point is is that's, so
+
+234
+00:16:27.530 --> 00:16:32.265
+if you see an R that you see that you
+can fit a model that's Poisson, with its
+
+235
+00:16:32.265 --> 00:16:36.210
+GLM function, but then you see there's
+another option called quasi-Poisson.
+
+236
+00:16:36.210 --> 00:16:38.360
+The same thing with binomial.
+
+237
+00:16:38.360 --> 00:16:40.410
+You can see an option where
+you'd fit binomial, but
+
+238
+00:16:40.410 --> 00:16:43.010
+then you see another option
+where it's quasi-binomial.
+
+239
+00:16:43.010 --> 00:16:47.670
+What that's referring to is a slightly
+more flexible variance model
+
+240
+00:16:47.670 --> 00:16:50.910
+in case your data doesn't adhere
+to the GLM variant structure.
+
+241
+00:16:51.980 --> 00:16:52.650
+Okay?
+
+242
+00:16:52.650 --> 00:16:57.300
+And so these are all standard options in
+every statistical language that fits GLMs,
+
+243
+00:16:57.300 --> 00:17:02.460
+also automatically will fit these quasi
+versions of GLMs with a more flexible
+
+244
+00:17:02.460 --> 00:17:09.360
+variant structure, and I give, here I
+actually give the equation that it's
+
+245
+00:17:09.360 --> 00:17:14.990
+trying to solve in order to get the
+fancier more flexible variant structure.
+
+246
+00:17:18.530 --> 00:17:21.810
+So, just some odds and ends about the
+fitting before we go through the specific
+
+247
+00:17:21.810 --> 00:17:25.230
+cases, we're going to do separately the
+Poisson case and the Binomial case, we're
+
+248
+00:17:25.230 --> 00:17:29.480
+not going to go through a full treatment
+of GLMs just Poisson and Binomiali.
+
+249
+00:17:29.480 --> 00:17:34.758
+But these equations have to be solved
+iteratively, so unlike the linear
+
+250
+00:17:34.758 --> 00:17:39.776
+model where you can just do strict
+linear algebra to find solutions,
+
+251
+00:17:39.776 --> 00:17:45.424
+GLMs actually have to be optimized which
+means sometimes the program fails.
+
+252
+00:17:45.424 --> 00:17:50.069
+For example if you have a lot of zeros
+in a binary regression or zeros and
+
+253
+00:17:50.069 --> 00:17:52.290
+ones, these things can happen.
+
+254
+00:17:54.130 --> 00:17:55.870
+But other than that,
+
+255
+00:17:55.870 --> 00:18:00.540
+then I think most of the analysis
+should be pretty familiar to us.
+
+256
+00:18:00.540 --> 00:18:05.380
+If we want to get our predicted response,
+we're just going to take our coefficients,
+
+257
+00:18:05.380 --> 00:18:09.560
+our estimated coefficients beta hat,
+multiply them times our regressors, and
+
+258
+00:18:09.560 --> 00:18:11.850
+that we'll give us our
+predictive response.
+
+259
+00:18:11.850 --> 00:18:16.450
+Now notice this is going to be on the
+logent scale if you're doing, for example,
+
+260
+00:18:16.450 --> 00:18:20.380
+logistic regression, or the log scale
+if you're doing Poisson regression, so
+
+261
+00:18:20.380 --> 00:18:24.160
+you'll have to convert it
+back to the natural scale
+
+262
+00:18:24.160 --> 00:18:27.340
+if you want it to be on the same
+scale as the original data.
+
+263
+00:18:27.340 --> 00:18:30.140
+So if you're modeling coin flips and
+
+264
+00:18:30.140 --> 00:18:35.230
+you get your regression coefficients and
+out and
+
+265
+00:18:35.230 --> 00:18:39.930
+you come up with predicted response
+those will be on the logent scale and
+
+266
+00:18:39.930 --> 00:18:43.790
+if you want them to be back on
+the scale of the coin flip the zero or
+
+267
+00:18:43.790 --> 00:18:47.890
+one between zero or one you're going to
+need to take an inversion logent.
+
+268
+00:18:47.890 --> 00:18:51.735
+And again we're going to go through a lot
+of examples I just want to outline these
+
+269
+00:18:51.735 --> 00:18:53.402
+facts before we do the examples.
+
+270
+00:18:53.402 --> 00:18:56.353
+The coefficients are interpreted
+very similarly to
+
+271
+00:18:56.353 --> 00:19:00.383
+the way that our coefficients were
+interpreted in linear aggression.
+
+272
+00:19:00.383 --> 00:19:04.988
+They are the expected change in the, the
+change in the expected response per unit
+
+273
+00:19:04.988 --> 00:19:09.391
+change in the regressors, holding
+the other regressors constant, the only
+
+274
+00:19:09.391 --> 00:19:14.410
+difference is now, this interpretation is
+done on the scale of the linear predictor.
+
+275
+00:19:14.410 --> 00:19:18.260
+So the binomial cases
+on the scale of logent,
+
+276
+00:19:18.260 --> 00:19:21.830
+on the Poisson case it's on the scale
+of the log mean, and so on.
+
+277
+00:19:21.830 --> 00:19:27.440
+So it's a slightly more complicated
+interpretation, but again,
+
+278
+00:19:27.440 --> 00:19:32.360
+we are gaining the benefit of modeling
+our dot data naturally on its own scale,
+
+279
+00:19:32.360 --> 00:19:35.150
+and we haven't had to
+transform the outcome at all.
+
+280
+00:19:37.830 --> 00:19:42.750
+So the inference, we also lose the nice
+
+281
+00:19:42.750 --> 00:19:46.500
+collection of closed form,
+normal inferences that you get.
+
+282
+00:19:46.500 --> 00:19:50.110
+We don't get t-distributions any more.
+
+283
+00:19:50.110 --> 00:19:52.490
+But largely, this is transparent.
+
+284
+00:19:52.490 --> 00:19:58.420
+There's a body of mathematics where
+statisticians and mathematicians have
+
+285
+00:19:58.420 --> 00:20:02.770
+figured out what the right distributions
+are to compare all the coefficients.
+
+286
+00:20:02.770 --> 00:20:08.310
+And from the output of your GLM too in
+order to get things like p values and
+
+287
+00:20:08.310 --> 00:20:11.560
+all of those are going to be tested or
+hypothesis tested the coefficients
+
+288
+00:20:11.560 --> 00:20:14.880
+are just going to be tested and
+interpreted in the same way as in our
+
+289
+00:20:14.880 --> 00:20:21.490
+linear regression just the background
+that's going on is a little bit harder.
+
+290
+00:20:21.490 --> 00:20:25.420
+One thing I would say though is all of
+these results are based on asymptotics
+
+291
+00:20:25.420 --> 00:20:28.300
+which means that they
+require larger sample sizes.
+
+292
+00:20:28.300 --> 00:20:31.920
+So if you have a GLM setting
+with a very small sample size,
+
+293
+00:20:32.920 --> 00:20:37.850
+then it's possible that things like
+your p values aren't really applicable.
+
+294
+00:20:40.830 --> 00:20:43.860
+And so many of the ideas can
+be brought over from GLMs, so
+
+295
+00:20:43.860 --> 00:20:48.890
+this was just a whirlwind overview
+of GLMs Now for the next two
+
+296
+00:20:48.890 --> 00:20:54.720
+lectures let's just dig in to the two
+most important cases of binomial and
+
+297
+00:20:54.720 --> 00:20:59.450
+Bernoulli regression via logistic
+regression and Poisson regression.
+
+298
+00:20:59.450 --> 00:21:03.670
+So we're going to do spend a lot of
+time with those and then if you want
+
+299
+00:21:03.670 --> 00:21:08.320
+further material on GLMs there's some
+more advanced classes that you can take.
+
+300
+00:21:08.320 --> 00:21:12.608
+Okay, well thank you for attending this
+lecture and I look forward to seeing you
+
+301
+00:21:12.608 --> 00:21:17.099
+in the next one where we're going to cover
+logistic regression for binary outcomes.

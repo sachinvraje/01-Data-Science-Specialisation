@@ -1,0 +1,108 @@
+So remember we're talking about
+outliers and leverage points. This idea of just calling something
+an outlier is actually very vague. And what we're going to try and do in this lecture is make these
+terms a little bit more precise. So just to remind ourselves outliers
+can be the result of real or spurious processes. Obviously if it's a spurious process
+we want to remove that point from our fitted model and
+if it's part of a real process, we don't want to get rid of a point and
+pretend like it never happened. And we talked about last time with
+a picture that outliers can conform to the regression relationship where they can
+not conform to the regression relationship and there's various ways we can poke and
+prod at outliers to ascertain how much influence they have,
+how much potential influence they have. So a fairly complete
+laundry list of default diagnostic measures that
+you have can be done by the R command ?influence.measures and this will give you just a laundry list of potential influence
+measures that you can use. The rstudent in rstandard are just
+different variations of residuals. One of the problems with residuals
+is that they are unit specific. The residuals have the same unit. If our Y is measured in pounds,
+then our residuals are in pounds, okay. So they're not necessarily comparable
+across settings, and you can't for example just set a threshold and
+say here's my residual threshold. What would be nice if you
+wanted to ascertain whether or not something was an outlier it
+would be nice if you could just say, oh if it has a residual bigger
+than four declare it an outlier. That would be something
+like an outlier test. Well we need to have a test or a good
+distribution to compare the residuals to. The rstudent and the rstandard
+are attempts to standardize the residuals. Basically divide by an appropriate
+standard error measure. And there's a slight
+distinction between whether or not they're internally standardized or
+externally standardized which basically amounts to whether or
+not you've deleted the point or not deleted the point when
+calculating the standard error. This has impact to whether or
+not the standardized residual follows a T distribution or not. I don't find a great that'll help in the
+distinction between the standardized and non-standardized residuals, I'm sorry, the internally versus externally
+standardized residuals. I do like to use
+the standardized residuals, because they are on a nicer scale. I tend to look at them with respect
+to the overall cloud of data, rather than try to set strict thresholds. The hat values are another
+useful diagnostic measure. These are merely a measure of influence. So if you think back to our plot,
+if we had a cloud of data. A point that fell kind of
+far away from the X values. That point had high leverage. But that didn't speak whether or not you'd
+actually chose to exert that leverage. Well, leverage is just a measure of that. How, kind of, far outlined it is,
+from the collection of exits. The further it is,
+the more leverage it has. Now, if we just have one X,
+it's easy to visualize that. If we have lots of Xs in a multi-variable
+regression, it's hard to visualize. And then stuff like hatvalues
+become very useful. One way which hatvalues are tremendously
+useful is in finding data entry errors. So you might look through your collection of rows of your data and
+look at the associated hatvalues. One hatvalue per row in your model. And if you see some that
+are extremely large not only would they potentially impact your
+model, but you should look at that row to ascertain whether there
+was a data entry error. And then we get to how do we
+measure things like influence? Actual influence,
+not just the potential for influence. Well almost all of the influence measures
+follow along the following line. Take out that data point,
+refit the model, and then compare to whatever aspect of
+the model you're thinking about what happened between having the data
+point in and having the data point out. So dffits, for every data point,
+sees how much the fitted value at that X value changes depending on
+whether or not that point was included. The dfbetas look specifically
+at the slope coefficients. How much do the slope coefficients change? Whether or not that particular
+data point is included. So for the dffits we get one dffit
+per data point for the dfbetas. We get one, we get a dfbeta for
+every coefficient for every data points. So if we have a model, a linear regression
+model, we have two coefficients, the intercept and then the slope term. So our dfbetas will be a matrix of
+two by the number of datapoints. Cooks.distance is just an overall
+change in our coefficients. It summarizes the dfbetas in a sense. Resid the function resid returns
+the ordinary residuals and then there's a really nice way to get
+the kind of cross validated residuals out. So the idea again is to
+leave out the data point, and then look at the predicted Y
+value at that X value, whether that data point was included in the fit versus
+when it was not included in the fit. That is the so-called PRESS residuals. So the sum of the square press
+residuals is like the leave one out cross validated error. And what's interesting in linear
+regression is you don't actually have to refit the model. For none of these things do you
+actually have to refit the model. There's linear algebra relationships that
+can get exploited so they're very fast. And here, I just show you that if you
+take the residuals and divide by one minus the hat values, you actually
+get these so called PRESS residuals. The PRESS residuals are less specifically
+useful for detecting outliers and determining influence then they are for
+ascertaining things like module fit, okay? But I just put it here
+because it's related. So let me just give a couple of words
+about how I used these things before we then go into some computer experiments. So the first thing is I'm not a big fan of
+simple rules like thresholding rules maybe if you have giant data sets and automated
+systems you need to get involved in that. But for me if you're kind of
+digging deep into a data analysis, you really want to not think of these in
+terms of simple thresholding rules for declaring things an outlier. You want to kind of take
+a more wholistic approach. Look at the collective residuals
+relative to the other residuals. Look at the collection of path values
+relative to the other path values. And some of the measures, some of these diagnostic measures
+don't have meaningful absolute scales. And they might depend for example even standardized versions
+might depend on the sample size. An important aspect of all these measures
+is that they probe your data to look at lack of influence, and whether or not
+something is an outlier in separate ways. So you want to really think of them as
+diagnostics in the same way a physicians thinks of diagnostics, sort of poking and
+prodding at your data to try and figure out if there's any problem. So in residual plots, the main residual plot
+that everyone does always, is to plot the residuals
+verses the fitted values. In these residual plots, we're just
+looking for any systematic pattern. If there's any systematic
+pattern in your residual plot, that's evidence of some kind of lack of
+fit, and we'll go through some examples. Another plot from the collection plots
+I'd shown before is the residual QQ plot that's trying to
+look ascertain normality, the plot of the leverage values is again,
+we've talked about leverage values, this is just ascertaining that are there
+any points that have high leverage. Then you want to go look at
+those rows of data specifically, maybe there were data entry errors. And then the influence measures
+get to the bottom line. If I remove this datapoint,
+how much does it impact the fitted model, the coefficients, and so on? Okay? So let's just go through some
+examples of using these things and I think you'll get the hang of it and
+from this, you can read on these and other influence measures to incorporate
+them in your data analysis.

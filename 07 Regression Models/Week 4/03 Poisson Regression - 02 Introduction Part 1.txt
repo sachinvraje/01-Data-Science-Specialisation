@@ -1,0 +1,148 @@
+Hi, and
+welcome to our second to the last lecture. This lecture is on Poisson GLNs, and
+I should give some credit to Jeff Leek who I got much of this content from,
+from an earlier version of this class. So modeling count data arises
+quite frequently in applications. For example, the number of calls to
+a call center, the number of flu cases. And in each of these cases, the counts
+are unbounded in the sense of well, there might be some
+theoretical bounded account, the total number of people in the world or
+whatever. However, we don't really know what that
+is or that number is really large, relative to the count
+that we're looking at. So in addition to count, data can come
+in the form of rates or proportions, such as the percentage of people passing
+a test, or in terms of rates, think about the number of cases or something
+like that, that occur over a unit of time. My favorite example is from a nuclear pump
+failure experiment where we're looking at the number of instances that nuclear
+pumps failure, per, failed per unit time. So that would be a rate. A very common rate that occurs in
+bio statistics and public health. Where I work in is, the so
+called incidence rate, which is the number of newly developed
+cases per person time at risk. Okay so
+all of these are instances of counts and rates and proportions are also
+you can think of as counts. Both because the numerator is a count and whatever you're dividing by either the
+percent time at risk or the total time or the total sample or the number of
+trials or something like that. That's a second number that we're going
+to show you how to deal with as well when looking at the numerator,
+the count part, okay? And all of these can be
+handled with Poisson GLMs. So the Poisson Distribution is
+a useful model for counts and rates. And again a rate is a count
+per some monitoring time. So, often incidence rates and web traffic and all these other things
+are modeled by Poisson distributions. A very common use of the Poisson
+distribution is approximating binomial probabilities where the success
+probability is very small and the end is very large, so you can think of that as an
+instance of the sort of approximated and unbounded count,
+even though the actual count is bounded. And then an application that I like quite
+a bit is so called Contingency Table data. So if you have an instance where
+you just counted the number of occurrences of a different
+collection of variables. So if took a random sample of people and
+I counted the number of people that had blonde hair, brown hair and
+black hair and I cross tabulated that with the number of people who had
+blue eyes, brown eyes and hazel eyes. Okay that table of counts is
+called a contingency table and Poisson models are very useful for
+modeling contingency table data. They give a very elegant framework for
+doing that. I give the Poisson mass function here and
+so the rate of counts per unit time is
+lambda, whereas t is the total time. If x is a plus on with this mean,
+then its expected value is t times lambda. So the expected value is plus sign
+Is that's is the t times lambda. So our natural estimate of the rate would
+be the count over the total time okay? So x over t and it's nice to know in
+this case that the expected value of x over t the expected value of our
+rate estimate is exactly lambda. The rate that we would like the estimate. So, that's the useful property
+associated with the Poisson. The variance is equal to the mean,
+so the variance is e lambda. So that's the assumption of our
+model that we can check and we have some potential
+solutions of it's doesn't hold. And another interesting fact is
+the Poisson tends to a normal as the mean gets large. So you can think of this in several ways. All that has to happen is for
+t lambda to get large. This could occur if t is fixed and lambda gets large, if lambda is fixed and
+t gets large, or both of them get large. And in a lot of different
+applications the way in which the mean gets large could vary but
+as long as it gets large in some sense then the Poisson is going to
+approximate a normal distribution. And here I show you this via simulation. I simulate three different collections
+of Poisson random variables as the mean of the Poisson distribution
+gets larger and larger and you can see by the right most
+panel that it's nearly identical to a normal distribution at that point. And then,
+we can actually show that we don't, if this isn't the appropriate class the fact
+to show the mathematics that the meaning of variants are equal theoretically so,
+a way could do that by simulation and I do that here where I right, are not,
+I'm sorry this is an access simulation. We're actually try to show
+it using the density and summing up the density in the right way. So if you're interested try that
+experiment and it will prove to you that the meaning of variance or equal,
+try it for bunch of different scenarios. Or you could just believe me or
+you could take for example mathematical biostatistics boot camp one or
+two are my other course or classes. Where we cover how to do
+the actual mathematics for this. So as an example,
+let's look at Jeff Leek, his web traffic. So this is his website, www.biostat, or I'm sorry, biostat.jhsph.edu/~jleek. And the place I mean in this case is the
+interpretive a number of web hits per day. So our unit our time in this
+case is T equal to one. Now for the one to interpret the length
+that we estimate as web hits per hour we would have to put the T equal 24. So I hope you understand that and if you want it to have it to be seconds
+you need to put a T equal 24 times or minutes it would have to be T
+equal 24 times 60 and so on. Let's look at the data I show here how you can download it and
+I convert the date from a standard character date
+time format to a Julian date. Julian date counts the number of days
+since January 1st 1970 I believe. So the Julian date is nice to think
+about because it's just a count. It's the number of days whereas
+the date is kind of a complicated format because it's characters. So when you do the head of the date here, you see the date which
+is in character format. You see the number of visits,
+and he is not doing so well. These early dates with 0
+visits on all those dates. The number of visits that originate from
+simply statistics and the julian date. So here's a plot of the data set. The Julian date is on the x axis and
+the number of visits is on the y axis. Now, we've covered in the last
+lecture what linear regression, some of the shortfalls of linear
+regression is try to model count data or in that case, binary data. So let's not just re-hatch that same
+topic, there are some issues with modelling count data as if it was
+with a linear model directly. However, as we saw a couple of slides ago,
+as the mean of the counts gets larger and larger are concerned over
+this decreases quite a bit simply because it's going to
+trend to a normal distribution. So, if you have extremely large counts,
+this becomes a lot less objectionable. So, that's just for notation number of
+heads, NH is going to be our outcome JD, is the Julian day, that's going to be
+our predictor and this would be a linear regression model, we can plot it and
+see the fitted line that we would get. It has some issues. Clearly there's some curvature there, maybe we should have put
+an x squared term in. But that would be our first
+approach to this, and honestly it wouldn't be that bad. But the counts are kind of small, so
+it's not the best thing in the world. The interpretation isn't great for
+linear models, then we'll see some ways which
+in the next couple of slides, how we can tweak linear models to maybe
+get a slightly better interpretation. I think that of counts in web hits and things like that as things that you would
+want to think about on a relative scale and the linear model really treats
+it on a linear additive scale. So let's think about how we could get relative interpretations
+from our linear model. The first thing we might try is
+taking the log of the outcome, here I knew the natural log. And this would be our model,
+log of NH is the linear regression model. B0 + B1(JDi) + ei. Now let me speak a little bit about
+log and what it's accomplishing. The quantity e to the expected
+value of the log of a random variable is what I would call
+the population geometric mean. And the reason I would call it the
+population geometric mean is the empirical or just geometric mean is
+the product of a sample, product Yi,
+raised to the one over n power. So this the way to think about this,
+the product of yi to the one over n power. If we take a log of that,
+we get the arithmatic mean, the ordinary mean of the log data. So the geometric mean
+is just exponentiating the arithmatic mean of the log data. And we know that if we collect a lot
+of data, a lot more data in our sample, the arithmetic mean will
+converge to something. So the geometric mean
+is what this quantity, the product of the data, rays to the one
+over nth power, what it converges to. So, what, it turns out,
+when you take the log of the natural log of the outcome in a linear
+regression then, your exponentiated coefficients are interpretable
+with respect to geometric means. So, for example, E to the Beta of zero is
+the estimated geometric mean hits on day zero and I should reiterate the point
+from earlier on in the class. This intercept doesn't mean that much
+because January first 1970 is not a date that we care about in
+terms of number of web hits. So probably to make the intercept more
+interpretable, what we should have done is subtracted off the earliest date that we
+saw and started counting days from there. From all of the remaining
+days in our data set and then the intercept would be the e to
+the inner estimated intercept would be the geometric mean hits on
+the first day of this data set. Okay.
+So that's a small point but it doesn't change the fitted model. It doesn't change the slope or anything
+like that to shift around the intercept however nonetheless, if you want
+an interpretable intercept as we know from earlier on in the class,
+you have to do something like that. E to the beta1 on the other hand is
+the estimated relative increase or decrease in the geometric
+mean hits per day, okay? So the increase per day. So I should also mention
+there's a problem with logs. If you have zero counts you have to do
+something because you can't take the log of zero, so you need to add a constant. A very common constant that is plus one. So we do log of the outcome plus one. So if we do that, here I fit the linear
+model to the log of the outcome plus one versus the Julian date. We get the intercept which is kind of
+irrelevant in this case as we talked about before. And then we get 1.002. This is on the exponentiated scale. Okay so what that means is our model is estimating
+a 0.2% increase in web traffic per day. Okay? And that's a nice interpretation. If you added other
+covariates then that would be 0.02% increase per day holding
+the other covariates fixed.

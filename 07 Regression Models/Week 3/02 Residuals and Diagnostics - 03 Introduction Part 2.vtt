@@ -1,0 +1,652 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:04.280
+So remember we're talking about
+outliers and leverage points.
+
+2
+00:00:04.280 --> 00:00:07.976
+This idea of just calling something
+an outlier is actually very vague.
+
+3
+00:00:07.976 --> 00:00:09.900
+And what we're going to try and
+
+4
+00:00:09.900 --> 00:00:13.550
+do in this lecture is make these
+terms a little bit more precise.
+
+5
+00:00:13.550 --> 00:00:17.390
+So just to remind ourselves outliers
+can be the result of real or
+
+6
+00:00:17.390 --> 00:00:18.800
+spurious processes.
+
+7
+00:00:18.800 --> 00:00:24.050
+Obviously if it's a spurious process
+we want to remove that point from our
+
+8
+00:00:24.050 --> 00:00:26.440
+fitted model and
+if it's part of a real process,
+
+9
+00:00:26.440 --> 00:00:30.150
+we don't want to get rid of a point and
+pretend like it never happened.
+
+10
+00:00:31.360 --> 00:00:35.294
+And we talked about last time with
+a picture that outliers can conform to
+
+11
+00:00:35.294 --> 00:00:40.150
+the regression relationship where they can
+not conform to the regression relationship
+
+12
+00:00:40.150 --> 00:00:44.479
+and there's various ways we can poke and
+prod at outliers to ascertain how much
+
+13
+00:00:44.479 --> 00:00:48.046
+influence they have,
+how much potential influence they have.
+
+14
+00:00:48.046 --> 00:00:52.988
+So a fairly complete
+laundry list of default
+
+15
+00:00:52.988 --> 00:00:58.064
+diagnostic measures that
+you have can be done
+
+16
+00:00:58.064 --> 00:01:03.008
+by the R command ?influence.measures and
+
+17
+00:01:03.008 --> 00:01:07.414
+this will give you just a laundry list of
+
+18
+00:01:07.414 --> 00:01:12.909
+potential influence
+measures that you can use.
+
+19
+00:01:12.909 --> 00:01:20.840
+The rstudent in rstandard are just
+different variations of residuals.
+
+20
+00:01:20.840 --> 00:01:26.860
+One of the problems with residuals
+is that they are unit specific.
+
+21
+00:01:26.860 --> 00:01:28.470
+The residuals have the same unit.
+
+22
+00:01:28.470 --> 00:01:33.996
+If our Y is measured in pounds,
+then our residuals are in pounds, okay.
+
+23
+00:01:33.996 --> 00:01:37.558
+So they're not necessarily comparable
+across settings, and you can't for
+
+24
+00:01:37.558 --> 00:01:40.749
+example just set a threshold and
+say here's my residual threshold.
+
+25
+00:01:42.450 --> 00:01:46.110
+What would be nice if you
+wanted to ascertain whether or
+
+26
+00:01:46.110 --> 00:01:48.950
+not something was an outlier it
+would be nice if you could just say,
+
+27
+00:01:48.950 --> 00:01:52.010
+oh if it has a residual bigger
+than four declare it an outlier.
+
+28
+00:01:52.010 --> 00:01:54.280
+That would be something
+like an outlier test.
+
+29
+00:01:54.280 --> 00:01:59.450
+Well we need to have a test or a good
+distribution to compare the residuals to.
+
+30
+00:01:59.450 --> 00:02:04.380
+The rstudent and the rstandard
+are attempts to standardize the residuals.
+
+31
+00:02:04.380 --> 00:02:08.750
+Basically divide by an appropriate
+standard error measure.
+
+32
+00:02:08.750 --> 00:02:11.070
+And there's a slight
+distinction between whether or
+
+33
+00:02:11.070 --> 00:02:14.870
+not they're internally standardized or
+externally standardized which
+
+34
+00:02:14.870 --> 00:02:17.900
+basically amounts to whether or
+not you've deleted the point or
+
+35
+00:02:17.900 --> 00:02:21.550
+not deleted the point when
+calculating the standard error.
+
+36
+00:02:21.550 --> 00:02:27.030
+This has impact to whether or
+not the standardized residual
+
+37
+00:02:27.030 --> 00:02:33.010
+follows a T distribution or not.
+
+38
+00:02:33.010 --> 00:02:37.665
+I don't find a great that'll help in the
+distinction between the standardized and
+
+39
+00:02:37.665 --> 00:02:40.760
+non-standardized residuals, I'm sorry,
+
+40
+00:02:40.760 --> 00:02:43.350
+the internally versus externally
+standardized residuals.
+
+41
+00:02:43.350 --> 00:02:45.685
+I do like to use
+the standardized residuals,
+
+42
+00:02:45.685 --> 00:02:47.780
+because they are on a nicer scale.
+
+43
+00:02:47.780 --> 00:02:51.180
+I tend to look at them with respect
+to the overall cloud of data,
+
+44
+00:02:51.180 --> 00:02:53.550
+rather than try to set strict thresholds.
+
+45
+00:02:55.820 --> 00:02:59.910
+The hat values are another
+useful diagnostic measure.
+
+46
+00:02:59.910 --> 00:03:01.710
+These are merely a measure of influence.
+
+47
+00:03:01.710 --> 00:03:05.340
+So if you think back to our plot,
+if we had a cloud of data.
+
+48
+00:03:05.340 --> 00:03:08.400
+A point that fell kind of
+far away from the X values.
+
+49
+00:03:08.400 --> 00:03:10.260
+That point had high leverage.
+
+50
+00:03:10.260 --> 00:03:14.430
+But that didn't speak whether or not you'd
+actually chose to exert that leverage.
+
+51
+00:03:14.430 --> 00:03:16.840
+Well, leverage is just a measure of that.
+
+52
+00:03:16.840 --> 00:03:20.680
+How, kind of, far outlined it is,
+from the collection of exits.
+
+53
+00:03:20.680 --> 00:03:23.090
+The further it is,
+the more leverage it has.
+
+54
+00:03:23.090 --> 00:03:26.260
+Now, if we just have one X,
+it's easy to visualize that.
+
+55
+00:03:26.260 --> 00:03:31.600
+If we have lots of Xs in a multi-variable
+regression, it's hard to visualize.
+
+56
+00:03:31.600 --> 00:03:35.570
+And then stuff like hatvalues
+become very useful.
+
+57
+00:03:35.570 --> 00:03:42.010
+One way which hatvalues are tremendously
+useful is in finding data entry errors.
+
+58
+00:03:42.010 --> 00:03:44.470
+So you might look through your collection
+
+59
+00:03:46.030 --> 00:03:50.480
+of rows of your data and
+look at the associated hatvalues.
+
+60
+00:03:50.480 --> 00:03:53.310
+One hatvalue per row in your model.
+
+61
+00:03:53.310 --> 00:03:56.940
+And if you see some that
+are extremely large not
+
+62
+00:03:56.940 --> 00:04:01.300
+only would they potentially impact your
+model, but you should look at that row to
+
+63
+00:04:01.300 --> 00:04:06.200
+ascertain whether there
+was a data entry error.
+
+64
+00:04:06.200 --> 00:04:10.800
+And then we get to how do we
+measure things like influence?
+
+65
+00:04:10.800 --> 00:04:13.630
+Actual influence,
+not just the potential for influence.
+
+66
+00:04:13.630 --> 00:04:18.320
+Well almost all of the influence measures
+follow along the following line.
+
+67
+00:04:18.320 --> 00:04:22.540
+Take out that data point,
+refit the model, and
+
+68
+00:04:22.540 --> 00:04:25.860
+then compare to whatever aspect of
+the model you're thinking about
+
+69
+00:04:25.860 --> 00:04:30.520
+what happened between having the data
+point in and having the data point out.
+
+70
+00:04:30.520 --> 00:04:35.860
+So dffits, for every data point,
+sees how much the fitted value
+
+71
+00:04:35.860 --> 00:04:41.340
+at that X value changes depending on
+whether or not that point was included.
+
+72
+00:04:41.340 --> 00:04:44.650
+The dfbetas look specifically
+at the slope coefficients.
+
+73
+00:04:44.650 --> 00:04:47.170
+How much do the slope coefficients change?
+
+74
+00:04:47.170 --> 00:04:50.690
+Whether or not that particular
+data point is included.
+
+75
+00:04:50.690 --> 00:04:55.750
+So for the dffits we get one dffit
+per data point for the dfbetas.
+
+76
+00:04:55.750 --> 00:05:02.070
+We get one, we get a dfbeta for
+every coefficient for every data points.
+
+77
+00:05:02.070 --> 00:05:05.810
+So if we have a model, a linear regression
+model, we have two coefficients,
+
+78
+00:05:05.810 --> 00:05:09.170
+the intercept and then the slope term.
+
+79
+00:05:09.170 --> 00:05:13.380
+So our dfbetas will be a matrix of
+two by the number of datapoints.
+
+80
+00:05:13.380 --> 00:05:18.509
+Cooks.distance is just an overall
+change in our coefficients.
+
+81
+00:05:19.570 --> 00:05:22.330
+It summarizes the dfbetas in a sense.
+
+82
+00:05:24.010 --> 00:05:28.410
+Resid the function resid returns
+the ordinary residuals and
+
+83
+00:05:28.410 --> 00:05:35.369
+then there's a really nice way to get
+the kind of cross validated residuals out.
+
+84
+00:05:36.600 --> 00:05:43.080
+So the idea again is to
+leave out the data point,
+
+85
+00:05:43.080 --> 00:05:49.040
+and then look at the predicted Y
+value at that X value, whether that
+
+86
+00:05:49.040 --> 00:05:54.020
+data point was included in the fit versus
+when it was not included in the fit.
+
+87
+00:05:54.020 --> 00:05:56.269
+That is the so-called PRESS residuals.
+
+88
+00:05:57.650 --> 00:06:02.410
+So the sum of the square press
+residuals is like the leave
+
+89
+00:06:02.410 --> 00:06:05.020
+one out cross validated error.
+
+90
+00:06:05.020 --> 00:06:07.920
+And what's interesting in linear
+regression is you don't actually have to
+
+91
+00:06:07.920 --> 00:06:08.960
+refit the model.
+
+92
+00:06:08.960 --> 00:06:12.080
+For none of these things do you
+actually have to refit the model.
+
+93
+00:06:12.080 --> 00:06:16.780
+There's linear algebra relationships that
+can get exploited so they're very fast.
+
+94
+00:06:16.780 --> 00:06:20.960
+And here, I just show you that if you
+take the residuals and divide by one
+
+95
+00:06:20.960 --> 00:06:24.340
+minus the hat values, you actually
+get these so called PRESS residuals.
+
+96
+00:06:25.930 --> 00:06:32.230
+The PRESS residuals are less specifically
+useful for detecting outliers and
+
+97
+00:06:32.230 --> 00:06:37.570
+determining influence then they are for
+ascertaining things like module fit, okay?
+
+98
+00:06:37.570 --> 00:06:39.790
+But I just put it here
+because it's related.
+
+99
+00:06:41.980 --> 00:06:46.230
+So let me just give a couple of words
+about how I used these things before we
+
+100
+00:06:46.230 --> 00:06:48.880
+then go into some computer experiments.
+
+101
+00:06:48.880 --> 00:06:53.770
+So the first thing is I'm not a big fan of
+simple rules like thresholding rules maybe
+
+102
+00:06:53.770 --> 00:06:57.750
+if you have giant data sets and automated
+systems you need to get involved in that.
+
+103
+00:06:57.750 --> 00:07:01.450
+But for me if you're kind of
+digging deep into a data analysis,
+
+104
+00:07:01.450 --> 00:07:06.450
+you really want to not think of these in
+terms of simple thresholding rules for
+
+105
+00:07:06.450 --> 00:07:07.880
+declaring things an outlier.
+
+106
+00:07:07.880 --> 00:07:11.390
+You want to kind of take
+a more wholistic approach.
+
+107
+00:07:12.520 --> 00:07:15.920
+Look at the collective residuals
+relative to the other residuals.
+
+108
+00:07:15.920 --> 00:07:19.900
+Look at the collection of path values
+relative to the other path values.
+
+109
+00:07:19.900 --> 00:07:20.850
+And some of the measures,
+
+110
+00:07:20.850 --> 00:07:24.560
+some of these diagnostic measures
+don't have meaningful absolute scales.
+
+111
+00:07:26.050 --> 00:07:27.850
+And they might depend for
+
+112
+00:07:27.850 --> 00:07:31.769
+example even standardized versions
+might depend on the sample size.
+
+113
+00:07:33.880 --> 00:07:38.110
+An important aspect of all these measures
+is that they probe your data to look at
+
+114
+00:07:38.110 --> 00:07:43.780
+lack of influence, and whether or not
+something is an outlier in separate ways.
+
+115
+00:07:43.780 --> 00:07:48.280
+So you want to really think of them as
+diagnostics in the same way a physicians
+
+116
+00:07:48.280 --> 00:07:52.000
+thinks of diagnostics, sort of poking and
+prodding at your data to try and
+
+117
+00:07:52.000 --> 00:07:53.779
+figure out if there's any problem.
+
+118
+00:07:55.030 --> 00:07:58.730
+So in residual plots,
+
+119
+00:07:58.730 --> 00:08:03.320
+the main residual plot
+that everyone does always,
+
+120
+00:08:03.320 --> 00:08:07.530
+is to plot the residuals
+verses the fitted values.
+
+121
+00:08:07.530 --> 00:08:11.450
+In these residual plots, we're just
+looking for any systematic pattern.
+
+122
+00:08:11.450 --> 00:08:15.266
+If there's any systematic
+pattern in your residual plot,
+
+123
+00:08:15.266 --> 00:08:20.625
+that's evidence of some kind of lack of
+fit, and we'll go through some examples.
+
+124
+00:08:20.625 --> 00:08:25.594
+Another plot from the collection plots
+I'd shown before is the residual
+
+125
+00:08:25.594 --> 00:08:29.262
+QQ plot that's trying to
+look ascertain normality,
+
+126
+00:08:29.262 --> 00:08:34.802
+the plot of the leverage values is again,
+we've talked about leverage values,
+
+127
+00:08:34.802 --> 00:08:40.190
+this is just ascertaining that are there
+any points that have high leverage.
+
+128
+00:08:40.190 --> 00:08:43.070
+Then you want to go look at
+those rows of data specifically,
+
+129
+00:08:43.070 --> 00:08:45.280
+maybe there were data entry errors.
+
+130
+00:08:45.280 --> 00:08:48.870
+And then the influence measures
+get to the bottom line.
+
+131
+00:08:48.870 --> 00:08:52.570
+If I remove this datapoint,
+how much does it impact the fitted model,
+
+132
+00:08:52.570 --> 00:08:54.320
+the coefficients, and so on?
+
+133
+00:08:54.320 --> 00:08:54.850
+Okay?
+
+134
+00:08:54.850 --> 00:08:57.510
+So let's just go through some
+examples of using these things and
+
+135
+00:08:57.510 --> 00:09:00.430
+I think you'll get the hang of it and
+from this, you can read on these and
+
+136
+00:09:00.430 --> 00:09:04.450
+other influence measures to incorporate
+them in your data analysis.

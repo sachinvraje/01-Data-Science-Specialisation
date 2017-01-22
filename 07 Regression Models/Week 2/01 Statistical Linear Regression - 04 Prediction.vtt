@@ -1,0 +1,722 @@
+WEBVTT
+
+1
+00:00:00.685 --> 00:00:04.871
+Also, I'd like to remind everyone
+that we can get a prediction for
+
+2
+00:00:04.871 --> 00:00:07.785
+Y by taking beta not hat
+plus beta nought hat and
+
+3
+00:00:07.785 --> 00:00:10.884
+multiplying it by the X
+that we want to predict at.
+
+4
+00:00:10.884 --> 00:00:14.193
+Now if we plug in the observed X's,
+then we get the fitted values.
+
+5
+00:00:14.193 --> 00:00:17.946
+The ones who were trying to make as close
+as possible to the observed data, but
+
+6
+00:00:17.946 --> 00:00:21.148
+that doesn't mean that we can only
+predict at the fitted values.
+
+7
+00:00:21.148 --> 00:00:25.223
+We can predict at any value of X,
+we'd like to plug into the equation.
+
+8
+00:00:25.223 --> 00:00:29.310
+However, we're going to have more
+reasonable predictions if the value of
+
+9
+00:00:29.310 --> 00:00:33.734
+x that we plugin is in the cloud of data
+that we're, we used to build the model.
+
+10
+00:00:33.734 --> 00:00:36.161
+Later on,
+we'll also talk about how to account for
+
+11
+00:00:36.161 --> 00:00:38.763
+that kind of uncertainty
+with prediction intervals.
+
+12
+00:00:38.763 --> 00:00:42.352
+But for the time being, let's just
+talk about how we get a prediction.
+
+13
+00:00:42.352 --> 00:00:46.235
+And in the next couple slides, we'll
+go through an example of interpreting
+
+14
+00:00:46.235 --> 00:00:48.481
+the intercept, interpreting the slope and
+
+15
+00:00:48.481 --> 00:00:52.200
+generating predictions from a specific
+regression model and setting.
+
+16
+00:00:52.200 --> 00:00:54.273
+All right.
+Let's go through some code now
+
+17
+00:00:54.273 --> 00:00:56.795
+to interpret our regression
+coefficients and
+
+18
+00:00:56.795 --> 00:01:00.554
+show you running of the regression
+coefficient sort of in real time.
+
+19
+00:01:00.554 --> 00:01:04.803
+The dataset is the diamond
+dataset from the UsingR package.
+
+20
+00:01:04.803 --> 00:01:09.607
+The data is diamond prices in Singapore
+dollars and diamond weight in carats,
+
+21
+00:01:09.607 --> 00:01:12.394
+which is a standard
+measure of diamond mass.
+
+22
+00:01:12.394 --> 00:01:17.038
+To get the data,
+you need to start out by using
+
+23
+00:01:17.038 --> 00:01:21.563
+library UsingR to get
+the UsingR package and
+
+24
+00:01:21.563 --> 00:01:27.063
+data diamond and then we want,
+I want to do ggplot2,
+
+25
+00:01:27.063 --> 00:01:31.241
+because I'm going to do a ggplot first.
+
+26
+00:01:31.241 --> 00:01:37.351
+So here,
+let me go through my ggplot commands.
+
+27
+00:01:37.351 --> 00:01:44.863
+So, I would like to assign to the variable
+g my ggplot, the dataset is diamond.
+
+28
+00:01:44.863 --> 00:01:50.262
+My aesthetic has the horizontal
+axis variable as carat and
+
+29
+00:01:50.262 --> 00:01:53.246
+the y-axis variable as price.
+
+30
+00:01:53.246 --> 00:01:58.892
+I'd like to label, I'd like to get
+in the practice of labeling my axes,
+
+31
+00:01:58.892 --> 00:02:03.440
+so my plot, I add a layer where
+the xlab isM ass and carats.
+
+32
+00:02:03.440 --> 00:02:10.356
+And where the y label, ylab is pr,
+price in Singapore dollars.
+
+33
+00:02:10.356 --> 00:02:15.294
+So let me run those, [SOUND] let me
+run those lines and then I'd like to
+
+34
+00:02:15.294 --> 00:02:20.407
+add the points, I'd like to add
+the points of the black background and
+
+35
+00:02:20.407 --> 00:02:23.785
+then a,
+a light alpha blending color on top and
+
+36
+00:02:23.785 --> 00:02:27.188
+then it quite easy to
+add the regression line.
+
+37
+00:02:27.188 --> 00:02:32.010
+So, I'm going to add a layer that
+is geom_smooth and method equals,
+
+38
+00:02:32.010 --> 00:02:35.401
+method equals lm will
+add the regression line.
+
+39
+00:02:35.401 --> 00:02:37.310
+And if you omit any arguments,
+
+40
+00:02:37.310 --> 00:02:41.717
+it's just going to assume the regression
+line with y's the outcome and
+
+41
+00:02:41.717 --> 00:02:46.063
+x is the predictor and that I want my
+regression line color to be black.
+
+42
+00:02:46.063 --> 00:02:50.753
+So let me run that line and
+then call my plot.
+
+43
+00:02:50.753 --> 00:02:55.546
+[SOUND] There's my plot,
+you can see on my x-axis,
+
+44
+00:02:55.546 --> 00:02:59.346
+I have mass, on my y-axis I have price.
+
+45
+00:02:59.346 --> 00:03:04.725
+And now what I'm plotting is the fitted
+line, the line that minimizes the sum
+
+46
+00:03:04.725 --> 00:03:09.715
+of the squared vertical distances
+between these points and the lines.
+
+47
+00:03:09.715 --> 00:03:14.281
+Now let's actually go through and
+get our fitted line.
+
+48
+00:03:14.281 --> 00:03:19.916
+Just to remind us, the function lm
+is r is linear model procedure,
+
+49
+00:03:19.916 --> 00:03:23.754
+so it includes regression
+as a special case.
+
+50
+00:03:23.754 --> 00:03:28.144
+Y on the left-hand side of our
+tilde is the outcome price,
+
+51
+00:03:28.144 --> 00:03:32.994
+then tilde, think of that as sort
+of the equal sign in the model.
+
+52
+00:03:32.994 --> 00:03:36.315
+Our x variable carat.
+
+53
+00:03:36.315 --> 00:03:39.029
+By default, lm includes an intercept.
+
+54
+00:03:39.029 --> 00:03:44.052
+So, if you don't want an intercept, you
+have to explicitly force it in the model.
+
+55
+00:03:44.052 --> 00:03:44.930
+Then the comma,
+
+56
+00:03:44.930 --> 00:03:48.585
+we want the dataset that we're
+looking at to be the diamond dataset.
+
+57
+00:03:48.585 --> 00:03:51.147
+So, in other words,
+we have to give it the data frame.
+
+58
+00:03:51.147 --> 00:03:56.286
+Otherwise, it looks in the regular r
+environment for variables in the model and
+
+59
+00:03:56.286 --> 00:03:59.979
+we're going to assign that to,
+to the variable named fit.
+
+60
+00:03:59.979 --> 00:04:05.281
+So let's see what that output
+looks like after we run it.
+
+61
+00:04:05.281 --> 00:04:07.569
+So there I've run the model and
+
+62
+00:04:07.569 --> 00:04:11.708
+now I'm going to type fit just
+to see what it prints out.
+
+63
+00:04:11.708 --> 00:04:15.703
+It basically just prints out
+the coefficients beta nought and beta one.
+
+64
+00:04:15.703 --> 00:04:20.866
+I would note that you can get
+a much more detailed printout
+
+65
+00:04:20.866 --> 00:04:25.815
+by doing summary of the outputted
+variable from the l,
+
+66
+00:04:25.815 --> 00:04:30.239
+lm fit and
+you get this more elaborate printout.
+
+67
+00:04:30.239 --> 00:04:34.344
+And we're going to go through and detail
+all of the numbers on this printout,
+
+68
+00:04:34.344 --> 00:04:36.953
+you'll be able to interpret
+everything on this
+
+69
+00:04:36.953 --> 00:04:39.186
+printout at some point after the class.
+
+70
+00:04:39.186 --> 00:04:41.914
+But for the time being,
+lets just talk about the coefficients.
+
+71
+00:04:41.914 --> 00:04:47.195
+If you just want to grab the coefficients
+as a vector, lets do coef fit and
+
+72
+00:04:47.195 --> 00:04:53.356
+then we get the intercept and labels it as
+Intercept and the regression variable for
+
+73
+00:04:53.356 --> 00:04:57.684
+the carat, the slope for
+the carat regression variable.
+
+74
+00:04:57.684 --> 00:05:02.701
+So let's look at this 3,721 variable and
+try to interpret it.
+
+75
+00:05:02.701 --> 00:05:08.138
+It's saying that we have
+an expected 3,721 Singapore dollar
+
+76
+00:05:08.138 --> 00:05:13.584
+increase in price for every carat
+increase in mass of the diamond.
+
+77
+00:05:13.584 --> 00:05:18.684
+The intercept, negative 259 is
+the expected price of a 0 carat diamond.
+
+78
+00:05:18.684 --> 00:05:21.678
+So not very interested, interesting,
+
+79
+00:05:21.678 --> 00:05:25.821
+because we're not interested
+in zero carat diamonds.
+
+80
+00:05:25.821 --> 00:05:28.796
+Now let's mean center our x variable, so
+
+81
+00:05:28.796 --> 00:05:32.621
+that the intercept is on
+a more interpretable scale.
+
+82
+00:05:32.621 --> 00:05:37.880
+The first thing I'd like to do is
+assign it to a different variable,
+
+83
+00:05:37.880 --> 00:05:43.714
+fit2 instead of fit, because I don't
+want to overwrite the original fit.
+
+84
+00:05:43.714 --> 00:05:46.245
+Lm is again, my linear model procedure.
+
+85
+00:05:46.245 --> 00:05:48.279
+My outcome stays the same and
+
+86
+00:05:48.279 --> 00:05:52.358
+now I want to main center my
+predictor variable, carat.
+
+87
+00:05:52.358 --> 00:05:55.794
+So carat minus mean carat.
+
+88
+00:05:55.794 --> 00:06:02.031
+If you want to do arithmetic operations
+inside equation statements in lm,
+
+89
+00:06:02.031 --> 00:06:06.684
+you actually have to surround
+them by this I function and
+
+90
+00:06:06.684 --> 00:06:11.444
+then we still want our dataset
+to be the diamond dataset.
+
+91
+00:06:11.444 --> 00:06:16.106
+So let's run that code.
+
+92
+00:06:16.106 --> 00:06:22.008
+[NOISE] So, I've run fit2 [NOISE] and
+
+93
+00:06:22.008 --> 00:06:27.324
+there are my new coefficients.
+
+94
+00:06:27.324 --> 00:06:31.266
+Notice of course,
+the slope stays the same,
+
+95
+00:06:31.266 --> 00:06:36.052
+3,721, but
+my intercept has changed to 500.
+
+96
+00:06:36.052 --> 00:06:42.127
+So $500, Singapore dollars is the expected
+price of the average sized diamond.
+
+97
+00:06:42.127 --> 00:06:47.106
+In this case,
+the average diamond is about 0.2 carats.
+
+98
+00:06:47.106 --> 00:06:49.950
+A one carat increase is
+actually kind of big.
+
+99
+00:06:49.950 --> 00:06:53.271
+What about changing the units
+to one-tenth of a carat?
+
+100
+00:06:53.271 --> 00:06:56.743
+We can do this just by dividing
+the coefficient by ten.
+
+101
+00:06:56.743 --> 00:07:01.251
+So we know that we would expect to
+see a $372 increase in price for
+
+102
+00:07:01.251 --> 00:07:05.377
+every one-tenth of a carat
+increase in the mass of a diamond.
+
+103
+00:07:05.377 --> 00:07:09.937
+But let's actually show in
+r how this works, as well.
+
+104
+00:07:09.937 --> 00:07:14.674
+Here I am, now assigning to the ver,
+to the variable fit3.
+
+105
+00:07:14.674 --> 00:07:19.570
+The linear model fit,
+where now instead of putting in carat,
+
+106
+00:07:19.570 --> 00:07:22.312
+I'm putting in carat times 10.
+
+107
+00:07:22.312 --> 00:07:29.255
+So the units of this new
+variable is one-tenth of a carat.
+
+108
+00:07:29.255 --> 00:07:33.717
+The data is of course,
+still the diamond dataset.
+
+109
+00:07:33.717 --> 00:07:41.255
+So let me run that and
+then let me find the coefficient.
+
+110
+00:07:41.255 --> 00:07:44.439
+And you get, of course,
+
+111
+00:07:44.439 --> 00:07:50.362
+that it is now 372 rather than 3,721.
+
+112
+00:07:50.362 --> 00:07:54.654
+So, imagine if someone came to you
+with three new diamonds that they had.
+
+113
+00:07:54.654 --> 00:07:59.487
+0.16 carats, 0.27 carats and 0.35 carats,
+
+114
+00:07:59.487 --> 00:08:03.734
+so here they are right here and
+let me assign those.
+
+115
+00:08:03.734 --> 00:08:08.971
+And they wanted to know what you
+would estimate the price would be.
+
+116
+00:08:08.971 --> 00:08:14.350
+Well, you could do it manually by grabbing
+the two coefficients in multiplying
+
+117
+00:08:14.350 --> 00:08:19.581
+the intercept or adding the intercept
+plus the slope times these new values.
+
+118
+00:08:19.581 --> 00:08:20.531
+Let's do that.
+
+119
+00:08:20.531 --> 00:08:27.227
+And so you would predict 336, 745 and
+$1,006 for these three diamonds,
+
+120
+00:08:27.227 --> 00:08:32.068
+respectively based on your
+fitted linear regression model.
+
+121
+00:08:32.068 --> 00:08:36.824
+Which by the way, from the scatter
+plot seems to fit pretty well.
+
+122
+00:08:36.824 --> 00:08:40.904
+Often, you don't want to do even that much
+coding, you want to more general method,
+
+123
+00:08:40.904 --> 00:08:43.609
+especially when you get lots
+of regression variables.
+
+124
+00:08:43.609 --> 00:08:47.756
+So there's this general method called
+predict that will take the output from
+
+125
+00:08:47.756 --> 00:08:49.935
+several different kinds of model fits.
+
+126
+00:08:49.935 --> 00:08:54.691
+Linear models are one example, but predict
+is a generic function, you know, or, and
+
+127
+00:08:54.691 --> 00:08:57.642
+it applies to several
+different prediction models.
+
+128
+00:08:57.642 --> 00:09:00.959
+So we predict from
+the output of our lm fit and
+
+129
+00:09:00.959 --> 00:09:05.004
+then you need to give it some
+new data to predict that.
+
+130
+00:09:05.004 --> 00:09:12.287
+So new data is a data.frame that has the
+new values of x for the carat variable.
+
+131
+00:09:12.287 --> 00:09:17.765
+Then when we do that, what you'll see is
+of course, it gives you the same answer.
+
+132
+00:09:17.765 --> 00:09:21.048
+The, now in a way that scales up
+when we have lots of regressors
+
+133
+00:09:21.048 --> 00:09:23.018
+in much more complicated settings.
+
+134
+00:09:23.018 --> 00:09:25.383
+So you generally, want to predict
+using the predict function.
+
+135
+00:09:25.383 --> 00:09:29.441
+If you omit this new data statement,
+if you just do predict fit,
+
+136
+00:09:29.441 --> 00:09:30.804
+I'll show it to you.
+
+137
+00:09:30.804 --> 00:09:36.800
+[SOUND] It predicts at
+the observed x values,
+
+138
+00:09:36.800 --> 00:09:41.182
+so it gives you the y hat values.
+
+139
+00:09:41.182 --> 00:09:45.504
+If you want it at new x values, you
+have to give it this new data argument.
+
+140
+00:09:45.504 --> 00:09:50.896
+I just wanted to briefly illustrate
+what the prediction was accomplishing.
+
+141
+00:09:50.896 --> 00:09:55.577
+Here's our observe data points in blue.
+
+142
+00:09:55.577 --> 00:10:00.267
+The fitted values when we do the predict
+command, the fitted values in red all of
+
+143
+00:10:00.267 --> 00:10:04.407
+the observed x values and their
+associated fitted points on the line.
+
+144
+00:10:04.407 --> 00:10:09.127
+These are if we were to draw vertical
+lines from the observed data points on to
+
+145
+00:10:09.127 --> 00:10:12.613
+the fitted line,
+they would occur on these red points.
+
+146
+00:10:12.613 --> 00:10:14.618
+When we predicted a new value of x,
+
+147
+00:10:14.618 --> 00:10:18.850
+what we're doing is we're finding
+a point along this horizontal axis.
+
+148
+00:10:18.850 --> 00:10:23.836
+That here, I'm giving the three values
+that we want, 0.16, 0.27 and 0.34.
+
+149
+00:10:23.836 --> 00:10:28.276
+We're drawing a line up to
+the fitted regression line and
+
+150
+00:10:28.276 --> 00:10:33.380
+then over to dollars and
+those are our predicted dollar amounts.

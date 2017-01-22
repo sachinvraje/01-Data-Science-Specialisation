@@ -1,0 +1,291 @@
+WEBVTT
+
+1
+00:00:00.740 --> 00:00:04.680
+Now that we have a formal statistical
+framework, we can interpret our regression
+
+2
+00:00:04.680 --> 00:00:07.240
+coefficients with respect
+to that framework.
+
+3
+00:00:07.240 --> 00:00:09.020
+Take for example, the intercept.
+
+4
+00:00:09.020 --> 00:00:13.410
+It's the expected value Y
+given that the regressor is 0.
+
+5
+00:00:13.410 --> 00:00:15.200
+And here I'm simply
+plugging into the formula.
+
+6
+00:00:17.000 --> 00:00:20.120
+Note that the regressor
+being equal to zero is often
+
+7
+00:00:20.120 --> 00:00:22.450
+not of interest in the study.
+
+8
+00:00:22.450 --> 00:00:25.590
+For example, if the regression
+variable is blood pressure, probably
+
+9
+00:00:25.590 --> 00:00:30.210
+you're not interested in the response for
+among people with blood pressure of zero.
+
+10
+00:00:31.550 --> 00:00:34.070
+However, there is an easy fix for this.
+
+11
+00:00:34.070 --> 00:00:38.180
+Consider just shifting our
+regression variable by a constant a.
+
+12
+00:00:38.180 --> 00:00:41.336
+And here in this equation,
+I've just subtracted off an a here.
+
+13
+00:00:41.336 --> 00:00:45.546
+Which means I have to add an a beta
+1 over here to have done nothing,
+
+14
+00:00:45.546 --> 00:00:47.134
+to have simply added 0.
+
+15
+00:00:47.134 --> 00:00:51.945
+Well this is exactly rewriting
+the aggression equation
+
+16
+00:00:51.945 --> 00:00:55.846
+as beta not tilde plus
+beta 1 times x minus a.
+
+17
+00:00:55.846 --> 00:01:00.558
+A new regression line with a new
+intercept, the same slope, and
+
+18
+00:01:00.558 --> 00:01:04.040
+my regressor now shifted by a constant a.
+
+19
+00:01:04.040 --> 00:01:07.960
+So this goes to show you that if you
+shift your regressor by a constant,,
+
+20
+00:01:07.960 --> 00:01:12.180
+it doesn't change the slope,
+however it does change the intercept.
+
+21
+00:01:12.180 --> 00:01:15.670
+Now the intercept is inter,
+interpreted not when x is zero, but
+
+22
+00:01:15.670 --> 00:01:18.140
+when x is this value
+that you shifted it by a.
+
+23
+00:01:19.390 --> 00:01:22.360
+A very common constant
+to due is the average.
+
+24
+00:01:22.360 --> 00:01:24.910
+Set a equal to the average
+of the X variable.
+
+25
+00:01:24.910 --> 00:01:29.510
+Then your intercept will be
+interpreted as the expected
+
+26
+00:01:29.510 --> 00:01:35.430
+value of the response when the regressor
+is at the average value of the Xs.
+
+27
+00:01:35.430 --> 00:01:38.450
+Let's see if we can figure out
+a model-based interpretation of our
+
+28
+00:01:38.450 --> 00:01:39.179
+regression coefficient.
+
+29
+00:01:41.050 --> 00:01:44.880
+Now, it's a slope so it must have
+an interpretation that is of the form,
+
+30
+00:01:44.880 --> 00:01:47.820
+the change in Y per unit change in X.
+
+31
+00:01:47.820 --> 00:01:48.963
+So let's see if we can work with that.
+
+32
+00:01:48.963 --> 00:01:51.254
+Take the expected value of Y,
+
+33
+00:01:51.254 --> 00:01:56.120
+given that X takes the value x plus 1,
+a one unit increase in X.
+
+34
+00:01:56.120 --> 00:02:00.679
+And subtract off from the expected value
+of Y, given that X takes the value x.
+
+35
+00:02:00.679 --> 00:02:05.887
+Well, that works out to be beta
+naught plus beta 1 times x plus1,
+
+36
+00:02:05.887 --> 00:02:08.957
+minus beta naught plus beta 1 times x.
+
+37
+00:02:08.957 --> 00:02:11.935
+Do the arithmetic and
+that works out to be beta 1.
+
+38
+00:02:11.935 --> 00:02:16.724
+So, beta 1 is the expected
+change in the response per unit
+
+39
+00:02:16.724 --> 00:02:19.766
+change in the regression variable.
+
+40
+00:02:19.766 --> 00:02:23.811
+And that, so it has a nice interpretation,
+it's not that different from the regular
+
+41
+00:02:23.811 --> 00:02:26.733
+interpretation of a line,
+just now with the expected value,
+
+42
+00:02:26.733 --> 00:02:29.110
+the conditional expected
+value of the response.
+
+43
+00:02:30.660 --> 00:02:33.500
+Now, remember, if we shift the X variable,
+it doesn't change the slope,
+
+44
+00:02:33.500 --> 00:02:35.990
+we discussed that on the previous slide.
+
+45
+00:02:35.990 --> 00:02:38.010
+What if we scaled the regression variable?
+
+46
+00:02:38.010 --> 00:02:42.020
+And it usually only we're usually scaling
+by number, say a, that's positive.
+
+47
+00:02:43.130 --> 00:02:48.030
+So, what we can do is simply multiply and
+divide by a, and we can rewrite our
+
+48
+00:02:48.030 --> 00:02:54.220
+progression equation as beta naught plus
+beta 1 tilde times X times a plus epsilon.
+
+49
+00:02:55.730 --> 00:02:58.244
+So, we've multiplied X by a and
+
+50
+00:02:58.244 --> 00:03:01.976
+our regression slope has
+now been divided by a.
+
+51
+00:03:01.976 --> 00:03:06.657
+So in other words, multiple,
+multiplication of a regression variable by
+
+52
+00:03:06.657 --> 00:03:10.609
+a factor a results in dividing
+the coefficient by a factor of a.
+
+53
+00:03:10.609 --> 00:03:17.790
+Let me give you a simple example, so
+to hopefully solidify these points.
+
+54
+00:03:17.790 --> 00:03:20.935
+Imagine if X's height
+measured in meters and
+
+55
+00:03:20.935 --> 00:03:26.168
+Y's weight measured in kilograms,
+a pretty simple regression problem.
+
+56
+00:03:26.168 --> 00:03:30.390
+Then beta 1 is interpreted
+in kilograms per meter.
+
+57
+00:03:31.610 --> 00:03:34.500
+Converting X to centimeters
+implies multiplying X by
+
+58
+00:03:34.500 --> 00:03:36.620
+100 centimeters per meter.
+
+59
+00:03:37.810 --> 00:03:40.620
+To get beta 1 in the right units,
+now we simply divide
+
+60
+00:03:40.620 --> 00:03:44.990
+it by 100 centimeters per meter to get it,
+to, to, to get it back on the right scale.
+
+61
+00:03:44.990 --> 00:03:47.830
+And here I just wrote a,
+a little equation to remind us.

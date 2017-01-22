@@ -1,0 +1,80 @@
+Hi, my name is Brian Caffo, and
+welcome to the introduction to regression lecture as part of
+the regression Coursera class. This is part of our data
+science specialization, and this class is co-taught by my
+co-instructors Jeff Leek and Roger Peng. We're all in the department of biostatistics at the Johns Hopkins
+Bloomberg School of Public Health. Regression is probably the most
+fundamental topic for the data scientist. Before you do any fancy machine learning
+or anything like that, your go to procedure is going to be linear regression
+or its generalization, linear models. Regression has a rich history and it goes
+back to this fellow here, Francis Galton, who invented the, the term and
+the concept regression, and the term and the concept correlation, which is
+intimately tied to linear regression. And he did many things, one of which was predicting a child's
+height from a parent's height is a dataset that we will investigate a lot just
+because of its historical significance. And my friend and
+co instructor Jeff Leek noted that this example is actually
+surprisingly still relevant. And here's an article from
+the American Journal of Human Genetics. Where they compare modern genetic data
+using high throughput bioinformatics to old, to the old Victorian Era
+measurements created by Francis Galton, and see that it doesn't
+do too much better. So anyway, I give you the links there. You can read them over. It's a very interesting, and
+kind of quirky take on modern genetics and genetic analysis, but it also goes back
+and reminds us about the importance of what Francis Galton did and
+how ahead of his time he really was. Let's go through a more modern example
+that's a little bit more similar to what a data scientist would be doing
+in their day to day lives. So, if you don't read the blog
+Simply Statistics you really should. It's written by Jeff Leek, Roger Peng,
+both of who are co-instructors in the data science specialization and
+Rafael Irazarry, who has a couple classes on add X that you should check out
+who's at Harvard Biostatistics. And Rafa wrote this post was talking
+about ball hogging and players. And he basically, you know,
+here has a plot of the percentage of the shots that were taken by Kobe Bryant,
+and the point differential. The game specific point differential. And he fit a linear regression to it, and he made some of the claims in this,
+in the blog post. And you can find it and,
+and read the full post. But, for example, one of the claims
+is data supports the claim that if Kobe stops ball hogging
+the Lakers will win more. But, probably more relevant to this class
+is he makes this specific work, statement. Linear regression suggests an increase
+of 1% in percent of shots taken by Ko, Kobe results in a drop of 1.16 points, and he gives a standard error
+in score differential. So creating this sentence is what a large
+part of this class will be about. How do you create this sentence,
+how do you interpret it, how do, you know, Rafa's adhering to good statistical
+practice in giving a standard error. And these are the sorts of things we're
+going to talk about in this class. But I'd also like, just for
+this example to think about, you know, not only how it was done, but
+do you agree with the analysis? What are things that maybe Rafa
+should've thought about or what, is this a complete analysis. And maybe read the blog post and
+some of the comments. Where some of the topics that
+the germane digression anals, regression analysis are covered there. Let's go back to our example,
+where Francis Galton was using the parent's heights to predict
+the children's heights, and talk about the kinds of
+questions we can answer. So, we might want to use
+a parent's height, and try and predict their children's heights. We might want to find a parsimonious and easily described mean relationships
+between the parent's and child's height. So we don't want anything complicated. We want the simplest
+possible relationship, and that is what regression is best at. While machine learning and other
+techniques generate highly elaborate, in many cases, accurate prediction models,
+they tend to not be parsimonious. They tend not to explain the data,
+and they tend not to generate new parsimonious knowledge, whereas
+this is what regression is good at. This is what regression
+is in fact best at. We can talk about variation that's
+unexplained by the regression model. The so called residual variation. We can quantify the impact that
+things like genotype information has beyond parent, parental height explained
+child's height and that's related to this American Journal of Human, European
+Journal of Human Genetics paper that looked at what re, residual variation
+was left after using parental height, or what residual variation was
+left after using genetics. And then, very importantly, we're going to connect
+this back to the subject of inference. How do we take our data,
+which is just a sample, it only talks about that data set,
+and try to figure out what assumptions are needed to
+extrapolate it to a larger population. This is a deep subject called
+statistical inference. We have a whole another class on it
+in the course area of data science specialization. But we're going to apply
+the tools of inference, which I'm hoping most of you
+will have had as a prerequisite. We're going to apply
+the tools of inference to this new subject of regression. And then here's a final question
+that Galton answered and I, it's called regression to the mean or
+regression to mediocrity. And the basic question is why do
+children's of very tall, why do children of very tall parents tend to be tall, but
+a little bit shorter than their parents. And why do the children of very
+short parents tend to be short, but a little bit taller than their parents,
+and this is the famous idea of so called regression to the mean.

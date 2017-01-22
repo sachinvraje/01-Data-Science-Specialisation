@@ -1,0 +1,756 @@
+WEBVTT
+
+1
+00:00:00.770 --> 00:00:04.710
+Prediction is a central concept for
+the data scientist.
+
+2
+00:00:04.710 --> 00:00:06.720
+In fact, we have an entire course,
+
+3
+00:00:06.720 --> 00:00:10.250
+Practical Machine Learning on
+advanced prediction techniques.
+
+4
+00:00:11.260 --> 00:00:16.160
+However, regression and generalized
+linear models which we're going to cover
+
+5
+00:00:16.160 --> 00:00:20.140
+later on in the class are some
+of the most core techniques for
+
+6
+00:00:20.140 --> 00:00:22.620
+performing prediction they're.
+
+7
+00:00:22.620 --> 00:00:26.940
+they often produce very good predictions,
+they're parsimonious and interpretable,
+
+8
+00:00:28.000 --> 00:00:32.010
+and as an added bonus
+you can get inference
+
+9
+00:00:32.010 --> 00:00:36.140
+on top of your predictions without
+doing any sort of data re sampling.
+
+10
+00:00:36.140 --> 00:00:38.760
+What I mean by inference is we can
+get predictions, and then say for
+
+11
+00:00:38.760 --> 00:00:42.790
+example confidence intervals around our
+predictions to evaluate the uncertainty in
+
+12
+00:00:42.790 --> 00:00:48.510
+those predictions, so that's very easy in
+regression and pretty easy in generalized
+
+13
+00:00:48.510 --> 00:00:53.680
+linear models and quite difficult in some
+more advanced machine learning algorithms,
+
+14
+00:00:53.680 --> 00:00:56.170
+you may have to do data resampling or
+something like that.
+
+15
+00:00:57.440 --> 00:01:01.300
+So let's just talk about prediction,
+we might want to predict a response,
+
+16
+00:01:01.300 --> 00:01:03.530
+which might be the price of a diamond.
+
+17
+00:01:03.530 --> 00:01:06.490
+At a particular mass, in carats.
+
+18
+00:01:06.490 --> 00:01:08.910
+Or we might want to predict
+a child's height for
+
+19
+00:01:08.910 --> 00:01:11.580
+a particular value of the parent's height.
+
+20
+00:01:11.580 --> 00:01:14.770
+The obvious estimate in both
+cases is just take our x not,
+
+21
+00:01:14.770 --> 00:01:19.510
+our predictor value that we want to
+predict at, either mass or parents height.
+
+22
+00:01:19.510 --> 00:01:23.160
+Multiply it times the relevant
+estimated slope, beta one half and
+
+23
+00:01:23.160 --> 00:01:24.060
+then add the intercept.
+
+24
+00:01:25.760 --> 00:01:30.680
+But, if we want to be good statisticians,
+we need to evaluate some uncertainty in
+
+25
+00:01:30.680 --> 00:01:33.480
+that prediction, so, it would be
+nice to have a prediction interval.
+
+26
+00:01:35.315 --> 00:01:39.650
+There's a small intricacy in that there's
+a distinction between trying to predict
+
+27
+00:01:39.650 --> 00:01:40.670
+at the line.
+
+28
+00:01:41.760 --> 00:01:44.240
+Predict a regression line
+at a particular point, and
+
+29
+00:01:44.240 --> 00:01:48.290
+trying to predict a future
+Y at that same point.
+
+30
+00:01:48.290 --> 00:01:49.700
+Those are two different ideas.
+
+31
+00:01:49.700 --> 00:01:54.460
+I'll describe that picture in a slide,
+but let me describe the formula first.
+
+32
+00:01:54.460 --> 00:01:58.210
+What we have here, and it makes
+sense that our prediction variance
+
+33
+00:01:58.210 --> 00:02:00.650
+first relates around how variable.
+
+34
+00:02:00.650 --> 00:02:03.760
+The points are around our regression line,
+sigma hat.
+
+35
+00:02:03.760 --> 00:02:08.040
+And it makes sense that, that will
+be involved in our prediction error.
+
+36
+00:02:08.040 --> 00:02:09.670
+However here we have this term 1 over n.
+
+37
+00:02:09.670 --> 00:02:11.730
+Okay that, that also kind of makes sense.
+
+38
+00:02:11.730 --> 00:02:15.210
+Typically our,
+our standard errors decrease at some rate,
+
+39
+00:02:15.210 --> 00:02:16.260
+1 over square root n.
+
+40
+00:02:16.260 --> 00:02:19.049
+So a 1 over n in a square root
+seems kind of reasonable.
+
+41
+00:02:20.230 --> 00:02:24.090
+If we're predicting a new Y,
+then we have this added 1 out front, so
+
+42
+00:02:24.090 --> 00:02:25.320
+we get a wider interval.
+
+43
+00:02:25.320 --> 00:02:28.290
+If we want to predict a new
+value at a specific point versus
+
+44
+00:02:28.290 --> 00:02:30.520
+trying to predict what the regression
+line is at that point.
+
+45
+00:02:31.590 --> 00:02:33.540
+So we'll talk more about that later, but
+
+46
+00:02:33.540 --> 00:02:37.700
+let me also focus on this very end
+term that is on both equations.
+
+47
+00:02:37.700 --> 00:02:43.890
+X not minus X bar divided by the, sort of
+variant, top of the variance of the Xs.
+
+48
+00:02:45.200 --> 00:02:48.040
+Consider the numerator of
+this statistic our prediction
+
+49
+00:02:48.040 --> 00:02:52.040
+error is going to be the lowest
+when X not is equal to X bar.
+
+50
+00:02:52.040 --> 00:02:54.950
+So our prediction variance
+is going to be smallest
+
+51
+00:02:54.950 --> 00:02:57.870
+when we're predicting at
+the average price of a diamond.
+
+52
+00:02:57.870 --> 00:02:59.980
+Or at the av, I'm sorry,
+
+53
+00:02:59.980 --> 00:03:03.820
+at the average mass of a diamond or
+at the average height of the parents.
+
+54
+00:03:05.090 --> 00:03:06.620
+So that's one thing to notice.
+
+55
+00:03:06.620 --> 00:03:10.810
+The second is this summation X i minus
+X bar squared in the denominator.
+
+56
+00:03:10.810 --> 00:03:13.660
+That's basically how variable my Xs are.
+
+57
+00:03:13.660 --> 00:03:18.000
+The more variable my Xs are,
+the smaller this term becomes and
+
+58
+00:03:18.000 --> 00:03:19.830
+the lower my prediction error is.
+
+59
+00:03:19.830 --> 00:03:25.020
+So again, not unlike our slope estimate
+where the more variable our reg,
+
+60
+00:03:25.020 --> 00:03:28.370
+regressors were,
+the less variable our slope estimate is.
+
+61
+00:03:28.370 --> 00:03:30.649
+The same thing happens in
+our prediction error here.
+
+62
+00:03:31.690 --> 00:03:36.230
+Okay, so let's go through some pictures so
+we can try to solidify these concepts.
+
+63
+00:03:36.230 --> 00:03:38.820
+But this is an essential
+part of using regression for
+
+64
+00:03:38.820 --> 00:03:42.390
+prediction, that you get easy,
+and convenient
+
+65
+00:03:42.390 --> 00:03:46.679
+prediction on certainty associated
+with your parsimonious predictors.
+
+66
+00:03:47.910 --> 00:03:52.672
+So let's generate some prediction
+intervals for the diamond data set, and
+
+67
+00:03:52.672 --> 00:03:57.650
+I'm going to go through the code here,
+and actually most of the code is just
+
+68
+00:03:57.650 --> 00:04:01.700
+a little bit of data wrangling to get
+it in a format that's friendly for
+
+69
+00:04:01.700 --> 00:04:04.510
+'GG Plot', at least in so
+far as I know 'GG Plot'.
+
+70
+00:04:04.510 --> 00:04:07.020
+So I'm not going to go
+through this too carefully,
+
+71
+00:04:07.020 --> 00:04:11.430
+because after having had Roger's class
+you're all better at this than I am.
+
+72
+00:04:12.650 --> 00:04:18.200
+So let me go through just the most
+relevant part of this code and
+
+73
+00:04:18.200 --> 00:04:20.770
+that is the predict function.
+
+74
+00:04:20.770 --> 00:04:21.990
+Right here.
+
+75
+00:04:21.990 --> 00:04:24.060
+So here's my predict function, and
+
+76
+00:04:24.060 --> 00:04:28.570
+I am going to give to my predict function,
+the output of LM.
+
+77
+00:04:28.570 --> 00:04:33.190
+For a lot of prediction algorithms,
+especially linear models and
+
+78
+00:04:33.190 --> 00:04:36.740
+generalized linear models, but
+other things, random forests and
+
+79
+00:04:36.740 --> 00:04:41.680
+other things in R, the predict function
+is a generic method that applies to them,
+
+80
+00:04:41.680 --> 00:04:46.140
+so I'm going to give it the output,
+in this case, my LM, and
+
+81
+00:04:46.140 --> 00:04:50.770
+then I want a nice denser grid
+of x values to predict at for
+
+82
+00:04:50.770 --> 00:04:54.790
+my plot than the observed data, so I'm
+going to give it some new x values, and
+
+83
+00:04:54.790 --> 00:04:58.440
+then here I tell you I want a confidence
+interval, not a prediction interval,
+
+84
+00:04:58.440 --> 00:05:03.620
+that's R's Code for
+saying I want the interval around
+
+85
+00:05:03.620 --> 00:05:09.570
+the estimated line at that
+particular value of x not for
+
+86
+00:05:09.570 --> 00:05:13.680
+a potential new y at that particular
+value of x, if I want an interval for
+
+87
+00:05:13.680 --> 00:05:16.130
+potential new Y at that
+particular value of X,
+
+88
+00:05:16.130 --> 00:05:20.730
+I change the interval = ("confidence")
+to interval = ("prediction").
+
+89
+00:05:20.730 --> 00:05:22.820
+Which I do in this line below.
+
+90
+00:05:24.480 --> 00:05:28.820
+So here I'm going to run all of
+the sort of data wrangling code.
+
+91
+00:05:28.820 --> 00:05:30.440
+And then let me go through my ggplot.
+
+92
+00:05:30.440 --> 00:05:35.450
+I like to do this just because I find
+ggplot a little bit confusing at first.
+
+93
+00:05:35.450 --> 00:05:37.680
+But once I've gotten used to it,
+I like it quite a bit.
+
+94
+00:05:39.310 --> 00:05:41.110
+And once I've done this data wrangling,
+
+95
+00:05:41.110 --> 00:05:45.259
+then notice this some kind of complicated
+plot only takes a couple of lines.
+
+96
+00:05:47.470 --> 00:05:50.540
+So I'm going to start my ggplot.
+
+97
+00:05:50.540 --> 00:05:55.137
+I'm going to add a ribbon, and the ribbon
+is going to have two parts because it's
+
+98
+00:05:55.137 --> 00:05:57.820
+going to be filled by the interval type.
+
+99
+00:05:57.820 --> 00:06:01.240
+So the blue one will be
+a prediction interval, and
+
+100
+00:06:01.240 --> 00:06:03.840
+the kind of salmon colored one
+will be a confidence interval.
+
+101
+00:06:04.890 --> 00:06:09.150
+And then I want my fitted line added, and
+
+102
+00:06:09.150 --> 00:06:11.400
+then I want to add
+the observed data points.
+
+103
+00:06:11.400 --> 00:06:15.340
+Now my observed data points aren't in
+the data frame that I used to create
+
+104
+00:06:15.340 --> 00:06:19.538
+the ggplot, so I have to give it a new
+data frame and a new aesthetic command for
+
+105
+00:06:19.538 --> 00:06:20.946
+this particular layer.
+
+106
+00:06:20.946 --> 00:06:24.340
+And then let me do my plot, and
+
+107
+00:06:24.340 --> 00:06:28.550
+then I'm going to switch windows
+to a large window with a plot.
+
+108
+00:06:28.550 --> 00:06:32.160
+So here is my plot, and again, the blue
+is the prediction arrow, this is for
+
+109
+00:06:32.160 --> 00:06:36.130
+predicting a new line, and
+the salmon color is for
+
+110
+00:06:36.130 --> 00:06:40.300
+prediction of the line at
+those particular values of x.
+
+111
+00:06:40.300 --> 00:06:43.263
+And so what you'll see is
+the prediction for a line, a so
+
+112
+00:06:43.263 --> 00:06:44.970
+called confidence interval.
+
+113
+00:06:44.970 --> 00:06:52.820
+It, for the R command predict is much
+narrower than the prediction interval.
+
+114
+00:06:52.820 --> 00:06:54.600
+And here's how I like to think of this.
+
+115
+00:06:54.600 --> 00:06:58.060
+Because if you're confused, and we know
+this to be the case from the math, right.
+
+116
+00:06:58.060 --> 00:06:59.150
+There's that 1 plus.
+
+117
+00:06:59.150 --> 00:07:00.670
+For the prediction interval.
+
+118
+00:07:00.670 --> 00:07:05.310
+And there, that one is missing for
+the confidence interval for the line.
+
+119
+00:07:06.700 --> 00:07:08.430
+So here's the way I like
+to think about this.
+
+120
+00:07:08.430 --> 00:07:11.280
+Imagine if I collected
+an infinite amount of data
+
+121
+00:07:11.280 --> 00:07:14.010
+at all different values
+of x along this line.
+
+122
+00:07:15.110 --> 00:07:19.100
+Well, then, I would pretty much
+know the regression line exactly.
+
+123
+00:07:20.520 --> 00:07:23.830
+And if that were the case,
+I would be extremely confident
+
+124
+00:07:25.650 --> 00:07:30.680
+about predictions on the line, where
+the line was at a particular x value.
+
+125
+00:07:30.680 --> 00:07:31.890
+So as I collected more and
+
+126
+00:07:31.890 --> 00:07:36.020
+more data, that salmon colored confidence
+interval will get narrower and
+
+127
+00:07:36.020 --> 00:07:39.930
+narrower around the line to the point
+where it was just the line itself.
+
+128
+00:07:39.930 --> 00:07:42.860
+And that's good, that's what we
+would expect to ha, to happen.
+
+129
+00:07:42.860 --> 00:07:46.300
+That's just the idea of
+statistical sampling working.
+
+130
+00:07:46.300 --> 00:07:50.160
+On the other hand, the prediction
+interval, there's variability in the Ys,
+
+131
+00:07:50.160 --> 00:07:54.070
+that has nothing to do with how well I
+estimated beta naught, or beta one, and
+
+132
+00:07:54.070 --> 00:07:59.330
+in fact, imagine if I were to just give
+you the correct beta naught and beta ones.
+
+133
+00:07:59.330 --> 00:08:02.030
+There would still be
+variability in the Ys,
+
+134
+00:08:02.030 --> 00:08:06.680
+because they're, there's that error term,
+and so if I wanted to predict a new y,
+
+135
+00:08:06.680 --> 00:08:10.120
+there's some uncertainty that just
+doesn't go away with better estimation,
+
+136
+00:08:10.120 --> 00:08:13.660
+it's sort of inherent in the,
+in that I have a,
+
+137
+00:08:13.660 --> 00:08:17.680
+there's leftover residual
+variation from my regression line.
+
+138
+00:08:19.400 --> 00:08:23.550
+So that variability will be ever
+present in the prediction interval and
+
+139
+00:08:23.550 --> 00:08:28.210
+that's why it's one plus, that's why
+that one shows up in the equation.
+
+140
+00:08:28.210 --> 00:08:29.430
+It doesn't go away with N.
+
+141
+00:08:29.430 --> 00:08:32.190
+It doesn't go away as I collect
+more X's or anything like that.
+
+142
+00:08:32.190 --> 00:08:35.040
+It's inherent, and
+that's why the prediction interval
+
+143
+00:08:35.040 --> 00:08:38.260
+has a certain amount of width
+that's never going to go away.
+
+144
+00:08:39.600 --> 00:08:43.460
+The last thing I'd say is you can see it
+probably I think a little bit more in
+
+145
+00:08:43.460 --> 00:08:48.850
+the confidence interval here than in the
+prediction interval but that both of these
+
+146
+00:08:48.850 --> 00:08:54.150
+get narrower toward the center of the data
+cloud and then get wider as you head,
+
+147
+00:08:54.150 --> 00:08:58.340
+head out into the tails and that's just
+simply saying that we're more confident
+
+148
+00:08:58.340 --> 00:09:02.850
+In our predictions, close,
+the closer we are to the mean of the X's.
+
+149
+00:09:02.850 --> 00:09:06.880
+Now because of that one plus it means
+maybe less in the, for the blue color than
+
+150
+00:09:06.880 --> 00:09:10.550
+it does for the salmon color and you can
+see it more clearly with the salmon color.
+
+151
+00:09:10.550 --> 00:09:14.760
+So that's why the, the, it pinches in
+a little bit and, and that makes sense.
+
+152
+00:09:14.760 --> 00:09:19.750
+If we were to go well beyond where we
+collected data, then these intervals would
+
+153
+00:09:19.750 --> 00:09:22.530
+really become a lot wider which
+is what we'd want, because we're,
+
+154
+00:09:22.530 --> 00:09:26.730
+we would be extrapolating, we want to
+predict where we did not collect data.
+
+155
+00:09:27.820 --> 00:09:30.330
+So on the next slide I just
+summarized those points, but
+
+156
+00:09:30.330 --> 00:09:34.480
+I think that's enough to get you
+started on inference from regression.
+
+157
+00:09:34.480 --> 00:09:38.020
+And now we'll move on to some more
+complex topics in regression and
+
+158
+00:09:38.020 --> 00:09:42.219
+generalize to where we have
+more predictor variables

@@ -1,0 +1,598 @@
+WEBVTT
+
+1
+00:00:00.190 --> 00:00:04.350
+So I wanted to show you the slides
+that I was working on now,
+
+2
+00:00:04.350 --> 00:00:06.020
+the actual R markdown files.
+
+3
+00:00:06.020 --> 00:00:08.366
+This is the dot r m d file.
+
+4
+00:00:08.366 --> 00:00:11.370
+And at first, I want to plot
+the data that I'm going to look at.
+
+5
+00:00:11.370 --> 00:00:15.120
+This is the Galton parents' height and
+childrens' height data.
+
+6
+00:00:15.120 --> 00:00:17.970
+So I am going to plot
+it here using g g plot.
+
+7
+00:00:17.970 --> 00:00:19.550
+And there's my plot.
+
+8
+00:00:19.550 --> 00:00:23.070
+Now I'd like to go with
+the information that is on the slide,
+
+9
+00:00:23.070 --> 00:00:24.160
+which is some R code.
+
+10
+00:00:24.160 --> 00:00:26.310
+So I thought it'd be probably
+better to just show you,
+
+11
+00:00:26.310 --> 00:00:30.350
+show you the running of the R code rather
+than showing you a slide with the,
+
+12
+00:00:30.350 --> 00:00:32.540
+the output of having run the R code.
+
+13
+00:00:32.540 --> 00:00:36.870
+So here I, for convenience,
+I've defined my outcome as the child's
+
+14
+00:00:36.870 --> 00:00:41.430
+height's galton dollar sign child,
+so let me define those.
+
+15
+00:00:41.430 --> 00:00:42.880
+And I've defined the.
+
+16
+00:00:42.880 --> 00:00:46.660
+X, the predictors, as the parent's height,
+Galton dollar sign parent, and
+
+17
+00:00:46.660 --> 00:00:48.500
+this is just going to
+save me on some typing.
+
+18
+00:00:49.660 --> 00:00:53.770
+Now first I'd like to indicate that
+the solution that we specified is the same
+
+19
+00:00:53.770 --> 00:00:56.620
+solution that R will give you with
+its built in regression function.
+
+20
+00:00:57.780 --> 00:01:01.560
+So here's beta one,
+it's the correlation between y and x.
+
+21
+00:01:01.560 --> 00:01:05.030
+Times the standard deviation of y
+divided by the standard deviation of x.
+
+22
+00:01:05.030 --> 00:01:09.220
+And here's my beta nought,
+which is the mean of y,
+
+23
+00:01:09.220 --> 00:01:13.210
+minus the beta one that I just estimated,
+times the mean of x.
+
+24
+00:01:13.210 --> 00:01:17.420
+So I can, for example,
+look at these with beta zero and beta one.
+
+25
+00:01:18.440 --> 00:01:22.110
+In this c function for
+just creating a vector.
+
+26
+00:01:22.110 --> 00:01:23.980
+Let me check that with the l m function.
+
+27
+00:01:23.980 --> 00:01:26.070
+I'm going to copy the function and
+
+28
+00:01:26.070 --> 00:01:29.250
+paste it down here and then I'll
+go through each of the components.
+
+29
+00:01:29.250 --> 00:01:31.830
+L m in r stands for linear model.
+
+30
+00:01:31.830 --> 00:01:34.230
+Regression is a component
+of linear models, and
+
+31
+00:01:34.230 --> 00:01:37.490
+so, this function is the general
+function whether you want regression or
+
+32
+00:01:37.490 --> 00:01:40.550
+you want some of the more elaborate
+versions of regression that we're going to
+
+33
+00:01:40.550 --> 00:01:42.580
+cover later on in the class.
+
+34
+00:01:42.580 --> 00:01:48.060
+So we want l m, the outcome y,
+tilde, the predictor x.
+
+35
+00:01:48.060 --> 00:01:49.960
+And that does a linear regression.
+
+36
+00:01:49.960 --> 00:01:51.720
+By default it includes an intercept.
+
+37
+00:01:52.820 --> 00:01:57.520
+Coef takes the output of the linear
+model and just grabs the coefficients.
+
+38
+00:01:58.560 --> 00:02:04.320
+And of course you see we get the same
+numbers, 23.94 and 0.64, 0.65.
+
+39
+00:02:04.320 --> 00:02:08.480
+Very briefly now I just want to show
+you that if I reverse the y and
+
+40
+00:02:08.480 --> 00:02:12.580
+x relationship the formula, of course
+holds but now with standard deviation
+
+41
+00:02:12.580 --> 00:02:16.730
+of x in the numerator and standard
+deviation of y in the denominator.
+
+42
+00:02:16.730 --> 00:02:20.390
+So I'm going to now define my
+beta one as correlation of y and
+
+43
+00:02:20.390 --> 00:02:23.730
+x, but now with standard deviation
+of x in the numerator and
+
+44
+00:02:23.730 --> 00:02:25.670
+standard deviation of
+y in the denominator.
+
+45
+00:02:26.690 --> 00:02:32.940
+My intercept is now mean of x minus
+beta one times the mean of y.
+
+46
+00:02:32.940 --> 00:02:40.220
+Now I'm simply going to concatenate
+these slope and intercept estimates with
+
+47
+00:02:40.220 --> 00:02:44.940
+those that you get with l m where now x
+is on the left hand side of the tilde and
+
+48
+00:02:44.940 --> 00:02:49.290
+y is on the right hand side of tilde,
+reversed from what it was previously.
+
+49
+00:02:49.290 --> 00:02:53.670
+And there of course down here you see
+that you get a, you get the same numbers.
+
+50
+00:02:53.670 --> 00:02:56.990
+So our formula is correct and
+we know how to use it and
+
+51
+00:02:56.990 --> 00:03:01.290
+we know what happens when we
+reverse the x y relationship.
+
+52
+00:03:01.290 --> 00:03:04.210
+Another point that was made
+thus far in the lecture
+
+53
+00:03:04.210 --> 00:03:08.590
+was that regression through
+the origin yielded the same slope
+
+54
+00:03:08.590 --> 00:03:13.110
+as linear regression with a not
+necessarily zero intercept.
+
+55
+00:03:13.110 --> 00:03:17.090
+If you mean centered the y's and
+mean centered the x's first.
+
+56
+00:03:18.530 --> 00:03:21.180
+So let's just check that computationally.
+
+57
+00:03:22.450 --> 00:03:25.790
+My centered y is just going
+to be y minus the mean of y.
+
+58
+00:03:28.080 --> 00:03:31.650
+My centered x is just going
+to be x minus the mean of x.
+
+59
+00:03:34.180 --> 00:03:38.870
+And recall that the regression
+to the origin equation for
+
+60
+00:03:38.870 --> 00:03:43.810
+the slope was just the sum of the y
+
+61
+00:03:43.810 --> 00:03:48.870
+variable times the x variable, divided
+by the sum of the x variable squared.
+
+62
+00:03:48.870 --> 00:03:50.050
+So, let's run that and
+
+63
+00:03:50.050 --> 00:03:53.480
+get our coefficient that is estimated
+through a regression to the origin.
+
+64
+00:03:56.100 --> 00:03:58.810
+And then now what I'm going to do.
+
+65
+00:03:58.810 --> 00:04:02.520
+Is I'm going to take this beta one
+that I got through my equation of,
+
+66
+00:04:02.520 --> 00:04:03.918
+for regression to the origin.
+
+67
+00:04:03.918 --> 00:04:07.400
+Where I've mean-centered my data first.
+
+68
+00:04:07.400 --> 00:04:12.259
+And then I'm going to compare it
+to the linear regression estimate,
+
+69
+00:04:12.259 --> 00:04:17.130
+using l m with y tilde x,
+meaning y is my outcome, x is my response.
+
+70
+00:04:17.130 --> 00:04:18.890
+And l m automatically
+puts in an intercept.
+
+71
+00:04:18.890 --> 00:04:22.170
+And I am going to grab the second
+coefficient, which is the slope.
+
+72
+00:04:25.450 --> 00:04:26.110
+When I do that,
+
+73
+00:04:26.110 --> 00:04:30.130
+if you look down here you see of
+course that you get the same numbers.
+
+74
+00:04:30.130 --> 00:04:32.770
+I want to very briefly also just show you
+
+75
+00:04:32.770 --> 00:04:36.740
+how you can actually do
+regression to the origin.
+
+76
+00:04:36.740 --> 00:04:39.420
+Using l m how you get
+rid of the intercept.
+
+77
+00:04:39.420 --> 00:04:43.620
+So in this case I'll get the same
+number if I take the centered y and
+
+78
+00:04:43.620 --> 00:04:45.890
+use the centered x as a predictor.
+
+79
+00:04:45.890 --> 00:04:48.266
+But I want to subtract out the intercept,
+so
+
+80
+00:04:48.266 --> 00:04:50.845
+you put a minus one to
+get rid of the intercept.
+
+81
+00:04:50.845 --> 00:04:53.884
+And you'll see here point
+six four six three.
+
+82
+00:04:53.884 --> 00:04:56.140
+You get the same slope estimate.
+
+83
+00:04:56.140 --> 00:04:57.970
+Another point that was
+made in the lecture,
+
+84
+00:04:58.970 --> 00:05:03.080
+was that if we were to
+normalize the y's or the x's so
+
+85
+00:05:03.080 --> 00:05:07.370
+that they have standard deviation one,
+the slope would be the correlation.
+
+86
+00:05:08.690 --> 00:05:11.440
+So let's just double check
+that really quickly.
+
+87
+00:05:11.440 --> 00:05:17.130
+Here, I'm, I'm normalizing my child's
+heights by subtracting off the mean and
+
+88
+00:05:17.130 --> 00:05:19.140
+dividing by the standard deviation.
+
+89
+00:05:19.140 --> 00:05:22.650
+Let me just juggle, double check that
+these now have standard deviation one.
+
+90
+00:05:23.770 --> 00:05:26.140
+There you go.
+And I'm going to do the same thing for
+
+91
+00:05:26.140 --> 00:05:27.305
+my x variables now.
+
+92
+00:05:27.305 --> 00:05:32.096
+So now both my y and my x variable,
+
+93
+00:05:32.096 --> 00:05:36.290
+the y n and x n variables.
+
+94
+00:05:36.290 --> 00:05:41.090
+Can be interpreted as standard deviations
+from the mean for the, in the y's case for
+
+95
+00:05:41.090 --> 00:05:44.830
+the child's heights and
+in the x's case for the parent's heights.
+
+96
+00:05:44.830 --> 00:05:47.980
+So we've gotten rid of the,
+the original units, the inches.
+
+97
+00:05:47.980 --> 00:05:49.840
+And now they're in standard
+deviations from the mean.
+
+98
+00:05:51.260 --> 00:05:56.130
+Now I simply want to show with
+this concatenation operator here.
+
+99
+00:05:56.130 --> 00:05:59.350
+That the correlation between
+the original y and the original x,
+
+100
+00:05:59.350 --> 00:06:03.780
+is the same as the correlation when I
+normalize the y and I normalize the x.
+
+101
+00:06:03.780 --> 00:06:07.280
+And its the same as the coefficient for
+the linear regression when I
+
+102
+00:06:07.280 --> 00:06:12.900
+fit the normalized y as the outcome and
+the normalized x as the predictor.
+
+103
+00:06:12.900 --> 00:06:14.570
+And when I run it, if you go down here.
+
+104
+00:06:14.570 --> 00:06:17.930
+Of course you see that all
+three numbers are the same.
+
+105
+00:06:17.930 --> 00:06:20.980
+The last thing I'd like to
+do is simply show how to
+
+106
+00:06:20.980 --> 00:06:24.280
+add a regression line to
+a g g two scatter plot.
+
+107
+00:06:24.280 --> 00:06:27.240
+Here over on the right I am showing the
+somewhat fancy plot I've been given for
+
+108
+00:06:27.240 --> 00:06:28.320
+this data.
+
+109
+00:06:28.320 --> 00:06:33.040
+Where the sizes of the circles
+are the number of parents and childs.
+
+110
+00:06:33.040 --> 00:06:35.900
+At that specific x y location.
+
+111
+00:06:35.900 --> 00:06:39.350
+And the color of the circle is also
+representative of the frequency.
+
+112
+00:06:40.370 --> 00:06:46.996
+I've defined over here my aesthetics,
+so that x is parent and y is child.
+
+113
+00:06:46.996 --> 00:06:51.917
+And if you want to add a linear
+regression line to this point,
+
+114
+00:06:51.917 --> 00:06:54.147
+you simply take your plot.
+
+115
+00:06:54.147 --> 00:06:56.600
+Which I've assigned to the variable g.
+
+116
+00:06:56.600 --> 00:07:00.130
+And you want to add
+geom underscore smooth.
+
+117
+00:07:00.130 --> 00:07:02.840
+You want to use the method as l m.
+
+118
+00:07:02.840 --> 00:07:06.290
+And you want to give it the formula,
+y tilde x.
+
+119
+00:07:06.290 --> 00:07:10.420
+If you omit the formula, it's going
+to assume that formula is y tilde x.
+
+120
+00:07:10.420 --> 00:07:17.580
+So let's add that layer to our g
+g plot and then let's re-plot it.
+
+121
+00:07:17.580 --> 00:07:22.820
+And there you see the regression line
+overlaid on top of my scatter plot.
+
+122
+00:07:24.840 --> 00:07:29.610
+I would also note that g g plot two does
+a very good thing for us on our behalf.
+
+123
+00:07:29.610 --> 00:07:33.810
+Is they automatically give us
+a confidence interval around the line.
+
+124
+00:07:33.810 --> 00:07:36.590
+We'll talk about how to generate
+this confidence interval later on
+
+125
+00:07:36.590 --> 00:07:37.120
+in the lecture.
+
+126
+00:07:37.120 --> 00:07:41.730
+But it's very nice that they're thinking
+of statistical uncertainty automatically.

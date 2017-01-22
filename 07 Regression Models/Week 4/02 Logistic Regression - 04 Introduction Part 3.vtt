@@ -1,0 +1,592 @@
+WEBVTT
+
+1
+00:00:01.910 --> 00:00:05.060
+Okay now that we've looked at
+feeding logistics regression curves
+
+2
+00:00:05.060 --> 00:00:09.510
+why don't we go ahead and see the output
+when we feed our Ravens data.
+
+3
+00:00:09.510 --> 00:00:11.770
+So you feed the Ravens data
+with the GLM function.
+
+4
+00:00:13.440 --> 00:00:18.550
+Here it operates just like
+the LN function the outcome is
+
+5
+00:00:18.550 --> 00:00:23.210
+on the left hand side of a tilde and then
+the predictors on the right hand side.
+
+6
+00:00:23.210 --> 00:00:26.930
+In this case the only difference is now we
+have to specify family equals binomial,
+
+7
+00:00:26.930 --> 00:00:31.420
+and that's telling the GLM
+function that we have 01 data.
+
+8
+00:00:31.420 --> 00:00:34.910
+If we had count data
+the bounded count data,
+
+9
+00:00:34.910 --> 00:00:39.190
+real binomial data, then we would
+also have to give it a sample size.
+
+10
+00:00:39.190 --> 00:00:42.910
+Also by default for
+the binomial and binary case,
+
+11
+00:00:42.910 --> 00:00:45.790
+it's going to assume that
+the link function that you have
+
+12
+00:00:45.790 --> 00:00:48.870
+is the logistical link function,
+which is what we want so that's fine.
+
+13
+00:00:48.870 --> 00:00:54.130
+You see, the output when you do summary,
+summary works just like it did for Ellen.
+
+14
+00:00:54.130 --> 00:00:56.220
+You see the output below.
+
+15
+00:00:56.220 --> 00:01:00.870
+You ge the coefficients,
+in this case, -1.68 and for
+
+16
+00:01:00.870 --> 00:01:03.370
+the Ravens coefficient you use 0.1.
+
+17
+00:01:03.370 --> 00:01:09.620
+In this case on the Logit scale
+you want to look, for example,
+
+18
+00:01:09.620 --> 00:01:13.980
+with the score variable, the Ravens score
+variable you want to see whether or
+
+19
+00:01:13.980 --> 00:01:17.670
+not the coefficient is close to zero or
+not on the Logit scale.
+
+20
+00:01:17.670 --> 00:01:21.240
+On the exponentiated scale you want to
+see whether or not it's close to one.
+
+21
+00:01:21.240 --> 00:01:25.173
+That it'll give us the standard error and
+a Z value and the P value,
+
+22
+00:01:25.173 --> 00:01:29.247
+we're going to interpret those just
+like we would in our linear model to
+
+23
+00:01:29.247 --> 00:01:32.499
+acknowledging that this
+are drive in a different way.
+
+24
+00:01:34.510 --> 00:01:39.816
+So here's the fitted curve,
+so this are the predictive,
+
+25
+00:01:39.816 --> 00:01:44.500
+responses put back on
+the probability scale.
+
+26
+00:01:44.500 --> 00:01:49.640
+So what R did is it plugged in the x
+values associated with the coefficient.
+
+27
+00:01:49.640 --> 00:01:56.150
+So it took the scores, multiplied them
+times the coefficient of the scores, added
+
+28
+00:01:56.150 --> 00:02:01.080
+the estimated intercept, and then took e
+to that value over 1 plus e to that value.
+
+29
+00:02:01.080 --> 00:02:03.660
+And that gives us the probabilities.
+
+30
+00:02:03.660 --> 00:02:08.570
+Now this is only part of the fitted S
+
+31
+00:02:08.570 --> 00:02:13.410
+curve because the component of
+
+32
+00:02:13.410 --> 00:02:18.350
+the S curve where the data actually
+are observed was restricted.
+
+33
+00:02:18.350 --> 00:02:22.510
+So the S curve up here is one so
+the S curve looks something like this and
+
+34
+00:02:22.510 --> 00:02:26.980
+then it would go down so you'll notice
+that this ends at 0.4 not zero.
+
+35
+00:02:26.980 --> 00:02:30.170
+So that's the actual curve that's fitting,
+
+36
+00:02:30.170 --> 00:02:32.650
+though here on the fitted values
+we're only showing part of it.
+
+37
+00:02:37.580 --> 00:02:43.670
+If we were to exponentiate the ravens
+coefficients we get 0.1864 for
+
+38
+00:02:43.670 --> 00:02:47.090
+the intercept and 1.1125 for the score.
+
+39
+00:02:47.090 --> 00:02:52.830
+So that suggests an 11% increase
+
+40
+00:02:52.830 --> 00:02:57.435
+in the probability of winning for every
+additional points that the Ravens score.
+
+41
+00:02:57.435 --> 00:03:03.780
+Okay, that's how you would interpret
+this logistic regression coefficient.
+
+42
+00:03:03.780 --> 00:03:07.200
+You can get confidence intervals for
+
+43
+00:03:07.200 --> 00:03:13.010
+these two coefficients very
+easily with a confint operator.
+
+44
+00:03:13.010 --> 00:03:19.640
+So on the output from the fitted model, we
+do confint, and then because most people,
+
+45
+00:03:19.640 --> 00:03:24.520
+myself included, would prefer to look at
+these things on the exponentiated scale,
+
+46
+00:03:24.520 --> 00:03:28.120
+you just exponentiate two
+endpoints with the x function.
+
+47
+00:03:28.120 --> 00:03:32.890
+So what we see now is that our
+interval does contain one,
+
+48
+00:03:32.890 --> 00:03:34.360
+it goes from 0.99 to 1.3.
+
+49
+00:03:34.360 --> 00:03:37.568
+So it's saying that even though we for
+
+50
+00:03:37.568 --> 00:03:43.584
+sure know that scoring points is what
+causes the Ravens to win the game,
+
+51
+00:03:43.584 --> 00:03:48.513
+this coefficient turns out
+to not be significant, okay.
+
+52
+00:03:48.513 --> 00:03:54.689
+The ANOVA function works just like
+it does in LM you put the output of
+
+53
+00:03:54.689 --> 00:04:00.110
+the fitted model and
+you can put multiple models in there.
+
+54
+00:04:00.110 --> 00:04:05.190
+For example nested models and ANOVA will
+give you a series of sequential tests.
+
+55
+00:04:05.190 --> 00:04:10.440
+And so here, in this case,
+the variable is for the score,
+
+56
+00:04:11.870 --> 00:04:16.420
+just the one variable that
+we're kind of interested in.
+
+57
+00:04:16.420 --> 00:04:19.360
+So it just has a one
+Degree of Freedom test.
+
+58
+00:04:19.360 --> 00:04:23.760
+This isn't that useful in this particular
+example, but if you had several
+
+59
+00:04:23.760 --> 00:04:27.340
+models that you were interested in
+you'd put them into the ANOVA function.
+
+60
+00:04:27.340 --> 00:04:31.750
+Or I think also it is especially
+useful if you have a factor variable,
+
+61
+00:04:31.750 --> 00:04:34.900
+because sometimes you want
+the factor variable included or
+
+62
+00:04:34.900 --> 00:04:38.540
+the factor variable,
+all levels of the factor variable removed.
+
+63
+00:04:38.540 --> 00:04:42.960
+Then you might want to test whether or
+not that all levels of
+
+64
+00:04:44.940 --> 00:04:48.770
+them are in total
+are necessary in the model.
+
+65
+00:04:48.770 --> 00:04:53.890
+Notice that when you do summary and
+just get the coefficient table out from R,
+
+66
+00:04:53.890 --> 00:04:58.390
+that test each one of the levels
+of the factor independently and
+
+67
+00:04:58.390 --> 00:04:59.720
+doesn't test them all as a whole.
+
+68
+00:04:59.720 --> 00:05:02.479
+So something like the ANOVA
+function is useful for
+
+69
+00:05:02.479 --> 00:05:04.720
+putting a factor in and out of the model.
+
+70
+00:05:06.320 --> 00:05:09.906
+So for interpreting our odds ratios
+remember that our odds ratios are not
+
+71
+00:05:09.906 --> 00:05:12.732
+probabilities they're
+functions of probabilities but
+
+72
+00:05:12.732 --> 00:05:14.870
+they're not probabilities.
+
+73
+00:05:14.870 --> 00:05:18.500
+An odds ratio of one means no difference,
+okay?
+
+74
+00:05:18.500 --> 00:05:22.798
+But on the Logit scale of the log
+odds ratio zero means no difference.
+
+75
+00:05:22.798 --> 00:05:30.157
+In odds, [NOISE] often if we
+have an odds ratio below 0.5 or
+
+76
+00:05:30.157 --> 00:05:34.427
+above two, that's considered,
+
+77
+00:05:34.427 --> 00:05:39.891
+I would consider it
+a kind of strong effect.
+
+78
+00:05:39.891 --> 00:05:44.046
+It depends very context dependent so
+if your working in the field of
+
+79
+00:05:44.046 --> 00:05:48.905
+epidemiology or something like that,
+you often get very small odds ratios.
+
+80
+00:05:48.905 --> 00:05:51.060
+1.01 might be significant.
+
+81
+00:05:51.060 --> 00:05:53.100
+You're looking at giant studies and
+
+82
+00:05:53.100 --> 00:05:56.880
+the reason that these small odds ratios
+are important is because they're studying
+
+83
+00:05:56.880 --> 00:06:00.370
+rather noisy things, like nutrition or
+something like that.
+
+84
+00:06:00.370 --> 00:06:02.790
+How nutrition impacts health or
+something like that.
+
+85
+00:06:02.790 --> 00:06:08.510
+And you wind up with because of all
+the various factors that incorporate,
+
+86
+00:06:08.510 --> 00:06:12.370
+influence this study, you end up with
+very small odds ratios that are still
+
+87
+00:06:12.370 --> 00:06:14.240
+meaningful, even if significant.
+
+88
+00:06:14.240 --> 00:06:15.090
+On the other hand,
+
+89
+00:06:15.090 --> 00:06:19.310
+you might run a very tightly controlled
+experimental clinical trial, or
+
+90
+00:06:19.310 --> 00:06:24.270
+something like that, and then the odds
+ratios that you would want In order to
+
+91
+00:06:24.270 --> 00:06:27.970
+declare something kind of meaningful,
+it would have to be much larger.
+
+92
+00:06:27.970 --> 00:06:31.670
+So again, this is just less than 0.5 or
+
+93
+00:06:31.670 --> 00:06:33.930
+bigger than two is a little
+bit of a benchmark.
+
+94
+00:06:33.930 --> 00:06:39.360
+But remember, like all benchmarks,
+we only have a certain amount of utility.
+
+95
+00:06:39.360 --> 00:06:43.760
+Really, how strong an odds ratio is
+relative to the scientific setting
+
+96
+00:06:43.760 --> 00:06:48.790
+is incredibly dependent on the context
+that you're looking at in.
+
+97
+00:06:48.790 --> 00:06:53.150
+So the relative risk is another
+entity that's often thought of
+
+98
+00:06:53.150 --> 00:06:56.570
+in the same vein as the odds ratio,
+and many people like it.
+
+99
+00:06:56.570 --> 00:07:01.480
+So the relative risk is just
+the ratio of the two probabilities.
+
+100
+00:07:01.480 --> 00:07:05.330
+And many people like it because they tend
+to instinctively think a little bit better
+
+101
+00:07:05.330 --> 00:07:08.220
+in terms of probabilities
+rather than odds.
+
+102
+00:07:08.220 --> 00:07:12.570
+And relative probability seems
+like a reasonable thing to do.
+
+103
+00:07:12.570 --> 00:07:18.530
+The problem with the Relative
+risk unlike the Odds is,
+
+104
+00:07:18.530 --> 00:07:22.980
+it puts in some model constraints
+there quite hard, so we don't see
+
+105
+00:07:22.980 --> 00:07:27.510
+relative risk regression for binary
+variable it's a very common thing to do.
+
+106
+00:07:27.510 --> 00:07:30.780
+There are some software languages I
+know are has some packages to do it.
+
+107
+00:07:30.780 --> 00:07:32.930
+It says has some packages to do it.
+
+108
+00:07:34.060 --> 00:07:36.980
+One thing that is pretty
+common if you happen to have
+
+109
+00:07:36.980 --> 00:07:41.280
+small probabilities then the relative
+risk approximates the odds ratios,
+
+110
+00:07:41.280 --> 00:07:43.750
+this is an old very classic result.
+
+111
+00:07:44.860 --> 00:07:47.320
+So that people go ahead and
+fit the Odds Ratios but
+
+112
+00:07:47.320 --> 00:07:50.290
+then interpret them as if
+they're relative risks.
+
+113
+00:07:50.290 --> 00:07:52.980
+So if you've seen that before then
+that's where that's coming from.
+
+114
+00:07:55.830 --> 00:08:01.440
+So I give you couple more references
+here on Odds Ratios, but I think that's
+
+115
+00:08:01.440 --> 00:08:06.520
+enough to get you started on generalizing
+your models for binomial data.
+
+116
+00:08:06.520 --> 00:08:11.210
+I'm hoping that you can use all of your
+knowledge you got from linear models and
+
+117
+00:08:11.210 --> 00:08:15.850
+help you work that into your use for
+generalized linear models.
+
+118
+00:08:15.850 --> 00:08:18.360
+Next lecture,
+we're going to consider Poisson data.
+
+119
+00:08:18.360 --> 00:08:21.110
+That's sort of the last
+real lecture of the series.
+
+120
+00:08:21.110 --> 00:08:24.700
+Then we have kind of a some bonus
+fun content it's the last lecture,
+
+121
+00:08:24.700 --> 00:08:26.280
+the very last lecture.
+
+122
+00:08:26.280 --> 00:08:27.960
+So I look forward to seeing you next week.
+
+123
+00:08:27.960 --> 00:08:30.205
+We're going to talk about
+poison random variables.

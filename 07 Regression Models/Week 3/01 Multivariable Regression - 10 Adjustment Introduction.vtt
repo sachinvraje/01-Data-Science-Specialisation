@@ -1,0 +1,1153 @@
+WEBVTT
+
+1
+00:00:01.140 --> 00:00:04.870
+Hi, and welcome to the lesson
+on multivariable regression.
+
+2
+00:00:04.870 --> 00:00:09.600
+In this lecture, we're gonna go over
+some examples of how adjusting for
+
+3
+00:00:09.600 --> 00:00:13.490
+one variable can impact
+the apparent relationship we see
+
+4
+00:00:13.490 --> 00:00:16.980
+of another variable on an outcome, okay?
+
+5
+00:00:16.980 --> 00:00:21.520
+And I think the easiest way to see this
+is to look at a two group variable.
+
+6
+00:00:21.520 --> 00:00:24.960
+Take, for example,
+a treatment versus a control or
+
+7
+00:00:24.960 --> 00:00:29.900
+something you might see in an AB test when
+we're adjusting for a continuous variable.
+
+8
+00:00:31.450 --> 00:00:34.500
+So, lets just get started, we're gonna
+go through a lot of examples and
+
+9
+00:00:34.500 --> 00:00:37.890
+I think you'll be surprised at
+how different things can be
+
+10
+00:00:37.890 --> 00:00:39.700
+when you adjust for another variable.
+
+11
+00:00:43.680 --> 00:00:46.580
+In this slide,
+I give you an example set of code
+
+12
+00:00:46.580 --> 00:00:49.370
+that I'm using to simulate the data and
+create the plots.
+
+13
+00:00:49.370 --> 00:00:52.290
+From this point forward,
+I won't show the code anymore, but
+
+14
+00:00:52.290 --> 00:00:54.800
+if you'd like to go through it,
+it's all in the document.
+
+15
+00:00:57.300 --> 00:00:58.753
+Here's the first simulation.
+
+16
+00:00:58.753 --> 00:01:02.234
+In this case,
+it's a pretty straightforward one.
+
+17
+00:01:07.576 --> 00:01:09.100
+Get my pen.
+
+18
+00:01:09.100 --> 00:01:12.470
+Okay, so in this case,
+
+19
+00:01:12.470 --> 00:01:17.030
+the horizontal lines show the.
+
+20
+00:01:19.589 --> 00:01:23.225
+Show the marginal effect of group status,
+in this case,
+
+21
+00:01:23.225 --> 00:01:27.850
+there's one group colored red and
+another group colored blue.
+
+22
+00:01:27.850 --> 00:01:31.060
+This shows the marginal
+effect disregarding the x.
+
+23
+00:01:31.060 --> 00:01:35.890
+So if, for example, y was blood pressure
+or something, then we would think that
+
+24
+00:01:36.990 --> 00:01:41.910
+if we hadn't factored in x, this would be
+the mean for the group that, say, received
+
+25
+00:01:41.910 --> 00:01:45.920
+the treatment, and this would be the mean
+for the group that got the control.
+
+26
+00:01:45.920 --> 00:01:50.801
+Now there's a pretty clear
+linear relationship between
+
+27
+00:01:50.801 --> 00:01:53.553
+the outcome and the regressor.
+
+28
+00:01:53.553 --> 00:01:58.000
+So what we could do is fit
+a model that looks like y = beta
+
+29
+00:01:58.000 --> 00:02:02.742
+naught + beta 1 times our
+treatment indicator, 01 for
+
+30
+00:02:02.742 --> 00:02:07.132
+our treatment indicator,
++ beta 2 * x + epsilon.
+
+31
+00:02:07.132 --> 00:02:09.980
+This would fit two parallel lines.
+
+32
+00:02:09.980 --> 00:02:14.400
+Beta one would represent the change
+in intercepts between the groups,
+
+33
+00:02:14.400 --> 00:02:19.559
+whereas beta two would be the common
+slope that exists across the two groups.
+
+34
+00:02:21.120 --> 00:02:23.920
+If we were to do that, then beta one here,
+
+35
+00:02:23.920 --> 00:02:27.920
+the change in the intercept between
+the two groups, would be right there.
+
+36
+00:02:27.920 --> 00:02:29.900
+It would be that distance.
+
+37
+00:02:29.900 --> 00:02:33.420
+And if you notice in this case, the
+marginal effect, the effect that we have
+
+38
+00:02:33.420 --> 00:02:38.060
+if we disregard x, and the effect
+that we have if we incorporate x in
+
+39
+00:02:38.060 --> 00:02:41.910
+a linear model and look at the change
+in the intercepts, are about the same.
+
+40
+00:02:43.550 --> 00:02:48.090
+Another thing that I would note in this
+example is that there's a lot of direct
+
+41
+00:02:48.090 --> 00:02:53.110
+evidence to compare our groups for
+any given value of x.
+
+42
+00:02:53.110 --> 00:02:58.703
+If we were to bin x, say in a bin like
+this, then we would have a lot of red and
+
+43
+00:02:58.703 --> 00:03:03.129
+blue circles to do a direct
+comparison of the treatment for
+
+44
+00:03:03.129 --> 00:03:05.957
+kind of a fairly isolated level of x.
+
+45
+00:03:05.957 --> 00:03:07.538
+So this would be a good experiment.
+
+46
+00:03:07.538 --> 00:03:11.611
+This would be something that might happen
+if we were to randomized treatment and
+
+47
+00:03:11.611 --> 00:03:15.620
+in the collection of xs for the red group
+would look like the collection of xs for
+
+48
+00:03:15.620 --> 00:03:16.190
+the y group
+
+49
+00:03:27.981 --> 00:03:32.890
+Okay, this is just reiterating
+some of those points.
+
+50
+00:03:34.130 --> 00:03:39.320
+Now let's try a setting where
+it's gonna make a big difference.
+
+51
+00:03:39.320 --> 00:03:43.520
+So again,
+my horizontal lines here show marginal
+
+52
+00:03:43.520 --> 00:03:48.730
+difference between my red treated
+group and my blue control group.
+
+53
+00:03:48.730 --> 00:03:53.550
+However, if we were to fit that model and
+look at the change in the intercepts,
+
+54
+00:03:53.550 --> 00:03:58.180
+we'd see this tiny difference down here,
+this minimal difference, okay?
+
+55
+00:03:59.570 --> 00:04:04.490
+And so this is a case where we would
+go from a massive treatment effect
+
+56
+00:04:05.600 --> 00:04:08.810
+to nothing when we accounted for x.
+
+57
+00:04:08.810 --> 00:04:13.630
+Another thing I would note about this
+particular data set, if we knew that the x
+
+58
+00:04:13.630 --> 00:04:19.670
+value was one or smaller,
+we know that you're in the blue group.
+
+59
+00:04:19.670 --> 00:04:22.030
+And if we know that you are 1.5 or
+
+60
+00:04:22.030 --> 00:04:25.670
+higher, we know that you were
+in the red treated group.
+
+61
+00:04:25.670 --> 00:04:29.700
+So knowledge of x at some level pretty
+much gives us perfect knowledge
+
+62
+00:04:29.700 --> 00:04:31.200
+of which treatment you received.
+
+63
+00:04:32.430 --> 00:04:37.170
+This is an important concept that goes to
+something, the so-called propensity score,
+
+64
+00:04:37.170 --> 00:04:41.519
+but it basically goes to show that this is
+the exact opposite of what would happen
+
+65
+00:04:43.180 --> 00:04:44.980
+if we had randomized, right?
+
+66
+00:04:44.980 --> 00:04:49.660
+In this case, if we randomize it would
+be very hard to pick what treatment
+
+67
+00:04:49.660 --> 00:04:53.990
+you had based on your x level because
+the x levels were all jumbled up.
+
+68
+00:04:53.990 --> 00:04:56.386
+Some of the high x levels
+went to the treated,
+
+69
+00:04:56.386 --> 00:05:00.740
+some of the high x levels went to
+the control, and so on, and so on.
+
+70
+00:05:00.740 --> 00:05:05.820
+In this case,
+it would be an example where we
+
+71
+00:05:06.840 --> 00:05:10.660
+clearly didn't randomize, and which model
+
+72
+00:05:10.660 --> 00:05:15.220
+here is the right one to consider is
+not really up for discussion for today.
+
+73
+00:05:15.220 --> 00:05:18.620
+What we're just talking
+about today is about how
+
+74
+00:05:18.620 --> 00:05:22.400
+the inclusion of x can
+change the estimate.
+
+75
+00:05:22.400 --> 00:05:24.510
+Now which is the right model to consider?
+
+76
+00:05:24.510 --> 00:05:25.810
+That is a different thing.
+
+77
+00:05:25.810 --> 00:05:30.660
+For example, this might occur, an example
+of when this might occur is let's say
+
+78
+00:05:30.660 --> 00:05:36.970
+treatment is whether or not you're taking
+some blood pressure medication, okay?
+
+79
+00:05:36.970 --> 00:05:40.110
+And y, your outcome,
+is your blood pressure.
+
+80
+00:05:40.110 --> 00:05:45.450
+But suppose that the x variable was
+
+81
+00:05:47.110 --> 00:05:50.310
+cholesterol or
+something highly related to whether or
+
+82
+00:05:50.310 --> 00:05:55.690
+not you would've gotten prescribed
+this medication to begin with, okay?
+
+83
+00:05:55.690 --> 00:05:59.020
+Then you could see that adjusting for
+x is really just adjusting for
+
+84
+00:05:59.020 --> 00:06:03.700
+the same sort of thing that would
+lead you to have treatment.
+
+85
+00:06:03.700 --> 00:06:08.830
+So again, this is what makes
+observational data analysis very hard
+
+86
+00:06:08.830 --> 00:06:12.470
+as opposed to instances where what you're
+interested in has been randomized.
+
+87
+00:06:12.470 --> 00:06:16.830
+Okay, so this is an example,
+just to reiterate this point,
+
+88
+00:06:16.830 --> 00:06:21.729
+this is an example where we had a strong
+marginal effect when we disregarded x,
+
+89
+00:06:21.729 --> 00:06:27.060
+and a very subtle or a non-existent
+effect when we accounted for x.
+
+90
+00:06:27.060 --> 00:06:28.570
+Let's try some different scenarios.
+
+91
+00:06:29.730 --> 00:06:33.020
+Again, this slide just
+reiterates these points.
+
+92
+00:06:33.020 --> 00:06:36.290
+Oh, and
+just to go back to this latter point,
+
+93
+00:06:36.290 --> 00:06:42.200
+we have no instances of overlap in the red
+and blue groups to have direct evidence
+
+94
+00:06:42.200 --> 00:06:47.310
+of what's going on for
+a specific value of x.
+
+95
+00:06:47.310 --> 00:06:52.660
+There's no value of x we can hold constant
+and compare red versus blue directly.
+
+96
+00:06:52.660 --> 00:06:54.458
+So this is a bad setting,
+
+97
+00:06:54.458 --> 00:06:59.440
+where we're relying very heavily
+on the model to compare the group.
+
+98
+00:07:03.912 --> 00:07:07.570
+Here's an instance where there
+is some overlap right here.
+
+99
+00:07:09.560 --> 00:07:13.790
+There is some direct evidence right
+there comparing the two groups.
+
+100
+00:07:13.790 --> 00:07:18.840
+But, it also is kind of a hard
+
+101
+00:07:18.840 --> 00:07:24.440
+case because if you look, here's
+the marginal mean for the red group.
+
+102
+00:07:24.440 --> 00:07:27.070
+Here's the marginal mean for
+the blue group.
+
+103
+00:07:27.070 --> 00:07:32.520
+There's a probably significant effect here
+that says the red is higher than the blue.
+
+104
+00:07:32.520 --> 00:07:36.200
+However, we fit our model and
+look at the change in the intercepts,
+
+105
+00:07:36.200 --> 00:07:39.710
+what we see is that the blue
+is higher than the red.
+
+106
+00:07:39.710 --> 00:07:43.440
+So our adjusted estimate
+is significant and
+
+107
+00:07:43.440 --> 00:07:48.680
+the exact opposite of our
+unadjusted estimate, okay?
+
+108
+00:07:48.680 --> 00:07:52.280
+And again, during this lecture we're not
+gonna talk about which one's the right
+
+109
+00:07:52.280 --> 00:07:56.180
+one, we're just gonna talk about
+how this can obviously occur.
+
+110
+00:07:56.180 --> 00:08:00.410
+Here is a picture where you can
+see exactly what's happening.
+
+111
+00:08:00.410 --> 00:08:04.300
+This phenomenon here is often
+called Simpson's Paradox, and
+
+112
+00:08:04.300 --> 00:08:10.050
+the idea is you look at a variable
+as it relates to an outcome,
+
+113
+00:08:10.050 --> 00:08:13.270
+and that effect reverses itself as
+the inclusion of another variable.
+
+114
+00:08:13.270 --> 00:08:17.010
+That's often called Simpson's Paradox,
+which basically just says
+
+115
+00:08:17.010 --> 00:08:21.450
+things can change to the exact
+opposite when you perform adjustment,
+
+116
+00:08:21.450 --> 00:08:24.730
+which Is actually looking at this
+picture not that surprising.
+
+117
+00:08:24.730 --> 00:08:26.220
+It's not a paradox whatsoever.
+
+118
+00:08:28.320 --> 00:08:30.580
+All right, let's try some other examples.
+
+119
+00:08:30.580 --> 00:08:35.073
+Again, the next slide's just
+gonna reiterate these points.
+
+120
+00:08:35.073 --> 00:08:42.691
+In this example,
+there's basically no marginal effect.
+
+121
+00:08:42.691 --> 00:08:46.291
+However, there's a huge effect
+when we adjust for x so
+
+122
+00:08:46.291 --> 00:08:51.297
+this is a case where we went from, we saw
+a case where we went from significant
+
+123
+00:08:51.297 --> 00:08:56.090
+effect to when we adjusted for x,
+we got a non-significant effect.
+
+124
+00:08:56.090 --> 00:09:01.860
+Well, here's an instance where we had
+a non-significant effect if we ignore x,
+
+125
+00:09:01.860 --> 00:09:06.010
+and then a significant effect
+when we include x, okay?
+
+126
+00:09:06.010 --> 00:09:10.030
+So there's no simple rule that says
+this is always what will happen with
+
+127
+00:09:10.030 --> 00:09:10.838
+adjustment.
+
+128
+00:09:10.838 --> 00:09:15.260
+Pretty much any permutation of going from
+significant to non-significant, staying
+
+129
+00:09:15.260 --> 00:09:19.877
+both significant, staying non-significant,
+flipping signs, all of them can occur.
+
+130
+00:09:24.527 --> 00:09:29.405
+Here's the final example like
+this I'd like to show, and
+
+131
+00:09:29.405 --> 00:09:35.082
+this just considers an instance
+where we would surely get this wrong
+
+132
+00:09:35.082 --> 00:09:40.580
+if we were to assume the slopes
+were common across the two groups.
+
+133
+00:09:40.580 --> 00:09:42.370
+Obviously, the slopes are different.
+
+134
+00:09:42.370 --> 00:09:44.020
+And we know how to fit a model like this.
+
+135
+00:09:44.020 --> 00:09:46.851
+If we were to fit a model that said,
+
+136
+00:09:46.851 --> 00:09:51.050
+y = beta naught + beta 1
+* our treatment effect,
+
+137
+00:09:51.050 --> 00:09:55.800
++ beta 2 * x, + beta 3 treatment,
+* x + epsilon.
+
+138
+00:09:55.800 --> 00:10:00.699
+That would fit two lines with different
+intercepts and different slopes,
+
+139
+00:10:00.699 --> 00:10:04.500
+and we could get a fit
+like to this data set.
+
+140
+00:10:04.500 --> 00:10:06.320
+Another important thing to ascertain for
+
+141
+00:10:06.320 --> 00:10:09.910
+this data set is there is no such
+thing as a treatment effect.
+
+142
+00:10:09.910 --> 00:10:12.020
+If you look right here,
+the red and the blue,
+
+143
+00:10:12.020 --> 00:10:13.770
+there's no evidence of a treatment effect.
+
+144
+00:10:13.770 --> 00:10:17.390
+If you look right here,
+there's a big evidence that blue
+
+145
+00:10:17.390 --> 00:10:21.200
+has a higher outcome than red,
+and if you look over here,
+
+146
+00:10:21.200 --> 00:10:26.190
+there's a lot of evidence that red
+has a higher outcome than blue.
+
+147
+00:10:26.190 --> 00:10:31.120
+And the reason,
+the interaction is the reason
+
+148
+00:10:31.120 --> 00:10:35.030
+that this main treatment effect
+doesn't have a lot of meaning.
+
+149
+00:10:35.030 --> 00:10:37.512
+The end result is that this coefficient,
+
+150
+00:10:37.512 --> 00:10:42.180
+the coefficient in front of the treated
+effects, which just spits out of course,
+
+151
+00:10:42.180 --> 00:10:45.420
+is not interpreted as
+the treatment effect by itself.
+
+152
+00:10:45.420 --> 00:10:47.760
+You can't interpret that
+number as a treatment effect.
+
+153
+00:10:47.760 --> 00:10:49.690
+As we can see from this picture,
+
+154
+00:10:49.690 --> 00:10:52.470
+there is no such thing as
+a treatment effect for this data.
+
+155
+00:10:52.470 --> 00:10:56.950
+The treatment effect depends
+on what level of x you're at.
+
+156
+00:10:56.950 --> 00:11:01.670
+So you can't just read
+the term from the regression
+
+157
+00:11:01.670 --> 00:11:05.880
+output associated with the treatment and
+act as if it's a treatment effect,
+
+158
+00:11:05.880 --> 00:11:08.580
+if in fact, you have
+an interaction term in your model.
+
+159
+00:11:08.580 --> 00:11:13.560
+So that's an important point, but this
+also just goes to show how adjustment can
+
+160
+00:11:13.560 --> 00:11:18.480
+really change things if you have a setting
+like this where you have not just
+
+161
+00:11:18.480 --> 00:11:25.170
+adjustment, but so-called modification.
+
+162
+00:11:25.170 --> 00:11:29.350
+Okay, so
+again that was a crazy simulation.
+
+163
+00:11:29.350 --> 00:11:31.640
+This just summarizes some of the points.
+
+164
+00:11:31.640 --> 00:11:33.650
+You often see interactions, but
+
+165
+00:11:33.650 --> 00:11:39.250
+you rarely see interactions that start,
+but still, nonetheless, they can occur.
+
+166
+00:11:39.250 --> 00:11:43.200
+And then I want to reiterate that nothing
+we've talked about is specific to having
+
+167
+00:11:43.200 --> 00:11:49.300
+a binary treatment and a continuous x.
+
+168
+00:11:49.300 --> 00:11:53.280
+In this case here,
+we have our same outcome, y.
+
+169
+00:11:53.280 --> 00:11:58.400
+But in our x1 variable is continuous and
+our x2 is continuous, but because
+
+170
+00:11:58.400 --> 00:12:02.610
+it's kinda hard to show 3 variables
+at the same time, x2 is color coded.
+
+171
+00:12:02.610 --> 00:12:07.120
+So higher lighter values mean higher, and
+
+172
+00:12:07.120 --> 00:12:10.820
+more red darker values means lower, okay?
+
+173
+00:12:10.820 --> 00:12:14.120
+So in this case, if you look at this
+plot you would say there isn't much of
+
+174
+00:12:14.120 --> 00:12:20.870
+a relationship between y and x1, however,
+
+175
+00:12:20.870 --> 00:12:25.100
+lets look at this in three dimensions,
+and then I need a different setting.
+
+176
+00:12:25.100 --> 00:12:27.360
+I need something where I
+can rotate the plot around.
+
+177
+00:12:27.360 --> 00:12:32.410
+So, I'm going to use RGL,
+and it's pretty easy.
+
+178
+00:12:32.410 --> 00:12:35.830
+You can, this doesn't show how
+I generated the x1, x2, and y,
+
+179
+00:12:35.830 --> 00:12:40.650
+that's in the mark down document, but
+here, I'll show you how to get it.
+
+180
+00:12:40.650 --> 00:12:48.260
+So there's the plot or data set that's
+equivalent cuz I reran the simulation.
+
+181
+00:12:48.260 --> 00:12:50.100
+And here's our plot.
+
+182
+00:12:50.100 --> 00:12:52.590
+So here's exactly that plot recreated,
+
+183
+00:12:56.680 --> 00:13:01.420
+just to orient you, my y is on this axis,
+and my x1 is on this axis.
+
+184
+00:13:02.600 --> 00:13:08.710
+Now, however if I look,
+if I turn this with x2, you
+
+185
+00:13:08.710 --> 00:13:14.670
+can see that most of the variation of y is
+explained by this relationship with x2.
+
+186
+00:13:15.700 --> 00:13:18.500
+Okay, and
+there is a small amount of sharing.
+
+187
+00:13:18.500 --> 00:13:23.736
+So if I try and get it just perfect,
+you can see that there
+
+188
+00:13:23.736 --> 00:13:29.330
+is some variation left for
+y once I've accounted for x2.
+
+189
+00:13:29.330 --> 00:13:32.750
+So let's look at that, and an easy way to
+look at that without having to resort to
+
+190
+00:13:32.750 --> 00:13:37.090
+three dimensional plots, especially
+which don't work if you move beyond two
+
+191
+00:13:37.090 --> 00:13:41.640
+variables, if you have three variables or
+four variables, is to look at residuals.
+
+192
+00:13:41.640 --> 00:13:44.214
+So let's look at what happens
+when we look at the residuals.
+
+193
+00:13:47.590 --> 00:13:52.647
+So here is the residual of y after having
+removed x2, the linear effect of x2,
+
+194
+00:13:52.647 --> 00:13:56.513
+and the residual of x1 having
+removed linear effect of x2.
+
+195
+00:13:56.513 --> 00:14:01.505
+And there you can see there's
+a very strong relationship left
+
+196
+00:14:01.505 --> 00:14:06.990
+over between y and
+x1 after having removed the effect of x2.
+
+197
+00:14:06.990 --> 00:14:12.400
+And the main point of
+this slide right here and
+
+198
+00:14:12.400 --> 00:14:17.350
+the continuous variant is just to
+show that there’s nothing specific
+
+199
+00:14:17.350 --> 00:14:21.150
+about the binary case other than
+it’s kind of easy to visualize
+
+200
+00:14:22.560 --> 00:14:26.270
+that makes the same things not
+occur in the continuous case.
+
+201
+00:14:26.270 --> 00:14:31.580
+We can get regression effects, reverse
+themselves, get bigger, get smaller,
+
+202
+00:14:31.580 --> 00:14:35.450
+go from significant to not, from not
+significant to significant, and all of
+
+203
+00:14:35.450 --> 00:14:40.275
+the possible permutations when we have two
+or more multiple continuous regressors.
+
+204
+00:14:42.790 --> 00:14:47.950
+So some final thoughts, again, I want to
+reiterate we haven't said what exactly is
+
+205
+00:14:47.950 --> 00:14:53.380
+the right model, because the two differ,
+we need an answer, right?
+
+206
+00:14:53.380 --> 00:14:58.380
+And I would say the probably best
+way to think about that is you
+
+207
+00:14:58.380 --> 00:15:02.950
+have to bring in some of the specific
+subject matter, or clinical scientific
+
+208
+00:15:04.650 --> 00:15:09.370
+subject matter expertise into
+your model building exercise.
+
+209
+00:15:09.370 --> 00:15:15.210
+Sometimes the treatment and
+the other regressor are highly related,
+
+210
+00:15:15.210 --> 00:15:20.640
+but merely because they're related things,
+that it isn't interesting to adjust for x.
+
+211
+00:15:20.640 --> 00:15:24.710
+So the fact that it causes the treatment
+effect to go away isn't meaningful.
+
+212
+00:15:24.710 --> 00:15:29.410
+If I have systolic blood pressure in
+a model, and I put diastolic blood
+
+213
+00:15:29.410 --> 00:15:33.860
+pressure in a model as well, that of
+course, makes the first one go away.
+
+214
+00:15:34.890 --> 00:15:36.170
+But that's not interesting.
+
+215
+00:15:36.170 --> 00:15:39.220
+I know those two blood pressure
+measurements are highly correlated.
+
+216
+00:15:39.220 --> 00:15:40.760
+Why should I have them both in the model?
+
+217
+00:15:43.442 --> 00:15:48.670
+And so to really understand this,
+you need to have
+
+218
+00:15:48.670 --> 00:15:53.730
+a dynamic process of going back and
+forth with the model fitting and
+
+219
+00:15:53.730 --> 00:15:57.820
+the subject matter and
+scientific expertise bringing
+
+220
+00:15:57.820 --> 00:16:02.010
+its full force to bear on the model
+building exercise to get sensible results.
+
+221
+00:16:02.010 --> 00:16:03.800
+But hopefully after this lecture,
+
+222
+00:16:03.800 --> 00:16:08.240
+you'll understand when you see
+the adjustment cause your facts to change,
+
+223
+00:16:08.240 --> 00:16:11.180
+you'll maybe get a sense of how
+that's occurring in the background.
+
+224
+00:16:12.900 --> 00:16:18.310
+Okay, and then for automated model
+selection, which is another process that
+
+225
+00:16:18.310 --> 00:16:21.730
+you'll talk more about in your machine
+learning class, that's a different thing.
+
+226
+00:16:21.730 --> 00:16:24.040
+And I don't think it's
+particularly well suited for
+
+227
+00:16:24.040 --> 00:16:26.090
+painting interpretable coefficients.
+
+228
+00:16:26.090 --> 00:16:30.470
+It's data for obtaining good predictions
+with respect to a loss function.
+
+229
+00:16:30.470 --> 00:16:32.300
+So that's a different process.
+
+230
+00:16:32.300 --> 00:16:37.580
+I think there's no substitute if you're
+doing model building with a regular
+
+231
+00:16:37.580 --> 00:16:42.860
+data set where you want interpretable
+coefficients to getting your hands dirty,
+
+232
+00:16:42.860 --> 00:16:46.350
+getting the team of people that
+are working with on it together,
+
+233
+00:16:46.350 --> 00:16:49.590
+some with the right scientific expertise,
+some with the statistical expertise, and
+
+234
+00:16:49.590 --> 00:16:53.950
+some with the computing expertise, and
+so on, all together to fit the models.
+
+235
+00:16:53.950 --> 00:16:57.540
+And if there's a big change in
+coefficients after different adjustment
+
+236
+00:16:57.540 --> 00:17:01.866
+strategies, well,
+then those need to be discussed and
+
+237
+00:17:01.866 --> 00:17:06.420
+vetted and the benefits and
+side effects, and
+
+238
+00:17:06.420 --> 00:17:10.660
+downsides of each of the models
+should be discussed, okay.
+
+239
+00:17:11.830 --> 00:17:14.457
+So thank you for
+listening to this lecture, and
+
+240
+00:17:14.457 --> 00:17:16.895
+I look forward to seeing
+you in the next one.

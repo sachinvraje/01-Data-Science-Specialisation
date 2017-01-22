@@ -1,0 +1,600 @@
+WEBVTT
+
+1
+00:00:00.220 --> 00:00:03.840
+Okay, so let's go through
+some simulation experiments
+
+2
+00:00:03.840 --> 00:00:06.910
+to understand how some of these
+diagnostic measures work.
+
+3
+00:00:06.910 --> 00:00:08.960
+In this first case,
+
+4
+00:00:08.960 --> 00:00:14.290
+I'm looking at an instance where there's
+a big cloud of uncorrelated data and
+
+5
+00:00:14.290 --> 00:00:19.780
+I did this by just generating a bunch
+of pairs of independent random normals.
+
+6
+00:00:19.780 --> 00:00:25.020
+Then I added random standard then
+I added the point at ten,ten which
+
+7
+00:00:25.020 --> 00:00:28.990
+clearly does not fit the rest
+of the trend of data.
+
+8
+00:00:28.990 --> 00:00:33.443
+What we can see in this case is
+that there's a strong correlation
+
+9
+00:00:33.443 --> 00:00:38.060
+estimated by the data merely because
+of the existence of this point
+
+10
+00:00:38.060 --> 00:00:42.109
+otherwise the correlation
+would be estimated to be zero.
+
+11
+00:00:47.299 --> 00:00:52.290
+So you can see the code right here that
+I use to generate and plot the data.
+
+12
+00:00:54.280 --> 00:00:58.500
+So let's look at a couple of
+the diagnostic values and
+
+13
+00:01:02.340 --> 00:01:08.260
+the first thing, why we look at
+the DF datas, so here's the dfbetas,
+
+14
+00:01:08.260 --> 00:01:12.150
+the round statement here just rounds
+into the third decimal place when I put
+
+15
+00:01:12.150 --> 00:01:18.350
+the three there and notice this first
+point which is the ten, ten point is or
+
+16
+00:01:18.350 --> 00:01:24.469
+as the magnitude larger of a dfbeta then,
+the remaining point.
+
+17
+00:01:26.220 --> 00:01:28.260
+Let's look at the hat values.
+
+18
+00:01:28.260 --> 00:01:32.140
+The hat value for this point is
+much larger than the hat values for
+
+19
+00:01:32.140 --> 00:01:33.170
+the remaining points.
+
+20
+00:01:33.170 --> 00:01:36.360
+The hat values have to be between zero and
+one.
+
+21
+00:01:36.360 --> 00:01:39.830
+So and it's of course much
+larger than the other points.
+
+22
+00:01:39.830 --> 00:01:42.847
+So if we are looking at these,
+we would obviously single this point out.
+
+23
+00:01:49.919 --> 00:01:54.505
+Now let's look at another point,
+another instance where there's a clear
+
+24
+00:01:54.505 --> 00:01:59.163
+regression relationship, here I just
+generated the data along a line, and
+
+25
+00:01:59.163 --> 00:02:05.000
+then I generated another outlier that's
+similarly distant from the cloud of data.
+
+26
+00:02:05.000 --> 00:02:07.829
+However it adheres very nicely
+to the regression line.
+
+27
+00:02:07.829 --> 00:02:13.269
+So let's see how our diagnostic
+values look in this specific case.
+
+28
+00:02:18.807 --> 00:02:23.369
+Okay, so here's my dfbetas and
+if you look this first point,
+
+29
+00:02:23.369 --> 00:02:26.158
+which was that outlying point.
+
+30
+00:02:26.158 --> 00:02:29.900
+It's still large but
+
+31
+00:02:29.900 --> 00:02:34.120
+nowhere near as distinctively
+large as in the other case.
+
+32
+00:02:34.120 --> 00:02:38.130
+So it still does appear to have
+some influence in the fit, but
+
+33
+00:02:38.130 --> 00:02:39.580
+nothing like in the other case.
+
+34
+00:02:39.580 --> 00:02:42.500
+However if you look at
+the hat values right.
+
+35
+00:02:42.500 --> 00:02:46.670
+If you look at the hat values,
+this has a much larger hat value than and
+
+36
+00:02:46.670 --> 00:02:49.130
+the remaining all the other points.
+
+37
+00:02:49.130 --> 00:02:52.000
+A factor of ten than
+most of the other points.
+
+38
+00:02:52.000 --> 00:02:52.820
+Why?
+
+39
+00:02:52.820 --> 00:02:56.830
+Well, if we go back what
+we see is that this point
+
+40
+00:02:56.830 --> 00:02:59.540
+is outside of the range of the X values.
+
+41
+00:03:00.990 --> 00:03:03.360
+It's outside of the range of the X values.
+
+42
+00:03:04.700 --> 00:03:08.690
+But it does adhere to
+the direction relationship.
+
+43
+00:03:08.690 --> 00:03:12.820
+So it's going to have
+a large leverage value but
+
+44
+00:03:12.820 --> 00:03:17.110
+not a large DF beta or DFS or
+some of these other things.
+
+45
+00:03:17.110 --> 00:03:22.410
+Let's look at this example by Stefanski
+that to me shows why we do residual plots.
+
+46
+00:03:22.410 --> 00:03:27.030
+Basically, the reason we look at
+residual plots is because they zoom
+
+47
+00:03:27.030 --> 00:03:29.690
+on potential problems with our model.
+
+48
+00:03:29.690 --> 00:03:32.220
+In this case you can download
+the data from their website.
+
+49
+00:03:33.640 --> 00:03:37.024
+The pair Y scatter plots
+are given here they show kind of
+
+50
+00:03:37.024 --> 00:03:40.568
+nothing interesting other
+than a lot of over plotting.
+
+51
+00:03:45.799 --> 00:03:50.650
+Here I show my linear model fit and
+if you look every single P
+
+52
+00:03:50.650 --> 00:03:56.370
+values highly significant for
+every single coefficient here.
+
+53
+00:03:56.370 --> 00:04:00.440
+I set all of the data points but,
+for this to work for this model,
+
+54
+00:04:00.440 --> 00:04:04.180
+you have to try to intercept in the way
+that he generate with the data.
+
+55
+00:04:04.180 --> 00:04:09.109
+Okay, should we be done, is this fine,
+well here's the problem.
+
+56
+00:04:10.970 --> 00:04:16.030
+So the residual plot that you intend to
+do when you have multi variable examples
+
+57
+00:04:16.030 --> 00:04:20.690
+because you can't plop
+the residuals versus the only
+
+58
+00:04:20.690 --> 00:04:25.696
+acts as you can in linear regression
+is you need to pick a number
+
+59
+00:04:25.696 --> 00:04:30.510
+of the X with the most common ways to plot
+the residuals versus the fitted values but
+
+60
+00:04:30.510 --> 00:04:34.300
+residuals which are e vs y hat, okay.
+
+61
+00:04:34.300 --> 00:04:37.640
+So what happens in this
+particular instance when we plot
+
+62
+00:04:37.640 --> 00:04:39.815
+the residuals versus y hat.
+
+63
+00:04:39.815 --> 00:04:44.910
+Now you can see you get this very
+clever little picture that comes out.
+
+64
+00:04:44.910 --> 00:04:46.720
+So what's happened?
+
+65
+00:04:46.720 --> 00:04:51.350
+Without looking at the residuals
+we wouldn't have seen anything.
+
+66
+00:04:51.350 --> 00:04:57.030
+But looking at the residuals has
+zoomed in on this very clear aspect of
+
+67
+00:04:57.030 --> 00:04:59.320
+poor model fit and
+
+68
+00:04:59.320 --> 00:05:04.220
+is a very clear systematic pattern
+in our residuals that we've missed.
+
+69
+00:05:04.220 --> 00:05:08.940
+And remember in most cases in regression
+we want to model the systematic things and
+
+70
+00:05:08.940 --> 00:05:12.810
+everything that we can explain,
+we want to leave to,
+
+71
+00:05:12.810 --> 00:05:16.630
+we want to model this as if we're
+noise but the systematic things like
+
+72
+00:05:16.630 --> 00:05:20.240
+obviously this picture is systematic
+we want to actually be able to model.
+
+73
+00:05:20.240 --> 00:05:24.610
+So in this case without having
+to look at the residual plot,
+
+74
+00:05:24.610 --> 00:05:25.940
+we would have missed this pattern.
+
+75
+00:05:25.940 --> 00:05:31.820
+It is really just created by
+Stephansky and his co-authors to
+
+76
+00:05:31.820 --> 00:05:35.660
+described for
+us why it is that we do residual plots and
+
+77
+00:05:35.660 --> 00:05:41.460
+that is that they zoom in ,so finally
+on aspects of poor model fair.
+
+78
+00:05:45.440 --> 00:05:49.970
+So let's go back to the swiss data and
+just look at the different
+
+79
+00:05:49.970 --> 00:05:55.020
+examples of diagnostic plots that
+can spit out by default by art.
+
+80
+00:05:55.020 --> 00:05:59.950
+Remember at the beginning of
+the lecture we started out with this so
+
+81
+00:05:59.950 --> 00:06:02.400
+let's see if now we can
+interpret these things.
+
+82
+00:06:02.400 --> 00:06:06.740
+Well, for
+the residual plot versus the fitted values
+
+83
+00:06:06.740 --> 00:06:11.110
+that's the same plot as we just saw
+with the oriliow just a slide ago.
+
+84
+00:06:11.110 --> 00:06:16.820
+So what you're looking at in that plot is
+trying to find anything that's systematic.
+
+85
+00:06:16.820 --> 00:06:21.050
+For example, if you saw the data
+look something like that.
+
+86
+00:06:21.050 --> 00:06:23.500
+That would suggest heteroscedasticity
+
+87
+00:06:23.500 --> 00:06:25.880
+that the variance is either increasing or
+decreasing.
+
+88
+00:06:25.880 --> 00:06:29.050
+In a way that you wouldn't like and so on.
+
+89
+00:06:29.050 --> 00:06:31.360
+So we in this plot it doesn't look so bad.
+
+90
+00:06:31.360 --> 00:06:36.530
+There doesn't seem to be
+too many aspects of absence
+
+91
+00:06:38.590 --> 00:06:41.079
+of model departures there.
+
+92
+00:06:43.790 --> 00:06:49.020
+The Q-Q plot is specifically
+designed to test normality or
+
+93
+00:06:49.020 --> 00:06:55.010
+not to test to evaluate normality
+of the error terms, okay?
+
+94
+00:06:55.010 --> 00:06:59.570
+This scale location plot is plotting
+the standardized residuals, remember we
+
+95
+00:06:59.570 --> 00:07:02.970
+talked about standardized residuals
+they're the ordinary residuals but
+
+96
+00:07:02.970 --> 00:07:08.250
+standardize, so they have a more kind
+of comparable scale across subject,
+
+97
+00:07:08.250 --> 00:07:13.760
+across experiments and the scale to try
+and make them to be like a TY statistic.
+
+98
+00:07:13.760 --> 00:07:17.880
+So again, this is a lot like the residual
+plot, you're applying them against
+
+99
+00:07:17.880 --> 00:07:22.420
+the fitted values but, now you just
+mostly, you've change the scale.
+
+100
+00:07:22.420 --> 00:07:30.733
+So that's potentially useful for looking
+at these across different experiments.
+
+101
+00:07:30.733 --> 00:07:36.660
+The final is plot of
+the Residuals vs Leverage.
+
+102
+00:07:36.660 --> 00:07:40.500
+So here's the standardized
+Residuals on this scale and
+
+103
+00:07:40.500 --> 00:07:45.680
+then here's the Leverage on that scale and
+in this plot
+
+104
+00:07:45.680 --> 00:07:51.000
+again you're trying to look at any sort of
+systematic pattern any reason why points
+
+105
+00:07:51.000 --> 00:07:56.280
+with higher leverage are having higher or
+particularly small residual values.
+
+106
+00:07:56.280 --> 00:08:01.160
+If you had an instance like where
+you have plots like this and
+
+107
+00:08:01.160 --> 00:08:04.660
+you have one very high leverage point and
+you get something like that.
+
+108
+00:08:04.660 --> 00:08:08.320
+That point might have
+a very small residual but
+
+109
+00:08:08.320 --> 00:08:12.870
+unnecessarily while it has happened
+to have very large leverage or
+
+110
+00:08:12.870 --> 00:08:17.940
+you might have an instance like this
+where even though it's really impacted
+
+111
+00:08:17.940 --> 00:08:23.170
+the regression line, it still has high
+leverage and also has a high residual.
+
+112
+00:08:23.170 --> 00:08:26.930
+So at any rate these are many, these are
+just a couple of examples of the kind of
+
+113
+00:08:26.930 --> 00:08:32.190
+plots you might want to look at in
+this data set none of them seem
+
+114
+00:08:32.190 --> 00:08:39.170
+to look too inherently bad but when you
+go through these things ideally you
+
+115
+00:08:39.170 --> 00:08:42.930
+would have something where you could click
+on the individual points and it would It
+
+116
+00:08:42.930 --> 00:08:48.300
+would describe the aspects of the point
+when you hover over it with your mouse.
+
+117
+00:08:48.300 --> 00:08:51.030
+Some of the other software
+systems can do that.
+
+118
+00:08:51.030 --> 00:08:53.640
+R can do that now,
+we'll talk in the data products
+
+119
+00:08:53.640 --> 00:08:56.590
+class how you can actually
+create those kinds of plots.
+
+120
+00:08:57.670 --> 00:09:02.680
+So that's the end of the lecture and
+
+121
+00:09:02.680 --> 00:09:05.850
+I look forward to seeing you next time,
+but I hope now that you know a little bit
+
+122
+00:09:05.850 --> 00:09:10.820
+about diagnostic measures, and influence
+diagnostics, and leverage diagnostics that
+
+123
+00:09:10.820 --> 00:09:14.620
+you can incorporate them into
+your analysis in the future.
+
+124
+00:09:14.620 --> 00:09:15.590
+All right.
+See you next time.

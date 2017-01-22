@@ -1,0 +1,405 @@
+WEBVTT
+
+1
+00:00:00.940 --> 00:00:04.230
+Welcome to the lecture on residuals and
+residual variation.
+
+2
+00:00:04.230 --> 00:00:06.700
+My name is Brian Caffo,
+and I'm the instructor for
+
+3
+00:00:06.700 --> 00:00:10.660
+the regression class as part of
+the Data Science Coursera Specialization.
+
+4
+00:00:10.660 --> 00:00:13.430
+Let's start by talking about
+our motivating example
+
+5
+00:00:13.430 --> 00:00:15.650
+using the diamond data set.
+
+6
+00:00:15.650 --> 00:00:20.340
+Remember, in this data set the diamonds
+were diamond prices in Singapore dollars.
+
+7
+00:00:20.340 --> 00:00:24.590
+And, the diamond, the explanatory variable
+is the weight of the diamond in carats.
+
+8
+00:00:25.930 --> 00:00:30.630
+We'd like to talk about how we can
+explain variation in diamond prices
+
+9
+00:00:30.630 --> 00:00:31.780
+using their mass.
+
+10
+00:00:33.290 --> 00:00:35.270
+Let me generate a plot.
+
+11
+00:00:35.270 --> 00:00:38.010
+Last time, I showed, went through
+the commands for generating the plot, so
+
+12
+00:00:38.010 --> 00:00:38.940
+I won't do this again.
+
+13
+00:00:38.940 --> 00:00:43.050
+But, here's my ggplot,
+and let me zoom out.
+
+14
+00:00:43.050 --> 00:00:47.512
+So, what we're interested
+now Is explaining
+
+15
+00:00:47.512 --> 00:00:52.780
+price on the vertical axis by
+mass on the horizontal axis.
+
+16
+00:00:53.930 --> 00:00:56.620
+If we had disregarded mass,
+we would have all these points.
+
+17
+00:00:58.480 --> 00:01:05.600
+We would look at their sort of
+projection onto the vertical axis.
+
+18
+00:01:05.600 --> 00:01:07.870
+And there would be a lot of variation.
+
+19
+00:01:07.870 --> 00:01:11.150
+Dis, if you were to disregard mass,
+there would be a lot of variation.
+
+20
+00:01:11.150 --> 00:01:14.685
+When we consider mass,
+there's much less variation.
+
+21
+00:01:14.685 --> 00:01:19.490
+because, now we are talking about this
+variation around the regression line.
+
+22
+00:01:21.030 --> 00:01:24.750
+The variation around the regression line,
+is residual variation.
+
+23
+00:01:24.750 --> 00:01:28.800
+That variation that was left unexplained
+by having accounted for mass.
+
+24
+00:01:30.640 --> 00:01:32.900
+So, we start out with a lot of variation.
+
+25
+00:01:32.900 --> 00:01:38.930
+We've explained a substantial fraction of
+it by the linear relationship with mass,
+
+26
+00:01:38.930 --> 00:01:40.900
+but there's some left over variation.
+
+27
+00:01:40.900 --> 00:01:42.429
+We'll call that residual variation.
+
+28
+00:01:43.490 --> 00:01:48.437
+These distances that make up the residual
+variation are called the residuals, and
+
+29
+00:01:48.437 --> 00:01:50.850
+that's the topic of today's lecture.
+
+30
+00:01:51.850 --> 00:01:55.190
+The residuals are quite useful for
+diagnosing many things,
+
+31
+00:01:55.190 --> 00:01:56.560
+including poor model fit.
+
+32
+00:01:59.720 --> 00:02:02.650
+Let's remind ourselves of
+the model that we're considering.
+
+33
+00:02:02.650 --> 00:02:06.150
+Our outcome and our example,
+which would be price,
+
+34
+00:02:06.150 --> 00:02:08.770
+is Yi, which we're assuming is a line.
+
+35
+00:02:08.770 --> 00:02:14.355
+Beta nought plus Beta Xi, where Xi,
+in this case, is mass in our example.
+
+36
+00:02:14.355 --> 00:02:18.447
+We're adding on some gaussian error,
+epsolon i, which we're assuming to be
+
+37
+00:02:18.447 --> 00:02:22.306
+normally distributed with a mean of
+zero and a variance of sigma squared.
+
+38
+00:02:22.306 --> 00:02:25.280
+We haven't explicitly used
+this normal assumption yet,
+
+39
+00:02:25.280 --> 00:02:28.870
+and that'll be coming later,
+later on in some subsequent lectures.
+
+40
+00:02:31.700 --> 00:02:38.352
+Remember, the outcome is Yi for predictor
+value, Xi at that specific index i.
+
+41
+00:02:38.352 --> 00:02:41.350
+So, Yi is a price, Xi is a mass.
+
+42
+00:02:43.300 --> 00:02:46.880
+The point on the line
+corresponding to Xi is Yi hat.
+
+43
+00:02:48.500 --> 00:02:53.680
+We can figure out Yi hat just by plugging
+in Beta0 hat plus Beta1 hat times Xi.
+
+44
+00:02:55.010 --> 00:02:59.835
+Well, our residual is nothing other
+than the vertical distance between
+
+45
+00:02:59.835 --> 00:03:05.307
+the observed data point, observed outcome,
+Yi, and the fitted value, Yi hat.
+
+46
+00:03:05.307 --> 00:03:08.846
+So, ei is equal to Yi minus Yi hat.
+
+47
+00:03:08.846 --> 00:03:13.432
+Remember, our least square's criteria
+tried to minimize the sum of the squared
+
+48
+00:03:13.432 --> 00:03:14.721
+vertical distances.
+
+49
+00:03:14.721 --> 00:03:18.851
+So in essence, it was minimizing
+the sum of the squared residual,
+
+50
+00:03:18.851 --> 00:03:20.339
+summation ei squared.
+
+51
+00:03:21.450 --> 00:03:25.751
+One way to think about the residuals
+are as an estimate of epsilon i.
+
+52
+00:03:25.751 --> 00:03:30.216
+Though, you have to be careful with that,
+because as we'll see later on, we can
+
+53
+00:03:30.216 --> 00:03:34.770
+decrease the residuals just by adding
+irrelevant regressors into the equation.
+
+54
+00:03:36.300 --> 00:03:39.771
+Let's talk about some aspects of residuals
+that will help us interpret them.
+
+55
+00:03:39.771 --> 00:03:43.070
+First of all, their population
+is expected value is zero.
+
+56
+00:03:44.930 --> 00:03:49.850
+But also, their sum, their empirical sum,
+hence the empirical mean also,
+
+57
+00:03:49.850 --> 00:03:52.070
+is zero if you include an intercept.
+
+58
+00:03:52.070 --> 00:03:55.565
+If you don't include an intercept,
+this property doesn't have to hold.
+
+59
+00:03:55.565 --> 00:04:00.650
+Well, the generalization of this property
+is, if you include any regression term in,
+
+60
+00:04:00.650 --> 00:04:03.950
+in linear regression,
+in our generalization in linear models,
+
+61
+00:04:03.950 --> 00:04:07.280
+the sum of the residuals times that
+regression variable has to be zero.
+
+62
+00:04:09.060 --> 00:04:11.750
+Residuals are very useful for
+diagnosing poor model fit.
+
+63
+00:04:11.750 --> 00:04:14.440
+And, we can create plots
+that sort of highlight and
+
+64
+00:04:14.440 --> 00:04:16.850
+zone in on the aspects of poor model fit.
+
+65
+00:04:18.370 --> 00:04:25.360
+Another common use of residuals is to
+think of them as the outcome Y with
+
+66
+00:04:25.360 --> 00:04:29.930
+the linear influence of
+the predictor X having been removed.
+
+67
+00:04:29.930 --> 00:04:33.724
+So, for example, if we wanted
+to in some subsequent model or
+
+68
+00:04:33.724 --> 00:04:38.994
+some subsequent analysis diamond prices,
+
+69
+00:04:38.994 --> 00:04:43.540
+but in a way that has already
+been adjusted for their weight.
+
+70
+00:04:43.540 --> 00:04:47.170
+So, calibrating all the diamond
+prices to sort of be on the same
+
+71
+00:04:47.170 --> 00:04:49.170
+scale regardless of their weight.
+
+72
+00:04:49.170 --> 00:04:51.860
+We would take those
+residuals from the model
+
+73
+00:04:51.860 --> 00:04:55.630
+fit that has diamond prices as
+the outcome, and weight as the predictor.
+
+74
+00:04:55.630 --> 00:04:57.450
+So, it's very common to take residuals and
+
+75
+00:04:57.450 --> 00:05:01.725
+carry them forward in a later analysis
+where you want to think of them as the,
+
+76
+00:05:01.725 --> 00:05:06.250
+the new outcome, having removed
+the predictor at that point.
+
+77
+00:05:07.490 --> 00:05:10.310
+But, of course, remember,
+you're only if you do linear regression,
+
+78
+00:05:10.310 --> 00:05:12.960
+you're only only removing the linear
+component of the predictor.
+
+79
+00:05:16.250 --> 00:05:20.593
+So, one should differentiate
+between residual variation,
+
+80
+00:05:20.593 --> 00:05:25.604
+which is variation that is left over
+after the explanatory variable has
+
+81
+00:05:25.604 --> 00:05:30.532
+been accounted for in a linear fashion,
+from systematic variation,
+
+82
+00:05:30.532 --> 00:05:34.476
+which is variation explained
+by the regression model.
+
+83
+00:05:34.476 --> 00:05:37.540
+So again, residual plots can
+highlight poor model fit.
+
+84
+00:05:37.540 --> 00:05:40.098
+And, we are going to go through
+some residual plots here in
+
+85
+00:05:40.098 --> 00:05:41.100
+just a couple of slides

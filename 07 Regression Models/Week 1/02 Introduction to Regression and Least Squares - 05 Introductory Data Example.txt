@@ -1,0 +1,136 @@
+Up to this point, we haven't used
+the parent's heights at all. The first thing in this kind of data we
+would want to do is create a scatter plot of the child's heights
+by the parent's height. Here, I use a ggplot. There is numerous failings in this plot. One of the primary failings is that
+these points are over-plotted. There's lots of different paired,
+paired parent child x, y values at each one of
+these specific points. Here I give a better plot, where the size
+of the point represents the number of parent child combinations at
+that particular x, y location. Here the color, a very light color,
+represents the frequency near 40 and a very bluish or
+darker relatively speaking, bluish color represents a frequency
+of number toward that of, of, toward ten or
+down to one at specific locations. So the size of the point and the color
+of the point are representative of the frequency of parent-child
+combinations that that specific x, y player pair and this is a much
+better plot, because it, it gives you, it doesn't lose that information. I would say,
+there is another failing of this plot. For example, I don't put the units
+inches on the either of the two axes and I think that's good practice to
+have the units on the axes, so that's a little bit of a failing for
+this plot. If you want to see the code,
+it's in the r mark down file. Now let's suppose we want to dis,
+explain the children's heights using the parent's heights and let's
+assume we wanted to do it with a line. Well, in order to make things easy for
+right now, let's force the line to
+go through the origin. Specifically, it has to go
+through the point zero, zero. So, in other words,
+it has a y intercepted zero. Well, then,
+the line is just X beta, right. Y equal X beta defines a line through
+an origin, through the origin. In order to find the best line,
+all we have to find is the slope. Well, here's how we could
+potentially do that. We would want to find
+the slope beta that minimizes the sum of the squared distances between
+the observed data points the Yi and the fitted data points on the line,
+Xi beta. We'll square that distance and add them
+up and this is directly analogous to finding the least squares mean,
+that we did just a couple of slides ago. So this is exactly sort of using
+the origin as a pivot point and picking the line that minimizes
+the sum of the squared vertical distances between the points and the line. So we're going to use our
+studio's function manipulate to experiment with this and
+see if we can find that line. Now there, there is a point in
+regression to the origin is useful for explaining things, because we only
+have one parameter, the slope and we don't have two parameters,
+the slope and the intercept. But it's generally bad practice to force
+regression lines through the point zero, zero. So, an easy way around this is to subtract
+the mean from the parent's heights and the mean from the child's heights, so
+that the zero, zero point is right in the middle of the data and that will make
+this solution a little bit more palatable. And we'll discuss it later on how
+this relates to real regression, where you fit both the slope and
+an intercept. Let me just show a picture to
+illustrate some of these concepts. So here, I have a scatter plot where
+I have some data on the y-axis and some data on the x-axis and I want to use
+my x variable to predict my y variables. So this is my x-axis and
+this is my y-axis. My red crosshairs are my data points. Progression through the origin,
+the way that we're doing it, takes the point zero, zero and
+treats it as a pivot point. It then tries to find
+the best line going through the points,
+where the best line is as follows. I take this line here, it's going to take each observed point y, it's going to calculate
+the vertical distance, so this is that's Yi, that height is Yi. Okay? This length Xi and that point is Xi beta on the line. So this distance right here
+is Yi minus Xi beta and then if we square it,
+we'll get the squared distance. So what regression to the origin
+is trying to find is, it's trying to take all these
+vertical distances like this between the fitted line and
+the observed heights. Square all those distances,
+add them all up. so that each one contributes to
+the error rate that it's calculating and tries to find the best slope. Because remember, this line is defined
+by a simple equation y equal to x beta, when you have a line going through
+the origin you only need one parameter, that's the slope. Now. That line's not going to be very good. If you look, the line really
+should hit somewhere along here. So regression to the origin
+kind of doesn't make sense. What we're doing by centering the data is
+we're setting the origin to be right in the middle of the data, so that point now
+is zero, zero by subtracting off the mean. So, it's basically reorienting the axis,
+so that the zero, zero point lies right in
+the middle of the data. Now, it seems a little more
+reasonable to find the regression line that goes through the data
+where we just consider a slope. So regression the origin seems
+to make a little bit more sense if you subtract the means and
+we'll find out later that this yields an equivalent to the solution if we were
+both fit the intercept and the slope. So let's try and do this with R studio's
+manipulate function and I think, because this is one of the central
+themes of the next several lectures, we're going to go over these
+points over and over again. They're very fundamental. So, I won't show running the code, because
+you can grab it from the R markdown file. And I'm hoping at this point in
+the specialization you'll be familiar with running R code. But here's my plot and over it, I have a specific value
+of the regression line. Notice that my child's heights if you, if the indexes get down sampled a little
+in the, in the video compression, but what, what you can see the center of
+the child's height here is at zero, because I have subtracted the mean, the
+center of the parent's height is at zero. So, I have a pivot point right
+in the middle at zero, zero. I also want to point out that up here I
+give the slope data equals point six. And the mean squared error,
+where the mean squared error is again the sum of the y data
+points subtracting off the x data point, the parent's height multiplied
+times this factor, 0.6. So, it's taking each one of these points,
+let's take this one or let's take one that's more centered. This one right here,
+it's calculating this distance. The vertical distance between the child's
+heights and the parent's heights multiply it times the slope, calculating that,
+squaring it and adding them up. But here again, because there's multiple
+points at any, at any x, y combination. You can think of maybe multiplying this
+distance by the square distance by the appropriate number of points
+with that specific combination, because of the overplot. At the point zero, zero, our line is going
+to pivot around that point zero, zero, because we're only fitting lines
+that have to go through the origin, because we're only considering the slope. Okay. So let's do it and see how our mean squared R changes
+as a function of our slope. 0.6 doesn't look so bad,
+let's move it to one that's not so good. Okay.
+The mean squared error has gotten a lot worse, right? So, it went from 5.004, say at .68. Now let's move it all
+the way up now to 5.8 and you can see the mean squared
+error getting lower. Right? As you get down to a slope. Looks, looks like 0.6 something is,
+is doing pretty well. 0.64 has 5 and then 0.62 has 5.0, 5.002, so it's gone up. So, it looks like about 0.64. What's interesting is
+the slope of one is not good. There's the slope of one. That's saying,
+you want to predict your child's height, just try the parent's height. Apparently, we have to multiply by a
+factor to get the child's, to get a better prediction of the child's height than
+just the parent's heights by itself. We have to multiply it by
+a factor of 0.6 in this case, that's what the slope is doing for us. Here, I give the manipulate code. And again, all of this code
+is in the R markdown file. So don't retype it in from the slides,
+actually grab it, grab the actual text
+from the R markdown file. Now that we've used
+manipulate to find the slope, I'm going to show how you can
+do this very quickly in R. The function lm fits the linear model and if you, here I have the code where I. Here I have the code, where I use lm. My outcome, my y value is
+the centered child's heights. So, I've subtracted off the mean. And here is the centered parent's heights,
+where I subtracted off the means for the parents. This minus 1 says,
+get rid of the intercept, because we're talking about
+regression through the origin. Where we forget about a y intercept and
+then telling them that the data set I want to fit is galton and
+it gives me the slope, 0.646. So we're going to talk about this a lot. We'll go through this in great detail
+throughout the rest of the class. Here I, in the final slide of this
+lecture, I just give the fitted line. Now because of how we've forced the model,
+it has to go through the point zero, zero for the center child's heights and
+the center parent's height. So, it has to go through the mean
+of the child's height to the mean of the parent's height. So, I've reshifted the plot so
+that, that zero, zero is, is back at the original,
+at the, at the original point. And so
+here is our line that has slope of 0.646. And now what we're going to do in
+subsequent lectures is talk about how we get these? How the motivation behind it and all the
+things we can do with this fitted line, we're going to spend maybe the next
+several lectures talking about this. So welcome to Introduction to Regression. We've actually covered a lot of
+material in this very first lecture and I really look forward to working
+with you for the next couple weeks.

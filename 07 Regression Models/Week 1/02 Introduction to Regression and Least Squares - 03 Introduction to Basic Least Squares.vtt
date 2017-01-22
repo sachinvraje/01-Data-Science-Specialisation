@@ -1,0 +1,458 @@
+WEBVTT
+
+1
+00:00:00.770 --> 00:00:04.890
+Let's look at Francis Galton's data,
+and, I just want to note he,
+
+2
+00:00:06.140 --> 00:00:10.930
+first used this data in 1885, and
+that you should read up on Francis Galton.
+
+3
+00:00:10.930 --> 00:00:14.750
+He's really an interesting character,
+in, in history, in general and,
+
+4
+00:00:14.750 --> 00:00:16.970
+and definitely in
+the history of statistics.
+
+5
+00:00:16.970 --> 00:00:20.480
+Had many quirky aspects
+to his personality and
+
+6
+00:00:20.480 --> 00:00:24.290
+he invented a lot of really great things
+and some things that are not so great.
+
+7
+00:00:27.180 --> 00:00:29.970
+You need to run
+install.packages("UsingR").
+
+8
+00:00:29.970 --> 00:00:35.420
+Here UsingR is the package for the book,
+Using R for Introductory Statistics.
+
+9
+00:00:35.420 --> 00:00:37.180
+Is a great book, and
+
+10
+00:00:37.180 --> 00:00:41.360
+they've very kindly packaged all these
+data sets together in a single R package.
+
+11
+00:00:41.360 --> 00:00:45.420
+So you need to use UsingR
+then the library UsingR to,
+
+12
+00:00:45.420 --> 00:00:48.110
+to get a lot of the data sets that
+we are going to be talking about.
+
+13
+00:00:49.650 --> 00:00:52.370
+So let's first look at the marginal
+distribution of the parents.
+
+14
+00:00:52.370 --> 00:00:54.900
+In other words, distribution of
+the parents disregarding children.
+
+15
+00:00:54.900 --> 00:00:58.300
+And the marginal distribution of
+the children, disregarding parents.
+
+16
+00:00:58.300 --> 00:01:02.580
+Parent distribution is all heterosexual
+couples, correcting for sex,
+
+17
+00:01:02.580 --> 00:01:07.980
+I guess,
+by multiplying the female heights by 1.08.
+
+18
+00:01:07.980 --> 00:01:12.310
+Here I give my ggplot commands for
+creating the two histograms.
+
+19
+00:01:12.310 --> 00:01:14.140
+On the left,
+I have the children's heights.
+
+20
+00:01:14.140 --> 00:01:19.010
+The X-axis is in inches,
+the scale goes from 60 inches to 75.
+
+21
+00:01:19.010 --> 00:01:25.130
+The Y-axis is the count, the number of
+children that fall in each bin of heights.
+
+22
+00:01:25.130 --> 00:01:29.300
+On the right in the more bluish teal
+color, I have the parents heights.
+
+23
+00:01:29.300 --> 00:01:33.120
+I've broken the association by
+the children and the parents by not
+
+24
+00:01:33.120 --> 00:01:36.490
+doing a scatter plot, and only looking at
+the marginal distribution of the children,
+
+25
+00:01:36.490 --> 00:01:39.229
+and the marginal distribution
+of the parents by themselves.
+
+26
+00:01:40.590 --> 00:01:45.730
+I'd like to use these distributions
+to introduce least squares,
+
+27
+00:01:45.730 --> 00:01:50.020
+and then we'll build on the bivaried
+assoc, association after that.
+
+28
+00:01:52.110 --> 00:01:55.270
+So consider only the child's height,
+for, forget for
+
+29
+00:01:55.270 --> 00:01:58.360
+the moment about using the parent's
+height to predict the child's heights.
+
+30
+00:01:58.360 --> 00:02:02.828
+We just want to find maybe the best
+prediction of the child's heights without
+
+31
+00:02:02.828 --> 00:02:05.700
+any Information, any other information.
+
+32
+00:02:05.700 --> 00:02:08.230
+Well, probably the best predictor
+would be the middle and
+
+33
+00:02:08.230 --> 00:02:09.620
+how could one define the middle?
+
+34
+00:02:10.820 --> 00:02:13.240
+Well, let's give one specific definition.
+
+35
+00:02:13.240 --> 00:02:16.611
+So I'm going to go through a little
+bit of the notational mathematics and
+
+36
+00:02:16.611 --> 00:02:20.327
+if that isn't your thing, then wait just
+a minute and we'll go through a sort
+
+37
+00:02:20.327 --> 00:02:23.719
+of physical experiment,
+experiment to sort of explain it visually.
+
+38
+00:02:25.170 --> 00:02:29.678
+So for the mathematics, let's let y i,
+be the height for child i.
+
+39
+00:02:29.678 --> 00:02:32.755
+Where y 1, is the height for child 1.
+
+40
+00:02:32.755 --> 00:02:36.110
+Y 2, is the height for child 2, and so on.
+
+41
+00:02:36.110 --> 00:02:39.940
+My I index here goes from 1 to n, and
+
+42
+00:02:39.940 --> 00:02:43.049
+being 928 children in
+this particular data set.
+
+43
+00:02:44.870 --> 00:02:51.570
+So the middle is the num will be
+the value of mu that minimizes the sum of
+
+44
+00:02:51.570 --> 00:02:57.510
+the square distances between the observed
+data, the y i's, and this value mu.
+
+45
+00:02:57.510 --> 00:02:59.430
+That's how we define the middle.
+
+46
+00:02:59.430 --> 00:03:05.460
+It's also related to physics in this so
+called physical center of mass of the,
+
+47
+00:03:05.460 --> 00:03:08.480
+for example, of the histogram that
+we showed on the previous slide.
+
+48
+00:03:08.480 --> 00:03:12.600
+If you thought of those bars as having,
+being physical entities, having weight and
+
+49
+00:03:12.600 --> 00:03:16.060
+trying to figure out where you would
+put your finger to balance it out.
+
+50
+00:03:16.060 --> 00:03:17.710
+That would be the physical center of mass.
+
+51
+00:03:17.710 --> 00:03:23.310
+You might have guessed that
+the answer has to be the mean, right?
+
+52
+00:03:23.310 --> 00:03:25.350
+The center of the data has to be the mean.
+
+53
+00:03:25.350 --> 00:03:27.130
+And that does turn out to be the answer.
+
+54
+00:03:27.130 --> 00:03:28.420
+We'll even go through the proof.
+
+55
+00:03:28.420 --> 00:03:29.140
+Though, of course,
+
+56
+00:03:29.140 --> 00:03:32.520
+if that's not your thing then you
+don't have to worry about the proof.
+
+57
+00:03:32.520 --> 00:03:36.930
+Let's use our studio's manipulate
+function to experiment
+
+58
+00:03:36.930 --> 00:03:40.990
+with trying to find that center of mass.
+
+59
+00:03:40.990 --> 00:03:45.170
+So I've already loaded manipulate,
+but maybe I can do it again.
+
+60
+00:03:45.170 --> 00:03:49.270
+I've loaded the data set Galton.
+
+61
+00:03:50.710 --> 00:03:53.180
+And I've defined a histogram function here
+
+62
+00:03:53.180 --> 00:03:58.030
+that executes the ggplot
+commands to draw my histogram.
+
+63
+00:03:58.030 --> 00:04:05.260
+And it takes as an argument mu,
+the parameter that we're trying to find.
+
+64
+00:04:05.260 --> 00:04:12.214
+So let me try my manipulate command here.
+
+65
+00:04:12.214 --> 00:04:15.720
+Oh, I don't have ggplot2 loaded.
+
+66
+00:04:15.720 --> 00:04:24.254
+[SOUND] Let's try it again.
+
+67
+00:04:24.254 --> 00:04:26.460
+There it is.
+
+68
+00:04:26.460 --> 00:04:32.100
+Okay, now, because we're using
+manipulate I can move my slider around.
+
+69
+00:04:32.100 --> 00:04:36.650
+What I have up here is the value of mu and
+the mean squared error,
+
+70
+00:04:36.650 --> 00:04:40.840
+that is the sum of the squared distances
+between the observed data points and
+
+71
+00:04:40.840 --> 00:04:43.560
+that particular value of mu.
+
+72
+00:04:43.560 --> 00:04:45.840
+And because I've added up n things,
+
+73
+00:04:45.840 --> 00:04:48.230
+I might want the average
+value instead of the sums.
+
+74
+00:04:48.230 --> 00:04:49.220
+So I divided by n,
+
+75
+00:04:49.220 --> 00:04:53.940
+and I get a mean squared error there
+instead of the sum of the squared errors.
+
+76
+00:04:53.940 --> 00:04:54.440
+Okay.
+
+77
+00:04:56.020 --> 00:05:00.170
+So I can move it around, and notice as I
+get toward the center of the histogram,
+
+78
+00:05:01.660 --> 00:05:03.375
+the mean squared error is going down.
+
+79
+00:05:03.375 --> 00:05:09.714
+[SOUND] And around there might be as,
+
+80
+00:05:09.714 --> 00:05:15.003
+the best I can do, 6.34.
+
+81
+00:05:15.003 --> 00:05:17.302
+Now it's going back up.
+
+82
+00:05:17.302 --> 00:05:22.890
+And then notice if I move it way up,
+it get's up large again there it is at 14.
+
+83
+00:05:22.890 --> 00:05:25.720
+And so
+what you can do is you can play around and
+
+84
+00:05:25.720 --> 00:05:30.540
+try to find the place
+that actually minimizes
+
+85
+00:05:30.540 --> 00:05:34.620
+the sum of the squared distances between
+the observed data points and mu.
+
+86
+00:05:34.620 --> 00:05:36.999
+This would be the point that
+balanced out this histogram.
+
+87
+00:05:38.618 --> 00:05:42.380
+Now we know with the answer, it has to
+be exactly at the average of the child's
+
+88
+00:05:42.380 --> 00:05:47.170
+height, but you can actually experiment
+and see that it minimizes that function.
+
+89
+00:05:49.780 --> 00:05:54.610
+Here I just give the code again, and
+I want to remind everyone that the,
+
+90
+00:05:54.610 --> 00:05:59.160
+all the lecture notes are in these r mark
+down format where you can get the code.
+
+91
+00:05:59.160 --> 00:06:01.980
+It's embedded in the actual
+r mark down file.
+
+92
+00:06:01.980 --> 00:06:05.250
+So there should be
+a file called index.rmd.
+
+93
+00:06:05.250 --> 00:06:11.061
+You can go into the index.rmd file and
+get all the r code for
+
+94
+00:06:11.061 --> 00:06:16.168
+all of the lectures in
+the entire specialization.
+
+95
+00:06:16.168 --> 00:06:20.510
+Here I'm just reiterating that the least
+squares estimate is the empirical mean.
+
+96
+00:06:20.510 --> 00:06:24.538
+And I'm showing exactly where
+that would be with, and, and,
+
+97
+00:06:24.538 --> 00:06:28.200
+giving you the ggplot commands
+to create this same plot.

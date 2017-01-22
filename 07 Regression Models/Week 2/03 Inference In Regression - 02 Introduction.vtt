@@ -1,0 +1,388 @@
+WEBVTT
+
+1
+00:00:00.800 --> 00:00:04.628
+Hi, and welcome to the lecture
+on inference in regression.
+
+2
+00:00:04.628 --> 00:00:09.066
+Before we begin talking about inference,
+let's just revisit our model so
+
+3
+00:00:09.066 --> 00:00:10.836
+that it's fresh in our mind.
+
+4
+00:00:10.836 --> 00:00:15.830
+Our model was that the response,
+Yi, is the intercept, beta naught,
+
+5
+00:00:15.830 --> 00:00:21.086
+plus the slope, beta 1, times
+the predictor, X1, plus an error term.
+
+6
+00:00:21.086 --> 00:00:23.994
+The error term, epsilon i,
+is what we're labeling it.
+
+7
+00:00:23.994 --> 00:00:28.272
+We're going to to assume is
+normally distributed mean 0
+
+8
+00:00:28.272 --> 00:00:30.878
+with the variant sigma squared.
+
+9
+00:00:30.878 --> 00:00:34.493
+For the time being, we're going to
+assume that the true model is known, and
+
+10
+00:00:34.493 --> 00:00:36.719
+this will be the basis for
+most of this class.
+
+11
+00:00:39.870 --> 00:00:43.545
+I, I'm going to assume that you've seen
+some amounts of statistical imprints
+
+12
+00:00:43.545 --> 00:00:47.628
+previously, so you know what a confidence
+interval is and what a hypothesis test is.
+
+13
+00:00:47.628 --> 00:00:50.227
+Let's also remind ourselves that
+
+14
+00:00:50.227 --> 00:00:54.628
+the intercept is estimated at
+Y bar minus beta 1 hat X bar.
+
+15
+00:00:54.628 --> 00:00:57.682
+And our beta 1 hat is the correlation
+between the predictor and
+
+16
+00:00:57.682 --> 00:01:01.083
+the response multiplied times
+the standard deviation of the response
+
+17
+00:01:01.083 --> 00:01:03.400
+over the standard
+deviation of the predictor.
+
+18
+00:01:04.590 --> 00:01:08.100
+So let's talk about how we can
+perform statistical hypothesis tests
+
+19
+00:01:08.100 --> 00:01:08.810
+about our parameters.
+
+20
+00:01:09.970 --> 00:01:13.530
+Let's review a couple of concepts
+from statistical inference.
+
+21
+00:01:13.530 --> 00:01:18.280
+First, statistics of the form, theta hat
+minus theta divided by the standard error,
+
+22
+00:01:18.280 --> 00:01:20.380
+often have the following properties.
+
+23
+00:01:20.380 --> 00:01:22.878
+First of all,
+they're often normally distributed.
+
+24
+00:01:22.878 --> 00:01:28.473
+And for finite samples, if we replace
+the variance with the estimated variance,
+
+25
+00:01:28.473 --> 00:01:30.836
+they often have a T distribution.
+
+26
+00:01:30.836 --> 00:01:34.739
+And we'll see this is true in regression
+contexts under the assumptions we've made.
+
+27
+00:01:36.970 --> 00:01:40.751
+This statistic can be used to create
+hypothesis tests of theta being
+
+28
+00:01:40.751 --> 00:01:45.129
+a particular null value versus one of
+the logical alternatives of it being less
+
+29
+00:01:45.129 --> 00:01:48.336
+than, or greater than, or
+not equal to this null value.
+
+30
+00:01:48.336 --> 00:01:52.856
+Or we can create confidence intervals
+of the form, estimate plus or
+
+31
+00:01:52.856 --> 00:01:57.934
+minus a relevant quantile times the
+standard error, where q is the relevant
+
+32
+00:01:57.934 --> 00:02:03.730
+quantile, and we always take the 1 over,
+the 1 minus alpha over 2 quantile.
+
+33
+00:02:03.730 --> 00:02:06.642
+For example, if our alpha is 5%, so
+
+34
+00:02:06.642 --> 00:02:12.295
+we want a 95% confidence interval,
+we take the 97.5th quantile.
+
+35
+00:02:12.295 --> 00:02:15.450
+And this is, this is either going to
+come from a normal contribution or
+
+36
+00:02:15.450 --> 00:02:16.630
+T distribution.
+
+37
+00:02:16.630 --> 00:02:21.110
+So hopefully, none of these facts
+are news to you after having had
+
+38
+00:02:21.110 --> 00:02:22.530
+the statistical inference class.
+
+39
+00:02:24.000 --> 00:02:27.330
+In the regression case,
+with IID sampling assumptions for
+
+40
+00:02:27.330 --> 00:02:31.190
+our normally distributed errors,
+inference will
+
+41
+00:02:31.190 --> 00:02:35.569
+follow along these lines very similarly
+to what you saw in that class.
+
+42
+00:02:36.620 --> 00:02:41.120
+And we're not going to cover at all
+asymptotics for regression analysis, but
+
+43
+00:02:41.120 --> 00:02:47.160
+suffice it to say, it's not mandatory for
+the errors to be Gaussian for
+
+44
+00:02:47.160 --> 00:02:50.290
+our statistical inferences
+in regression to hold.
+
+45
+00:02:50.290 --> 00:02:54.429
+You can appeal to large sample theory,
+though it's a little bit more complicated.
+
+46
+00:02:56.920 --> 00:03:02.462
+So the variance of our regression slope
+is actually a highly informative formula.
+
+47
+00:03:02.462 --> 00:03:07.832
+This is variance of beta one hat,
+and it involves two things,
+
+48
+00:03:07.832 --> 00:03:13.205
+how variable the points are around
+the true regression line,
+
+49
+00:03:13.205 --> 00:03:17.253
+sigma squared, and
+how variable my X's are.
+
+50
+00:03:17.253 --> 00:03:21.567
+Now, I think the numerator, how variable
+the points are around the regression line,
+
+51
+00:03:21.567 --> 00:03:24.700
+I think it's somewhat understandable
+as to why that would de,
+
+52
+00:03:24.700 --> 00:03:28.740
+that we would get better estimates of our
+regression slope if that were smaller.
+
+53
+00:03:30.410 --> 00:03:35.320
+However, it's maybe less intuitive
+to understand why we want more
+
+54
+00:03:35.320 --> 00:03:40.400
+variance in our predictor in order to get
+lower variance in our regression slope.
+
+55
+00:03:40.400 --> 00:03:42.310
+But let's draw some pictures.
+
+56
+00:03:42.310 --> 00:03:47.040
+If our regressors, our predictors,
+are all packed in very tightly,
+
+57
+00:03:47.040 --> 00:03:50.780
+closely together, then it's clear we're
+not going to estimate a very good line.
+
+58
+00:03:50.780 --> 00:03:55.560
+It could sort of bend around that cloud
+of points very easily and get equivalent,
+
+59
+00:03:55.560 --> 00:03:56.836
+inequivalent fits.
+
+60
+00:03:56.836 --> 00:03:57.575
+On the other hand,
+
+61
+00:03:57.575 --> 00:04:00.545
+if we spread our axis out, then we'll
+get a better fitted regression line.
+
+62
+00:04:00.545 --> 00:04:02.530
+We'll get a lower variance for the slope.
+
+63
+00:04:03.600 --> 00:04:06.810
+Now, it turns out the lowest you can
+make that variance is to push half
+
+64
+00:04:06.810 --> 00:04:11.130
+the observations to one end and the other
+half of the observations to another end.
+
+65
+00:04:11.130 --> 00:04:15.200
+However, you're banking quite a bit then
+on having a line in between those two
+
+66
+00:04:15.200 --> 00:04:19.150
+because you haven't collected any
+data to evaluate that property.
+
+67
+00:04:20.810 --> 00:04:22.660
+Here I also give you
+the variance of the intercept.
+
+68
+00:04:22.660 --> 00:04:25.220
+It's maybe a little less informative
+
+69
+00:04:25.220 --> 00:04:28.020
+because intercepts are often a little
+less of interest than the slopes.
+
+70
+00:04:29.580 --> 00:04:34.340
+But nonetheless, it, it has this form
+right here that we can calculate and
+
+71
+00:04:34.340 --> 00:04:36.380
+write down.
+
+72
+00:04:36.380 --> 00:04:39.790
+In both these cases, we replace sigma
+squared by its logical estimate,
+
+73
+00:04:39.790 --> 00:04:44.620
+the 1 over n minus 2 times
+the sum of the squared residuals.
+
+74
+00:04:44.620 --> 00:04:46.378
+We covered that in the last lecture.
+
+75
+00:04:47.836 --> 00:04:52.390
+It's probably not surprising that our
+slope or intercept estimate minus
+
+76
+00:04:52.390 --> 00:04:57.163
+the true value divided by their standard
+error follows a T distribution, and
+
+77
+00:04:57.163 --> 00:04:59.449
+it has n minus 2 degrees of freedom.
+
+78
+00:05:00.860 --> 00:05:04.530
+And so this can be used to create
+confidence intervals and hypothesis tests.
+
+79
+00:05:04.530 --> 00:05:07.760
+And we'll go through some examples
+here in a couple of slides, but
+
+80
+00:05:07.760 --> 00:05:11.690
+first I'm just going to show you that
+all these results exactly hold, and
+
+81
+00:05:11.690 --> 00:05:12.890
+it's what R is reporting.

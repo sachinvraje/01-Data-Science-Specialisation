@@ -1,0 +1,103 @@
+So let's demonstrate how this works. So I'm going to do a simulation,
+where I have a 100 observations and I'm going to generate three predictors,
+x, x2, and x3. And they are all just standard normals. And my y is going to be an intercept,
+which I'm setting to 1 + x + x2 + x3. So all my coefficients
+are theoretically 1. So the population model used for
+simulation, they're all 1. And then I'm gonna add some random noise,
+that's the error term. So let me get my residual for y. Having regressed out x2 and x3. And remember, lm, by default,
+contains an intercept. So, resid takes the residual. And then, let's do the same thing for x. And remember, lm takes an intercept. So this is the regression of x with x2 and
+x3, and an intercept removed. And then I'm gonna get
+the regression through the origin estimate with these two residuals. And that's 0.11053. And I can also show this with lm,
+because I can do lm, the residual y is the residual x, but
+I have to take out the intercept. And, let me get the coef, the coefficient,
+should just be the one number now, and show you that it,
+is it exactly the same thing. But now, what I wanted to point out,
+is that this coefficient is the same coefficient as if I regress y on x,
+x2 and x3, and an intercept. There you go. And you see the x term right
+here is exactly the same as the regression through the origin
+estimate with the residuals. So again, that just goes to show
+you the way we interpret, or the way in which linear models
+adjust the regression estimate with respect to the other variable. It's sort of like the effect of the other
+variable has been removed from both the predictor and the response. So let's go through how you interpret
+regression coefficients with respect to the model right now. And then again in the next lecture, we're gonna go over specific
+contextual examples. So, our regression predictor, given
+that our collection of covariants take a specific value, x1 to xp, is just the
+sum of the x's times their coefficients. Right?
+That's our linear model. Well, just think if one of
+those regression coefficients, let's just take in specific,
+the first one, is incremented by 1. Right?
+So, instead of taking the value x1, it takes the value x1 + 1. Well then that's just
+the same equation but that first one is now
+X1 + 1 rather than X1. So if I were to subtract these
+two terms they expective value of the response where the first co efficient takes the value of x1 +1 minus
+the expectant value of the response. Where the collection of coefficients
+are just the x1 to xp values. Then you'll see that that
+works out to be beta1. So, notice all these other x2 to xp
+were held fixed in all my discussion. So x2 to xp were held fixed, and x1 was incremented by one unit,
+whatever the units of x1 is. So the interpretation of
+a multi-variable regression coefficient is it's the expected
+change in the response for a unit change in a regressor but
+holding all the other ones constant. That's the essential part of
+interpreting a multi-variable regression relationship is it's holding
+the other ones constant. And that way it also, the interpretation
+you can think of as being adjusting for the other variables, because we have
+to hold the other variables constant. So again, in the next lecture, we're gonna go over a bunch of
+different contextual examples. But that's the mathematics behind
+the interpretation right there. And then I'm just gonna go right
+now through a laundry list of the basic components of the linear model. Because they're just exactly the same
+as in simple linear regression. And so remember,
+if our linear model is our outcome line, it's just now instead of a simple linear
+regression, it's the sum of a bunch of predictors times their coefficients plus
+an error term, and we're gonna assume that error term is normally distributed,
+we get a bunch of properties. And so we're gonna just ripple
+through these properties and then I think when you go to the examples you'll
+internalize them a little bit better. But these should all be pretty familiar
+cuz they're basically the same as what we did for linear aggression just now we're
+plugging in some more coefficients. So our fitted response for
+example y had any of these specific value, is just plugging the fitted
+coefficients times those specific regressers whether that's
+a new value or one of the observed values. The residuals is just the fitted value Y had being subtracted
+from the observed value. We're trying to minimize. Is the sum of the squared residuals. The variance estimate is just
+the average squared residuals. We're just like, remember,
+in our linear regression case, we divide it by n- 2,
+now we divide by n- p. And that's kind of a technical
+point because if you know n- p of the residuals the last p of
+them due to some linear constraints. So that's why we divide by N- P we don't
+really have N residuals we have SPM, but that's a minor point you can think
+of the residuals variants estimate is nothing other than
+the average square residuals for the most part that N- P
+part not withstanding. A predicted response and
+some new values just, we're plugging them into the linear model. If we have a new x1 to xp,
+we multiply them each by their respective coefficients and add them up
+and that's our new predicted response. Our coefficients have standard errors,
+sigma beta hat, let's say, for sigma beta 1 hat, for beta 1 sigma beta
+2 hat through beta 2 and we can test for whether or not specific coefficients are
+a 0 with a T test because those, the beta hat minus its true value divided by the
+standard error follows the T distribution. So all the things we knew about
+from linear regression carryover to multi variable regression. In addition, predicted responses have
+standard errors and we can calculate prediction and prediction intervals just
+like we did in linear regression again. So again, I'm hoping that none of these. Facts are kinda news to you it's almost
+identical to what we did in simple linear aggression we
+just have more terms now. And remember in linear aggression we
+had two terms, we had an intercept and a covariant now we're just adding
+more covariants potentially. I wanna add this this lecture before
+we move onto some specific examples. I wanna end this lecture
+with just a general discussion of how important linear
+models are to the data scientist. Before you do any machine learning or
+any complex algorithm, linear models should
+be your first attempt. They offer parsimonious and well understood easily describe relationships
+between predictors and response. Now, to be fair some modern
+machine learning algorithms can beat some of the things,
+like the imposed linearity. Nonetheless, linear models should
+always be your starting point. And there's some amazing things you can
+do with linear models that you may not. Just from this first treatment
+of them from this one lecture, think about the things
+that will be possible. For example, you can take a time
+series like a music sound or something like that, and decompose
+it into its harmonics, the so-called discrete Fourier transform can be thought
+of the as the fit from a linear model. You can flexibly fit rather
+complicated functions and curves and things like that using linear models. You can fit factor variables as
+predictors, anova is a special case of linear models, and
+kova is a special case of linear models. You can uncover complex multivariate
+relationships within a response and you can build fairly
+accurate prediction models.

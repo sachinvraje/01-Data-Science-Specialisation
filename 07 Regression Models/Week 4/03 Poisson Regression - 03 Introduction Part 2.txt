@@ -1,0 +1,143 @@
+So let's start about Linear
+vs Poisson regression. So remember in GLMs,
+we don't love the outcome itself, or we don't take a transformation
+of the outcome itself, we take transformation of
+the mean of the outcome. So linear models, our outcome is the linear component
+plus the error, or we could just write that as the expected value
+of the outcome is the linear compnent. In a Poisson log-linear model, it's the log of the expected
+outcome that is the linear part. Log of the expected number of web hits
+per day is b0 + b1 times the Julian date. We could reverse that process by
+exponentiating both sides of that equation and just say the mean web hits
+per day now, depends on E to the linear regression model, okay? So, that's the main difference, is that we're going to assume our data
+is Poisson distributed with a mean. And that mean takes this form,
+E to the b0 + b1 times the regressor. Okay, and that's the main difference, though it changes
+the interpretation a lot. We get a distribution that's
+much more believable for our observed outcomes, okay. And we get relative interpretations
+because everything's logged. Our coefficients are going to be
+interpreted in a relative sense, just like when we logged the outcome. Though we're going to avoid
+problems like taking logs of 0, like we had on the previous slide, okay. Now, I want to reiterate,
+taking logs of your outcomes is actually, often, a very good thing to do. That's a trick that you should apply,
+not just for count data, but in general on regression. If you have positive data, log is one
+of the best transformations you can do, it's extremely helpful. The coefficients remain as, if not more,
+interpretable on the log scale. So that's a great transformation to do. Some of the other transformations,
+could be square root or cube root data, then it gets hard. Okay, so let's just remind ourselves
+that the differences that we're looking at are now multiplicative when
+we transform back to the natural scale. So if we've look at our model,
+it's the expected value of the outcome is E to the beta naught plus
+beta one times the Julian date. Well, by the properties of expected value, we can factor out beta naught in
+beta one times the Julian date. Now, if we looked at what
+would be the expected mean for the next day,
+the Julian date plus one, right, that would be e to the b0 + b1 (JD + 1),
+okay? So divide this by that,
+and you get e to the B1. So our coefficient E to
+our slope coefficient is interpreted as the relative increase or decrease in the mean per one unit
+change in the regressor, okay? And so if we exponentiate our coefficient,
+we're going to be looking at whether or not they're close to 1. If we leave them on the log scale,
+we're going to be looking at whether or not they're close to 0. And, again, all of these interpretations, when we extend them to
+the mutivariant setting, E to the beta one is the expected relative
+increase or decrease in web traffic, holding the other coefficient,
+holding the other regressors constant. Okay? So I'm hoping at this point that most of
+this stuff is kind of old hat for you. Okay, so here is our fitted Poisson
+regression model overlayed onto our data. And you can see it actually fits
+pretty closely to the linear model, though it has some nice curvature to it,
+which is what we wanted. We could have accomplished that in our
+linear model by adding a squared term, of course, but
+it's nice to note that a simpler model with fewer coefficients seems
+to fit the data better. A concern, often, is that
+the variance has to equal the mean. So the variance, in this case,
+needs to go up as the mean goes up. But here if we plot the fitted
+values versus the residuals, it's very clear that the variance
+is higher for lower mean values. That's the problem, okay. So we need at least
+some way to account for the fact that the variance
+is not necessarily constant. There's a lot of ways to do that,
+and if you read in the book, one thing that we talk about
+are the quasi-Poisson models. This model would look at the variance
+being a constant multiple of the mean, rather than being equal to the mean. But, in this case, that doesn't appear to
+be the case in this case because it looks like we have this issue where
+there's larger variance for lower fitted values, when the Poisson
+model assumes the opposite. So Jeff actually had this code
+from this model, the sandwich, which seems like a funny name for
+a package. But it comes from the sandwich
+variance estimator, made famous by generalized estimating
+equations, which by the way was a technique that was invented here at
+Johns Hopkins Biostatistics by two very well-known professors here,
+Scott Zeger and Kung-Yee Liang. At any rate, Jeff did some code here for
+getting model agnostic standard errors. And if you read in the book, there's
+a little bit more discussion about this. This is kind of a more advanced topic than
+we would like to delve into in this class. However, it's a very important
+applied topic, as well. It's not just a theoretical exercise. So, the main point is to do some
+residual plots, to understand whether or not you think your
+model's assumptions hold. Try quasi-Poisson model because
+that's a very easy thing to do in R, if you think at least it holds at some
+level, but maybe not just in the sense of the variance being a constant
+multiple of the mean. But if it really fails, like in this case, then you have to dig in
+to some other solutions. So, in this case, you see here's the confidence interval
+on the top if we don't do anything. If we do the model agnostic confidence
+interval, you get on the bottom. In this case, it doesn't actually make
+that big of a difference between the two. And, again, these are both,
+of course, non-exponentiated. If you want to exponentiate them,
+which by the way, I should also mention, exponentiating for a small coefficient
+like this it basically just adds 1. So, probably, if I were to enter this
+into R, this would be about 1.002. Just like before, about a 2% increase
+on the low end being estimated, 0.21% increase estimated on the low end. Maybe, at the highest possible,
+0.3% increase per day on the high end. So how do you handle rates? So I should say rates and proportions because I like to distinguish
+between rates and proportions. So this is an instance where you have
+a count, and then you have some offset that should tell you how large or
+small the count should be. So, for example, if I'm counting failures
+of my nuclear pumps that I mentioned before, I should have more failures if
+I monitored them for a longer time. If I'm counting the number of flu cases, I should have more flu cases if I'm
+looking at a larger population, right. So I should have more flu cases in
+a bigger city than I would have in a smaller city. So in all these cases, if the counts
+that we're interested in have some term that we really want to interpret
+our count relative to that, whether it's a unit of time, person,
+time at risk, total sample size, then what we want to do, and
+it's quite simple how to do this in R. The first thing we note is that we want to
+actually interpret not the expected value of the outcome, but the expected value of
+the outcome divided by this relative term, whether it's monitoring time,
+person, time at risk or whatever. So, in this case, Jeff is looking at
+the number of web hits originating from Simply Statistic, relative to
+the total number of web hits, okay? And he wants to model that as E to
+the b0 + b1 times the Julian date, so he want to model that proportion
+as being this log-linear model. Well, if you take the log of both sides,
+and we mess around a little bit, we see that we get kind of a similar
+model to what we had before. We get the log the outcome is
+the linear regression part, but that also it has this log
+offset with no coefficient. And that, it turns out,
+is all you have to do to add a regular proportion
+into a Poisson GLM. You just take whatever this relative
+denominator count or time or whatever it is that you want to consider, and add
+it as a log offset in your linear model. Okay, so the easy way to add this
+offset into our linear model is just to use of the term
+offset equals log visits plus 1. Remember, we have to add the plus 1
+because we can't take the log of 0. Remember, we have to have family equals
+Poisson in the model statement here, and by default it assumes a log
+link which is what we want, we haven't really covered any other kinds. So, there's another way
+you can add the offset. I think you can add a plus 0 variable name
+in the actual model specification part on the right of the tilde, but this is just as easy to do it as
+an argument in the GLM function. Here, Jeff gives the, the difference
+between the GLM1 fitted rates, which was, remember,
+to the number of web hits, versus the GLM2 fitted rates,
+the assigned variable GLM2 fitted rates, which was the relative number of web
+hits originating from Simply Statistics. So, these blue points are adjusted for
+the red points in a sense. And this actually shows the fitted
+model relative to the data, there are a lot of zeros early on,
+and then it took off quite a bit. But this is the fitted model,
+the blue line is the fitted model, and the gray points
+are the actual data points. So you can get more information on
+log-linear models and multiway tables. And another very common problem
+that occurs in Poisson data is when the particular number, zero,
+occurs way more often that it should. This is called zero inflation. Then the Poisson model would allow it to,
+if it wants to fit the other counts. And so this is called zero inflation. And so there's a lot of different ways to
+handle zero inflation in Poisson data, but you need to think about that. In this case, yeah, we might be concerned
+with handling all of those zeros early on, though there's a temporal component
+to zero inflation in this case, which makes it even a little bit
+more challenging to model it well. But Jeff used a package here that actually
+helps assist with modeling zero inflation. So I hope you enjoyed the lecture. That's the end of the lecture on
+Poisson data to get you started. I'm hoping you can use a lot of your
+skills from binary logistic regression analysis and your skills from linear
+regression and multi-variant regression, and just apply them directly
+in our Poisson examples here. Next lecture is the final
+lecture of the series. It's kind of fun little
+lecture with just some kind of a bonus content of a smattering
+of things you can do with later models that I think are kind of cool. So look forward to seeing you next time,
+and thanks for taking the class.

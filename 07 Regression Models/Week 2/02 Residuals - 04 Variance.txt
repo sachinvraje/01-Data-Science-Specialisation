@@ -1,0 +1,91 @@
+Let's talk about residual
+variation really quickly before we finish talking about our squared. Residual variation is the variation
+around the regression line. So remember our residuals
+are the vertical distances between the outcomes and
+the fitted regression line. Remember if we include an intercept,
+the residuals have to sum to zero, which means their mean is zero. So if we want to take
+the variance of the residuals, it's just the average of the squares. So the sum of the squared residuals, times one over n,
+is an estimate of sigma squared. The variation around the regression line. The true population variation
+around the regression line. Now most people use n minus two,
+instead of n. So it's not the average squared residual, it's kind of like the average
+squared residual. And, and for large n, the difference
+between one over n minus two, and one over n is irrelevant. But for small n, it can make a difference. The way to think about that is, remember, if we include the intercept
+the residuals have to sum to zero. So, that puts a constraint. If you know n minus one of them,
+then, you know the nth. Well, if you have a line term in there,
+if you have a co-variant in there, then, that puts a second
+constrain on the residuals. So, you lose two degrees of freedom. If you put another regression variable
+in there, you have another constraint, you lose three degrees of freedom. So in that sense it's sort of like saying
+you really don't have n residuals, you have n minus two of them, because if you knew n minus two of them
+you could figure out the last two. And that's why it's one over n minus 2. So let me show you how you can
+grab the residual variation out of your l m fit and
+assign it to a variable. This way if you needed, if you need to
+work with it in an R program you can actually grab the number,
+not just see it on the printout. So here I've defined my y and
+my x, and I've defined my fit as the regression model with y as
+the outcome and x as the predictor. Well if you just do summary of fit and
+you don't do anything else, you just hit return, it'll print out
+the summary of the regression model. Intercepts, slopes, estimated values,
+and so on, and you'll see the residual standard deviation estimate among
+the elements in the printout. However, if you want to grab it as an
+object that you can assign to something, just put dollar sign sigma. Then you can assign sigma
+to any other variable. So if you're using it in
+a program in some other way. This works out in this particular
+example to be 31.84 dollars. So here, let's just confirm that I'm not
+lying to you and that the formula works. So if I do resid fit,
+that grabs the residuals. If I square it, it squares them. If I sum it,
+it adds up the squared values. If I divide by n minus two, it takes
+the average of the unique residuals. And then if I square root it,
+we get 31.84 so I wasn't lying. Now let's go back to this plot where we
+look at the total variability in diamond prices. And then compare what happens to
+the variability when we explain some of that variability
+with a regression line. So the total variability is
+just the deviations of my data. The average squared deviation
+of my data around its mean. Around the center. And just to make things easy,
+let's forget about the denominator and just talk about the sum of
+the squared deviations. We might call the regression variability
+as the component of that variability that then gets explained
+away by the regression line. So we would take the points on
+the regression line, the heights. And that's the variability in the response
+that's simply explained by the regression, by the regression line. Let's take how that,
+how much that deviates around the average. So that's the regression variability. Then everything that's left over is that
+variation around the regression line, and that's the residual variability. And the interesting identity, and it kind of makes sense that this would be
+the case, is that this total variability. The variability in diamond prices
+disregarding everything except for where they're centered at. Is equal to the regression variability, that is the variability
+explained by the model. Plus the residual variability, the variability left over
+not explained by the model. Because the residual variation and the regression model variation
+add up to the total variation. We can define a quantity that represents
+the percentage of the total variation that's represented by the model. Simply take the regression variation and
+divide it by the total variation. That quantity is called R squared. So R squared for our diamond example,
+is the percentage of the variation in diamond price, that is explained by
+the regression relationship with mass. Some facts about R squared
+that you need to keep in mind. Just remind you, R squared is
+the percentage of the variation in the response explained by the linear
+relationship with the predictor. R squared has to be between zero and one because the regression variability and
+the error variability and the sums of the squares add up to the total sums
+of squares, and they're all positive. So that forces our square
+to be between zero and one. If we define R as the sample correlation
+between the predictor and the outcome, then R squared is literally that
+sample correlation R, squared. R squared can be a misleading
+summary of model fit. For example, if you have somewhat
+noisy data and delete all the, a lot of the points in the middle,
+you can get a much higher R squared. Or if you just add arbitrary regression
+variables into a linear model fit, you increase R squared and you de, decrease mean squared error where
+the average squared residual variation. So these things have to
+be taken into a mind, into mind if you're using
+them to assess model fit. Anscombe created a particularly stark
+example of a bunch of data sets with an equivalent R squared, equivalent mean,
+and variances in the x's and the y's. And identical regression relationships,
+but when you look at the scatter clouds, you can see that the fit has very
+different meanings in each of the cases. So, let's look at the outcome from that
+example Anscombe, and see what it shows. And here it is, the four data sets. The first is a nice regression line,
+exactly sort of along the lines of what we think of, when we think of
+just a slightly noisy x y relationship. The second one,
+clearly there's a missing term. In order to address some of
+this curvature in the data. The third one, there's an outlier. And in the fourth one, all the data
+stacked up at one particular location. And then there's one
+point way out at the end. So you could imagine getting this
+if you had the first example and you deleted a lot of
+the points in the middle. So in all these cases you
+have an equivalent R squared. But the summary to the single
+number certainly has thrown out a lot of the important information that
+you get from a simple scatter plot.

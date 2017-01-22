@@ -1,0 +1,29 @@
+Now I'm going to go through the proof
+that Y bar is the minimizer for this equation here
+as a function of mu. If these kinds of proofs
+aren't your thing, then just skip it and in the subsequent
+lectures the same thing though, I'll give the same caveat before
+each time I do something like this. If you do intend to pay
+attention to the proof, you don't need to know either calculus or
+linear algebra, but ideally you'll be very comfortable
+with mathematical notation. So, for example, if you've had calculus in
+your past, you've forgotten the specifics of the calculus, but you're pretty
+familiar with mathematical notation and working with mathematical notation,
+then that's all you need. Okay, so let's go ahead and do it. This is the quantity I'd like
+to minimize as a function of mu. My Y i's are my observed data points. I'm going to subtract and then add Y bar. So I've just added 0, changes nothing. So I can have an equal sign there. I can expand this square out and
+I get this term, twice the cross-product term,
+and then this term right here. Let's look at this term right here. Notice this doesn't depend on i, so I can
+pull it outside of the sum, out here. Then notice this guy right here,
+I can distribute the sum across it. So I get summation Y i, and then if I
+add up Y bar, which doesn't depend on i, if I add it up n times i, I get n Y bar. But notice, I would define Y bar as
+1 over n times the summation Y i. Add up my observations and
+divide by n is the average. So in other words,
+n Y bar is equal to the summation of Y i. So this is 0. That whole term then is 0. Moving on to the next line,
+I have summation Y i minus Y bar squared, adding those up, and
+summation Y bar minus mu squared. This quantity is the sum of
+a bunch of squared things. Has to be positive. So if I throw it out, my equal sign
+gets turned into a greater than or equal to sign. I've only gotten smaller by throwing out a
+bunch of positive things that I'm adding. Let's summarize. This function, for
+any value of mu, is larger than or equal to the specific case
+when we plug in Y bar. Therefore, Y bar has to be the unique
+minimizer of that equation.

@@ -1,0 +1,594 @@
+WEBVTT
+
+1
+00:00:00.260 --> 00:00:05.982
+The last thing I'd like to do is
+to demonstrate that the linear
+
+2
+00:00:05.982 --> 00:00:13.246
+regression slope estimate is beta 1 hat
+equal to the correlation between y and
+
+3
+00:00:13.246 --> 00:00:20.202
+x times the standard deviation of y
+divided by the standard deviation of x.
+
+4
+00:00:20.202 --> 00:00:22.153
+I'd like to demonstrate that.
+
+5
+00:00:22.153 --> 00:00:23.675
+It's going to take some doing and
+
+6
+00:00:23.675 --> 00:00:26.601
+if you don't want to get this
+involved in the mathematics,
+
+7
+00:00:26.601 --> 00:00:30.490
+now would be the good time to stop
+the lecture and move on to the next one.
+
+8
+00:00:30.490 --> 00:00:32.390
+However, if you are interested,
+
+9
+00:00:32.390 --> 00:00:37.044
+again, I'm going to do this in a way that
+doesn't require advanced mathematics, but
+
+10
+00:00:37.044 --> 00:00:41.718
+you have to be familiar with mathematical
+notation and pretty comfortable with it.
+
+11
+00:00:41.718 --> 00:00:48.869
+So before I do full regression,
+let me do regression through the origin.
+
+12
+00:00:48.869 --> 00:00:50.402
+Let me draw this line here.
+
+13
+00:00:50.402 --> 00:00:56.857
+So, I want to fit the best line y
+equal to x Beta through my data.
+
+14
+00:00:56.857 --> 00:01:01.946
+My data is y1 up to yn and
+
+15
+00:01:01.946 --> 00:01:05.006
+X one up to xn.
+
+16
+00:01:05.006 --> 00:01:08.118
+I would like then to
+minimize the criteria.
+
+17
+00:01:08.118 --> 00:01:13.923
+Summation, yi minus xi beta squared.
+
+18
+00:01:13.923 --> 00:01:16.129
+Where the sum is from i equal 1 to n.
+
+19
+00:01:20.168 --> 00:01:24.511
+Let me let beta hat be the solution and
+we'll see what
+
+20
+00:01:24.511 --> 00:01:29.460
+has to happen about that solution to make,
+to make it work.
+
+21
+00:01:32.030 --> 00:01:40.246
+So this equation here is equal
+to the summation i equal 1 to n,
+
+22
+00:01:40.246 --> 00:01:45.149
+yi minus xi beta hat plus xi beta hat.
+
+23
+00:01:45.149 --> 00:01:47.959
+Simply, because I've just added zero.
+
+24
+00:01:51.465 --> 00:01:54.623
+Minus xi beta squared.
+
+25
+00:01:54.623 --> 00:01:55.668
+All I've done is add zero.
+
+26
+00:02:01.311 --> 00:02:06.504
+I can expand this square,
+summation i equal 1 to n,
+
+27
+00:02:06.504 --> 00:02:13.360
+yi minus xi beta hat squared and
+then I'm going to distribute my sum.
+
+28
+00:02:16.100 --> 00:02:23.285
+Minus twice summation i equal one to n,
+
+29
+00:02:23.285 --> 00:02:28.725
+yi, y i minus x i beta hat times
+
+30
+00:02:28.725 --> 00:02:33.078
+xi beta hat minus x i beta
+
+31
+00:02:33.078 --> 00:02:37.869
+plus the summation xi beta
+
+32
+00:02:37.869 --> 00:02:42.902
+hat minus xi beta squared.
+
+33
+00:02:42.902 --> 00:02:49.125
+Now, if I get rid of this term,
+it's adding up a bunch of positive things.
+
+34
+00:02:49.125 --> 00:02:53.911
+I'll only get smaller, because I'll have
+
+35
+00:02:53.911 --> 00:02:58.575
+thrown away something that's positive.
+
+36
+00:02:58.575 --> 00:03:02.309
+So, if I take 6, which is 4 plus 2 and
+
+37
+00:03:02.309 --> 00:03:06.400
+throw away the 2, I've gotten smaller.
+
+38
+00:03:06.400 --> 00:03:07.352
+Okay.
+
+39
+00:03:07.352 --> 00:03:12.879
+Let's look at this term right here.
+
+40
+00:03:12.879 --> 00:03:17.821
+If beta hat fForces this term to be zero,
+then let me just
+
+41
+00:03:17.821 --> 00:03:22.888
+rewrite this, if it's zero,
+I will get the following.
+
+42
+00:03:22.888 --> 00:03:30.797
+[SOUND] I'll get that my
+least square's criteria for
+
+43
+00:03:30.797 --> 00:03:36.367
+any beta is larger than what I get when
+
+44
+00:03:36.367 --> 00:03:41.409
+I plugin beta hat specifically.
+
+45
+00:03:41.409 --> 00:03:46.324
+So that beta hat would have to be
+the minimizer, because every other beta is
+
+46
+00:03:46.324 --> 00:03:51.330
+at least, creates a, a least squares
+criteria at least as large or larger.
+
+47
+00:03:52.690 --> 00:03:58.718
+So, if we can make this term zero,
+then we've found our estimate.
+
+48
+00:04:04.940 --> 00:04:10.931
+So, I want to solve
+summation i equal 1 to n,
+
+49
+00:04:10.931 --> 00:04:13.786
+yi minus xi beta hat.
+
+50
+00:04:18.500 --> 00:04:21.541
+Xi times beta hat minus beta.
+
+51
+00:04:21.541 --> 00:04:24.003
+I would like to solve that equal to zero.
+
+52
+00:04:27.903 --> 00:04:30.032
+This term does not depend on i, so
+
+53
+00:04:30.032 --> 00:04:34.759
+I could divide from both sides of
+the equation and it would simply go away.
+
+54
+00:04:36.550 --> 00:04:39.312
+Solving this equation for
+
+55
+00:04:39.312 --> 00:04:45.085
+beta hat yields the solution
+summation i equal 1 to n,
+
+56
+00:04:45.085 --> 00:04:50.875
+yi xi divided by summation xi squared,
+i equal 1 to n.
+
+57
+00:04:50.875 --> 00:04:56.230
+So that yields our beta hat for
+regression through the origin.
+
+58
+00:04:58.280 --> 00:05:01.975
+Let's consider an example,
+
+59
+00:05:01.975 --> 00:05:06.859
+that we've already shown otherwise.
+
+60
+00:05:06.859 --> 00:05:13.848
+So, imagine if x1 all the way
+up to xn are all equal to one.
+
+61
+00:05:13.848 --> 00:05:20.256
+Then my equation where I want to
+minimize summation yi minus xi beta,
+
+62
+00:05:20.256 --> 00:05:25.006
+my regression to the origin
+equation works out to be
+
+63
+00:05:25.006 --> 00:05:29.430
+summation yi minus beta quantity squared.
+
+64
+00:05:29.430 --> 00:05:30.990
+It's mean only regression.
+
+65
+00:05:33.753 --> 00:05:38.834
+Our result says that beta hat for
+regression to the origin in
+
+66
+00:05:38.834 --> 00:05:44.810
+this case is summation yi xi
+divided by summation xi squared.
+
+67
+00:05:44.810 --> 00:05:49.269
+Which in this case is summation yi
+divided by summation xi squared.
+
+68
+00:05:49.269 --> 00:05:52.311
+Xi is 1so, 1 squared is 1.
+
+69
+00:05:52.311 --> 00:05:54.238
+And if I add them up, I get n.
+
+70
+00:05:54.238 --> 00:05:55.538
+So, it's y bar.
+
+71
+00:05:55.538 --> 00:06:00.910
+Simply, reiterating our proof
+earlier that y bar is the solution
+
+72
+00:06:00.910 --> 00:06:05.610
+to the least squares criteria for
+mean only regression.
+
+73
+00:06:09.690 --> 00:06:14.816
+So let's consider general
+linear regression.
+
+74
+00:06:14.816 --> 00:06:17.460
+Here is our equation for our line and
+
+75
+00:06:17.460 --> 00:06:22.270
+here is the least squares criteria
+that we would like to obtain.
+
+76
+00:06:22.270 --> 00:06:28.859
+We would like to find a beta nought in
+beta one that minimize that equation.
+
+77
+00:06:28.859 --> 00:06:34.153
+Our work already is going to
+make this very easy.
+
+78
+00:06:34.153 --> 00:06:38.983
+Imagine for the, for the moment
+that beta one is fixed and known.
+
+79
+00:06:38.983 --> 00:06:46.807
+Then I'm simply going to rewrite this
+equation as summation i equal 1 to n,
+
+80
+00:06:46.807 --> 00:06:52.750
+yi minus beta 1xi minus beta
+nought quantity squared.
+
+81
+00:06:54.530 --> 00:06:59.437
+And then I'm going to write that
+
+82
+00:06:59.437 --> 00:07:03.978
+as summation i equal one to n,
+
+83
+00:07:03.978 --> 00:07:09.249
+y star minus beta nought squared,
+
+84
+00:07:09.249 --> 00:07:15.808
+where y star is equal to yi minus beta1xi.
+
+85
+00:07:15.808 --> 00:07:21.032
+We know the least squares
+solution to this equation.
+
+86
+00:07:21.032 --> 00:07:29.553
+It has to be, the solution has to be beta
+nought has to be equal to the average.
+
+87
+00:07:29.553 --> 00:07:32.689
+I forgot my i subscript there, so
+why don't I put it right there and
+
+88
+00:07:32.689 --> 00:07:33.361
+right there.
+
+89
+00:07:33.361 --> 00:07:36.380
+Has to be average of the y i stars.
+
+90
+00:07:40.118 --> 00:07:42.765
+Let's plug back in what yi star is.
+
+91
+00:07:42.765 --> 00:07:50.032
+It's summation yi minus
+beta 1xi divided by n.
+
+92
+00:07:50.032 --> 00:07:54.336
+If I distribute out that sum,
+
+93
+00:07:54.336 --> 00:07:58.647
+I get y bar minus beta 1x bar.
+
+94
+00:07:58.647 --> 00:08:03.807
+So my least squares criteria
+is only going to get
+
+95
+00:08:03.807 --> 00:08:11.688
+smaller if I plugin a beta nought that
+satisfies y bar minus beta 1x bar.
+
+96
+00:08:15.120 --> 00:08:16.122
+So why don't I do that?
+
+97
+00:08:20.116 --> 00:08:25.387
+And I get summation i equal 1 to n, yi.
+
+98
+00:08:25.387 --> 00:08:28.104
+And now, I'm simply going to
+plugin my new beta nought.
+
+99
+00:08:28.104 --> 00:08:31.809
+Because I know that whatever solution
+beta nought and beta one are,
+
+100
+00:08:31.809 --> 00:08:34.025
+they have to follow this relationship.
+
+101
+00:08:34.025 --> 00:08:37.456
+Which is again, saying that the fitted
+regression line has to go through
+
+102
+00:08:37.456 --> 00:08:39.890
+the average of the y's and
+the average of the x's.
+
+103
+00:08:41.560 --> 00:08:45.058
+So, it's yi minus the beta
+nought that I just solved for.
+
+104
+00:08:45.058 --> 00:08:47.125
+Y bar minus beta 1.
+
+105
+00:08:47.125 --> 00:08:53.928
+X bar minus beta 1xi.
+
+106
+00:08:53.928 --> 00:08:58.177
+So we know our solution has to do that.
+
+107
+00:08:58.177 --> 00:09:04.853
+Now this is equal to
+summation i equal 1 to n,
+
+108
+00:09:04.853 --> 00:09:13.287
+yi minus y bar minus xi minus
+x bar times beta 1 squared and
+
+109
+00:09:13.287 --> 00:09:18.060
+I forgot my square right there.
+
+110
+00:09:23.984 --> 00:09:26.654
+Now, and
+I'm going to put some parentheses here.
+
+111
+00:09:26.654 --> 00:09:28.140
+I'm going to rewrite this.
+
+112
+00:09:28.140 --> 00:09:33.238
+Again, this is summation i equal 1 to n,
+
+113
+00:09:33.238 --> 00:09:40.390
+y tilde minus x tilde i in both
+cases times beta 1 squared.
+
+114
+00:09:42.410 --> 00:09:45.386
+This is exactly regression to the origin.
+
+115
+00:09:45.386 --> 00:09:50.782
+Where now my outcome is y tilde and
+my predictor is x tilde,
+
+116
+00:09:50.782 --> 00:09:56.177
+where yi tilde is equal to the centered y,
+yi minus y bar and
+
+117
+00:09:56.177 --> 00:10:01.260
+my Xi tilde is equal to the centered xs,
+xi minus x bar.
+
+118
+00:10:03.540 --> 00:10:08.977
+Well, we know what the least squares
+estimate for this equation is.
+
+119
+00:10:08.977 --> 00:10:14.612
+The beta 1 hat has to
+be summation yi tilde
+
+120
+00:10:14.612 --> 00:10:22.026
+times xi tilde divided by
+summation xi tilde squared.
+
+121
+00:10:22.026 --> 00:10:25.764
+Let's just plugin what yi tilde and
+xi tilde are.
+
+122
+00:10:25.764 --> 00:10:31.668
+That summation yi minus
+y bar times xi minus
+
+123
+00:10:31.668 --> 00:10:38.559
+x bar divided by summation
+xi minus x bar squared.
+
+124
+00:10:44.734 --> 00:10:50.021
+Thus, I can divide both sides
+by n minus 1, the numerator,
+
+125
+00:10:50.021 --> 00:10:55.531
+both both the numerator and
+the denominator by n minus 1.
+
+126
+00:10:55.531 --> 00:10:59.727
+And this works out to be
+the covariance between y and
+
+127
+00:10:59.727 --> 00:11:06.264
+x divided by the variance of x, which I
+can write as the correlation between y and
+
+128
+00:11:06.264 --> 00:11:11.940
+x times the standard deviation of y
+over the standard deviation of x.
+
+129
+00:11:14.600 --> 00:11:19.804
+So my beta one hat has to be this,
+the formula that we gave.
+
+130
+00:11:24.518 --> 00:11:32.560
+Then my beta nought hat is given above
+as y bar minus beta 1 hat x bar.

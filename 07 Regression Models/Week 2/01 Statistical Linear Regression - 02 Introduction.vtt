@@ -1,0 +1,216 @@
+WEBVTT
+
+1
+00:00:00.280 --> 00:00:04.160
+Hi, and welcome to the lecture on
+statistical linear regression models,
+
+2
+00:00:04.160 --> 00:00:06.790
+as part of the regression
+modeling Coursera course,
+
+3
+00:00:06.790 --> 00:00:09.510
+which is part of our
+Data Science Specialization.
+
+4
+00:00:09.510 --> 00:00:12.460
+My name is Brian Caffo, and
+I'm a professor in the Department
+
+5
+00:00:12.460 --> 00:00:15.940
+of Biostatistics of the Johns Hopkins
+Bloomberg School of Public Health.
+
+6
+00:00:15.940 --> 00:00:18.340
+The class is toe,
+co-taught by my co-instructors and
+
+7
+00:00:18.340 --> 00:00:19.900
+colleagues Jeff Leek and Roger Peng.
+
+8
+00:00:21.000 --> 00:00:25.670
+Finding a good regression line using least
+squares is really simply a mathematical
+
+9
+00:00:25.670 --> 00:00:27.120
+procedure.
+
+10
+00:00:27.120 --> 00:00:29.010
+However, we'd like to do statistics.
+
+11
+00:00:29.010 --> 00:00:31.970
+We'd like to draw emphasis
+based on our data.
+
+12
+00:00:31.970 --> 00:00:34.650
+In other words we'd like to generalize
+
+13
+00:00:34.650 --> 00:00:38.440
+from our data to a population
+using statistical models.
+
+14
+00:00:38.440 --> 00:00:41.790
+And that's what we're going to talk about
+in the statistical in your regression
+
+15
+00:00:41.790 --> 00:00:42.960
+lecture today.
+
+16
+00:00:44.610 --> 00:00:48.560
+So let's consider our probabilistic
+model for linear regression, and
+
+17
+00:00:48.560 --> 00:00:51.818
+we're going to start with,
+one of the most simple ones.
+
+18
+00:00:51.818 --> 00:00:57.350
+A response y-i is our line
+beta one plus beta one x-i,
+
+19
+00:00:57.350 --> 00:00:59.660
+where we don't know beta naught or
+beta one,
+
+20
+00:00:59.660 --> 00:01:03.410
+these are the population parameters
+that we would like to estimate.
+
+21
+00:01:03.410 --> 00:01:08.700
+X i is a collection of explanatory
+variables that we do know.
+
+22
+00:01:08.700 --> 00:01:12.020
+And then to make it a statistical model,
+we're going to add Gaussian,
+
+23
+00:01:12.020 --> 00:01:15.790
+iid Gaussian errors,
+which I'm going to denote epsilon i.
+
+24
+00:01:15.790 --> 00:01:20.040
+So the epsilon i's are going to be
+assumed to be normal mu sigma squared.
+
+25
+00:01:21.740 --> 00:01:26.450
+There's a lot of different ways to
+interpret these Independent errors.
+
+26
+00:01:26.450 --> 00:01:30.050
+Perhaps one of the easier ones is
+to think they're the accumulation
+
+27
+00:01:30.050 --> 00:01:33.060
+of a lot of variables that you didn't
+model that maybe you should have,
+
+28
+00:01:33.060 --> 00:01:38.280
+that act together on the response in a way
+that can be modeled as if independent and
+
+29
+00:01:38.280 --> 00:01:42.160
+identically distributed Gaussian errors.
+
+30
+00:01:42.160 --> 00:01:45.810
+However, let's put these kind of
+difficult interpretation issues aside for
+
+31
+00:01:45.810 --> 00:01:46.670
+the time being, and
+
+32
+00:01:46.670 --> 00:01:51.000
+simply talk about how we mechanically work
+with statistical inference for regression.
+
+33
+00:01:52.020 --> 00:01:56.320
+I would note that the expected value of
+the response given a particular value of
+
+34
+00:01:56.320 --> 00:02:02.090
+the regressor, is simple the line at
+that regressor, beta 0 plus beta 1 xi.
+
+35
+00:02:02.090 --> 00:02:04.540
+And the variants of the response
+
+36
+00:02:04.540 --> 00:02:07.340
+at any particular value of
+the regressor is sigma squared.
+
+37
+00:02:08.540 --> 00:02:12.410
+This latter point, let me elaborate
+just a little bit, this is the variants
+
+38
+00:02:12.410 --> 00:02:15.920
+around the regression line,
+this is not the variants of the response.
+
+39
+00:02:15.920 --> 00:02:19.660
+So it will be lower than the variants
+of the response by itself because you
+
+40
+00:02:19.660 --> 00:02:25.220
+explained away some of the variation
+with X by conditioning on X.
+
+41
+00:02:25.220 --> 00:02:27.860
+I would also note that both
+this expected value and
+
+42
+00:02:27.860 --> 00:02:30.260
+the variance are population quantities.
+
+43
+00:02:30.260 --> 00:02:33.500
+They have sample analogues that
+will estimate, but right now,
+
+44
+00:02:33.500 --> 00:02:35.090
+these are population quantities,
+
+45
+00:02:35.090 --> 00:02:37.510
+these are the estimands that
+we would really like to know.

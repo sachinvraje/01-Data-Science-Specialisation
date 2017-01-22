@@ -1,0 +1,1646 @@
+WEBVTT
+
+1
+00:00:03.123 --> 00:00:08.130
+So you might be surprised to find out how
+flexible linear regression models are.
+
+2
+00:00:08.130 --> 00:00:11.500
+For example, you can fit factor
+variables as regressors and
+
+3
+00:00:11.500 --> 00:00:13.930
+come up with things like
+analysis of variance,
+
+4
+00:00:13.930 --> 00:00:16.980
+if you've heard of that before,
+as a special case of linear models.
+
+5
+00:00:16.980 --> 00:00:22.646
+Let's go through an example where we
+have one covariant, X equal to zero or
+
+6
+00:00:22.646 --> 00:00:26.720
+one, and let's see what happens when we
+put that into a linear regression model.
+
+7
+00:00:26.720 --> 00:00:30.380
+So here I have my model, Y,
+my outcome, is beta-naught,
+
+8
+00:00:30.380 --> 00:00:34.970
+an intercept,
+plus X times beta one plus an error term.
+
+9
+00:00:34.970 --> 00:00:38.570
+Where here now my X only takes
+the value zero for, let's say,
+
+10
+00:00:38.570 --> 00:00:42.860
+people in a control group and one for,
+say, people who received a treatment.
+
+11
+00:00:44.790 --> 00:00:49.551
+Then, for the people who will receive
+the treatment, the group of people where
+
+12
+00:00:49.551 --> 00:00:53.404
+their X value is one,
+their mean is beta-naught plus beta one.
+
+13
+00:00:53.404 --> 00:00:55.503
+For the people who are in
+the control group,
+
+14
+00:00:55.503 --> 00:00:59.149
+those people where their covariant X
+is zero, their mean is beta-naught.
+
+15
+00:01:01.370 --> 00:01:05.700
+If you were to fit this, as you
+would expect, the estimated mean for
+
+16
+00:01:05.700 --> 00:01:09.130
+the treated group is just the mean
+of the people who are treated.
+
+17
+00:01:09.130 --> 00:01:13.320
+So that beta one hat plus beta not
+hat works out to just be the mean for
+
+18
+00:01:13.320 --> 00:01:14.280
+the treated group.
+
+19
+00:01:14.280 --> 00:01:18.969
+Similarly, beta not hat, by itself, works
+out to be the mean for the control group.
+
+20
+00:01:21.692 --> 00:01:28.000
+Beta one, now, is interpreted as the
+increase, or decrease if it's negative, in
+
+21
+00:01:28.000 --> 00:01:32.619
+the mean response for those that had the X
+value of one, for those that were treated.
+
+22
+00:01:34.500 --> 00:01:37.410
+So that's just a nice
+way to be able to fit,
+
+23
+00:01:37.410 --> 00:01:41.040
+factor a two-level factor variable
+as a linear regression variable.
+
+24
+00:01:41.040 --> 00:01:45.010
+And it gives you, not only the fitted
+values tell you about the means for
+
+25
+00:01:45.010 --> 00:01:45.930
+both of the groups, but
+
+26
+00:01:45.930 --> 00:01:49.180
+it gives you an inference for
+comparing the two groups automatically.
+
+27
+00:01:49.180 --> 00:01:51.780
+That T test, by the way, the T test for
+
+28
+00:01:51.780 --> 00:01:56.750
+beta one, is exactly identical
+to a two-group T test where you
+
+29
+00:01:56.750 --> 00:02:00.510
+assume a common variance if you happen
+to have taken the inference class.
+
+30
+00:02:02.560 --> 00:02:04.890
+We can extend this to
+more than two levels.
+
+31
+00:02:04.890 --> 00:02:07.310
+For example,
+imagine if you had a three-level variable.
+
+32
+00:02:07.310 --> 00:02:11.620
+For example, you have some outcome but
+you wanna compare it to U.S.
+
+33
+00:02:11.620 --> 00:02:13.550
+political party affiliation.
+
+34
+00:02:13.550 --> 00:02:18.090
+In this case, let's say you were only
+considering those that were Democrats,
+
+35
+00:02:18.090 --> 00:02:20.450
+Republicans, or registered Independents.
+
+36
+00:02:22.210 --> 00:02:27.150
+Well, you can do that by having
+a variable X1, that's one for
+
+37
+00:02:27.150 --> 00:02:31.260
+Republicans and zero for otherwise,
+a variable X2 that's one for
+
+38
+00:02:31.260 --> 00:02:35.740
+Democrats and zero for otherwise, and
+then, I'll tell you here in a minute
+
+39
+00:02:35.740 --> 00:02:41.080
+why we omit the X3 that would be one for
+Independents and zero otherwise.
+
+40
+00:02:41.080 --> 00:02:43.190
+That one, it would happen to be redundant.
+
+41
+00:02:43.190 --> 00:02:47.820
+Okay, so if a person is a Republican,
+
+42
+00:02:47.820 --> 00:02:52.310
+then their mean is gonna be beta-naught,
+plus this first X term is gonna be one.
+
+43
+00:02:52.310 --> 00:02:56.120
+So plus beta one and
+the second X term is gonna be zero and
+
+44
+00:02:56.120 --> 00:02:57.850
+so their main will be
+beta not plus beta one.
+
+45
+00:02:57.850 --> 00:03:04.230
+If the person is a Democrat, then it's
+gonna beta-naught, then X1 will be zero,
+
+46
+00:03:04.230 --> 00:03:09.100
+so that term will drop out, then X2 will
+be one and so it'll be plus beta two.
+
+47
+00:03:09.100 --> 00:03:10.235
+So for the Democrat,
+
+48
+00:03:10.235 --> 00:03:14.540
+their mean from the regression model
+would be beta-naught plus beta two.
+
+49
+00:03:14.540 --> 00:03:18.830
+And then if they're an independent,
+both these S terms will be zero and
+
+50
+00:03:18.830 --> 00:03:20.230
+it'll just be beta-naught.
+
+51
+00:03:20.230 --> 00:03:22.560
+And that's why we can't
+include a third time, right?
+
+52
+00:03:22.560 --> 00:03:28.310
+Because if we know that you're Republican,
+in the way that we've set up the variable,
+
+53
+00:03:28.310 --> 00:03:31.750
+if we know that you're not Republican and
+not a Democrat,
+
+54
+00:03:31.750 --> 00:03:35.840
+then you must be an Independent in our
+data set the way we've set things up.
+
+55
+00:03:35.840 --> 00:03:39.070
+And so it would be redundant to
+have a third variable in there,
+
+56
+00:03:39.070 --> 00:03:40.940
+it wouldn't have any new information.
+
+57
+00:03:40.940 --> 00:03:44.100
+Here we have three means, Republican,
+Democrat, and Independent, and
+
+58
+00:03:44.100 --> 00:03:46.600
+three parameters, Beta-naught,
+Beta one, and Beta two.
+
+59
+00:03:46.600 --> 00:03:50.958
+If we were to add an extra parameter,
+it would kind of break the model.
+
+60
+00:03:50.958 --> 00:03:53.940
+And I'll show you in R what happens
+when you do that in a minute.
+
+61
+00:03:55.320 --> 00:03:59.880
+So if we look at our means here,
+if we compare beta-naught and
+
+62
+00:03:59.880 --> 00:04:03.390
+the mean for the Independents versus
+the mean for the Republicans,
+
+63
+00:04:03.390 --> 00:04:05.990
+so we subtract those two, we get beta one.
+
+64
+00:04:05.990 --> 00:04:09.180
+So beta one compares
+Republicans to Independents.
+
+65
+00:04:09.180 --> 00:04:12.900
+And beta two, similarly,
+compares Democrats to Independents.
+
+66
+00:04:12.900 --> 00:04:17.160
+Then, of course, beta one minus beta
+two compares Democrats to Republicans.
+
+67
+00:04:17.160 --> 00:04:22.770
+So what happens is by omitting the
+regression variable for the Independents,
+
+68
+00:04:22.770 --> 00:04:27.275
+then the intercept became the value for
+the Independents, and
+
+69
+00:04:27.275 --> 00:04:33.225
+all of the other coefficients have become
+interpreted relative to Independents.
+
+70
+00:04:33.225 --> 00:04:37.332
+The beta one, in fact, the one in front
+of the Republican covariant is now
+
+71
+00:04:37.332 --> 00:04:41.520
+interpreted as the change between
+Republicans and Independents.
+
+72
+00:04:41.520 --> 00:04:45.280
+The beta two,
+the one in front of the Democrat covariant
+
+73
+00:04:45.280 --> 00:04:48.250
+is now interpreted as the change
+between Democrats and Independents.
+
+74
+00:04:48.250 --> 00:04:52.655
+And this was all a consequence of
+having omitted the one regressor for
+
+75
+00:04:52.655 --> 00:04:53.460
+Independents.
+
+76
+00:04:53.460 --> 00:04:57.440
+If we had included the regressor for
+Independents and excluded the one for
+
+77
+00:04:57.440 --> 00:05:00.880
+Republicans, then the intercept
+would be for Republicans, and
+
+78
+00:05:00.880 --> 00:05:04.790
+the coefficient in front of the Democratic
+one would be Democrats versus Republicans.
+
+79
+00:05:04.790 --> 00:05:06.480
+The coefficient in front
+of the Independent one,
+
+80
+00:05:06.480 --> 00:05:08.650
+would be Independent versus Republican,
+
+81
+00:05:08.650 --> 00:05:13.980
+and we'll go through some more examples
+just to illustrate how this works.
+
+82
+00:05:13.980 --> 00:05:18.550
+And R kinda does this on purpose, or
+R kinda does this automatically for you,
+
+83
+00:05:18.550 --> 00:05:20.600
+if you include it as a factor value.
+
+84
+00:05:20.600 --> 00:05:24.160
+It picks one of the levels
+to be the reference level.
+
+85
+00:05:24.160 --> 00:05:27.710
+And so, let's go through some examples,
+hopefully, that'll shore this up,
+
+86
+00:05:27.710 --> 00:05:32.700
+but the main point I'd like to get across
+is, whenever you're dealing with factor
+
+87
+00:05:32.700 --> 00:05:37.830
+variables in linear models, what you set
+at your reference level has a big effect.
+
+88
+00:05:37.830 --> 00:05:39.960
+These coefficient are interpreted
+quite differently,
+
+89
+00:05:39.960 --> 00:05:42.810
+depending on how you sent them up and
+what you set up as your reference level.
+
+90
+00:05:46.080 --> 00:05:50.260
+Okay, so let's go through an example in R,
+where we look at a factor variable and
+
+91
+00:05:50.260 --> 00:05:52.530
+see how R is treating it.
+
+92
+00:05:52.530 --> 00:05:56.200
+So, I want to make sure I
+require the data sets package.
+
+93
+00:05:56.200 --> 00:05:58.310
+We've already loaded that
+in in this lecture but
+
+94
+00:05:58.310 --> 00:06:00.700
+let's just do it again
+just to remind ourselves.
+
+95
+00:06:00.700 --> 00:06:05.870
+And then I have this data InsectSprays,
+and then I'm requiring the stats package.
+
+96
+00:06:05.870 --> 00:06:08.520
+I don't know if that's technically
+necessary for what I'm doing, but
+
+97
+00:06:08.520 --> 00:06:14.190
+if you do help InsectSprays, InsectSprays,
+
+98
+00:06:14.190 --> 00:06:17.930
+here, it gives you the help file for
+this data set, and
+
+99
+00:06:17.930 --> 00:06:21.780
+the outcome is a count is
+a numeric insect count.
+
+100
+00:06:21.780 --> 00:06:26.460
+So, presumably,
+number left after applying the spray,
+
+101
+00:06:26.460 --> 00:06:30.680
+and the spray factor is the type of spray,
+okay?
+
+102
+00:06:30.680 --> 00:06:33.690
+And then it gives some examples
+of working with this data, but
+
+103
+00:06:33.690 --> 00:06:37.380
+we don't need that cuz we're
+gonna build our own examples.
+
+104
+00:06:37.380 --> 00:06:40.270
+So let's first plot some of the data.
+
+105
+00:06:40.270 --> 00:06:46.170
+So I want to do a ggplot and
+I've already loaded ggplot2,
+
+106
+00:06:46.170 --> 00:06:50.290
+but just to remind you, in case you're
+restarting your R session from earlier,
+
+107
+00:06:50.290 --> 00:06:52.530
+you want to make sure
+that you acquire ggplot2.
+
+108
+00:06:52.530 --> 00:06:55.020
+There, it's loaded.
+
+109
+00:06:55.020 --> 00:07:01.130
+And then I have my ggplot and
+then my data is InsectSprays.
+
+110
+00:07:01.130 --> 00:07:04.870
+And then for my aesthetic,
+my Y is the count, the number of insects.
+
+111
+00:07:04.870 --> 00:07:07.010
+My X is the spray.
+
+112
+00:07:07.010 --> 00:07:10.230
+They don't give you too much
+information about the sprays, but
+
+113
+00:07:10.230 --> 00:07:12.710
+there's a couple of different
+sprays that they use.
+
+114
+00:07:12.710 --> 00:07:19.670
+And then I want to fill the objects I'm
+creating with the factor variable spray.
+
+115
+00:07:19.670 --> 00:07:21.430
+So there I've created my ggplot.
+
+116
+00:07:21.430 --> 00:07:23.560
+And then I wanna do a violin plot.
+
+117
+00:07:23.560 --> 00:07:27.160
+A violin plot is kind of like a histogram
+but sort of tilted on its side.
+
+118
+00:07:27.160 --> 00:07:33.030
+And then they repeat it on both sides so
+it looks a little like a violin.
+
+119
+00:07:33.030 --> 00:07:36.470
+Well, it looks like a violin
+if you're data cooperates.
+
+120
+00:07:36.470 --> 00:07:37.660
+Otherwise, it looks like a blob.
+
+121
+00:07:39.530 --> 00:07:40.890
+Okay, there's our violin plot.
+
+122
+00:07:40.890 --> 00:07:43.110
+And then I wanna set my labels.
+
+123
+00:07:43.110 --> 00:07:47.580
+And then if you wanna actually see
+the plot, you gotta bring it up.
+
+124
+00:07:47.580 --> 00:07:49.860
+Okay, so, here's my violin plot.
+
+125
+00:07:49.860 --> 00:07:55.500
+So you see there's sprays eight
+labeled spray A, B, C, D, E, and F?
+
+126
+00:07:55.500 --> 00:07:58.648
+Okay.
+And you can see the insect counts, so
+
+127
+00:07:58.648 --> 00:08:03.988
+I presume they applied the spray
+to numerous batches of insects and
+
+128
+00:08:03.988 --> 00:08:06.505
+they,
+>> It's unfortunate they're not telling me
+
+129
+00:08:06.505 --> 00:08:10.000
+whether or not the count is the count of
+the number of alive or the number dead.
+
+130
+00:08:11.600 --> 00:08:16.130
+So we don't know if this is
+a better spray, a better, let's say
+
+131
+00:08:16.130 --> 00:08:19.135
+it's a mosquito spray or something like
+that, cuz no one likes mosquitoes.
+
+132
+00:08:22.020 --> 00:08:25.010
+We don't know if this is a better spray or
+a worse spray.
+
+133
+00:08:25.010 --> 00:08:27.720
+But let's talk about how we can
+test the difference between
+
+134
+00:08:27.720 --> 00:08:30.410
+different factor levels in
+this case using linear models.
+
+135
+00:08:30.410 --> 00:08:34.195
+And then, at the end I'll talk about some
+shortcomings of the approach that I'm
+
+136
+00:08:34.195 --> 00:08:35.545
+proposing here.
+
+137
+00:08:35.545 --> 00:08:36.925
+But here's a violin plot.
+
+138
+00:08:36.925 --> 00:08:43.645
+And let me just do head Insect sprays
+
+139
+00:08:43.645 --> 00:08:48.515
+to just show you the data, what it looks
+like, to see we have a bunch of counts.
+
+140
+00:08:48.515 --> 00:08:51.655
+And then,
+the spray label's a very simple data set.
+
+141
+00:08:51.655 --> 00:08:57.347
+And so, let's look at what happens when we
+include insect spray as a linear model and
+
+142
+00:08:57.347 --> 00:08:58.480
+y as an outcome.
+
+143
+00:09:00.961 --> 00:09:02.990
+So, let's fit our model.
+
+144
+00:09:02.990 --> 00:09:05.820
+And now, what we're fitting is,
+
+145
+00:09:05.820 --> 00:09:09.970
+our outcome is the count,
+the number of insects.
+
+146
+00:09:09.970 --> 00:09:14.900
+Our predictor is the spray,
+which spray was used as a factor variable.
+
+147
+00:09:14.900 --> 00:09:16.460
+It's already a factor variable.
+
+148
+00:09:16.460 --> 00:09:17.500
+And then, I give it the data-set.
+
+149
+00:09:17.500 --> 00:09:22.780
+And then, here, I just want
+the summary of the output from lm.
+
+150
+00:09:22.780 --> 00:09:26.410
+Again, normally you wanna
+assign your lm to a variable so
+
+151
+00:09:26.410 --> 00:09:28.160
+you can keep it for later.
+
+152
+00:09:28.160 --> 00:09:32.062
+And then, I just wanna, for, to keep
+the printing a little bit self-contained,
+
+153
+00:09:32.062 --> 00:09:33.926
+I'm grabbing the coefficient table.
+
+154
+00:09:37.860 --> 00:09:42.654
+And so, there you see, the Intercept,
+spray B, spray C, spray D,
+
+155
+00:09:42.654 --> 00:09:44.237
+spray E, and spray F.
+
+156
+00:09:44.237 --> 00:09:46.980
+And spray A is conspicuously missing.
+
+157
+00:09:48.380 --> 00:09:53.898
+And the idea is that everything here
+is now in comparison with spray A.
+
+158
+00:09:53.898 --> 00:09:58.290
+So, this 0.833 is the change in
+
+159
+00:09:58.290 --> 00:10:02.690
+the mean between spray B and spray A.
+
+160
+00:10:04.570 --> 00:10:08.710
+In this case, 14.5,
+the intercept is the mean for spray A.
+
+161
+00:10:11.040 --> 00:10:13.520
+And if you look over here at our plot,
+that seems about right.
+
+162
+00:10:13.520 --> 00:10:15.283
+Look at our violin plot.
+
+163
+00:10:15.283 --> 00:10:18.138
+14.5 seems about right for spray A.
+
+164
+00:10:18.138 --> 00:10:21.670
+And spray B, it seems reasonable
+that it would be off by,
+
+165
+00:10:21.670 --> 00:10:24.910
+it would be changed just by
+a little bit from spray A.
+
+166
+00:10:24.910 --> 00:10:30.041
+Now, spray C looks like it
+has a much lower count, okay?
+
+167
+00:10:30.041 --> 00:10:33.090
+And look, it's coefficient is minus 12.
+
+168
+00:10:33.090 --> 00:10:36.241
+Okay?
+And that looks like about right.
+
+169
+00:10:36.241 --> 00:10:38.114
+So this one's at 14.5.
+
+170
+00:10:38.114 --> 00:10:43.587
+And somewhere around two seems
+about right for this one, spray C.
+
+171
+00:10:43.587 --> 00:10:47.952
+And so, that's exactly what
+this coefficient is saying.
+
+172
+00:10:47.952 --> 00:10:53.270
+This negative 12 here is the different
+between spray C minus spray A.
+
+173
+00:10:54.790 --> 00:10:59.653
+Now, if we wanted to compare,
+for example, spray B and spray C,
+
+174
+00:10:59.653 --> 00:11:04.980
+we would have to subtract this,
+0.833, and this negative12.
+
+175
+00:11:04.980 --> 00:11:08.979
+Now, we wouldn't have a standard error for
+that comparison immediately.
+
+176
+00:11:10.690 --> 00:11:12.340
+However, that would give us the estimate.
+
+177
+00:11:13.500 --> 00:11:18.330
+If I were to take the average count for
+the sprays,
+
+178
+00:11:18.330 --> 00:11:22.850
+for those with spray A, I would get 14.5.
+
+179
+00:11:22.850 --> 00:11:28.270
+If I were to take the average count for
+
+180
+00:11:28.270 --> 00:11:30.950
+spray B, I would get 14.5 plus 0.833.
+
+181
+00:11:30.950 --> 00:11:36.900
+So, I'd like now to show you how I
+can hard code the same model and
+
+182
+00:11:36.900 --> 00:11:44.250
+not rely on r to actually
+pick the reference level.
+
+183
+00:11:44.250 --> 00:11:48.760
+So, remember what I did last time
+is I did count was my outcome and
+
+184
+00:11:48.760 --> 00:11:51.089
+my factor variable spray was my predictor.
+
+185
+00:11:52.600 --> 00:11:59.250
+And what r does is it picks the spray
+level that's the lowest alphanumerically.
+
+186
+00:11:59.250 --> 00:12:02.860
+So, in this case, spray level A,
+to set as the reference level.
+
+187
+00:12:02.860 --> 00:12:06.550
+So let me show how you can hard
+code that myself manually.
+
+188
+00:12:06.550 --> 00:12:09.000
+So, here count is my outcome.
+
+189
+00:12:09.000 --> 00:12:14.300
+And then, I'm gonna create a variable
+using the I function which in lm
+
+190
+00:12:14.300 --> 00:12:20.180
+actually performs the operation inside the
+regression, inside the model statement.
+
+191
+00:12:20.180 --> 00:12:24.650
+So, here I just wanna look at the
+instances where the spray is equal to B.
+
+192
+00:12:24.650 --> 00:12:30.960
+And then, I multiply that times 1 to
+change it from Boolean to numeric.
+
+193
+00:12:30.960 --> 00:12:36.580
+And then, here's a variable that's
+1 when spray is C, and 0 otherwise.
+
+194
+00:12:36.580 --> 00:12:40.280
+And here's a variable that's 1 when
+the spray is D, and 0 otherwise.
+
+195
+00:12:40.280 --> 00:12:43.020
+And here's one for E,
+and here's one for F.
+
+196
+00:12:43.020 --> 00:12:46.130
+So, I've included all of them except A.
+
+197
+00:12:46.130 --> 00:12:48.940
+So, I've forced A to
+be my reference level.
+
+198
+00:12:48.940 --> 00:12:50.790
+And I'm going to run this model.
+
+199
+00:12:50.790 --> 00:12:54.630
+And it should give me the same
+result as with r did.
+
+200
+00:12:54.630 --> 00:12:59.770
+It's just now I've shown you exactly how
+r is creating the regression variables.
+
+201
+00:12:59.770 --> 00:13:05.380
+So, let me just remind ourselves
+what r gives us when we run,
+
+202
+00:13:05.380 --> 00:13:08.580
+and let it handle the factor
+variable by itself.
+
+203
+00:13:08.580 --> 00:13:12.380
+And then, let me do the same thing where
+I've created my own factor variables.
+
+204
+00:13:12.380 --> 00:13:16.715
+And then, you can see 14.5, 14.5, 0.833,
+
+205
+00:13:16.715 --> 00:13:20.284
+0.833, you can see that it's identical.
+
+206
+00:13:20.284 --> 00:13:22.830
+So this is what r is
+doing behind the scenes.
+
+207
+00:13:22.830 --> 00:13:26.440
+And let's keep exploring this because
+this is kind of an important point.
+
+208
+00:13:26.440 --> 00:13:31.342
+If you mess this up with factor variables,
+you get very incorrect conclusions.
+
+209
+00:13:36.450 --> 00:13:40.580
+Now, let me show you what happens
+if I do include spray A here.
+
+210
+00:13:42.130 --> 00:13:47.090
+So, I've done the same model I did before
+where I include all the variables,
+
+211
+00:13:47.090 --> 00:13:50.410
+but now I'm also including
+an extra variable for spray A.
+
+212
+00:13:50.410 --> 00:13:52.290
+And let me just do the lm part.
+
+213
+00:13:53.690 --> 00:13:57.520
+And notice it gives an NA in
+front of the spray A coefficient.
+
+214
+00:13:58.860 --> 00:14:01.230
+And the reason for
+that is because it's redundant.
+
+215
+00:14:01.230 --> 00:14:04.100
+We have six means, right?
+
+216
+00:14:04.100 --> 00:14:05.088
+For six sprays.
+
+217
+00:14:05.088 --> 00:14:08.092
+And we have seven parameters in intercept.
+
+218
+00:14:08.092 --> 00:14:11.840
+And then, now I've tried to put
+in six regression parameters.
+
+219
+00:14:11.840 --> 00:14:14.070
+I have six means to fit seven parameters.
+
+220
+00:14:14.070 --> 00:14:16.127
+It can't do that, so
+it's gonna drop one of them.
+
+221
+00:14:20.540 --> 00:14:23.539
+Now, what if I do want my coefficients,
+
+222
+00:14:23.539 --> 00:14:28.837
+instead of being interpreted as
+levels referenced to a control level,
+
+223
+00:14:28.837 --> 00:14:34.000
+what if I want my coefficients to
+be the mean for each of the groups?
+
+224
+00:14:34.000 --> 00:14:37.060
+Well, you can do that, but
+you have to remove the intercept.
+
+225
+00:14:37.060 --> 00:14:41.780
+So, watch what happen when I say count is
+my outcome, and spray is my predictor, but
+
+226
+00:14:41.780 --> 00:14:43.190
+I remove the intercept.
+
+227
+00:14:44.220 --> 00:14:45.500
+Then notice what happens
+
+228
+00:14:47.720 --> 00:14:52.520
+is that now I get a different set of
+coefficients, one for each spray level.
+
+229
+00:14:52.520 --> 00:14:54.730
+So, it includes A, B, C, D, E and F.
+
+230
+00:14:54.730 --> 00:14:56.530
+It hasn't dropped any levels.
+
+231
+00:14:56.530 --> 00:15:02.490
+And it can do that now because it has six
+parameters, and six means to work with.
+
+232
+00:15:02.490 --> 00:15:07.290
+And these are exactly equal to
+the means for each spray in the data.
+
+233
+00:15:07.290 --> 00:15:12.140
+So, if I were to just go ahead and
+calculate the means for each spray, right?
+
+234
+00:15:12.140 --> 00:15:13.070
+It works out to be the same numbers.
+
+235
+00:15:13.070 --> 00:15:17.780
+14.5, 15.3, 2.08 in both, and so on.
+
+236
+00:15:17.780 --> 00:15:20.510
+Now, I want to emphasize this model is
+
+237
+00:15:20.510 --> 00:15:23.700
+no different than my model
+that included an intercept.
+
+238
+00:15:23.700 --> 00:15:28.073
+Why don't I go back to my model with
+my intercept just to illustrate this.
+
+239
+00:15:28.073 --> 00:15:32.570
+So, now it's just that the coefficients
+have a different interpretation.
+
+240
+00:15:32.570 --> 00:15:36.430
+Now, the intercept from the model,
+when I fit count as spray but
+
+241
+00:15:36.430 --> 00:15:40.280
+included the intercept,
+my intercept now is interpreted, 14.5,
+
+242
+00:15:40.280 --> 00:15:42.010
+as the mean for spray A.
+
+243
+00:15:42.010 --> 00:15:44.870
+And you can see that it's
+exactly the empirical mean for
+
+244
+00:15:44.870 --> 00:15:46.880
+spray A when I calculate the mean.
+
+245
+00:15:46.880 --> 00:15:47.920
+It works out that way.
+
+246
+00:15:47.920 --> 00:15:51.530
+And then, spray B,
+we talked about earlier,
+
+247
+00:15:51.530 --> 00:15:56.930
+was the comparison between the reference
+level spray A and spray B.
+
+248
+00:15:56.930 --> 00:15:59.472
+Okay?
+So, if I add these together,
+
+249
+00:15:59.472 --> 00:16:04.038
+14.5 and 0.833,
+I should get the mean for spray B.
+
+250
+00:16:04.038 --> 00:16:10.410
+Okay, and that's what you see, 14.5 plus
+0.833, that gets me 15.33, and so on.
+
+251
+00:16:10.410 --> 00:16:14.310
+So, If I add 14.5 and
+minus 12, I'm gonna get 2.08.
+
+252
+00:16:14.310 --> 00:16:19.440
+If I add 14.5 and negative 9,
+I get 4.9, and so on.
+
+253
+00:16:19.440 --> 00:16:22.480
+So, this model,
+where I've included an intercept,
+
+254
+00:16:22.480 --> 00:16:28.160
+has all the same information as
+the model where I omitted the intercept,
+
+255
+00:16:28.160 --> 00:16:30.760
+the only difference is how
+the coefficients are interpreted.
+
+256
+00:16:30.760 --> 00:16:34.260
+In the model with the intercept now
+the intercept is interpreted as
+
+257
+00:16:34.260 --> 00:16:37.920
+the sprayA mean and
+all the coefficients are interpreted
+
+258
+00:16:37.920 --> 00:16:41.740
+as relative to sprayA
+differences from sprayA.
+
+259
+00:16:41.740 --> 00:16:45.220
+And then if I would have fit it without
+the intercept then I get the mean for
+
+260
+00:16:45.220 --> 00:16:45.830
+each spray.
+
+261
+00:16:45.830 --> 00:16:48.570
+And if I want differences then I
+have to subtract the coefficients.
+
+262
+00:16:49.890 --> 00:16:54.500
+And you usually want one of them to
+be a reference level because then you
+
+263
+00:16:54.500 --> 00:16:55.140
+can do test.
+
+264
+00:16:55.140 --> 00:17:00.390
+So now my p values are testing whether or
+not, for the t test whether or
+
+265
+00:17:00.390 --> 00:17:04.320
+not A is different from B, and A is
+different from C, and A is different from
+
+266
+00:17:04.320 --> 00:17:08.400
+D, and so on, whereas the p values from
+this test are just testing whether or
+
+267
+00:17:08.400 --> 00:17:12.070
+not those means are different from 0,
+which is a very different test.
+
+268
+00:17:12.070 --> 00:17:16.940
+Did sprayA kill any insects is what
+this is testing, where in this one,
+
+269
+00:17:16.940 --> 00:17:20.796
+the sprayB row is testing whether
+sprayA is different from sprayB.
+
+270
+00:17:20.796 --> 00:17:27.600
+So, what I'm trying to illustrate is that,
+how you play around with
+
+271
+00:17:27.600 --> 00:17:33.125
+factor variables in LM is very important
+in terms of how you interpret it.
+
+272
+00:17:33.125 --> 00:17:38.020
+It's not just a conceptual or
+theoretical thing to worry about it.
+
+273
+00:17:38.020 --> 00:17:39.880
+It's a very practical
+thing to worry about.
+
+274
+00:17:39.880 --> 00:17:43.020
+What your intercept means changes
+dramatically depending on what your
+
+275
+00:17:43.020 --> 00:17:46.830
+reference level is or whether or
+not you include an intercept.
+
+276
+00:17:48.800 --> 00:17:50.090
+Let me do one last thing.
+
+277
+00:17:51.710 --> 00:17:53.970
+Where now I show you how
+you can re-level and
+
+278
+00:17:53.970 --> 00:17:58.708
+in this case sprayA was my reference
+level you can very easily re-level it.
+
+279
+00:17:58.708 --> 00:18:00.770
+So say sprayC is your reference level.
+
+280
+00:18:00.770 --> 00:18:03.880
+So now here I just use
+the re level command so
+
+281
+00:18:03.880 --> 00:18:08.250
+now inspect spray,
+the reference level is sprayC but
+
+282
+00:18:08.250 --> 00:18:11.610
+now I've just created a new
+variable where that spray2.
+
+283
+00:18:11.610 --> 00:18:15.340
+And now I'm gonna do my linear
+model where my outcome is my count.
+
+284
+00:18:15.340 --> 00:18:18.030
+And spray2 is my predictor
+now instead of spray.
+
+285
+00:18:18.030 --> 00:18:20.920
+And this is the one that has
+C as the reference level.
+
+286
+00:18:20.920 --> 00:18:25.920
+And then R knows not to do the one that
+has the lowest alphanumeric letter,
+
+287
+00:18:25.920 --> 00:18:28.720
+but instead has the reference
+level that I set.
+
+288
+00:18:28.720 --> 00:18:31.479
+And there when I do it
+notice sprayA is present,
+
+289
+00:18:31.479 --> 00:18:34.420
+sprayC is gone cuz now
+it's the reference level.
+
+290
+00:18:34.420 --> 00:18:37.150
+My intercept is interpreted
+as the mean for sprayC, and
+
+291
+00:18:37.150 --> 00:18:43.540
+you can see 2.0833 that's
+exactly the mean for group C.
+
+292
+00:18:43.540 --> 00:18:46.740
+And then this coefficient 12.41 here
+
+293
+00:18:46.740 --> 00:18:50.713
+is interpreted as the comparison
+of sprayA to sprayC.
+
+294
+00:18:50.713 --> 00:18:55.580
+This 13.25 is the comparison
+of sprayB to sprayC, and
+
+295
+00:18:55.580 --> 00:19:00.070
+so if I want to test sprayA versus
+sprayC I've got to look at this P value.
+
+296
+00:19:00.070 --> 00:19:05.040
+If I wanted to test sprayB versus sprayC,
+I would look at this p value.
+
+297
+00:19:05.040 --> 00:19:08.540
+So let me just recap,
+since this is a very important point.
+
+298
+00:19:10.070 --> 00:19:15.360
+If we include a factor of that level,
+factor variable like spray in R,
+
+299
+00:19:15.360 --> 00:19:18.830
+then R automatically
+includes an intercept, and
+
+300
+00:19:18.830 --> 00:19:22.000
+treats the first level of
+the factor as the reference level.
+
+301
+00:19:22.000 --> 00:19:26.080
+So the intercept now is interpreted
+as the mean for that reference level,
+
+302
+00:19:26.080 --> 00:19:29.595
+in our example, the intercept is
+interpreted as the mean for sprayA.
+
+303
+00:19:32.120 --> 00:19:36.934
+Then each spray, other effects,
+so sprayB effect, sprayC effects,
+
+304
+00:19:36.934 --> 00:19:39.903
+sprayD effect, sprayE effect, and so on,
+
+305
+00:19:39.903 --> 00:19:45.060
+is the comparison of that spray level
+versus the reference level which is A.
+
+306
+00:19:46.080 --> 00:19:47.640
+If we want the means for those,
+
+307
+00:19:47.640 --> 00:19:52.790
+it has to be the intercept plus
+their specific coefficients.
+
+308
+00:19:52.790 --> 00:19:56.930
+So the intercept plus the sprayB
+coefficient will be the mean for sprayB.
+
+309
+00:19:57.950 --> 00:20:02.850
+All of the tests then, the test for the
+intercept will be a test for whether or
+
+310
+00:20:02.850 --> 00:20:06.110
+not the mean for sprayA is zero.
+
+311
+00:20:06.110 --> 00:20:09.620
+The test of all the other levels,
+the sprayB, sprayC, and
+
+312
+00:20:09.620 --> 00:20:13.750
+other coefficients, will be a test for
+the comparison versus sprayA.
+
+313
+00:20:14.960 --> 00:20:18.440
+If, on the other hand, we omit an
+intercept, then we're gonna get a mean for
+
+314
+00:20:18.440 --> 00:20:20.290
+each level, including sprayA.
+
+315
+00:20:22.040 --> 00:20:26.230
+And then all the test would be for whether
+or not the sprayA coefficient is different
+
+316
+00:20:26.230 --> 00:20:27.920
+from zero, the on for
+b would be whether or
+
+317
+00:20:27.920 --> 00:20:32.770
+not the sprayB coefficient was zero, and
+so on, which may or may not be relevant.
+
+318
+00:20:32.770 --> 00:20:36.230
+Usually you want the comparisons and
+that's why r's default
+
+319
+00:20:36.230 --> 00:20:40.110
+is to pick one of the levels and
+treat it as the reference level.
+
+320
+00:20:40.110 --> 00:20:41.900
+However, if you want a different one.
+
+321
+00:20:41.900 --> 00:20:45.990
+If you want B to be the reference level,
+you just need to use the re-level command.
+
+322
+00:20:45.990 --> 00:20:49.790
+Or if you wanna get involved
+a little bit more in linear models,
+
+323
+00:20:49.790 --> 00:20:54.770
+then you need to go into how you calculate
+standard errors in more general settings.
+
+324
+00:20:54.770 --> 00:20:56.630
+But that's a little bit more advanced.
+
+325
+00:20:56.630 --> 00:21:01.120
+For right now if you want to do the
+comparisons say between B and C then my
+
+326
+00:21:01.120 --> 00:21:05.610
+current suggestion is just to re-level so
+that now B is the reference level and
+
+327
+00:21:05.610 --> 00:21:09.480
+the coefficient for C will now be
+comparing spray B and spray C.
+
+328
+00:21:10.620 --> 00:21:13.770
+I wanna give some caveats about this
+data analysis that I presented,
+
+329
+00:21:13.770 --> 00:21:18.540
+it's not exactly a complete data
+analysis I think the modeling the data
+
+330
+00:21:18.540 --> 00:21:23.275
+as if they are normally distributed is
+perhaps problematic they're count data so
+
+331
+00:21:23.275 --> 00:21:25.340
+they're bounded from below by zero.
+
+332
+00:21:25.340 --> 00:21:28.415
+I think it would probably be a little more
+natural to model this data as if it was
+
+333
+00:21:28.415 --> 00:21:32.270
+Poisson or
+at least over dispersed Poisson or
+
+334
+00:21:32.270 --> 00:21:36.460
+something like that which we're going to
+cover In our GLM version of the class.
+
+335
+00:21:37.880 --> 00:21:40.490
+In addition the variance,
+it's clearly not constant.
+
+336
+00:21:40.490 --> 00:21:44.320
+So what I mean by the variance is I
+mean the variance around the mean.
+
+337
+00:21:44.320 --> 00:21:48.720
+And it's clearly not constant as
+our regression models would assume.
+
+338
+00:21:48.720 --> 00:21:50.140
+So this is a potential problem.
+
+339
+00:21:50.140 --> 00:21:52.610
+And so our means are probably correct.
+
+340
+00:21:52.610 --> 00:21:54.570
+Our estimates are probably correct.
+
+341
+00:21:54.570 --> 00:21:57.030
+But our inferences assuredly not.
+
+342
+00:21:57.030 --> 00:22:02.520
+So that creates an issue that
+needs to be handled at some level.
+
+343
+00:22:02.520 --> 00:22:05.740
+And later on in the class we'll talk
+about some things for handling this and
+
+344
+00:22:05.740 --> 00:22:08.600
+some of the rest you may
+have to take some further
+
+345
+00:22:08.600 --> 00:22:11.990
+statistical inferences classes to deal
+with some of the more advanced topics.
+
+346
+00:22:11.990 --> 00:22:15.760
+Like when the variances are unequal
+they call that heteroscedasticity.

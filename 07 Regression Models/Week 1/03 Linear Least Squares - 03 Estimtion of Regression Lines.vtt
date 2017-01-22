@@ -1,0 +1,472 @@
+WEBVTT
+
+1
+00:00:00.390 --> 00:00:04.041
+Hi, and welcome to the least squares
+estimation lecture as part of
+
+2
+00:00:04.041 --> 00:00:07.378
+the regression course in
+the data science specialization.
+
+3
+00:00:07.378 --> 00:00:11.227
+My name is Brian Caffo and the course
+is co-taught by myself, Jeff Leek and
+
+4
+00:00:11.227 --> 00:00:13.978
+Roger Peng and
+run the department of Biostatistics in
+
+5
+00:00:13.978 --> 00:00:16.810
+the Johns Hopkins Bloomberg School
+of Public Health.
+
+6
+00:00:18.300 --> 00:00:22.634
+Consider again,
+when we're looking at the scatter plot of
+
+7
+00:00:22.634 --> 00:00:27.670
+the parent's heights by the child's
+heights from the Galton data.
+
+8
+00:00:27.670 --> 00:00:31.599
+Here remember, the size of
+the circle represents the frequency
+
+9
+00:00:31.599 --> 00:00:34.011
+of that particular x, y combination.
+
+10
+00:00:35.460 --> 00:00:40.002
+We'd like to use the parent's heights
+to explain the child's heights and
+
+11
+00:00:40.002 --> 00:00:42.753
+we're going to do it
+using linear regression.
+
+12
+00:00:42.753 --> 00:00:46.360
+We're going to use our notation that
+we developed in our last lecture.
+
+13
+00:00:47.530 --> 00:00:55.086
+So let's let Y be the ith child's height
+and Xi be the ith's parents height.
+
+14
+00:00:55.086 --> 00:00:59.726
+Now we want to find the best line, where
+we want the line to look like child's
+
+15
+00:00:59.726 --> 00:01:04.295
+height is an intercept, which let's
+label beta nought plus the parent's
+
+16
+00:01:04.295 --> 00:01:08.458
+height times a slope,
+which we're going to label beta one.
+
+17
+00:01:08.458 --> 00:01:09.782
+So beta nought and
+
+18
+00:01:09.782 --> 00:01:15.003
+beta one are parameters that we would
+like to know that we don't know.
+
+19
+00:01:15.003 --> 00:01:17.710
+Well, we need a criteria for
+the term best.
+
+20
+00:01:17.710 --> 00:01:23.128
+We need to figure out what we mean
+by the best line that fits the data.
+
+21
+00:01:23.128 --> 00:01:27.690
+Well, one criteria is the famous
+least squares criteria.
+
+22
+00:01:27.690 --> 00:01:33.006
+And the basic gist of the equation is we
+want to minimize the sum of the squared
+
+23
+00:01:33.006 --> 00:01:38.408
+vertical distances between the data
+points, the height of the data points,
+
+24
+00:01:38.408 --> 00:01:43.253
+the child's heights and the points
+on the line, on the fitted line.
+
+25
+00:01:43.253 --> 00:01:46.521
+And we can write this as summation Yi,
+
+26
+00:01:46.521 --> 00:01:51.324
+the child's heights minus
+beta nought plus beta 1Xi,
+
+27
+00:01:51.324 --> 00:01:57.878
+where that particular parent's heights
+would put them on the fitted line.
+
+28
+00:01:57.878 --> 00:02:00.920
+We'll go through this a lot and
+hopefully, you'll get the hang of it.
+
+29
+00:02:00.920 --> 00:02:04.576
+And then later on at the end of
+the lecture, I'll actually show you
+
+30
+00:02:04.576 --> 00:02:08.836
+the math of how we can come up with the
+solution for those that are interested.
+
+31
+00:02:08.836 --> 00:02:12.560
+Let's talk about what our
+equations mean with a picture.
+
+32
+00:02:12.560 --> 00:02:14.003
+Here's a dataset.
+
+33
+00:02:14.003 --> 00:02:17.259
+What our least squares
+criteria to find the best re,
+
+34
+00:02:17.259 --> 00:02:21.260
+regression line is going to do is,
+it's going to take each point.
+
+35
+00:02:21.260 --> 00:02:23.295
+So for example,
+take this point right here.
+
+36
+00:02:23.295 --> 00:02:30.665
+That's the point x1, y1 and
+this might be the point x2,
+
+37
+00:02:30.665 --> 00:02:35.836
+y2 and this might be the point xn, y,n.
+
+38
+00:02:35.836 --> 00:02:41.470
+It's going to take all these points and
+fit a line through the data.
+
+39
+00:02:43.500 --> 00:02:47.496
+Let's draw our line right here, it's
+going to fit a line through the data and
+
+40
+00:02:47.496 --> 00:02:51.936
+the way it's going to pick this line is,
+it's going to take, for example, our x1,
+
+41
+00:02:51.936 --> 00:02:52.586
+y1 point.
+
+42
+00:02:52.586 --> 00:02:56.993
+It's going to calculate that distance and
+
+43
+00:02:56.993 --> 00:03:00.881
+that distance is y1, the height,
+
+44
+00:03:00.881 --> 00:03:05.930
+that height, minus the point on the line.
+
+45
+00:03:05.930 --> 00:03:09.128
+So this line,
+let's assume has intercept beta nought.
+
+46
+00:03:09.128 --> 00:03:14.772
+So beta nought is the height
+on along the vertical
+
+47
+00:03:14.772 --> 00:03:20.840
+axis has intercept beta nought and
+slope beta one.
+
+48
+00:03:20.840 --> 00:03:26.520
+So that's the line that
+we're interested in,
+
+49
+00:03:26.520 --> 00:03:33.336
+so this point right there is
+beta nought plus beta 1X1.
+
+50
+00:03:33.336 --> 00:03:37.100
+This distance,
+then is subtracting the two.
+
+51
+00:03:37.100 --> 00:03:42.136
+And because that can either be positive or
+negative, it would be negative in this
+
+52
+00:03:42.136 --> 00:03:46.961
+case we square it and then we do that for
+every point on the line and add them up.
+
+53
+00:03:46.961 --> 00:03:51.357
+So, each point on the line
+contributes equally to
+
+54
+00:03:51.357 --> 00:03:55.760
+the error between the line and
+the fitted points.
+
+55
+00:03:56.790 --> 00:03:59.107
+Then we try to minimize that error and
+
+56
+00:03:59.107 --> 00:04:02.711
+that's what the least squares
+criteria is doing for us.
+
+57
+00:04:02.711 --> 00:04:06.780
+So let's discuss what the answer is
+when you perform this model fit.
+
+58
+00:04:07.780 --> 00:04:13.461
+So just to reiterate, we want the line
+y equal to beta nought plus beta 1X.
+
+59
+00:04:13.461 --> 00:04:17.843
+And we're going to fit it through
+a scatter plot of points Xi,
+
+60
+00:04:17.843 --> 00:04:20.045
+Yi, where Yi is the outcome.
+
+61
+00:04:20.045 --> 00:04:24.990
+We put little hats over beta nought and
+beta one to indicate the estimated values.
+
+62
+00:04:26.950 --> 00:04:32.597
+The solution works out to be beta one
+hat is the correlation between Y and
+
+63
+00:04:32.597 --> 00:04:38.545
+X times the standard deviation of Y
+divided by the standard deviation of X.
+
+64
+00:04:38.545 --> 00:04:45.110
+The estimated intercept beta nought hat
+is Y bar minus beta 1 hat times X bar.
+
+65
+00:04:46.130 --> 00:04:51.420
+So let's go through a couple of
+consequences of this being the result.
+
+66
+00:04:51.420 --> 00:04:52.350
+First of all,
+
+67
+00:04:52.350 --> 00:04:57.990
+beta 1 hat has the units of Y divided
+by the units of X, that's it's units.
+
+68
+00:04:57.990 --> 00:05:01.753
+We can see this because the correlation
+is a unitless quantity.
+
+69
+00:05:01.753 --> 00:05:04.392
+Standard deviation of Y
+has the units of Y and
+
+70
+00:05:04.392 --> 00:05:06.970
+standard deviation of
+X has the units of X.
+
+71
+00:05:08.390 --> 00:05:11.510
+So because the line, remember is, so
+
+72
+00:05:11.510 --> 00:05:16.676
+because the slope of a line is
+change in Y divided by change in X,
+
+73
+00:05:16.676 --> 00:05:20.880
+it has to have units of Y
+divided by units of X units.
+
+74
+00:05:20.880 --> 00:05:24.940
+Another important point is that the line
+always passes through the point,
+
+75
+00:05:24.940 --> 00:05:26.070
+X bar, Y bar.
+
+76
+00:05:26.070 --> 00:05:28.795
+We can see that for
+the equation for the intercept.
+
+77
+00:05:28.795 --> 00:05:30.198
+If we rearrange it,
+
+78
+00:05:30.198 --> 00:05:35.140
+we simply get Y bar equals beta
+nought hat plus beta 1 hat X bar.
+
+79
+00:05:35.140 --> 00:05:40.860
+So, if we plug in X bar into our equation
+for our fitted line, we get Y bar out,
+
+80
+00:05:40.860 --> 00:05:45.878
+which means that the line has to
+pass through the point X bar, Y bar.
+
+81
+00:05:45.878 --> 00:05:49.700
+If we reverse the roll of Y and
+X and treat X as the outcome and
+
+82
+00:05:49.700 --> 00:05:51.027
+Y as the predictor,
+
+83
+00:05:51.027 --> 00:05:55.864
+then we simply get the answer that
+the slope of this line is the correlation
+
+84
+00:05:55.864 --> 00:06:00.720
+times the standard deviation of X
+divided by the standard deviation of Y.
+
+85
+00:06:02.000 --> 00:06:07.308
+So you get a different answer, of course,
+when you fit X as the outcome and
+
+86
+00:06:07.308 --> 00:06:12.461
+Y as the predictor than if you fit Y
+as the outcome and X as the predictor.
+
+87
+00:06:12.461 --> 00:06:16.410
+The slope is the same if you
+were to center the data first.
+
+88
+00:06:17.520 --> 00:06:22.912
+In other words, take each Xi and
+subtract off its average, take each Yi and
+
+89
+00:06:22.912 --> 00:06:28.753
+subtract off its average, so that now the
+origin is exactly the mean of the data.
+
+90
+00:06:28.753 --> 00:06:32.035
+And if you were to do regression
+forcing the line through the origin,
+
+91
+00:06:32.035 --> 00:06:33.230
+you get the same answer.
+
+92
+00:06:35.510 --> 00:06:39.495
+I would also note that if you normalize
+the data, don't just center it, but
+
+93
+00:06:39.495 --> 00:06:40.754
+center it and scale it.
+
+94
+00:06:40.754 --> 00:06:43.329
+The slope is exactly the correlation,
+
+95
+00:06:43.329 --> 00:06:47.080
+because the standard deviation
+of the X variable is one.
+
+96
+00:06:47.080 --> 00:06:49.378
+The standard deviation of
+the y variable is one.
+
+97
+00:06:49.378 --> 00:06:52.375
+And so we can see,
+just from the equation for
+
+98
+00:06:52.375 --> 00:06:55.540
+the slope,
+that it will just be correlation.

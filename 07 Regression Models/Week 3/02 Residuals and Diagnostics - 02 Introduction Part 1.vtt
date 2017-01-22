@@ -1,0 +1,340 @@
+WEBVTT
+
+1
+00:00:00.180 --> 00:00:03.720
+Hi, and welcome to the class on Residuals,
+diagnostics, and variation.
+
+2
+00:00:05.980 --> 00:00:08.170
+Remember we started out
+with our linear model.
+
+3
+00:00:10.350 --> 00:00:13.070
+We're also going to assume here through
+out the lecture that our errors
+
+4
+00:00:13.070 --> 00:00:13.960
+are normally distribute.
+
+5
+00:00:13.960 --> 00:00:17.880
+Some of our results require that and
+some of them don't.
+
+6
+00:00:17.880 --> 00:00:22.710
+Remember how we defined our residuals and
+that our estimate of residual
+
+7
+00:00:22.710 --> 00:00:26.590
+variation is the sum of the squared,
+the average of the squared residuals.
+
+8
+00:00:26.590 --> 00:00:31.450
+Where remember we divide
+by n-p rather than n, for
+
+9
+00:00:31.450 --> 00:00:35.850
+an biasness sake.
+
+10
+00:00:35.850 --> 00:00:40.580
+So it's very easy in r to get
+a plot of your residuals and
+
+11
+00:00:40.580 --> 00:00:47.200
+several plots that measure aspects
+of model fit and lack of model fit.
+
+12
+00:00:47.200 --> 00:00:52.660
+So let's load up the data set swiss and
+
+13
+00:00:52.660 --> 00:00:57.860
+let's go ahead and fit the linear
+model that includes all the terms and
+
+14
+00:00:57.860 --> 00:01:02.620
+the easy way to do that is to put
+a period after the little tilde symbol.
+
+15
+00:01:02.620 --> 00:01:06.830
+So that, then it just includes
+all the terms in the data frame
+
+16
+00:01:06.830 --> 00:01:09.190
+except the outcome of corps.
+
+17
+00:01:09.190 --> 00:01:14.325
+Then the generic command plot actually
+will just plot the fit, it will plot and
+
+18
+00:01:14.325 --> 00:01:18.640
+co-create a series of residual and
+diagnostic plots for you.
+
+19
+00:01:18.640 --> 00:01:25.430
+I did par ama for all equals two two so
+that it all it on one page.
+
+20
+00:01:25.430 --> 00:01:30.320
+So in this class we're going to go over
+what the basics of these plots are.
+
+21
+00:01:32.690 --> 00:01:37.080
+So to do that we need to
+discuss influential points and
+
+22
+00:01:37.080 --> 00:01:40.310
+outlier points and
+that there's a distinction.
+
+23
+00:01:40.310 --> 00:01:44.270
+So here I've created a plot where there's
+a clear linear relationship between
+
+24
+00:01:44.270 --> 00:01:47.170
+most of the data between the predictor and
+the response.
+
+25
+00:01:47.170 --> 00:01:51.810
+So there's these four points that I'd like
+to discuss that are colored in orange.
+
+26
+00:01:53.350 --> 00:01:56.030
+The first point let's look
+at the lower left hand one,
+
+27
+00:01:56.030 --> 00:01:57.860
+is right in the middle
+of the cloud of data.
+
+28
+00:01:59.000 --> 00:02:04.370
+It doesn't really have much influence or
+leverage, okay?
+
+29
+00:02:04.370 --> 00:02:11.930
+So, to describe more on what influence
+means, or what leverage means,
+
+30
+00:02:11.930 --> 00:02:16.080
+let's look at this point that
+is in the upper right most plot.
+
+31
+00:02:16.080 --> 00:02:20.670
+Remember that our data has to go
+through the average of the y's and
+
+32
+00:02:20.670 --> 00:02:22.610
+the average of the axis.
+
+33
+00:02:22.610 --> 00:02:27.940
+In that sense we can think of the average,
+the two averages as
+
+34
+00:02:27.940 --> 00:02:33.300
+a mid point of fulcrum and that the bar
+
+35
+00:02:33.300 --> 00:02:39.090
+namely the regression line has to move
+through that fulcrum and you could think
+
+36
+00:02:39.090 --> 00:02:44.370
+just like a regular physical fulcrum,
+as you move further out, right?
+
+37
+00:02:44.370 --> 00:02:47.226
+That point will have
+more leverage just like,
+
+38
+00:02:47.226 --> 00:02:50.310
+I think it's probably
+easier if I draw a picture.
+
+39
+00:02:55.887 --> 00:02:58.630
+Here's my fulcrum.
+
+40
+00:03:00.450 --> 00:03:06.206
+Here's my heavy weight right here,
+let's say it's one ton.
+
+41
+00:03:06.206 --> 00:03:11.750
+Okay, if I need to lift up this weight,
+
+42
+00:03:11.750 --> 00:03:16.860
+if I push down right here on my bar,
+it's going to be a lot harder,
+
+43
+00:03:16.860 --> 00:03:18.950
+than if I push down over there.
+
+44
+00:03:18.950 --> 00:03:22.900
+Well that is the same thing that
+happens in regression models.
+
+45
+00:03:22.900 --> 00:03:27.270
+For if you have a bunch of data,
+a datapoint that is,
+
+46
+00:03:27.270 --> 00:03:30.650
+here is the natural arrange of the axis,
+
+47
+00:03:30.650 --> 00:03:33.420
+a datapoint that's far outside of
+the natural range of the axis.
+
+48
+00:03:33.420 --> 00:03:35.370
+This is would have high leverage.
+
+49
+00:03:35.370 --> 00:03:38.930
+A data point that's right in the middle
+of the x's will have low leverage.
+
+50
+00:03:40.040 --> 00:03:42.860
+So the concept of leverage
+is merely a concept
+
+51
+00:03:42.860 --> 00:03:47.390
+of how far away from the center
+of the axis the data point is.
+
+52
+00:03:47.390 --> 00:03:50.671
+So influence on the other
+hand is whether or
+
+53
+00:03:50.671 --> 00:03:54.326
+not that point chooses
+to exert that leverage.
+
+54
+00:03:54.326 --> 00:04:00.650
+So this point that is far
+along the regression line.
+
+55
+00:04:00.650 --> 00:04:03.430
+But still adheres very well
+
+56
+00:04:03.430 --> 00:04:08.230
+to the regression relationship that
+would be observed if it was removed.
+
+57
+00:04:08.230 --> 00:04:14.324
+That point has high leverage but
+it opts not to execute that leverage.
+
+58
+00:04:14.324 --> 00:04:17.470
+On the other hand look at
+this lower right hand point.
+
+59
+00:04:17.470 --> 00:04:20.200
+If that point were included
+in the regression line
+
+60
+00:04:20.200 --> 00:04:23.120
+we would probably a larger fact on it.
+
+61
+00:04:23.120 --> 00:04:23.720
+Why?
+
+62
+00:04:23.720 --> 00:04:28.142
+Because it's outside of the clouded
+points and it also doesn't adhere to what
+
+63
+00:04:28.142 --> 00:04:32.780
+the rest of the date is saying now point
+both has high leverage and high influence.
+
+64
+00:04:32.780 --> 00:04:37.695
+In this lecture we're going to go over
+both the concepts of leverage and
+
+65
+00:04:37.695 --> 00:04:42.624
+the concepts of influence and
+how you diagnose them using your data.
+
+66
+00:04:42.624 --> 00:04:47.068
+One final point to discuss is upper left
+hand point that is right in the middle
+
+67
+00:04:47.068 --> 00:04:49.270
+of the cloud or the X values.
+
+68
+00:04:49.270 --> 00:04:50.359
+So it has low leverage.
+
+69
+00:04:52.200 --> 00:04:55.460
+However, it doesn't adhere
+at all to the relationship.
+
+70
+00:04:57.060 --> 00:05:01.630
+So, this upper left hand point,
+while being an outlier, is not going to
+
+71
+00:05:01.630 --> 00:05:06.110
+exert the same influence on the model that
+this lower right hand point is going to.

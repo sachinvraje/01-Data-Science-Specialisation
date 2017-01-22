@@ -1,0 +1,193 @@
+Hi, and welcome to the lesson
+on multivariable regression. In this lecture, we're gonna go over
+some examples of how adjusting for one variable can impact
+the apparent relationship we see of another variable on an outcome, okay? And I think the easiest way to see this
+is to look at a two group variable. Take, for example,
+a treatment versus a control or something you might see in an AB test when
+we're adjusting for a continuous variable. So, lets just get started, we're gonna
+go through a lot of examples and I think you'll be surprised at
+how different things can be when you adjust for another variable. In this slide,
+I give you an example set of code that I'm using to simulate the data and
+create the plots. From this point forward,
+I won't show the code anymore, but if you'd like to go through it,
+it's all in the document. Here's the first simulation. In this case,
+it's a pretty straightforward one. Get my pen. Okay, so in this case, the horizontal lines show the. Show the marginal effect of group status,
+in this case, there's one group colored red and
+another group colored blue. This shows the marginal
+effect disregarding the x. So if, for example, y was blood pressure
+or something, then we would think that if we hadn't factored in x, this would be
+the mean for the group that, say, received the treatment, and this would be the mean
+for the group that got the control. Now there's a pretty clear
+linear relationship between the outcome and the regressor. So what we could do is fit
+a model that looks like y = beta naught + beta 1 times our
+treatment indicator, 01 for our treatment indicator,
++ beta 2 * x + epsilon. This would fit two parallel lines. Beta one would represent the change
+in intercepts between the groups, whereas beta two would be the common
+slope that exists across the two groups. If we were to do that, then beta one here, the change in the intercept between
+the two groups, would be right there. It would be that distance. And if you notice in this case, the
+marginal effect, the effect that we have if we disregard x, and the effect
+that we have if we incorporate x in a linear model and look at the change
+in the intercepts, are about the same. Another thing that I would note in this
+example is that there's a lot of direct evidence to compare our groups for
+any given value of x. If we were to bin x, say in a bin like
+this, then we would have a lot of red and blue circles to do a direct
+comparison of the treatment for kind of a fairly isolated level of x. So this would be a good experiment. This would be something that might happen
+if we were to randomized treatment and in the collection of xs for the red group
+would look like the collection of xs for the y group Okay, this is just reiterating
+some of those points. Now let's try a setting where
+it's gonna make a big difference. So again,
+my horizontal lines here show marginal difference between my red treated
+group and my blue control group. However, if we were to fit that model and
+look at the change in the intercepts, we'd see this tiny difference down here,
+this minimal difference, okay? And so this is a case where we would
+go from a massive treatment effect to nothing when we accounted for x. Another thing I would note about this
+particular data set, if we knew that the x value was one or smaller,
+we know that you're in the blue group. And if we know that you are 1.5 or higher, we know that you were
+in the red treated group. So knowledge of x at some level pretty
+much gives us perfect knowledge of which treatment you received. This is an important concept that goes to
+something, the so-called propensity score, but it basically goes to show that this is
+the exact opposite of what would happen if we had randomized, right? In this case, if we randomize it would
+be very hard to pick what treatment you had based on your x level because
+the x levels were all jumbled up. Some of the high x levels
+went to the treated, some of the high x levels went to
+the control, and so on, and so on. In this case,
+it would be an example where we clearly didn't randomize, and which model here is the right one to consider is
+not really up for discussion for today. What we're just talking
+about today is about how the inclusion of x can
+change the estimate. Now which is the right model to consider? That is a different thing. For example, this might occur, an example
+of when this might occur is let's say treatment is whether or not you're taking
+some blood pressure medication, okay? And y, your outcome,
+is your blood pressure. But suppose that the x variable was cholesterol or
+something highly related to whether or not you would've gotten prescribed
+this medication to begin with, okay? Then you could see that adjusting for
+x is really just adjusting for the same sort of thing that would
+lead you to have treatment. So again, this is what makes
+observational data analysis very hard as opposed to instances where what you're
+interested in has been randomized. Okay, so this is an example,
+just to reiterate this point, this is an example where we had a strong
+marginal effect when we disregarded x, and a very subtle or a non-existent
+effect when we accounted for x. Let's try some different scenarios. Again, this slide just
+reiterates these points. Oh, and
+just to go back to this latter point, we have no instances of overlap in the red
+and blue groups to have direct evidence of what's going on for
+a specific value of x. There's no value of x we can hold constant
+and compare red versus blue directly. So this is a bad setting, where we're relying very heavily
+on the model to compare the group. Here's an instance where there
+is some overlap right here. There is some direct evidence right
+there comparing the two groups. But, it also is kind of a hard case because if you look, here's
+the marginal mean for the red group. Here's the marginal mean for
+the blue group. There's a probably significant effect here
+that says the red is higher than the blue. However, we fit our model and
+look at the change in the intercepts, what we see is that the blue
+is higher than the red. So our adjusted estimate
+is significant and the exact opposite of our
+unadjusted estimate, okay? And again, during this lecture we're not
+gonna talk about which one's the right one, we're just gonna talk about
+how this can obviously occur. Here is a picture where you can
+see exactly what's happening. This phenomenon here is often
+called Simpson's Paradox, and the idea is you look at a variable
+as it relates to an outcome, and that effect reverses itself as
+the inclusion of another variable. That's often called Simpson's Paradox,
+which basically just says things can change to the exact
+opposite when you perform adjustment, which Is actually looking at this
+picture not that surprising. It's not a paradox whatsoever. All right, let's try some other examples. Again, the next slide's just
+gonna reiterate these points. In this example,
+there's basically no marginal effect. However, there's a huge effect
+when we adjust for x so this is a case where we went from, we saw
+a case where we went from significant effect to when we adjusted for x,
+we got a non-significant effect. Well, here's an instance where we had
+a non-significant effect if we ignore x, and then a significant effect
+when we include x, okay? So there's no simple rule that says
+this is always what will happen with adjustment. Pretty much any permutation of going from
+significant to non-significant, staying both significant, staying non-significant,
+flipping signs, all of them can occur. Here's the final example like
+this I'd like to show, and this just considers an instance
+where we would surely get this wrong if we were to assume the slopes
+were common across the two groups. Obviously, the slopes are different. And we know how to fit a model like this. If we were to fit a model that said, y = beta naught + beta 1
+* our treatment effect, + beta 2 * x, + beta 3 treatment,
+* x + epsilon. That would fit two lines with different
+intercepts and different slopes, and we could get a fit
+like to this data set. Another important thing to ascertain for this data set is there is no such
+thing as a treatment effect. If you look right here,
+the red and the blue, there's no evidence of a treatment effect. If you look right here,
+there's a big evidence that blue has a higher outcome than red,
+and if you look over here, there's a lot of evidence that red
+has a higher outcome than blue. And the reason,
+the interaction is the reason that this main treatment effect
+doesn't have a lot of meaning. The end result is that this coefficient, the coefficient in front of the treated
+effects, which just spits out of course, is not interpreted as
+the treatment effect by itself. You can't interpret that
+number as a treatment effect. As we can see from this picture, there is no such thing as
+a treatment effect for this data. The treatment effect depends
+on what level of x you're at. So you can't just read
+the term from the regression output associated with the treatment and
+act as if it's a treatment effect, if in fact, you have
+an interaction term in your model. So that's an important point, but this
+also just goes to show how adjustment can really change things if you have a setting
+like this where you have not just adjustment, but so-called modification. Okay, so
+again that was a crazy simulation. This just summarizes some of the points. You often see interactions, but you rarely see interactions that start,
+but still, nonetheless, they can occur. And then I want to reiterate that nothing
+we've talked about is specific to having a binary treatment and a continuous x. In this case here,
+we have our same outcome, y. But in our x1 variable is continuous and
+our x2 is continuous, but because it's kinda hard to show 3 variables
+at the same time, x2 is color coded. So higher lighter values mean higher, and more red darker values means lower, okay? So in this case, if you look at this
+plot you would say there isn't much of a relationship between y and x1, however, lets look at this in three dimensions,
+and then I need a different setting. I need something where I
+can rotate the plot around. So, I'm going to use RGL,
+and it's pretty easy. You can, this doesn't show how
+I generated the x1, x2, and y, that's in the mark down document, but
+here, I'll show you how to get it. So there's the plot or data set that's
+equivalent cuz I reran the simulation. And here's our plot. So here's exactly that plot recreated, just to orient you, my y is on this axis,
+and my x1 is on this axis. Now, however if I look,
+if I turn this with x2, you can see that most of the variation of y is
+explained by this relationship with x2. Okay, and
+there is a small amount of sharing. So if I try and get it just perfect,
+you can see that there is some variation left for
+y once I've accounted for x2. So let's look at that, and an easy way to
+look at that without having to resort to three dimensional plots, especially
+which don't work if you move beyond two variables, if you have three variables or
+four variables, is to look at residuals. So let's look at what happens
+when we look at the residuals. So here is the residual of y after having
+removed x2, the linear effect of x2, and the residual of x1 having
+removed linear effect of x2. And there you can see there's
+a very strong relationship left over between y and
+x1 after having removed the effect of x2. And the main point of
+this slide right here and the continuous variant is just to
+show that there’s nothing specific about the binary case other than
+it’s kind of easy to visualize that makes the same things not
+occur in the continuous case. We can get regression effects, reverse
+themselves, get bigger, get smaller, go from significant to not, from not
+significant to significant, and all of the possible permutations when we have two
+or more multiple continuous regressors. So some final thoughts, again, I want to
+reiterate we haven't said what exactly is the right model, because the two differ,
+we need an answer, right? And I would say the probably best
+way to think about that is you have to bring in some of the specific
+subject matter, or clinical scientific subject matter expertise into
+your model building exercise. Sometimes the treatment and
+the other regressor are highly related, but merely because they're related things,
+that it isn't interesting to adjust for x. So the fact that it causes the treatment
+effect to go away isn't meaningful. If I have systolic blood pressure in
+a model, and I put diastolic blood pressure in a model as well, that of
+course, makes the first one go away. But that's not interesting. I know those two blood pressure
+measurements are highly correlated. Why should I have them both in the model? And so to really understand this,
+you need to have a dynamic process of going back and
+forth with the model fitting and the subject matter and
+scientific expertise bringing its full force to bear on the model
+building exercise to get sensible results. But hopefully after this lecture, you'll understand when you see
+the adjustment cause your facts to change, you'll maybe get a sense of how
+that's occurring in the background. Okay, and then for automated model
+selection, which is another process that you'll talk more about in your machine
+learning class, that's a different thing. And I don't think it's
+particularly well suited for painting interpretable coefficients. It's data for obtaining good predictions
+with respect to a loss function. So that's a different process. I think there's no substitute if you're
+doing model building with a regular data set where you want interpretable
+coefficients to getting your hands dirty, getting the team of people that
+are working with on it together, some with the right scientific expertise,
+some with the statistical expertise, and some with the computing expertise, and
+so on, all together to fit the models. And if there's a big change in
+coefficients after different adjustment strategies, well,
+then those need to be discussed and vetted and the benefits and
+side effects, and downsides of each of the models
+should be discussed, okay. So thank you for
+listening to this lecture, and I look forward to seeing
+you in the next one.
